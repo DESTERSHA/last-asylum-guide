@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Черновик C — Шпаргалка всегда на виду</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&family=Unbounded:wght@600;800&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--bg:#121212;--ink:#f2efe9;--mut:#a39e94;--line:#2c2a27;--blood:#d4483b;--bone:#ece4d4;--card:#1a1918;--card2:#211f1d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Onest,sans-serif}
+.bar{position:sticky;top:0;z-index:10;background:var(--blood);color:#fff}
+.bar-in{max-width:1180px;margin:auto;display:flex;align-items:center;gap:14px;padding:9px 16px;overflow-x:auto;scrollbar-width:none}
+.bar b{font:800 15px Unbounded;white-space:nowrap}.bar a{color:#ffe1dc;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap}.bar a.on{color:#fff;text-decoration:underline;text-underline-offset:5px}
+.layout{max-width:1180px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:28px;padding:18px 16px 90px}
+.cheat{position:sticky;top:58px;align-self:start;background:var(--bone);color:#1c1a17;border-radius:4px 22px 22px 22px;padding:16px}
+.cheat h3{margin:0 0 10px;font:800 15px Unbounded;text-transform:uppercase;letter-spacing:.5px;color:var(--blood)}
+.big{display:flex;gap:8px;margin-bottom:12px}
+.big div{flex:1;background:#fff;border-radius:12px;padding:8px 10px;text-align:center}
+.big b{display:block;font:800 22px Unbounded}.big span{font-size:12px;font-weight:700;color:#6b645a}
+.mini{position:relative;height:150px;background:#f6d6d1;border-radius:12px;margin:8px 0 10px;border:2px dashed #c9776d}
+.mini .c{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#e9c46a;border-radius:8px;padding:6px 8px;font:800 11px Onest;text-align:center;line-height:1.2}
+.mini .t{position:absolute;width:44px;font:800 10px Onest;text-align:center;line-height:1.15}
+.mini .t i{display:block;margin:0 auto 2px;width:22px;height:22px;border-radius:50%;background:#5f7fd6;color:#fff;font-style:normal;line-height:22px;font-size:11px}
+.rule{display:flex;gap:8px;align-items:flex-start;font-size:14px;font-weight:700;padding:6px 0;border-top:1px solid #d8cdb8}
+main h1{font:800 clamp(28px,6vw,48px)/1.1 Unbounded;margin:6px 0 10px}
+.lead{font-size:19px;color:var(--mut);max-width:640px}
+.qa{margin:26px 0;border-top:1px solid var(--line);padding-top:18px}
+.q{font:800 20px Unbounded;color:var(--bone);margin:0 0 8px}
+.q span{color:var(--blood)}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:16px;align-items:start}
+.pic{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}.pic img{display:block;width:100%}
+.pic .ring{position:absolute;left:91.7%;top:26.8%;width:22%;aspect-ratio:1;transform:translate(-50%,-50%);border:4px solid #ff3b30;border-radius:50%}
+.w{border-bottom:2px dotted var(--blood);font-weight:700;cursor:help}
+.tip{display:block;background:var(--card2);border-left:0;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px;font-size:15px;color:#d8d2c6}
+.tip b{color:var(--bone)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0}
+.steps li{counter-increment:s;position:relative;padding:8px 0 8px 44px;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:30px;height:30px;border-radius:8px;background:var(--blood);color:#fff;font:800 14px Unbounded;display:grid;place-items:center}
+.note{font-size:13px;color:var(--mut);margin-top:24px}
+.drafts{position:fixed;left:16px;bottom:12px;background:#000d;border-radius:12px;padding:6px;display:flex;gap:4px;z-index:30}
+.drafts a{color:#fff;text-decoration:none;font:800 13px Onest;padding:6px 12px;border-radius:8px}.drafts a.on{background:var(--blood)}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.cheat{position:static;order:-1}.pair{grid-template-columns:1fr}}
+</style></head><body>
+<header class="bar"><div class="bar-in"><b>LA:P · 397</b><a href="#">Главная</a><a class="on" href="#">КвК</a><a href="#">Дуэль</a><a href="#">Герои</a><a href="#">Отряды</a><a href="#">Снаряжение</a><a href="#">Правила</a><a href="#">Слова</a><a href="#">Фишки</a></div></header>
+<div class="layout">
+  <main>
+    <h1>КвК. Что это и что делать</h1>
+    <p class="lead">Простыми словами, с картинками. Справа — шпаргалка, она всегда перед глазами: время боя, где город, главное правило.</p>
+    <section class="qa">
+      <p class="q"><span>1.</span> Что такое КвК?</p>
+      <p>Это война нашего сервера (№397) с другим сервером. Всю неделю мы копим очки, в субботу бьёмся за их или наш главный город — <span class="w">Королевский город</span>.</p>
+      <span class="tip"><b>Королевский город (трон)</b> — большой замок в самом центре карты. Кто его держит до конца боя — тот победил.</span>
+    </section>
+    <section class="qa">
+      <p class="q"><span>2.</span> Где это в игре?</p>
+      <div class="pair">
+        <ol class="steps"><li>Зайди в игру, ты на главном экране.</li><li>Посмотри на правый край: там столбик круглых значков.</li><li>Нажми золотой щит с короной — «Война Королевств» (на картинке в красном круге).</li><li>Откроется окно. Вкладка «Недельный обзор» показывает счёт: наш сервер против их.</li></ol>
+        <div class="pic"><img src="https://lblog.fp.guinfra.com/file/69cdbc0dc6d1b792e3bbed49fSTidKXD03" alt="Главный экран, значок Война Королевств"><span class="ring"></span></div>
+      </div>
+    </section>
+    <p class="note">Черновик C «Шпаргалка»: верхняя красная полоса разделов всегда видна; справа (на телефоне — сверху страницы) светлая карточка с самым важным — время боя по серверу и Москве, мини-карта башен, главные правила. Текст — вопрос → ответ → шаги рядом с картинкой, непонятные слова подчёркнуты и сразу объяснены.</p>
+  </main>
+  <aside class="cheat">
+    <h3>Шпаргалка КвК</h3>
+    <div class="big"><div><b>12:00</b><span>бой, сервер</span></div><div><b>15:00</b><span>бой, Москва</span></div></div>
+    <div class="mini"><div class="c">КОРОЛЕВСКИЙ<br>ГОРОД<br>500·500</div>
+      <div class="t" style="left:8px;top:8px"><i>З</i>491·509</div><div class="t" style="right:8px;top:8px"><i>С</i>509·509</div>
+      <div class="t" style="left:8px;bottom:6px"><i>Ю</i>491·491</div><div class="t" style="right:8px;bottom:6px"><i>В</i>509·491</div></div>
+    <div class="rule">🛡️ Возле города щиты не работают</div>
+    <div class="rule">👥 Одному не нападать — только вместе</div>
+    <div class="rule">🏰 Сидеть в башне = +25 очков в секунду</div>
+  </aside>
+</div>
+<nav class="drafts"><a href="a.html">A</a><a href="b.html">B</a><a class="on" href="c.html">C</a></nav>
+</body></html>

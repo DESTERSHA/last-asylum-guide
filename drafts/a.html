@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Черновик A — Игровой экран</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Russo+One&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--bg:#0b0d14;--panel:#141826;--panel2:#1b2033;--line:#2a3150;--gold:#f0c35a;--gold2:#ffdf8f;--text:#eef0f7;--mut:#9aa3c0;--red:#ff4d5a;--green:#7ee08a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#1d2340 0,transparent 60%),var(--bg);color:var(--text);font:500 17px/1.6 Manrope,sans-serif}
+.hud{position:sticky;top:0;z-index:20;background:rgba(11,13,20,.96);border-bottom:1px solid var(--line)}
+.hud-in{max-width:1100px;margin:auto;display:flex;align-items:center;gap:10px;padding:8px 14px;flex-wrap:wrap}
+.brand{font:400 17px "Russo One";color:var(--gold);white-space:nowrap}.brand small{display:block;font:700 11px Manrope;color:var(--mut)}
+.clocks{margin-left:auto;display:flex;gap:6px}
+.clock{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:4px 10px;text-align:center;line-height:1.1}
+.clock b{display:block;font:400 18px "Russo One";color:var(--gold2)}.clock span{font-size:11px;color:var(--mut);font-weight:700}
+.tabs{max-width:1100px;margin:auto;display:flex;gap:6px;overflow-x:auto;padding:0 14px 8px;scrollbar-width:none}
+.tabs a{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:74px;padding:7px 8px;border-radius:12px;background:var(--panel);border:1px solid var(--line);color:var(--mut);text-decoration:none;font-weight:800;font-size:12px}
+.tabs a i{font-style:normal;font-size:22px}.tabs a.on{background:linear-gradient(180deg,#3a2f12,#221b0b);border-color:var(--gold);color:var(--gold2)}
+.today{max-width:1100px;margin:12px auto 0;padding:0 14px}
+.today-in{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.tchip{flex:0 0 auto;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px}
+.tchip b{color:var(--gold2)}
+main{max-width:1100px;margin:auto;padding:8px 14px 80px}
+h1{font:400 clamp(30px,7vw,46px)/1.1 "Russo One";margin:18px 0 6px}
+.lead{color:var(--mut);font-size:18px;margin:0 0 16px}
+.week{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 26px}
+.wk{border-radius:16px;padding:14px;border:1px solid var(--line);background:var(--panel)}
+.wk .d{font:400 13px "Russo One";color:var(--mut)}.wk .t{font:400 20px "Russo One";margin:4px 0}
+.wk p{margin:0;font-size:14px;color:var(--mut)}
+.wk.a{background:linear-gradient(160deg,#1c2a1f,#141826)}.wk.b{background:linear-gradient(160deg,#2b2412,#141826)}.wk.c{background:linear-gradient(160deg,#3a141a,#141826);border-color:#6b2530}
+.lesson{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:16px;margin:16px 0}
+.shot{position:relative;border-radius:14px;overflow:hidden;align-self:start}.shot img{display:block;width:100%}
+.mark{position:absolute;width:19%;aspect-ratio:1;border:4px solid var(--red);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(255,77,90,.25);animation:p 1.4s infinite}
+.mark::after{content:attr(data-n);position:absolute;left:-14px;top:-14px;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font:800 14px Manrope;display:grid;place-items:center}
+@keyframes p{50%{box-shadow:0 0 0 10px rgba(255,77,90,0)}}
+.step{font:400 14px "Russo One";color:var(--gold)}.lesson h2{font:400 24px "Russo One";margin:4px 0 8px}
+.do{background:#10131e;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0}
+.do b{color:var(--gold2)}
+.term{display:inline-block;border-bottom:2px dashed var(--gold);cursor:help;font-weight:800}
+.explain{background:linear-gradient(180deg,#232a45,#1a1f35);border:1px solid #3b4675;border-radius:14px;padding:12px 14px;font-size:15px;margin-top:10px}
+.explain b{color:#9fc0ff}
+.note{font-size:12px;color:var(--mut);text-align:center;margin-top:30px}
+.drafts{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);background:#000c;border:1px solid var(--line);border-radius:999px;padding:6px 8px;display:flex;gap:4px;z-index:30}
+.drafts a{color:#fff;text-decoration:none;font:800 13px Manrope;padding:6px 12px;border-radius:999px}.drafts a.on{background:var(--gold);color:#111}
+@media(max-width:700px){.lesson{grid-template-columns:1fr}.week{grid-template-columns:1fr}}
+</style></head><body>
+<header class="hud"><div class="hud-in">
+  <div class="brand">LAST ASYLUM: PLAGUE<small>гайд альянса · сервер 397</small></div>
+  <div class="clocks"><div class="clock"><b>09:41</b><span>время сервера</span></div><div class="clock"><b>12:41</b><span>по Москве</span></div></div>
+</div>
+<nav class="tabs"><a href="#"><i>🏠</i>Главная</a><a class="on" href="#"><i>👑</i>КвК</a><a href="#"><i>🤝</i>Дуэль</a><a href="#"><i>🦸</i>Герои</a><a href="#"><i>⚔️</i>Отряды</a><a href="#"><i>🛡️</i>Снаряжение</a><a href="#"><i>📜</i>Правила</a><a href="#"><i>📖</i>Слова</a><a href="#"><i>💡</i>Фишки</a></nav>
+</header>
+<div class="today"><div class="today-in">
+  <div class="tchip">Сегодня <b>воскресенье</b></div><div class="tchip">Дуэль: <b>отдых, ничего не трать</b></div><div class="tchip">Король демонов: <b>нет</b></div><div class="tchip">КвК: <b>копим очки</b>, бой в субботу 12:00 сервер / 15:00 МСК</div>
+</div></div>
+<main>
+  <h1>КвК — объясняем с нуля</h1>
+  <p class="lead">Наш сервер (№397) раз в неделю воюет с другим сервером. Это и есть КвК. Ниже — что это такое и что нажимать, по одному шагу.</p>
+  <div class="week">
+    <div class="wk a"><div class="d">ВС — ПТ</div><div class="t">Копим очки</div><p>Обычные дела дают очки нашему серверу: удары по боссу, Дуэль, караваны.</p></div>
+    <div class="wk b"><div class="d">ПЯТНИЦА, НОЧЬ</div><div class="t">Подсчёт</div><p>У кого больше очков — тот в субботу нападает. У кого меньше — защищается.</p></div>
+    <div class="wk c"><div class="d">СУББОТА</div><div class="t">Бой за трон</div><p>4 часа бьёмся за главный город. Все альянсы нашего сервера — в одной команде.</p></div>
+  </div>
+  <section class="lesson">
+    <div class="shot"><img src="https://lblog.fp.guinfra.com/file/69cdbc0dc6d1b792e3bbed49fSTidKXD03" alt="Главный экран игры, справа значок Война Королевств"><span class="mark" data-n="1" style="left:91.7%;top:26.8%"></span></div>
+    <div>
+      <div class="step">ШАГ 1 ИЗ 9</div>
+      <h2>Открой окно Войны королевств</h2>
+      <div class="do"><b>Что сделать:</b> справа на экране есть столбик круглых значков. Нажми на золотой щит с короной — подпись «Война Королевств». На картинке он обведён красным кругом.</div>
+      <p>Откроется окно с тремя вкладками сверху. Первая — «Недельный обзор»: там видно, сколько очков у нас и у них.</p>
+      <p>В бою все действуют через <span class="term">ралли</span> и <span class="term">гарнизон</span>.</p>
+      <div class="explain"><b>Ралли</b> — общий удар. Один игрок выбирает цель и нажимает «Ралли». Остальные нажимают «Присоединиться» и отправляют свои отряды. Все бьют вместе, войска гибнут меньше.<br><b>Гарнизон</b> — твой отряд стоит внутри здания (башни, города) и защищает его.</div>
+    </div>
+  </section>
+  <p class="note">Черновик A «Игровой экран»: часы и «что сегодня» всегда видны сверху, разделы — большими значками без скрытого меню, каждый шаг = скриншот с красным кругом + что нажать + объяснение слов рядом. Часы пока примерные — нужен твой ответ про время сервера.</p>
+</main>
+<nav class="drafts"><a class="on" href="a.html">A</a><a href="b.html">B</a><a href="c.html">C</a></nav>
+</body></html>
