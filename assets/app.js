@@ -1,88 +1,76 @@
-/* Last Asylum: Plague — гайд. Мелкая интерактивность без библиотек. */
+/* Last Asylum: Plague — гайд альянса 397. Часы, отсчёт, «сегодня», вкладки, чек-листы, увеличение картинок. */
 (function () {
   "use strict";
   var store = {
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* приватный режим: просто не запоминаем */ } }
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* приватный режим: галочки просто не запомнятся */ } }
   };
+  var SRV = -2, MSK = 3; // время в игре = UTC−2, Москва = UTC+3
+  function at(off) { return new Date(Date.now() + off * 36e5); }
+  function hhmm(d) { return String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0"); }
+  function srvDay() { return at(SRV).getUTCDay(); } // 0 = воскресенье, по игровому времени
 
-  /* --- тема --- */
-  var root = document.documentElement;
-  var saved = store.get("lap-theme");
-  if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
-  var themeBtn = document.getElementById("themeBtn");
-  function isDark() {
-    var t = root.getAttribute("data-theme");
-    if (t) return t === "dark";
-    return !window.matchMedia("(prefers-color-scheme: light)").matches;
-  }
-  function paintThemeBtn() { if (themeBtn) themeBtn.textContent = isDark() ? "☀️" : "🌙"; }
-  if (themeBtn) {
-    paintThemeBtn();
-    themeBtn.addEventListener("click", function () {
-      var next = isDark() ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      store.set("lap-theme", next);
-      paintThemeBtn();
-    });
+  /* отсчёт до субботы 12:00 по игре (= 17:00 МСК = 14:00 UTC) */
+  function untilKvk() {
+    var now = new Date();
+    var t = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 14, 0, 0));
+    t.setUTCDate(t.getUTCDate() + (6 - now.getUTCDay() + 7) % 7);
+    if (t - now < -4 * 36e5) t.setUTCDate(t.getUTCDate() + 7); // бой идёт 4 часа
+    var s = (t - now) / 1e3;
+    if (s <= 0) return "бой идёт!";
+    var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+    return "через " + (d ? d + " д " : "") + h + " ч " + m + " м";
   }
 
-  /* --- мобильное меню --- */
-  var menuBtn = document.getElementById("menuBtn");
-  if (menuBtn) {
-    menuBtn.addEventListener("click", function () {
-      var open = document.body.classList.toggle("nav-open");
-      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    document.querySelectorAll(".sidenav a").forEach(function (a) {
-      a.addEventListener("click", function () { document.body.classList.remove("nav-open"); });
-    });
-  }
+  var DAYS = [
+    { n: "Воскресенье", duel: "Отдых. Ничего не трать — копи.", boss: "Короля демонов нет" },
+    { n: "Понедельник", duel: "День 1 — Ворон: задания сокола, плоды и эссенция Ворона, энергия, сбор ресурсов", boss: "Колдун скверны — бей Воинами" },
+    { n: "Вторник", duel: "День 2 — Стройка: молотки, ускорения стройки, золотые караваны и секретные операции, выжившие", boss: "Рейнджер скверны — бей Колдунами" },
+    { n: "Среда", duel: "День 3 — Наука: ускорения исследований, свитки, сундуки снаряжения Ворона, сокол", boss: "Воин скверны — бей Рейнджерами" },
+    { n: "Четверг", duel: "День 4 — Герои: противоядие, фрагменты, значки навыков, найм", boss: "Колдун скверны — бей Воинами" },
+    { n: "Пятница", duel: "День 5 — Войска: обучение и повышение солдат, сокол", boss: "Рейнджер скверны — бей Колдунами" },
+    { n: "Суббота", duel: "День 6 — Набег: щит, убрать отряд со стены. Бой КвК в 17:00 МСК", boss: "Воин скверны — бей Рейнджерами" }
+  ];
 
-  /* --- оглавление страницы в боковом меню --- */
-  var active = document.querySelector(".sidenav a.active");
-  var heads = document.querySelectorAll("main h2[id]");
-  if (active && heads.length > 1) {
-    var toc = document.createElement("div");
-    toc.className = "toc";
-    heads.forEach(function (h) {
-      var a = document.createElement("a");
-      a.href = "#" + h.id;
-      a.textContent = h.getAttribute("data-short") || h.textContent;
-      toc.appendChild(a);
-    });
-    active.insertAdjacentElement("afterend", toc);
+  function tick() {
+    document.querySelectorAll("[data-clock=srv]").forEach(function (e) { e.textContent = hhmm(at(SRV)); });
+    document.querySelectorAll("[data-clock=msk]").forEach(function (e) { e.textContent = hhmm(at(MSK)); });
+    document.querySelectorAll("[data-cd=kvk]").forEach(function (e) { e.textContent = untilKvk(); });
+    var d = DAYS[srvDay()];
+    document.querySelectorAll("[data-today=name]").forEach(function (e) { e.textContent = d.n; });
+    document.querySelectorAll("[data-today=duel]").forEach(function (e) { e.textContent = d.duel; });
+    document.querySelectorAll("[data-today=boss]").forEach(function (e) { e.textContent = d.boss; });
   }
+  tick(); setInterval(tick, 20000);
 
-  /* --- вкладки --- */
+  /* подсветить сегодняшний день недели в полосе «неделя» */
+  document.querySelectorAll(".day[data-dow]").forEach(function (el) {
+    if (Number(el.getAttribute("data-dow")) === srvDay()) el.classList.add("today");
+  });
+
+  /* вкладки (у дней Дуэли — открыть сегодняшний день по игровому времени) */
   document.querySelectorAll(".tabs-ui").forEach(function (box) {
-    var btns = box.querySelectorAll(".tabbar button");
-    var panels = box.querySelectorAll(".tabpanel");
+    var btns = box.querySelectorAll(".tabbar button"), panels = box.querySelectorAll(".tabpanel");
     function show(i) {
       btns.forEach(function (b, j) { b.setAttribute("aria-selected", i === j ? "true" : "false"); });
       panels.forEach(function (p, j) { p.classList.toggle("on", i === j); });
     }
     btns.forEach(function (b, i) { b.addEventListener("click", function () { show(i); }); });
-    // дни дуэли: подсветить сегодняшний (по UTC — дуэль обнуляется в 00:00 UTC)
-    var todayIdx = -1;
-    if (box.hasAttribute("data-utc-days")) {
-      var d = new Date().getUTCDay(); // 0 = воскресенье
+    var start = 0;
+    if (box.hasAttribute("data-days")) {
       btns.forEach(function (b, i) {
-        if (Number(b.getAttribute("data-day")) === d) {
-          todayIdx = i;
-          var tag = document.createElement("span");
-          tag.className = "today"; tag.textContent = "сегодня";
-          b.appendChild(tag);
+        if (Number(b.getAttribute("data-dow")) === srvDay()) {
+          start = i;
+          var t = document.createElement("span"); t.className = "td"; t.textContent = "сегодня"; b.appendChild(t);
         }
       });
     }
-    show(todayIdx >= 0 ? todayIdx : 0);
+    show(start);
   });
 
-  /* --- чек-листы с запоминанием --- */
+  /* чек-листы с запоминанием на этом устройстве */
   document.querySelectorAll(".checklist[data-key]").forEach(function (list) {
-    var key = "lap-check-" + list.getAttribute("data-key");
-    var state = {};
+    var key = "lap-check-" + list.getAttribute("data-key"), state = {};
     try { state = JSON.parse(store.get(key) || "{}"); } catch (e) { state = {}; }
     var boxes = list.querySelectorAll("input[type=checkbox]");
     boxes.forEach(function (cb, i) {
@@ -90,67 +78,34 @@
       cb.addEventListener("change", function () { state[i] = cb.checked; store.set(key, JSON.stringify(state)); });
     });
     var reset = document.querySelector('.check-reset[data-for="' + list.getAttribute("data-key") + '"]');
-    if (reset) reset.addEventListener("click", function () {
-      state = {}; store.set(key, "{}"); boxes.forEach(function (cb) { cb.checked = false; });
-    });
+    if (reset) reset.addEventListener("click", function () { state = {}; store.set(key, "{}"); boxes.forEach(function (cb) { cb.checked = false; }); });
   });
 
-  /* --- увеличение скриншотов --- */
+  /* увеличение скриншотов по нажатию */
   var lb = document.createElement("div");
   lb.className = "lightbox";
-  lb.innerHTML = '<img alt="">';
+  var lbImg = document.createElement("img");
+  lb.appendChild(lbImg);
   document.body.appendChild(lb);
   lb.addEventListener("click", function () { lb.classList.remove("on"); });
-  document.querySelectorAll("figure.shot img").forEach(function (img) {
-    img.addEventListener("click", function () {
-      lb.querySelector("img").src = img.currentSrc || img.src;
-      lb.querySelector("img").alt = img.alt;
-      lb.classList.add("on");
-    });
-    img.addEventListener("error", function () {
-      var f = img.closest("figure");
-      if (f) f.insertAdjacentHTML("afterbegin", '<p class="muted" style="margin:6px 4px">Картинка не загрузилась (сайт-источник недоступен). Подпись ниже всё объясняет.</p>');
-      img.style.display = "none";
-    });
+  document.querySelectorAll(".shots img, .shot img").forEach(function (img) {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", function () { lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt; lb.classList.add("on"); });
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
 
-  /* --- поиск по терминам --- */
+  /* поиск по словам */
   var q = document.getElementById("glossSearch");
   if (q) {
-    var terms = document.querySelectorAll(".gloss .term");
-    var letters = document.querySelectorAll(".gloss .letter");
-    var empty = document.getElementById("glossEmpty");
+    var terms = document.querySelectorAll(".gloss .term"), empty = document.getElementById("glossEmpty");
     q.addEventListener("input", function () {
-      var v = q.value.trim().toLowerCase();
-      var shown = 0;
-      terms.forEach(function (t) {
-        var hit = !v || t.textContent.toLowerCase().indexOf(v) !== -1;
-        t.style.display = hit ? "" : "none";
-        if (hit) shown++;
-      });
-      letters.forEach(function (l) { l.style.display = v ? "none" : ""; });
+      var v = q.value.trim().toLowerCase(), shown = 0;
+      terms.forEach(function (t) { var hit = !v || t.textContent.toLowerCase().indexOf(v) !== -1; t.style.display = hit ? "" : "none"; if (hit) shown++; });
       if (empty) empty.style.display = shown ? "none" : "";
     });
   }
 
-  /* --- карточка «что сегодня» на главной --- */
-  var tc = document.getElementById("todayCard");
-  if (tc) {
-    var days = [
-      ["Воскресенье", "Отдых в Дуэли альянсов. Ничего не трать — копи на неделю. Начни сбор ресурсов вечером, чтобы отряды вернулись уже в понедельник.", "Короля демонов сегодня нет. Начинается новая неделя Войны королевств: с сегодня копим очки королевства."],
-      ["Понедельник", "Дуэль, день 1 — «Ворон»: задания сокола, плоды и эссенция Ворона, выносливость, сбор ресурсов весь день.", "Король демонов — Колдун скверны: бей Воинами (+50% урона), 10 ударов."],
-      ["Вторник", "Дуэль, день 2 — «Развитие территории»: стройка, ускорения строительства, UR-караван, UR тайная операция, найм выживших.", "Король демонов — Рейнджер скверны: бей Колдунами (+50%), 10 ударов."],
-      ["Среда", "Дуэль, день 3 — «Исследования»: ускорения исследований, свитки, сундуки снаряжения Ворона, задания сокола.", "Король демонов — Воин скверны: бей Рейнджерами (+50%), 10 ударов."],
-      ["Четверг", "Дуэль, день 4 — «Рост героев»: антитоксин, звёзды, навыки, найм героев.", "Король демонов — Колдун скверны: бей Воинами (+50%), 10 ударов."],
-      ["Пятница", "Дуэль, день 5 — «Подготовка к войне»: тренировка и повышение войск, ускорения тренировки, задания сокола.", "Король демонов — Рейнджер скверны: Колдуны +50%. Вечером подсчёт очков Войны королевств: решается, кто нападает в субботу."],
-      ["Суббота", "Дуэль, день 6 — «Набег на врага» (после начала КвК). Щит, вывести сборщиков, убрать отряд из стены.", "ВОЙНА КОРОЛЕВСТВ: бой за трон 12:00–16:00 по времени сервера. Открой раздел «КвК» и действуй по шагам."]
-    ];
-    var d = new Date().getUTCDay();
-    tc.innerHTML = '<div class="kicker">Сегодня по UTC</div><div class="big">' + days[d][0] + "</div><p>" + days[d][1] + "</p><p class=\"muted\" style=\"margin-bottom:0\">" + days[d][2] + "</p>";
-  }
-
-  /* --- кнопка «наверх» --- */
+  /* кнопка «наверх» */
   var top = document.getElementById("toTop");
   if (top) {
     window.addEventListener("scroll", function () { top.classList.toggle("on", window.scrollY > 900); }, { passive: true });

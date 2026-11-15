@@ -28,6 +28,10 @@ for p in pages:
             print(f"НЕТ ЯКОРЯ:    {p.name} -> {href}")
             bad += 1
     imgs.update(re.findall(r'<img[^>]+src="(https?://[^"]+)"', html))
+    for src in re.findall(r'(?:src|href)="(assets/[^"?#]+)', html):
+        if not (ROOT / src).is_file():
+            print(f"НЕТ ФАЙЛА:    {p.name} -> {src}")
+            bad += 1
 
 UA = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/130 Mobile Safari/537.36"
 for u in sorted(imgs):

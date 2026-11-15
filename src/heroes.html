@@ -1,162 +1,197 @@
-<!--{"title":"Прокачка героев: кого качать и почему | Last Asylum: Plague","desc":"Тир-лист героев Last Asylum: Plague, кого качать бесплатно и с небольшим донатом, почему Артур и Марлена, порядок прокачки уровней, звёзд и навыков."}-->
-<header class="page-head">
-  <div class="kicker">🦸 Раздел 1</div>
-  <h1>Прокачка героев</h1>
-  <p class="lead">Главная ошибка — качать всех понемногу. Выбери <b>5 героев главного отряда</b> и вкладывай в них. Полностью прокачанный герой уровня A сильнее наполовину прокачанного героя уровня S.</p>
-</header>
-
-<div class="tldr">
-  <h3>Коротко</h3>
-  <ul>
-    <li><b>Первым качай Артура</b> (UR танк). <b>Вторая — Марлена</b> (UR атакующая), но она <b>платная</b>: даётся за первую покупку в игре (набор «Первое пополнение», около 1 $).</li>
-    <li>Если Артура ещё нет — ставь <b>Беллу</b>. Если Марлену не покупаешь — вместо неё <b>Гренвальд</b>.</li>
-    <li>Все ресурсы героев (противоядие, осколки, значки навыков, билеты найма) <b>трать в четверг</b> — день героев в Дуэли альянсов.</li>
-    <li>Временным героям не качай навыки выше 8–12 — потом их заменишь.</li>
-    <li>Алмазы — <b>только на найм героев</b>. 50-й найм на баннере даёт 10 осколков UR-героя.</li>
-  </ul>
+<!--{"title":"Герои: кого качать, как получить, как прокачать | Last Asylum: Plague · сервер 397","desc":"Герои простыми словами: кто платный, а кто бесплатный, когда появляется каждый герой, кого качать и почему, как прокачивать уровень, звёзды, навыки и снаряжение."}-->
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="kick"><img src="assets/game/hero/arthur.png" alt="" style="border-radius:8px">Герои</div>
+      <h1>Герои: кого качать и как их получить</h1>
+      <p class="lead">Главная ошибка новичков — качать всех понемногу. Выбери <b>5 героев первого отряда</b> и вкладывай в них. Полностью прокачанный средний герой сильнее наполовину прокачанного лучшего.</p>
+      <div class="btns"><a class="btn pri" href="#get">Как получить каждого</a><a class="btn" href="#tier">Кто сильнее</a><a class="btn" href="#how">Как прокачивать</a><a class="btn" href="#who">Кого качать</a></div>
+    </div>
+    <div class="art"><img src="assets/game/heroes-banner.jpg" alt="Артур, Марлена, Синтия, Шэдоу, Харпер, Даскал"></div>
+  </div>
+  <div class="facts">
+    <div class="fact"><img class="ic" src="assets/game/hero/arthur.png" alt="" style="border-radius:14px"><h3>Артур — бесплатно</h3><p>Главный танк. Первые 50 наймов в Таверне гарантированно дают Артура.</p></div>
+    <div class="fact hot"><img class="ic" src="assets/game/hero/marlena.png" alt="" style="border-radius:14px"><h3>Марлена — платная</h3><p>Лучший урон в начале. Даётся за первую покупку в игре — набор «Первое пополнение» (около 1 $).</p></div>
+    <div class="fact"><img class="ic" src="assets/game/shard-ur.png" alt=""><h3>Качай 5, а не всех</h3><p>Все ресурсы — в героев первого отряда. Остальных не трогай, пока первый отряд не сильный.</p></div>
+    <div class="fact gold"><div class="big">Чт</div><h3>День героев</h3><p>Противоядие, фрагменты, значки навыков и билеты найма копи неделю и трать в четверг.</p></div>
+  </div>
 </div>
 
-<h2 id="basics" data-short="Классы и фракции">Классы и фракции — за минуту</h2>
-<div class="tbl narrow"><table>
-  <tr><th>Класс</th><th>Что делает</th><th>Где стоит</th></tr>
-  <tr><td><b>Танк</b></td><td>Много здоровья и защиты, принимает удары, прикрывает остальных</td><td>Передний ряд</td></tr>
-  <tr><td><b>Атакующий (ДД, «керри»)</b></td><td>Высокая атака, мало здоровья. Наносит основной урон</td><td>Задний ряд</td></tr>
-  <tr><td><b>Поддержка (саппорт)</b></td><td>Усиливает своих, ослабляет врагов, иногда лечит</td><td>Задний ряд</td></tr>
-</table></div>
-<p>Каждый герой ещё и одной из трёх <b>фракций</b>: <span class="chip war">Воины</span> <span class="chip ran">Рейнджеры</span> <span class="chip wlk">Колдуны</span>. Фракции бьют друг друга по кругу:</p>
-<div class="diagram">
-<svg viewBox="0 0 380 300" role="img" aria-label="Треугольник фракций: Воин бьёт Колдуна, Колдун бьёт Рейнджера, Рейнджер бьёт Воина">
-  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c9a44a"/></marker></defs>
-  <g stroke="#c9a44a" stroke-width="3.5" fill="none" marker-end="url(#ar)">
-    <path d="M232 70 Q 300 100 304 170"/>
-    <path d="M256 238 Q 190 268 124 238"/>
-    <path d="M76 170 Q 80 100 148 70"/>
-  </g>
-  <g font-size="17" font-weight="800" text-anchor="middle">
-    <circle cx="190" cy="58" r="46" fill="#f08a5d"/><text x="190" y="64" fill="#111">Воин</text>
-    <circle cx="316" cy="226" r="46" fill="#7aa2ff"/><text x="316" y="232" fill="#111">Колдун</text>
-    <circle cx="64" cy="226" r="54" fill="#7fd36b"/><text x="64" y="232" fill="#111">Рейнджер</text>
-  </g>
-  <g font-size="16" font-weight="700" class="mut" text-anchor="middle">
-    <text x="306" y="116">бьёт</text><text x="190" y="290">бьёт</text><text x="74" y="116">бьёт</text>
-  </g>
-</svg>
-<div class="cap">Стрелка = «сильнее против». Герой получает на 20% меньше урона от фракции, которую он контрит. Против Короля демонов бонус выгодной фракции — +50% урона.</div>
-</div>
-<p><b>Бонус одной фракции в отряде</b> (к атаке, здоровью и защите): 3 героя одной фракции — +5%, 3+2 — +10%, 4 — +15%, все 5 — +20%. Подробно — в разделе <a href="squads.html#faction">Отряды</a>.</p>
+<section class="band soft pad">
+  <div class="eyebrow">С самого начала</div>
+  <h2>Как устроен герой</h2>
+  <p class="sub">У каждого героя есть три главные «метки»: редкость (цвет), роль (что он делает в бою) и фракция (его «команда»). Плюс уровень, звёзды, навыки и снаряжение.</p>
+  <div class="grid3">
+    <div class="card"><img class="ic" src="assets/game/shard-ur.png" alt=""><h3>Редкость — цвет рамки</h3><p><b class="ur">Золотой (UR)</b> — самые сильные. <b class="ssr">Фиолетовый (SSR)</b> — средние. <b class="sr">Синий (SR)</b> — слабые, их не качаем.</p><p>Чем реже герой, тем выше его потолок силы.</p></div>
+    <div class="card"><img class="ic" src="assets/game/btn-defend.png" alt=""><h3>Роль — что делает в бою</h3><p><b>Танк</b> (на значке — щит): много здоровья, принимает удары, стоит впереди.</p><p><b>Урон</b> (наносит основной урон): много атаки, мало здоровья, стоит сзади.</p><p><b>Поддержка</b> (на значке — бутылка): усиливает своих, ослабляет врагов, стоит сзади.</p></div>
+    <div class="card"><img class="ic" src="assets/game/btn-war.png" alt=""><h3>Фракция — его «команда»</h3><p>Есть три фракции: <b class="war">Воины</b>, <b class="ran">Рейнджеры</b>, <b class="wlk">Колдуны</b>. Каждая сильнее одной из двух других — как в «камень, ножницы, бумага»:</p><p><b class="war">Воин</b> бьёт <b class="wlk">Колдуна</b>, <b class="wlk">Колдун</b> бьёт <b class="ran">Рейнджера</b>, <b class="ran">Рейнджер</b> бьёт <b class="war">Воина</b>.</p></div>
+  </div>
+  <div class="word"><b>Что значит «бьёт».</b> Герой получает на 20% меньше урона от фракции, которую он «бьёт». А против Короля демонов нужная фракция наносит +50% урона. Ещё: если в отряде 3, 4 или 5 героев одной фракции, весь отряд получает прибавку к атаке, здоровью и защите — подробно в разделе <a href="squads.html#faction">Отряды</a>.</div>
+  <div class="word"><b>Лидерство</b> — число у героя, которое показывает, сколько солдат он ведёт в бой. Лидерство 400 = в бой идут 400 солдат. Растёт вместе с уровнем героя.</div>
+</section>
 
-<h2 id="tier" data-short="Тир-лист">Тир-лист: все герои</h2>
-<p class="muted">Сводный рейтинг по 7 популярным спискам. S — лучшие, C — слабые. Редкость: <span class="chip ur">UR</span> золотые, <span class="chip ssr">SSR</span> фиолетовые, <span class="chip sr">SR</span> синие.</p>
-<div class="tbl"><table>
-  <tr><th>Тир</th><th>Герой</th><th>Редкость</th><th>Фракция</th><th>Роль</th></tr>
-  <tr><td><span class="tier t-s">S</span></td><td><b>Марлена</b> (Marlena)</td><td><span class="chip ur">UR</span></td><td class="war">Воин</td><td>Атакующая</td></tr>
-  <tr><td><span class="tier t-s">S</span></td><td><b>Артур</b> (Arthur)</td><td><span class="chip ur">UR</span></td><td class="war">Воин</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-s">S</span></td><td><b>Даскал</b> (Daskal)</td><td><span class="chip ur">UR</span></td><td class="war">Воин</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-s">S</span></td><td><b>Шэдоу / Тень</b> (Shadow)</td><td><span class="chip ur">UR</span></td><td class="ran">Рейнджер</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-s">S</span></td><td><b>Харпер</b> (Harper)</td><td><span class="chip ur">UR</span></td><td class="war">Воин</td><td>Поддержка</td></tr>
-  <tr><td><span class="tier t-s">S</span></td><td><b>Красная леди</b> (Red Lady)</td><td><span class="chip ur">UR</span></td><td class="ran">Рейнджер</td><td>Атакующая</td></tr>
-  <tr><td><span class="tier t-s">S</span></td><td><b>Синтия</b> (Cynthia)</td><td><span class="chip ur">UR</span></td><td class="ran">Рейнджер</td><td>Атакующая</td></tr>
-  <tr><td><span class="tier t-s">S</span></td><td><b>Ульфрид / Брайан</b> (Ulfrid, Brian)</td><td><span class="chip ur">UR</span></td><td class="wlk">Колдун</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-ap">A+</span></td><td><b>Николь</b> (Nicole)</td><td><span class="chip ur">UR</span></td><td class="wlk">Колдун</td><td>Поддержка</td></tr>
-  <tr><td><span class="tier t-ap">A+</span></td><td><b>Белл</b> (Bell)</td><td><span class="chip ur">UR</span></td><td class="ran">Рейнджер</td><td>Поддержка</td></tr>
-  <tr><td><span class="tier t-ap">A+</span></td><td><b>Луис</b> (Louis)</td><td><span class="chip ur">UR</span></td><td class="ran">Рейнджер</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-ap">A+</span></td><td><b>Энни</b> (Annie)</td><td><span class="chip ur">UR</span></td><td class="wlk">Колдун</td><td>Атакующая</td></tr>
-  <tr><td><span class="tier t-ap">A+</span></td><td><b>Белла</b> (Bella)</td><td><span class="chip ssr">SSR</span></td><td class="war">Воин</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-ap">A+</span></td><td><b>Гренвальд</b> (Grenwald)</td><td><span class="chip ssr">SSR</span></td><td class="wlk">Колдун</td><td>Атакующий</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Гриффит (Griffith)</td><td><span class="chip ssr">SSR</span></td><td class="ran">Рейнджер</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Зоя (Zoya)</td><td><span class="chip ur">UR</span></td><td class="war">Воин</td><td>Атакующая</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Билли (Billy)</td><td><span class="chip ur">UR</span></td><td class="wlk">Колдун</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Джестер / Джокер (Jester)</td><td><span class="chip ur">UR</span></td><td class="wlk">Колдун</td><td>Атакующий</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Хастар (Hastar)</td><td><span class="chip ssr">SSR</span></td><td class="wlk">Колдун</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Стеллар (Stellar)</td><td><span class="chip ssr">SSR</span></td><td class="wlk">Колдун</td><td>Поддержка</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Клэр (Claire)</td><td><span class="chip ssr">SSR</span> → <span class="chip ur">UR</span></td><td class="war">Воин</td><td>Атакующая</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Бестар (Bestar)</td><td><span class="chip ssr">SSR</span></td><td class="ran">Рейнджер</td><td>Атакующая</td></tr>
-  <tr><td><span class="tier t-a">A</span></td><td>Кессо (Kesso)</td><td><span class="chip ssr">SSR</span></td><td class="war">Воин</td><td>Атакующий</td></tr>
-  <tr><td><span class="tier t-bp">B+</span></td><td>Луций (Lucius)</td><td><span class="chip ssr">SSR</span></td><td class="war">Воин</td><td>Танк</td></tr>
-  <tr><td><span class="tier t-bp">B+</span></td><td>Селия (Celia)</td><td><span class="chip ssr">SSR</span></td><td class="war">Воин</td><td>Поддержка</td></tr>
-  <tr><td><span class="tier t-bp">B+</span></td><td>Сивир (Sivir)</td><td><span class="chip ssr">SSR</span></td><td class="war">Воин</td><td>Атакующий</td></tr>
-  <tr><td><span class="tier t-b">B</span></td><td>Эш (Ash)</td><td><span class="chip ssr">SSR</span></td><td class="ran">Рейнджер</td><td>Атакующая</td></tr>
-  <tr><td><span class="tier t-c">C</span></td><td>Дюрант, Робин, Уильям, Кафа</td><td><span class="chip sr">SR</span></td><td>разные</td><td>Не качать</td></tr>
-</table></div>
-<div class="callout info"><b>Важно про тир-лист</b>Место в списке — не приговор. Луций и Селия стоят невысоко, но в бесплатном пути они годами держат отряд. Клэр в PvP средняя, но против монстров и боссов очень полезна.</div>
+<section class="band pad" id="get">
+  <div class="eyebrow">Платные и бесплатные</div>
+  <h2>Как получить каждого героя</h2>
+  <p class="sub">Новые герои появляются не сразу, а на определённый день жизни сервера. Многие сначала продаются за деньги или крутятся в Рулетке, а потом переходят в обычный найм в Таверне, и их можно получить бесплатно. Дни примерные: на разных серверах ±1–2 дня.</p>
+  <div class="tbl"><table>
+    <tr><th>Герой</th><th>Когда появляется</th><th>Как получить</th></tr>
+    <tr><td><img class="i" src="assets/game/hero/arthur.png" alt=""><b>Артур</b> <span class="chip ur">UR</span> <span class="war">Воин</span>, танк</td><td>с 1-го дня</td><td><b>Бесплатно.</b> Сначала был платным, потом перешёл в обычный найм. Первые 50 наймов в Таверне гарантируют Артура, дальше — 10 его фрагментов за каждые 50 наймов.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/marlena.png" alt=""><b>Марлена</b> <span class="chip ur">UR</span> <span class="war">Воин</span>, урон</td><td>с 1-го дня</td><td><b>Платная:</b> за первую покупку в игре (набор «Первое пополнение», около 1 $). Дальше её фрагменты продаются в ежедневных предложениях. Примерно с 66-го дня появляется в Таверне.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/bella.png" alt=""><b>Белла</b> <span class="chip ssr">SSR</span> <span class="war">Воин</span>, танк</td><td>с начала</td><td><b>Бесплатно:</b> её фрагменты продаются в магазине альянса за монеты альянса.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/claire.png" alt=""><b>Клэр</b>, <img class="i" src="assets/game/hero/celia.png" alt=""><b>Селия</b>, Сивир <span class="chip ssr">SSR</span> <span class="war">Воины</span></td><td>с 1-го дня</td><td><b>Бесплатно</b>, даются на старте. Клэр в Эре Возрождения можно перевести в золото (UR).</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/cynthia.png" alt=""><b>Синтия</b> <span class="chip ur">UR</span> <span class="ran">Рейнджер</span>, урон</td><td>с 8-го дня</td><td>В <b>Рулетке (колесе)</b>: каждый день бесплатные прокрутки, в конце события докрутить кристаллами до гарантированного выпадения. Потом в основном за донат. Примерно с 66-го дня — в Таверне.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/shadow.png" alt=""><b>Шэдоу</b> <span class="chip ur">UR</span> <span class="ran">Рейнджер</span>, танк</td><td>с 8-го дня</td><td><b>Платный:</b> пропуск примерно за 20 $. Примерно с 66-го дня — в Таверне.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/jester.png" alt=""><b>Джестер</b>, <img class="i" src="assets/game/hero/annie.png" alt=""><b>Энни</b> <span class="chip ur">UR</span> <span class="wlk">Колдуны</span></td><td>с 15-го дня</td><td>В <b>Рулетке</b>. Раскрываются только на 9–10 звёздах — бесплатным игрокам лучше пропустить. Примерно с 66-го дня — в Таверне.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/harper.png" alt=""><b>Харпер</b> <span class="chip ur">UR</span> <span class="war">Воин</span>, поддержка</td><td>с 22-го дня</td><td>Сначала <b>платный</b> (130 фрагментов примерно за 20 $), фрагменты бывают и в карте сокровищ секретных операций. <b>С 31-го дня — в обычном найме</b> в Таверне, бесплатно.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/daskal.png" alt=""><b>Даскал</b> <span class="chip ur">UR</span> <span class="war">Воин</span>, танк</td><td>с 29-го дня</td><td>Сначала <b>платный</b>. В Эре Возрождения стал доступен бесплатно в Таверне.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/red-lady.png" alt=""><b>Красная леди</b> <span class="chip ur">UR</span> <span class="ran">Рейнджер</span>, урон</td><td>с 36-го дня</td><td>Сначала <b>в продаже</b>. В Эре Возрождения стала доступна бесплатно в Таверне.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/ulfrid.png" alt=""><b>Ульфрид (Брайан)</b> <span class="chip ur">UR</span> <span class="wlk">Колдун</span>, танк</td><td>с 43-го дня</td><td>Платный. Отражает часть урона обратно в атакующего.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/zoya.png" alt=""><b>Зоя</b> <span class="chip ur">UR</span> <span class="war">Воин</span>, урон</td><td>с 57-го дня</td><td>Платная. Усиливает урон Марлены.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/louis.png" alt=""><b>Луи</b> <span class="chip ur">UR</span> <span class="ran">Рейнджер</span>, танк</td><td>с 64-го дня</td><td>Через пропуск. Самый живучий танк игры.</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/bell.png" alt=""><b>Белл</b> <span class="chip ur">UR</span> <span class="ran">Рейнджер</span>, поддержка</td><td>с 71-го дня</td><td>Платная. «Харпер для Рейнджеров».</td></tr>
+    <tr><td><img class="i" src="assets/game/hero/billy.png" alt=""><b>Билли</b>, <img class="i" src="assets/game/hero/nicole.png" alt=""><b>Николь</b> <span class="chip ur">UR</span> <span class="wlk">Колдуны</span></td><td>с 85-го / 99-го дня</td><td>Платные. Нужны для полного отряда Колдунов.</td></tr>
+    <tr><td><b>Гренвальд, Стеллар, Хастар, Гриффит, Бестар, Луций, Кессо, Эш</b> <span class="chip ssr">SSR</span></td><td>с начала</td><td><b>Бесплатно:</b> найм в Таверне, события, магазины. Вместо недостающих фрагментов подходят универсальные фиолетовые.</td></tr>
+  </table></div>
+  <div class="grid3">
+    <div class="note gold"><img src="assets/game/recruit.png" alt=""><div><p><b>Найм в Таверне.</b> Билет найма стоит 398 алмазов. На каждом найме есть бесплатная попытка по таймеру. <b>50-й найм</b> гарантированно даёт 10 фрагментов золотого героя.</p></div></div>
+    <div class="note green"><img src="assets/game/alliance-coin.png" alt=""><div><p><b>Магазин альянса</b> обновляется каждый понедельник: там золотые фрагменты и фрагменты Беллы. Заходи каждую неделю.</p></div></div>
+    <div class="note blue"><img src="assets/game/shard-ur.png" alt=""><div><p><b>Универсальные фрагменты</b> подходят любому герою своего цвета. Не трать их на первого попавшегося — держи для главного героя.</p></div></div>
+  </div>
+</section>
 
-<h2 id="when" data-short="Когда приходят UR">Когда появляются UR-герои (по дням жизни сервера)</h2>
-<div class="tbl narrow"><table>
-  <tr><th>Герой</th><th class="num">День сервера</th><th>Зачем</th></tr>
-  <tr><td>Артур</td><td class="num">1</td><td>Главный танк. Сначала был платным, потом перешёл в обычный найм — теперь его можно получить бесплатно</td></tr>
-  <tr><td>Марлена</td><td class="num">1</td><td><b>Платная</b>: даётся за первую покупку в игре</td></tr>
-  <tr><td>Шэдоу, Синтия</td><td class="num">6</td><td><b>Платные</b> (донат). Синтию на ранних днях сервера можно было получить бесплатно в «Колесе желаний»</td></tr>
-  <tr><td>Харпер</td><td class="num">20</td><td>Атака всем героям отряда, ещё больше — Воинам. Сначала был платным, потом перешёл в обычный найм</td></tr>
-  <tr><td>Даскал</td><td class="num">27</td><td>Второй сильный танк-Воин</td></tr>
-  <tr><td>Красная леди</td><td class="num">34</td><td>Атакующая для Рейнджеров</td></tr>
-  <tr><td>Ульфрид (Брайан)</td><td class="num">41</td><td>Танк, отражает часть урона; хорош в паре с Артуром</td></tr>
-  <tr><td>Билли / Николь</td><td class="num">83 / 97</td><td>Нужны для полного отряда Колдунов</td></tr>
-</table></div>
+<section class="band sand pad" id="tier">
+  <div class="eyebrow">Кто сильнее</div>
+  <h2>Рейтинг героев</h2>
+  <p class="sub">Сводный рейтинг по семи популярным спискам игроков. <span class="tier t-s">S</span> — лучшие, <span class="tier t-c">C</span> — слабые. Место в рейтинге не приговор: бесплатные Луций и Селия долго держат отряд, а Клэр очень полезна против монстров.</p>
+  <h3><span class="tier t-s">S</span> Лучшие</h3>
+  <div class="heroes">
+    <div class="hc"><img src="assets/game/hero/marlena.png" alt=""><div><b>Марлена</b><span><span class="chip ur">UR</span> Воин · урон</span></div></div>
+    <div class="hc"><img src="assets/game/hero/arthur.png" alt=""><div><b>Артур</b><span><span class="chip ur">UR</span> Воин · танк</span></div></div>
+    <div class="hc"><img src="assets/game/hero/daskal.png" alt=""><div><b>Даскал</b><span><span class="chip ur">UR</span> Воин · танк</span></div></div>
+    <div class="hc"><img src="assets/game/hero/shadow.png" alt=""><div><b>Шэдоу</b><span><span class="chip ur">UR</span> Рейнджер · танк</span></div></div>
+    <div class="hc"><img src="assets/game/hero/harper.png" alt=""><div><b>Харпер</b><span><span class="chip ur">UR</span> Воин · поддержка</span></div></div>
+    <div class="hc"><img src="assets/game/hero/red-lady.png" alt=""><div><b>Красная леди</b><span><span class="chip ur">UR</span> Рейнджер · урон</span></div></div>
+    <div class="hc"><img src="assets/game/hero/cynthia.png" alt=""><div><b>Синтия</b><span><span class="chip ur">UR</span> Рейнджер · урон</span></div></div>
+    <div class="hc"><img src="assets/game/hero/ulfrid.png" alt=""><div><b>Ульфрид</b><span><span class="chip ur">UR</span> Колдун · танк</span></div></div>
+  </div>
+  <h3><span class="tier t-ap">A+</span> Очень сильные</h3>
+  <div class="heroes">
+    <div class="hc"><img src="assets/game/hero/nicole.png" alt=""><div><b>Николь</b><span><span class="chip ur">UR</span> Колдун · поддержка</span></div></div>
+    <div class="hc"><img src="assets/game/hero/bell.png" alt=""><div><b>Белл</b><span><span class="chip ur">UR</span> Рейнджер · поддержка</span></div></div>
+    <div class="hc"><img src="assets/game/hero/louis.png" alt=""><div><b>Луи</b><span><span class="chip ur">UR</span> Рейнджер · танк</span></div></div>
+    <div class="hc"><img src="assets/game/hero/annie.png" alt=""><div><b>Энни</b><span><span class="chip ur">UR</span> Колдун · урон</span></div></div>
+    <div class="hc"><img src="assets/game/hero/bella.png" alt=""><div><b>Белла</b><span><span class="chip ssr">SSR</span> Воин · танк</span></div></div>
+    <div class="hc"><img src="assets/game/hero/greenwald.png" alt=""><div><b>Гренвальд</b><span><span class="chip ssr">SSR</span> Колдун · урон</span></div></div>
+  </div>
+  <h3><span class="tier t-a">A</span> Сильные</h3>
+  <div class="heroes">
+    <div class="hc"><img src="assets/game/hero/griffith.png" alt=""><div><b>Гриффит</b><span><span class="chip ssr">SSR</span> Рейнджер · танк</span></div></div>
+    <div class="hc"><img src="assets/game/hero/zoya.png" alt=""><div><b>Зоя</b><span><span class="chip ur">UR</span> Воин · урон</span></div></div>
+    <div class="hc"><img src="assets/game/hero/billy.png" alt=""><div><b>Билли</b><span><span class="chip ur">UR</span> Колдун · танк</span></div></div>
+    <div class="hc"><img src="assets/game/hero/jester.png" alt=""><div><b>Джестер</b><span><span class="chip ur">UR</span> Колдун · урон</span></div></div>
+    <div class="hc"><img src="assets/game/hero/hastar.png" alt=""><div><b>Хастар</b><span><span class="chip ssr">SSR</span> Колдун · танк</span></div></div>
+    <div class="hc"><img src="assets/game/hero/stellar.png" alt=""><div><b>Стеллар</b><span><span class="chip ssr">SSR</span> Колдун · поддержка</span></div></div>
+    <div class="hc"><img src="assets/game/hero/claire.png" alt=""><div><b>Клэр</b><span><span class="chip ssr">SSR</span> Воин · урон</span></div></div>
+    <div class="hc"><img src="assets/game/hero/bestar.png" alt=""><div><b>Бестар</b><span><span class="chip ssr">SSR</span> Рейнджер · урон</span></div></div>
+    <div class="hc"><img src="assets/game/hero/kesso.png" alt=""><div><b>Кессо</b><span><span class="chip ssr">SSR</span> Воин · урон</span></div></div>
+  </div>
+  <h3><span class="tier t-bp">B+</span> <span class="tier t-b">B</span> <span class="tier t-c">C</span> Временные и слабые</h3>
+  <div class="heroes">
+    <div class="hc"><img src="assets/game/hero/lucius.png" alt=""><div><b>Луций</b><span><span class="chip ssr">SSR</span> Воин · танк · B+</span></div></div>
+    <div class="hc"><img src="assets/game/hero/celia.png" alt=""><div><b>Селия</b><span><span class="chip ssr">SSR</span> Воин · поддержка · B+</span></div></div>
+    <div class="hc"><img src="assets/game/hero/sivir.png" alt=""><div><b>Сивир</b><span><span class="chip ssr">SSR</span> Воин · урон · B+</span></div></div>
+    <div class="hc"><img src="assets/game/hero/ash.png" alt=""><div><b>Эш</b><span><span class="chip ssr">SSR</span> Рейнджер · урон · B</span></div></div>
+    <div class="hc"><img src="assets/game/hero/durant.png" alt=""><div><b>Дюрант</b><span><span class="chip sr">SR</span> не качать · C</span></div></div>
+    <div class="hc"><img src="assets/game/hero/robin.png" alt=""><div><b>Робин</b><span><span class="chip sr">SR</span> не качать · C</span></div></div>
+    <div class="hc"><img src="assets/game/hero/william.png" alt=""><div><b>Уильям</b><span><span class="chip sr">SR</span> не качать · C</span></div></div>
+    <div class="hc"><img src="assets/game/hero/kafa.png" alt=""><div><b>Кафа</b><span><span class="chip sr">SR</span> не качать · C</span></div></div>
+  </div>
+</section>
 
-<h2 id="why" data-short="Почему эти герои">Почему качать именно этих</h2>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/arthur.webp" alt="Артур"><div><h3>Артур <span class="chip ur">UR</span> <span class="chip war">Воин</span> танк</h3><p>Самый сильный танк для всех. Пассивка снижает урон <b>всем танкам</b> отряда, активный навык даёт щит от его максимального здоровья, ульта бьёт всех рядом и снижает урон по своим. Ставится на позицию 1 — туда бьют трое врагов. <b>Первый герой, в которого вкладываться.</b></p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/marlena.webp" alt="Марлена"><div><h3>Марлена <span class="chip ur">UR</span> <span class="chip war">Воин</span> атакующая</h3><p>Самый сильный урон в игре на старте. Энергетический урон по площади, пассивка усиливает её энергетический урон, бонусный навык сокращает перезарядку. Работает и против людей, и против монстров. Продаётся примерно за $1 в наборе «первое пополнение» — если тратишь хоть что-то, это лучшая покупка. С 10 звёзд открывается <b>пробуждение</b>.</p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/harper.webp" alt="Харпер"><div><h3>Харпер <span class="chip ur">UR</span> <span class="chip war">Воин</span> поддержка</h3><p>Ультой поднимает атаку всем героям отряда и отдельно — всем Воинам. В отряде Воинов (Артур, Марлена, Клэр) это огромная прибавка. Приходит на 20-й день сервера.</p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/bella.webp" alt="Белла"><div><h3>Белла <span class="chip ssr">SSR</span> <span class="chip war">Воин</span> танк</h3><p>Лучший бесплатный танк: её осколки продаются в <b>магазине альянса</b>. Снижает урон от монстров по своим, ульта режет атаку врагов. Пока нет второго хорошего танка — она. Навыки выше 8 не качай: потом её заменит Луций или Даскал.</p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/greenwald.webp" alt="Гренвальд"><div><h3>Гренвальд <span class="chip ssr">SSR</span> <span class="chip wlk">Колдун</span> атакующий</h3><p>Лучший SSR по урону. «Стеклянная пушка»: бьёт очень больно, но сам хрупкий — только за спиной Артура. Пассивка увеличивает урон всех героев по монстрам (+14,5% на 10 уровне навыка).</p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/claire.webp" alt="Клэр"><div><h3>Клэр <span class="chip ssr">SSR</span> → <span class="chip ur">UR</span> <span class="chip war">Воин</span></h3><p>Усиливает урон по монстрам трём самым сильным Воинам отряда (около +15%), ульта даёт +8% урона по монстрам. Незаменима на Короле демонов и в PvE. В Эре Возрождения её можно перевести в UR знаком возвышения: уровень и снаряжение сохранятся, звёзды и навыки придётся качать заново.</p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/celia.webp" alt="Селия"><div><h3>Селия <span class="chip ssr">SSR</span> <span class="chip war">Воин</span> поддержка</h3><p>Даётся в самом начале. Около +9,5% урона по монстрам и <b>+31% ресурсов</b> с ресурсных и элитных монстров. Временный герой: навыки до 12, потом её заменит Харпер или Марлена.</p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/lucius.webp" alt="Луций"><div><h3>Луций <span class="chip ssr">SSR</span> <span class="chip war">Воин</span> танк</h3><p>Второй танк для бесплатного пути с 8-го дня. Пассивка снижает урон от монстров. Менее универсален, чем Артур и Белла, но держит позицию 2 очень долго.</p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/stellar.webp" alt="Стеллар"><div><h3>Стеллар <span class="chip ssr">SSR</span> <span class="chip wlk">Колдун</span> поддержка</h3><p>Одна из немногих с лечением: умирая, лечит союзника с самым низким здоровьем. Ульта повышает урон отряда по монстрам. Хороша в PvP-отрядах с контролем.</p></div></div>
-<div class="card why"><img loading="lazy" src="https://last-asylum-wiki.com/heroes/portraits/cynthia.webp" alt="Синтия"><div><h3>Синтия <span class="chip ur">UR</span> <span class="chip ran">Рейнджер</span> атакующая</h3><p>Топовый урон Рейнджеров: ульта бьёт всех врагов в зоне, свои криты. Достаётся через событие «Рулетка» или покупкой. Для бесплатного игрока на Короле демонов — отличный герой, вокруг которого строят отряд.</p></div></div>
+<section class="band pad" id="who">
+  <div class="eyebrow">Кого качать</div>
+  <h2>Готовые пути: с кем играть и когда менять героев</h2>
+  <p class="sub"><b>«Временный герой»</b> — тот, кого ты поставишь сейчас, а потом заменишь более сильным. В такого героя не вкладывай много значков навыков: хватит прокачать навыки до 8–10 уровня.</p>
+  <div class="tabs-ui">
+    <div class="tabbar" role="tablist"><button type="button" role="tab"><img src="assets/game/hero/arthur.png" alt="" style="border-radius:6px">Без доната</button><button type="button" role="tab"><img src="assets/game/hero/marlena.png" alt="" style="border-radius:6px">С покупкой Марлены</button><button type="button" role="tab"><img src="assets/game/hero/cynthia.png" alt="" style="border-radius:6px">Средний донат</button></div>
+    <div class="tabpanel">
+      <div class="tbl"><table><tr><th>Когда</th><th>Танки (впереди)</th><th>Урон и поддержка (сзади)</th></tr>
+        <tr><td>Дни 1–7</td><td>Артур · Белла <small>(временная)</small></td><td>Клэр · Селия <small>(временная)</small> · Сивир <small>(временный)</small></td></tr>
+        <tr><td>Дни 8–30</td><td>Артур · Луций</td><td>Клэр · Селия · лучший фиолетовый</td></tr>
+        <tr><td>С 31-го дня</td><td>Артур · Луций или Белла</td><td>Клэр · Селия · <b>Харпер</b> (появился в Таверне)</td></tr>
+        <tr class="hl"><td>Позже</td><td>Артур · <b>Даскал</b> (бесплатно в Таверне после Эры Возрождения)</td><td>Марлена (когда появится в Таверне) · Клэр · Харпер</td></tr></table></div>
+      <div class="note gold"><img src="assets/game/shard-ur.png" alt=""><div><p><b>Как копить на Марлену бесплатно, по-простому.</b> Марлена появится в Таверне примерно на 66-й день. Чтобы сразу сделать её сильной, нужно около 975 золотых фрагментов. Значит: золотые универсальные фрагменты, которые получаешь, <b>не трать все</b>. Половину вкладывай в Артура и Харпера, половину откладывай. Когда Марлена появится, вложи накопленное в неё.</p></div></div>
+    </div>
+    <div class="tabpanel">
+      <div class="tbl"><table><tr><th>Когда</th><th>Танки (впереди)</th><th>Урон и поддержка (сзади)</th></tr>
+        <tr><td>Дни 1–7</td><td>Артур · Белла</td><td><b>Марлена</b> · Клэр · Селия</td></tr>
+        <tr><td>С 31-го дня</td><td>Артур · Белла</td><td>Марлена · Харпер · Клэр</td></tr>
+        <tr class="hl"><td>Дальше</td><td>Артур · Даскал</td><td>Марлена · Харпер · Красная леди или Клэр</td></tr></table></div>
+      <p>Все золотые фрагменты в первую очередь — <b>Марлене, до 10 звёзд</b>. Харпера подними до 8 звёзд, когда Марлена уже на 10: у него откроется навык, который на 10% ускоряет навыки всего отряда.</p>
+    </div>
+    <div class="tabpanel">
+      <p>Игроки, которые тратят больше, советуют уже в середине игры переходить на <b>Рейнджеров</b>: к концу они сильнее Воинов даже против полностью прокачанных Воинов.</p>
+      <div class="tbl"><table><tr><th>Состав</th><th>Герои</th></tr>
+        <tr><td>Дни 8–30</td><td>Артур · Шэдоу · Марлена · Клэр · Синтия</td></tr>
+        <tr class="hl"><td>Полный отряд Рейнджеров</td><td>Луи · Шэдоу · Синтия · Белл · Красная леди</td></tr>
+        <tr><td>Потом — Колдуны</td><td>Ульфрид · Билли · Энни · Николь · Джестер</td></tr></table></div>
+      <p>Выбирай одну фракцию и не прыгай между ними: распылять ресурсы на три отряда — самый медленный путь.</p>
+    </div>
+  </div>
+</section>
 
-<h2 id="paths" data-short="Кого качать: пути">Кого качать: готовые пути развития</h2>
-<h3>Бесплатный путь (F2P): отряд Воинов</h3>
-<div class="tbl"><table>
-  <tr><th>Этап</th><th>Поз. 1</th><th>Поз. 2</th><th>Поз. 3</th><th>Поз. 4</th><th>Поз. 5</th></tr>
-  <tr><td>Дни 1–7</td><td>Артур</td><td>Белла <small>(врем., навыки ≤8)</small></td><td>Клэр</td><td>Селия <small>(врем., ≤12)</small></td><td>Лучший SSR, лучше Сивир <small>(врем., ≤8)</small></td></tr>
-  <tr><td>Дни 8–22</td><td>Артур</td><td>Луций</td><td>Клэр</td><td>Селия <small>(врем.)</small></td><td>Сивир <small>(врем.)</small></td></tr>
-  <tr><td>Дни 22–65</td><td>Артур</td><td>Луций</td><td>Клэр</td><td>Селия <small>(врем.)</small></td><td>Харпер</td></tr>
-  <tr class="hl"><td>День 66+</td><td>Артур</td><td>Луций</td><td>Марлена</td><td>Клэр</td><td>Харпер</td></tr>
-</table></div>
-<div class="callout tip"><b>Как копить на Марлену бесплатно</b>Качай Артура и Харпера постепенно до 8 звёзд. На каждый UR-осколок, вложенный в них, <b>один откладывай для Марлены</b>. Цель — около 975 UR-осколков к моменту, когда Марлена появится в Таверне: этого хватит примерно на 8 звёзд сразу. Потом качай Марлену до максимума. SSR-ресурсы — Клэр и Луцию.</div>
+<section class="band soft pad" id="how">
+  <div class="eyebrow">Прокачка</div>
+  <h2>Как прокачивать героя: 4 вещи</h2>
+  <div class="grid4">
+    <div class="card"><img class="ic" src="assets/game/antidote.png" alt=""><h3>1. Уровень</h3><p>Качается <b>противоядием</b>. Даёт атаку, здоровье, защиту и лидерство. Потолок уровня зависит от Святилища: Святилище 20 — герой до 100 уровня, Святилище 30 — до 150.</p></div>
+    <div class="card"><img class="ic" src="assets/game/shard-marlena.png" alt=""><h3>2. Звёзды</h3><p>Качаются <b>фрагментами</b> этого героя (картинка с его лицом) или универсальными. Звёзды открывают новые навыки и сильно поднимают силу. После 4-й звезды герой заметно крепнет.</p></div>
+    <div class="card"><img class="ic" src="assets/game/expbook.png" alt=""><h3>3. Навыки</h3><p>Качаются <b>значками навыков</b>. Поднимают цифры навыков: урон, щиты, усиления. Значков всегда мало — главному герою урона в первую очередь.</p></div>
+    <div class="card"><img class="ic" src="assets/game/go-gear.png" alt=""><h3>4. Снаряжение</h3><p>4 вещи на каждого героя: меч, броня, перчатки, сапоги. Подробно — в разделе <a href="gear.html">Снаряжение</a>.</p></div>
+  </div>
+  <h3>Порядок — по шагам</h3>
+  <div class="step noimg"><div class="no">1</div><div><b>Главного героя урона — до 10 звёзд</b><p>Между 9 и 10 звёздами огромная разница: на 10 все его навыки становятся максимальными. Остальных героев отряда достаточно поднять до 8 звёзд. Учти: дорога от 0 до 8 звёзд стоит примерно столько же, сколько от 8 до 10.</p></div></div>
+  <div class="step noimg"><div class="no">2</div><div><b>Навыки всего первого отряда — до 10 уровня</b><p>Кроме первого навыка у танков и поддержки: это их обычная атака, им урон не важен.</p></div></div>
+  <div class="step noimg"><div class="no">3</div><div><b>Потом навыки героя урона — до максимума</b><p>Потом поддержка, потом танки (у танков — защитные навыки, а не атаку). У фиолетовых героев навыки против монстров не качай, кроме Клэр и Селии.</p></div></div>
+  <div class="step noimg"><div class="no">4</div><div><b>Всё это — в четверг</b><p>Фрагменты, значки, противоядие и билеты найма копи с прошлого четверга и трать в день героев Дуэли. Противоядие — в раунд «Усиление героев» Битвы на выживание.</p></div></div>
+  <div class="note blue"><img src="assets/game/shard-awaken.png" alt=""><div><p><b>Пробуждение.</b> Марлена, Синтия и Энни после 10 звёзд можно «пробудить» особыми фрагментами: растут характеристики и навыки. Даскал, Луи и Ульфрид получили своё оружие, которое тоже их усиливает.</p></div></div>
+  <h3>Откуда брать противоядие</h3>
+  <div class="items">
+    <div class="item"><img src="assets/game/go-hq.png" alt=""><div><b>Мастерская противоядия</b><span>производит его постоянно — собирай</span></div></div>
+    <div class="item"><img src="assets/game/go-build.png" alt=""><div><b>Улучшение любого здания</b><span>каждое даёт немного противоядия</span></div></div>
+    <div class="item"><img src="assets/game/falcon.png" alt=""><div><b>Задания сокола</b><span>почти в каждом есть противоядие</span></div></div>
+    <div class="item"><img src="assets/game/covert.png" alt=""><div><b>Секретные операции и караваны</b><span>свои и ограбленные, золотые — больше всего</span></div></div>
+    <div class="item"><img src="assets/game/blight.png" alt=""><div><b>Скверна на карте</b><span>10 энергии, элитная — 20 энергии</span></div></div>
+    <div class="item"><img src="assets/game/cheese.png" alt=""><div><b>Сырная ловушка</b><span>щедрые награды за урон</span></div></div>
+  </div>
+</section>
 
-<h3>Путь с небольшим донатом (~$80 всего)</h3>
-<p>Выбери <b>одну</b> фракцию в начале и не прыгай между ними.</p>
-<div class="tbl"><table>
-  <tr><th>Путь</th><th>Плюс</th><th>Минус</th><th>Полный отряд к</th></tr>
-  <tr><td><b class="war">Воины</b></td><td>Проще всего, сильны в PvE и везде</td><td>Уязвимы к Рейнджерам в середине игры</td><td>день 57</td></tr>
-  <tr><td><b class="ran">Рейнджеры</b></td><td>Очень сильны в середине игры</td><td>На старте только один хороший атакующий</td><td>день 71</td></tr>
-  <tr><td><b class="wlk">Колдуны</b></td><td>Необычный состав, сильный в долгую</td><td>Больше всего временных героев, собирается дольше</td><td>день 99</td></tr>
-</table></div>
-<details><summary>Воины (купить Марлену рано, Синтию — из Рулетки)</summary>
-<p>Дни 1–7: Артур · Белла · Марлена · Клэр · Селия.<br>Дни 8–21: Артур · Луций · Марлена · Клэр · Синтия.<br>Дни 22–28: Артур · Луций · Марлена · Синтия или Клэр · Харпер.<br>Дни 29–56: Артур · Даскал · Марлена · Синтия или Клэр · Харпер.<br><b>С 57-го дня: Артур · Даскал · Марлена · Зоя · Харпер.</b></p></details>
-<details><summary>Рейнджеры (Синтия из Рулетки, Шэдоу купить, Красная леди и Луис — через пропуски)</summary>
-<p>Дни 1–7: Артур · Белла · Эш · Селия · Бестар.<br>Дни 8–21: Артур · Шэдоу · Синтия · Эш · Бестар.<br>Дни 22–35: Артур · Шэдоу · Синтия · Эш · Харпер.<br>Дни 36–63: Шэдоу · Артур · Синтия · Красная леди · Эш.<br>Дни 64–70: Луис · Шэдоу · Синтия · Красная леди · Эш.<br><b>С 71-го дня: Луис · Шэдоу · Синтия · Красная леди · Белл.</b></p></details>
-<details><summary>Колдуны (Джестер из Рулетки, потом купить Энни, Брайана, Билли, Николь)</summary>
-<p>Дни 1–14: Артур · Хастар · Стеллар · Селия · Клэр.<br>Дни 15–42: Артур · Хастар · Энни · Стеллар · Джестер.<br>Дни 43–84: Брайан · Хастар · Энни · Стеллар · Джестер.<br>Дни 85–98: Брайан · Билли · Энни · Стеллар · Джестер.<br><b>С 99-го дня: Брайан · Билли · Энни · Николь · Джестер.</b></p></details>
+<section class="band pad">
+  <div class="eyebrow">Почему именно они</div>
+  <h2>Главные герои — коротко и понятно</h2>
+  <div class="grid3">
+    <div class="card"><img class="ic" src="assets/game/hero/arthur.png" alt="" style="border-radius:14px"><h3>Артур — главный танк</h3><p>Снижает урон по всем танкам отряда, ставит себе щит, а его главный удар бьёт всех рядом и снижает урон по своим. Ставится на место 1 — туда бьют сильнее всего. Первый герой, в которого вкладываться.</p></div>
+    <div class="card"><img class="ic" src="assets/game/hero/marlena.png" alt="" style="border-radius:14px"><h3>Марлена — главный урон</h3><p>Самый сильный урон на старте. Бьёт энергетическим уроном по площади, сама его усиливает и быстрее перезаряжает навыки. Хороша и против людей, и против монстров.</p></div>
+    <div class="card"><img class="ic" src="assets/game/hero/harper.png" alt="" style="border-radius:14px"><h3>Харпер — усиление Воинов</h3><p>Поднимает атаку всем героям отряда и отдельно всем Воинам. Рядом с Артуром и Марленой — огромная прибавка. С 31-го дня бесплатно в Таверне.</p></div>
+    <div class="card"><img class="ic" src="assets/game/hero/bella.png" alt="" style="border-radius:14px"><h3>Белла — бесплатный танк</h3><p>Фрагменты — в магазине альянса. Снижает урон от монстров по своим, её удар ослабляет атаку врагов. Временная: потом её заменят Луций или Даскал.</p></div>
+    <div class="card"><img class="ic" src="assets/game/hero/claire.png" alt="" style="border-radius:14px"><h3>Клэр — против монстров</h3><p>Трём самым сильным Воинам отряда добавляет около 15% урона по монстрам. Незаменима на Короле демонов. Можно перевести в золото (UR) в Эре Возрождения.</p></div>
+    <div class="card"><img class="ic" src="assets/game/hero/celia.png" alt="" style="border-radius:14px"><h3>Селия — больше ресурсов</h3><p>Даётся на старте. Добавляет урон по монстрам и до 40% ресурсов с ресурсных и элитных монстров. Временная.</p></div>
+    <div class="card"><img class="ic" src="assets/game/hero/cynthia.png" alt="" style="border-radius:14px"><h3>Синтия — урон Рейнджеров</h3><p>Бьёт всех врагов в зоне, сама повышает себе шанс крита. Для Короля демонов у бесплатного Рейнджера — лучший выбор.</p></div>
+    <div class="card"><img class="ic" src="assets/game/hero/daskal.png" alt="" style="border-radius:14px"><h3>Даскал — второй танк Воинов</h3><p>Ставит щиты всему отряду и лечит себя. Вместе с Харпером отряд живёт намного дольше. Ему сразу делай меч и перчатки — его лечение зависит от атаки.</p></div>
+    <div class="card"><img class="ic" src="assets/game/hero/greenwald.png" alt="" style="border-radius:14px"><h3>Гренвальд — урон без золота</h3><p>Лучший фиолетовый по урону, особенно по монстрам. Сам хрупкий — только за спиной танка. Замена Марлене, если её нет.</p></div>
+  </div>
+</section>
 
-<h2 id="how" data-short="Что даёт прокачка">Как прокачивать героя: что за что отвечает</h2>
-<div class="tbl"><table>
-  <tr><th>Что качаешь</th><th>Чем</th><th>Что даёт</th></tr>
-  <tr><td><b>Уровень</b></td><td>Противоядие (или этапы Экспедиции)</td><td>Атака, здоровье, защита и <b>Лидерство</b> (сколько солдат ведёт герой). Потолок уровня зависит от Убежища: 20 → ур.100, 30 → ур.150.</td></tr>
-  <tr><td><b>Звёзды</b></td><td>Осколки этого героя или универсальные (омни) осколки</td><td>Открывают новые эффекты навыков. UR-герой на 8★ и 30+ уровне получает «Стойкость»: +атака, здоровье, защита и удачнее перезарядка.</td></tr>
-  <tr><td><b>Навыки</b></td><td>Значки навыков</td><td>Числа навыков (урон, баффы). Значков всегда мало — сначала главному атакующему.</td></tr>
-  <tr><td><b>Снаряжение</b></td><td>Мастерская снаряжения</td><td>4 вещи на героя. См. раздел <a href="gear.html">Снаряжение</a>.</td></tr>
-  <tr><td><b>Пробуждение</b></td><td>Осколки пробуждения</td><td>Пока у Марлены (с 10★), Синтии и Энни. Характеристики + новые уровни навыков.</td></tr>
-</table></div>
-<div class="card">
-  <p style="margin-top:0"><b>У героя 5 навыков:</b> обычная атака; ульта (перезарядка ~15 с); второй активный (~5 с); пассивка; бонусный навык (у UR влияет и на перезарядку). Урон бывает <b style="color:var(--warrior)">физический</b> (оранжевый) и <b style="color:var(--warlock)">энергетический</b> (синий).</p>
-  <p style="margin-bottom:0"><b>Порядок вложений:</b> атакующий → танки → поддержка. Уровни, звёзды и навыки — в том же порядке.</p>
-</div>
-
-<h2 id="where-shards" data-short="Где брать осколки">Где брать героев и осколки</h2>
-<ul>
-  <li><b>Найм в Таверне.</b> Билет найма стоит 398 алмазов, на каждом баннере есть бесплатный найм по таймеру. <b>50-й найм гарантированно даёт 10 осколков UR-героя.</b></li>
-  <li><b>Магазин альянса — раз в неделю.</b> Там UR-осколки и осколки Беллы.</li>
-  <li><b>Караваны:</b> вагон 3 альянсового каравана — осколки и значки навыков; грабёж золотых караванов даёт UR-осколки.</li>
-  <li><b>Награды событий:</b> Дуэль альянсов, Битва на выживание, Война королевств (топ-сундук: 15 UR омни-осколков и 30 билетов найма).</li>
-  <li><b>Подарочные коды</b> — вводятся в настройках, список кодов есть на фан-сайтах.</li>
-</ul>
-
-<h2 id="mistakes" data-short="Ошибки">Ошибки при прокачке</h2>
-<div class="callout bad"><b>Качаю всех понемногу</b>Пять героев на 50% слабее, чем три на 100%. Сначала главный отряд.</div>
-<div class="callout bad"><b>Вложил значки навыков во временного героя до максимума</b>Белле и Сивиру хватит 8, Селии — 12.</div>
-<div class="callout bad"><b>Потратил осколки в понедельник</b>В четверг те же осколки дали бы очки Дуэли.</div>
-<div class="callout bad"><b>Потратил алмазы на ускорения стройки в первые дни</b>Первые уровни Убежища строятся секунды и минуты. Алмазы — на найм.</div>
-
+<section class="band paper pad">
+  <div class="eyebrow">Частые ошибки</div>
+  <h2>Как не слить ресурсы</h2>
+  <div class="errs">
+    <div class="err"><b>Качаю всех понемногу</b><p>Пять героев на 50% слабее трёх на 100%. Сначала первый отряд.</p></div>
+    <div class="err"><b>Золотые фрагменты в Артура вместо Марлены</b><p>Если Марлена есть — почти все универсальные золотые фрагменты сначала ей, до 10 звёзд.</p></div>
+    <div class="err"><b>Значки навыков во временного героя</b><p>Белле, Сивиру и Селии хватит навыков 8–10 уровня.</p></div>
+    <div class="err"><b>Атакующие навыки танкам</b><p>Танкам качай защитные навыки и щиты: они побеждают тем, что живут, а не тем, что бьют.</p></div>
+    <div class="err"><b>Потратил фрагменты в понедельник</b><p>В четверг те же фрагменты дали бы очки Дуэли.</p></div>
+    <div class="err"><b>Алмазы на ускорения стройки в первые дни</b><p>Первые уровни строятся секунды. Алмазы — на найм героев.</p></div>
+  </div>
+</section>
