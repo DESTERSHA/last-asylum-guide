@@ -10,7 +10,7 @@ img{display:block;max-width:100%}
 /* обложка */
 .cover{position:relative;min-height:560px;color:#fff;display:flex;flex-direction:column}
 .cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,14,10,.88) 0%,rgba(18,14,10,.55) 50%,rgba(18,14,10,.1) 100%)}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,14,10,.94) 0%,rgba(18,14,10,.82) 38%,rgba(18,14,10,.35) 70%,rgba(18,14,10,.1) 100%)}
 .cover>*{position:relative;z-index:1}
 .nav{display:flex;align-items:center;gap:22px;padding-top:18px;padding-bottom:18px}
 .nav .brand{font:900 18px Commissioner;letter-spacing:.5px;white-space:nowrap}.nav .brand span{color:#f2c46b}
@@ -42,7 +42,7 @@ h2{font:700 clamp(28px,3.2vw,46px)/1.1 "PT Serif";margin:8px 0 28px;max-width:90
 /* шаги лентой */
 .rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,1fr);gap:22px;overflow-x:auto;padding-bottom:10px}
 .sc{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 1px 0 var(--line),0 20px 40px -28px rgba(60,40,10,.35)}
-.sc .pic{position:relative;height:340px;overflow:hidden;background:#2a241c}.sc .pic img{width:100%;object-fit:cover;object-position:top}
+.sc .pic{position:relative;height:340px;overflow:hidden;background:#2a241c}.sc .frame{position:relative}.sc .frame img{width:100%}
 .ring{position:absolute;width:22%;aspect-ratio:1;border:4px solid var(--red);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(192,57,43,.25)}
 .sc .tx{padding:20px}.sc .n{font:900 14px Commissioner;color:var(--gold)}.sc h3{font:800 20px Commissioner;margin:4px 0 8px}.sc p{margin:0;color:var(--mut);font-size:15.5px}
 .word{margin-top:12px;background:var(--sand);border-radius:12px;padding:10px 12px;font-size:14.5px}
@@ -86,9 +86,9 @@ h2{font:700 clamp(28px,3.2vw,46px)/1.1 "PT Serif";margin:8px 0 28px;max-width:90
 
 <section class="band pad" id="steps"><div class="eyebrow">По шагам</div><h2>Что нажимать в игре</h2>
   <div class="rail">
-    <div class="sc"><div class="pic"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:91.7%;top:26.8%"></span></div><div class="tx"><div class="n">ШАГ 1</div><h3>Открой «Война Королевств»</h3><p>Справа на главном экране золотой щит с короной. В окне вкладка «Недельный обзор» покажет счёт.</p></div></div>
-    <div class="sc"><div class="pic"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:7.3%;top:89.5%"></span></div><div class="tx"><div class="n">ШАГ 2</div><h3>Прыгни к точке сбора</h3><p>Лупа слева внизу — «Поиск». Введи координаты, которые лидер написал в чате, нажми на пустую клетку → «Переместиться».</p></div></div>
-    <div class="sc"><div class="pic"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:42%;top:22%"></span></div><div class="tx"><div class="n">ШАГ 3</div><h3>Иди в ралли на башню</h3><p>Когда лидер начнёт удар по башне — нажми «Присоединиться» и отправь отряд.</p><div class="word"><b>Ралли</b> — общий удар: один начинает, все присоединяются, бьют вместе, войска гибнут меньше.</div></div></div>
+    <div class="sc"><div class="pic"><div class="frame" style="transform:translateY(0%)"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:91.7%;top:26.8%"></span></div></div><div class="tx"><div class="n">ШАГ 1</div><h3>Открой «Война Королевств»</h3><p>Справа на главном экране золотой щит с короной. В окне вкладка «Недельный обзор» покажет счёт.</p></div></div>
+    <div class="sc"><div class="pic"><div class="frame" style="transform:translateY(-64%)"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:7.3%;top:89.5%"></span></div></div><div class="tx"><div class="n">ШАГ 2</div><h3>Прыгни к точке сбора</h3><p>Лупа слева внизу — «Поиск». Введи координаты, которые лидер написал в чате, нажми на пустую клетку → «Переместиться».</p></div></div>
+    <div class="sc"><div class="pic"><div class="frame" style="transform:translateY(0%)"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:47%;top:17%"></span></div></div><div class="tx"><div class="n">ШАГ 3</div><h3>Иди в ралли на башню</h3><p>Когда лидер начнёт удар по башне — нажми «Присоединиться» и отправь отряд.</p><div class="word"><b>Ралли</b> — общий удар: один начинает, все присоединяются, бьют вместе, войска гибнут меньше.</div></div></div>
   </div>
 </section>
 
