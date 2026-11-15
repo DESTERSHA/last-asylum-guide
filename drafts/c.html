@@ -59,7 +59,7 @@ main h1{font:800 clamp(28px,6vw,48px)/1.1 Unbounded;margin:6px 0 10px}
   </main>
   <aside class="cheat">
     <h3>Шпаргалка КвК</h3>
-    <div class="big"><div><b>12:00</b><span>бой, сервер</span></div><div><b>15:00</b><span>бой, Москва</span></div></div>
+    <div class="big"><div><b>12:00</b><span>бой, сервер</span></div><div><b>17:00</b><span>бой, Москва</span></div></div>
     <div class="mini"><div class="c">КОРОЛЕВСКИЙ<br>ГОРОД<br>500·500</div>
       <div class="t" style="left:8px;top:8px"><i>З</i>491·509</div><div class="t" style="right:8px;top:8px"><i>С</i>509·509</div>
       <div class="t" style="left:8px;bottom:6px"><i>Ю</i>491·491</div><div class="t" style="right:8px;bottom:6px"><i>В</i>509·491</div></div>
@@ -69,4 +69,5 @@ main h1{font:800 clamp(28px,6vw,48px)/1.1 Unbounded;margin:6px 0 10px}
   </aside>
 </div>
 <nav class="drafts"><a href="a.html">A</a><a href="b.html">B</a><a class="on" href="c.html">C</a></nav>
+<script>(function(){function f(o){var d=new Date(Date.now()+o*3600000);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');}function t(){document.querySelectorAll('[data-clock=srv]').forEach(function(e){e.textContent=f(-2)});document.querySelectorAll('[data-clock=msk]').forEach(function(e){e.textContent=f(3)});}t();setInterval(t,20000);})();</script>
 </body></html>

@@ -40,7 +40,7 @@ h1{font:700 clamp(28px,6vw,40px)/1.15 "PT Serif";margin:4px 0 12px}
 .drafts a{color:#fff;text-decoration:none;font:900 13px Nunito;padding:6px 10px;border-radius:8px;text-align:center}.drafts a.on{background:var(--acc2)}
 @media(max-width:760px){.wrap{grid-template-columns:1fr}.quest{position:static;order:-1}.quest ol{display:none}}
 </style></head><body>
-<header class="top"><div class="top-in"><b>Last Asylum: Plague · сервер 397</b><span class="t">Сервер <em>09:41</em> · МСК <em>12:41</em></span></div>
+<header class="top"><div class="top-in"><b>Last Asylum: Plague · сервер 397</b><span class="t">Сервер <em data-clock="srv">--:--</em> · МСК <em data-clock="msk">--:--</em></span></div>
 <nav class="menu"><a href="#">Главная</a><a class="on" href="#">КвК</a><a href="#">Дуэль</a><a href="#">Герои</a><a href="#">Отряды</a><a href="#">Снаряжение</a><a href="#">Правила</a><a href="#">Слова</a><a href="#">Фишки</a></nav></header>
 <div class="wrap">
   <aside class="quest">
@@ -61,4 +61,5 @@ h1{font:700 clamp(28px,6vw,40px)/1.15 "PT Serif";margin:4px 0 12px}
 </div>
 <nav class="nav"><a class="back" href="#">← Назад</a><a class="next" href="#">Дальше: мы нападаем или защищаемся →</a></nav>
 <nav class="drafts"><a href="a.html">A</a><a class="on" href="b.html">B</a><a href="c.html">C</a></nav>
+<script>(function(){function f(o){var d=new Date(Date.now()+o*3600000);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');}function t(){document.querySelectorAll('[data-clock=srv]').forEach(function(e){e.textContent=f(-2)});document.querySelectorAll('[data-clock=msk]').forEach(function(e){e.textContent=f(3)});}t();setInterval(t,20000);})();</script>
 </body></html>

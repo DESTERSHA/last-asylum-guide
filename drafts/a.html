@@ -44,12 +44,12 @@ h1{font:400 clamp(30px,7vw,46px)/1.1 "Russo One";margin:18px 0 6px}
 </style></head><body>
 <header class="hud"><div class="hud-in">
   <div class="brand">LAST ASYLUM: PLAGUE<small>гайд альянса · сервер 397</small></div>
-  <div class="clocks"><div class="clock"><b>09:41</b><span>время сервера</span></div><div class="clock"><b>12:41</b><span>по Москве</span></div></div>
+  <div class="clocks"><div class="clock"><b data-clock="srv">--:--</b><span>время сервера</span></div><div class="clock"><b data-clock="msk">--:--</b><span>по Москве</span></div></div>
 </div>
 <nav class="tabs"><a href="#"><i>🏠</i>Главная</a><a class="on" href="#"><i>👑</i>КвК</a><a href="#"><i>🤝</i>Дуэль</a><a href="#"><i>🦸</i>Герои</a><a href="#"><i>⚔️</i>Отряды</a><a href="#"><i>🛡️</i>Снаряжение</a><a href="#"><i>📜</i>Правила</a><a href="#"><i>📖</i>Слова</a><a href="#"><i>💡</i>Фишки</a></nav>
 </header>
 <div class="today"><div class="today-in">
-  <div class="tchip">Сегодня <b>воскресенье</b></div><div class="tchip">Дуэль: <b>отдых, ничего не трать</b></div><div class="tchip">Король демонов: <b>нет</b></div><div class="tchip">КвК: <b>копим очки</b>, бой в субботу 12:00 сервер / 15:00 МСК</div>
+  <div class="tchip">Сегодня <b>воскресенье</b></div><div class="tchip">Дуэль: <b>отдых, ничего не трать</b></div><div class="tchip">Король демонов: <b>нет</b></div><div class="tchip">КвК: <b>копим очки</b>, бой в субботу 12:00 по серверу = 17:00 МСК</div>
 </div></div>
 <main>
   <h1>КвК — объясняем с нуля</h1>
@@ -70,7 +70,8 @@ h1{font:400 clamp(30px,7vw,46px)/1.1 "Russo One";margin:18px 0 6px}
       <div class="explain"><b>Ралли</b> — общий удар. Один игрок выбирает цель и нажимает «Ралли». Остальные нажимают «Присоединиться» и отправляют свои отряды. Все бьют вместе, войска гибнут меньше.<br><b>Гарнизон</b> — твой отряд стоит внутри здания (башни, города) и защищает его.</div>
     </div>
   </section>
-  <p class="note">Черновик A «Игровой экран»: часы и «что сегодня» всегда видны сверху, разделы — большими значками без скрытого меню, каждый шаг = скриншот с красным кругом + что нажать + объяснение слов рядом. Часы пока примерные — нужен твой ответ про время сервера.</p>
+  <p class="note">Черновик A «Игровой экран»: часы и «что сегодня» всегда видны сверху, разделы — большими значками без скрытого меню, каждый шаг = скриншот с красным кругом + что нажать + объяснение слов рядом. Часы живые: время сервера = Москва минус 5 часов.</p>
 </main>
 <nav class="drafts"><a class="on" href="a.html">A</a><a href="b.html">B</a><a href="c.html">C</a></nav>
+<script>(function(){function f(o){var d=new Date(Date.now()+o*3600000);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');}function t(){document.querySelectorAll('[data-clock=srv]').forEach(function(e){e.textContent=f(-2)});document.querySelectorAll('[data-clock=msk]').forEach(function(e){e.textContent=f(3)});}t();setInterval(t,20000);})();</script>
 </body></html>
