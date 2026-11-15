@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Вариант 2 — Вики-панель</title>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--ink:#111827;--mut:#4b5563;--faint:#9ca3af;--line:#e5e7eb;--bg:#f3f4f6;--card:#fff;--acc:#4338ca;--acc-bg:#eef2ff;--ok:#047857;--ok-bg:#ecfdf5;--warn:#b45309;--warn-bg:#fffbeb;--red:#dc2626;--red-bg:#fef2f2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Golos Text",system-ui,sans-serif}
+img{display:block;max-width:100%}
+.top{height:60px;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:0 20px;position:sticky;top:0;z-index:20}
+.top .brand{display:flex;align-items:center;gap:10px;font:800 16px Manrope;white-space:nowrap}.top .brand img{width:34px;height:34px;border-radius:9px;object-fit:cover;object-position:30% 20%}
+.search{flex:1;max-width:560px;margin:0 auto;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--faint);font-size:15px}
+.search img{width:22px;height:22px;border-radius:50%}
+.srv{font-size:14px;font-weight:600;color:var(--mut);white-space:nowrap}.srv b{color:var(--ink)}
+.grid{display:grid;grid-template-columns:270px minmax(0,1fr) 340px;gap:20px;padding:20px;align-items:start}
+/* левое дерево */
+.tree{position:sticky;top:80px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;max-height:calc(100vh - 100px);overflow:auto}
+.tree .grp{display:flex;align-items:center;gap:10px;padding:8px;border-radius:10px;font-weight:700;font-size:15px}
+.tree .grp img{width:28px;height:28px;border-radius:50%;object-fit:cover}
+.tree .grp.on{background:var(--acc-bg);color:var(--acc)}
+.tree ul{list-style:none;margin:0 0 6px 46px;padding:0;border-left:2px solid var(--line)}
+.tree li{padding:4px 10px;font-size:14px;color:var(--mut)}.tree li.on{color:var(--acc);font-weight:700;border-left:2px solid var(--acc);margin-left:-2px}
+/* центр */
+.crumbs{font-size:13px;color:var(--faint);margin-bottom:6px}
+.paper{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 32px;margin-bottom:20px}
+h1{font:800 clamp(28px,3vw,42px)/1.15 Manrope;margin:0 0 10px}
+.lead{font-size:18px;color:var(--mut);margin:0}
+.meta3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.m{border-radius:12px;padding:14px;background:var(--bg)}.m small{display:block;font-size:12px;font-weight:700;color:var(--faint);text-transform:uppercase}.m b{font:800 20px Manrope}
+h2{font:800 24px Manrope;margin:0 0 12px}
+.seg{display:inline-flex;background:var(--bg);border-radius:12px;padding:4px;margin-bottom:16px}
+.seg span{padding:8px 16px;border-radius:9px;font-weight:700;font-size:14px;color:var(--mut)}.seg span.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+table{width:100%;border-collapse:collapse;font-size:15.5px}
+th{text-align:left;font-size:12px;text-transform:uppercase;color:var(--faint);padding:10px;border-bottom:1px solid var(--line)}
+td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.t{font:800 17px Manrope;white-space:nowrap}td.msk{color:var(--acc)}
+tr.hot td{background:var(--red-bg)}tr.hot td.t{color:var(--red)}
+.steps2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.sc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);display:grid;grid-template-columns:150px minmax(0,1fr)}
+.sc .pic{position:relative;background:#222}.sc .pic img{height:100%;object-fit:cover;object-position:top}
+.ring{position:absolute;width:30%;aspect-ratio:1;border:3px solid var(--red);border-radius:50%;transform:translate(-50%,-50%)}
+.sc .tx{padding:14px}.sc .n{font-size:12px;font-weight:800;color:var(--acc)}.sc h3{margin:2px 0 6px;font:800 17px Manrope}.sc p{margin:0;font-size:14.5px;color:var(--mut)}
+.def{display:inline;border-bottom:1px dashed var(--acc);font-weight:600;cursor:help}
+.box{border-radius:12px;padding:12px 14px;margin-top:14px;font-size:15px}.box.ok{background:var(--ok-bg)}.box.warn{background:var(--warn-bg)}
+/* правая панель */
+.now{position:sticky;top:80px;display:flex;flex-direction:column;gap:14px}
+.pnl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.pnl h4{margin:0 0 10px;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--faint)}
+.clk{display:grid;grid-template-columns:1fr 1fr;gap:10px}.clk div{background:var(--bg);border-radius:10px;padding:10px;text-align:center}.clk b{display:block;font:800 26px Manrope}.clk span{font-size:12px;color:var(--faint);font-weight:600}
+.cd{margin-top:10px;background:var(--ink);color:#fff;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center}.cd small{color:#9ca3af;display:block;font-size:12px}.cd b{font:800 20px Manrope;color:#fca5a5}
+.todo label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:14.5px;border-bottom:1px solid var(--line)}.todo label:last-child{border:0}.todo input{width:18px;height:18px;margin-top:2px;accent-color:var(--acc)}
+.todo img{width:22px;height:22px;border-radius:50%;flex:0 0 22px}
+.mm{position:relative;height:170px;border-radius:12px;background:var(--red-bg);border:2px dashed #fca5a5}
+.mm .c{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--ink);color:#fff;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:800;text-align:center;line-height:1.25}
+.mm .t{position:absolute;font-size:11px;font-weight:800;text-align:center;width:60px;line-height:1.2}.mm .t i{display:block;width:24px;height:24px;margin:0 auto 2px;border-radius:50%;background:#3460c9;color:#fff;font-style:normal;line-height:24px}
+.vtag{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:30;background:var(--ink);border-radius:14px;padding:6px;display:flex;gap:4px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.vtag a{color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:8px 12px;border-radius:10px}.vtag a.on{background:var(--acc)}
+@media(max-width:1200px){.grid{grid-template-columns:240px minmax(0,1fr)}.now{position:static;grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){.grid{grid-template-columns:1fr;padding:12px}.tree{position:static;max-height:none}.now{grid-template-columns:1fr}.steps2,.meta3{grid-template-columns:1fr}.paper{padding:18px}.search{display:none}}
+</style></head><body>
+<header class="top"><div class="brand"><img src="../assets/icons/art-doctor.jpg" alt="">Last Asylum · 397</div>
+  <div class="search"><img src="../assets/icons/search.png" alt="">Найти: ралли, гарнизон, караван, сокол…</div>
+  <div class="srv">Сервер <b data-clock="srv">--:--</b> · МСК <b data-clock="msk">--:--</b></div></header>
+<div class="grid">
+  <aside class="tree">
+    <div class="grp"><img src="../assets/icons/home.png" alt="">Главная</div>
+    <div class="grp on"><img src="../assets/icons/kvk.png" alt="">КвК — Война королевств</div>
+    <ul><li>Что это за 1 минуту</li><li class="on">Суббота по часам</li><li>Мы нападаем</li><li>Мы защищаемся</li><li>Карта и башни</li><li>Как набить очки</li><li>Чек-лист на пятницу</li></ul>
+    <div class="grp"><img src="../assets/icons/duel.png" alt="">Дуэль альянсов</div>
+    <ul><li>Пн · Ворон</li><li>Вт · Стройка</li><li>Ср · Наука</li><li>Чт · Герои</li><li>Пт · Войска</li><li>Сб · Бой</li></ul>
+    <div class="grp"><img src="../assets/icons/arthur.webp" alt="">Герои</div>
+    <div class="grp"><img src="../assets/icons/marlena.webp" alt="">Отряды 1–4</div>
+    <div class="grp"><img src="../assets/icons/bella.webp" alt="">Снаряжение</div>
+    <div class="grp"><img src="../assets/icons/caravan.png" alt="">Правила сервера</div>
+    <div class="grp"><img src="../assets/icons/falcon.png" alt="">Термины</div>
+    <div class="grp"><img src="../assets/icons/bonus.png" alt="">Фишки и мощь</div>
+  </aside>
+  <main>
+    <div class="paper">
+      <div class="crumbs">Главная › КвК › Суббота по часам</div>
+      <h1>Война королевств: суббота по часам</h1>
+      <p class="lead">Что происходит в день боя и что делать тебе в каждый момент. Время дано и по игре, и по Москве: в игре на 5 часов меньше.</p>
+      <div class="meta3"><div class="m"><small>Бой начинается</small><b>17:00 МСК</b></div><div class="m"><small>Бой длится</small><b>до 4 часов</b></div><div class="m"><small>Город на карте</small><b>X 500 · Y 500</b></div></div>
+    </div>
+    <div class="paper">
+      <h2>Расписание субботы</h2>
+      <div class="seg"><span class="on">Мы нападаем</span><span>Мы защищаемся</span></div>
+      <table><tr><th>По игре</th><th>По Москве</th><th>Что происходит</th><th>Что делаешь ты</th></tr>
+        <tr><td class="t">00:00</td><td class="t msk">05:00</td><td>Подсчёт очков закончен</td><td>Открой «Недельный обзор»: нападаем мы или защищаемся</td></tr>
+        <tr><td class="t">00:05</td><td class="t msk">05:05</td><td>Нападающие могут переехать к врагу, бесплатно</td><td>Переезжай в точку, которую дал лидер. Не ставь город в зону боя, если уходишь спать</td></tr>
+        <tr><td class="t">05:00</td><td class="t msk">10:00</td><td>Начинается охота: очки за убитых врагов</td><td>Бей только вместе с альянсом, по команде</td></tr>
+        <tr><td class="t">11:30</td><td class="t msk">16:30</td><td>Сбор</td><td>Все онлайн, раненые вылечены, отряды дома</td></tr>
+        <tr class="hot"><td class="t">12:00</td><td class="t msk">17:00</td><td><b>БОЙ.</b> С города и башен снята защита</td><td>Сначала <span class="def" title="Общий удар: один начинает, остальные нажимают «Присоединиться»">ралли</span> на башню, потом на город</td></tr>
+        <tr><td class="t">16:00</td><td class="t msk">21:00</td><td>Конец боя</td><td>Не взяли город на 100% — победили защитники</td></tr>
+      </table>
+      <div class="box warn"><b>Возле Королевского города щиты не работают.</b> Если оставишь там город и уйдёшь — его сожгут и перекинут в случайное место.</div>
+    </div>
+    <div class="paper">
+      <h2>Что нажимать</h2>
+      <div class="steps2">
+        <div class="sc"><div class="pic"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:91.7%;top:26.8%"></span></div><div class="tx"><div class="n">ШАГ 1</div><h3>Открой «Война Королевств»</h3><p>Справа на главном экране — золотой щит с короной. Нажми.</p></div></div>
+        <div class="sc"><div class="pic"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:7.3%;top:89.5%"></span></div><div class="tx"><div class="n">ШАГ 2</div><h3>Найди точку сбора</h3><p>Лупа слева внизу — «Поиск». Введи координаты из чата альянса и прыгни туда.</p></div></div>
+      </div>
+      <div class="box ok"><b>Ралли</b> — общий удар: один игрок начинает, остальные нажимают «Присоединиться» и шлют отряды. <b>Гарнизон</b> — твой отряд стоит внутри башни или города и защищает его, за это +25 очков каждую секунду.</div>
+    </div>
+  </main>
+  <aside class="now">
+    <div class="pnl"><h4>Сейчас</h4><div class="clk"><div><b data-clock="srv">--:--</b><span>по игре</span></div><div><b data-clock="msk">--:--</b><span>по Москве</span></div></div>
+      <div class="cd"><div><small>До боя за трон</small>суббота 17:00 МСК</div><b id="cd">—</b></div></div>
+    <div class="pnl todo"><h4>Сегодня сделать</h4>
+      <label><input type="checkbox"><img src="../assets/icons/kvk.png" alt="">10 ударов по Королю демонов</label>
+      <label><input type="checkbox"><img src="../assets/icons/caravan.png" alt="">4 грабежа караванов чужого сервера</label>
+      <label><input type="checkbox"><img src="../assets/icons/covert.png" alt="">5 грабежей секретных операций (только чужой сервер)</label>
+      <label><input type="checkbox"><img src="../assets/icons/falcon.png" alt="">Задания сокола: выполнить, награду не забирать</label></div>
+    <div class="pnl"><h4>Карта боя</h4><div class="mm"><div class="c">ГОРОД<br>500·500</div>
+      <div class="t" style="left:6px;top:8px"><i>З</i>491·509</div><div class="t" style="right:6px;top:8px"><i>С</i>509·509</div>
+      <div class="t" style="left:6px;bottom:6px"><i>Ю</i>491·491</div><div class="t" style="right:6px;bottom:6px"><i>В</i>509·491</div></div></div>
+  </aside>
+</div>
+<nav class="vtag"><a href="v1.html">1</a><a class="on" href="v2.html">Вариант 2</a><a href="v3.html">3</a></nav>
+<script>(function(){function f(o){var d=new Date(Date.now()+o*36e5);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0')}
+function cd(){var n=new Date(),t=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),14,0,0));t.setUTCDate(t.getUTCDate()+(6-n.getUTCDay()+7)%7);if(t<n)t.setUTCDate(t.getUTCDate()+7);var s=(t-n)/1e3,d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return(d?d+' д ':'')+h+' ч '+m+' м'}
+function tick(){document.querySelectorAll('[data-clock=srv]').forEach(function(e){e.textContent=f(-2)});document.querySelectorAll('[data-clock=msk]').forEach(function(e){e.textContent=f(3)});var c=document.getElementById('cd');if(c)c.textContent=cd()}tick();setInterval(tick,20000)})();</script>
+</body></html>

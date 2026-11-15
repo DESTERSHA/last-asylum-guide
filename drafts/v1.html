@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Вариант 1 — Центр помощи</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--ink:#15171c;--mut:#5d636f;--faint:#8b919c;--line:#e6e8ec;--bg:#fff;--soft:#f5f6f8;--gold:#c98a1b;--gold-bg:#fdf4e3;--teal:#17695f;--teal-bg:#e6f3f1;--red:#cf3e3e;--red-bg:#fdecec;--blue:#3460c9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Onest,system-ui,sans-serif}
+img{max-width:100%;display:block}a{color:inherit}
+.wrap{width:100%;padding:0 clamp(16px,3vw,48px)}
+/* шапка */
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.hdr{display:flex;align-items:center;gap:24px;height:76px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;white-space:nowrap}
+.logo img{width:44px;height:44px;border-radius:12px;object-fit:cover;object-position:30% 20%}
+.logo b{display:block;font:700 16px Unbounded}.logo small{color:var(--faint);font-weight:600;font-size:12px}
+nav.main{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+nav.main a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px;color:var(--mut);white-space:nowrap}
+nav.main a img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+nav.main a:hover{background:var(--soft);color:var(--ink)}
+nav.main a.on{background:var(--gold-bg);color:var(--ink)}
+.clock{display:flex;border:1px solid var(--line);border-radius:14px;overflow:hidden;white-space:nowrap}
+.clock div{padding:6px 14px;text-align:center;line-height:1.15}.clock div+div{border-left:1px solid var(--line)}
+.clock b{display:block;font:700 18px Unbounded}.clock span{font-size:11px;font-weight:600;color:var(--faint)}
+/* обложка */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:40px 0 28px}
+.kick{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--gold)}
+.kick img{width:26px;height:26px;border-radius:50%}
+h1{font:800 clamp(34px,4.4vw,64px)/1.05 Unbounded;margin:12px 0 16px;letter-spacing:-.5px}
+.lead{font-size:20px;color:var(--mut);max-width:760px;margin:0 0 22px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid var(--line);background:#fff}
+.btn.pri{background:var(--ink);color:#fff;border-color:var(--ink)}
+.art{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/10;box-shadow:0 30px 60px -30px rgba(20,25,40,.45)}
+.art img{width:100%;height:100%;object-fit:cover}
+.art .count{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.94);border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.count small{display:block;color:var(--faint);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.count b{font:700 20px Unbounded}.count .t{font:800 26px Unbounded;color:var(--red)}
+/* факты */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 40px}
+.fact{border:1px solid var(--line);border-radius:20px;padding:20px;background:#fff;display:flex;flex-direction:column;gap:6px}
+.fact .ic{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.fact h3{margin:6px 0 0;font:700 19px Unbounded}.fact p{margin:0;color:var(--mut);font-size:15.5px}
+.fact.hot{background:var(--red-bg);border-color:#f3c9c9}.fact.hot .big{font:800 34px Unbounded;color:var(--red)}
+section.band{background:var(--soft);padding:40px 0;margin:0 0 40px}
+h2{font:700 clamp(24px,2.4vw,34px)/1.2 Unbounded;margin:0 0 6px}.sub{color:var(--mut);margin:0 0 22px}
+/* неделя */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.day{background:#fff;border-radius:16px;padding:14px;border:1px solid var(--line);min-height:150px}
+.day b{font:700 15px Unbounded}.day .tag{display:inline-block;margin:8px 0 6px;font-size:12px;font-weight:800;padding:3px 8px;border-radius:8px;background:var(--teal-bg);color:var(--teal)}
+.day p{margin:0;font-size:14px;color:var(--mut)}
+.day.fri .tag{background:var(--gold-bg);color:var(--gold)}.day.sat{background:var(--ink);color:#fff;border-color:var(--ink)}.day.sat p{color:#c9ccd3}.day.sat .tag{background:var(--red);color:#fff}
+/* карта */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.map{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
+.towers{width:100%;border-collapse:collapse;font-size:16px}
+.towers td,.towers th{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left}.towers th{font-size:13px;color:var(--faint)}
+.towers tr:last-child td{border:0}
+.note{background:var(--gold-bg);border-radius:14px;padding:12px 14px;margin-top:14px;font-size:15.5px}
+/* шаги */
+.step{display:grid;grid-template-columns:minmax(260px,420px) minmax(0,1fr);gap:32px;padding:28px 0;border-top:1px solid var(--line)}
+.shot{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);max-width:420px}
+.ring{position:absolute;width:20%;aspect-ratio:1;border:4px solid var(--red);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(207,62,62,.18)}
+.num{font:800 15px Unbounded;color:var(--gold)}.step h3{font:700 26px Unbounded;margin:6px 0 14px}
+.do{display:flex;gap:12px;align-items:flex-start;background:var(--soft);border-radius:16px;padding:14px 16px;margin:0 0 12px}
+.do img{width:44px;height:44px;border-radius:50%;flex:0 0 44px}
+.do b{display:block}.word{border-left:0;background:var(--teal-bg);border-radius:16px;padding:14px 16px;font-size:15.5px}
+.word b{color:var(--teal)}
+/* очки */
+.pts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;gap:12px;align-items:center}
+.pt img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:0 0 48px}
+.pt b{font:800 22px Unbounded;display:block}.pt span{font-size:14px;color:var(--mut);line-height:1.35;display:block}
+.vtag{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--ink);color:#fff;border-radius:14px;padding:6px;display:flex;gap:4px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.vtag a{color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:8px 12px;border-radius:10px}.vtag a.on{background:var(--gold)}
+@media(max-width:1100px){.facts,.pts{grid-template-columns:repeat(2,1fr)}.week{grid-template-columns:repeat(4,1fr)}.hero,.two{grid-template-columns:1fr}}
+@media(max-width:700px){.hdr{height:auto;flex-wrap:wrap;padding:10px 0;gap:10px}nav.main{order:3;flex-basis:100%}.facts,.pts{grid-template-columns:1fr}.week{grid-template-columns:repeat(2,1fr)}.step{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="wrap hdr">
+  <a class="logo" href="#"><img src="../assets/icons/art-doctor.jpg" alt=""><span><b>Last Asylum: Plague</b><small>гайд альянса · сервер 397</small></span></a>
+  <nav class="main">
+    <a href="#"><img src="../assets/icons/home.png" alt="">Главная</a>
+    <a class="on" href="#"><img src="../assets/icons/kvk.png" alt="">КвК</a>
+    <a href="#"><img src="../assets/icons/duel.png" alt="">Дуэль</a>
+    <a href="#"><img src="../assets/icons/arthur.webp" alt="">Герои</a>
+    <a href="#"><img src="../assets/icons/marlena.webp" alt="">Отряды</a>
+    <a href="#"><img src="../assets/icons/bella.webp" alt="">Снаряжение</a>
+    <a href="#"><img src="../assets/icons/caravan.png" alt="">Правила</a>
+    <a href="#"><img src="../assets/icons/search.png" alt="">Термины</a>
+    <a href="#"><img src="../assets/icons/bonus.png" alt="">Фишки</a>
+  </nav>
+  <div class="clock"><div><b data-clock="srv">--:--</b><span>сервер</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="kick"><img src="../assets/icons/kvk.png" alt="">Война королевств · КвК</div>
+      <h1>КвК: объясняем с нуля, по шагам</h1>
+      <p class="lead">Раз в неделю наш сервер №397 воюет с другим сервером. Всю неделю копим очки, в субботу бьёмся за главный город. Здесь всё: что это, когда, куда нажать и что делать именно тебе.</p>
+      <div class="btns"><a class="btn pri" href="#steps">Что нажимать — по шагам</a><a class="btn" href="#week">Что делать в какой день</a><a class="btn" href="#map">Карта боя</a></div>
+    </div>
+    <div class="art"><img src="../assets/icons/art-doctor.jpg" alt="Арт игры">
+      <div class="count"><div><small>Ближайший бой за трон</small><b>Суббота · 17:00 МСК</b><small>это 12:00 по серверу</small></div><div class="t" id="cd">—</div></div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><img class="ic" src="../assets/icons/duel.png" alt=""><h3>Вс–Пт копим очки</h3><p>Очки серверу дают обычные дела: 10 ударов по Королю демонов, победы в Дуэли, грабёж караванов врага.</p></div>
+    <div class="fact"><img class="ic" src="../assets/icons/kvk.png" alt=""><h3>Пятница — подсчёт</h3><p>У кого больше очков, тот в субботу нападает. У кого меньше — защищается у себя дома.</p></div>
+    <div class="fact hot"><div class="big">17:00</div><h3>Суббота — бой</h3><p>По Москве (12:00 по серверу). Бой идёт до 4 часов, до 21:00 МСК.</p></div>
+    <div class="fact"><img class="ic" src="../assets/icons/alliance.png" alt=""><h3>Все наши — заодно</h3><p>В КвК все альянсы сервера 397 в одной команде. Бить своих игра не даст.</p></div>
+  </div>
+</div>
+
+<section class="band" id="week"><div class="wrap">
+  <h2>Что происходит в каждый день недели</h2><p class="sub">Время в игре = Москва минус 5 часов. Новый день начинается в 05:00 по Москве.</p>
+  <div class="week">
+    <div class="day"><b>Пн</b><br><span class="tag">копим</span><p>Король демонов: бей Воинами. Дуэль: Ворон.</p></div>
+    <div class="day"><b>Вт</b><br><span class="tag">копим</span><p>Король демонов: Колдунами. Дуэль: стройка, золотые караваны.</p></div>
+    <div class="day"><b>Ср</b><br><span class="tag">копим</span><p>Король демонов: Рейнджерами. Дуэль: исследования.</p></div>
+    <div class="day"><b>Чт</b><br><span class="tag">копим</span><p>Король демонов: Воинами. Дуэль: герои.</p></div>
+    <div class="day fri"><b>Пт</b><br><span class="tag">подсчёт</span><p>Ночью решается, кто нападает. Вылечи всех, отряды домой.</p></div>
+    <div class="day sat"><b>Сб</b><br><span class="tag">бой 17:00</span><p>Бой за Королевский город, 17:00–21:00 по Москве.</p></div>
+    <div class="day"><b>Вс</b><br><span class="tag">новая неделя</span><p>Короля демонов нет. Снова копим очки.</p></div>
+  </div>
+</div></section>
+
+<div class="wrap" id="map">
+  <div class="two">
+    <div class="map">
+      <svg viewBox="0 0 520 440" role="img" aria-label="Королевский город в центре, четыре башни по углам">
+        <rect x="6" y="6" width="508" height="428" rx="24" fill="#fbeaea" stroke="#e8a3a3" stroke-dasharray="8 7" stroke-width="2"/>
+        <text x="260" y="36" text-anchor="middle" font-size="15" font-weight="700" fill="#cf3e3e">ПРОКЛЯТЫЕ ЗЕМЛИ — ЩИТЫ НЕ РАБОТАЮТ</text>
+        <g stroke="#c98a1b" stroke-width="2" stroke-dasharray="5 6"><line x1="260" y1="230" x2="110" y2="120"/><line x1="260" y1="230" x2="410" y2="120"/><line x1="260" y1="230" x2="110" y2="340"/><line x1="260" y1="230" x2="410" y2="340"/></g>
+        <rect x="180" y="182" width="160" height="96" rx="16" fill="#15171c"/>
+        <text x="260" y="220" text-anchor="middle" font-size="17" font-weight="800" fill="#fff">КОРОЛЕВСКИЙ ГОРОД</text>
+        <text x="260" y="248" text-anchor="middle" font-size="15" font-weight="600" fill="#f2c46b">X 500 · Y 500</text>
+        <g font-size="16" font-weight="700" text-anchor="middle">
+          <circle cx="110" cy="110" r="30" fill="#3460c9"/><text x="110" y="116" fill="#fff">З</text><text x="110" y="162" fill="#15171c">Западная</text><text x="110" y="182" fill="#8b919c">491 · 509</text>
+          <circle cx="410" cy="110" r="30" fill="#3460c9"/><text x="410" y="116" fill="#fff">С</text><text x="410" y="162" fill="#15171c">Северная</text><text x="410" y="182" fill="#8b919c">509 · 509</text>
+          <circle cx="110" cy="330" r="30" fill="#3460c9"/><text x="110" y="336" fill="#fff">Ю</text><text x="110" y="382" fill="#15171c">Южная</text><text x="110" y="402" fill="#8b919c">491 · 491</text>
+          <circle cx="410" cy="330" r="30" fill="#3460c9"/><text x="410" y="336" fill="#fff">В</text><text x="410" y="382" fill="#15171c">Восточная</text><text x="410" y="402" fill="#8b919c">509 · 491</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <h2>Карта боя: куда прыгать</h2>
+      <p class="sub">Город — в центре карты сервера-защитника. Вокруг 4 башни. Кто держит город 2 часа подряд — победил. Каждая наша башня сокращает это время.</p>
+      <table class="towers"><tr><th>Сколько башен наши</th><th>Сколько держать город</th></tr>
+        <tr><td>ни одной</td><td><b>2 часа</b></td></tr><tr><td>1 башня</td><td>1 ч 36 мин</td></tr><tr><td>2 башни</td><td>1 ч 20 мин</td></tr><tr><td>3 башни</td><td>1 ч 08 мин</td></tr><tr><td>все 4</td><td><b>1 час</b></td></tr></table>
+      <div class="note"><b>Поэтому сначала берём башни, потом город.</b> Башня ещё и стреляет по врагам в городе каждые 10 секунд.</div>
+    </div>
+  </div>
+
+  <div id="steps" style="margin-top:44px">
+    <h2>Что нажимать — по шагам</h2>
+    <div class="step">
+      <div class="shot"><img src="../assets/icons/shot-map.webp" alt="Главный экран игры"><span class="ring" style="left:91.7%;top:26.8%"></span></div>
+      <div>
+        <div class="num">ШАГ 1</div><h3>Открой окно «Война Королевств»</h3>
+        <div class="do"><img src="../assets/icons/kvk.png" alt=""><div><b>Нажми на этот значок</b>Он справа на главном экране, в столбике круглых значков. На скриншоте обведён красным.</div></div>
+        <p>Откроется окно с тремя вкладками: <b>«Недельный обзор»</b> — счёт нашего сервера против их, <b>«Королевский переполох»</b> — твои личные очки и сундуки, <b>«Данные матча»</b> — с кем воюем.</p>
+        <div class="word"><b>Сервер = королевство.</b> Это наш отдельный мир в игре, у него номер 397. В КвК наш мир воюет с чужим.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="band" style="margin-top:20px"><div class="wrap">
+  <h2>Сколько очков приносит серверу каждое дело</h2><p class="sub">Чем больше очков за неделю — тем больше шанс, что в субботу нападаем мы.</p>
+  <div class="pts">
+    <div class="pt"><img src="../assets/icons/kvk.png" alt=""><div><b>250 000</b><span>наш сервер нанёс Королю демонов больше урона, чем их</span></div></div>
+    <div class="pt"><img src="../assets/icons/bonus.png" alt=""><div><b>50 000</b><span>победа в Гонке за эликсиром</span></div></div>
+    <div class="pt"><img src="../assets/icons/duel.png" alt=""><div><b>30 000</b><span>победа твоего альянса в Дуэли за день</span></div></div>
+    <div class="pt"><img src="../assets/icons/caravan.png" alt=""><div><b>120</b><span>за каждый ограбленный караван сервера-врага</span></div></div>
+  </div>
+</div></section>
+
+<nav class="vtag"><a class="on" href="v1.html">Вариант 1</a><a href="v2.html">2</a><a href="v3.html">3</a></nav>
+<script>(function(){function f(o){var d=new Date(Date.now()+o*36e5);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0')}
+function cd(){var n=new Date(),t=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),14,0,0));var add=(6-n.getUTCDay()+7)%7;t.setUTCDate(t.getUTCDate()+add);if(t<n)t.setUTCDate(t.getUTCDate()+7);var s=(t-n)/1e3,d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return(d?d+' д ':'')+h+' ч '+m+' м'}
+function tick(){document.querySelectorAll('[data-clock=srv]').forEach(function(e){e.textContent=f(-2)});document.querySelectorAll('[data-clock=msk]').forEach(function(e){e.textContent=f(3)});var c=document.getElementById('cd');if(c)c.textContent='через '+cd()}tick();setInterval(tick,20000)})();</script>
+</body></html>
