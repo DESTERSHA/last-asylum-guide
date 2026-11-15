@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Вариант 3 — Лендинг из полос</title>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@500;600;700;800;900&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--ink:#1c1a17;--mut:#615b52;--line:#e7e1d6;--paper:#fbf8f2;--sand:#f3ece0;--gold:#b7791f;--plum:#5b2a5e;--red:#c0392b;--green:#2f6b3a}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:500 17px/1.6 Commissioner,system-ui,sans-serif}
+img{display:block;max-width:100%}
+.pad{padding-left:clamp(16px,4vw,64px);padding-right:clamp(16px,4vw,64px)}
+/* обложка */
+.cover{position:relative;min-height:560px;color:#fff;display:flex;flex-direction:column}
+.cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,14,10,.94) 0%,rgba(18,14,10,.82) 38%,rgba(18,14,10,.35) 70%,rgba(18,14,10,.1) 100%)}
+.cover>*{position:relative;z-index:1}
+.nav{display:flex;align-items:center;gap:22px;padding-top:18px;padding-bottom:18px}
+.nav .brand{font:900 18px Commissioner;letter-spacing:.5px;white-space:nowrap}.nav .brand span{color:#f2c46b}
+.links{display:flex;gap:6px;flex:1;overflow-x:auto;scrollbar-width:none}
+.links a{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:8px 12px;border-radius:999px;white-space:nowrap;background:rgba(255,255,255,.08)}
+.links a img{width:26px;height:26px;border-radius:50%;object-fit:cover}.links a.on{background:#fff;color:var(--ink)}
+.time{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:6px 12px;font-weight:700;font-size:14px;white-space:nowrap}.time b{color:#f2c46b}
+.cover .in{margin-top:auto;padding-bottom:56px;max-width:900px}
+.cover h1{font:700 clamp(38px,5.5vw,76px)/1.02 "PT Serif";margin:0 0 16px}
+.cover p{font-size:20px;max-width:640px;color:#efe6d6;margin:0 0 26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}.cta a{padding:14px 22px;border-radius:14px;font-weight:800;text-decoration:none}.cta .a1{background:#f2c46b;color:#1c1a17}.cta .a2{border:1px solid rgba(255,255,255,.5);color:#fff}
+/* полосы */
+.band{padding-top:64px;padding-bottom:64px}.band.sand{background:var(--sand)}.band.paper{background:var(--paper)}.band.dark{background:#1c1a17;color:#fff}
+.eyebrow{font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+h2{font:700 clamp(28px,3.2vw,46px)/1.1 "PT Serif";margin:8px 0 28px;max-width:900px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border-radius:22px;padding:26px;box-shadow:0 1px 0 var(--line),0 20px 40px -28px rgba(60,40,10,.35)}
+.card img{width:64px;height:64px;border-radius:50%;margin-bottom:14px}
+.card h3{font:800 22px Commissioner;margin:0 0 8px}.card p{margin:0;color:var(--mut)}
+.card .big{font:800 46px Commissioner;color:var(--red);line-height:1}
+/* линия времени */
+.line{display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;margin-top:10px}
+.line::before{content:"";position:absolute;left:0;right:0;top:34px;height:4px;background:linear-gradient(90deg,#d8c9ad,#c0392b 70%,#d8c9ad)}
+.node{position:relative;padding:0 10px}
+.dot{width:72px;height:72px;border-radius:50%;background:#fff;border:4px solid #d8c9ad;display:grid;place-items:center;font:800 16px Commissioner;margin-bottom:14px}
+.node.hot .dot{background:var(--red);border-color:var(--red);color:#fff}
+.node .msk{font:800 22px Commissioner}.node .srv{font-size:13px;color:var(--mut);font-weight:700}
+.node p{margin:6px 0 0;font-size:15px;color:var(--mut)}
+/* шаги лентой */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,1fr);gap:22px;overflow-x:auto;padding-bottom:10px}
+.sc{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 1px 0 var(--line),0 20px 40px -28px rgba(60,40,10,.35)}
+.sc .pic{position:relative;height:340px;overflow:hidden;background:#2a241c}.sc .frame{position:relative}.sc .frame img{width:100%}
+.ring{position:absolute;width:22%;aspect-ratio:1;border:4px solid var(--red);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(192,57,43,.25)}
+.sc .tx{padding:20px}.sc .n{font:900 14px Commissioner;color:var(--gold)}.sc h3{font:800 20px Commissioner;margin:4px 0 8px}.sc p{margin:0;color:var(--mut);font-size:15.5px}
+.word{margin-top:12px;background:var(--sand);border-radius:12px;padding:10px 12px;font-size:14.5px}
+/* очки */
+.pts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pt{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:22px}
+.pt img{width:56px;height:56px;border-radius:50%;margin-bottom:12px}.pt b{font:800 34px Commissioner;color:#f2c46b;display:block}.pt span{color:#d6cfc3;font-size:15px}
+.errs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.err{background:#fff;border:1px solid #f0d6d2;border-radius:18px;padding:20px}.err b{display:block;font:800 18px Commissioner;color:var(--red);margin-bottom:6px}.err p{margin:0;color:var(--mut);font-size:15.5px}
+.vtag{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--ink);border-radius:14px;padding:6px;display:flex;gap:4px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.vtag a{color:#fff;text-decoration:none;font-weight:800;font-size:14px;padding:8px 12px;border-radius:10px}.vtag a.on{background:var(--gold)}
+@media(max-width:1100px){.three,.errs{grid-template-columns:1fr 1fr}.pts{grid-template-columns:1fr 1fr}.line{grid-template-columns:repeat(3,1fr);row-gap:24px}.line::before{display:none}}
+@media(max-width:700px){.three,.errs,.pts{grid-template-columns:1fr}.line{grid-template-columns:1fr 1fr}.nav{flex-wrap:wrap}.links{order:3;flex-basis:100%}.cover{min-height:620px}}
+</style></head><body>
+<section class="cover"><img src="../assets/icons/art-rats.jpg" alt="Святилище в окружении крыс">
+  <div class="nav pad"><div class="brand">LAST ASYLUM <span>· 397</span></div>
+    <div class="links"><a href="#"><img src="../assets/icons/home.png" alt="">Главная</a><a class="on" href="#"><img src="../assets/icons/kvk.png" alt="">КвК</a><a href="#"><img src="../assets/icons/duel.png" alt="">Дуэль</a><a href="#"><img src="../assets/icons/arthur.webp" alt="">Герои</a><a href="#"><img src="../assets/icons/marlena.webp" alt="">Отряды</a><a href="#"><img src="../assets/icons/bella.webp" alt="">Снаряжение</a><a href="#"><img src="../assets/icons/caravan.png" alt="">Правила</a><a href="#"><img src="../assets/icons/falcon.png" alt="">Термины</a><a href="#"><img src="../assets/icons/bonus.png" alt="">Фишки</a></div>
+    <div class="time">Сервер <b data-clock="srv">--:--</b> · МСК <b data-clock="msk">--:--</b></div></div>
+  <div class="in pad"><h1>Война королевств. Объясняем с нуля</h1><p>Наш сервер 397 против чужого. Неделю копим очки, в субботу в 17:00 по Москве бьёмся за трон. Ниже по полосам: что это, когда, что нажимать и что делать тебе.</p>
+    <div class="cta"><a class="a1" href="#steps">Что нажимать</a><a class="a2" href="#time">Суббота по часам</a></div></div>
+</section>
+
+<section class="band paper pad"><div class="eyebrow">Что это</div><h2>Три вещи, которые надо знать про КвК</h2>
+  <div class="three">
+    <div class="card"><img src="../assets/icons/duel.png" alt=""><h3>Неделю копим очки</h3><p>С воскресенья по пятницу обычные дела дают очки нашему серверу: удары по Королю демонов, победы в Дуэли альянсов, грабёж караванов врага.</p></div>
+    <div class="card"><img src="../assets/icons/kvk.png" alt=""><h3>В пятницу — подсчёт</h3><p>У кого больше очков, тот в субботу нападает: переезжает на сервер врага и штурмует их Королевский город.</p></div>
+    <div class="card"><div class="big">17:00</div><h3 style="margin-top:12px">В субботу — бой</h3><p>По Москве, это 12:00 по игре. До 4 часов. Все альянсы нашего сервера в одной команде.</p></div>
+  </div>
+</section>
+
+<section class="band sand pad" id="time"><div class="eyebrow">Суббота</div><h2>Что происходит по часам</h2>
+  <div class="line">
+    <div class="node"><div class="dot">05:00</div><div class="msk">05:00 МСК</div><div class="srv">00:00 по игре</div><p>Подсчёт закончен. Ясно, кто нападает.</p></div>
+    <div class="node"><div class="dot">05:05</div><div class="msk">05:05 МСК</div><div class="srv">00:05 по игре</div><p>Нападающие переезжают к врагу. Бесплатно.</p></div>
+    <div class="node"><div class="dot">10:00</div><div class="msk">10:00 МСК</div><div class="srv">05:00 по игре</div><p>Охота: очки за убитых врагов.</p></div>
+    <div class="node"><div class="dot">16:30</div><div class="msk">16:30 МСК</div><div class="srv">11:30 по игре</div><p>Все онлайн, войска вылечены.</p></div>
+    <div class="node hot"><div class="dot">17:00</div><div class="msk">17:00 МСК</div><div class="srv">12:00 по игре</div><p><b>Бой.</b> Сначала башни, потом город.</p></div>
+    <div class="node"><div class="dot">21:00</div><div class="msk">21:00 МСК</div><div class="srv">16:00 по игре</div><p>Конец боя. Итоги почтой.</p></div>
+  </div>
+</section>
+
+<section class="band pad" id="steps"><div class="eyebrow">По шагам</div><h2>Что нажимать в игре</h2>
+  <div class="rail">
+    <div class="sc"><div class="pic"><div class="frame" style="transform:translateY(0%)"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:91.7%;top:26.8%"></span></div></div><div class="tx"><div class="n">ШАГ 1</div><h3>Открой «Война Королевств»</h3><p>Справа на главном экране золотой щит с короной. В окне вкладка «Недельный обзор» покажет счёт.</p></div></div>
+    <div class="sc"><div class="pic"><div class="frame" style="transform:translateY(-64%)"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:7.3%;top:89.5%"></span></div></div><div class="tx"><div class="n">ШАГ 2</div><h3>Прыгни к точке сбора</h3><p>Лупа слева внизу — «Поиск». Введи координаты, которые лидер написал в чате, нажми на пустую клетку → «Переместиться».</p></div></div>
+    <div class="sc"><div class="pic"><div class="frame" style="transform:translateY(0%)"><img src="../assets/icons/shot-map.webp" alt=""><span class="ring" style="left:47%;top:17%"></span></div></div><div class="tx"><div class="n">ШАГ 3</div><h3>Иди в ралли на башню</h3><p>Когда лидер начнёт удар по башне — нажми «Присоединиться» и отправь отряд.</p><div class="word"><b>Ралли</b> — общий удар: один начинает, все присоединяются, бьют вместе, войска гибнут меньше.</div></div></div>
+  </div>
+</section>
+
+<section class="band dark pad"><div class="eyebrow">Очки</div><h2 style="color:#fff">Что приносит очки нашему серверу</h2>
+  <div class="pts">
+    <div class="pt"><img src="../assets/icons/kvk.png" alt=""><b>250 000</b><span>наш урон по Королю демонов больше, чем у врага — бей все 10 раз каждый день</span></div>
+    <div class="pt"><img src="../assets/icons/bonus.png" alt=""><b>50 000</b><span>победа в Гонке за эликсиром</span></div>
+    <div class="pt"><img src="../assets/icons/duel.png" alt=""><b>30 000</b><span>победа альянса в Дуэли за день</span></div>
+    <div class="pt"><img src="../assets/icons/caravan.png" alt=""><b>120</b><span>каждый ограбленный караван сервера-врага</span></div>
+  </div>
+</section>
+
+<section class="band paper pad"><div class="eyebrow">Частые ошибки</div><h2>Из-за этого был хаос</h2>
+  <div class="errs">
+    <div class="err"><b>Полез один</b><p>Одиночный удар по сильному = почти все войска в лазарет. Только вместе, по команде.</p></div>
+    <div class="err"><b>Оставил город в зоне боя</b><p>Возле Королевского города щиты не работают. Город сожгут и перекинут.</p></div>
+    <div class="err"><b>Не лечил раненых</b><p>Лазарет полный — новые раненые сразу погибают навсегда.</p></div>
+  </div>
+</section>
+<nav class="vtag"><a href="v1.html">1</a><a href="v2.html">2</a><a class="on" href="v3.html">Вариант 3</a></nav>
+<script>(function(){function f(o){var d=new Date(Date.now()+o*36e5);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0')}function t(){document.querySelectorAll('[data-clock=srv]').forEach(function(e){e.textContent=f(-2)});document.querySelectorAll('[data-clock=msk]').forEach(function(e){e.textContent=f(3)})}t();setInterval(t,20000)})();</script>
+</body></html>

@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Вариант 3 — Лендинг из полос</title>
-<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@500;600;700;800;900&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
+<title>Вариант 3 (с верхом из варианта 1)</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=Commissioner:wght@500;600;700;800;900&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
 <style>
+
 :root{--ink:#1c1a17;--mut:#615b52;--line:#e7e1d6;--paper:#fbf8f2;--sand:#f3ece0;--gold:#b7791f;--plum:#5b2a5e;--red:#c0392b;--green:#2f6b3a}
 *{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:500 17px/1.6 Commissioner,system-ui,sans-serif}
 img{display:block;max-width:100%}
-.pad{padding-left:clamp(16px,4vw,64px);padding-right:clamp(16px,4vw,64px)}
+.pad{padding-left:clamp(16px,3vw,48px);padding-right:clamp(16px,3vw,48px)}
 /* обложка */
 .cover{position:relative;min-height:560px;color:#fff;display:flex;flex-direction:column}
 .cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -56,23 +57,154 @@ h2{font:700 clamp(28px,3.2vw,46px)/1.1 "PT Serif";margin:8px 0 28px;max-width:90
 .vtag a{color:#fff;text-decoration:none;font-weight:800;font-size:14px;padding:8px 12px;border-radius:10px}.vtag a.on{background:var(--gold)}
 @media(max-width:1100px){.three,.errs{grid-template-columns:1fr 1fr}.pts{grid-template-columns:1fr 1fr}.line{grid-template-columns:repeat(3,1fr);row-gap:24px}.line::before{display:none}}
 @media(max-width:700px){.three,.errs,.pts{grid-template-columns:1fr}.line{grid-template-columns:1fr 1fr}.nav{flex-wrap:wrap}.links{order:3;flex-basis:100%}.cover{min-height:620px}}
+
+/* ===== блоки из варианта 1 ===== */
+.v1{--ink:#15171c;--mut:#5d636f;--faint:#8b919c;--line:#e6e8ec;--bg:#fff;--soft:#f5f6f8;--gold:#c98a1b;--gold-bg:#fdf4e3;--teal:#17695f;--teal-bg:#e6f3f1;--red:#cf3e3e;--red-bg:#fdecec;--blue:#3460c9}
+.v1 *{box-sizing:border-box}
+.v1{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Onest,system-ui,sans-serif}
+.v1 img{max-width:100%;display:block}
+.v1 a{color:inherit}
+.v1 .wrap{width:100%;padding:0 clamp(16px,3vw,48px)}
+.v1 /* шапка */
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.v1 .hdr{display:flex;align-items:center;gap:24px;height:76px}
+.v1 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;white-space:nowrap}
+.v1 .logo img{width:44px;height:44px;border-radius:12px;object-fit:cover;object-position:30% 20%}
+.v1 .logo b{display:block;font:700 16px Unbounded}
+.v1 .logo small{color:var(--faint);font-weight:600;font-size:12px}
+.v1 nav.main{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.v1 nav.main a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px;color:var(--mut);white-space:nowrap}
+.v1 nav.main a img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+.v1 nav.main a:hover{background:var(--soft);color:var(--ink)}
+.v1 nav.main a.on{background:var(--gold-bg);color:var(--ink)}
+.v1 .clock{display:flex;border:1px solid var(--line);border-radius:14px;overflow:hidden;white-space:nowrap}
+.v1 .clock div{padding:6px 14px;text-align:center;line-height:1.15}
+.v1 .clock div+div{border-left:1px solid var(--line)}
+.v1 .clock b{display:block;font:700 18px Unbounded}
+.v1 .clock span{font-size:11px;font-weight:600;color:var(--faint)}
+.v1 /* обложка */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:40px 0 28px}
+.v1 .kick{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--gold)}
+.v1 .kick img{width:26px;height:26px;border-radius:50%}
+.v1 h1{font:800 clamp(34px,4.4vw,64px)/1.05 Unbounded;margin:12px 0 16px;letter-spacing:-.5px}
+.v1 .lead{font-size:20px;color:var(--mut);max-width:760px;margin:0 0 22px}
+.v1 .btns{display:flex;gap:10px;flex-wrap:wrap}
+.v1 .btn{padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid var(--line);background:#fff}
+.v1 .btn.pri{background:var(--ink);color:#fff;border-color:var(--ink)}
+.v1 .art{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/10;box-shadow:0 30px 60px -30px rgba(20,25,40,.45)}
+.v1 .art img{width:100%;height:100%;object-fit:cover}
+.v1 .art .count{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.94);border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.v1 .count small{display:block;color:var(--faint);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.v1 .count b{font:700 20px Unbounded}
+.v1 .count .t{font:800 26px Unbounded;color:var(--red)}
+.v1 /* факты */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 40px}
+.v1 .fact{border:1px solid var(--line);border-radius:20px;padding:20px;background:#fff;display:flex;flex-direction:column;gap:6px}
+.v1 .fact .ic{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.v1 .fact h3{margin:6px 0 0;font:700 19px Unbounded}
+.v1 .fact p{margin:0;color:var(--mut);font-size:15.5px}
+.v1 .fact.hot{background:var(--red-bg);border-color:#f3c9c9}
+.v1 .fact.hot .big{font:800 34px Unbounded;color:var(--red)}
+.v1 section.band{background:var(--soft);padding:40px 0;margin:0 0 40px}
+.v1 h2{font:700 clamp(24px,2.4vw,34px)/1.2 Unbounded;margin:0 0 6px}
+.v1 .sub{color:var(--mut);margin:0 0 22px}
+.v1 /* неделя */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.v1 .day{background:#fff;border-radius:16px;padding:14px;border:1px solid var(--line);min-height:150px}
+.v1 .day b{font:700 15px Unbounded}
+.v1 .day .tag{display:inline-block;margin:8px 0 6px;font-size:12px;font-weight:800;padding:3px 8px;border-radius:8px;background:var(--teal-bg);color:var(--teal)}
+.v1 .day p{margin:0;font-size:14px;color:var(--mut)}
+.v1 .day.fri .tag{background:var(--gold-bg);color:var(--gold)}
+.v1 .day.sat{background:var(--ink);color:#fff;border-color:var(--ink)}
+.v1 .day.sat p{color:#c9ccd3}
+.v1 .day.sat .tag{background:var(--red);color:#fff}
+.v1 /* карта */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.v1 .map{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
+.v1 .towers{width:100%;border-collapse:collapse;font-size:16px}
+.v1 .towers td,.v1 .towers th{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left}
+.v1 .towers th{font-size:13px;color:var(--faint)}
+.v1 .towers tr:last-child td{border:0}
+.v1 .note{background:var(--gold-bg);border-radius:14px;padding:12px 14px;margin-top:14px;font-size:15.5px}
+.v1 /* шаги */
+.step{display:grid;grid-template-columns:minmax(260px,420px) minmax(0,1fr);gap:32px;padding:28px 0;border-top:1px solid var(--line)}
+.v1 .shot{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);max-width:420px}
+.v1 .ring{position:absolute;width:20%;aspect-ratio:1;border:4px solid var(--red);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(207,62,62,.18)}
+.v1 .num{font:800 15px Unbounded;color:var(--gold)}
+.v1 .step h3{font:700 26px Unbounded;margin:6px 0 14px}
+.v1 .do{display:flex;gap:12px;align-items:flex-start;background:var(--soft);border-radius:16px;padding:14px 16px;margin:0 0 12px}
+.v1 .do img{width:44px;height:44px;border-radius:50%;flex:0 0 44px}
+.v1 .do b{display:block}
+.v1 .word{border-left:0;background:var(--teal-bg);border-radius:16px;padding:14px 16px;font-size:15.5px}
+.v1 .word b{color:var(--teal)}
+.v1 /* очки */
+.pts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.v1 .pt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;gap:12px;align-items:center}
+.v1 .pt img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:0 0 48px}
+.v1 .pt b{font:800 22px Unbounded;display:block}
+.v1 .pt span{font-size:14px;color:var(--mut);line-height:1.35;display:block}
+@media(max-width:1100px){.v1 .facts,.v1 .pts{grid-template-columns:repeat(2,1fr)}
+.v1 .week{grid-template-columns:repeat(4,1fr)}
+.v1 .hero,.v1 .two{grid-template-columns:1fr}}
+@media(max-width:700px){.v1 .hdr{height:auto;flex-wrap:wrap;padding:10px 0;gap:10px}
+.v1 nav.main{order:3;flex-basis:100%}
+.v1 .facts,.v1 .pts{grid-template-columns:1fr}
+.v1 .week{grid-template-columns:repeat(2,1fr)}
+.v1 .step{grid-template-columns:1fr}}
+.v1-head{position:sticky;top:0;z-index:20}
+.v1 section.band{margin-bottom:0}
 </style></head><body>
-<section class="cover"><img src="../assets/icons/art-rats.jpg" alt="Святилище в окружении крыс">
-  <div class="nav pad"><div class="brand">LAST ASYLUM <span>· 397</span></div>
-    <div class="links"><a href="#"><img src="../assets/icons/home.png" alt="">Главная</a><a class="on" href="#"><img src="../assets/icons/kvk.png" alt="">КвК</a><a href="#"><img src="../assets/icons/duel.png" alt="">Дуэль</a><a href="#"><img src="../assets/icons/arthur.webp" alt="">Герои</a><a href="#"><img src="../assets/icons/marlena.webp" alt="">Отряды</a><a href="#"><img src="../assets/icons/bella.webp" alt="">Снаряжение</a><a href="#"><img src="../assets/icons/caravan.png" alt="">Правила</a><a href="#"><img src="../assets/icons/falcon.png" alt="">Термины</a><a href="#"><img src="../assets/icons/bonus.png" alt="">Фишки</a></div>
-    <div class="time">Сервер <b data-clock="srv">--:--</b> · МСК <b data-clock="msk">--:--</b></div></div>
-  <div class="in pad"><h1>Война королевств. Объясняем с нуля</h1><p>Наш сервер 397 против чужого. Неделю копим очки, в субботу в 17:00 по Москве бьёмся за трон. Ниже по полосам: что это, когда, что нажимать и что делать тебе.</p>
-    <div class="cta"><a class="a1" href="#steps">Что нажимать</a><a class="a2" href="#time">Суббота по часам</a></div></div>
-</section>
-
-<section class="band paper pad"><div class="eyebrow">Что это</div><h2>Три вещи, которые надо знать про КвК</h2>
-  <div class="three">
-    <div class="card"><img src="../assets/icons/duel.png" alt=""><h3>Неделю копим очки</h3><p>С воскресенья по пятницу обычные дела дают очки нашему серверу: удары по Королю демонов, победы в Дуэли альянсов, грабёж караванов врага.</p></div>
-    <div class="card"><img src="../assets/icons/kvk.png" alt=""><h3>В пятницу — подсчёт</h3><p>У кого больше очков, тот в субботу нападает: переезжает на сервер врага и штурмует их Королевский город.</p></div>
-    <div class="card"><div class="big">17:00</div><h3 style="margin-top:12px">В субботу — бой</h3><p>По Москве, это 12:00 по игре. До 4 часов. Все альянсы нашего сервера в одной команде.</p></div>
+<div class="v1 v1-head"><header><div class="wrap hdr">
+  <a class="logo" href="#"><img src="../assets/icons/art-doctor.jpg" alt=""><span><b>Last Asylum: Plague</b><small>гайд альянса · сервер 397</small></span></a>
+  <nav class="main">
+    <a href="#"><img src="../assets/icons/home.png" alt="">Главная</a>
+    <a class="on" href="#"><img src="../assets/icons/kvk.png" alt="">КвК</a>
+    <a href="#"><img src="../assets/icons/duel.png" alt="">Дуэль</a>
+    <a href="#"><img src="../assets/icons/arthur.webp" alt="">Герои</a>
+    <a href="#"><img src="../assets/icons/marlena.webp" alt="">Отряды</a>
+    <a href="#"><img src="../assets/icons/bella.webp" alt="">Снаряжение</a>
+    <a href="#"><img src="../assets/icons/caravan.png" alt="">Правила</a>
+    <a href="#"><img src="../assets/icons/search.png" alt="">Термины</a>
+    <a href="#"><img src="../assets/icons/bonus.png" alt="">Фишки</a>
+  </nav>
+  <div class="clock"><div><b data-clock="srv">--:--</b><span>сервер</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
+</div></header></div>
+<div class="v1">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="kick"><img src="../assets/icons/kvk.png" alt="">Война королевств · КвК</div>
+      <h1>КвК: объясняем с нуля, по шагам</h1>
+      <p class="lead">Раз в неделю наш сервер №397 воюет с другим сервером. Всю неделю копим очки, в субботу бьёмся за главный город. Здесь всё: что это, когда, куда нажать и что делать именно тебе.</p>
+      <div class="btns"><a class="btn pri" href="#steps">Что нажимать — по шагам</a><a class="btn" href="#week">Что делать в какой день</a><a class="btn" href="#time">Суббота по часам</a></div>
+    </div>
+    <div class="art"><img src="../assets/icons/art-doctor.jpg" alt="Арт игры">
+      <div class="count"><div><small>Ближайший бой за трон</small><b>Суббота · 17:00 МСК</b><small>это 12:00 по серверу</small></div><div class="t" id="cd">—</div></div>
+    </div>
   </div>
-</section>
 
+  <div class="facts">
+    <div class="fact"><img class="ic" src="../assets/icons/duel.png" alt=""><h3>Вс–Пт копим очки</h3><p>Очки серверу дают обычные дела: 10 ударов по Королю демонов, победы в Дуэли, грабёж караванов врага.</p></div>
+    <div class="fact"><img class="ic" src="../assets/icons/kvk.png" alt=""><h3>Пятница — подсчёт</h3><p>У кого больше очков, тот в субботу нападает. У кого меньше — защищается у себя дома.</p></div>
+    <div class="fact hot"><div class="big">17:00</div><h3>Суббота — бой</h3><p>По Москве (12:00 по серверу). Бой идёт до 4 часов, до 21:00 МСК.</p></div>
+    <div class="fact"><img class="ic" src="../assets/icons/alliance.png" alt=""><h3>Все наши — заодно</h3><p>В КвК все альянсы сервера 397 в одной команде. Бить своих игра не даст.</p></div>
+  </div>
+</div>
+
+
+<section class="band" id="week"><div class="wrap">
+  <h2>Что происходит в каждый день недели</h2><p class="sub">Время в игре = Москва минус 5 часов. Новый день начинается в 05:00 по Москве.</p>
+  <div class="week">
+    <div class="day"><b>Пн</b><br><span class="tag">копим</span><p>Король демонов: бей Воинами. Дуэль: Ворон.</p></div>
+    <div class="day"><b>Вт</b><br><span class="tag">копим</span><p>Король демонов: Колдунами. Дуэль: стройка, золотые караваны.</p></div>
+    <div class="day"><b>Ср</b><br><span class="tag">копим</span><p>Король демонов: Рейнджерами. Дуэль: исследования.</p></div>
+    <div class="day"><b>Чт</b><br><span class="tag">копим</span><p>Король демонов: Воинами. Дуэль: герои.</p></div>
+    <div class="day fri"><b>Пт</b><br><span class="tag">подсчёт</span><p>Ночью решается, кто нападает. Вылечи всех, отряды домой.</p></div>
+    <div class="day sat"><b>Сб</b><br><span class="tag">бой 17:00</span><p>Бой за Королевский город, 17:00–21:00 по Москве.</p></div>
+    <div class="day"><b>Вс</b><br><span class="tag">новая неделя</span><p>Короля демонов нет. Снова копим очки.</p></div>
+  </div>
+</div></section>
+</div>
 <section class="band sand pad" id="time"><div class="eyebrow">Суббота</div><h2>Что происходит по часам</h2>
   <div class="line">
     <div class="node"><div class="dot">05:00</div><div class="msk">05:00 МСК</div><div class="srv">00:00 по игре</div><p>Подсчёт закончен. Ясно, кто нападает.</p></div>
@@ -108,6 +240,9 @@ h2{font:700 clamp(28px,3.2vw,46px)/1.1 "PT Serif";margin:8px 0 28px;max-width:90
     <div class="err"><b>Не лечил раненых</b><p>Лазарет полный — новые раненые сразу погибают навсегда.</p></div>
   </div>
 </section>
+
 <nav class="vtag"><a href="v1.html">1</a><a href="v2.html">2</a><a class="on" href="v3.html">Вариант 3</a></nav>
-<script>(function(){function f(o){var d=new Date(Date.now()+o*36e5);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0')}function t(){document.querySelectorAll('[data-clock=srv]').forEach(function(e){e.textContent=f(-2)});document.querySelectorAll('[data-clock=msk]').forEach(function(e){e.textContent=f(3)})}t();setInterval(t,20000)})();</script>
+<script>(function(){function f(o){var d=new Date(Date.now()+o*36e5);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0')}
+function cd(){var n=new Date(),t=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),14,0,0));var add=(6-n.getUTCDay()+7)%7;t.setUTCDate(t.getUTCDate()+add);if(t<n)t.setUTCDate(t.getUTCDate()+7);var s=(t-n)/1e3,d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return(d?d+' д ':'')+h+' ч '+m+' м'}
+function tick(){document.querySelectorAll('[data-clock=srv]').forEach(function(e){e.textContent=f(-2)});document.querySelectorAll('[data-clock=msk]').forEach(function(e){e.textContent=f(3)});var c=document.getElementById('cd');if(c)c.textContent='через '+cd()}tick();setInterval(tick,20000)})();</script>
 </body></html>
