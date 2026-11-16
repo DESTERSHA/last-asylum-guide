@@ -355,3 +355,11 @@ h3.fac{display:flex;align-items:center;gap:10px}h3.fac img{width:40px;height:40p
 .steps:has(>.step>.shot)>.step:last-child:nth-child(odd){grid-column:1/-1}
 /* пояснения — по высоте своего текста (не растягивать пустую плашку под соседа) */
 .notes{align-items:start}
+/* карточки зданий Гонки: окно игры сверху, текст и «где на карте» под ним */
+.blds{align-items:stretch}
+.card.bld>.shot{margin:0 0 10px;border-radius:10px}
+.card.bld .faq-pic{margin:10px 0 0}.card.bld .faq-pic img{border-radius:10px;border:1px solid var(--line)}
+.card.bld .faq-pic figcaption{font-size:12.5px;color:var(--faint);margin-top:4px}
+.shots.faqs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.shots.faqs figure img{cursor:zoom-in}
+@media(max-width:900px){.shots.faqs{grid-template-columns:repeat(2,minmax(0,1fr))}}

@@ -54,7 +54,7 @@
   <div class="eyebrow">Список</div>
   <h2>Все события на одной странице</h2>
   <div class="grid4">
-    <a class="card link" href="#elixir"><img class="cover" src="assets/wiki/ru_Замок_эликсира.png" alt=""><h3>Гонка за эликсиром</h3><span class="when">каждую неделю, бой в пятницу, 30 минут</span><p>Альянс против альянса, 20 на 20. Захват зданий на отдельной карте.</p></a>
+    <a class="card link" href="#elixir"><img class="ic" src="assets/game/ev-elixir.png" alt=""><h3>Гонка за эликсиром</h3><span class="when">каждую неделю, бой в пятницу, 30 минут</span><p>Альянс против альянса, 20 на 20. Захват зданий на отдельной карте.</p></a>
     <a class="card link" href="#thief"><img class="ic" src="assets/game/boss-thief.png" alt=""><h3>Поиск вора</h3><span class="when">раз в 2 недели, 3 дня (ср–пт)</span><p>Вместо скверны ловишь золотых воров и бьёшь их главаря штурмом.</p></a>
     <a class="card link" href="#cheese"><img class="ic" src="assets/game/ev-cheese.png" alt=""><h3>Сырная ловушка</h3><span class="when">раз в 2 дня, 30 минут</span><p>Альянс ловит Крысу в ловушку и бьёт её штурмами.</p></a>
     <a class="card link" href="#demon"><img class="ic" src="assets/game/boss-demon-warrior.png" alt=""><h3>Король демонов</h3><span class="when">каждый день, кроме Вс</span><p>Мировой босс: 10 ударов в день. Даёт серверу очки КвК.</p></a>
@@ -91,7 +91,7 @@
     <div class="step" style="--shot-h:430px"><div class="shot"><img src="assets/shots/ev-elixir.webp" alt="Окно события «Гонка за эликсиром»" loading="lazy"><span class="ring rect" style="left:16.8%;top:10.7%;width:26.1%;aspect-ratio:2.45"></span><span class="arrow" style="left:16.8%;top:20%;--rot:-90deg"></span></div>
       <div class="body"><div class="num">ШАГ 2</div><h3>Вкладка «Гонка за эликсиром»</h3><p>Первая вкладка. В окне: «Команда А» / «Команда Б», сколько осталось до конца регистрации, ниже — наш альянс против соперника. Справа «Магазин», «Правила», «История», «Участники», слева «Журнал».</p><p>Когда до боя остаётся 5 минут, внизу появляется кнопка <b>«В бой!»</b> — она переносит на карту события. Записывают лидеры кнопками «Регистрация», «Выбор времени», «Выбор участников».</p></div></div>
   </div>
-  <div class="grid2 with-shots">
+  <div class="grid2">
     <div>
       <h3>Как попасть</h3>
       <div class="nsteps">
@@ -101,27 +101,30 @@
       </div>
       <p>Соперника игра подбирает по общей мощи записанных участников (берётся самая большая мощь, какая у них когда-либо была).</p>
     </div>
-    <div class="shots">
-      <figure><img src="assets/wiki/ru_Входные_зоны.png" alt="Входные зоны"><figcaption>Два альянса входят с востока и запада.</figcaption></figure>
-      <figure><img src="assets/wiki/ru_Карта.png" alt="Карта Гонки за эликсиром"><figcaption>Вся карта события.</figcaption></figure>
-    </div>
+    <figure class="side-shot"><div class="shot"><img src="assets/shots/elx-faq-2.webp" alt="Окно «Руководство»: входные зоны" loading="lazy"></div><p class="cap">Окно игры «Руководство»: наши входят с запада (синие), враги — с востока (красные).</p></figure>
   </div>
   <h3>Что происходит по минутам</h3>
   <div class="line" style="--n:4">
     <div class="node"><div class="dot">−5</div><div class="msk">Подготовка</div><div class="srv">за 5 минут до начала</div><p>Заходим в свои зоны. Нас никто не может атаковать.</p></div>
     <div class="node"><div class="dot">0</div><div class="msk">Фаза 1</div><div class="srv">0–10 минута</div><p>Открыты Алхимические мастерские, Врата миграции, Наблюдательный пункт, Лечебные палатки.</p></div>
-    <div class="node hot"><div class="dot">10</div><div class="msk">Фаза 2</div><div class="srv">с 10 минуты</div><p>В центре открываются Замок эликсира, Руины войны, Проклятый алтарь.</p></div>
+    <div class="node hot"><div class="dot">10</div><div class="msk">Фаза 2</div><div class="srv">с 10 минуты</div><p>В центре открываются Замок эликсира, Реликвии войны, Проклятый алтарь.</p></div>
     <div class="node"><div class="dot">13</div><div class="msk">Фаза 3</div><div class="srv">с 13 минуты</div><p>Появляются Лагеря с травами — сбор тоже даёт очки.</p></div>
   </div>
   <h3>Что дают здания</h3>
-  <div class="grid3">
-    <div class="card"><img src="assets/wiki/ru_Алхимическая_мастерская.png" alt="" style="border-radius:12px;margin-bottom:10px"><h3>Алхимическая мастерская</h3><p>Две штуки, у входов каждого альянса. Дают много очков постоянно — <b>берём первыми</b>.</p></div>
-    <div class="card"><img src="assets/wiki/ru_Лечебные_палатки.png" alt="" style="border-radius:12px;margin-bottom:10px"><h3>Лечебная палатка</h3><p>4 штуки. Немного очков, но главное — <b>лечит 15 твоих раненых каждые 10 секунд</b>. Вылеченных забирай слева внизу, нажимая зелёную кнопку.</p></div>
-    <div class="card"><img src="assets/wiki/ru_Стратегический_аванпост.png" alt="" style="border-radius:12px;margin-bottom:10px"><h3>Врата миграции и Наблюдательный пункт</h3><p><b>Врата</b> — переезд по карте в 2 раза чаще. <b>Наблюдательный пункт</b> — +10% очков нашему альянсу.</p></div>
-    <div class="card"><img src="assets/wiki/ru_Замок_эликсира.png" alt="" style="border-radius:12px;margin-bottom:10px"><h3>Замок эликсира</h3><p>В центре, открывается на 10-й минуте. <b>Даёт больше всего очков.</b> К 10-й минуте все сильные должны быть у центра.</p></div>
-    <div class="card"><img src="assets/wiki/ru_Стратегический_аванпост_2.png" alt="" style="border-radius:12px;margin-bottom:10px"><h3>Руины войны и Проклятый алтарь</h3><p><b>Руины</b> — +15% к атаке, защите и здоровью наших героев. <b>Алтарь</b> — −15% всем героям врага. Если враг сильнее, алтарь — наш главный шанс.</p></div>
-    <div class="card"><img src="assets/wiki/ru_Очки_лагеря.png" alt="" style="border-radius:12px;margin-bottom:10px"><h3>Лагеря и аптечки</h3><p>С 13-й минуты отправляй самые слабые отряды в лагеря за травами — это очки. Вокруг захваченных зданий появляются аптечки — подбирать их тоже дают очки.</p></div>
+  <p class="sub">Это окно самой игры: в окне события справа кнопка «Правила» → вкладка <b>«Здание»</b>. «Альянс» — сколько очков в секунду здание даёт альянсу, «Личное» — тебе, пока твой отряд в нём.</p>
+  <div class="grid4 blds">
+    <div class="card bld"><div class="shot plain"><img src="assets/shots/elx-b-castle.webp" alt="Окно игры: здание «Замок эликсира»" loading="lazy"></div><h3>Замок эликсира</h3><p>В центре, открывается на 10-й минуте. <b>Даёт больше всего очков.</b> К 10-й минуте все сильные должны быть у центра.</p></div>
+    <div class="card bld"><div class="shot plain"><img src="assets/shots/elx-b-workshop.webp" alt="Окно игры: здание «Алхимическая мастерская»" loading="lazy"></div><h3>Алхимическая мастерская</h3><p>Две штуки, у входов каждого альянса. Дают много очков постоянно — <b>берём первыми</b>.</p></div>
+    <div class="card bld"><div class="shot plain"><img src="assets/shots/elx-b-healing.webp" alt="Окно игры: здание «Лечебная палатка»" loading="lazy"></div><h3>Лечебная палатка</h3><p>4 штуки. Немного очков, но главное — <b>лечит 15 твоих раненых каждые 10 секунд</b>. Вылеченных забирай слева внизу, нажимая зелёную кнопку.</p></div>
+    <div class="card bld"><div class="shot plain"><img src="assets/shots/elx-b-gate.webp" alt="Окно игры: здание «Врата миграции»" loading="lazy"></div><h3>Врата миграции</h3><p>Открываются в начале битвы. Пока они наши, <b>перезарядка переезда по карте вдвое короче</b>.</p></div>
+    <div class="card bld"><div class="shot plain"><img src="assets/shots/elx-b-observatory.webp" alt="Окно игры: здание «Наблюдательный пункт»" loading="lazy"></div><h3>Наблюдательный пункт</h3><p>Открывается в начале битвы. Захват даёт <b>+10% к очкам альянса</b> от всех занятых нами зданий.</p></div>
+    <div class="card bld"><div class="shot plain"><img src="assets/shots/elx-b-relic.webp" alt="Окно игры: здание «Реликвии войны»" loading="lazy"></div><h3>Реликвии войны</h3><p>Открываются на 10-й минуте. Пока они наши, у <b>наших героев +15%</b> атаки, защиты и здоровья.</p></div>
+    <div class="card bld"><div class="shot plain"><img src="assets/shots/elx-b-altar.webp" alt="Окно игры: здание «Проклятый алтарь»" loading="lazy"></div><h3>Проклятый алтарь</h3><p>Открывается на 10-й минуте. Пока он наш, у <b>вражеских героев −15%</b> атаки, защиты и здоровья. Если враг сильнее — алтарь наш главный шанс.</p></div>
+    <div class="card bld"><img class="ic" src="assets/game/bld-camp.png" alt=""><h3>Лагеря и аптечки</h3><p>С 13-й минуты отправляй самые слабые отряды в лагеря за травами — это очки. Вокруг захваченных зданий появляются аптечки — подбирать их тоже дают очки.</p></div>
   </div>
+  <h3>Карта события — по шагам</h3>
+  <p class="sub">Это окно самой игры «Руководство» (в окне события — кнопка «Правила», значок «!»). Листаешь стрелками — на карте подсвечиваются здания по очереди.</p>
+  <div class="shots faqs"><figure><img src="assets/shots/elx-faq-2.webp" alt="Окно «Руководство»: Входная зона" loading="lazy"><figcaption><b>1. Входная зона.</b> Наши входят с запада (синий ромб), враги — с востока (красный).</figcaption></figure><figure><img src="assets/shots/elx-faq-3.webp" alt="Окно «Руководство»: Замок эликсира" loading="lazy"><figcaption><b>2. Замок эликсира.</b> В центре. Ворота открываются на 10-й минуте.</figcaption></figure><figure><img src="assets/shots/elx-faq-4.webp" alt="Окно «Руководство»: Алхимические мастерские" loading="lazy"><figcaption><b>3. Алхимические мастерские.</b> Две, у входов каждого альянса. Берём первыми.</figcaption></figure><figure><img src="assets/shots/elx-faq-5.webp" alt="Окно «Руководство»: Лечебные палатки" loading="lazy"><figcaption><b>4. Лечебные палатки.</b> 4 палатки, лечат раненых.</figcaption></figure><figure><img src="assets/shots/elx-faq-6.webp" alt="Окно «Руководство»: Стратегические аванпосты I" loading="lazy"><figcaption><b>5. Стратегические аванпосты I.</b> Врата миграции и Наблюдательный пункт — с начала боя.</figcaption></figure><figure><img src="assets/shots/elx-faq-7.webp" alt="Окно «Руководство»: Стратегические аванпосты II" loading="lazy"><figcaption><b>6. Стратегические аванпосты II.</b> Реликвии войны и Проклятый алтарь — с 10-й минуты.</figcaption></figure><figure><img src="assets/shots/elx-faq-8.webp" alt="Окно «Руководство»: Очки захвата" loading="lazy"><figcaption><b>7. Очки захвата.</b> Захваченное здание копит очки, их можно разграбить.</figcaption></figure><figure><img src="assets/shots/elx-faq-9.webp" alt="Окно «Руководство»: Аптечки" loading="lazy"><figcaption><b>8. Аптечки.</b> Появляются вокруг захваченного здания — подбирай.</figcaption></figure><figure><img src="assets/shots/elx-faq-10.webp" alt="Окно «Руководство»: Лагеря с травами" loading="lazy"><figcaption><b>9. Лагеря с травами.</b> С 13-й минуты — сбор трав даёт очки.</figcaption></figure></div>
   <h3>Тактика — как выиграть</h3>
         <div class="nsteps">
         <div class="step noimg"><div class="no">1</div><div><b>Захватывай штурмом, а не в одиночку</b><p>Серое здание — ничьё: просто отправь отряд. Красное — вражеское: сначала выбей их штурмом. Одиночная атака на занятое здание сливает войска.</p></div></div>
