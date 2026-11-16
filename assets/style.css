@@ -107,7 +107,12 @@ ul,ol{padding-left:1.25em}li{margin:.3em 0}
 
 /* ШАГИ В ОДНУ СТРОКУ: карточка = небольшой скриншот сверху, текст под ним.
    Так не нужно мотать страницу: все шаги видно сразу, а скриншот увеличивается по нажатию. */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:18px;margin:18px 0}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:18px;margin:18px 0;align-items:start}
+/* одна высокая карточка со скриншотом слева, короткие шаги без скриншота — сеткой справа */
+.steps-split{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:18px;align-items:start;margin:18px 0}
+.steps-split>.steps{margin:0}
+.steps-split>.steps:first-child{grid-template-columns:1fr}
+@media(max-width:760px){.steps-split{grid-template-columns:1fr}}
 .steps>.step{display:flex;flex-direction:column;grid-template-columns:none;gap:0;padding:0;border:1px solid var(--sandline);border-top:1px solid var(--sandline);border-radius:20px;background:#fff;overflow:hidden;box-shadow:0 18px 36px -30px rgba(60,40,10,.35)}
 .steps>.step>.shot{border:0;border-bottom:1px solid var(--line);border-radius:0;flex:0 0 auto}
 .steps>.step>.body{padding:15px 17px 18px;display:flex;flex-direction:column;gap:2px}
@@ -124,10 +129,15 @@ ul,ol{padding-left:1.25em}li{margin:.3em 0}
 .shot::after{content:"увеличить";position:absolute;right:8px;bottom:8px;background:rgba(21,23,28,.82);color:#fff;font:700 11.5px Onest;letter-spacing:.2px;padding:4px 9px;border-radius:9px;pointer-events:none}
 .shot.plain::after{display:none}
 /* обводка: по умолчанию круг, .rect — прямоугольник (им удобнее обводить кнопки и строки) */
-.shot .ring{position:absolute;width:22%;aspect-ratio:1;border:4px solid var(--red);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(207,62,62,.2);pointer-events:none}
+/* красная обводка с белым контуром и тёмной тенью: видна и на красном, и на синем, и на траве */
+.shot .ring{position:absolute;width:22%;aspect-ratio:1;border:4px solid #ff2d2d;border-radius:50%;transform:translate(-50%,-50%);
+  box-shadow:0 0 0 2.5px #fff,0 0 0 4px rgba(0,0,0,.55),inset 0 0 0 2px #fff,0 0 14px 4px rgba(0,0,0,.45);pointer-events:none}
 .shot .ring.rect{border-radius:10px}
 /* направляющая стрелка: --rot поворачивает её остриём к обводке (0deg — смотрит вправо) */
-.shot .arrow{position:absolute;width:15%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(var(--rot,0deg));pointer-events:none;background:center/contain no-repeat url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 50h56' stroke='%23cf3e3e' stroke-width='15' stroke-linecap='round' fill='none'/%3E%3Cpath d='M58 22l34 28-34 28z' fill='%23cf3e3e'/%3E%3C/svg%3E");filter:drop-shadow(0 2px 5px rgba(0,0,0,.5))}
+.shot .arrow{position:absolute;width:15%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(var(--rot,0deg));pointer-events:none;background:center/contain no-repeat url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M8 40H56V20L94 50L56 80V60H8Z' fill='%23ff2d2d' stroke='%23fff' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E");filter:drop-shadow(0 0 1.5px rgba(0,0,0,.9)) drop-shadow(0 3px 6px rgba(0,0,0,.55))}
+/* таблица + скриншот рядом: скриншот не больше высоты таблицы */
+.tblshot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:24px;align-items:start}
+@media(max-width:900px){.tblshot{grid-template-columns:1fr}.tblshot>div:last-child{max-width:360px}}
 .shot .tag{position:absolute;background:var(--red);color:#fff;font-weight:800;font-size:13px;padding:4px 9px;border-radius:9px;transform:translate(-50%,-140%);white-space:nowrap}
 .cap{font-size:14px;color:var(--faint);margin-top:6px}
 .num{font:800 14px Unbounded;color:var(--gold)}
