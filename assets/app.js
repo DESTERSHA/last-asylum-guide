@@ -123,7 +123,7 @@
       var other = Array.prototype.filter.call(f.parentElement.children, function (c) { return c !== f; })[0];
       if (!other || window.innerWidth <= 800) { f.style.removeProperty("--side-h"); return; }
       var cap = f.querySelector(".cap"), capH = cap ? cap.getBoundingClientRect().height + 6 : 0;
-      var h = Math.min(520, Math.max(240, other.getBoundingClientRect().height - capH));
+      var h = Math.min(560, Math.max(400, other.getBoundingClientRect().height - capH));
       f.style.setProperty("--side-h", h + "px");
     });
   }
