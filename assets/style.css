@@ -287,3 +287,60 @@ details[open]{padding-bottom:14px}
   h1{font-size:30px}
   body{font-size:16.5px}
 }
+
+/* ================= РАСКЛАДКА v2 (её разбор 16.11 вечер) =================
+   1) шаг со скрином = горизонтальная карточка: скрин слева, текст справа;
+   2) все карточки в одном блоке шагов — ОДНОЙ высоты (grid-auto-rows:1fr);
+   3) шаги без скрина — тоже карточки одной высоты, если их много — в две колонки;
+   4) пояснения (заметки) — общим рядом ПОД шагами, а не сбоку;
+   5) скрин рядом с текстом — по высоте текста (скрипт fitSide в app.js). */
+.steps{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:stretch}
+.steps:has(>.step>.shot){grid-template-columns:repeat(auto-fit,minmax(min(100%,560px),1fr))}
+.steps.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.steps>.step{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+.steps>.step:has(>.shot){grid-template-columns:auto minmax(0,1fr)}
+.steps>.step>.shot{align-self:center;justify-self:center;width:fit-content;max-width:100%;margin:0;border:0;border-radius:0;box-shadow:0 0 0 100vmax #23262e}
+.steps>.step>.shot img{width:auto;max-width:300px;max-height:var(--shot-h,250px)}
+.steps>.step>.body{position:relative;background:#fff;min-width:0}
+@media(max-width:700px){.steps>.step:has(>.shot){grid-template-columns:minmax(0,1fr)}.steps>.step>.shot img{max-width:100%}}
+/* нумерованные шаги без скрина: карточки одной высоты, по две в ряд */
+.nsteps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;margin:10px 0 14px;align-items:stretch}
+.nsteps>.step.noimg{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;border-top:1px solid var(--line);margin:0}
+.nsteps>.step.noimg:first-of-type{border-top:1px solid var(--line)}
+@media(max-width:800px){.nsteps{grid-template-columns:1fr}}
+/* пояснения общим рядом под шагами — одной высоты */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px;margin:12px 0;align-items:stretch}
+.notes>.note,.notes>.word{margin:0}
+/* отдельный раздел внутри полосы — своя рамка и заголовок с чертой, чтобы разделы не сливались */
+.block{background:#fff;border:1px solid var(--sandline);border-radius:18px;padding:16px 20px 18px;margin:18px 0;box-shadow:0 14px 30px -28px rgba(60,40,10,.35)}
+.block>h3:first-child{margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--line);font-size:18px}
+.block .nsteps>.step.noimg{background:var(--soft);border-color:transparent}
+/* очки и предметы строкой внутри шага — без белых подложек */
+.pts{display:flex;flex-wrap:wrap;gap:4px 18px;margin:6px 0 0}
+.pts>span{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink);line-height:1.3}
+.pts img{width:24px;height:24px;object-fit:contain;flex:0 0 24px}
+.pts b{color:var(--gold);font-weight:800}
+/* две одинаковые карточки рядом: заголовки и текст начинаются на одной линии */
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch;margin:12px 0}
+.pair>.card{margin:0}
+@media(max-width:800px){.pair{grid-template-columns:1fr}}
+/* текст + скрин сбоку: колонки начинаются вровень, скрин по высоте текста */
+.grid2:has(>.shot){align-items:start}
+.grid2>.shot,.grid3>.shot{justify-self:center;align-self:start}
+.steps.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:800px){.steps.c2,.steps.c4{grid-template-columns:1fr}}
+/* последняя карточка без пары в сетке из двух колонок — на всю строку, без дыры справа */
+.steps.c2>.step:last-child:nth-child(odd),.nsteps>.step:last-child:nth-child(odd),.notes>:last-child:nth-child(odd):not(:first-child){grid-column:1/-1}
+/* текст + скрин рядом: скрин СЛЕВА узкой колонкой, верх вровень с текстом, подпись под скрином */
+.grid2:has(>.side-shot){grid-template-columns:auto minmax(0,1fr);align-items:start}
+.grid2>.side-shot{order:-1;margin:0;width:min-content}
+.side-shot>.shot{width:fit-content}
+.side-shot>.shot img{width:auto;max-width:none;height:var(--side-h,340px)}
+.side-shot>.cap{margin:6px 0 0}
+@media(max-width:800px){.grid2:has(>.side-shot){grid-template-columns:1fr}.grid2>.side-shot{width:auto}.side-shot>.shot img{height:auto;max-width:100%}}
+.grid2:has(>.side-shot) .nsteps{grid-template-columns:1fr}
+.grid2:has(>.side-shot) .items{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+/* картинки события сбоку — слева колонкой, текст справа */
+.grid2.with-shots{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.grid2.with-shots>.shots{order:-1;margin:0;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.grid2.with-shots>.shots figure img{max-height:320px;object-fit:contain;background:#23262e}

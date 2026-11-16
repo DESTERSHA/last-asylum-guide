@@ -105,6 +105,34 @@
     });
   }
 
+  /* скрин рядом с текстом — ровно по высоте текстовой колонки (не выше и не ниже), но не меньше 240 px */
+  function fitSide() {
+    document.querySelectorAll(".grid2>.shot,.grid3>.shot").forEach(function (s) {
+      var other = Array.prototype.filter.call(s.parentElement.children, function (c) { return c !== s; })[0];
+      var img = s.querySelector("img");
+      if (!other || !img) return;
+      img.style.maxHeight = "";
+      var cap = s.querySelector(".cap"), capH = cap ? cap.getBoundingClientRect().height : 0;
+      var h = Math.max(240, other.getBoundingClientRect().height - capH);
+      img.style.maxHeight = h + "px";
+    });
+  }
+  /* скрин слева от текста — по высоте текстовой колонки (от 240 до 520 px) */
+  function fitSideShot() {
+    document.querySelectorAll(".grid2>.side-shot").forEach(function (f) {
+      var other = Array.prototype.filter.call(f.parentElement.children, function (c) { return c !== f; })[0];
+      if (!other || window.innerWidth <= 800) { f.style.removeProperty("--side-h"); return; }
+      var cap = f.querySelector(".cap"), capH = cap ? cap.getBoundingClientRect().height + 6 : 0;
+      var h = Math.min(520, Math.max(240, other.getBoundingClientRect().height - capH));
+      f.style.setProperty("--side-h", h + "px");
+    });
+  }
+  window.addEventListener("load", fitSideShot);
+  window.addEventListener("resize", fitSideShot);
+  window.addEventListener("load", fitSide);
+  window.addEventListener("resize", fitSide);
+  document.addEventListener("click", function () { setTimeout(fitSide, 30); });
+
   /* кнопка «наверх» */
   var top = document.getElementById("toTop");
   if (top) {

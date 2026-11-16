@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=a27cd3278d">
+<link rel="stylesheet" href="assets/style.css?v=23431a37d6">
 </head>
 <body>
 <header class="site-head"><div class="wrap hdr">
@@ -87,15 +87,16 @@
     <div class="card"><img class="ic" src="assets/game/skin.png" alt=""><h3>Облик «Ворон Чёрная крепость»</h3><p>+1% урона по монстрам просто за то, что он есть, и +5%, если он надет.</p></div>
     <div class="card"><img class="ic" src="assets/game/honor.png" alt=""><h3>Магазин за медали славы</h3><p>Покупай только чертежи снаряжения. Сундуки реликвий и универсальные фрагменты там невыгодны.</p></div>
   </div>
-  <div class="grid2">
-    <div>
+  <div class="grid2"><div>
       <h3>Энергия: как не терять</h3>
       <p>Энергия сама восстанавливается по 1 единице раз в 5 минут («каждые 300 сек»). Флаконом её можно поднять <b>выше максимума</b> — на скрине 170 при максимуме 120, так что пить бесплатный флакон можно, даже когда полоска полная.</p>
-      <div class="step noimg"><div class="no">1</div><div><b>Нажми на полоску энергии</b><p>Откроется окно «Восстановить энергию».</p></div></div>
-      <div class="step noimg"><div class="no">2</div><div><b>Верхняя строка — бесплатные 50 энергии</b><p>«Осталось сегодня: 1/2». Следующий бесплатный флакон — через 4 часа после предыдущего.</p></div></div>
-      <div class="step noimg"><div class="no">3</div><div><b>Нажимай, как только доступно</b><p>До конца игрового дня (05:00 МСК) неиспользованные бесплатные флаконы сгорают.</p></div></div>
+      <div class="nsteps">
+        <div class="step noimg"><div class="no">1</div><div><b>Нажми на полоску энергии</b><p>Откроется окно «Восстановить энергию».</p></div></div>
+        <div class="step noimg"><div class="no">2</div><div><b>Верхняя строка — бесплатные 50 энергии</b><p>«Осталось сегодня: 1/2». Следующий бесплатный флакон — через 4 часа после предыдущего.</p></div></div>
+        <div class="step noimg"><div class="no">3</div><div><b>Нажимай, как только доступно</b><p>До конца игрового дня (05:00 МСК) неиспользованные бесплатные флаконы сгорают.</p></div></div>
+      </div>
     </div>
-    <div class="shot"><img src="assets/wiki/ru_Энергия.png" alt="Окно Восстановить энергию: 170/120, бесплатный флакон 50 энергии раз в 4 часа"><span class="ring" style="left:50%;top:40%;width:94%;aspect-ratio:5"></span></div>
+    <figure class="side-shot"><div class="shot"><img src="assets/wiki/ru_Энергия.png" alt="Окно Восстановить энергию: 170/120, бесплатный флакон 50 энергии раз в 4 часа"><span class="ring" style="left:50%;top:40%;width:94%;aspect-ratio:5"></span></div></figure>
   </div>
 </section>
 
@@ -123,16 +124,17 @@
 <section class="band pad" id="buildings">
   <div class="eyebrow">Здания</div>
   <h2>Какие здания качать первыми</h2>
-  <div class="grid2">
-    <div>
-      <div class="step noimg"><div class="no">1</div><div><b>Святилище — всегда первым</b><p>Ни одно здание не может быть выше него, и от него зависит, до какого уровня поднимаются герои. В окне улучшения так и написано: «Максимальный уровень героя +5».</p></div></div>
-      <div class="step noimg"><div class="no">2</div><div><b>Читай окно улучшения Святилища</b><p>Внизу — что нужно для следующего уровня: здания (красным — чего не хватает, кнопка «Пойти» ведёт к нему) и ресурсы (кнопка «Получить»). Это и есть твой список дел.</p></div></div>
-      <div class="step noimg"><div class="no">3</div><div><b>Лаборатория — вместе со Святилищем</b><p>Она нужна для большинства его улучшений. Запускай её в тот же час, что и Святилище, — тогда ни один таймер не ждёт другого.</p></div></div>
-      <div class="step noimg"><div class="no">4</div><div><b>Хижина строителя</b><p>Даёт бесплатное ускорение каждой стройки. Особенно ценна до 15 уровня Святилища — держи её на уровне Святилища.</p></div></div>
-      <div class="step noimg"><div class="no">5</div><div><b>Травяной сад — первым из ресурсных</b><p>Травы — главный дефицит: на них идут стройка, исследования и снаряжение.</p></div></div>
-      <div class="step noimg"><div class="no">6</div><div><b>Плавильня — до 25 уровня пораньше</b><p>Она даёт камни снаряжения.</p></div></div>
+  <div class="grid2"><div>
+      <div class="nsteps">
+        <div class="step noimg"><div class="no">1</div><div><b>Святилище — всегда первым</b><p>Ни одно здание не может быть выше него, и от него зависит, до какого уровня поднимаются герои. В окне улучшения так и написано: «Максимальный уровень героя +5».</p></div></div>
+        <div class="step noimg"><div class="no">2</div><div><b>Читай окно улучшения Святилища</b><p>Внизу — что нужно для следующего уровня: здания (красным — чего не хватает, кнопка «Пойти» ведёт к нему) и ресурсы (кнопка «Получить»). Это и есть твой список дел.</p></div></div>
+        <div class="step noimg"><div class="no">3</div><div><b>Лаборатория — вместе со Святилищем</b><p>Она нужна для большинства его улучшений. Запускай её в тот же час, что и Святилище, — тогда ни один таймер не ждёт другого.</p></div></div>
+        <div class="step noimg"><div class="no">4</div><div><b>Хижина строителя</b><p>Даёт бесплатное ускорение каждой стройки. Особенно ценна до 15 уровня Святилища — держи её на уровне Святилища.</p></div></div>
+        <div class="step noimg"><div class="no">5</div><div><b>Травяной сад — первым из ресурсных</b><p>Травы — главный дефицит: на них идут стройка, исследования и снаряжение.</p></div></div>
+        <div class="step noimg"><div class="no">6</div><div><b>Плавильня — до 25 уровня пораньше</b><p>Она даёт камни снаряжения.</p></div></div>
+      </div>
     </div>
-    <div class="shot"><img src="assets/wiki/ru_Ул_свят.png" alt="Окно улучшения Святилища: эффект улучшения, требования, кнопки Пойти и Получить"><span class="ring" style="left:50%;top:41%;width:92%;aspect-ratio:2.5"></span><span class="ring" style="left:85%;top:61%;width:22%;aspect-ratio:2.2"></span></div>
+    <figure class="side-shot"><div class="shot"><img src="assets/wiki/ru_Ул_свят.png" alt="Окно улучшения Святилища: эффект улучшения, требования, кнопки Пойти и Получить"><span class="ring" style="left:50%;top:41%;width:92%;aspect-ratio:2.5"></span><span class="ring" style="left:85%;top:61%;width:22%;aspect-ratio:2.2"></span></div></figure>
   </div>
   <h3>Что открывается на каком уровне Святилища</h3>
   <div class="tbl"><table><tr><th>Святилище</th><th>Что появляется</th></tr>
@@ -154,17 +156,21 @@
   <div class="grid2">
     <div>
       <h3>Порядок исследований</h3>
-      <div class="step noimg"><div class="no">1</div><div><b>Развитие</b><p>Самая дешёвая ветка, ускоряет стройку и исследования.</p></div></div>
-      <div class="step noimg"><div class="no">2</div><div><b>Дуэль альянсов — как только откроется</b><p>Даёт больше очков Дуэли и открывает сундуки 4–9. <a href="duel.html">Подробно</a>.</p></div></div>
-      <div class="step noimg"><div class="no">3</div><div><b>Экономика</b><p>Больше ресурсов.</p></div></div>
-      <div class="step noimg"><div class="no">4</div><div><b>Боевые ветки: герои, солдаты, отряды</b><p>Сначала то, что усиливает отряд 1.</p></div></div>
-      <div class="step noimg"><div class="no">5</div><div><b>Элитные войска</b><p>Открывает самых сильных солдат (T10).</p></div></div>
+      <div class="nsteps">
+        <div class="step noimg"><div class="no">1</div><div><b>Развитие</b><p>Самая дешёвая ветка, ускоряет стройку и исследования.</p></div></div>
+        <div class="step noimg"><div class="no">2</div><div><b>Дуэль альянсов — как только откроется</b><p>Даёт больше очков Дуэли и открывает сундуки 4–9. <a href="duel.html">Подробно</a>.</p></div></div>
+        <div class="step noimg"><div class="no">3</div><div><b>Экономика</b><p>Больше ресурсов.</p></div></div>
+        <div class="step noimg"><div class="no">4</div><div><b>Боевые ветки: герои, солдаты, отряды</b><p>Сначала то, что усиливает отряд 1.</p></div></div>
+        <div class="step noimg"><div class="no">5</div><div><b>Элитные войска</b><p>Открывает самых сильных солдат (T10).</p></div></div>
+      </div>
     </div>
     <div>
       <h3>Солдаты</h3>
-      <div class="step noimg"><div class="no">1</div><div><b>Один Полигон — на максимум, три — до 10 уровня</b><p>Три дешёвых Полигона быстро учат солдат среднего уровня (T4), а потом их повышаешь до лучших. Так экономится 6–7 часов за круг.</p></div></div>
-      <div class="step noimg"><div class="no">2</div><div><b>Повышай, а не учи с нуля</b><p>Старых слабых солдат переводи в сильных — дешевле и быстрее.</p></div></div>
-      <div class="step noimg"><div class="no">3</div><div><b>Лазарет полон — раненые погибают</b><p>Лечи вовремя, особенно перед КвК.</p></div></div>
+      <div class="nsteps">
+        <div class="step noimg"><div class="no">1</div><div><b>Один Полигон — на максимум, три — до 10 уровня</b><p>Три дешёвых Полигона быстро учат солдат среднего уровня (T4), а потом их повышаешь до лучших. Так экономится 6–7 часов за круг.</p></div></div>
+        <div class="step noimg"><div class="no">2</div><div><b>Повышай, а не учи с нуля</b><p>Старых слабых солдат переводи в сильных — дешевле и быстрее.</p></div></div>
+        <div class="step noimg"><div class="no">3</div><div><b>Лазарет полон — раненые погибают</b><p>Лечи вовремя, особенно перед КвК.</p></div></div>
+      </div>
       <div class="note green"><img src="assets/game/go-train.png" alt=""><div><p>Король демонов, караваны, Гонка за эликсиром и арена — почти без потерь солдат. Это безопасные награды.</p></div></div>
     </div>
   </div>
@@ -178,7 +184,7 @@
     <tr><td><img class="i" src="assets/game/move-command.png" alt="">«Направленное перемещение»</td><td>Только в VIP-магазине — там намного дешевле, чем в обычном.</td></tr>
     <tr><td><img class="i" src="assets/game/speed-build.png" alt="">Ускорения стройки в первые дни</td><td><b>Нет.</b> Первые уровни строятся секунды и минуты.</td></tr>
     <tr><td><img class="i" src="assets/game/energy.png" alt="">Энергия за алмазы</td><td>Только если очень нужно к событию.</td></tr></table></div>
-  <div class="grid2">
+  <div class="notes">
     <div class="note gold"><img src="assets/game/vip.png" alt=""><div><p><b>Если платишь деньги — что выгодно.</b> Месячный пропуск (VIP на 30 дней, бонусы к стройке, сбору, атаке и защите, четвёртый отряд). Ежедневный набор со снаряжением и эссенцией ворона. Первая покупка — в ней Марлена.</p></div></div>
     <div class="note red"><img src="assets/game/diamond.png" alt=""><div><p><b>Что невыгодно.</b> Покупать «Алмазы» в магазине — там худшая цена. И раздел «Наборы» без разбора.</p></div></div>
   </div>
@@ -203,6 +209,6 @@
   <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
 </footer>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
-<script src="assets/app.js?v=a27cd3278d"></script>
+<script src="assets/app.js?v=23431a37d6"></script>
 </body>
 </html>
