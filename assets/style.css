@@ -352,3 +352,6 @@ h3.fac{display:flex;align-items:center;gap:10px}h3.fac img{width:40px;height:40p
 .bis{float:right;display:flex;gap:4px;margin:-4px 0 4px 10px}.bi{width:54px;height:54px;object-fit:contain}
 .grid3>.card:last-child:nth-child(3n+1){grid-column:1/-1}.grid4>.card:last-child:nth-child(4n+1){grid-column:1/-1}
 .grid2:has(>.map){grid-template-columns:minmax(0,420px) minmax(0,1fr);align-items:start}
+.steps:has(>.step>.shot)>.step:last-child:nth-child(odd){grid-column:1/-1}
+/* пояснения — по высоте своего текста (не растягивать пустую плашку под соседа) */
+.notes{align-items:start}
