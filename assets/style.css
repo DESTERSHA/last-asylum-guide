@@ -330,6 +330,8 @@ details[open]{padding-bottom:14px}
 .grid2:has(>.shot){align-items:start}
 .grid2>.shot,.grid3>.shot{justify-self:center;align-self:start}
 .steps.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.steps.c3,.steps.c3:has(>.step>.shot){grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1100px){.steps.c3,.steps.c3:has(>.step>.shot){grid-template-columns:1fr}}
 @media(max-width:800px){.steps.c2,.steps.c4{grid-template-columns:1fr}}
 /* последняя карточка без пары в сетке из двух колонок — на всю строку, без дыры справа */
 .steps.c2>.step:last-child:nth-child(odd),.nsteps>.step:last-child:nth-child(odd),.notes>:last-child:nth-child(odd):not(:first-child){grid-column:1/-1}
@@ -354,7 +356,7 @@ h3.fac{display:flex;align-items:center;gap:10px}h3.fac img{width:40px;height:40p
 .bis{float:right;display:flex;gap:4px;margin:-4px 0 4px 10px}.bi{width:54px;height:54px;object-fit:contain}
 .grid3>.card:last-child:nth-child(3n+1){grid-column:1/-1}.grid4>.card:last-child:nth-child(4n+1){grid-column:1/-1}
 .grid2:has(>.map){grid-template-columns:minmax(0,420px) minmax(0,1fr);align-items:start}
-.steps:has(>.step>.shot)>.step:last-child:nth-child(odd){grid-column:1/-1}
+.steps:not(.c3):has(>.step>.shot)>.step:last-child:nth-child(odd){grid-column:1/-1}
 /* пояснения — по высоте своего текста (не растягивать пустую плашку под соседа) */
 .notes{align-items:start}
 /* карточки зданий Гонки: окно игры сверху, текст и «где на карте» под ним */
