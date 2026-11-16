@@ -143,6 +143,8 @@ ul,ol{padding-left:1.25em}li{margin:.3em 0}
 .grid2>.shot img,.grid3>.shot img{width:auto;max-width:100%;max-height:520px}
 /* подсказка «увеличить» — скриншоты открываются во весь экран по нажатию */
 .shot::after{content:"увеличить";position:absolute;right:8px;bottom:8px;background:rgba(21,23,28,.82);color:#fff;font:700 11.5px Onest;letter-spacing:.2px;padding:4px 9px;border-radius:9px;pointer-events:none}
+/* на компьютере подсказка видна только при наведении — не закрывает угол снимка (там бывают кнопки и рамки) */
+@media(hover:hover){.shot::after{opacity:0;transition:opacity .15s}.shot:hover::after{opacity:1}}
 .shot.plain::after{display:none}
 /* обводка: по умолчанию круг, .rect — прямоугольник (им удобнее обводить кнопки и строки) */
 /* красная обводка с белым контуром и тёмной тенью: видна и на красном, и на синем, и на траве */
