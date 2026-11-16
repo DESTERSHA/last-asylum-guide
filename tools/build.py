@@ -33,7 +33,7 @@ TEMPLATE = """<!doctype html>
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="assets/icons/art-doctor.jpg">
+<meta property="og:image" content="assets/art/hero-index.webp">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/game/ev-kvk.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,14 +47,14 @@ TEMPLATE = """<!doctype html>
   <nav class="main" aria-label="Разделы">
 {nav}
   </nav>
-  <div class="clock" title="Время в игре = Москва минус 5 часов"><div><b data-clock="srv">--:--</b><span>в игре</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
+  <div class="clock" title="Разница между временем сервера и московским — 5 часов. На сервере время меньше."><div><b data-clock="srv">--:--</b><span>в игре</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
 </div></header>
 <main>
 {content}
 </main>
 <footer class="foot">
   <p><b>Гайд альянса сервера 397</b> · обновлён 15.11.2026. Фанатский гайд, к разработчикам игры отношения не имеет. Значки и картинки — из самой игры и от сообщества игроков.</p>
-  <p>Время в игре = Москва минус 5 часов. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
+  <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
 </footer>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
 <script src="assets/app.js?v={ver}"></script>
