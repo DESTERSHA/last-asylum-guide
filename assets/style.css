@@ -385,3 +385,16 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 .steps.vshot .shotwrap{background:#23262e;display:flex;justify-content:center;align-items:center;height:240px;overflow:hidden}
 .steps.vshot .shotwrap>.shot{border:0;border-radius:0;margin:0;width:fit-content;box-shadow:none}
 .steps.vshot .shotwrap>.shot img{height:240px;width:auto;max-width:100%;object-fit:contain;display:block}
+
+/* расписание событий — карточками в два столбца */
+.evgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}
+.evc{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.evc.hl{background:var(--gold-bg)}
+.evc>img{width:40px;height:40px;object-fit:contain;flex:0 0 40px;border-radius:8px}
+.evc .evn{font-size:15px;display:block;margin-bottom:2px}.evc .evn span{font-weight:500}
+.evc .evw{font-size:14px;color:var(--ink,#22252c)}
+.evc .evm{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:4px;font-size:13px;color:var(--mut)}
+@media(max-width:800px){.evgrid{grid-template-columns:1fr}}
+
+.quiz2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}.quiz2>.tbl{margin:0}.quiz2 td:last-child{width:34%}@media(max-width:900px){.quiz2{grid-template-columns:1fr}}
+.steps>.step.wide>.shot img{max-width:min(560px,100%)}
