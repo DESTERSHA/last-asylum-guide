@@ -25,7 +25,8 @@ SID = 397
 API = "https://lastasylumtracker.com/api"
 OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 TOP = 30
-MAX_REQ = 80  # предохранитель на один запуск
+MAX_REQ = 140
+PLAYERS_PER_RUN = 30  # история игроков: по 30 за запуск, сначала самые сильные  # предохранитель на один запуск
 KEY = os.environ.get("TRACKER_KEY", "").strip()
 used = 0
 
@@ -113,6 +114,12 @@ def main():
                                          "members_count": a.get("member_count"), "capacity": a.get("capacity"), "leader": a.get("leader_name"), "language": a.get("language"),
                                          "summary": ev.get("summary"), "members": sorted(mem, key=lambda m: -(m["power"] or 0)), "events": events})
         ent = index["alliances"].get(str(aid), {"days": {}})
+        if datetime.now(timezone.utc).hour < 3 or not ent.get("hist"):
+            try:
+                h = get(f"/alliances/{aid}/history")
+                ent["hist"] = {datetime.fromtimestamp(d["day"], timezone.utc).strftime("%Y-%m-%d"): {"power": d.get("might"), "members": d.get("members"), "joined": d.get("joined"), "left": d.get("left")} for d in h.get("days", [])}
+            except Exception as e:
+                print("история альянса", aid, "пропущена:", e, file=sys.stderr)
         ent.update({"id": aid, "name": a.get("name"), "abbr": a.get("abbr"), "power": a.get("power"), "members": a.get("member_count"), "capacity": a.get("capacity"),
                     "leader": a.get("leader_name"), "rank": row["rank"], "updated": now})
         ent["days"][day] = a.get("power")
@@ -127,14 +134,38 @@ def main():
         if p.get("aid") in done and p.get("seen", 0) < now - 1:
             p.update({"aid": 0, "abbr": ""})
 
+    # история игроков: по очереди, сначала самые сильные; кому уже взяли — повторно через 7 дней
+    qpath = OUT / "hist_done.json"
+    done_at = load(qpath, {})
+    order = sorted(players.items(), key=lambda kv: -(kv[1].get("power") or 0))
+    todo = [uid for uid, p in order if p.get("aid") and now - done_at.get(uid, 0) > 7 * 86400][:PLAYERS_PER_RUN]
+    for uid in todo:
+        try:
+            pl = get(f"/players/{uid}")
+        except Exception as e:
+            print("игрок", uid, "пропущен:", e, file=sys.stderr)
+            continue
+        sh = series.setdefault(int(uid) % 32, {})
+        old = sh.get(uid)
+        for hrec in pl.get("history", []):
+            d = datetime.fromtimestamp(hrec["observed_at"], timezone.utc).strftime("%Y-%m-%d")
+            series.setdefault(int(uid) % 32, {}).setdefault("__hist__" + uid, {})[d] = [hrec.get("power"), hrec.get("kills")]
+        done_at[uid] = now
+    save(qpath, done_at)
+
     index["updated"] = now
     save(OUT / "alliances.json", index)
     save(OUT / "players.json", {"updated": now, "players": players})
     for shard, vals in series.items():
         p = OUT / "s" / f"{shard:02d}.json"
         s = load(p, {})
-        for uid, (pw, kl) in vals.items():
-            s.setdefault(uid, {})[day] = [pw, kl]
+        for uid, v in vals.items():
+            if uid.startswith("__hist__"):
+                rec = s.setdefault(uid[8:], {})
+                for d, pk in v.items():
+                    rec.setdefault(d, pk)  # из истории трекера — не затираем наши снимки
+            else:
+                s.setdefault(uid, {})[day] = list(v)
         save(p, s)
     print(f"готово: альянсов {len(top)}, игроков в базе {len(players)}, запросов {used}")
 

@@ -40,11 +40,11 @@
   function renderFacts() {
     var s = S.server.server;
     $("srvFacts").innerHTML =
-      '<div class="fact"><div class="big">' + num(s.players) + '</div><h3>Игроков на сервере</h3><p>по данным трекера</p></div>' +
+      '<div class="fact"><div class="big">' + num(s.players) + '</div><h3>Игроков на сервере</h3><p>на всём сервере</p></div>' +
       '<div class="fact"><div class="big">' + (s.alliances || "—") + '</div><h3>Альянсов</h3><p>полностью следим за топ-30</p></div>' +
       '<div class="fact"><div class="big">' + (s.age_days || "—") + '</div><h3>Дней серверу</h3><p>общая мощь ' + num(s.power) + '</p></div>' +
       '<div class="fact gold"><img class="ic" src="assets/game/ev-throne.png" alt=""><h3>Король: ' + esc(s.king_name) + '</h3><p>альянс [' + esc(s.union_abbr) + '] ' + esc(s.union_name) + '</p></div>';
-    $("srvUpdated").textContent = "Обновлено: " + when(S.server.updated) + ". Источник цифр — lastasylumtracker.com.";
+    $("srvUpdated").textContent = "Обновлено: " + when(S.server.updated) + ". Обновляется каждые 3 часа.";
   }
 
   /* ---------- вступления и выходы ---------- */
@@ -103,14 +103,17 @@
   function openAlliance(id) {
     var a = S.al[id]; if (!a) return;
     var ix = S.index.filter(function (x) { return String(x.id) === String(id); })[0] || {};
-    var days = ix.days ? Object.keys(ix.days).sort() : [];
+    var pts = {};
+    Object.keys(ix.hist || {}).forEach(function (d) { if (ix.hist[d].power) pts[d] = ix.hist[d].power; });
+    Object.keys(ix.days || {}).forEach(function (d) { if (ix.days[d]) pts[d] = ix.days[d]; });
+    var days = Object.keys(pts).sort();
     var mem = a.members.map(function (m, i) {
       return '<tr><td class="n">' + (i + 1) + '</td><td><b>' + esc(m.nick) + '</b></td><td>' + (m.rank ? '<span class="rk r' + esc(m.rank.slice(1)) + '">' + esc(m.rank) + '</span>' : '—') + '</td><td>' + num(m.power) + '</td><td>' + m.lv + '</td><td>' + num(m.kills) + '</td><td>' + (m.honor == null ? "—" : num(m.honor)) + '</td><td>' + (m.tech == null ? "—" : num(m.tech)) + '</td></tr>';
     }).join("");
     var ev = a.events.slice(0, 60).map(function (e) { return moveRow({ e: e, a: a }, false); }).join("");
     $("alDetail").innerHTML = '<div class="block trk-al"><button class="trk-x" aria-label="Закрыть">×</button><h3>[' + esc(a.abbr) + '] ' + esc(a.name) + '</h3>' +
       '<p class="cap">' + (a.leader ? 'Лидер ' + esc(a.leader) + ' · ' : '') + 'участников ' + (a.members_count || a.members.length) + (a.capacity ? '/' + a.capacity : '') + ' · мощь ' + num(a.power || ix.power || rankScore(id)) + (a.level ? ' · уровень альянса ' + a.level : '') + (a.summary ? ' · за неделю +' + a.summary.week.joined + ' / −' + a.summary.week.left + ', за месяц +' + a.summary.month.joined + ' / −' + a.summary.month.left : "") + '</p>' +
-      (days.length > 1 ? chart(days.map(function (d) { return [d, ix.days[d]]; }), "Мощь альянса по дням") : "") +
+      chart(days.map(function (d) { return [d, pts[d]]; }), "Мощь альянса по дням") +
       '<div class="grid2 trk-al2"><div><h3>Состав</h3><div class="tbl trk-scroll"><table class="trk-tbl"><tr><th>#</th><th>Ник</th><th>Ранг</th><th>Мощь</th><th>Св.</th><th>Убийства</th><th>Честь за день</th><th>Технологии за день</th></tr>' + mem + '</table></div></div>' +
       '<div><h3>Вступления и выходы</h3><div class="trk-list trk-scroll">' + (ev || '<p class="cap">Пока нет.</p>') + '</div></div></div></div>';
     $("alDetail").querySelector(".trk-x").onclick = function () { $("alDetail").innerHTML = ""; };
@@ -149,7 +152,7 @@
         '<div class="trk-kv"><div><b>' + num(p.power) + '</b>мощь</div><div><b>' + p.lv + '</b>Святилище</div><div><b>' + num(p.kills) + '</b>убийства</div><div><b>' + ago(p.seen) + '</b>видели в альянсе</div></div>' +
         chart(days.map(function (d) { return [d, ser[d][0]]; }), "Мощь по дням") +
         (moves.length ? '<h3>Вступления и выходы</h3><div class="trk-list">' + moves.map(function (m) { return moveRow(m, true); }).join("") + '</div>' : "") +
-        '<p class="cap"><a href="https://lastasylumtracker.com/player/' + uid + '" target="_blank" rel="noopener">Полная карточка на трекере →</a></p></div>';
+        '</div>';
       $("plCard").querySelector(".trk-x").onclick = function () { $("plCard").innerHTML = ""; };
       $("plCard").scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
