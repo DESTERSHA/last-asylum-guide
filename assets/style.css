@@ -428,3 +428,5 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 .gap-top{margin-top:28px}
 .sanct td.n{width:48px;white-space:nowrap}.sanct td.nw{white-space:nowrap}.sanct .lineup{gap:4px 14px}.sanct .hn img.i{width:26px;height:26px;border-radius:0;object-fit:contain}
 .shot-in{margin:6px 0 12px}.shot-in>.shot{max-width:100%;width:fit-content;margin:0 auto;border-radius:14px;overflow:hidden;position:relative}.shot-in>.shot img{max-height:420px;width:auto;max-width:100%;display:block}
+.sanct .more{color:var(--mut);font-size:14px}
+.sanct .more{color:var(--mut);font-size:14px}
