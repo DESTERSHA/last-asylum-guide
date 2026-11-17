@@ -26,7 +26,8 @@ API = "https://lastasylumtracker.com/api"
 OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 TOP = 30
 MAX_REQ = 140
-PLAYERS_PER_RUN = 30  # история игроков: по 30 за запуск, сначала самые сильные  # предохранитель на один запуск
+PLAYERS_PER_RUN = 45  # карточки игроков за запуск: 8 запусков × (62 + 45) + 30 историй альянсов ≈ 890 в сутки при лимите 1000
+HOME_AID = 67181437   # [SLAV] — их карточки берём первыми
 KEY = os.environ.get("TRACKER_KEY", "").strip()
 used = 0
 
@@ -138,7 +139,7 @@ def main():
         if mem:
             live_ids.append(aid)
         for m in mem:
-            players[str(m["uid"])] = {"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "power": m["power"], "lv": m["lv"], "kills": m["kills"], "rank": m["rank"], "seen": now}
+            players.setdefault(str(m["uid"]), {}).update({"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "power": m["power"], "lv": m["lv"], "kills": m["kills"], "rank": m["rank"], "seen": now, "x": m.get("x"), "y": m.get("y")})
             series.setdefault(m["uid"] % 32, {})[str(m["uid"])] = [m["power"], m["kills"]]
 
     # игроки, которых больше нет ни в одном из собранных альянсов, — помечаем «без альянса», если они были в обработанном альянсе
@@ -150,7 +151,8 @@ def main():
     # история игроков: по очереди, сначала самые сильные; кому уже взяли — повторно через 7 дней
     qpath = OUT / "hist_done.json"
     done_at = load(qpath, {})
-    order = sorted(players.items(), key=lambda kv: -(kv[1].get("power") or 0))
+    # первыми — игроки нашего альянса [SLAV], потом остальные по мощи
+    order = sorted(players.items(), key=lambda kv: (kv[1].get("aid") != HOME_AID, -(kv[1].get("power") or 0)))
     todo = [uid for uid, p in order if p.get("aid") and now - done_at.get(uid, 0) > 7 * 86400][:PLAYERS_PER_RUN]
     for uid in todo:
         try:
@@ -160,6 +162,13 @@ def main():
             continue
         if uid in players and pl.get("power"):  # личная карточка свежее данных альянса
             players[uid].update({"power": pl.get("power"), "lv": pl.get("level") or players[uid].get("lv"), "kills": pl.get("kills"), "nick": pl.get("nick") or players[uid]["nick"]})
+            players[uid].update({"vip": pl.get("vip"), "likes": pl.get("likes"), "lang": pl.get("language"), "gender": pl.get("gender"),
+                                 "x": pl.get("x"), "y": pl.get("y"), "first": pl.get("first_seen_at"), "card": now})
+            # события из истории: смена альянса / ника / VIP — для вкладки «История»
+            ch = []
+            for h in sorted(pl.get("history", []), key=lambda h: h["observed_at"]):
+                ch.append({"t": h["observed_at"], "f": h.get("change_flags", ""), "power": h.get("power"), "abbr": h.get("union_abbr", ""), "nick": h.get("nick"), "lv": h.get("level"), "vip": h.get("vip")})
+            players[uid]["log"] = ch[-25:]
         for hrec in pl.get("history", []):
             d = datetime.fromtimestamp(hrec["observed_at"], timezone.utc).strftime("%Y-%m-%d")
             series.setdefault(int(uid) % 32, {}).setdefault("__hist__" + uid, {})[d] = [hrec.get("power"), hrec.get("kills")]

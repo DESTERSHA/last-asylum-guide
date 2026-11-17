@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Сервер 397: альянсы, игроки, кто вступил и вышел | Last Asylum: Plague</title>
-<meta name="description" content="Живая статистика сервера 397 Last Asylum: Plague: топ альянсов, их состав, кто вступил и кто вышел, мощь игроков по дням. Обновляется каждые 3 часа.">
-<meta property="og:title" content="Сервер 397: альянсы, игроки, кто вступил и вышел | Last Asylum: Plague">
-<meta property="og:description" content="Живая статистика сервера 397 Last Asylum: Plague: топ альянсов, их состав, кто вступил и кто вышел, мощь игроков по дням. Обновляется каждые 3 часа.">
+<title>Сервер 397: альянсы и игроки | Last Asylum: Plague</title>
+<meta name="description" content="Сервер 397 Last Asylum: Plague: топ альянсов, состав, вступления и выходы, карточки игроков с мощью по дням. Обновляется каждые 3 часа.">
+<meta property="og:title" content="Сервер 397: альянсы и игроки | Last Asylum: Plague">
+<meta property="og:description" content="Сервер 397 Last Asylum: Plague: топ альянсов, состав, вступления и выходы, карточки игроков с мощью по дням. Обновляется каждые 3 часа.">
 <meta property="og:image" content="assets/art/hero-index.webp">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/game/ev-kvk.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=806d0b97ab">
+<link rel="stylesheet" href="assets/style.css?v=ff273616db">
 </head>
 <body>
 <header class="site-head"><div class="wrap hdr">
@@ -40,8 +40,7 @@
     <div>
       <div class="kick"><img src="assets/game/ev-throne.png" alt="">Сервер 397</div>
       <h1>Альянсы и игроки сервера 397</h1>
-      <p class="lead">Кто в каком альянсе, кто вступил и кто вышел, как растёт мощь. Данные обновляются сами каждые 3 часа: по 30 сильнейшим альянсам — полностью, по топ-100 — рейтинг.</p>
-      <div class="btns"><a class="btn pri" href="#moves">Кто вступил и вышел</a><a class="btn" href="#alliances">Топ альянсов</a><a class="btn" href="#players">Найти игрока</a></div>
+      <p class="lead">Карточки альянсов и игроков: состав, ранги, кто вступил и вышел, мощь по дням. Обновляется само каждые 3 часа.</p>
     </div>
     <div class="art"><img src="assets/art/hero-kvk.webp" alt="Сервер 397"></div>
   </div>
@@ -49,41 +48,15 @@
   <p class="cap" id="srvUpdated"></p>
 </div>
 
-<section class="band soft pad" id="moves">
-  <div class="eyebrow">Движение игроков · топ-30 альянсов</div>
-  <h2>Кто вступил и кто вышел</h2>
-  <div class="trk-filters">
-    <select id="mvAlliance"><option value="">Все альянсы топ-30</option></select>
-    <div class="trk-seg" id="mvKind"><button data-v="" class="on">Все</button><button data-v="join">Вступил</button><button data-v="leave">Вышел</button></div>
-    <div class="trk-seg" id="mvPeriod"><button data-v="1">Сутки</button><button data-v="7" class="on">Неделя</button><button data-v="30">Месяц</button><button data-v="0">Всё</button></div>
-    <input id="mvNick" type="search" placeholder="Ник игрока">
+<section class="band soft pad" id="trk">
+  <div class="tk-searchbox">
+    <div class="tk-seg" id="skind"><button data-v="p" class="on">Игроки</button><button data-v="a">Альянсы</button></div>
+    <input id="sq" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off">
+    <div id="sres" class="tk-sres"></div>
   </div>
-  <div class="trk-sum" id="mvSum"></div>
-  <div class="trk-list" id="mvList"></div>
-  <button class="btn trk-more" id="mvMore" hidden>Показать ещё</button>
+  <div id="view"></div>
 </section>
-
-<section class="band pad" id="alliances">
-  <div class="eyebrow">Рейтинг по мощи</div>
-  <h2>Топ альянсов сервера</h2>
-  <p class="sub">Нажми на альянс из топ-30 — откроется его состав с рангами и лента вступлений и выходов.</p>
-  <div class="tbl"><table class="trk-tbl" id="alTable"></table></div>
-  <div id="alDetail"></div>
-  <details class="trk-top100"><summary>Альянсы с 31-го по 100-е место</summary><div class="tbl"><table class="trk-tbl" id="alTable100"></table></div></details>
-</section>
-
-<section class="band sand pad" id="players">
-  <div class="eyebrow">Игроки</div>
-  <h2>Найти игрока</h2>
-  <p class="sub">Ищутся игроки тех альянсов топ-30, у которых есть свежий состав. Мощь по дням подгружается постепенно: по 30 игроков за обновление, начиная с самых сильных.</p>
-  <input id="plSearch" class="trk-search" type="search" placeholder="Начни вводить ник…">
-  <div class="trk-list" id="plResults"></div>
-  <div id="plCard"></div>
-  <h3>Топ-100 игроков сервера</h3>
-  <div class="trk-seg" id="plBoard"><button data-v="power" class="on">Мощь</button><button data-v="kills">Убийства</button><button data-v="heroes">Мощь героев</button><button data-v="castle">Святилище</button></div>
-  <div class="tbl"><table class="trk-tbl" id="plTop"></table></div>
-</section>
-<script src="assets/tracker.js?v=4"></script>
+<script src="assets/tracker.js?v=5"></script>
 
 </main>
 <footer class="foot">
@@ -91,6 +64,6 @@
   <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
 </footer>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
-<script src="assets/app.js?v=806d0b97ab"></script>
+<script src="assets/app.js?v=ff273616db"></script>
 </body>
 </html>
