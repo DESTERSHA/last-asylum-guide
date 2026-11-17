@@ -16,6 +16,7 @@ PAGES = [
     ("duel", "ev-duel", "Дуэль"),
     ("events", "ev-special", "События"),
     ("heroes", "hero/arthur", "Герои"),
+    ("models", "ev-wander", "Модели"),
     ("squads", "c-squad", "Отряды"),
     ("gear", "go-gear", "Снаряжение"),
     ("raven", "ev-raven", "Ворон"),

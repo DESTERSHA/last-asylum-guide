@@ -719,4 +719,22 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 .h3d-grid button.on{box-shadow:inset 0 0 0 2px #1c1c1e}
 .h3d-grid img{width:60px;height:60px;border-radius:12px;object-fit:cover}
 .h3d-grid span{font-size:11.5px;font-weight:600;line-height:1.2;text-align:center}
-@media (max-width:860px){.h3d{grid-template-columns:1fr}.h3d-stage,.h3d-stage model-viewer{min-height:400px;height:400px}}
+@media (max-width:860px){.h3d{grid-template-columns:1fr}.h3d-stage,.h3d-stage model-viewer{min-height:400px;height:400px}}/* просмотрщик 3D-моделей с анимациями */
+.m3d{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;margin-top:18px}
+.m3d-stage{position:relative;background:radial-gradient(circle at 50% 35%,#fff 0,#eef1f6 75%);border-radius:24px;overflow:hidden;border:1px solid #e3e6ec;display:flex;flex-direction:column}
+.m3d-stage model-viewer{width:100%;height:500px;--poster-color:transparent}
+.m3d-name{position:absolute;left:20px;top:16px;font-size:24px;font-weight:700;color:#1c1c1e}
+.m3d-load{display:none;position:absolute;right:18px;top:20px;font-size:12.5px;color:#8a8a8e}
+.m3d-anims{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px 14px;border-top:1px solid #e9ebf0;background:rgba(255,255,255,.7)}
+.m3d-anims:empty{display:none}
+.m3d-anims button{font:inherit;font-size:13px;height:32px;padding:0 13px;border-radius:999px;border:0;background:#eef0f4;color:#1c1c1e;cursor:pointer}
+.m3d-anims button:hover{background:#e2e5eb}
+.m3d-anims button.on{background:#1c1c1e;color:#fff}
+.m3d-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px;align-content:start;max-height:640px;overflow:auto;padding:2px}
+.m3d-grid button{font:inherit;border:0;background:#fff;border-radius:14px;padding:6px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:inset 0 0 0 1px #e3e6ec;transition:box-shadow .15s,transform .15s}
+.m3d-grid button:hover{transform:translateY(-1px)}
+.m3d-grid button.on{box-shadow:inset 0 0 0 2px #1c1c1e}
+.m3d-grid img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:#f1f3f7}
+.m3d-grid .ph{width:64px;height:64px;border-radius:12px;background:#f1f3f7}
+.m3d-grid span{font-size:11.5px;font-weight:600;line-height:1.2;text-align:center}
+@media (max-width:860px){.m3d{grid-template-columns:1fr}.m3d-stage model-viewer{height:400px}.m3d-grid{max-height:none}}
