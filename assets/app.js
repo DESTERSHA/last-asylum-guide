@@ -123,7 +123,8 @@
       var other = Array.prototype.filter.call(f.parentElement.children, function (c) { return c !== f; })[0];
       if (!other || window.innerWidth <= 800) { f.style.removeProperty("--side-h"); return; }
       var cap = f.querySelector(".cap"), capH = cap ? cap.getBoundingClientRect().height + 6 : 0;
-      var h = Math.min(560, Math.max(400, other.getBoundingClientRect().height - capH));
+      var mn = +(f.dataset.min || 400), mx = +(f.dataset.max || 560);  /* data-min / data-max — свои пределы высоты снимка */
+      var h = Math.min(mx, Math.max(mn, other.getBoundingClientRect().height - capH));
       f.style.setProperty("--side-h", h + "px");
     });
   }

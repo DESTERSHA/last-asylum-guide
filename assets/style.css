@@ -373,7 +373,7 @@ h3.fac{display:flex;align-items:center;gap:10px}h3.fac img{width:40px;height:40p
 .step .notes,.side-col .notes{grid-template-columns:1fr}
 @media(max-width:800px){.notes{grid-template-columns:1fr}}
 /* белые значки кнопок игры (щит, рукопожатие, штурм, разведка) — на тёмном круге, как в самой игре */
-img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],img[src$="btn-scout.png"]{background:radial-gradient(circle,#4a5b72 0,#2c3646 100%);border-radius:50%;padding:5px;box-sizing:border-box}
+img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],img[src$="btn-scout.png"],img[src$="btn-fire.png"]{background:radial-gradient(circle,#4a5b72 0,#2c3646 100%);border-radius:50%;padding:5px;box-sizing:border-box}
 
 /* шаги разной длины — колонками сверху вниз, короткие встают друг под другом (без пустых растянутых карточек) */
 .steps.flow{display:block;column-count:4;column-gap:14px}
@@ -423,3 +423,8 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 .epi4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:10px 0}.epi4 .ek{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}.epi4 .ek b{font-size:16px}.epi4 .ek span{font-size:14px;color:var(--mut)}
 .chests{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:12px 0 4px}.chests figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:4px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px}.chests img{width:84px;height:84px;object-fit:contain}.chests figcaption{font-size:12px;color:var(--mut)}
 @media(max-width:900px){.epi4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.items.one,.grid2:has(>.side-shot) .items.one{grid-template-columns:1fr}
+
+.gap-top{margin-top:28px}
+.sanct td.n{width:48px;white-space:nowrap}.sanct td.nw{white-space:nowrap}.sanct .lineup{gap:4px 14px}.sanct .hn img.i{width:26px;height:26px;border-radius:0;object-fit:contain}
+.shot-in{margin:6px 0 12px}.shot-in>.shot{max-width:100%;width:fit-content;margin:0 auto;border-radius:14px;overflow:hidden;position:relative}.shot-in>.shot img{max-height:420px;width:auto;max-width:100%;display:block}
