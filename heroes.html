@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=e42a344c94">
+<link rel="stylesheet" href="assets/style.css?v=f6732a96f7">
 </head>
 <body>
 <header class="site-head"><div class="wrap hdr">
@@ -52,6 +52,21 @@
     <div class="fact gold"><div class="big">Чт</div><h3>День героев</h3><p>Противоядие, фрагменты, значки навыков и билеты найма копи неделю и трать в четверг.</p></div>
   </div>
 </div>
+
+<section class="band pad" id="h3d-sec">
+  <div class="eyebrow">Модели из игры</div>
+  <h2>Герои в 3D</h2>
+  <p class="sub">Покрути героя мышкой или пальцем, колёсиком — приблизь. Нажми на портрет справа или на любой портрет героя ниже на странице — откроется его модель.</p>
+  <div class="h3d" id="h3d">
+    <div class="h3d-stage">
+      <model-viewer camera-controls auto-rotate auto-rotate-delay="2500" rotation-per-second="18deg" shadow-intensity="1" exposure="1.1" interaction-prompt="none" camera-orbit="0deg 80deg auto" min-camera-orbit="auto 20deg auto" max-camera-orbit="auto 100deg auto"></model-viewer>
+      <div class="h3d-name"></div>
+    </div>
+    <div class="h3d-grid"></div>
+  </div>
+</section>
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script src="assets/hero3d.js?v=1" defer></script>
 
 <section class="band soft pad">
   <div class="eyebrow">С самого начала</div>
@@ -274,6 +289,6 @@
   <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
 </footer>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
-<script src="assets/app.js?v=e42a344c94"></script>
+<script src="assets/app.js?v=f6732a96f7"></script>
 </body>
 </html>

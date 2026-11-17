@@ -17,6 +17,21 @@
   </div>
 </div>
 
+<section class="band pad" id="h3d-sec">
+  <div class="eyebrow">Модели из игры</div>
+  <h2>Герои в 3D</h2>
+  <p class="sub">Покрути героя мышкой или пальцем, колёсиком — приблизь. Нажми на портрет справа или на любой портрет героя ниже на странице — откроется его модель.</p>
+  <div class="h3d" id="h3d">
+    <div class="h3d-stage">
+      <model-viewer camera-controls auto-rotate auto-rotate-delay="2500" rotation-per-second="18deg" shadow-intensity="1" exposure="1.1" interaction-prompt="none" camera-orbit="0deg 80deg auto" min-camera-orbit="auto 20deg auto" max-camera-orbit="auto 100deg auto"></model-viewer>
+      <div class="h3d-name"></div>
+    </div>
+    <div class="h3d-grid"></div>
+  </div>
+</section>
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script src="assets/hero3d.js?v=1" defer></script>
+
 <section class="band soft pad">
   <div class="eyebrow">С самого начала</div>
   <h2>Как устроен герой</h2>
