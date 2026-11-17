@@ -622,3 +622,4 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 }.ap-tip em span{display:inline}
 #view .ap-t td:nth-child(2),#view .ap-t th:nth-child(2){position:sticky;left:0;background:#fff;z-index:1}
 @media (max-width:760px){.ap-pager .pg{display:none}#view .ap-t{min-width:0}}
+.ap-band{padding-top:20px}
