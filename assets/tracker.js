@@ -2,7 +2,7 @@
 (function () {
   "use strict";
   var D = "data/tracker/";
-  var S = { server: null, index: {}, players: {}, al: {}, rows: [], board: {} };
+  var S = { server: null, index: {}, players: {}, al: {}, rows: [], board: {}, heroes: {} };
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var get = function (p) { return fetch(D + p + "?t=" + Math.floor(Date.now() / 600000)).then(function (r) { if (!r.ok) throw new Error(p); return r.json(); }); };
@@ -81,6 +81,7 @@
   }
 
   /* ---------- интерактивный график ---------- */
+  function ddmm(t) { var d = new Date((t - 2 * 3600) * 1000); return ["", ("0" + (d.getUTCMonth() + 1)).slice(-2), ("0" + d.getUTCDate()).slice(-2)]; }
   function chartBox(id) { return '<div class="ap-chart" id="' + id + '"></div>'; }
   function drawChart(id, pts, opt) {
     var box = $(id); if (!box) return;
@@ -90,8 +91,9 @@
       box.innerHTML = '<div class="ap-ch-h"><div><span class="l">' + title + "</span><b>" + (pts.length ? fmt(pts[0][1]) : "—") + '</b></div></div><p class="ap-empty">График появится, когда наберётся хотя бы два дня.</p>';
       return;
     }
-    var first = pts[0][1], last = pts[pts.length - 1][1];
-    box.innerHTML = '<div class="ap-ch-h"><div><span class="l">' + title + '</span><b class="cur">' + fmt(last) + '</b><span class="chg">' + delta(last - first, fmt) + " за " + pts.length + " дн.</span></div>" + (opt.right || "") + '</div><div class="ap-ch-body"><svg></svg><div class="ap-tip"></div></div>';
+    var first = pts[0][1], last = pts[pts.length - 1][1], ts = typeof pts[0][0] === "number";
+    var span = ts ? Math.max(1, Math.round((pts[pts.length - 1][0] - pts[0][0]) / 86400)) : pts.length;
+    box.innerHTML = '<div class="ap-ch-h"><div><span class="l">' + title + '</span><b class="cur">' + fmt(last) + '</b><span class="chg">' + delta(last - first, fmt) + " за " + span + " дн.</span></div>" + (opt.right || "") + '</div><div class="ap-ch-body"><svg></svg><div class="ap-tip"></div></div>';
     var body = box.querySelector(".ap-ch-body"), svg = box.querySelector("svg"), tip = box.querySelector(".ap-tip");
     var W = Math.max(280, body.clientWidth), H = opt.h || 240, L = 54, R = 14, T = 14, B = 28;
     var v = pts.map(function (p) { return p[1]; }), mn = Math.min.apply(null, v), mx = Math.max.apply(null, v);
@@ -103,7 +105,7 @@
     var g = "";
     for (var k = 0; k <= 3; k++) { var val = mn + (mx - mn) * k / 3; g += '<line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(val).toFixed(1) + '" y2="' + y(val).toFixed(1) + '"/><text class="ax" x="' + (L - 8) + '" y="' + (y(val) + 4).toFixed(1) + '" text-anchor="end">' + fmt(val) + "</text>"; }
     var nx = Math.min(pts.length, Math.max(2, Math.floor((W - L - R) / 90)));
-    for (var j = 0; j < nx; j++) { var i = Math.round(j * (pts.length - 1) / (nx - 1)), d = pts[i][0].split("-"); g += '<text class="ax" x="' + x(i).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="' + (j === 0 ? "start" : j === nx - 1 ? "end" : "middle") + '">' + d[2] + "." + d[1] + "</text>"; }
+    for (var j = 0; j < nx; j++) { var i = Math.round(j * (pts.length - 1) / (nx - 1)), d = ts ? ddmm(pts[i][0]) : pts[i][0].split("-"); g += '<text class="ax" x="' + x(i).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="' + (j === 0 ? "start" : j === nx - 1 ? "end" : "middle") + '">' + d[2] + "." + d[1] + "</text>"; }
     var line = pts.map(function (p, i) { return (i ? "L" : "M") + x(i).toFixed(1) + " " + y(p[1]).toFixed(1); }).join(" ");
     var gid = "gr" + id;
     svg.innerHTML = '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--ap-acc)" stop-opacity=".22"/><stop offset="1" stop-color="var(--ap-acc)" stop-opacity="0"/></linearGradient></defs>' + g +
@@ -114,7 +116,7 @@
       var p = pts[i], px = x(i), py = y(p[1]);
       vl.setAttribute("x1", px); vl.setAttribute("x2", px); dot.setAttribute("cx", px); dot.setAttribute("cy", py);
       var prev = i ? p[1] - pts[i - 1][1] : null;
-      tip.innerHTML = "<span>" + isoLabel(p[0]) + "</span><b>" + (opt.fullFmt || full)(p[1]) + "</b>" + (prev != null ? "<em>" + delta(prev, fmt) + " за день</em>" : "") + (opt.extra ? opt.extra(p) : "");
+      tip.innerHTML = "<span>" + (ts ? dayLabel(p[0]) + ", " + hm(p[0]) : isoLabel(p[0])) + "</span><b>" + (opt.fullFmt || full)(p[1]) + "</b>" + (prev != null ? "<em>" + delta(prev, fmt) + (ts ? " к прошлой записи" : " за день") + "</em>" : "") + (opt.extra ? opt.extra(p) : "");
       tip.style.display = "block";
       var tw = tip.offsetWidth, left = px + 14; if (left + tw > W) left = px - tw - 14;
       tip.style.left = left + "px"; tip.style.top = Math.max(0, Math.min(H - tip.offsetHeight, py - tip.offsetHeight / 2)) + "px";
@@ -319,41 +321,73 @@
       '<div class="ap-kvs">' + kv("ID", uid) + kv("Пол", g || "—") + kv("Язык", p.lang === "ru" ? "русский" : p.lang ? esc(p.lang) : "—") + kv("Лайки", p.likes != null ? full(p.likes) : "—") +
       kv("Город на карте", p.x != null ? p.x + ", " + p.y : "—") + kv("Скин замка", p.skin ? esc(p.skin) : "—") + kv("Активность", p.active != null ? full(p.active) : "—") + kv("Честь за день", p.honor != null ? full(p.honor) : "—") +
       kv("Техника за день", p.tech != null ? full(p.tech) : "—") + kv("Место по мощи героев", placeOf("heroes", uid) || "вне топ-100") + kv("Впервые замечен", p.first ? dateOf(p.first) : "—") + kv("Мощь точно", full(p.power)) + "</div>" +
-      (!p.card ? '<p class="ap-note">Полная история этого игрока загрузится с одним из ближайших обновлений.</p>' : "") +
-      (p.card && p.vip == null ? '<p class="ap-note">VIP, пол, язык, лайки и «в сети» трекер узнаёт из игры, только когда профиль игрока открывают на самом трекере. У этого игрока таких сведений у трекера пока нет — появятся здесь после такого открытия.</p>' : "") + "</div>" +
-      pills("ptabs", [["h", "История"], ["c", "Изменения"], ["a", "Альянсы"]], "h") + '<div id="ppane"></div></div>';
+      (!p.card ? '<p class="ap-note">Защитный состав, ворон и полная история этого игрока загрузятся с одним из ближайших обновлений.</p>' : "") +
+      (p.card && p.vip == null ? '<p class="ap-note">VIP, пол, язык и лайки трекер узнаёт из игры, только когда профиль игрока открывают на самом трекере. У этого игрока их у трекера пока нет.</p>' : "") + "</div>" +
+      '<div id="pdef"></div>' +
+      pills("ptabs", [["h", "Рост"], ["c", "История изменений"], ["a", "Альянсы"]], "h") + '<div id="ppane"></div></div>';
 
+    var X = { log: p.log || [] };
     var pane = function (v) {
       var P = $("ppane");
       if (v === "h") {
         P.innerHTML = '<div class="ap-card"><div id="pch"></div></div>';
         get("s/" + ("0" + (Number(uid) % 32)).slice(-2) + ".json").catch(function () { return {}; }).then(function (s) {
           var ser = s[uid] || {}, ds = Object.keys(ser).sort();
+          var lg = (X.log || []).filter(function (h) { return h.power != null; });
           var draw = function (k) {
-            var idx = k === "kills" ? 1 : 0;
-            drawChart("pchart", ds.filter(function (d) { return ser[d][idx] != null; }).map(function (d) { return [d, ser[d][idx]]; }), { title: k === "kills" ? "Убийства по дням" : "Мощь по дням", right: pills("pk", [["power", "Мощь"], ["kills", "Убийства"]], k) });
+            var idx = k === "kills" ? 1 : 0, pts;
+            if (lg.length >= 2) pts = lg.filter(function (h) { return (k === "kills" ? h.kills : h.power) != null; }).map(function (h) { return [h.t, k === "kills" ? h.kills : h.power]; });
+            else pts = ds.filter(function (d) { return ser[d][idx] != null; }).map(function (d) { return [d, ser[d][idx]]; });
+            drawChart("pchart", pts, { title: k === "kills" ? "Убийства" : "Мощь", right: pills("pk", [["power", "Мощь"], ["kills", "Убийства"]], k),
+              extra: function (pt) { if (typeof pt[0] !== "number") return ""; var h = lg.filter(function (x) { return x.t === pt[0]; })[0]; return h ? "<span>" + (k === "kills" ? "мощь " + num(h.power) : "убийства " + num(h.kills)) + " · Святилище " + (h.lv || "—") + "</span>" : ""; } });
             bindPills("pk", draw);
           };
           $("pch").innerHTML = chartBox("pchart"); draw("power");
         });
       } else if (v === "c") {
-        var NAMES = function (h) { return { might: "мощь " + num(h.power), kills: "убийства", union: "альянс: " + (h.abbr ? "[" + esc(h.abbr) + "]" : "без альянса"), vip: "VIP " + h.vip, nick: "ник: " + esc(h.nick), level: "Святилище " + h.lv }; };
-        var log = (p.log || []).slice().reverse().filter(function (h) { return h.f; });
+        var NAMES = function (h) { return { union: "альянс: " + (h.abbr ? "[" + esc(h.abbr) + "]" : "без альянса"), vip: "VIP " + h.vip, nick: "ник: " + esc(h.nick), level: "Святилище " + h.lv }; };
+        var log = (X.log || []).slice().reverse();
         P.innerHTML = '<div class="ap-card flush"><div id="clist"></div></div>';
-        paged($("clist"), log, 20, function (part) {
-          return '<table class="ap-t"><colgroup><col style="width:220px"><col><col style="width:130px"></colgroup><thead><tr><th>Когда (по серверу)</th><th>Что изменилось</th><th class="r">Мощь</th></tr></thead><tbody>' +
-            part.map(function (h, i) {
-              var nm = NAMES(h), what = h.f.split(",").map(function (f) { return f === "might" ? "" : nm[f] || ""; }).filter(Boolean).join(" · ");
-              var prev = log[log.indexOf(h) + 1];
-              return "<tr><td>" + dayLabel(h.t) + ", " + hm(h.t) + "</td><td>" + (what || "мощь") + '</td><td class="r"><b>' + num(h.power) + "</b> " + (prev ? delta(h.power - prev.power) : "") + "</td></tr>";
-            }).join("") + "</tbody></table>";
-        }, p.card ? "Трекер изменений не записал." : "Изменения загрузятся с ближайшими обновлениями.");
+        paged($("clist"), log, 20, function (part, from) {
+          var out = "", last = "";
+          part.forEach(function (h, i) {
+            var dl = dayLabel(h.t), prev = log[from + i + 1];
+            if (dl !== last) { out += '<div class="ap-day">' + dl + "</div>"; last = dl; }
+            var nm = NAMES(h), other = (h.f || "").split(",").map(function (f) { return nm[f] || ""; }).filter(Boolean).join(" · ");
+            var kd = prev && h.kills != null && prev.kills != null && h.kills !== prev.kills;
+            out += '<div class="ap-row ap-log"><div><span class="k">Мощь</span> <b>' + num(h.power) + "</b> " + (prev ? delta(h.power - prev.power) : "") +
+              (kd ? ' <span class="k sp">Убийства</span> <b>' + num(h.kills) + "</b> " + delta(h.kills - prev.kills) : "") + (other ? ' <span class="k sp">' + other + "</span>" : "") + '</div><span class="tm">' + hm(h.t) + "</span></div>";
+          });
+          return '<div class="ap-list">' + out + "</div>";
+        }, p.card ? "Трекер изменений не записал." : "История загрузится с ближайшими обновлениями.");
       } else {
         P.innerHTML = '<div class="ap-card flush"><div id="mvl"></div></div>';
         moveList($("mvl"), mv);
       }
     };
-    pane("h"); bindPills("ptabs", pane);
+    var defense = function (ar) {
+      if (!ar || !ar.teams || !ar.teams.length) { $("pdef").innerHTML = ""; return; }
+      var hero = function (h) {
+        var info = S.heroes[h.id] || {}, st = Math.floor((Number(h.star) || 0) / 5);
+        var tip = (info.n || "герой " + h.id) + " · ур. " + h.lv + " · ★" + st + (h.power ? " · мощь " + full(h.power) : "") + (h.skills ? " · навыки " + h.skills.map(function (x) { return x[1]; }).join("/") : "") + (h.gear && h.gear.length ? " · снаряжение " + h.gear.map(function (x) { return x[1]; }).join("/") : "");
+        return '<div class="ap-hero-t q' + (h.q || 0) + '" title="' + esc(tip) + '"><div class="pic">' + (info.i ? '<img src="' + G + "hero/" + info.i + '.png" alt="">' : "") + '<span class="lv">' + h.lv + "</span>" + (h.aw ? '<span class="aw">' + h.aw + "</span>" : "") + '</div><b>' + esc(info.n || "?") + '</b><span class="st">★' + st + "</span></div>";
+      };
+      var teams = ar.teams.map(function (tm, i) {
+        return '<div class="ap-team"><div class="hd"><span class="no">' + (i + 1) + '</span><b>Команда ' + (i + 1) + '</b><span class="pw"><small>мощь</small>' + num(tm.power) + '</span></div><div class="hs">' + tm.heroes.map(hero).join("") +
+          '</div><div class="ft"><span>Мощь героев <b>' + num(tm.hp) + "</b></span><span>Войска <b>" + full(tm.troops) + "</b></span></div></div>";
+      }).join("");
+      var rv = ar.raven, raven = "";
+      if (rv) {
+        raven = '<div class="ap-card"><div class="ap-h"><div><h3>Ворон</h3><p>мощь ' + full(rv.power) + '</p></div></div><div class="ap-raven"><img src="' + G + 'raven.png" alt=""><div class="ap-cells c4">' +
+          cell("Уровень", rv.lv) + cell("Звёзды", rv.stars ? "★".repeat(rv.stars) : "—") + cell("Мощь ворона", num(rv.power)) + cell("Урон навыка «Салют ворона»", rv.skill_pct != null ? full(rv.skill_pct) + "%" : "—", "от атаки") + "</div></div>" +
+          (rv.gear && rv.gear.length ? '<div class="ap-gear">' + rv.gear.map(function (g2) { return '<span class="q' + (g2[2] || 0) + '">Снаряжение ' + (Number(g2[0]) + 1) + " · ур. " + g2[1] + "</span>"; }).join("") + "</div>" : "") + "</div>";
+      }
+      $("pdef").innerHTML = '<div class="ap-card"><div class="ap-h"><div><h3>Защитный состав</h3><p>мощь ' + num(ar.power) + " · обновлено " + ago(ar.t) + '</p></div></div><div class="ap-teams">' + teams + "</div></div>" + raven;
+    };
+    get("x/" + ("0" + (Number(uid) % 32)).slice(-2) + ".json").catch(function () { return {}; }).then(function (x) {
+      var d = x[uid]; if (d) { if (d.log && d.log.length) X.log = d.log; defense(d.arena); }
+      pane("h"); bindPills("ptabs", pane);
+    });
     scrollUp();
   }
 
@@ -382,8 +416,8 @@
     else homeView();
   }
 
-  Promise.all([get("server.json"), get("alliances.json"), get("players.json")]).then(function (r) {
-    S.server = r[0]; S.index = r[1].alliances; S.players = r[2].players;
+  Promise.all([get("server.json"), get("alliances.json"), get("players.json"), fetch("data/heroes.json").then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (r) {
+    S.heroes = r[3]; S.server = r[0]; S.index = r[1].alliances; S.players = r[2].players;
     S.rows = S.server.boards.filter(function (b) { return b.slug === "alliance_power"; })[0].rows;
     S.server.boards.forEach(function (b) { if (b.alliance) return; var m = {}; b.rows.forEach(function (x) { m[x.id] = x.rank; }); S.board[b.slug] = m; });
     return Promise.all(S.rows.slice(0, 30).map(function (row) { return get("a/" + row.id + ".json").then(function (a) { S.al[row.id] = a; }).catch(function () {}); }));

@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       players:
-        description: "Сколько карточек игроков взять за этот запуск (обычно 45)"
+        description: "Сколько игроков обновить за этот запуск (обычно 25; на игрока 2 запроса)"
         required: false
-        default: "45"
+        default: "25"
 permissions:
   contents: write
   pages: write
@@ -28,7 +28,7 @@ jobs:
       - name: Сбор данных
         env:
           TRACKER_KEY: ${{ secrets.TRACKER_KEY }}
-          PLAYERS: ${{ github.event.inputs.players || '45' }}
+          PLAYERS: ${{ github.event.inputs.players || '25' }}
         run: python tools/tracker_sync.py
       - name: Сохранить
         run: |

@@ -25,8 +25,8 @@ SID = 397
 API = "https://lastasylumtracker.com/api"
 OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 TOP = 30
-MAX_REQ = 95 + int(os.environ.get("PLAYERS") or 45)
-PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 45)  # карточки игроков за запуск: 8 запусков × (62 + 45) + 30 историй альянсов ≈ 890 в сутки при лимите 1000
+MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 25)  # на игрока 2 запроса: карточка + защита/ворон
+PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 25)  # карточки игроков за запуск: 8 запусков × (62 + 45) + 30 историй альянсов ≈ 890 в сутки при лимите 1000
 HOME_AID = 67181437   # [SLAV] — их карточки берём первыми
 KEY = os.environ.get("TRACKER_KEY", "").strip()
 used = 0
@@ -154,10 +154,11 @@ def main():
             p.update({"aid": 0, "abbr": ""})
 
     # история игроков: по очереди, сначала самые сильные; кому уже взяли — повторно через 7 дней
-    qpath = OUT / "hist_done.json"
+    qpath = OUT / "hist_done2.json"  # 2 — новая очередь: карточка + защитный состав + ворон
     done_at = load(qpath, {})
     # первыми — игроки нашего альянса [SLAV], потом остальные по мощи
     order = sorted(players.items(), key=lambda kv: (kv[1].get("aid") != HOME_AID, -(kv[1].get("power") or 0)))
+    details = {}
     todo = [uid for uid, p in order if p.get("aid") and now - done_at.get(uid, 0) > 7 * 86400][:PLAYERS_PER_RUN]
     for uid in todo:
         try:
@@ -173,14 +174,36 @@ def main():
             # события из истории: смена альянса / ника / VIP — для вкладки «История»
             ch = []
             for h in sorted(pl.get("history", []), key=lambda h: h["observed_at"]):
-                ch.append({"t": h["observed_at"], "f": h.get("change_flags", ""), "power": h.get("power"), "abbr": h.get("union_abbr", ""), "nick": h.get("nick"), "lv": h.get("level"), "vip": h.get("vip")})
-            players[uid]["log"] = ch[-25:]
+                ch.append({"t": h["observed_at"], "f": h.get("change_flags", ""), "power": h.get("power"), "kills": h.get("kills"), "abbr": h.get("union_abbr", ""), "nick": h.get("nick"), "lv": h.get("level"), "vip": h.get("vip")})
+            players[uid].pop("log", None)
+            det = {"log": ch}
+            try:  # защитный состав (3 команды) и ворон — отдельный запрос
+                ar = (get(f"/players/{uid}/arena") or {}).get("arena") or {}
+                if ar.get("teams"):
+                    det["arena"] = {"power": ar.get("power"), "t": now,
+                                    "teams": [{"power": tm.get("power"), "hp": tm.get("hero_power"), "troops": tm.get("troops"),
+                                               "heroes": [{"id": h.get("id"), "lv": h.get("lv"), "star": h.get("star"), "q": h.get("q"), "aw": h.get("awaken"),
+                                                           "power": h.get("power"), "cap": h.get("cap"), "skills": h.get("skills"), "gear": h.get("gear")}
+                                                          for h in sorted(tm.get("heroes", []), key=lambda h: h.get("seat") or 0)]}
+                                              for tm in ar.get("teams", [])]}
+                    rv = ar.get("raven") or {}
+                    if rv:
+                        det["arena"]["raven"] = {"lv": rv.get("lv"), "stars": rv.get("stars"), "power": rv.get("power"), "skill_power": rv.get("skill_power"),
+                                                 "skill_pct": rv.get("skill_pct"), "gear": [[g.get("slot"), g.get("lv"), g.get("q")] for g in rv.get("gear", [])]}
+            except Exception as e:
+                print("защита игрока", uid, "пропущена:", e, file=sys.stderr)
+            details.setdefault(int(uid) % 32, {})[uid] = det
         for hrec in sorted(pl.get("history", []), key=lambda h: h["observed_at"]):  # за день — последняя запись дня
             d = datetime.fromtimestamp(hrec["observed_at"], timezone.utc).strftime("%Y-%m-%d")
             series.setdefault(int(uid) % 32, {}).setdefault("__hist__" + uid, {})[d] = [hrec.get("power"), hrec.get("kills")]
         done_at[uid] = now
     save(qpath, done_at)
 
+    for shard, vals in details.items():  # подробности игроков: полная история, защита, ворон
+        p = OUT / "x" / f"{shard:02d}.json"
+        x = load(p, {})
+        x.update(vals)
+        save(p, x)
     index["updated"] = now
     save(OUT / "alliances.json", index)
     save(OUT / "players.json", {"updated": now, "players": players})
