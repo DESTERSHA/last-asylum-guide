@@ -154,7 +154,7 @@ def main():
             p.update({"aid": 0, "abbr": ""})
 
     # история игроков: по очереди, сначала самые сильные; кому уже взяли — повторно через 7 дней
-    qpath = OUT / "hist_done2.json"  # 2 — новая очередь: карточка + защитный состав + ворон
+    qpath = OUT / "hist_done3.json"  # 3 — новая очередь: карточка + отряды + защитный состав + ворон с обликом
     done_at = load(qpath, {})
     # первыми — игроки нашего альянса [SLAV], потом остальные по мощи
     order = sorted(players.items(), key=lambda kv: (kv[1].get("aid") != HOME_AID, -(kv[1].get("power") or 0)))
