@@ -22,6 +22,7 @@ PAGES = [
     ("rules", "btn-caravan", "Правила"),
     ("glossary", "btn-search", "Слова"),
     ("tips", "diamond", "Фишки"),
+    ("server", "ev-throne", "Сервер 397"),
 ]
 
 TEMPLATE = """<!doctype html>

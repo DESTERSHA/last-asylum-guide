@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Сервер 397: альянсы, игроки, кто вступил и вышел | Last Asylum: Plague</title>
+<meta name="description" content="Живая статистика сервера 397 Last Asylum: Plague: топ альянсов, их состав, кто вступил и кто вышел, мощь игроков по дням. Обновляется каждые 3 часа.">
+<meta property="og:title" content="Сервер 397: альянсы, игроки, кто вступил и вышел | Last Asylum: Plague">
+<meta property="og:description" content="Живая статистика сервера 397 Last Asylum: Plague: топ альянсов, их состав, кто вступил и кто вышел, мощь игроков по дням. Обновляется каждые 3 часа.">
+<meta property="og:image" content="assets/art/hero-index.webp">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="assets/game/ev-kvk.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=806d0b97ab">
+</head>
+<body>
+<header class="site-head"><div class="wrap hdr">
+  <a class="logo" href="index.html"><img src="assets/icons/art-doctor.jpg" alt=""><span><b>Last Asylum: Plague</b><small>гайд альянса · сервер 397</small></span></a>
+  <nav class="main" aria-label="Разделы">
+    <a href="index.html"><img src="assets/game/go-hq.png" alt="">Главная</a>
+    <a href="kvk.html"><img src="assets/game/ev-kvk.png" alt="">КвК</a>
+    <a href="duel.html"><img src="assets/game/ev-duel.png" alt="">Дуэль</a>
+    <a href="events.html"><img src="assets/game/ev-special.png" alt="">События</a>
+    <a href="heroes.html"><img src="assets/game/hero/arthur.png" alt="">Герои</a>
+    <a href="squads.html"><img src="assets/game/c-squad.png" alt="">Отряды</a>
+    <a href="gear.html"><img src="assets/game/go-gear.png" alt="">Снаряжение</a>
+    <a href="raven.html"><img src="assets/game/ev-raven.png" alt="">Ворон</a>
+    <a href="rules.html"><img src="assets/game/btn-caravan.png" alt="">Правила</a>
+    <a href="glossary.html"><img src="assets/game/btn-search.png" alt="">Слова</a>
+    <a href="tips.html"><img src="assets/game/diamond.png" alt="">Фишки</a>
+    <a href="server.html" class="on" aria-current="page"><img src="assets/game/ev-throne.png" alt="">Сервер 397</a>
+  </nav>
+  <div class="clock" title="Разница между временем сервера и московским — 5 часов. На сервере время меньше."><div><b data-clock="srv">--:--</b><span>в игре</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
+</div></header>
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="kick"><img src="assets/game/ev-throne.png" alt="">Сервер 397</div>
+      <h1>Альянсы и игроки сервера 397</h1>
+      <p class="lead">Кто в каком альянсе, кто вступил и кто вышел, как растёт мощь. Данные обновляются сами каждые 3 часа: по 30 сильнейшим альянсам — полностью, по топ-100 — рейтинг.</p>
+      <div class="btns"><a class="btn pri" href="#moves">Кто вступил и вышел</a><a class="btn" href="#alliances">Топ альянсов</a><a class="btn" href="#players">Найти игрока</a></div>
+    </div>
+    <div class="art"><img src="assets/art/hero-kvk.webp" alt="Сервер 397"></div>
+  </div>
+  <div class="facts" id="srvFacts"></div>
+  <p class="cap" id="srvUpdated"></p>
+</div>
+
+<section class="band soft pad" id="moves">
+  <div class="eyebrow">Движение игроков · топ-30 альянсов</div>
+  <h2>Кто вступил и кто вышел</h2>
+  <div class="trk-filters">
+    <select id="mvAlliance"><option value="">Все альянсы топ-30</option></select>
+    <div class="trk-seg" id="mvKind"><button data-v="" class="on">Все</button><button data-v="join">Вступил</button><button data-v="leave">Вышел</button></div>
+    <div class="trk-seg" id="mvPeriod"><button data-v="1">Сутки</button><button data-v="7" class="on">Неделя</button><button data-v="30">Месяц</button><button data-v="0">Всё</button></div>
+    <input id="mvNick" type="search" placeholder="Ник игрока">
+  </div>
+  <div class="trk-sum" id="mvSum"></div>
+  <div class="trk-list" id="mvList"></div>
+  <button class="btn trk-more" id="mvMore" hidden>Показать ещё</button>
+</section>
+
+<section class="band pad" id="alliances">
+  <div class="eyebrow">Рейтинг по мощи</div>
+  <h2>Топ альянсов сервера</h2>
+  <p class="sub">Нажми на альянс из топ-30 — откроется его состав с рангами и лента вступлений и выходов.</p>
+  <div class="tbl"><table class="trk-tbl" id="alTable"></table></div>
+  <div id="alDetail"></div>
+  <details class="trk-top100"><summary>Альянсы с 31-го по 100-е место</summary><div class="tbl"><table class="trk-tbl" id="alTable100"></table></div></details>
+</section>
+
+<section class="band sand pad" id="players">
+  <div class="eyebrow">Игроки</div>
+  <h2>Найти игрока</h2>
+  <p class="sub">Ищутся игроки 30 сильнейших альянсов (и те, кто из них вышел). Мощь по дням копится с начала наблюдений.</p>
+  <input id="plSearch" class="trk-search" type="search" placeholder="Начни вводить ник…">
+  <div class="trk-list" id="plResults"></div>
+  <div id="plCard"></div>
+  <h3>Топ-100 игроков сервера</h3>
+  <div class="trk-seg" id="plBoard"><button data-v="power" class="on">Мощь</button><button data-v="kills">Убийства</button><button data-v="heroes">Мощь героев</button><button data-v="castle">Святилище</button></div>
+  <div class="tbl"><table class="trk-tbl" id="plTop"></table></div>
+</section>
+<script src="assets/tracker.js"></script>
+
+</main>
+<footer class="foot">
+  <p><b>Гайд альянса сервера 397</b> · обновлён 15.11.2026. Фанатский гайд, к разработчикам игры отношения не имеет. Значки и картинки — из самой игры и от сообщества игроков.</p>
+  <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
+</footer>
+<button class="totop" id="toTop" aria-label="Наверх">↑</button>
+<script src="assets/app.js?v=806d0b97ab"></script>
+</body>
+</html>
