@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=ff273616db">
+<link rel="stylesheet" href="assets/style.css?v=cbac6f523d">
 </head>
 <body>
 <header class="site-head"><div class="wrap hdr">
@@ -35,6 +35,7 @@
   <div class="clock" title="Разница между временем сервера и московским — 5 часов. На сервере время меньше."><div><b data-clock="srv">--:--</b><span>в игре</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
 </div></header>
 <main>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
 <div class="wrap">
   <div class="hero">
     <div>
@@ -44,19 +45,12 @@
     </div>
     <div class="art"><img src="assets/art/hero-kvk.webp" alt="Сервер 397"></div>
   </div>
-  <div class="facts" id="srvFacts"></div>
-  <p class="cap" id="srvUpdated"></p>
 </div>
 
-<section class="band soft pad" id="trk">
-  <div class="tk-searchbox">
-    <div class="tk-seg" id="skind"><button data-v="p" class="on">Игроки</button><button data-v="a">Альянсы</button></div>
-    <input id="sq" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off">
-    <div id="sres" class="tk-sres"></div>
-  </div>
-  <div id="view"></div>
+<section class="ap-band" id="trk">
+  <div class="ap-in-wrap"><div id="view"><div class="ap-wrap"><div class="ap-card"><p class="ap-empty">Загружаю данные сервера…</p></div></div></div></div>
 </section>
-<script src="assets/tracker.js?v=5"></script>
+<script src="assets/tracker.js?v=6"></script>
 
 </main>
 <footer class="foot">
@@ -64,6 +58,6 @@
   <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
 </footer>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
-<script src="assets/app.js?v=ff273616db"></script>
+<script src="assets/app.js?v=cbac6f523d"></script>
 </body>
 </html>

@@ -25,15 +25,18 @@ SID = 397
 API = "https://lastasylumtracker.com/api"
 OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 TOP = 30
-MAX_REQ = 140
-PLAYERS_PER_RUN = 45  # карточки игроков за запуск: 8 запусков × (62 + 45) + 30 историй альянсов ≈ 890 в сутки при лимите 1000
+MAX_REQ = 95 + int(os.environ.get("PLAYERS") or 45)
+PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 45)  # карточки игроков за запуск: 8 запусков × (62 + 45) + 30 историй альянсов ≈ 890 в сутки при лимите 1000
 HOME_AID = 67181437   # [SLAV] — их карточки берём первыми
 KEY = os.environ.get("TRACKER_KEY", "").strip()
 used = 0
+blocked = False  # лимит ключа исчерпан — дальше не спрашиваем
 
 
 def get(path):
-    global used
+    global used, blocked
+    if blocked:
+        raise RuntimeError("лимит ключа исчерпан")
     if used >= MAX_REQ:
         raise RuntimeError("достигнут предохранитель запросов")
     for attempt in range(4):
@@ -45,6 +48,7 @@ def get(path):
         except urllib.error.HTTPError as e:
             if e.code == 429:
                 print("429 — лимит, останавливаюсь", file=sys.stderr)
+                blocked = True
                 raise
             if e.code >= 500 and attempt < 3:
                 time.sleep(10 * (attempt + 1)); continue
@@ -139,7 +143,8 @@ def main():
         if mem:
             live_ids.append(aid)
         for m in mem:
-            players.setdefault(str(m["uid"]), {}).update({"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "power": m["power"], "lv": m["lv"], "kills": m["kills"], "rank": m["rank"], "seen": now, "x": m.get("x"), "y": m.get("y")})
+            players.setdefault(str(m["uid"]), {}).update({"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "power": m["power"], "lv": m["lv"], "kills": m["kills"], "rank": m["rank"], "seen": now, "x": m.get("x"), "y": m.get("y"),
+                                                       "active": m.get("active"), "honor": m.get("honor"), "tech": m.get("tech")})
             series.setdefault(m["uid"] % 32, {})[str(m["uid"])] = [m["power"], m["kills"]]
 
     # игроки, которых больше нет ни в одном из собранных альянсов, — помечаем «без альянса», если они были в обработанном альянсе
@@ -163,13 +168,14 @@ def main():
         if uid in players and pl.get("power"):  # личная карточка свежее данных альянса
             players[uid].update({"power": pl.get("power"), "lv": pl.get("level") or players[uid].get("lv"), "kills": pl.get("kills"), "nick": pl.get("nick") or players[uid]["nick"]})
             players[uid].update({"vip": pl.get("vip"), "likes": pl.get("likes"), "lang": pl.get("language"), "gender": pl.get("gender"),
-                                 "x": pl.get("x"), "y": pl.get("y"), "first": pl.get("first_seen_at"), "card": now})
+                                 "x": pl.get("x"), "y": pl.get("y"), "first": pl.get("first_seen_at"), "card": now,
+                                 "online": pl.get("online"), "last": pl.get("last_seen_at"), "skin": pl.get("skin_name") or None, "shield": pl.get("shielding")})
             # события из истории: смена альянса / ника / VIP — для вкладки «История»
             ch = []
             for h in sorted(pl.get("history", []), key=lambda h: h["observed_at"]):
                 ch.append({"t": h["observed_at"], "f": h.get("change_flags", ""), "power": h.get("power"), "abbr": h.get("union_abbr", ""), "nick": h.get("nick"), "lv": h.get("level"), "vip": h.get("vip")})
             players[uid]["log"] = ch[-25:]
-        for hrec in pl.get("history", []):
+        for hrec in sorted(pl.get("history", []), key=lambda h: h["observed_at"]):  # за день — последняя запись дня
             d = datetime.fromtimestamp(hrec["observed_at"], timezone.utc).strftime("%Y-%m-%d")
             series.setdefault(int(uid) % 32, {}).setdefault("__hist__" + uid, {})[d] = [hrec.get("power"), hrec.get("kills")]
         done_at[uid] = now
@@ -185,7 +191,10 @@ def main():
             if uid.startswith("__hist__"):
                 rec = s.setdefault(uid[8:], {})
                 for d, pk in v.items():
-                    rec.setdefault(d, pk)  # из истории трекера — не затираем наши снимки
+                    if d < day:
+                        rec[d] = pk  # прошедший день у трекера полный — берём его итог дня
+                    else:
+                        rec.setdefault(d, pk)  # сегодня — не затираем наш свежий снимок
             else:
                 s.setdefault(uid, {})[day] = list(v)
         save(p, s)
