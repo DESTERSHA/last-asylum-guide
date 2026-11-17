@@ -101,6 +101,8 @@ def main():
         except Exception as e:  # один альянс не должен ронять весь сбор
             print("альянс", aid, "пропущен:", e, file=sys.stderr)
             continue
+        save(OUT / "a" / f"{aid}.raw.json", {"t": now, "alliance": a, "events": ev})  # ответы трекера целиком, без отбора
+        a = json.loads(json.dumps(a))
         a["name"] = a.get("name") or row["name"]; a["abbr"] = a.get("abbr") or row["abbr"]  # трекер иногда не присылает название — берём из рейтинга
         # в ответе бывают «хвосты» со сканов карты: без ранга и без статуса «в сети» — это не участники
         a["members"] = [m for m in a.get("members", []) if m.get("rank_label")]
@@ -159,18 +161,20 @@ def main():
     # первыми — игроки нашего альянса [SLAV], потом остальные по мощи
     order = sorted(players.items(), key=lambda kv: (kv[1].get("aid") != HOME_AID, -(kv[1].get("power") or 0)))
     details = {}
-    # очередь: 1) ещё ни разу не брали; 2) у трекера не было VIP/лайков/пола — перепроверка раз в сутки
-    # (трекер получает их из игры позже, поле появляется в карточке со временем); 3) остальные — раз в 7 дней
+    # очередь: 0) ещё ни разу не брали; 1) [SLAV] — каждый день; 2) у трекера не было VIP/лайков/пола — раз в 3 дня;
+    # 3) остальные — раз в 7 дней. Лимит ключа 1000 запросов в сутки, на игрока 2 запроса.
     def due(uid, p):
         if not p.get("aid"):
             return None
         age = now - done_at.get(uid, 0)
         if uid not in done_at:
             return 0
-        if p.get("vip") is None and age > 86400:
+        if p.get("aid") == HOME_AID and age > 20 * 3600:
             return 1
-        if age > 7 * 86400:
+        if p.get("vip") is None and age > 3 * 86400:
             return 2
+        if age > 7 * 86400:
+            return 3
         return None
     todo = [t[2] for t in sorted((due(u, p), i, u) for i, (u, p) in enumerate(order) if due(u, p) is not None)][:PLAYERS_PER_RUN]
     for uid in todo:
@@ -184,37 +188,23 @@ def main():
             players[uid].update({"vip": pl.get("vip"), "likes": pl.get("likes"), "lang": pl.get("language"), "gender": pl.get("gender"),
                                  "x": pl.get("x"), "y": pl.get("y"), "first": pl.get("first_seen_at"), "card": now,
                                  "online": pl.get("online"), "last": pl.get("last_seen_at"), "skin": pl.get("skin_name") or None, "shield": pl.get("shielding")})
-            # события из истории: смена альянса / ника / VIP — для вкладки «История»
-            ch = []
-            for h in sorted(pl.get("history", []), key=lambda h: h["observed_at"]):
-                ch.append({"t": h["observed_at"], "f": h.get("change_flags", ""), "power": h.get("power"), "kills": h.get("kills"), "abbr": h.get("union_abbr", ""), "nick": h.get("nick"), "lv": h.get("level"), "vip": h.get("vip")})
             players[uid].pop("log", None)
-            det = {"log": ch}
-            # отряды, замеченные на карте (из карточки игрока): герои, войска, когда видели
-            sq = [{"n": q.get("squad"), "power": q.get("power"), "soldiers": q.get("soldiers"), "load": q.get("soldier_load"), "seen": q.get("seen_at"),
-                   "heroes": [{"id": h.get("id"), "lv": h.get("lv"), "star": h.get("star"), "q": h.get("q"), "aw": h.get("awaken"), "tier": h.get("tier")} for h in q.get("heroes", [])],
-                   "troops": q.get("troops") or []}
-                  for q in pl.get("squads", []) if q and 1 <= (q.get("squad") or 0) <= 4]
-            if sq:
-                det["squads"] = sorted(sq, key=lambda q: q["n"])
-            try:  # защитный состав (3 команды) и ворон — отдельный запрос
-                ar = (get(f"/players/{uid}/arena") or {}).get("arena") or {}
-                if ar.get("teams"):
-                    det["arena"] = {"power": ar.get("power"), "t": now,
-                                    "teams": [{"power": tm.get("power"), "hp": tm.get("hero_power"), "troops": tm.get("troops"),
-                                               "heroes": [{"id": h.get("id"), "lv": h.get("lv"), "star": h.get("star"), "q": h.get("q"), "aw": h.get("awaken"),
-                                                           "power": h.get("power"), "cap": h.get("cap"), "skills": h.get("skills"), "gear": h.get("gear")}
-                                                          for h in sorted(tm.get("heroes", []), key=lambda h: h.get("seat") or 0)]}
-                                              for tm in ar.get("teams", [])]}
-                    rv = ar.get("raven") or {}
-                    if rv:
-                        det["arena"]["raven"] = {"lv": rv.get("lv"), "stars": rv.get("stars"), "power": rv.get("power"), "skill_power": rv.get("skill_power"),
-                                                 "skill_pct": rv.get("skill_pct"), "skin": rv.get("skin"),
-                                                 "gear": [[g.get("slot"), g.get("lv"), g.get("q")] for g in rv.get("gear", [])],
-                                                 "sets": [[g.get("slot"), g.get("lv"), g.get("q")] for g in rv.get("sets", [])]}
+            try:  # защитный состав и ворон — отдельный адрес трекера
+                arena = get(f"/players/{uid}/arena")
             except Exception as e:
                 print("защита игрока", uid, "пропущена:", e, file=sys.stderr)
-            details.setdefault(int(uid) % 32, {})[uid] = det
+                arena = None
+            pf = OUT / "p" / f"{uid}.json"
+            old = load(pf, {})
+            # история у трекера — последние 30 дней; у нас копится вся
+            hist = {str(h.get("id") or h["observed_at"]): h for h in old.get("history", [])}
+            for h in pl.get("history", []):
+                hist[str(h.get("id") or h["observed_at"])] = h
+            card = {k: v for k, v in pl.items() if k != "alliance_members"}  # список альянса целиком лежит в a/<id>.raw.json
+            rec = {"t": now, "card": card, "arena": arena if arena is not None else old.get("arena"),
+                   "arena_t": now if arena is not None else old.get("arena_t"),
+                   "history": sorted(hist.values(), key=lambda h: h["observed_at"])}
+            save(pf, rec)
         for hrec in sorted(pl.get("history", []), key=lambda h: h["observed_at"]):  # за день — последняя запись дня
             d = datetime.fromtimestamp(hrec["observed_at"], timezone.utc).strftime("%Y-%m-%d")
             series.setdefault(int(uid) % 32, {}).setdefault("__hist__" + uid, {})[d] = [hrec.get("power"), hrec.get("kills")]

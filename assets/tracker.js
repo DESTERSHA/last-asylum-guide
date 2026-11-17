@@ -130,6 +130,63 @@
     void NS;
   }
 
+  /* ---------- график «Рост» как у трекера: 1/7/30 дней, мощь + убийства + вторая величина ---------- */
+  function whenTxt(t) { var d = new Date((t - 2 * 3600) * 1000); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()].slice(0, 4) + ".", ", " + hm(t); }
+  function whenFull(t) { var d = new Date((t - 2 * 3600) * 1000); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()].slice(0, 4) + "., " + hm(t); }
+  function drawTrend(boxId, all, cfg) {
+    var box = $(boxId); if (!box) return;
+    var days = cfg.days || 7;
+    var last = all[all.length - 1].t;
+    var pts = all.filter(function (p) { return p.t >= last - days * 86400; });
+    var DAYW = function (n) { return n === 1 ? "1 день" : n + " дней"; };
+    var head = '<div class="ap-tr-top"><b class="ttl">Рост</b>' + pills(boxId + "-rng", [["1", "1 д."], ["7", "7 д."], ["30", "30 д."]], String(days)) + "</div>";
+    if (pts.length < 2) { box.innerHTML = head + '<p class="ap-empty">За ' + DAYW(days) + " записей меньше двух — выберите период больше.</p>"; bindPills(boxId + "-rng", function (v) { cfg.days = Number(v); drawTrend(boxId, all, cfg); }); return; }
+    var f = pts[0], l = pts[pts.length - 1], hasK = pts.some(function (p) { return p.k != null; }), hasS = pts.some(function (p) { return p.s != null; });
+    box.innerHTML = head + '<div class="ap-tr-h"><span class="l">' + cfg.aName.toUpperCase() + " · " + DAYW(days).toUpperCase() + '</span><b class="cur">' + num(l.a) + "</b>" +
+      '<span class="g ' + (l.a - f.a >= 0 ? "up" : "dn") + '">' + signed(l.a - f.a) + " за " + DAYW(days) + "</span>" +
+      (hasK && cfg.kGain ? '<span class="g kc">' + signed((l.k || 0) - (f.k || 0)) + " " + cfg.kGain + " за " + DAYW(days) + "</span>" : "") + '<div class="chips"></div>' +
+      '<div class="lg"><span class="a">' + cfg.aName + "</span>" + (hasK ? '<span class="k">' + cfg.kName + "</span>" : "") + (hasS ? '<span class="s">' + cfg.sName + "</span>" : "") + "</div></div>" +
+      '<div class="ap-ch-body"><svg></svg></div><div class="ap-tr-rng">' + whenFull(f.t) + " → " + whenFull(l.t) + "</div>";
+    bindPills(boxId + "-rng", function (v) { cfg.days = Number(v); drawTrend(boxId, all, cfg); });
+    var body = box.querySelector(".ap-ch-body"), svg = box.querySelector("svg"), chips = box.querySelector(".chips");
+    var W = Math.max(300, body.clientWidth), H = 230, L = 70, R = hasS ? 44 : 14, T = 12, B = 14;
+    var t0 = f.t, t1 = l.t, X = function (t) { return L + (t - t0) * (W - L - R) / Math.max(1, t1 - t0); };
+    var rng = function (key) { var v = pts.map(function (p) { return p[key]; }).filter(function (x) { return x != null; }); var mn = Math.min.apply(null, v), mx = Math.max.apply(null, v); if (mx === mn) { mx += 1; mn -= 1; } return [mn, mx]; };
+    var ra = rng("a"), rk = hasK ? rng("k") : null, rs = hasS ? rng("s") : null;
+    var Y = function (v, r) { return T + (r[1] - v) * (H - T - B) / (r[1] - r[0]); };
+    var path = function (key, r, step) {
+      var out = "", prev = null;
+      pts.forEach(function (p) { if (p[key] == null) return; var x = X(p.t), y = Y(p[key], r); if (prev === null) out += "M" + x.toFixed(1) + " " + y.toFixed(1); else { if (step) out += " L" + x.toFixed(1) + " " + prev.toFixed(1); out += " L" + x.toFixed(1) + " " + y.toFixed(1); } prev = y; });
+      return out;
+    };
+    var la = path("a", ra), gid = "tg" + boxId;
+    var g = '<line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + T + '" y2="' + T + '"/><line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + (T + (H - T - B) / 2) + '" y2="' + (T + (H - T - B) / 2) + '"/><line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>';
+    g += '<text class="axa" x="' + (L - 8) + '" y="' + (T + 4) + '" text-anchor="end">' + num(ra[1]) + '</text><text class="axa" x="' + (L - 8) + '" y="' + (H - B + 4) + '" text-anchor="end">' + num(ra[0]) + "</text>";
+    if (rk) g += '<text class="axk" x="' + (L - 8) + '" y="' + (T + 20) + '" text-anchor="end">' + num(rk[1]) + '</text><text class="axk" x="' + (L - 8) + '" y="' + (H - B - 12) + '" text-anchor="end">' + num(rk[0]) + "</text>";
+    if (rs) g += '<text class="axs" x="' + (W - R + 8) + '" y="' + (T + 4) + '">' + rs[1] + '</text><text class="axs" x="' + (W - R + 8) + '" y="' + (H - B + 4) + '">' + rs[0] + "</text>";
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("width", W); svg.setAttribute("height", H);
+    svg.innerHTML = '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7fd6" stop-opacity=".2"/><stop offset="1" stop-color="#2f7fd6" stop-opacity=".04"/></linearGradient></defs>' + g +
+      '<path d="' + la + " L" + X(t1).toFixed(1) + " " + (H - B) + " L" + X(t0).toFixed(1) + " " + (H - B) + 'Z" fill="url(#' + gid + ')"/>' +
+      (hasS ? '<path class="ls" d="' + path("s", rs, true) + '"/>' : "") + (hasK ? '<path class="lk" d="' + path("k", rk) + '"/>' : "") + '<path class="la" d="' + la + '"/>' +
+      '<line class="vl" y1="' + T + '" y2="' + (H - B) + '" x1="-9" x2="-9"/><circle class="da" r="5" cx="-9" cy="-9"/>' + (hasK ? '<circle class="dk" r="4.5" cx="-9" cy="-9"/>' : "") + (hasS ? '<circle class="ds" r="5" cx="-9" cy="-9"/>' : "") +
+      '<rect class="hit" x="' + L + '" y="0" width="' + (W - L - R) + '" height="' + H + '"/>';
+    var set = function (sel, x, y) { var c = svg.querySelector(sel); if (c) { c.setAttribute("cx", x); c.setAttribute("cy", y); } };
+    var show = function (i) {
+      var p = pts[i], x = X(p.t), prev = i ? pts[i - 1] : null, vl = svg.querySelector(".vl");
+      vl.setAttribute("x1", x); vl.setAttribute("x2", x);
+      set(".da", x, Y(p.a, ra)); if (hasK && p.k != null) set(".dk", x, Y(p.k, rk)); if (hasS && p.s != null) set(".ds", x, Y(p.s, rs));
+      chips.innerHTML = "<span>" + whenFull(p.t) + "</span>" + (prev ? '<span class="' + (p.a - prev.a >= 0 ? "up" : "dn") + '">' + signed(p.a - prev.a) + " к предыдущему</span>" : "") +
+        (p.k != null ? '<span class="kc">' + cfg.kName + " " + num(p.k) + "</span>" : "") + (p.s != null ? "<span>" + cfg.sFmt(p.s) + "</span>" : "");
+    };
+    var move = function (e) {
+      var r = svg.getBoundingClientRect(), tx = t0 + ((e.clientX - r.left) * W / r.width - L) * (t1 - t0) / (W - L - R), bi = 0, bd = Infinity;
+      pts.forEach(function (p, i) { var dd = Math.abs(p.t - tx); if (dd < bd) { bd = dd; bi = i; } });
+      show(bi);
+    };
+    svg.addEventListener("pointermove", move); svg.addEventListener("pointerdown", move);
+    show(pts.length - 1);
+  }
+
   /* ---------- главная ---------- */
   function wk(ix) { /* изменение мощи альянса за 7 дней по истории */
     var h = ix.hist || {}, ds = Object.keys(h).sort();
@@ -267,10 +324,10 @@
         Object.keys(h).forEach(function (d) { if (h[d].power) pw[d] = h[d].power; });
         Object.keys(ix.days || {}).forEach(function (d) { if (ix.days[d]) pw[d] = ix.days[d]; });
         var ds = Object.keys(pw).sort();
-        P.innerHTML = '<div class="ap-card">' + chartBox("ach") + '</div><div class="ap-card">' + chartBox("ach2") + '</div><div class="ap-sec"><h3>По дням</h3></div><div class="ap-card flush"><div id="hlist"></div></div>';
-        drawChart("ach", ds.map(function (d) { return [d, pw[d]]; }), { title: "Мощь альянса", extra: function (p) { var x = h[p[0]]; return x ? "<span>участников " + (x.members || "—") + " · +" + (x.joined || 0) + " −" + (x.left || 0) + "</span>" : ""; } });
-        var hm2 = Object.keys(h).sort().filter(function (d) { return h[d].members; });
-        drawChart("ach2", hm2.map(function (d) { return [d, h[d].members]; }), { title: "Участников", fmt: function (n) { return String(Math.round(n)); }, fullFmt: function (n) { return n + " чел."; }, h: 180 });
+        P.innerHTML = '<div class="ap-card"><div id="ach"></div></div><div class="ap-sec"><h3>По дням</h3></div><div class="ap-card flush"><div id="hlist"></div></div>';
+        var apts = ds.map(function (d) { return { t: Date.parse(d + "T14:00:00Z") / 1000, a: pw[d], s: h[d] && h[d].members ? h[d].members : null }; });
+        if (apts.length >= 2) drawTrend("ach", apts, { aName: "Мощь альянса", sName: "Участники", sFmt: function (v) { return v + " участников"; }, days: 30 });
+        else $("ach").innerHTML = '<p class="ap-empty">График появится, когда наберётся хотя бы два дня.</p>';
         var days = Object.keys(h).sort().reverse();
         paged($("hlist"), days, 15, function (part) {
           return '<table class="ap-t"><colgroup><col><col style="width:140px"><col style="width:120px"><col style="width:120px"><col style="width:110px"><col style="width:110px"></colgroup><thead><tr><th>День</th><th class="r">Мощь</th><th class="r">За день</th><th class="r">Участников</th><th class="r">Вступили</th><th class="r">Вышли</th></tr></thead><tbody>' +
@@ -295,7 +352,39 @@
   function placeOf(slug, uid) {
     var b = S.board[slug]; return b ? b[uid] : null;
   }
+  /* полный файл игрока p/<id>.json: ответы трекера целиком → данные для карточки */
+  function fromRaw(r) {
+    var c = r.card || {}, a = (r.arena && r.arena.arena) || null;
+    var d = { log: (r.history || []).map(function (h) { return { t: h.observed_at, f: h.change_flags || "", power: h.power, kills: h.kills, abbr: h.union_abbr || "", nick: h.nick, lv: h.level, vip: h.vip }; }) };
+    d.squads = (c.squads || []).filter(function (q) { return q && q.squad >= 1 && q.squad <= 4; }).sort(function (x, y) { return x.squad - y.squad; }).map(function (q) {
+      return { n: q.squad, power: q.power, soldiers: q.soldiers, load: q.soldier_load, seen: q.seen_at, heroes: (q.heroes || []).map(function (h) { return { id: h.id, lv: h.lv, star: h.star, q: h.q, aw: h.awaken, tier: h.tier }; }) };
+    });
+    if (a && a.teams && a.teams.length) {
+      d.arena = { power: a.power, t: (r.arena && r.arena.fetched_at) || r.arena_t, teams: a.teams.map(function (tm) {
+        return { power: tm.power, hp: tm.hero_power, troops: tm.troops, heroes: (tm.heroes || []).slice().sort(function (x, y) { return (x.seat || 0) - (y.seat || 0); }).map(function (h) { return { id: h.id, lv: h.lv, star: h.star, q: h.q, aw: h.awaken, power: h.power, skills: h.skills, gear: h.gear }; }) };
+      }) };
+      var rv = a.raven;
+      if (rv && rv.level_id) d.arena.raven = { lv: rv.lv, stars: rv.stars, power: rv.power, skill_pct: rv.skill_pct, skin: rv.skin,
+        gear: (rv.gear || []).map(function (g) { return [g.slot, g.lv, g.q]; }), sets: (rv.sets || []).map(function (g) { return [g.slot, g.lv, g.q]; }) };
+    }
+    return d;
+  }
   function playerView(uid) {
+    get("p/" + uid + ".json").catch(function () { return null; }).then(function (R) {
+      var p = S.players[uid];
+      if (R && R.card && p) {
+        var c = R.card;
+        ["vip", "likes", "gender"].forEach(function (k) { if (c[k] != null) p[k] = c[k]; });
+        if (c.language) p.lang = c.language;
+        if (c.online != null) p.online = c.online;
+        if (c.last_seen_at) p.last = c.last_seen_at;
+        if (c.first_seen_at) p.first = c.first_seen_at;
+        p.card = R.t;
+      }
+      renderPlayer(uid, R);
+    });
+  }
+  function renderPlayer(uid, R) {
     var p = S.players[uid];
     if (!p) { $("view").innerHTML = '<div class="ap-wrap"><div class="ap-card"><p class="ap-empty">Игрок не найден среди альянсов топ-30.</p></div></div>'; return; }
     var mv = [], seen = {};
@@ -331,19 +420,16 @@
       var P = $("ppane");
       if (v === "h") {
         P.innerHTML = '<div class="ap-card"><div id="pch"></div></div>';
-        get("s/" + ("0" + (Number(uid) % 32)).slice(-2) + ".json").catch(function () { return {}; }).then(function (s) {
-          var ser = s[uid] || {}, ds = Object.keys(ser).sort();
-          var lg = (X.log || []).filter(function (h) { return h.power != null; });
-          var draw = function (k) {
-            var idx = k === "kills" ? 1 : 0, pts;
-            if (lg.length >= 2) pts = lg.filter(function (h) { return (k === "kills" ? h.kills : h.power) != null; }).map(function (h) { return [h.t, k === "kills" ? h.kills : h.power]; });
-            else pts = ds.filter(function (d) { return ser[d][idx] != null; }).map(function (d) { return [d, ser[d][idx]]; });
-            drawChart("pchart", pts, { title: k === "kills" ? "Убийства" : "Мощь", right: pills("pk", [["power", "Мощь"], ["kills", "Убийства"]], k),
-              extra: function (pt) { if (typeof pt[0] !== "number") return ""; var h = lg.filter(function (x) { return x.t === pt[0]; })[0]; return h ? "<span>" + (k === "kills" ? "мощь " + num(h.power) : "убийства " + num(h.kills)) + " · Святилище " + (h.lv || "—") + "</span>" : ""; } });
-            bindPills("pk", draw);
-          };
-          $("pch").innerHTML = chartBox("pchart"); draw("power");
-        });
+        var lg = (X.log || []).filter(function (h) { return h.power != null; });
+        if (lg.length >= 2) {
+          drawTrend("pch", lg.map(function (h) { return { t: h.t, a: h.power, k: h.kills, s: h.lv }; }), { aName: "Мощь", kName: "Убийства", sName: "Святилище", sFmt: function (v) { return "Святилище " + v; }, kGain: "убийств" });
+        } else {
+          get("s/" + ("0" + (Number(uid) % 32)).slice(-2) + ".json").catch(function () { return {}; }).then(function (s2) {
+            var ser = s2[uid] || {}, ds = Object.keys(ser).sort();
+            $("pch").innerHTML = chartBox("pchart");
+            drawChart("pchart", ds.map(function (d) { return [d, ser[d][0]]; }), { title: "Мощь по дням" });
+          });
+        }
       } else if (v === "c") {
         var NAMES = function (h) { return { union: "альянс: " + (h.abbr ? "[" + esc(h.abbr) + "]" : "без альянса"), vip: "VIP " + h.vip, nick: "ник: " + esc(h.nick), level: "Святилище " + h.lv }; };
         var log = (X.log || []).slice().reverse();
@@ -415,8 +501,8 @@
         (pct ? "<span>Наносит " + pct + "% атаки физич. урона 2 противникам с наибольшим здоровьем (перезарядка: 13 сек.)</span>" : "") + '</div></div><ul>' +
         STAR.map(function (t, i) { return "<li" + (i < st ? ' class="on"' : "") + '><span class="n">' + "★".repeat(i + 1) + "</span><span>" + t + "</span></li>"; }).join("") + "</ul></div></div></div>";
     };
-    get("x/" + ("0" + (Number(uid) % 32)).slice(-2) + ".json").catch(function () { return {}; }).then(function (x) {
-      var d = x[uid]; if (d) { if (d.log && d.log.length) X.log = d.log; $("pdef").innerHTML = squadsBlock(d.squads) + defenseBlock(d.arena) + ravenBlock(d.arena && d.arena.raven); }
+    (R ? Promise.resolve(null) : get("x/" + ("0" + (Number(uid) % 32)).slice(-2) + ".json").catch(function () { return {}; })).then(function (x) {
+      var d = R ? fromRaw(R) : x[uid]; if (d) { if (d.log && d.log.length) X.log = d.log; $("pdef").innerHTML = squadsBlock(d.squads) + defenseBlock(d.arena) + ravenBlock(d.arena && d.arena.raven); }
       pane("h"); bindPills("ptabs", pane);
     });
     scrollUp();
