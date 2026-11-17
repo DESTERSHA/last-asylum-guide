@@ -432,3 +432,5 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 .sanct .more{color:var(--mut);font-size:14px}
 
 .legend{display:grid;gap:8px;align-content:start}.legend .lg{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:14px;line-height:1.4}.legend .lg b{display:block;font-size:14.5px;margin-bottom:2px}.legend .lg span b{display:inline;font-size:inherit}
+.grid2>div>h3:first-child{margin-top:0}
+.shot-in>.shot{margin:0}.shot-in>.cap{max-width:560px}
