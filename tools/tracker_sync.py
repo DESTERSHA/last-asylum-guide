@@ -86,6 +86,7 @@ def main():
     index = load(OUT / "alliances.json", {"alliances": {}})
     players = load(OUT / "players.json", {"players": {}})["players"]
     series = {}
+    live_ids = []
 
     for row in top:
         aid = row["id"]
@@ -96,20 +97,20 @@ def main():
             print("альянс", aid, "пропущен:", e, file=sys.stderr)
             continue
         a["name"] = a.get("name") or row["name"]; a["abbr"] = a.get("abbr") or row["abbr"]  # трекер иногда не присылает название — берём из рейтинга
+        # в ответе бывают «хвосты» со сканов карты: без ранга и без статуса «в сети» — это не участники
+        a["members"] = [m for m in a.get("members", []) if m.get("rank_label")]
         mem = [{"uid": m["uid"], "nick": m.get("nick_name", ""), "power": m.get("power", 0), "lv": m.get("lv", 0), "kills": m.get("kills", 0),
                 "rank": m.get("rank_label", ""), "x": m.get("x"), "y": m.get("y"), "active": m.get("active"), "honor": m.get("daily_honor"), "tech": m.get("daily_tech")}
                for m in a.get("members", [])]
         old = load(OUT / "a" / f"{aid}.json", {"events": []})
-        if not a.get("live"):  # трекер прислал урезанную копию (без лидера и рангов) — оставляем последние полные данные
-            prev = {m["uid"]: m for m in old.get("members", [])}
-            for m in mem:
-                pm = prev.get(m["uid"], {})
-                for k in ("rank", "honor", "tech", "active"):
-                    if m.get(k) in (None, "") and pm.get(k) not in (None, ""):
-                        m[k] = pm[k]
-            for k_new, k_old in (("leader_name", "leader"), ("capacity", "capacity"), ("level", "level"), ("member_count", "members_count")):
-                if not a.get(k_new) and old.get(k_old):
-                    a[k_new] = old[k_old]
+        stale = not a.get("live")
+        if stale and old.get("live"):  # у трекера старая копия, а у нас есть свежий состав — состав и цифры не трогаем
+            mem = old["members"]
+            for k_new, k_old in (("leader_name", "leader"), ("capacity", "capacity"), ("level", "level")):
+                a[k_new] = old.get(k_old)
+            a["member_count"] = len(mem); a["live"] = True; a["power"] = old.get("power")
+        elif stale:
+            mem = []  # свежего состава ещё не было ни разу — не показываем устаревший
         seen = {(e["t"], e["uid"], e["kind"]) for e in old.get("events", [])}
         events = list(old.get("events", []))
         for e in ev.get("events", []):
@@ -121,7 +122,7 @@ def main():
                            "from": e.get("other_abbr", ""), "now": e.get("now_abbr", "")})
         events.sort(key=lambda e: -e["t"])
         save(OUT / "a" / f"{aid}.json", {"updated": now, "id": aid, "name": a.get("name"), "abbr": a.get("abbr"), "power": a.get("power"), "level": a.get("level"),
-                                         "members_count": a.get("member_count"), "capacity": a.get("capacity"), "leader": a.get("leader_name"), "language": a.get("language"),
+                                         "members_count": len(mem) if mem else None, "capacity": a.get("capacity"), "leader": a.get("leader_name"), "language": a.get("language"),
                                          "summary": ev.get("summary"), "live": bool(a.get("live")), "members": sorted(mem, key=lambda m: -(m["power"] or 0)), "events": events})
         ent = index["alliances"].get(str(aid), {"days": {}})
         if datetime.now(timezone.utc).hour < 3 or not ent.get("hist"):
@@ -134,12 +135,14 @@ def main():
                     "leader": a.get("leader_name"), "rank": row["rank"], "updated": now})
         ent["days"][day] = a.get("power")
         index["alliances"][str(aid)] = ent
+        if mem:
+            live_ids.append(aid)
         for m in mem:
             players[str(m["uid"])] = {"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "power": m["power"], "lv": m["lv"], "kills": m["kills"], "rank": m["rank"], "seen": now}
             series.setdefault(m["uid"] % 32, {})[str(m["uid"])] = [m["power"], m["kills"]]
 
     # игроки, которых больше нет ни в одном из собранных альянсов, — помечаем «без альянса», если они были в обработанном альянсе
-    done = {r["id"] for r in top}
+    done = set(live_ids)  # «вышел» ставим только по альянсам, у которых есть свежий состав
     for uid, p in players.items():
         if p.get("aid") in done and p.get("seen", 0) < now - 1:
             p.update({"aid": 0, "abbr": ""})
@@ -155,8 +158,8 @@ def main():
         except Exception as e:
             print("игрок", uid, "пропущен:", e, file=sys.stderr)
             continue
-        sh = series.setdefault(int(uid) % 32, {})
-        old = sh.get(uid)
+        if uid in players and pl.get("power"):  # личная карточка свежее данных альянса
+            players[uid].update({"power": pl.get("power"), "lv": pl.get("level") or players[uid].get("lv"), "kills": pl.get("kills"), "nick": pl.get("nick") or players[uid]["nick"]})
         for hrec in pl.get("history", []):
             d = datetime.fromtimestamp(hrec["observed_at"], timezone.utc).strftime("%Y-%m-%d")
             series.setdefault(int(uid) % 32, {}).setdefault("__hist__" + uid, {})[d] = [hrec.get("power"), hrec.get("kills")]
