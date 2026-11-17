@@ -1,4 +1,4 @@
-"""Сбор данных сервера 397 из lastasylumtracker.com (API по ключу) в data/tracker/.
+"""Сбор данных сервера 397 (API по ключу) в data/tracker/. Адрес API и ключ — в закрытых настройках хранилища.
 
 Запуск: TRACKER_KEY=... python tools/tracker_sync.py
   каждые 3 часа — рейтинги (топ-100 игроков и альянсов одним запросом), сводка сервера,
@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SID = 397
-API = "https://lastasylumtracker.com/api"
+API = os.environ.get("TRACKER_API", "").strip().rstrip("/")
 OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 TOP = 30
 MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 25)  # на игрока 2 запроса: карточка + защита/ворон
@@ -74,8 +74,8 @@ def save(p, obj):
 
 
 def main():
-    if not KEY:
-        sys.exit("нет TRACKER_KEY")
+    if not KEY or not API:
+        sys.exit("нет TRACKER_KEY или TRACKER_API")
     now = time.time()
     day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -101,9 +101,9 @@ def main():
         except Exception as e:  # один альянс не должен ронять весь сбор
             print("альянс", aid, "пропущен:", e, file=sys.stderr)
             continue
-        save(OUT / "a" / f"{aid}.raw.json", {"t": now, "alliance": a, "events": ev})  # ответы трекера целиком, без отбора
+        save(OUT / "a" / f"{aid}.raw.json", {"t": now, "alliance": a, "events": ev})  # ответы API целиком, без отбора
         a = json.loads(json.dumps(a))
-        a["name"] = a.get("name") or row["name"]; a["abbr"] = a.get("abbr") or row["abbr"]  # трекер иногда не присылает название — берём из рейтинга
+        a["name"] = a.get("name") or row["name"]; a["abbr"] = a.get("abbr") or row["abbr"]  # API иногда не присылает название — берём из рейтинга
         # в ответе бывают «хвосты» со сканов карты: без ранга и без статуса «в сети» — это не участники
         a["members"] = [m for m in a.get("members", []) if m.get("rank_label")]
         mem = [{"uid": m["uid"], "nick": m.get("nick_name", ""), "power": m.get("power", 0), "lv": m.get("lv", 0), "kills": m.get("kills", 0),
@@ -111,7 +111,7 @@ def main():
                for m in a.get("members", [])]
         old = load(OUT / "a" / f"{aid}.json", {"events": []})
         stale = not a.get("live")
-        if stale and old.get("live"):  # у трекера старая копия, а у нас есть свежий состав — состав и цифры не трогаем
+        if stale and old.get("live"):  # в API старая копия, а у нас есть свежий состав — состав и цифры не трогаем
             mem = old["members"]
             for k_new, k_old in (("leader_name", "leader"), ("capacity", "capacity"), ("level", "level")):
                 a[k_new] = old.get(k_old)
@@ -161,7 +161,7 @@ def main():
     # первыми — игроки нашего альянса [SLAV], потом остальные по мощи
     order = sorted(players.items(), key=lambda kv: (kv[1].get("aid") != HOME_AID, -(kv[1].get("power") or 0)))
     details = {}
-    # очередь: 0) ещё ни разу не брали; 1) [SLAV] — каждый день; 2) у трекера не было VIP/лайков/пола — раз в 3 дня;
+    # очередь: 0) ещё ни разу не брали; 1) [SLAV] — каждый день; 2) в API не было VIP/лайков/пола — раз в 3 дня;
     # 3) остальные — раз в 7 дней. Лимит ключа 1000 запросов в сутки, на игрока 2 запроса.
     def due(uid, p):
         if not p.get("aid"):
@@ -189,14 +189,14 @@ def main():
                                  "x": pl.get("x"), "y": pl.get("y"), "first": pl.get("first_seen_at"), "card": now,
                                  "online": pl.get("online"), "last": pl.get("last_seen_at"), "skin": pl.get("skin_name") or None, "shield": pl.get("shielding")})
             players[uid].pop("log", None)
-            try:  # защитный состав и ворон — отдельный адрес трекера
+            try:  # защитный состав и ворон — отдельный адрес API
                 arena = get(f"/players/{uid}/arena")
             except Exception as e:
                 print("защита игрока", uid, "пропущена:", e, file=sys.stderr)
                 arena = None
             pf = OUT / "p" / f"{uid}.json"
             old = load(pf, {})
-            # история у трекера — последние 30 дней; у нас копится вся
+            # история в API — последние 30 дней; у нас копится вся
             hist = {str(h.get("id") or h["observed_at"]): h for h in old.get("history", [])}
             for h in pl.get("history", []):
                 hist[str(h.get("id") or h["observed_at"])] = h
@@ -227,7 +227,7 @@ def main():
                 rec = s.setdefault(uid[8:], {})
                 for d, pk in v.items():
                     if d < day:
-                        rec[d] = pk  # прошедший день у трекера полный — берём его итог дня
+                        rec[d] = pk  # прошедший день в API полный — берём его итог дня
                     else:
                         rec.setdefault(d, pk)  # сегодня — не затираем наш свежий снимок
             else:

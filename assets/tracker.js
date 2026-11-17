@@ -130,7 +130,7 @@
     void NS;
   }
 
-  /* ---------- график «Рост» как у трекера: 1/7/30 дней, мощь + убийства + вторая величина ---------- */
+  /* ---------- график «Рост»: 1/7/30 дней, мощь + убийства + вторая величина ---------- */
   function whenTxt(t) { var d = new Date((t - 2 * 3600) * 1000); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()].slice(0, 4) + ".", ", " + hm(t); }
   function whenFull(t) { var d = new Date((t - 2 * 3600) * 1000); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()].slice(0, 4) + "., " + hm(t); }
   function drawTrend(boxId, all, cfg) {
@@ -202,7 +202,7 @@
       '<div class="ap-wrap">' +
       '<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>обновлено ' + ago(S.server.updated) + " · данные обновляются каждые 3 часа</p></div></div>" +
       '<div class="ap-cells c5">' + cell("Игроков", full(s.players), (s.age_days || "—") + " дней серверу") + cell("Альянсов", full(s.alliances)) + cell("Общая мощь", num(s.power)) +
-      cell("Король", esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell("Альянсов со свежим составом", Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + " из 30", "остальные — после обновления на трекере") + "</div></div>" +
+      cell("Король", esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell("Альянсов со свежим составом", Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + " из 30", "у остальных состав появится позже") + "</div></div>" +
       '<div class="ap-card"><div class="ap-h"><div><h3>Поиск</h3><p>игроки альянсов топ-30 и альянсы топ-100</p></div>' + pills("skind", [["p", "Игроки"], ["a", "Альянсы"]], "p") + '</div><input id="sq" class="ap-in" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off"><div id="sres"></div></div>' +
       '<div class="ap-sec"><h3>Альянсы</h3>' + pills("atop", [["30", "Топ-30"], ["100", "Места 31–100"]], "30") + "</div>" +
       '<div class="ap-card flush"><div id="alist"></div></div>' +
@@ -278,7 +278,7 @@
     var pane = function (v) {
       var P = $("apane");
       if (v === "m") {
-        if (!cnt) { P.innerHTML = '<div class="ap-card"><p class="ap-empty">Свежего состава этого альянса у трекера пока нет — старую копию с ушедшими игроками и устаревшими цифрами не показываем. Состав появится, когда альянс обновят на трекере.</p></div>'; return; }
+        if (!cnt) { P.innerHTML = '<div class="ap-card"><p class="ap-empty">Свежего состава этого альянса пока нет — старую копию с ушедшими игроками и устаревшими цифрами не показываем. Состав появится с одним из ближайших обновлений.</p></div>'; return; }
         var order = { R5: 0, R4: 1, R3: 2, R2: 3, R1: 4 };
         var rk = function (m) { var k = (m.rank || "").slice(0, 2); return k in order ? order[k] : 9; };
         var by = {}; a.members.forEach(function (m) { var k = (m.rank || "").slice(0, 2); by[k] = (by[k] || 0) + 1; });
@@ -352,7 +352,7 @@
   function placeOf(slug, uid) {
     var b = S.board[slug]; return b ? b[uid] : null;
   }
-  /* полный файл игрока p/<id>.json: ответы трекера целиком → данные для карточки */
+  /* полный файл игрока p/<id>.json: ответы целиком → данные для карточки */
   function fromRaw(r) {
     var c = r.card || {}, a = (r.arena && r.arena.arena) || null;
     var d = { log: (r.history || []).map(function (h) { return { t: h.observed_at, f: h.change_flags || "", power: h.power, kills: h.kills, abbr: h.union_abbr || "", nick: h.nick, lv: h.level, vip: h.vip }; }) };
@@ -406,12 +406,12 @@
       '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Назад</a><span class="ap-upd">обновлено ' + ago(p.card || p.seen) + "</span></div>" +
       '<div class="ap-hero"><img class="emb av" src="' + G + 'doctor.png" alt=""><div><h2>' + esc(p.nick) + '</h2><div class="ap-chips"><span>Сервер 397</span>' +
       (p.aid ? '<a href="#a=' + p.aid + '"><span class="tag">[' + esc(p.abbr) + "]</span> " + esc(al ? al.name : "") + " · " + esc(p.rank || "") + "</a>" : "<span>без альянса</span>") + (onl ? "<span>" + onl + "</span>" : "") + "</div></div></div>" +
-      '<div class="ap-cells c4">' + cell("Мощь", num(p.power), place("power")) + cell("Убийства", num(p.kills), place("kills")) + cell("Святилище", p.lv || "—", place("castle")) + cell("VIP", p.vip != null ? p.vip : "—", p.vip == null && p.card ? "у трекера пока нет" : "") + "</div>" +
+      '<div class="ap-cells c4">' + cell("Мощь", num(p.power), place("power")) + cell("Убийства", num(p.kills), place("kills")) + cell("Святилище", p.lv || "—", place("castle")) + cell("VIP", p.vip != null ? p.vip : "—", p.vip == null && p.card ? "пока нет данных" : "") + "</div>" +
       '<div class="ap-kvs">' + kv("ID", uid) + kv("Пол", g || "—") + kv("Язык", p.lang === "ru" ? "русский" : p.lang ? esc(p.lang) : "—") + kv("Лайки", p.likes != null ? full(p.likes) : "—") +
       kv("Город на карте", p.x != null ? p.x + ", " + p.y : "—") + kv("Недельная активность", p.active != null ? full(p.active) : "—") + kv("Честь за день", p.honor != null ? full(p.honor) : "—") +
       kv("Пожертвовано технологий", p.tech != null ? full(p.tech) : "—") + kv("В сети", p.online ? '<span class="up">сейчас</span>' : p.last ? ago(p.last) : "—") + kv("Место по мощи героев", placeOf("heroes", uid) || "вне топ-100") + kv("Впервые замечен", p.first ? dateOf(p.first) : "—") + kv("Мощь точно", full(p.power)) + "</div>" +
       (!p.card ? '<p class="ap-note">Защитный состав, ворон и полная история этого игрока загрузятся с одним из ближайших обновлений.</p>' : "") +
-      (p.card && p.vip == null ? '<p class="ap-note">VIP, пол, язык и лайки на момент последней проверки (' + ago(p.card) + ') у трекера по этому игроку не было. Проверяем раз в сутки — как только у трекера появятся, появятся и здесь.</p>' : "") + "</div>" +
+      (p.card && p.vip == null ? '<p class="ap-note">VIP, пол, язык и лайки этого игрока пока не получены (проверено ' + ago(p.card) + '). Проверяем регулярно — появятся здесь сами.</p>' : "") + "</div>" +
       '<div id="pdef"></div>' +
       pills("ptabs", [["h", "Рост"], ["c", "История изменений"], ["a", "Альянсы"]], "h") + '<div id="ppane"></div></div>';
 
@@ -445,7 +445,7 @@
               (kd ? ' <span class="k sp">Убийства</span> <b>' + num(h.kills) + "</b> " + delta(h.kills - prev.kills) : "") + (other ? ' <span class="k sp">' + other + "</span>" : "") + '</div><span class="tm">' + hm(h.t) + "</span></div>";
           });
           return '<div class="ap-list">' + out + "</div>";
-        }, p.card ? "Трекер изменений не записал." : "История загрузится с ближайшими обновлениями.");
+        }, p.card ? "Изменений пока нет." : "История загрузится с ближайшими обновлениями.");
       } else {
         P.innerHTML = '<div class="ap-card flush"><div id="mvl"></div></div>';
         moveList($("mvl"), mv);

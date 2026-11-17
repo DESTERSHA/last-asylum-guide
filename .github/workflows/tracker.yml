@@ -1,5 +1,5 @@
 name: Данные сервера 397
-# Каждые 3 часа забирает данные топ-30 альянсов сервера 397 с lastasylumtracker.com
+# Каждые 3 часа забирает данные топ-30 альянсов сервера 397
 # (ключ — в закрытых настройках репозитория, TRACKER_KEY) и обновляет файлы data/tracker/.
 on:
   schedule:
@@ -28,6 +28,7 @@ jobs:
       - name: Сбор данных
         env:
           TRACKER_KEY: ${{ secrets.TRACKER_KEY }}
+          TRACKER_API: ${{ secrets.TRACKER_API }}
           PLAYERS: ${{ github.event.inputs.players || '25' }}
         run: python tools/tracker_sync.py
       - name: Сохранить
