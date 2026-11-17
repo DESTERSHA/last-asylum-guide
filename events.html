@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=1b68696192">
+<link rel="stylesheet" href="assets/style.css?v=b0a7955dfc">
 </head>
 <body>
 <header class="site-head"><div class="wrap hdr">
@@ -420,15 +420,39 @@
     <div class="word"><b>Свои войска не тратятся.</b> При входе игра даёт тебе солдат «в количестве, равном максимальной вместимости вашей казармы, самого высокого доступного вам ранга». Атаковать чужие города здесь нельзя — только точки сбора кристаллов. Переезд по карте бесплатный, потом перезарядка.</div>
     <div class="word"><b>Два вида кристаллов.</b> <img class="inl" src="assets/game/crystal-pure.png" alt=""> <b>Очищенный кристалл</b> — очки, за них рейтинг. <img class="inl" src="assets/game/crystal-skill.png" alt=""> <b>Кристалл навыка</b> — падает с чумных крыс, на него учат навыки долины. Навыки действуют только в долине и сбрасываются к следующему разу.</div>
   </div>
-  <div class="block"><h3>Что делать — по минутам</h3>
-    <div class="nsteps">
-      <div class="step noimg"><div class="no">1</div><div><b>С первой минуты — бей чумных крыс</b><p>В долине живут два вида чумных крыс. За каждую дают кристаллы навыков. Чем раньше наберёшь кристаллы навыков, тем раньше выучишь навыки, которые ускоряют весь сбор.</p></div></div>
-      <div class="step noimg"><div class="no">2</div><div><b>Займи кристальное скопление</b><p>Скопления бывают 1–3 уровня: чем выше уровень, тем быстрее идут кристаллы. Свободное скопление охраняют защитники — разбей их, и отряд начнёт собирать. Скопление, которое собирает другой игрок (даже соратник), можно отбить — тогда его собранные кристаллы рассыплются осколками вокруг.</p></div></div>
-      <div class="step noimg"><div class="no">3</div><div><b>10–12 и 20–22 минута — мгновенные скопления</b><p>Шестью волнами (на 10-й, 11-й, 12-й, 20-й, 21-й и 22-й минуте) появляются особые скопления, с которых кристаллы добываются очень быстро. Держи свободный отряд, чтобы успеть к ним.</p></div></div>
-      <div class="step noimg"><div class="no">4</div><div><b>С 23-й минуты — Священная пещера в центре</b><p>Первые 23 минуты она под защитой, потом её могут захватывать все — но каждый игрок шлёт туда <b>только одну команду</b>. 10 лучших по рейтингу захвата получают большую пачку очищенных кристаллов прямо в итог.</p></div></div>
+  <h3>Что ты видишь внутри долины</h3>
+  <div class="grid2 vmap">
+    <figure class="side-shot" data-min="720" data-max="820"><div class="shot"><img src="assets/shots/valley-map.webp" alt="Экран внутри Долины: Священная пещера, кристальные скопления, осколки, кнопки события" loading="lazy"><span class="ring rect" style="left:34.1%;top:1.9%;width:35%;aspect-ratio:5.4"></span><span class="ring rect" style="left:62.9%;top:1.9%;width:20.3%;aspect-ratio:3.2"></span><span class="ring rect" style="left:84.9%;top:28.9%;width:28.7%;aspect-ratio:1.69"></span><span class="ring rect" style="left:19.2%;top:64.2%;width:34.4%;aspect-ratio:2.03"></span><span class="ring rect" style="left:6.7%;top:72.6%;width:9.3%;aspect-ratio:1"></span><span class="ring rect" style="left:6.7%;top:85.7%;width:9.3%;aspect-ratio:1"></span><span class="ring rect" style="left:91.7%;top:71.4%;width:10.6%;aspect-ratio:1"></span><span class="ring rect" style="left:91.7%;top:78.4%;width:10.6%;aspect-ratio:1"></span></div><p class="cap">Экран долины собран из картинок самой игры (объекты и кнопки — 1:1, расстановка на карте — для наглядности).</p></figure>
+    <div class="legend">
+      <div class="lg"><b>Сверху слева — синий кристалл и число</b><span>сколько <b>очищенных кристаллов</b> ты уже собрал (по ним рейтинг и награды).</span></div>
+      <div class="lg"><b>Часы рядом</b><span>сколько минут осталось до конца долины (всего 30).</span></div>
+      <div class="lg"><b>Большая гора в центре — Священная пещера</b><span>первые 23 минуты под защитой, потом её захватывают все.</span></div>
+      <div class="lg"><b>Каменные холмы с синими кристаллами — скопления 1–3 уровня</b><span>с деревянной вышкой — уровень выше, кристаллы идут быстрее.</span></div>
+      <div class="lg"><b>Маленькие кристаллы на земле — осколки</b><span>остаются, когда скопление отбили; подбирай.</span></div>
+      <div class="lg"><b>Справа «Уведомления перезарядки»</b><span>когда появится следующая волна мгновенных скоплений и когда откроется пещера.</span></div>
+      <div class="lg"><b>Слева «Специальный отряд»</b><span>твои отряды в пути и их таймеры.</span></div>
+      <div class="lg"><b>Слева внизу: дом с крестом</b><span>лазарет долины — очередь лечения без ограничений и без ресурсов. <b>Прицел</b> ниже — активный навык 5-го уровня (жми вручную).</span></div>
+      <div class="lg"><b>Справа: череп</b><span>«Характеристики героя» — провалы и ослабления твоих героев. <b>Перо со стрелкой</b> — бесплатное перемещение и его перезарядка.</span></div>
     </div>
-    <div class="note red"><img src="assets/game/c-war.png" alt=""><div><p><b>Не лезь много раз туда, где проигрываешь.</b> Каждая неудачная попытка отбить скопление даёт герою «провал». Провалы копятся, и после нескольких подряд герой получает ослабление. Провалы проходят со временем: таймер кончился — минус один.</p></div></div>
   </div>
+
+  <h3>Что делать — по шагам (картинки — из игрового «Руководства» долины)</h3>
+  <div class="steps">
+    <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g1.webp" alt="Чумная крыса долины" loading="lazy"></div>
+      <div class="body"><div class="num">ШАГ 1 · С ПЕРВОЙ МИНУТЫ</div><h3>Бей чумных крыс</h3><p>В долине живут два вида чумных крыс. За каждую дают <b>кристаллы навыков</b> <img class="inl" src="assets/game/crystal-skill.png" alt="">, а на них учат навыки долины (ниже). Чем раньше выучишь навыки — тем быстрее пойдёт весь сбор.</p></div></div>
+    <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g2.webp" alt="Кристальные скопления 1–3 уровня и кнопки «Разведка» и «Атака»" loading="lazy"><span class="ring rect" style="left:34.8%;top:81.3%;width:16%;aspect-ratio:1"></span><span class="ring rect" style="left:62.4%;top:81.3%;width:16%;aspect-ratio:1"></span></div>
+      <div class="body"><div class="num">ШАГ 2</div><h3>Займи кристальное скопление</h3><p>Нажми на скопление — появятся две кнопки (рамки): <b>разведка</b> (подзорная труба) и <b>атака</b> (мечи). Свободное скопление охраняют защитники — разбей их, и отряд начнёт собирать. Скопления 1–3 уровня: чем выше, тем быстрее очищаются кристаллы.</p><p>Скопление, которое собирает другой игрок (даже соратник), можно отбить — его кристаллы рассыплются осколками вокруг.</p></div></div>
+    <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g5.webp" alt="Мгновенные скопления кристаллов" loading="lazy"></div>
+      <div class="body"><div class="num">ШАГ 3 · 10–12 и 20–22 МИНУТА</div><h3>Мгновенные скопления</h3><p>Особые скопления, с которых кристаллы добываются очень быстро. Появляются шестью волнами — на 10-й, 11-й, 12-й, 20-й, 21-й и 22-й минуте (время видно справа в «Уведомлениях перезарядки»). Держи свободный отряд, чтобы успеть.</p></div></div>
+    <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g4.webp" alt="Священная пещера в центре долины" loading="lazy"></div>
+      <div class="body"><div class="num">ШАГ 4 · С 23-Й МИНУТЫ</div><h3>Священная пещера в центре</h3><p>Первые 23 минуты она под защитой. Потом её могут захватывать все, но каждый игрок шлёт туда <b>только одну команду</b>. 10 лучших по рейтингу захвата получают большую пачку очищенных кристаллов прямо в итог.</p></div></div>
+    <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g3.webp" alt="Бесплатное перемещение города в долине" loading="lazy"><span class="ring rect" style="left:73.2%;top:85.3%;width:39.8%;aspect-ratio:3.3"></span></div>
+      <div class="body"><div class="num">ПЕРЕЕЗД</div><h3>Бесплатное перемещение</h3><p>Город в долине переставляется <b>бесплатно раз в 360 секунд</b>: выбери место и жми «Бесплатное перемещение» (рамка). Во время перезарядки переезд стоит предмет «Целевое перемещение», каждый следующий — на 1 больше, но не больше 5.</p></div></div>
+    <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g7.webp" alt="Главный город в долине нельзя атаковать и разведывать" loading="lazy"><span class="ring rect" style="left:34.4%;top:75.7%;width:18.5%;aspect-ratio:1"></span><span class="ring rect" style="left:67.3%;top:75.7%;width:18.5%;aspect-ratio:1"></span></div>
+      <div class="body"><div class="num">ВАЖНО</div><h3>Города игроков атаковать нельзя</h3><p>В долине кнопки разведки и атаки у чужого города перечёркнуты (рамки): главные города не трогают. Бьются только за скопления и пещеру. Свои солдаты не тратятся — игра выдаёт отряд по вместимости твоей казармы, самого высокого доступного ранга.</p></div></div>
+  </div>
+  <div class="note red"><img src="assets/game/c-war.png" alt=""><div><p><b>Не лезь много раз туда, где проигрываешь.</b> Каждая неудачная попытка отбить скопление даёт герою «провал». Провалы копятся, и после нескольких подряд герой получает ослабление (видно по кнопке-черепу). Провалы проходят со временем: таймер кончился — минус один.</p></div></div>
+
   <div class="block"><h3>Навыки долины — что выбрать</h3>
     <div class="grid2 vsk">
       <figure class="side-shot"><div class="shot"><img src="assets/shots/valley-skills.webp" alt="Окно «Навыки долины»: кристаллы навыков сверху, 5 уровней по 2 навыка" loading="lazy"><span class="ring rect" style="left:50%;top:29.2%;width:19%;aspect-ratio:1"></span></div><p class="cap">Сверху — кристаллы навыков (рамка), ниже 5 уровней; светится выбранный навык.</p></figure>
@@ -585,6 +609,6 @@
   <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
 </footer>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
-<script src="assets/app.js?v=1b68696192"></script>
+<script src="assets/app.js?v=b0a7955dfc"></script>
 </body>
 </html>

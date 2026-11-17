@@ -430,3 +430,5 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 .shot-in{margin:6px 0 12px}.shot-in>.shot{max-width:100%;width:fit-content;margin:0 auto;border-radius:14px;overflow:hidden;position:relative}.shot-in>.shot img{max-height:420px;width:auto;max-width:100%;display:block}
 .sanct .more{color:var(--mut);font-size:14px}
 .sanct .more{color:var(--mut);font-size:14px}
+
+.legend{display:grid;gap:8px;align-content:start}.legend .lg{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:14px;line-height:1.4}.legend .lg b{display:block;font-size:14.5px;margin-bottom:2px}.legend .lg span b{display:inline;font-size:inherit}
