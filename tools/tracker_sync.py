@@ -100,6 +100,16 @@ def main():
                 "rank": m.get("rank_label", ""), "x": m.get("x"), "y": m.get("y"), "active": m.get("active"), "honor": m.get("daily_honor"), "tech": m.get("daily_tech")}
                for m in a.get("members", [])]
         old = load(OUT / "a" / f"{aid}.json", {"events": []})
+        if not a.get("live"):  # трекер прислал урезанную копию (без лидера и рангов) — оставляем последние полные данные
+            prev = {m["uid"]: m for m in old.get("members", [])}
+            for m in mem:
+                pm = prev.get(m["uid"], {})
+                for k in ("rank", "honor", "tech", "active"):
+                    if m.get(k) in (None, "") and pm.get(k) not in (None, ""):
+                        m[k] = pm[k]
+            for k_new, k_old in (("leader_name", "leader"), ("capacity", "capacity"), ("level", "level"), ("member_count", "members_count")):
+                if not a.get(k_new) and old.get(k_old):
+                    a[k_new] = old[k_old]
         seen = {(e["t"], e["uid"], e["kind"]) for e in old.get("events", [])}
         events = list(old.get("events", []))
         for e in ev.get("events", []):
@@ -112,7 +122,7 @@ def main():
         events.sort(key=lambda e: -e["t"])
         save(OUT / "a" / f"{aid}.json", {"updated": now, "id": aid, "name": a.get("name"), "abbr": a.get("abbr"), "power": a.get("power"), "level": a.get("level"),
                                          "members_count": a.get("member_count"), "capacity": a.get("capacity"), "leader": a.get("leader_name"), "language": a.get("language"),
-                                         "summary": ev.get("summary"), "members": sorted(mem, key=lambda m: -(m["power"] or 0)), "events": events})
+                                         "summary": ev.get("summary"), "live": bool(a.get("live")), "members": sorted(mem, key=lambda m: -(m["power"] or 0)), "events": events})
         ent = index["alliances"].get(str(aid), {"days": {}})
         if datetime.now(timezone.utc).hour < 3 or not ent.get("hist"):
             try:
