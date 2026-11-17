@@ -654,3 +654,38 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 .ap-log .k{font-size:12.5px;color:var(--ap-mut2)}.ap-log .k.sp{margin-left:14px}
 .ap-log b{font-weight:600}
 @media (max-width:760px){.ap-raven{grid-template-columns:1fr}.ap-raven>img{width:90px;height:90px}.ap-row.ap-log{grid-template-columns:minmax(0,1fr) auto}}#pdef{display:flex;flex-direction:column;gap:14px}#pdef:empty{display:none}
+/* отряды: лучший герой, войска */
+.ap-tot{font-size:13px;color:var(--ap-mut2)}.ap-tot b{font-size:18px;font-weight:600;color:var(--ap-ink);margin-left:4px}
+.ap-top-hero{display:flex;align-items:center;gap:14px;background:linear-gradient(90deg,#fdf3e1,#fbf8f2);border-radius:20px;padding:12px 16px;margin-bottom:12px}
+.ap-top-hero .ap-hero-t{width:64px;flex:none}
+.ap-top-hero small{display:block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#d08a12}
+.ap-top-hero b{display:block;font-size:20px;font-weight:600}
+.ap-top-hero span{font-size:13px;color:var(--ap-mut2)}
+.ap-team .ft.col{flex-direction:column;gap:6px}
+.ap-team .tr{display:flex;align-items:center;gap:10px}
+.ap-team .tr .bar{flex:0 0 90px;height:5px;border-radius:9px;background:#dfe3ea;overflow:hidden}.ap-team .tr .bar u{display:block;height:100%;background:#2f8fb0;border-radius:9px}
+/* ворон */
+.ap-rv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.ap-rv .stage{position:relative;background:radial-gradient(circle at 50% 40%,#fff 0,#eef1f6 70%);border-radius:20px;padding:16px;display:grid;grid-template-columns:80px 1fr 80px;grid-template-rows:auto auto;gap:6px;min-height:340px}
+.ap-rv .col{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
+.ap-rv .body{position:relative;display:flex;align-items:flex-end;justify-content:center}
+.ap-rv .body img{max-width:100%;max-height:280px;object-fit:contain}
+.ap-rv .lvl{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);background:rgba(28,28,30,.78);color:#fff;font-size:13px;font-weight:700;border-radius:999px;padding:3px 12px}
+.ap-rv .sets{grid-column:1/-1;display:flex;justify-content:center;gap:18px}
+.ap-rp{display:flex;flex-direction:column;align-items:center;gap:2px}
+.ap-rp .art{width:62px;height:62px;border-radius:50%;background-size:cover;background-position:center;display:grid;place-items:center}
+.ap-rp .art img{width:48px;height:48px;object-fit:contain}
+.ap-rp b{font-size:12px;font-weight:700}
+.ap-rv .skill{background:var(--ap-cell);border-radius:20px;padding:16px 18px}
+.ap-rv .skill .top{display:flex;gap:14px;align-items:flex-start;padding-bottom:12px;border-bottom:1px solid #e4e4e9;margin-bottom:10px}
+.ap-rv .skill .ic{position:relative;flex:none;width:68px;height:68px}
+.ap-rv .skill .ic img{width:68px;height:68px;border-radius:14px}
+.ap-rv .skill .ic .s{position:absolute;left:0;right:0;bottom:3px;text-align:center;font-size:10px;color:#ffc53d;text-shadow:0 1px 2px #000}
+.ap-rv .skill b{display:block;font-size:17px;font-weight:600}.ap-rv .skill b small{font-size:13px;color:var(--ap-mut2);font-weight:500}
+.ap-rv .skill .top span{font-size:13.5px;color:var(--ap-ink2);line-height:1.45}
+.ap-rv ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ap-rv li{display:grid;grid-template-columns:72px 1fr;gap:10px;font-size:13.5px;color:var(--ap-mut2);line-height:1.4}
+.ap-rv li .n{color:#b9b9bf;letter-spacing:1px}
+.ap-rv li.on{color:#2f7fb8}.ap-rv li.on .n{color:#f0a531}
+.ap-hero-t.big .pic{border-radius:16px}
+@media (max-width:860px){.ap-rv{grid-template-columns:1fr}.ap-rv .stage{grid-template-columns:66px 1fr 66px;min-height:280px}.ap-rp .art{width:52px;height:52px}.ap-rp .art img{width:40px;height:40px}}

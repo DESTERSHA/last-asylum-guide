@@ -365,27 +365,58 @@
         moveList($("mvl"), mv);
       }
     };
-    var defense = function (ar) {
-      if (!ar || !ar.teams || !ar.teams.length) { $("pdef").innerHTML = ""; return; }
-      var hero = function (h) {
-        var info = S.heroes[h.id] || {}, st = Math.floor((Number(h.star) || 0) / 5);
-        var tip = (info.n || "герой " + h.id) + " · ур. " + h.lv + " · ★" + st + (h.power ? " · мощь " + full(h.power) : "") + (h.skills ? " · навыки " + h.skills.map(function (x) { return x[1]; }).join("/") : "") + (h.gear && h.gear.length ? " · снаряжение " + h.gear.map(function (x) { return x[1]; }).join("/") : "");
-        return '<div class="ap-hero-t q' + (h.q || 0) + '" title="' + esc(tip) + '"><div class="pic">' + (info.i ? '<img src="' + G + "hero/" + info.i + '.png" alt="">' : "") + '<span class="lv">' + h.lv + "</span>" + (h.aw ? '<span class="aw">' + h.aw + "</span>" : "") + '</div><b>' + esc(info.n || "?") + '</b><span class="st">★' + st + "</span></div>";
-      };
+    var stars = function (h) { return Math.floor((Number(h.star) || 0) / 5); };
+    var heroTile = function (h, big) {
+      var info = S.heroes[h.id] || {}, st = stars(h);
+      var tip = (info.n || "герой " + h.id) + " · уровень " + h.lv + " · звёзд " + st + (h.aw ? " · пробуждение " + h.aw : "") + (h.power ? " · мощь " + full(h.power) : "") +
+        (h.skills ? " · навыки " + h.skills.map(function (x) { return x[1]; }).join("/") : "") + (h.gear && h.gear.length ? " · снаряжение " + h.gear.map(function (x) { return x[1]; }).join("/") : "");
+      return '<div class="ap-hero-t q' + (h.q || 0) + (big ? " big" : "") + '" title="' + esc(tip) + '"><div class="pic">' + (info.i ? '<img src="' + G + "hero/" + info.i + '.png" alt="">' : "") + '<span class="lv">' + h.lv + "</span>" + (h.aw ? '<span class="aw">' + h.aw + "</span>" : "") + "</div>" +
+        (big ? "" : "<b>" + esc(info.n || "?") + '</b><span class="st">' + (st ? "★" + st : "·") + "</span>") + "</div>";
+    };
+    var rank = function (h) { return (Number(h.q) || 0) * 1e8 + stars(h) * 1e6 + (Number(h.lv) || 0) * 100 + (Number(h.aw) || 0); };
+    var squadsBlock = function (sq) {
+      if (!sq || !sq.length) return "";
+      var best = null, latest = 0;
+      sq.forEach(function (q) { latest = Math.max(latest, q.seen || 0); (q.heroes || []).forEach(function (h) { if (!best || rank(h) > rank(best.h)) best = { h: h, n: q.n }; }); });
+      var top = best ? '<div class="ap-top-hero">' + heroTile(best.h, true) + '<div><small>Лучший герой</small><b>' + esc((S.heroes[best.h.id] || {}).n || "?") + "</b><span>Уровень " + best.h.lv + " · звёзд: " + stars(best.h) + (best.h.aw ? " · пробуждение " + best.h.aw : "") + " · в отряде " + best.n + "</span></div></div>" : "";
+      var cards = sq.map(function (q) {
+        var pct = q.load ? Math.max(4, Math.min(100, Math.round(q.soldiers / q.load * 100))) : 0;
+        return '<div class="ap-team"><div class="hd"><span class="no">' + q.n + '</span><b>Отряд ' + q.n + '</b><span class="pw"><small>мощь</small>' + num(q.power) + '</span></div><div class="hs">' + (q.heroes || []).map(function (h) { return heroTile(h); }).join("") +
+          '</div><div class="ft col"><span class="tr">Войска ' + (q.load ? '<i class="bar"><u style="width:' + pct + '%"></u></i><b>' + full(q.soldiers) + " / " + full(q.load) + "</b>" : "<b>" + full(q.soldiers) + "</b>") + '</span><span class="mut">Последний раз замечен ' + (q.seen ? ago(q.seen) : "—") + "</span></div></div>";
+      }).join("");
+      return '<div class="ap-card"><div class="ap-h"><div><h3>Отряды</h3><p>замечены на карте · обновлено ' + (latest ? ago(latest) : "—") + "</p></div></div>" + top + '<div class="ap-teams">' + cards + "</div></div>";
+    };
+    var defenseBlock = function (ar) {
+      if (!ar || !ar.teams || !ar.teams.length) return "";
       var teams = ar.teams.map(function (tm, i) {
-        return '<div class="ap-team"><div class="hd"><span class="no">' + (i + 1) + '</span><b>Команда ' + (i + 1) + '</b><span class="pw"><small>мощь</small>' + num(tm.power) + '</span></div><div class="hs">' + tm.heroes.map(hero).join("") +
+        return '<div class="ap-team"><div class="hd"><span class="no">' + (i + 1) + '</span><b>Команда ' + (i + 1) + '</b><span class="pw"><small>мощь</small>' + num(tm.power) + '</span></div><div class="hs">' + tm.heroes.map(function (h) { return heroTile(h); }).join("") +
           '</div><div class="ft"><span>Мощь героев <b>' + num(tm.hp) + "</b></span><span>Войска <b>" + full(tm.troops) + "</b></span></div></div>";
       }).join("");
-      var rv = ar.raven, raven = "";
-      if (rv) {
-        raven = '<div class="ap-card"><div class="ap-h"><div><h3>Ворон</h3><p>мощь ' + full(rv.power) + '</p></div></div><div class="ap-raven"><img src="' + G + 'raven.png" alt=""><div class="ap-cells c4">' +
-          cell("Уровень", rv.lv) + cell("Звёзды", rv.stars ? "★".repeat(rv.stars) : "—") + cell("Мощь ворона", num(rv.power)) + cell("Урон навыка «Салют ворона»", rv.skill_pct != null ? full(rv.skill_pct) + "%" : "—", "от атаки") + "</div></div>" +
-          (rv.gear && rv.gear.length ? '<div class="ap-gear">' + rv.gear.map(function (g2) { return '<span class="q' + (g2[2] || 0) + '">Снаряжение ' + (Number(g2[0]) + 1) + " · ур. " + g2[1] + "</span>"; }).join("") + "</div>" : "") + "</div>";
-      }
-      $("pdef").innerHTML = '<div class="ap-card"><div class="ap-h"><div><h3>Защитный состав</h3><p>мощь ' + num(ar.power) + " · обновлено " + ago(ar.t) + '</p></div></div><div class="ap-teams">' + teams + "</div></div>" + raven;
+      return '<div class="ap-card"><div class="ap-h"><div><h3>Защитный состав</h3><p>обновлено ' + ago(ar.t) + '</p></div><span class="ap-tot">Мощь <b>' + num(ar.power) + '</b></span></div><div class="ap-teams">' + teams + "</div></div>";
+    };
+    var GEAR = ["Сердце мудрости", "Перо ночи", "Острый клюв", "Хвост ветра", "Атакующий коготь", "Глаз восприятия"], SETS = ["Маска ночного Ворона", "Плащ из перьев Ворона"];
+    var STAR = ["Пораженные цели получают на 12% больше урона в течение 5 сек.", "Наносит на 18% больше урона.", "Пораженные цели получают на 15% больше урона в течение 5 сек.", "Дополнительный урон увеличивается до 36%.", "Пораженные цели получают на 15% больше урона в течение 7 сек."];
+    var ravenBlock = function (rv) {
+      if (!rv) return "";
+      var R = G + "raven/";
+      var piece = function (g, file, name) {
+        var q = Math.max(0, Math.min(6, Number(g[2]) || 0)), t = Math.max(0, Math.min(file > 6 ? 4 : 6, q - 2));
+        return '<div class="ap-rp" title="' + esc(name + " · ур. " + g[1]) + '"><span class="art" style="background-image:url(' + R + "f" + q + '.webp)"><img src="' + R + "p" + file + "_" + t + '.webp" alt=""></span><b>Ур.' + g[1] + "</b></div>";
+      };
+      var gear = {}; (rv.gear || []).forEach(function (g) { gear[g[0]] = g; });
+      var side = function (slots) { return slots.filter(function (sl) { return gear[sl]; }).map(function (sl) { return piece(gear[sl], sl + 1, GEAR[sl]); }).join(""); };
+      var sets = (rv.sets || []).map(function (g) { return piece(g, g[0] + 7, SETS[g[0]] || "Комплект"); }).join("");
+      var skin = rv.skin ? ("0" + (Number(rv.skin) % 100)).slice(-2) : "01"; if (!/^0[1-6]$/.test(skin)) skin = "01";
+      var st = Math.max(0, Math.min(5, Number(rv.stars) || 0));
+      var pct = rv.skill_pct ? Number(rv.skill_pct).toLocaleString("ru-RU", { maximumFractionDigits: 1 }) : null;
+      return '<div class="ap-card"><div class="ap-h"><div><h3>Ворон</h3></div><span class="ap-tot">Мощь <b>' + full(rv.power) + '</b></span></div><div class="ap-rv">' +
+        '<div class="stage"><div class="col">' + side([0, 1, 2]) + '</div><div class="body"><img src="' + R + "skin" + skin + '.webp" alt=""><span class="lvl">Ур.' + rv.lv + '</span></div><div class="col">' + side([3, 4, 5]) + "</div>" + (sets ? '<div class="sets">' + sets + "</div>" : "") + "</div>" +
+        '<div class="skill"><div class="top"><span class="ic"><img src="' + R + 'skill.webp" alt="">' + (st ? '<span class="s">' + "★".repeat(st) + "</span>" : "") + '</span><div><b>Салют ворона <small>Ур.' + rv.lv + "</small></b>" +
+        (pct ? "<span>Наносит " + pct + "% атаки физич. урона 2 противникам с наибольшим здоровьем (перезарядка: 13 сек.)</span>" : "") + '</div></div><ul>' +
+        STAR.map(function (t, i) { return "<li" + (i < st ? ' class="on"' : "") + '><span class="n">' + "★".repeat(i + 1) + "</span><span>" + t + "</span></li>"; }).join("") + "</ul></div></div></div>";
     };
     get("x/" + ("0" + (Number(uid) % 32)).slice(-2) + ".json").catch(function () { return {}; }).then(function (x) {
-      var d = x[uid]; if (d) { if (d.log && d.log.length) X.log = d.log; defense(d.arena); }
+      var d = x[uid]; if (d) { if (d.log && d.log.length) X.log = d.log; $("pdef").innerHTML = squadsBlock(d.squads) + defenseBlock(d.arena) + ravenBlock(d.arena && d.arena.raven); }
       pane("h"); bindPills("ptabs", pane);
     });
     scrollUp();

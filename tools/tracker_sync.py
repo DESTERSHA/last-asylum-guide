@@ -190,6 +190,13 @@ def main():
                 ch.append({"t": h["observed_at"], "f": h.get("change_flags", ""), "power": h.get("power"), "kills": h.get("kills"), "abbr": h.get("union_abbr", ""), "nick": h.get("nick"), "lv": h.get("level"), "vip": h.get("vip")})
             players[uid].pop("log", None)
             det = {"log": ch}
+            # отряды, замеченные на карте (из карточки игрока): герои, войска, когда видели
+            sq = [{"n": q.get("squad"), "power": q.get("power"), "soldiers": q.get("soldiers"), "load": q.get("soldier_load"), "seen": q.get("seen_at"),
+                   "heroes": [{"id": h.get("id"), "lv": h.get("lv"), "star": h.get("star"), "q": h.get("q"), "aw": h.get("awaken"), "tier": h.get("tier")} for h in q.get("heroes", [])],
+                   "troops": q.get("troops") or []}
+                  for q in pl.get("squads", []) if q and 1 <= (q.get("squad") or 0) <= 4]
+            if sq:
+                det["squads"] = sorted(sq, key=lambda q: q["n"])
             try:  # защитный состав (3 команды) и ворон — отдельный запрос
                 ar = (get(f"/players/{uid}/arena") or {}).get("arena") or {}
                 if ar.get("teams"):
@@ -202,7 +209,9 @@ def main():
                     rv = ar.get("raven") or {}
                     if rv:
                         det["arena"]["raven"] = {"lv": rv.get("lv"), "stars": rv.get("stars"), "power": rv.get("power"), "skill_power": rv.get("skill_power"),
-                                                 "skill_pct": rv.get("skill_pct"), "gear": [[g.get("slot"), g.get("lv"), g.get("q")] for g in rv.get("gear", [])]}
+                                                 "skill_pct": rv.get("skill_pct"), "skin": rv.get("skin"),
+                                                 "gear": [[g.get("slot"), g.get("lv"), g.get("q")] for g in rv.get("gear", [])],
+                                                 "sets": [[g.get("slot"), g.get("lv"), g.get("q")] for g in rv.get("sets", [])]}
             except Exception as e:
                 print("защита игрока", uid, "пропущена:", e, file=sys.stderr)
             details.setdefault(int(uid) % 32, {})[uid] = det
