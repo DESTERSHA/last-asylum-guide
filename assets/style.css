@@ -737,4 +737,37 @@ img[src$="btn-defend.png"],img[src$="btn-help.png"],img[src$="btn-rally.png"],im
 .m3d-grid img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:#f1f3f7}
 .m3d-grid .ph{width:64px;height:64px;border-radius:12px;background:#f1f3f7}
 .m3d-grid span{font-size:11.5px;font-weight:600;line-height:1.2;text-align:center}
-@media (max-width:860px){.m3d{grid-template-columns:1fr}.m3d-stage model-viewer{height:400px}.m3d-grid{max-height:none}}
+@media (max-width:860px){.m3d{grid-template-columns:1fr}.m3d-stage model-viewer{height:400px}.m3d-grid{max-height:none}}/* калькулятор снаряжения */
+.gc{background:#fff;border:1px solid #e3e6ec;border-radius:24px;padding:20px;margin-top:16px}
+.gc-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.gc-pills button{font:inherit;font-weight:700;height:36px;padding:0 18px;border-radius:999px;border:0;background:#eef0f4;cursor:pointer}
+.gc-pills button.on{background:#1c1c1e;color:#fff}
+.gc-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.gc-slots button{font:inherit;border:0;background:#f6f7f9;border-radius:16px;padding:10px;display:flex;align-items:center;gap:10px;cursor:pointer;box-shadow:inset 0 0 0 1px #e3e6ec}
+.gc-slots button.on{box-shadow:inset 0 0 0 2px #1c1c1e;background:#fff}
+.gc-slots img{width:44px;height:44px;object-fit:contain}
+.gc-slots span{font-weight:700;font-size:14px}
+.gc-item{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.gc-item img{width:64px;height:64px;object-fit:contain;background:#f6f7f9;border-radius:16px;padding:4px}
+.gc-item b{display:block;font-size:20px}.gc-item span{font-size:13.5px;color:#5d636f}
+.gc-sel{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;padding:14px;background:#f6f7f9;border-radius:16px;margin-bottom:14px}
+.gc-sel label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#5d636f}
+.gc-sel label span{display:flex;align-items:center;gap:8px;color:#1c1c1e}
+.gc-sel select{font:inherit;font-size:15px;height:40px;border-radius:12px;border:1px solid #d9dce3;padding:0 10px;background:#fff;min-width:80px}
+.gc-chk{flex-direction:row!important;align-items:center;gap:8px!important;font-weight:600!important;color:#1c1c1e!important}
+.gc-out h4{margin:4px 0 10px;font-size:16px}
+.gc-ress{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-bottom:12px}
+.gc-res{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto auto;column-gap:10px;align-items:center;background:#f6f7f9;border-radius:16px;padding:10px 12px}
+.gc-res img{grid-row:1/4;width:40px;height:40px;object-fit:contain}
+.gc-res span{font-size:12.5px;color:#5d636f}.gc-res b{font-size:22px;font-weight:700;line-height:1.1}.gc-res small{font-size:11.5px;color:#8a8a8e}
+.gc-pow{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:10px 0;border-top:1px solid #eceef2;border-bottom:1px solid #eceef2;margin-bottom:10px}
+.gc-pow span{color:#5d636f;font-size:14px}.gc-pow b{font-size:18px}.gc-pow em{font-style:normal;color:#1f9d55;font-weight:700}
+.gc-st{width:100%;border-collapse:collapse;font-size:14px}
+.gc-st th,.gc-st td{text-align:left;padding:8px 6px;border-bottom:1px solid #eceef2}.gc-st th{font-size:12.5px;color:#8a8a8e;font-weight:600}
+.gc-tbl{margin-top:14px}.gc-tbl summary{cursor:pointer;font-weight:700;padding:8px 0}
+.gc-scroll{overflow-x:auto}.gc-scroll table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+.gc-scroll th,.gc-scroll td{padding:7px 6px;border-bottom:1px solid #eceef2;text-align:left;white-space:nowrap}.gc-scroll th{font-size:12px;color:#8a8a8e}
+.gc-pg{display:flex;align-items:center;gap:12px;justify-content:flex-end;padding-top:10px;font-size:13px;color:#8a8a8e}
+.gc-pg button{font:inherit;height:32px;padding:0 14px;border-radius:999px;border:1px solid #e3e3e7;background:#fff;cursor:pointer}.gc-pg button:disabled{color:#c4c4c8;cursor:default}
+.gc-mut{color:#8a8a8e}
+@media (max-width:760px){.gc{padding:14px}.gc-slots{grid-template-columns:repeat(2,1fr)}.gc-slots span{font-size:12.5px}}
