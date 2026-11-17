@@ -104,7 +104,7 @@
     <a class="card link" href="#expedition"><img class="ic" src="assets/game/c-war.png" alt=""><h3>Экспедиции</h3><span class="when">сброс вт, чт, вс</span><p>Битва экспедиции по фракциям, Экспедиция альянса, Приключение.</p></a>
     <a class="card link" href="#gearup"><img class="ic" src="assets/game/go-gear.png" alt=""><h3>Улучшение снаряжения</h3><span class="when">суббота и воскресенье</span><p>Улучшай снаряжение героев — получай награду.</p></a>
     <a class="card link" href="#hermit"><img class="ic" src="assets/game/dice.png" alt=""><h3>Торговец-отшельник</h3><span class="when">7 дней</span><p>Магазин за монеты события. Первый товар всегда бесплатный.</p></a>
-    <a class="card link" href="#countess"><img class="ic" src="assets/game/blight.png" alt=""><h3>Осквернённая графиня</h3><span class="when">во время «Дня охоты Селии»</span><p>Монстр события Селии, 12 уровней. Бьют только штурмом альянса.</p></a>
+    <a class="card link" href="#countess"><img class="ic" src="assets/game/countess.png" alt=""><h3>Осквернённая графиня</h3><span class="when">во время «Дня охоты Селии»</span><p>Монстр события Селии, 12 уровней. Бьют только штурмом альянса.</p></a>
     <a class="card link" href="#wheel"><img class="ic" src="assets/game/roulette.png" alt=""><h3>Колесо желаний</h3><span class="when">лимит попыток в день</span><p>Рулетка за «Монеты желаний». Рядом бывает «Благословенное колесо».</p></a>
     <a class="card link" href="#celia"><img class="ic" src="assets/game/hero/celia.png" alt="" style="border-radius:16px"><h3>День охоты Селии</h3><span class="when">примерно раз в 2 недели</span><p>Бей скверну 1–20 уровня штурмами, получай «Сундук Селии».</p></a>
     <a class="card link" href="#shadow"><img class="ic" src="assets/game/boss-demon-ranger.png" alt=""><h3>Теневая скверна</h3><span class="when">пн и чт, 4 захода</span><p>Отдельное событие, не обычный босс: по 3 часа, 5 атак вместо 10.</p></a>
@@ -428,6 +428,7 @@
       <div class="lg"><b>Часы рядом</b><span>сколько минут осталось до конца долины (всего 30).</span></div>
       <div class="lg"><b>Большая гора в центре — Священная пещера</b><span>первые 23 минуты под защитой, потом её захватывают все.</span></div>
       <div class="lg"><b>Каменные холмы с синими кристаллами — скопления 1–3 уровня</b><span>с деревянной вышкой — уровень выше, кристаллы идут быстрее.</span></div>
+      <div class="lg"><b>Крысы на карте — чумные крысы</b><span>за них дают кристаллы навыков.</span></div>
       <div class="lg"><b>Маленькие кристаллы на земле — осколки</b><span>остаются, когда скопление отбили; подбирай.</span></div>
       <div class="lg"><b>Справа «Уведомления перезарядки»</b><span>когда появится следующая волна мгновенных скоплений и когда откроется пещера.</span></div>
       <div class="lg"><b>Слева «Специальный отряд»</b><span>твои отряды в пути и их таймеры.</span></div>
@@ -439,8 +440,8 @@
 
   <h3>Что делать — по шагам (картинки — из игрового «Руководства» долины)</h3>
   <div class="steps">
-    <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g1.webp" alt="Чумная крыса долины" loading="lazy"></div>
-      <div class="body"><div class="num">ШАГ 1 · С ПЕРВОЙ МИНУТЫ</div><h3>Бей чумных крыс</h3><p>В долине живут два вида чумных крыс. Найти их — крысы бродят по карте — нажми на крысу и атакуй. За каждую дают <b>кристаллы навыков</b> <img class="inl" src="assets/game/crystal-skill.png" alt="">, а на них учат навыки долины (ниже). Чем раньше выучишь навыки — тем быстрее пойдёт весь сбор.</p></div></div>
+    <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-rats.webp" alt="Чумные крысы долины — модели из файлов игры" loading="lazy"></div>
+      <div class="body"><div class="num">ШАГ 1 · С ПЕРВОЙ МИНУТЫ</div><h3>Бей чумных крыс</h3><p>В долине живут два вида чумных крыс (на картинке — их модели из игры: без оружия и с тесаком). Они бродят по карте — нажми на крысу и атакуй. За каждую дают <b>кристаллы навыков</b> <img class="inl" src="assets/game/crystal-skill.png" alt="">, а на них учат навыки долины (ниже). Чем раньше выучишь навыки — тем быстрее пойдёт весь сбор.</p></div></div>
     <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g2.webp" alt="Кристальные скопления 1–3 уровня и кнопки «Разведка» и «Атака»" loading="lazy"><span class="ring rect" style="left:34.8%;top:81.3%;width:16%;aspect-ratio:1"></span><span class="ring rect" style="left:62.4%;top:81.3%;width:16%;aspect-ratio:1"></span></div>
       <div class="body"><div class="num">ШАГ 2</div><h3>Займи кристальное скопление</h3><p>Нажми на скопление — появятся две кнопки (рамки): <b>разведка</b> (подзорная труба) и <b>атака</b> (мечи). Свободное скопление охраняют защитники — разбей их, и отряд начнёт собирать. Скопления 1–3 уровня: чем выше, тем быстрее очищаются кристаллы.</p><p>Скопление, которое собирает другой игрок (даже соратник), можно отбить — его кристаллы рассыплются осколками вокруг.</p></div></div>
     <div class="step" style="--shot-h:300px"><div class="shot"><img src="assets/shots/valley-g5.webp" alt="Мгновенные скопления кристаллов" loading="lazy"></div>
@@ -565,7 +566,8 @@
   <h2>Ещё события, которые встречаются в игре</h2>
   <p class="sub">Эти события есть в самой игре, но в гайдах про них почти не пишут. Всё ниже сверено с текстом внутри игры, а не с чужими сайтами.</p>
   <div class="grid3">
-    <div class="card" id="countess"><img class="ic" src="assets/game/blight.png" alt=""><h3>Осквернённая графиня</h3>
+    <div class="card" id="countess"><img class="ic" src="assets/game/countess.png" alt=""><h3>Осквернённая графиня</h3>
+      <div class="shot plain"><img src="assets/shots/countess.webp" alt="Осквернённая графиня — модель из файлов игры" loading="lazy"></div>
       <p>Это <b>не отдельное событие</b>: графиня появляется на карте во время события <b>«День охоты Селии»</b> (оно ниже). У неё <b>12 уровней</b>, с 1-го по 12-й.</p>
       <p><b>Как найти:</b> нажми лупу («Поиск») слева внизу и выбери в списке целей «Осквернённая графиня» — игра отвезёт к ближайшей.</p>
       <p><b>Как бить:</b> только <b>штурмом</b>. В одиночку на неё не ходят: это полноценный альянсовый монстр, а не обычная скверна.</p>
