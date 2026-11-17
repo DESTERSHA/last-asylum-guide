@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SID = 397
-API = os.environ.get("TRACKER_API", "").strip().rstrip("/")
+API = os.environ.get("TRACKER_API", "").strip().lstrip("﻿").strip().rstrip("/")
 OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 TOP = 30
 MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 25)  # на игрока 2 запроса: карточка + защита/ворон
