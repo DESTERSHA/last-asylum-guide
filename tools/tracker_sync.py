@@ -159,7 +159,20 @@ def main():
     # первыми — игроки нашего альянса [SLAV], потом остальные по мощи
     order = sorted(players.items(), key=lambda kv: (kv[1].get("aid") != HOME_AID, -(kv[1].get("power") or 0)))
     details = {}
-    todo = [uid for uid, p in order if p.get("aid") and now - done_at.get(uid, 0) > 7 * 86400][:PLAYERS_PER_RUN]
+    # очередь: 1) ещё ни разу не брали; 2) у трекера не было VIP/лайков/пола — перепроверка раз в сутки
+    # (трекер получает их из игры позже, поле появляется в карточке со временем); 3) остальные — раз в 7 дней
+    def due(uid, p):
+        if not p.get("aid"):
+            return None
+        age = now - done_at.get(uid, 0)
+        if uid not in done_at:
+            return 0
+        if p.get("vip") is None and age > 86400:
+            return 1
+        if age > 7 * 86400:
+            return 2
+        return None
+    todo = [t[2] for t in sorted((due(u, p), i, u) for i, (u, p) in enumerate(order) if due(u, p) is not None)][:PLAYERS_PER_RUN]
     for uid in todo:
         try:
             pl = get(f"/players/{uid}")

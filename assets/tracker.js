@@ -231,7 +231,7 @@
           '</div><div class="ap-kvs">' + kv("Средняя мощь участника", num(tot / cnt)) + kv("Святилище 25+", a.members.filter(function (m) { return m.lv >= 25; }).length + " чел.") + kv("Сильнейший", esc(a.members.slice().sort(function (x, y) { return y.power - x.power; })[0].nick)) + "</div></div>" +
           '<div class="ap-card flush"><div class="ap-tools"><input id="mq" class="ap-in" type="search" placeholder="Ник участника…"><span id="mcount" class="mut"></span></div><div id="mlist"></div></div>';
         var st = { sort: "rank", dir: 1, rank: "", q: "" };
-        var COLS = [["nick", "Игрок"], ["rank", "Ранг"], ["lv", "Святилище"], ["power", "Мощь"], ["kills", "Убийства"], ["active", "Активность"], ["honor", "Честь за день"], ["tech", "Техника за день"]];
+        var COLS = [["nick", "Игрок"], ["rank", "Ранг"], ["lv", "Святилище"], ["power", "Мощь"], ["kills", "Убийства"], ["active", "Недельная активность"], ["honor", "Честь за день"], ["tech", "Пожертвовано технологий"]];
         var draw = function () {
           var list = a.members.filter(function (m) { return (!st.rank || (m.rank || "").slice(0, 2) === st.rank) && (!st.q || (m.nick || "").toLowerCase().indexOf(st.q) >= 0); });
           list.sort(function (x, y) {
@@ -317,12 +317,12 @@
       '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Назад</a><span class="ap-upd">обновлено ' + ago(p.card || p.seen) + "</span></div>" +
       '<div class="ap-hero"><img class="emb av" src="' + G + 'doctor.png" alt=""><div><h2>' + esc(p.nick) + '</h2><div class="ap-chips"><span>Сервер 397</span>' +
       (p.aid ? '<a href="#a=' + p.aid + '"><span class="tag">[' + esc(p.abbr) + "]</span> " + esc(al ? al.name : "") + " · " + esc(p.rank || "") + "</a>" : "<span>без альянса</span>") + (onl ? "<span>" + onl + "</span>" : "") + "</div></div></div>" +
-      '<div class="ap-cells c4">' + cell("Мощь", num(p.power), place("power")) + cell("Убийства", num(p.kills), place("kills")) + cell("Святилище", p.lv || "—", place("castle")) + cell("VIP", p.vip != null ? p.vip : "—", p.vip == null && p.card ? "трекер не знает" : "") + "</div>" +
+      '<div class="ap-cells c4">' + cell("Мощь", num(p.power), place("power")) + cell("Убийства", num(p.kills), place("kills")) + cell("Святилище", p.lv || "—", place("castle")) + cell("VIP", p.vip != null ? p.vip : "—", p.vip == null && p.card ? "у трекера пока нет" : "") + "</div>" +
       '<div class="ap-kvs">' + kv("ID", uid) + kv("Пол", g || "—") + kv("Язык", p.lang === "ru" ? "русский" : p.lang ? esc(p.lang) : "—") + kv("Лайки", p.likes != null ? full(p.likes) : "—") +
-      kv("Город на карте", p.x != null ? p.x + ", " + p.y : "—") + kv("Скин замка", p.skin ? esc(p.skin) : "—") + kv("Активность", p.active != null ? full(p.active) : "—") + kv("Честь за день", p.honor != null ? full(p.honor) : "—") +
-      kv("Техника за день", p.tech != null ? full(p.tech) : "—") + kv("Место по мощи героев", placeOf("heroes", uid) || "вне топ-100") + kv("Впервые замечен", p.first ? dateOf(p.first) : "—") + kv("Мощь точно", full(p.power)) + "</div>" +
+      kv("Город на карте", p.x != null ? p.x + ", " + p.y : "—") + kv("Недельная активность", p.active != null ? full(p.active) : "—") + kv("Честь за день", p.honor != null ? full(p.honor) : "—") +
+      kv("Пожертвовано технологий", p.tech != null ? full(p.tech) : "—") + kv("В сети", p.online ? '<span class="up">сейчас</span>' : p.last ? ago(p.last) : "—") + kv("Место по мощи героев", placeOf("heroes", uid) || "вне топ-100") + kv("Впервые замечен", p.first ? dateOf(p.first) : "—") + kv("Мощь точно", full(p.power)) + "</div>" +
       (!p.card ? '<p class="ap-note">Защитный состав, ворон и полная история этого игрока загрузятся с одним из ближайших обновлений.</p>' : "") +
-      (p.card && p.vip == null ? '<p class="ap-note">VIP, пол, язык и лайки трекер узнаёт из игры, только когда профиль игрока открывают на самом трекере. У этого игрока их у трекера пока нет.</p>' : "") + "</div>" +
+      (p.card && p.vip == null ? '<p class="ap-note">VIP, пол, язык и лайки на момент последней проверки (' + ago(p.card) + ') у трекера по этому игроку не было. Проверяем раз в сутки — как только у трекера появятся, появятся и здесь.</p>' : "") + "</div>" +
       '<div id="pdef"></div>' +
       pills("ptabs", [["h", "Рост"], ["c", "История изменений"], ["a", "Альянсы"]], "h") + '<div id="ppane"></div></div>';
 
