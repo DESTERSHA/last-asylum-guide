@@ -1,55 +1,55 @@
 [
 [
 "Герои: кого качать, как получить, как прокачать | Last Asylum: Plague · сервер 397",
-""
+"Heroes: whom to level, how to get them, how to upgrade | Last Asylum: Plague · kingdom 397"
 ],
 [
 "Герои простыми словами: кто платный, а кто бесплатный, когда появляется каждый герой, кого качать и почему, как прокачивать уровень, звёзды, навыки и снаряжение.",
-""
+"Heroes in plain words: who is paid and who is free, when each hero appears, whom to level and why, how to upgrade level, stars, skills and gear."
 ],
 [
 "<img src=\"assets/game/hero/arthur.png\" alt=\"\" style=\"border-radius:8px\">Герои",
-""
+"<img src=\"assets/game/hero/arthur.png\" alt=\"\" style=\"border-radius:8px\">Heroes"
 ],
 [
 "Герои: кого качать и как их получить",
-""
+"Heroes: whom to level and how to get them"
 ],
 [
 "Главная ошибка новичков — качать всех понемногу. Выбери <b>5 героев первого отряда</b> и вкладывай в них. Полностью прокачанный средний герой сильнее наполовину прокачанного лучшего.",
-""
+"The main beginner mistake is leveling everyone a little. Pick <b>the 5 heroes of your first squad</b> and invest in them. A fully leveled average hero is stronger than a half-leveled best one."
 ],
 [
 "<a class=\"btn pri\" href=\"#get\">Как получить каждого</a><a class=\"btn\" href=\"#tier\">Кто сильнее</a><a class=\"btn\" href=\"#how\">Как прокачивать</a><a class=\"btn\" href=\"#who\">Кого качать</a>",
-""
+"<a class=\"btn pri\" href=\"#get\">How to get each one</a><a class=\"btn\" href=\"#tier\">Who is stronger</a><a class=\"btn\" href=\"#how\">How to upgrade</a><a class=\"btn\" href=\"#who\">Whom to level</a>"
 ],
 [
 "<img src=\"assets/art/hero-heroes.webp\" alt=\"Герои\">",
-""
+"<img src=\"assets/art/hero-heroes.webp\" alt=\"Heroes\">"
 ],
 [
 "Артур — бесплатно",
-""
+"Arthur — free"
 ],
 [
 "Главный танк. Первые 50 наймов в Таверне гарантированно дают Артура.",
-""
+"The main tank. The first 50 recruits in the Tavern are guaranteed to give Arthur."
 ],
 [
 "Марлена — платная",
-""
+"Marlena — paid"
 ],
 [
 "Лучший урон в начале. Даётся за первую покупку в игре — набор «Первое пополнение» (около 1 $).",
-""
+"The best damage early on. Given for your first purchase in the game — the first top-up pack (about $1)."
 ],
 [
 "Качай 5, а не всех",
-""
+"Level 5, not everyone"
 ],
 [
 "Все ресурсы — в героев первого отряда. Остальных не трогай, пока первый отряд не сильный.",
-""
+"All resources go into the heroes of your first squad. Don't touch the rest until the first squad is strong."
 ],
 [
 "Чт",
@@ -57,23 +57,23 @@
 ],
 [
 "День героев",
-""
+"Hero day"
 ],
 [
 "Противоядие, фрагменты, значки навыков и билеты найма копи неделю и трать в четверг.",
-""
+"Save Antitoxin, shards, Skill Badges and recruit tickets all week and spend them on Thursday."
 ],
 [
 "Модели из игры",
-""
+"Models from the game"
 ],
 [
 "Герои в 3D",
-""
+"Heroes in 3D"
 ],
 [
 "Покрути героя мышкой или пальцем, колёсиком — приблизь. Кнопки под моделью включают движения из игры: покой, атака, навык, ходьба, бег, оглушение, смерть. Нажми на портрет справа или на любой портрет героя ниже — откроется его модель. Все остальные модели игры — на странице «Модели».",
-""
+"Rotate the hero with the mouse or a finger, zoom with the wheel. The buttons under the model play animations from the game: idle, attack, skill, walk, run, stun, death. Tap a portrait on the right or any hero portrait below — their model opens. All other game models are on the «Models» page."
 ],
 [
 "Артур",
@@ -201,111 +201,111 @@
 ],
 [
 "С самого начала",
-""
+"From the very beginning"
 ],
 [
 "Как устроен герой",
-""
+"How a hero works"
 ],
 [
 "У каждого героя есть три главные «метки»: редкость (цвет), роль (что он делает в бою) и фракция (его «команда»). Плюс уровень, звёзды, навыки и снаряжение.",
-""
+"Every hero has three main «labels»: rarity (color), role (what they do in battle) and faction (their «team»). Plus level, stars, skills and gear."
 ],
 [
 "Редкость — цвет рамки",
-""
+"Rarity — the frame color"
 ],
 [
 "<span class=\"chip ur\">UR</span> <b class=\"ur\">Золотой</b> — самые сильные",
-""
+"<span class=\"chip ur\">UR</span> <b class=\"ur\">Gold</b> — the strongest"
 ],
 [
 "<span class=\"chip ssr\">SSR</span> <b class=\"ssr\">Фиолетовый</b> — средние",
-""
+"<span class=\"chip ssr\">SSR</span> <b class=\"ssr\">Purple</b> — average"
 ],
 [
 "<span class=\"chip sr\">SR</span> <b class=\"sr\">Синий</b> — слабые, их не качаем",
-""
+"<span class=\"chip sr\">SR</span> <b class=\"sr\">Blue</b> — weak, we don't level them"
 ],
 [
 "Чем реже герой, тем выше его потолок силы.",
-""
+"The rarer the hero, the higher their power ceiling."
 ],
 [
 "Роль — что делает в бою",
-""
+"Role — what they do in battle"
 ],
 [
 "<img class=\"i\" src=\"assets/game/role-tank.png\" alt=\"\"><b>Танк</b> — много здоровья, принимает удары, стоит впереди",
-""
+"<img class=\"i\" src=\"assets/game/role-tank.png\" alt=\"\"><b>Tank</b> — lots of HP, takes the hits, stands in front"
 ],
 [
 "<img class=\"i\" src=\"assets/game/role-dmg.png\" alt=\"\"><b>Урон</b> — много атаки, мало здоровья, стоит сзади",
-""
+"<img class=\"i\" src=\"assets/game/role-dmg.png\" alt=\"\"><b>Damage</b> — lots of attack, little HP, stands behind"
 ],
 [
 "<img class=\"i\" src=\"assets/game/role-sup.png\" alt=\"\"><b>Поддержка</b> — усиливает своих, ослабляет врагов, стоит сзади",
-""
+"<img class=\"i\" src=\"assets/game/role-sup.png\" alt=\"\"><b>Support</b> — buffs allies, weakens enemies, stands behind"
 ],
 [
 "Значок роли — в окне героя рядом с именем.",
-""
+"The role icon is in the hero window next to the name."
 ],
 [
 "Фракция — его «команда»",
-""
+"Faction — their «team»"
 ],
 [
 "<img class=\"i\" src=\"assets/game/fac-war.png\" alt=\"\"><b class=\"war\">Воины</b>",
-""
+"<img class=\"i\" src=\"assets/game/fac-war.png\" alt=\"\"><b class=\"war\">Warriors</b>"
 ],
 [
 "<img class=\"i\" src=\"assets/game/fac-ran.png\" alt=\"\"><b class=\"ran\">Рейнджеры</b>",
-""
+"<img class=\"i\" src=\"assets/game/fac-ran.png\" alt=\"\"><b class=\"ran\">Rangers</b>"
 ],
 [
 "<img class=\"i\" src=\"assets/game/fac-wlk.png\" alt=\"\"><b class=\"wlk\">Колдуны</b>",
-""
+"<img class=\"i\" src=\"assets/game/fac-wlk.png\" alt=\"\"><b class=\"wlk\">Warlocks</b>"
 ],
 [
 "Каждая сильнее одной из двух других — как «камень, ножницы, бумага» (схема ниже).",
-""
+"Each is stronger than one of the other two — like «rock, paper, scissors» (diagram below)."
 ],
 [
 "<img src=\"assets/game/fac-war.png\" alt=\"\"><b>Воин</b>",
-""
+"<img src=\"assets/game/fac-war.png\" alt=\"\"><b>Warrior</b>"
 ],
 [
 "бьёт<span>→</span>",
-""
+"beats<span>→</span>"
 ],
 [
 "<img src=\"assets/game/fac-ran.png\" alt=\"\"><b>Рейнджер</b>",
-""
+"<img src=\"assets/game/fac-ran.png\" alt=\"\"><b>Ranger</b>"
 ],
 [
 "<img src=\"assets/game/fac-wlk.png\" alt=\"\"><b>Колдун</b>",
-""
+"<img src=\"assets/game/fac-wlk.png\" alt=\"\"><b>Warlock</b>"
 ],
 [
 "<b>Что значит «бьёт».</b> Герой получает на 20% меньше урона от фракции, которую он «бьёт». Это слова самой игры (подсказка на Арене): «Воины получают на 20% меньше урона от рейнджеров», «Рейнджеры — от колдунов», «Колдуны — от воинов». То же показывают правила Короля демонов (против Рейнджера скверны бонус у Воинов), треугольник фракций в окне похода и ответы Викторины. Только в описании статуй фракций (Статуя воина и др.) написано наоборот — похоже на ошибку перевода; ориентируйся на подсказку Арены. А против Короля демонов нужная фракция наносит больше урона — размер прибавки игра не раскрывает. Ещё: если в отряде 3, 4 или 5 героев одной фракции, весь отряд получает прибавку к атаке, здоровью и защите — подробно в разделе <a href=\"squads.html#faction\">Отряды</a>.",
-""
+"<b>What «beats» means.</b> A hero takes 20% less damage from the faction it «beats». These are the game's own words (the Arena hint): «Warriors take 20% less damage from Rangers», «Rangers — from Warlocks», «Warlocks — from Warriors». The same is shown by the Demon King rules (Warriors have the bonus against the Ranger Blight), the faction triangle in the march window and the Quiz answers. Only the faction statue descriptions (Warrior Statue etc.) say the opposite — it looks like a translation error; go by the Arena hint. And against the Demon King the right faction deals more damage — the game doesn't reveal the size of the bonus. Also: if a squad has 3, 4 or 5 heroes of one faction, the whole squad gets a bonus to attack, HP and defense — details in <a href=\"squads.html#faction\">Squads</a>."
 ],
 [
 "<b>Лидерство</b> — число у героя, которое показывает, сколько солдат он ведёт в бой. Лидерство 400 = в бой идут 400 солдат. Растёт вместе с уровнем героя.",
-""
+"<b>CMD</b> is the hero's number that shows how many troops they lead into battle. CMD 400 = 400 troops go into battle. It grows with the hero's level."
 ],
 [
 "Платные и бесплатные",
-""
+"Paid and free"
 ],
 [
 "Как получить каждого героя",
-""
+"How to get each hero"
 ],
 [
 "Новые герои появляются не сразу, а на определённый день жизни сервера. Многие сначала продаются за деньги или крутятся в Рулетке, а потом переходят в обычный найм в Таверне, и их можно получить бесплатно. Дни примерные: на разных серверах ±1–2 дня.",
-""
+"New heroes don't appear right away, but on a certain day of the server's life. Many are first sold for money or spun in the Roulette, and later move to regular Tavern recruiting, where you can get them for free. Days are approximate: ±1–2 days on different servers."
 ],
 [
 "Герой",
@@ -313,423 +313,423 @@
 ],
 [
 "Когда появляется",
-""
+"When it appears"
 ],
 [
 "Как получить",
-""
+"How to get"
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\"><b>Артур</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Воин</span>, танк",
-""
+"<img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\"><b>Arthur</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Warrior</span>, tank"
 ],
 [
 "с 1-го дня",
-""
+"from day 1"
 ],
 [
 "<b>Бесплатно.</b> Сначала был платным, потом перешёл в обычный найм. Первые 50 наймов в Таверне гарантируют Артура, дальше — 10 его фрагментов за каждые 50 наймов.",
-""
+"<b>Free.</b> He used to be paid, then moved to regular recruiting. The first 50 Tavern recruits guarantee Arthur, after that — 10 of his shards for every 50 recruits."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\"><b>Марлена</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Воин</span>, урон",
-""
+"<img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\"><b>Marlena</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Warrior</span>, damage"
 ],
 [
 "<b>Платная:</b> за первую покупку в игре (набор «Первое пополнение», около 1 $). Дальше её фрагменты продаются в ежедневных предложениях. Примерно с 66-го дня появляется в Таверне.",
-""
+"<b>Paid:</b> for your first purchase in the game (the first top-up pack, about $1). After that her shards are sold in daily offers. Around day 66 she appears in the Tavern."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\"><b>Белла</b> <span class=\"chip ssr\">SSR</span> <span class=\"war\">Воин</span>, танк",
-""
+"<img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\"><b>Bella</b> <span class=\"chip ssr\">SSR</span> <span class=\"war\">Warrior</span>, tank"
 ],
 [
 "с начала",
-""
+"from the start"
 ],
 [
 "<b>Бесплатно:</b> её фрагменты продаются в магазине альянса за монеты альянса.",
-""
+"<b>Free:</b> her shards are sold in the Alliance Shop for Alliance Coins."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\"><b>Клэр</b>, <img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\"><b>Селия</b>, <img class=\"i\" src=\"assets/game/hero/sivir.png\" alt=\"\"><b>Сивир</b> <span class=\"chip ssr\">SSR</span> <span class=\"war\">Воины</span>",
-""
+"<img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\"><b>Claire</b>, <img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\"><b>Celia</b>, <img class=\"i\" src=\"assets/game/hero/sivir.png\" alt=\"\"><b>Sivir</b> <span class=\"chip ssr\">SSR</span> <span class=\"war\">Warriors</span>"
 ],
 [
 "<b>Бесплатно</b>, даются на старте. Клэр в Эре Возрождения можно перевести в золото (UR).",
-""
+"<b>Free</b>, given at the start. In the Era of Revival Claire can be upgraded to gold (UR)."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/cynthia.png\" alt=\"\"><b>Синтия</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Рейнджер</span>, урон",
-""
+"<img class=\"i\" src=\"assets/game/hero/cynthia.png\" alt=\"\"><b>Cynthia</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Ranger</span>, damage"
 ],
 [
 "с 8-го дня",
-""
+"from day 8"
 ],
 [
 "В <b>Рулетке (колесе)</b>: каждый день бесплатные прокрутки, в конце события докрутить кристаллами до гарантированного выпадения. Потом в основном за донат. Примерно с 66-го дня — в Таверне.",
-""
+"In the <b>Roulette (the wheel)</b>: free spins every day, at the end of the event spin with crystals up to the guaranteed drop. Later mostly for money. Around day 66 — in the Tavern."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/shadow.png\" alt=\"\"><b>Шэдоу</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Рейнджер</span>, танк",
-""
+"<img class=\"i\" src=\"assets/game/hero/shadow.png\" alt=\"\"><b>Shadow</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Ranger</span>, tank"
 ],
 [
 "<b>Платный:</b> пропуск примерно за 20 $. Примерно с 66-го дня — в Таверне.",
-""
+"<b>Paid:</b> a pass for about $20. Around day 66 — in the Tavern."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/jester.png\" alt=\"\"><b>Джестер</b>, <img class=\"i\" src=\"assets/game/hero/annie.png\" alt=\"\"><b>Энни</b> <span class=\"chip ur\">UR</span> <span class=\"wlk\">Колдуны</span>",
-""
+"<img class=\"i\" src=\"assets/game/hero/jester.png\" alt=\"\"><b>Joker</b>, <img class=\"i\" src=\"assets/game/hero/annie.png\" alt=\"\"><b>Annie</b> <span class=\"chip ur\">UR</span> <span class=\"wlk\">Warlocks</span>"
 ],
 [
 "с 15-го дня",
-""
+"from day 15"
 ],
 [
 "В <b>Рулетке</b>. Раскрываются только на 9–10 звёздах — бесплатным игрокам лучше пропустить. Примерно с 66-го дня — в Таверне.",
-""
+"In the <b>Roulette</b>. They only shine at 9–10 stars — free players should skip them. Around day 66 — in the Tavern."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\"><b>Харпер</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Воин</span>, поддержка",
-""
+"<img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\"><b>Harper</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Warrior</span>, support"
 ],
 [
 "с 22-го дня",
-""
+"from day 22"
 ],
 [
 "Сначала <b>платный</b> (130 фрагментов примерно за 20 $), фрагменты бывают и в карте сокровищ секретных операций. <b>С 31-го дня — в обычном найме</b> в Таверне, бесплатно.",
-""
+"First <b>paid</b> (130 shards for about $20), shards also come from the Covert Operations Treasure Map. <b>From day 31 — in regular recruiting</b> in the Tavern, for free."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/daskal.png\" alt=\"\"><b>Даскал</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Воин</span>, танк",
-""
+"<img class=\"i\" src=\"assets/game/hero/daskal.png\" alt=\"\"><b>Daskal</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Warrior</span>, tank"
 ],
 [
 "с 29-го дня",
-""
+"from day 29"
 ],
 [
 "Сначала <b>платный</b>. В Эре Возрождения стал доступен бесплатно в Таверне.",
-""
+"First <b>paid</b>. In the Era of Revival he became available for free in the Tavern."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/red-lady.png\" alt=\"\"><b>Красная леди</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Рейнджер</span>, урон",
-""
+"<img class=\"i\" src=\"assets/game/hero/red-lady.png\" alt=\"\"><b>Red Lady</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Ranger</span>, damage"
 ],
 [
 "с 36-го дня",
-""
+"from day 36"
 ],
 [
 "Сначала <b>в продаже</b>. В Эре Возрождения стала доступна бесплатно в Таверне.",
-""
+"First <b>on sale</b>. In the Era of Revival she became available for free in the Tavern."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/ulfrid.png\" alt=\"\"><b>Ульфрид (Брайан)</b> <span class=\"chip ur\">UR</span> <span class=\"wlk\">Колдун</span>, танк",
-""
+"<img class=\"i\" src=\"assets/game/hero/ulfrid.png\" alt=\"\"><b>Ulfrid (Brian)</b> <span class=\"chip ur\">UR</span> <span class=\"wlk\">Warlock</span>, tank"
 ],
 [
 "с 43-го дня",
-""
+"from day 43"
 ],
 [
 "Платный. Отражает часть урона обратно в атакующего.",
-""
+"Paid. Reflects part of the damage back at the attacker."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/zoya.png\" alt=\"\"><b>Зоя</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Воин</span>, урон",
-""
+"<img class=\"i\" src=\"assets/game/hero/zoya.png\" alt=\"\"><b>Zoya</b> <span class=\"chip ur\">UR</span> <span class=\"war\">Warrior</span>, damage"
 ],
 [
 "с 57-го дня",
-""
+"from day 57"
 ],
 [
 "Платная. Усиливает урон Марлены.",
-""
+"Paid. Boosts Marlena's damage."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/louis.png\" alt=\"\"><b>Луи</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Рейнджер</span>, танк",
-""
+"<img class=\"i\" src=\"assets/game/hero/louis.png\" alt=\"\"><b>Louis</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Ranger</span>, tank"
 ],
 [
 "с 64-го дня",
-""
+"from day 64"
 ],
 [
 "Через пропуск. Самый живучий танк игры.",
-""
+"Through a pass. The toughest tank in the game."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/bell.png\" alt=\"\"><b>Белл</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Рейнджер</span>, поддержка",
-""
+"<img class=\"i\" src=\"assets/game/hero/bell.png\" alt=\"\"><b>Bell</b> <span class=\"chip ur\">UR</span> <span class=\"ran\">Ranger</span>, support"
 ],
 [
 "с 71-го дня",
-""
+"from day 71"
 ],
 [
 "Платная. «Харпер для Рейнджеров».",
-""
+"Paid. «Harper for Rangers»."
 ],
 [
 "<img class=\"i\" src=\"assets/game/hero/billy.png\" alt=\"\"><b>Билли</b>, <img class=\"i\" src=\"assets/game/hero/nicole.png\" alt=\"\"><b>Николь</b> <span class=\"chip ur\">UR</span> <span class=\"wlk\">Колдуны</span>",
-""
+"<img class=\"i\" src=\"assets/game/hero/billy.png\" alt=\"\"><b>Billy</b>, <img class=\"i\" src=\"assets/game/hero/nicole.png\" alt=\"\"><b>Nicole</b> <span class=\"chip ur\">UR</span> <span class=\"wlk\">Warlocks</span>"
 ],
 [
 "с 85-го / 99-го дня",
-""
+"from day 85 / 99"
 ],
 [
 "Платные. Нужны для полного отряда Колдунов.",
-""
+"Paid. Needed for a full Warlock squad."
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/greenwald.png\" alt=\"\"><b>Гренвальд</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/stellar.png\" alt=\"\"><b>Стеллар</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/hastar.png\" alt=\"\"><b>Хастар</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/griffith.png\" alt=\"\"><b>Гриффит</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bestar.png\" alt=\"\"><b>Бестар</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/lucius.png\" alt=\"\"><b>Луций</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/kesso.png\" alt=\"\"><b>Кессо</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/ash.png\" alt=\"\"><b>Эш</b></span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/greenwald.png\" alt=\"\"><b>Grenwald</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/stellar.png\" alt=\"\"><b>Stellar</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/hastar.png\" alt=\"\"><b>Hastar</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/griffith.png\" alt=\"\"><b>Griffith</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bestar.png\" alt=\"\"><b>Bestar</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/lucius.png\" alt=\"\"><b>Lucius</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/kesso.png\" alt=\"\"><b>Kesso</b></span><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/ash.png\" alt=\"\"><b>Ash</b></span>"
 ],
 [
 "<b>Бесплатно:</b> найм в Таверне, события, магазины. Вместо недостающих фрагментов подходят универсальные фиолетовые.",
-""
+"<b>Free:</b> Tavern recruiting, events, shops. Universal purple shards can replace missing shards."
 ],
 [
 "<b>Найм в Таверне.</b> Билет найма стоит 398 алмазов. На каждом найме есть бесплатная попытка по таймеру. <b>50-й найм</b> гарантированно даёт 10 фрагментов золотого героя.",
-""
+"<b>Tavern recruiting.</b> A recruit ticket costs 398 Diamonds. Each recruit has a free attempt on a timer. <b>The 50th recruit</b> is guaranteed to give 10 shards of a gold hero."
 ],
 [
 "<b>Магазин альянса</b> обновляется каждый понедельник: там золотые фрагменты и фрагменты Беллы. Заходи каждую неделю.",
-""
+"<b>The Alliance Shop</b> refreshes every Monday: it has gold shards and Bella shards. Check it every week."
 ],
 [
 "<b>Универсальные фрагменты</b> подходят любому герою своего цвета. Не трать их на первого попавшегося — держи для главного героя.",
-""
+"<b>Universal shards</b> fit any hero of their color. Don't spend them on the first hero you see — keep them for your main hero."
 ],
 [
 "Кто сильнее",
-""
+"Who is stronger"
 ],
 [
 "Рейтинг героев",
-""
+"Hero ranking"
 ],
 [
 "<span class=\"tier t-s\">S</span> — лучшие, <span class=\"tier t-c\">C</span> — слабые. Цвет плашки под именем — редкость: <span class=\"chip ur\">UR</span> золотой, <span class=\"chip ssr\">SSR</span> фиолетовый, <span class=\"chip sr\">SR</span> синий.",
-""
+"<span class=\"tier t-s\">S</span> — the best, <span class=\"tier t-c\">C</span> — weak. The plate color under the name is the rarity: <span class=\"chip ur\">UR</span> gold, <span class=\"chip ssr\">SSR</span> purple, <span class=\"chip sr\">SR</span> blue."
 ],
 [
 "<b>Как составлен рейтинг.</b> Это сводка семи популярных рейтингов игроков. Место героя — среднее по этим спискам. Оценивают одно: <b>сколько герой даёт в бою против других игроков и в КвК</b> на максимуме звёзд и навыков. Поэтому вверху золотые (UR) герои урона и танки, а внизу — герои, у которых сила в другом.",
-""
+"<b>How the ranking is made.</b> It is a summary of seven popular player rankings. A hero's place is the average across these lists. They rate one thing: <b>how much the hero gives in battles against other players and in Kingdom War</b> at max stars and skills. That's why gold (UR) damage heroes and tanks are at the top, and heroes whose strength lies elsewhere are at the bottom."
 ],
 [
 "<b>Почему Селия внизу.</b> Её навыки работают против монстров и на сбор ресурсов (больше урона по скверне, до +40% к сбору), а в бою с игроками она почти ничего не добавляет. В рейтинге «для боя» она поэтому низко, но в отряде против скверны и для сбора ресурсов она полезна — см. «Главные герои» ниже. То же с Клэр: внизу по бою, но сильна против монстров.",
-""
+"<b>Why Celia is at the bottom.</b> Her skills work against monsters and for gathering (more damage to Blight, up to +40% gathering), while in fights with players she adds almost nothing. So she ranks low «for battle», but she is useful in an anti-Blight squad and for gathering — see «Main heroes» below. Same with Claire: low for battle, but strong against monsters."
 ],
 [
 "<span class=\"tier t-s\">S</span> Лучшие",
-""
+"<span class=\"tier t-s\">S</span> The best"
 ],
 [
 "<b>Марлена</b><span><span class=\"chip ur\">UR</span> Воин · урон</span>",
-""
+"<b>Marlena</b><span><span class=\"chip ur\">UR</span> Warrior · damage</span>"
 ],
 [
 "<b>Артур</b><span><span class=\"chip ur\">UR</span> Воин · танк</span>",
-""
+"<b>Arthur</b><span><span class=\"chip ur\">UR</span> Warrior · tank</span>"
 ],
 [
 "<b>Даскал</b><span><span class=\"chip ur\">UR</span> Воин · танк</span>",
-""
+"<b>Daskal</b><span><span class=\"chip ur\">UR</span> Warrior · tank</span>"
 ],
 [
 "<b>Шэдоу</b><span><span class=\"chip ur\">UR</span> Рейнджер · танк</span>",
-""
+"<b>Shadow</b><span><span class=\"chip ur\">UR</span> Ranger · tank</span>"
 ],
 [
 "<b>Харпер</b><span><span class=\"chip ur\">UR</span> Воин · поддержка</span>",
-""
+"<b>Harper</b><span><span class=\"chip ur\">UR</span> Warrior · support</span>"
 ],
 [
 "<b>Красная леди</b><span><span class=\"chip ur\">UR</span> Рейнджер · урон</span>",
-""
+"<b>Red Lady</b><span><span class=\"chip ur\">UR</span> Ranger · damage</span>"
 ],
 [
 "<b>Синтия</b><span><span class=\"chip ur\">UR</span> Рейнджер · урон</span>",
-""
+"<b>Cynthia</b><span><span class=\"chip ur\">UR</span> Ranger · damage</span>"
 ],
 [
 "<b>Ульфрид</b><span><span class=\"chip ur\">UR</span> Колдун · танк</span>",
-""
+"<b>Ulfrid</b><span><span class=\"chip ur\">UR</span> Warlock · tank</span>"
 ],
 [
 "<span class=\"tier t-ap\">A+</span> Очень сильные",
-""
+"<span class=\"tier t-ap\">A+</span> Very strong"
 ],
 [
 "<b>Николь</b><span><span class=\"chip ur\">UR</span> Колдун · поддержка</span>",
-""
+"<b>Nicole</b><span><span class=\"chip ur\">UR</span> Warlock · support</span>"
 ],
 [
 "<b>Белл</b><span><span class=\"chip ur\">UR</span> Рейнджер · поддержка</span>",
-""
+"<b>Bell</b><span><span class=\"chip ur\">UR</span> Ranger · support</span>"
 ],
 [
 "<b>Луи</b><span><span class=\"chip ur\">UR</span> Рейнджер · танк</span>",
-""
+"<b>Louis</b><span><span class=\"chip ur\">UR</span> Ranger · tank</span>"
 ],
 [
 "<b>Энни</b><span><span class=\"chip ur\">UR</span> Колдун · урон</span>",
-""
+"<b>Annie</b><span><span class=\"chip ur\">UR</span> Warlock · damage</span>"
 ],
 [
 "<b>Белла</b><span><span class=\"chip ssr\">SSR</span> Воин · танк</span>",
-""
+"<b>Bella</b><span><span class=\"chip ssr\">SSR</span> Warrior · tank</span>"
 ],
 [
 "<b>Гренвальд</b><span><span class=\"chip ssr\">SSR</span> Колдун · урон</span>",
-""
+"<b>Grenwald</b><span><span class=\"chip ssr\">SSR</span> Warlock · damage</span>"
 ],
 [
 "<span class=\"tier t-a\">A</span> Сильные",
-""
+"<span class=\"tier t-a\">A</span> Strong"
 ],
 [
 "<b>Гриффит</b><span><span class=\"chip ssr\">SSR</span> Рейнджер · танк</span>",
-""
+"<b>Griffith</b><span><span class=\"chip ssr\">SSR</span> Ranger · tank</span>"
 ],
 [
 "<b>Зоя</b><span><span class=\"chip ur\">UR</span> Воин · урон</span>",
-""
+"<b>Zoya</b><span><span class=\"chip ur\">UR</span> Warrior · damage</span>"
 ],
 [
 "<b>Билли</b><span><span class=\"chip ur\">UR</span> Колдун · танк</span>",
-""
+"<b>Billy</b><span><span class=\"chip ur\">UR</span> Warlock · tank</span>"
 ],
 [
 "<b>Джестер</b><span><span class=\"chip ur\">UR</span> Колдун · урон</span>",
-""
+"<b>Joker</b><span><span class=\"chip ur\">UR</span> Warlock · damage</span>"
 ],
 [
 "<b>Хастар</b><span><span class=\"chip ssr\">SSR</span> Колдун · танк</span>",
-""
+"<b>Hastar</b><span><span class=\"chip ssr\">SSR</span> Warlock · tank</span>"
 ],
 [
 "<b>Стеллар</b><span><span class=\"chip ssr\">SSR</span> Колдун · поддержка</span>",
-""
+"<b>Stellar</b><span><span class=\"chip ssr\">SSR</span> Warlock · support</span>"
 ],
 [
 "<b>Клэр</b><span><span class=\"chip ssr\">SSR</span> Воин · урон</span>",
-""
+"<b>Claire</b><span><span class=\"chip ssr\">SSR</span> Warrior · damage</span>"
 ],
 [
 "<b>Бестар</b><span><span class=\"chip ssr\">SSR</span> Рейнджер · урон</span>",
-""
+"<b>Bestar</b><span><span class=\"chip ssr\">SSR</span> Ranger · damage</span>"
 ],
 [
 "<b>Кессо</b><span><span class=\"chip ssr\">SSR</span> Воин · урон</span>",
-""
+"<b>Kesso</b><span><span class=\"chip ssr\">SSR</span> Warrior · damage</span>"
 ],
 [
 "<span class=\"tier t-bp\">B+</span> <span class=\"tier t-b\">B</span> <span class=\"tier t-c\">C</span> Временные и слабые",
-""
+"<span class=\"tier t-bp\">B+</span> <span class=\"tier t-b\">B</span> <span class=\"tier t-c\">C</span> Temporary and weak"
 ],
 [
 "<b>Луций</b><span><span class=\"chip ssr\">SSR</span> Воин · танк · B+</span>",
-""
+"<b>Lucius</b><span><span class=\"chip ssr\">SSR</span> Warrior · tank · B+</span>"
 ],
 [
 "<b>Селия</b><span><span class=\"chip ssr\">SSR</span> Воин · поддержка · B+</span>",
-""
+"<b>Celia</b><span><span class=\"chip ssr\">SSR</span> Warrior · support · B+</span>"
 ],
 [
 "<b>Сивир</b><span><span class=\"chip ssr\">SSR</span> Воин · урон · B+</span>",
-""
+"<b>Sivir</b><span><span class=\"chip ssr\">SSR</span> Warrior · damage · B+</span>"
 ],
 [
 "<b>Эш</b><span><span class=\"chip ssr\">SSR</span> Рейнджер · урон · B</span>",
-""
+"<b>Ash</b><span><span class=\"chip ssr\">SSR</span> Ranger · damage · B</span>"
 ],
 [
 "<b>Дюрант</b><span><span class=\"chip sr\">SR</span> не качать · C</span>",
-""
+"<b>Durant</b><span><span class=\"chip sr\">SR</span> don't level · C</span>"
 ],
 [
 "<b>Робин</b><span><span class=\"chip sr\">SR</span> не качать · C</span>",
-""
+"<b>Robin</b><span><span class=\"chip sr\">SR</span> don't level · C</span>"
 ],
 [
 "<b>Уильям</b><span><span class=\"chip sr\">SR</span> не качать · C</span>",
-""
+"<b>William</b><span><span class=\"chip sr\">SR</span> don't level · C</span>"
 ],
 [
 "<b>Кафа</b><span><span class=\"chip sr\">SR</span> не качать · C</span>",
-""
+"<b>Kafa</b><span><span class=\"chip sr\">SR</span> don't level · C</span>"
 ],
 [
 "Кого качать",
-""
+"Whom to level"
 ],
 [
 "Готовые пути: с кем играть и когда менять героев",
-""
+"Ready-made paths: whom to play with and when to swap heroes"
 ],
 [
 "<b>«Временный герой»</b> — тот, кого ты поставишь сейчас, а потом заменишь более сильным. В такого героя не вкладывай много значков навыков: хватит прокачать навыки до 8–10 уровня.",
-""
+"<b>A «temporary hero»</b> is one you use now and later replace with a stronger one. Don't put many Skill Badges into such a hero: skills at level 8–10 are enough."
 ],
 [
 "<img src=\"assets/game/hero/arthur.png\" alt=\"\" style=\"border-radius:6px\">Без доната",
-""
+"<img src=\"assets/game/hero/arthur.png\" alt=\"\" style=\"border-radius:6px\">No spending"
 ],
 [
 "<img src=\"assets/game/hero/marlena.png\" alt=\"\" style=\"border-radius:6px\">С покупкой Марлены",
-""
+"<img src=\"assets/game/hero/marlena.png\" alt=\"\" style=\"border-radius:6px\">With Marlena purchased"
 ],
 [
 "<img src=\"assets/game/hero/cynthia.png\" alt=\"\" style=\"border-radius:6px\">Средний донат",
-""
+"<img src=\"assets/game/hero/cynthia.png\" alt=\"\" style=\"border-radius:6px\">Moderate spending"
 ],
 [
 "Когда",
-""
+"When"
 ],
 [
 "Танки (впереди)",
-""
+"Tanks (front)"
 ],
 [
 "Урон и поддержка (сзади)",
-""
+"Damage and support (back)"
 ],
 [
 "Дни 1–7",
-""
+"Days 1–7"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Артур</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\">Белла</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Arthur</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\">Bella</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Селия</span> <small>(временная)</small> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/sivir.png\" alt=\"\">Сивир</span> <small>(временный)</small>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Celia</span> <small>(temporary)</small> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/sivir.png\" alt=\"\">Sivir</span> <small>(temporary)</small>"
 ],
 [
 "Дни 8–30",
-""
+"Days 8–30"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Селия</span> · лучший фиолетовый",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Celia</span> · best purple hero"
 ],
 [
 "С 31-го дня",
-""
+"From day 31"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Селия</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\"><b>Харпер</b></span> (появился в Таверне)",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Celia</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\"><b>Harper</b></span> (arrived in the Tavern)"
 ],
 [
 "Позже",
@@ -737,47 +737,47 @@
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Артур</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/daskal.png\" alt=\"\"><b>Даскал</b></span> (бесплатно в Таверне после Эры Возрождения)",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Arthur</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/daskal.png\" alt=\"\"><b>Daskal</b></span> (free in the Tavern after the Era of Revival)"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Марлена</span> (когда появится в Таверне) · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\">Харпер</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Marlena</span> (once she appears in the Tavern) · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\">Harper</span>"
 ],
 [
 "<b>Белла — второй танк надолго</b>: она в рейтинге выше Луция (A+ против B+), а её фрагменты бесплатно продаются в магазине альянса. Её меняют только на золотого танка — Даскала. Луций — запасной танк, если Беллы ещё нет.",
-""
+"<b>Bella is a long-term second tank</b>: she ranks higher than Lucius (A+ vs B+), and her shards are sold for free in the Alliance Shop. She is only replaced by a gold tank — Daskal. Lucius is a backup tank if you don't have Bella yet."
 ],
 [
 "<b>Как копить на Марлену бесплатно, по-простому.</b> Марлена появится в Таверне примерно на 66-й день. Чтобы сразу сделать её сильной, нужно около 975 золотых фрагментов. Значит: золотые универсальные фрагменты, которые получаешь, <b>не трать все</b>. Половину вкладывай в Артура и Харпера, половину откладывай. Когда Марлена появится, вложи накопленное в неё.",
-""
+"<b>How to save up for Marlena for free, simply.</b> Marlena appears in the Tavern around day 66. To make her strong right away you need about 975 gold shards. So: <b>don't spend all</b> the gold universal shards you get. Put half into Arthur and Harper, set half aside. When Marlena appears, put the savings into her."
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\"><b>Марлена</b></span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Селия</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\"><b>Marlena</b></span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Celia</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Марлена</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\">Харпер</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Marlena</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\">Harper</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span>"
 ],
 [
 "Дальше",
-""
+"Later"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Артур</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/daskal.png\" alt=\"\">Даскал</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Arthur</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/daskal.png\" alt=\"\">Daskal</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Марлена</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\">Харпер</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/red-lady.png\" alt=\"\">Красная леди</span> или <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Marlena</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\">Harper</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/red-lady.png\" alt=\"\">Red Lady</span> or <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span>"
 ],
 [
 "Все золотые фрагменты в первую очередь — <b>Марлене, до 10 звёзд</b>. Харпера подними до 8 звёзд, когда Марлена уже на 10: у него откроется навык, который на 10% ускоряет навыки всего отряда.",
-""
+"All gold shards go first to <b>Marlena, up to 10 stars</b>. Raise Harper to 8 stars once Marlena is at 10: he unlocks a skill that speeds up the whole squad's skills by 10%."
 ],
 [
 "Игроки, которые тратят больше, советуют уже в середине игры переходить на <b>Рейнджеров</b>: к концу они сильнее Воинов даже против полностью прокачанных Воинов.",
-""
+"Players who spend more advise switching to <b>Rangers</b> already in mid-game: by the end they are stronger than Warriors even against fully leveled Warriors."
 ],
 [
 "Состав",
@@ -785,290 +785,290 @@
 ],
 [
 "Герои",
-""
+"Heroes"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Артур</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/shadow.png\" alt=\"\">Шэдоу</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Марлена</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/cynthia.png\" alt=\"\">Синтия</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Arthur</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/shadow.png\" alt=\"\">Shadow</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Marlena</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/cynthia.png\" alt=\"\">Cynthia</span>"
 ],
 [
 "Полный отряд Рейнджеров",
-""
+"Full Ranger squad"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/louis.png\" alt=\"\">Луи</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/shadow.png\" alt=\"\">Шэдоу</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/cynthia.png\" alt=\"\">Синтия</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bell.png\" alt=\"\">Белл</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/red-lady.png\" alt=\"\">Красная леди</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/louis.png\" alt=\"\">Louis</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/shadow.png\" alt=\"\">Shadow</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/cynthia.png\" alt=\"\">Cynthia</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bell.png\" alt=\"\">Bell</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/red-lady.png\" alt=\"\">Red Lady</span>"
 ],
 [
 "Потом — Колдуны",
-""
+"Then — Warlocks"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/ulfrid.png\" alt=\"\">Ульфрид</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/billy.png\" alt=\"\">Билли</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/annie.png\" alt=\"\">Энни</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/nicole.png\" alt=\"\">Николь</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/jester.png\" alt=\"\">Джестер</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/ulfrid.png\" alt=\"\">Ulfrid</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/billy.png\" alt=\"\">Billy</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/annie.png\" alt=\"\">Annie</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/nicole.png\" alt=\"\">Nicole</span> · <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/jester.png\" alt=\"\">Joker</span>"
 ],
 [
 "Выбирай одну фракцию и не прыгай между ними: распылять ресурсы на три отряда — самый медленный путь.",
-""
+"Pick one faction and don't jump between them: spreading resources across three squads is the slowest path."
 ],
 [
 "Прокачка",
-""
+"Upgrading"
 ],
 [
 "Как прокачивать героя: 4 вещи",
-""
+"How to upgrade a hero: 4 things"
 ],
 [
 "Всё это — в окне героя: на главном экране слева внизу кнопка <b>«Герой»</b> → нажми на нужного героя.",
-""
+"All of this is in the hero window: on the main screen, the <b>Hero</b> button at the bottom left → tap the hero you need."
 ],
 [
 "<img src=\"assets/shots/hero-window.webp\" alt=\"Окно героя Артура: вкладка «Характеристики»\"><span class=\"ring rect\" style=\"left:12%;top:26.8%;width:16%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:50%;top:86.3%;width:38.1%;aspect-ratio:2.98\"></span><span class=\"ring rect\" style=\"left:65.5%;top:96.9%;width:62.3%;aspect-ratio:5.08\"></span>",
-""
+"<img src=\"assets/shots/hero-window.webp\" alt=\"Arthur's hero window: the Stats tab\"><span class=\"ring rect\" style=\"left:12%;top:26.8%;width:16%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:50%;top:86.3%;width:38.1%;aspect-ratio:2.98\"></span><span class=\"ring rect\" style=\"left:65.5%;top:96.9%;width:62.3%;aspect-ratio:5.08\"></span>"
 ],
 [
 "Окно героя. Рамки: снаряжение, «Улучшить», «Звезды» и «Навык».",
-""
+"The hero window. Frames: gear, «Upgrade», «Stars» and «Skill»."
 ],
 [
 "1. Уровень",
-""
+"1. Level"
 ],
 [
 "Кнопка <b>«Улучшить»</b> под характеристиками. Качается <b>противоядием</b> — на кнопке видно, сколько его есть и сколько нужно (красное число — не хватает). Даёт атаку, здоровье, защиту и лидерство. Потолок уровня зависит от Святилища: Святилище 20 — герой до 100 уровня, Святилище 30 — до 150.",
-""
+"The <b>Upgrade</b> button under the stats. Leveled with <b>Antitoxin</b> — the button shows how much you have and how much you need (a red number — not enough). Gives attack, HP, defense and CMD. The level cap depends on the Sanctuary: Sanctuary 20 — hero up to level 100, Sanctuary 30 — up to 150."
 ],
 [
 "2. Звёзды",
-""
+"2. Stars"
 ],
 [
 "Вкладка <b>«Звезды»</b> внизу окна. Качаются <b>фрагментами</b> <img class=\"inl\" src=\"assets/game/shard-marlena.png\" alt=\"\"> этого героя (картинка с его лицом) или универсальными. Звёзды открывают новые навыки и сильно поднимают силу. После 4-й звезды герой заметно крепнет.",
-""
+"The <b>Stars</b> tab at the bottom of the window. Leveled with this hero's <b>shards</b> <img class=\"inl\" src=\"assets/game/shard-marlena.png\" alt=\"\"> (the picture with their face) or universal ones. Stars unlock new skills and raise power a lot. After the 4th star a hero gets noticeably tougher."
 ],
 [
 "3. Навыки",
-""
+"3. Skills"
 ],
 [
 "Вкладка <b>«Навык»</b> внизу окна. Качаются <b>значками навыков</b> <img class=\"inl\" src=\"assets/game/skill-badge.png\" alt=\"\">. Поднимают цифры навыков: урон, щиты, усиления. Значков всегда мало — главному герою урона в первую очередь.",
-""
+"The <b>Skill</b> tab at the bottom of the window. Leveled with <b>Skill Badges</b> <img class=\"inl\" src=\"assets/game/skill-badge.png\" alt=\"\">. They raise skill numbers: damage, shields, buffs. Badges are always scarce — the main damage hero comes first."
 ],
 [
 "4. Снаряжение",
-""
+"4. Gear"
 ],
 [
 "Четыре клетки по бокам героя: слева <b>меч</b> и <b>наручи</b>, справа <b>броня</b> и <b>сапоги</b>. Серая клетка с силуэтом — вещь не надета, нажми на неё, чтобы надеть. Подробно — в разделе <a href=\"gear.html#sets\">Снаряжение</a>.",
-""
+"Four slots on the sides of the hero: on the left the <b>sword</b> and <b>gauntlets</b>, on the right the <b>armor</b> and <b>boots</b>. A gray slot with a silhouette means nothing is equipped — tap it to equip. Details — in the <a href=\"gear.html#sets\">Gear</a> section."
 ],
 [
 "Порядок — по шагам",
-""
+"The order — step by step"
 ],
 [
 "<b>Главного героя урона — до 10 звёзд</b>",
-""
+"<b>Main damage hero — to 10 stars</b>"
 ],
 [
 "Между 9 и 10 звёздами огромная разница: на 10 все его навыки становятся максимальными. Остальных героев отряда достаточно поднять до 8 звёзд. Учти: дорога от 0 до 8 звёзд стоит примерно столько же, сколько от 8 до 10.",
-""
+"There is a huge difference between 9 and 10 stars: at 10 all their skills become maxed. The other heroes of the squad only need 8 stars. Note: the road from 0 to 8 stars costs about as much as from 8 to 10."
 ],
 [
 "<b>Навыки всего первого отряда — до 10 уровня</b>",
-""
+"<b>Skills of the whole first squad — to level 10</b>"
 ],
 [
 "Кроме первого навыка у танков и поддержки: это их обычная атака, им урон не важен.",
-""
+"Except the first skill of tanks and supports: it is their basic attack, damage doesn't matter for them."
 ],
 [
 "<b>Потом навыки героя урона — до максимума</b>",
-""
+"<b>Then the damage hero's skills — to the max</b>"
 ],
 [
 "Потом поддержка, потом танки (у танков — защитные навыки, а не атаку). У фиолетовых героев навыки против монстров не качай, кроме Клэр и Селии.",
-""
+"Then support, then tanks (for tanks — defensive skills, not attack). For purple heroes don't level anti-monster skills, except Claire and Celia."
 ],
 [
 "<b>Всё это — в четверг</b>",
-""
+"<b>All of this — on Thursday</b>"
 ],
 [
 "Фрагменты, значки, противоядие и билеты найма копи с прошлого четверга и трать в день героев Дуэли. Противоядие — в раунд «Усиление героев» Битвы на выживание.",
-""
+"Save shards, badges, Antitoxin and recruit tickets since last Thursday and spend them on the Duel's hero day. Antitoxin — in the «Enhance Hero» round of the Survival Battle."
 ],
 [
 "<b>Пробуждение.</b> Марлена, Синтия и Энни после 10 звёзд можно «пробудить» особыми фрагментами: растут характеристики и навыки. Даскал, Луи и Ульфрид получили своё оружие, которое тоже их усиливает.",
-""
+"<b>Awaken.</b> Marlena, Cynthia and Annie can be «awakened» after 10 stars with special shards: stats and skills grow. Daskal, Louis and Ulfrid got their own weapons, which boost them too."
 ],
 [
 "Откуда брать противоядие",
-""
+"Where to get Antitoxin"
 ],
 [
 "<b>Мастерская противоядия</b><span>производит его постоянно — собирай</span>",
-""
+"<b>Antitoxin Workshop</b><span>produces it all the time — collect it</span>"
 ],
 [
 "<b>Улучшение любого здания</b><span>каждое даёт немного противоядия</span>",
-""
+"<b>Upgrading any building</b><span>each one gives a little Antitoxin</span>"
 ],
 [
 "<b>Задания сокола</b><span>почти в каждом есть противоядие</span>",
-""
+"<b>Falcon Quests</b><span>almost every one has Antitoxin</span>"
 ],
 [
 "<b>Секретные операции и караваны</b><span>свои и ограбленные, золотые — больше всего</span>",
-""
+"<b>Covert Operations and caravans</b><span>your own and plundered ones, gold ones give the most</span>"
 ],
 [
 "<b>Скверна на карте</b><span>10 энергии, элитная — 20 энергии</span>",
-""
+"<b>Blight on the map</b><span>10 Stamina, elite — 20 Stamina</span>"
 ],
 [
 "<b>Сырная ловушка</b><span>щедрые награды за урон</span>",
-""
+"<b>Cheese Trap</b><span>generous rewards for damage</span>"
 ],
 [
 "Почему именно они",
-""
+"Why exactly them"
 ],
 [
 "Главные герои — коротко и понятно",
-""
+"Main heroes — short and clear"
 ],
 [
 "Это не «лучшие по рейтингу», а герои, которых чаще всего качают на старте: их <b>можно получить бесплатно или в первые дни</b> (Артур, Белла, Клэр, Селия — с первых дней; Харпер — в Таверне с 31-го дня; Марлена и Синтия — за покупки) и на них строятся отряды из раздела «Отряды». У каждого написано, за что его берут.",
-""
+"These are not «the best by ranking», but the heroes most often leveled at the start: you <b>can get them for free or in the first days</b> (Arthur, Bella, Claire, Celia — from the first days; Harper — in the Tavern from day 31; Marlena and Cynthia — for purchases), and the squads from the «Squads» section are built on them. Each one says why you take them."
 ],
 [
 "Артур — главный танк",
-""
+"Arthur — the main tank"
 ],
 [
 "Снижает урон по всем танкам отряда, ставит себе щит, а его главный удар бьёт всех рядом и снижает урон по своим. Ставится на место 1 — туда бьют сильнее всего. Первый герой, в которого вкладываться.",
-""
+"Reduces damage to all tanks in the squad, shields himself, and his main strike hits everyone nearby and reduces damage to allies. Goes in slot 1 — that is where hits are strongest. The first hero to invest in."
 ],
 [
 "Марлена — главный урон",
-""
+"Marlena — the main damage"
 ],
 [
 "Самый сильный урон на старте. Бьёт энергетическим уроном по площади, сама его усиливает и быстрее перезаряжает навыки. Хороша и против людей, и против монстров.",
-""
+"The strongest damage at the start. Deals area energy damage, boosts it herself and recharges skills faster. Good both against players and against monsters."
 ],
 [
 "Харпер — усиление Воинов",
-""
+"Harper — Warrior buffs"
 ],
 [
 "Поднимает атаку всем героям отряда и отдельно всем Воинам. Рядом с Артуром и Марленой — огромная прибавка. С 31-го дня бесплатно в Таверне.",
-""
+"Raises attack for all heroes of the squad and separately for all Warriors. Next to Arthur and Marlena — a huge boost. From day 31 free in the Tavern."
 ],
 [
 "Белла — бесплатный танк",
-""
+"Bella — a free tank"
 ],
 [
 "Фрагменты — в магазине альянса. Снижает урон от монстров по своим, её удар ослабляет атаку врагов. Временная: потом её заменят Луций или Даскал.",
-""
+"Shards — in the Alliance Shop. Reduces monster damage to allies, her strike weakens enemies' attack. Temporary: later she is replaced by Lucius or Daskal."
 ],
 [
 "Клэр — против монстров",
-""
+"Claire — against monsters"
 ],
 [
 "Трём самым сильным Воинам отряда добавляет около 15% урона по монстрам. Незаменима на Короле демонов. Можно перевести в золото (UR) в Эре Возрождения.",
-""
+"Adds about 15% damage to monsters for the three strongest Warriors in the squad. Irreplaceable on the Demon King. Can be upgraded to gold (UR) in the Era of Revival."
 ],
 [
 "Селия — больше ресурсов",
-""
+"Celia — more resources"
 ],
 [
 "Даётся на старте. Добавляет урон по монстрам и до 40% ресурсов с ресурсных и элитных монстров. Временная.",
-""
+"Given at the start. Adds damage to monsters and up to 40% resources from resource and elite monsters. Temporary."
 ],
 [
 "Синтия — урон Рейнджеров",
-""
+"Cynthia — Ranger damage"
 ],
 [
 "Бьёт всех врагов в зоне, сама повышает себе шанс крита. Для Короля демонов у бесплатного Рейнджера — лучший выбор.",
-""
+"Hits all enemies in an area and raises her own crit rate. For a free-to-play Ranger she is the best choice for the Demon King."
 ],
 [
 "Даскал — второй танк Воинов",
-""
+"Daskal — the second Warrior tank"
 ],
 [
 "Ставит щиты всему отряду и лечит себя. Вместе с Харпером отряд живёт намного дольше. Ему сразу делай меч и наручи — его лечение зависит от атаки.",
-""
+"Shields the whole squad and heals himself. Together with Harper the squad lives much longer. Give him a sword and gauntlets right away — his healing depends on attack."
 ],
 [
 "Гренвальд — урон без золота",
-""
+"Grenwald — damage without gold"
 ],
 [
 "Лучший фиолетовый по урону, особенно по монстрам. Сам хрупкий — только за спиной танка. Замена Марлене, если её нет.",
-""
+"The best purple hero for damage, especially against monsters. Fragile himself — only behind a tank. A replacement for Marlena if you don't have her."
 ],
 [
 "Частые ошибки",
-""
+"Common mistakes"
 ],
 [
 "Как не слить ресурсы",
-""
+"How not to waste resources"
 ],
 [
 "<b>Качаю всех понемногу</b>",
-""
+"<b>Leveling everyone a little</b>"
 ],
 [
 "Пять героев на 50% слабее трёх на 100%. Сначала первый отряд.",
-""
+"Five heroes at 50% are weaker than three at 100%. First squad first."
 ],
 [
 "<b>Золотые фрагменты в Артура вместо Марлены</b>",
-""
+"<b>Gold shards into Arthur instead of Marlena</b>"
 ],
 [
 "Если Марлена есть — почти все универсальные золотые фрагменты сначала ей, до 10 звёзд.",
-""
+"If you have Marlena — almost all universal gold shards go to her first, up to 10 stars."
 ],
 [
 "<b>Значки навыков во временного героя</b>",
-""
+"<b>Skill Badges into a temporary hero</b>"
 ],
 [
 "Белле, Сивиру и Селии хватит навыков 8–10 уровня.",
-""
+"For Bella, Sivir and Celia, skills at level 8–10 are enough."
 ],
 [
 "<b>Атакующие навыки танкам</b>",
-""
+"<b>Attack skills for tanks</b>"
 ],
 [
 "Танкам качай защитные навыки и щиты: они побеждают тем, что живут, а не тем, что бьют.",
-""
+"Level defensive skills and shields for tanks: they win by surviving, not by hitting."
 ],
 [
 "<b>Потратил фрагменты в понедельник</b>",
-""
+"<b>Spent shards on Monday</b>"
 ],
 [
 "В четверг те же фрагменты дали бы очки Дуэли.",
-""
+"On Thursday the same shards would have given Duel points."
 ],
 [
 "<b>Алмазы на ускорения стройки в первые дни</b>",
-""
+"<b>Diamonds on building speedups in the first days</b>"
 ],
 [
 "Первые уровни строятся секунды. Алмазы — на найм героев.",
-""
+"The first levels build in seconds. Diamonds — for recruiting heroes."
 ]
 ]

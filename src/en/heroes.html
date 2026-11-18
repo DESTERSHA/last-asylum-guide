@@ -1,0 +1,485 @@
+<!--{"title": "Heroes: whom to level, how to get them, how to upgrade | Last Asylum: Plague · kingdom 397", "desc": "Heroes in plain words: who is paid and who is free, when each hero appears, whom to level and why, how to upgrade level, stars, skills and gear."}-->
+<div class="wrap">
+  
+  <div class="hero">
+    
+    <div>
+      
+      <div class="kick"><img src="assets/game/hero/arthur.png" alt="" style="border-radius:8px">Heroes</div>
+      
+      <h1>Heroes: whom to level and how to get them</h1>
+      
+      <p class="lead">The main beginner mistake is leveling everyone a little. Pick <b>the 5 heroes of your first squad</b> and invest in them. A fully leveled average hero is stronger than a half-leveled best one.</p>
+      
+      <div class="btns"><a class="btn pri" href="#get">How to get each one</a><a class="btn" href="#tier">Who is stronger</a><a class="btn" href="#how">How to upgrade</a><a class="btn" href="#who">Whom to level</a></div>
+    
+    </div>
+    
+    <div class="art"><img src="assets/art/hero-heroes.webp" alt="Heroes"></div>
+  
+  </div>
+  
+  <div class="facts">
+    
+    <div class="fact"><img class="ic" src="assets/game/hero/arthur.png" alt="" style="border-radius:14px"><h3>Arthur — free</h3><p>The main tank. The first 50 recruits in the Tavern are guaranteed to give Arthur.</p></div>
+    
+    <div class="fact hot"><img class="ic" src="assets/game/hero/marlena.png" alt="" style="border-radius:14px"><h3>Marlena — paid</h3><p>The best damage early on. Given for your first purchase in the game — the first top-up pack (about $1).</p></div>
+    
+    <div class="fact"><img class="ic" src="assets/game/shard-ur.png" alt=""><h3>Level 5, not everyone</h3><p>All resources go into the heroes of your first squad. Don't touch the rest until the first squad is strong.</p></div>
+    
+    <div class="fact gold"><div class="big">Thu</div><h3>Hero day</h3><p>Save Antitoxin, shards, Skill Badges and recruit tickets all week and spend them on Thursday.</p></div>
+  
+  </div>
+
+</div>
+
+
+
+<section class="band pad" id="h3d-sec">
+  
+  <div class="eyebrow">Models from the game</div>
+  
+  <h2>Heroes in 3D</h2>
+  
+  <p class="sub">Rotate the hero with the mouse or a finger, zoom with the wheel. The buttons under the model play animations from the game: idle, attack, skill, walk, run, stun, death. Tap a portrait on the right or any hero portrait below — their model opens. All other game models are on the «Models» page.</p>
+  
+  <div class="m3d" data-list="heroes" id="h3d"></div>
+
+</section>
+
+<script>window.M3D_LISTS=window.M3D_LISTS||{};window.M3D_LISTS.heroes=[["assets/hero3d/arthur.glb","Arthur","assets/game/hero/arthur.png"],["assets/hero3d/annie.glb","Annie","assets/game/hero/annie.png"],["assets/hero3d/bell.glb","Bell","assets/game/hero/bell.png"],["assets/hero3d/bella.glb","Bella","assets/game/hero/bella.png"],["assets/hero3d/bestar.glb","Bestar","assets/game/hero/bestar.png"],["assets/hero3d/billy.glb","Billy","assets/game/hero/billy.png"],["assets/hero3d/greenwald.glb","Grenwald","assets/game/hero/greenwald.png"],["assets/hero3d/griffith.glb","Griffith","assets/game/hero/griffith.png"],["assets/hero3d/daskal.glb","Daskal","assets/game/hero/daskal.png"],["assets/hero3d/jester.glb","Joker","assets/game/hero/jester.png"],["assets/hero3d/durant.glb","Durant","assets/game/hero/durant.png"],["assets/hero3d/zoya.glb","Zoya","assets/game/hero/zoya.png"],["assets/hero3d/kafa.glb","Kafa","assets/game/hero/kafa.png"],["assets/hero3d/kesso.glb","Kesso","assets/game/hero/kesso.png"],["assets/hero3d/claire.glb","Claire","assets/game/hero/claire.png"],["assets/hero3d/red-lady.glb","Red Lady","assets/game/hero/red-lady.png"],["assets/hero3d/louis.glb","Louis","assets/game/hero/louis.png"],["assets/hero3d/lucius.glb","Lucius","assets/game/hero/lucius.png"],["assets/hero3d/marlena.glb","Marlena","assets/game/hero/marlena.png"],["assets/hero3d/nicole.glb","Nicole","assets/game/hero/nicole.png"],["assets/hero3d/robin.glb","Robin","assets/game/hero/robin.png"],["assets/hero3d/celia.glb","Celia","assets/game/hero/celia.png"],["assets/hero3d/cynthia.glb","Cynthia","assets/game/hero/cynthia.png"],["assets/hero3d/sivir.glb","Sivir","assets/game/hero/sivir.png"],["assets/hero3d/stellar.glb","Stellar","assets/game/hero/stellar.png"],["assets/hero3d/william.glb","William","assets/game/hero/william.png"],["assets/hero3d/ulfrid.glb","Ulfrid","assets/game/hero/ulfrid.png"],["assets/hero3d/harper.glb","Harper","assets/game/hero/harper.png"],["assets/hero3d/hastar.glb","Hastar","assets/game/hero/hastar.png"],["assets/hero3d/shadow.glb","Shadow","assets/game/hero/shadow.png"],["assets/hero3d/ash.glb","Ash","assets/game/hero/ash.png"]];</script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+
+<script src="assets/viewer3d.js?v=4" defer></script>
+
+
+
+<section class="band soft pad">
+  
+  <div class="eyebrow">From the very beginning</div>
+  
+  <h2>How a hero works</h2>
+  
+  <p class="sub">Every hero has three main «labels»: rarity (color), role (what they do in battle) and faction (their «team»). Plus level, stars, skills and gear.</p>
+  
+  <div class="grid3">
+    
+    <div class="card"><img class="ic" src="assets/game/shard-ur.png" alt=""><h3>Rarity — the frame color</h3>
+      
+      <ul class="rar">
+        
+        <li><span class="chip ur">UR</span> <b class="ur">Gold</b> — the strongest</li>
+        
+        <li><span class="chip ssr">SSR</span> <b class="ssr">Purple</b> — average</li>
+        
+        <li><span class="chip sr">SR</span> <b class="sr">Blue</b> — weak, we don't level them</li>
+      
+      </ul><p>The rarer the hero, the higher their power ceiling.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/role-tank.png" alt=""><h3>Role — what they do in battle</h3>
+      
+      <ul class="rar">
+        
+        <li><img class="i" src="assets/game/role-tank.png" alt=""><b>Tank</b> — lots of HP, takes the hits, stands in front</li>
+        
+        <li><img class="i" src="assets/game/role-dmg.png" alt=""><b>Damage</b> — lots of attack, little HP, stands behind</li>
+        
+        <li><img class="i" src="assets/game/role-sup.png" alt=""><b>Support</b> — buffs allies, weakens enemies, stands behind</li>
+      
+      </ul><p class="cap">The role icon is in the hero window next to the name.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/fac-war.png" alt=""><h3>Faction — their «team»</h3>
+      
+      <ul class="rar">
+        
+        <li><img class="i" src="assets/game/fac-war.png" alt=""><b class="war">Warriors</b></li>
+        
+        <li><img class="i" src="assets/game/fac-ran.png" alt=""><b class="ran">Rangers</b></li>
+        
+        <li><img class="i" src="assets/game/fac-wlk.png" alt=""><b class="wlk">Warlocks</b></li>
+      
+      </ul><p>Each is stronger than one of the other two — like «rock, paper, scissors» (diagram below).</p></div>
+  
+  </div>
+  
+  <div class="facring">
+    
+    <div class="fr-node war"><img src="assets/game/fac-war.png" alt=""><b>Warrior</b></div>
+    
+    <div class="fr-arrow">beats<span>→</span></div>
+    
+    <div class="fr-node ran"><img src="assets/game/fac-ran.png" alt=""><b>Ranger</b></div>
+    
+    <div class="fr-arrow">beats<span>→</span></div>
+    
+    <div class="fr-node wlk"><img src="assets/game/fac-wlk.png" alt=""><b>Warlock</b></div>
+    
+    <div class="fr-arrow">beats<span>→</span></div>
+    
+    <div class="fr-node war"><img src="assets/game/fac-war.png" alt=""><b>Warrior</b></div>
+  
+  </div>
+  
+  <div class="word"><b>What «beats» means.</b> A hero takes 20% less damage from the faction it «beats». These are the game's own words (the Arena hint): «Warriors take 20% less damage from Rangers», «Rangers — from Warlocks», «Warlocks — from Warriors». The same is shown by the Demon King rules (Warriors have the bonus against the Ranger Blight), the faction triangle in the march window and the Quiz answers. Only the faction statue descriptions (Warrior Statue etc.) say the opposite — it looks like a translation error; go by the Arena hint. And against the Demon King the right faction deals more damage — the game doesn't reveal the size of the bonus. Also: if a squad has 3, 4 or 5 heroes of one faction, the whole squad gets a bonus to attack, HP and defense — details in <a href="squads.html#faction">Squads</a>.</div>
+  
+  <div class="word"><b>CMD</b> is the hero's number that shows how many troops they lead into battle. CMD 400 = 400 troops go into battle. It grows with the hero's level.</div>
+
+</section>
+
+
+
+<section class="band pad" id="get">
+  
+  <div class="eyebrow">Paid and free</div>
+  
+  <h2>How to get each hero</h2>
+  
+  <p class="sub">New heroes don't appear right away, but on a certain day of the server's life. Many are first sold for money or spun in the Roulette, and later move to regular Tavern recruiting, where you can get them for free. Days are approximate: ±1–2 days on different servers.</p>
+  
+  <div class="tbl"><table>
+    
+    <tr><th>Hero</th><th>When it appears</th><th>How to get</th></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/arthur.png" alt=""><b>Arthur</b> <span class="chip ur">UR</span> <span class="war">Warrior</span>, tank</td><td>from day 1</td><td><b>Free.</b> He used to be paid, then moved to regular recruiting. The first 50 Tavern recruits guarantee Arthur, after that — 10 of his shards for every 50 recruits.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/marlena.png" alt=""><b>Marlena</b> <span class="chip ur">UR</span> <span class="war">Warrior</span>, damage</td><td>from day 1</td><td><b>Paid:</b> for your first purchase in the game (the first top-up pack, about $1). After that her shards are sold in daily offers. Around day 66 she appears in the Tavern.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/bella.png" alt=""><b>Bella</b> <span class="chip ssr">SSR</span> <span class="war">Warrior</span>, tank</td><td>from the start</td><td><b>Free:</b> her shards are sold in the Alliance Shop for Alliance Coins.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/claire.png" alt=""><b>Claire</b>, <img class="i" src="assets/game/hero/celia.png" alt=""><b>Celia</b>, <img class="i" src="assets/game/hero/sivir.png" alt=""><b>Sivir</b> <span class="chip ssr">SSR</span> <span class="war">Warriors</span></td><td>from day 1</td><td><b>Free</b>, given at the start. In the Era of Revival Claire can be upgraded to gold (UR).</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/cynthia.png" alt=""><b>Cynthia</b> <span class="chip ur">UR</span> <span class="ran">Ranger</span>, damage</td><td>from day 8</td><td>In the <b>Roulette (the wheel)</b>: free spins every day, at the end of the event spin with crystals up to the guaranteed drop. Later mostly for money. Around day 66 — in the Tavern.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/shadow.png" alt=""><b>Shadow</b> <span class="chip ur">UR</span> <span class="ran">Ranger</span>, tank</td><td>from day 8</td><td><b>Paid:</b> a pass for about $20. Around day 66 — in the Tavern.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/jester.png" alt=""><b>Joker</b>, <img class="i" src="assets/game/hero/annie.png" alt=""><b>Annie</b> <span class="chip ur">UR</span> <span class="wlk">Warlocks</span></td><td>from day 15</td><td>In the <b>Roulette</b>. They only shine at 9–10 stars — free players should skip them. Around day 66 — in the Tavern.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/harper.png" alt=""><b>Harper</b> <span class="chip ur">UR</span> <span class="war">Warrior</span>, support</td><td>from day 22</td><td>First <b>paid</b> (130 shards for about $20), shards also come from the Covert Operations Treasure Map. <b>From day 31 — in regular recruiting</b> in the Tavern, for free.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/daskal.png" alt=""><b>Daskal</b> <span class="chip ur">UR</span> <span class="war">Warrior</span>, tank</td><td>from day 29</td><td>First <b>paid</b>. In the Era of Revival he became available for free in the Tavern.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/red-lady.png" alt=""><b>Red Lady</b> <span class="chip ur">UR</span> <span class="ran">Ranger</span>, damage</td><td>from day 36</td><td>First <b>on sale</b>. In the Era of Revival she became available for free in the Tavern.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/ulfrid.png" alt=""><b>Ulfrid (Brian)</b> <span class="chip ur">UR</span> <span class="wlk">Warlock</span>, tank</td><td>from day 43</td><td>Paid. Reflects part of the damage back at the attacker.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/zoya.png" alt=""><b>Zoya</b> <span class="chip ur">UR</span> <span class="war">Warrior</span>, damage</td><td>from day 57</td><td>Paid. Boosts Marlena's damage.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/louis.png" alt=""><b>Louis</b> <span class="chip ur">UR</span> <span class="ran">Ranger</span>, tank</td><td>from day 64</td><td>Through a pass. The toughest tank in the game.</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/bell.png" alt=""><b>Bell</b> <span class="chip ur">UR</span> <span class="ran">Ranger</span>, support</td><td>from day 71</td><td>Paid. «Harper for Rangers».</td></tr>
+    
+    <tr><td><img class="i" src="assets/game/hero/billy.png" alt=""><b>Billy</b>, <img class="i" src="assets/game/hero/nicole.png" alt=""><b>Nicole</b> <span class="chip ur">UR</span> <span class="wlk">Warlocks</span></td><td>from day 85 / 99</td><td>Paid. Needed for a full Warlock squad.</td></tr>
+    
+    <tr><td><div class="hlist"><span class="hn"><img class="i" src="assets/game/hero/greenwald.png" alt=""><b>Grenwald</b></span><span class="hn"><img class="i" src="assets/game/hero/stellar.png" alt=""><b>Stellar</b></span><span class="hn"><img class="i" src="assets/game/hero/hastar.png" alt=""><b>Hastar</b></span><span class="hn"><img class="i" src="assets/game/hero/griffith.png" alt=""><b>Griffith</b></span><span class="hn"><img class="i" src="assets/game/hero/bestar.png" alt=""><b>Bestar</b></span><span class="hn"><img class="i" src="assets/game/hero/lucius.png" alt=""><b>Lucius</b></span><span class="hn"><img class="i" src="assets/game/hero/kesso.png" alt=""><b>Kesso</b></span><span class="hn"><img class="i" src="assets/game/hero/ash.png" alt=""><b>Ash</b></span></div> <span class="chip ssr">SSR</span></td><td>from the start</td><td><b>Free:</b> Tavern recruiting, events, shops. Universal purple shards can replace missing shards.</td></tr>
+  
+  </table></div>
+  
+  <div class="grid3">
+    
+    <div class="note gold"><img src="assets/game/ticket-hero.png" alt=""><div><p><b>Tavern recruiting.</b> A recruit ticket costs 398 Diamonds. Each recruit has a free attempt on a timer. <b>The 50th recruit</b> is guaranteed to give 10 shards of a gold hero.</p></div></div>
+    
+    <div class="note green"><img src="assets/game/alliance-coin.png" alt=""><div><p><b>The Alliance Shop</b> refreshes every Monday: it has gold shards and Bella shards. Check it every week.</p></div></div>
+    
+    <div class="note blue"><img src="assets/game/shard-ur.png" alt=""><div><p><b>Universal shards</b> fit any hero of their color. Don't spend them on the first hero you see — keep them for your main hero.</p></div></div>
+  
+  </div>
+
+</section>
+
+
+
+<section class="band sand pad" id="tier">
+  
+  <div class="eyebrow">Who is stronger</div>
+  
+  <h2>Hero ranking</h2>
+  
+  <p class="sub"><span class="tier t-s">S</span> — the best, <span class="tier t-c">C</span> — weak. The plate color under the name is the rarity: <span class="chip ur">UR</span> gold, <span class="chip ssr">SSR</span> purple, <span class="chip sr">SR</span> blue.</p>
+  
+  <div class="notes">
+    
+    <div class="word"><b>How the ranking is made.</b> It is a summary of seven popular player rankings. A hero's place is the average across these lists. They rate one thing: <b>how much the hero gives in battles against other players and in Kingdom War</b> at max stars and skills. That's why gold (UR) damage heroes and tanks are at the top, and heroes whose strength lies elsewhere are at the bottom.</div>
+    
+    <div class="note gold"><img src="assets/game/hero/celia.png" alt=""><div><p><b>Why Celia is at the bottom.</b> Her skills work against monsters and for gathering (more damage to Blight, up to +40% gathering), while in fights with players she adds almost nothing. So she ranks low «for battle», but she is useful in an anti-Blight squad and for gathering — see «Main heroes» below. Same with Claire: low for battle, but strong against monsters.</p></div></div>
+  
+  </div>
+  
+  <h3><span class="tier t-s">S</span> The best</h3>
+  
+  <div class="heroes">
+    
+    <div class="hc"><img src="assets/game/hero/marlena.png" alt=""><div><b>Marlena</b><span><span class="chip ur">UR</span> Warrior · damage</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/arthur.png" alt=""><div><b>Arthur</b><span><span class="chip ur">UR</span> Warrior · tank</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/daskal.png" alt=""><div><b>Daskal</b><span><span class="chip ur">UR</span> Warrior · tank</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/shadow.png" alt=""><div><b>Shadow</b><span><span class="chip ur">UR</span> Ranger · tank</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/harper.png" alt=""><div><b>Harper</b><span><span class="chip ur">UR</span> Warrior · support</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/red-lady.png" alt=""><div><b>Red Lady</b><span><span class="chip ur">UR</span> Ranger · damage</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/cynthia.png" alt=""><div><b>Cynthia</b><span><span class="chip ur">UR</span> Ranger · damage</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/ulfrid.png" alt=""><div><b>Ulfrid</b><span><span class="chip ur">UR</span> Warlock · tank</span></div></div>
+  
+  </div>
+  
+  <h3><span class="tier t-ap">A+</span> Very strong</h3>
+  
+  <div class="heroes">
+    
+    <div class="hc"><img src="assets/game/hero/nicole.png" alt=""><div><b>Nicole</b><span><span class="chip ur">UR</span> Warlock · support</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/bell.png" alt=""><div><b>Bell</b><span><span class="chip ur">UR</span> Ranger · support</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/louis.png" alt=""><div><b>Louis</b><span><span class="chip ur">UR</span> Ranger · tank</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/annie.png" alt=""><div><b>Annie</b><span><span class="chip ur">UR</span> Warlock · damage</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/bella.png" alt=""><div><b>Bella</b><span><span class="chip ssr">SSR</span> Warrior · tank</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/greenwald.png" alt=""><div><b>Grenwald</b><span><span class="chip ssr">SSR</span> Warlock · damage</span></div></div>
+  
+  </div>
+  
+  <h3><span class="tier t-a">A</span> Strong</h3>
+  
+  <div class="heroes">
+    
+    <div class="hc"><img src="assets/game/hero/griffith.png" alt=""><div><b>Griffith</b><span><span class="chip ssr">SSR</span> Ranger · tank</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/zoya.png" alt=""><div><b>Zoya</b><span><span class="chip ur">UR</span> Warrior · damage</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/billy.png" alt=""><div><b>Billy</b><span><span class="chip ur">UR</span> Warlock · tank</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/jester.png" alt=""><div><b>Joker</b><span><span class="chip ur">UR</span> Warlock · damage</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/hastar.png" alt=""><div><b>Hastar</b><span><span class="chip ssr">SSR</span> Warlock · tank</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/stellar.png" alt=""><div><b>Stellar</b><span><span class="chip ssr">SSR</span> Warlock · support</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/claire.png" alt=""><div><b>Claire</b><span><span class="chip ssr">SSR</span> Warrior · damage</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/bestar.png" alt=""><div><b>Bestar</b><span><span class="chip ssr">SSR</span> Ranger · damage</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/kesso.png" alt=""><div><b>Kesso</b><span><span class="chip ssr">SSR</span> Warrior · damage</span></div></div>
+  
+  </div>
+  
+  <h3><span class="tier t-bp">B+</span> <span class="tier t-b">B</span> <span class="tier t-c">C</span> Temporary and weak</h3>
+  
+  <div class="heroes">
+    
+    <div class="hc"><img src="assets/game/hero/lucius.png" alt=""><div><b>Lucius</b><span><span class="chip ssr">SSR</span> Warrior · tank · B+</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/celia.png" alt=""><div><b>Celia</b><span><span class="chip ssr">SSR</span> Warrior · support · B+</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/sivir.png" alt=""><div><b>Sivir</b><span><span class="chip ssr">SSR</span> Warrior · damage · B+</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/ash.png" alt=""><div><b>Ash</b><span><span class="chip ssr">SSR</span> Ranger · damage · B</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/durant.png" alt=""><div><b>Durant</b><span><span class="chip sr">SR</span> don't level · C</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/robin.png" alt=""><div><b>Robin</b><span><span class="chip sr">SR</span> don't level · C</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/william.png" alt=""><div><b>William</b><span><span class="chip sr">SR</span> don't level · C</span></div></div>
+    
+    <div class="hc"><img src="assets/game/hero/kafa.png" alt=""><div><b>Kafa</b><span><span class="chip sr">SR</span> don't level · C</span></div></div>
+  
+  </div>
+
+</section>
+
+
+
+<section class="band pad" id="who">
+  
+  <div class="eyebrow">Whom to level</div>
+  
+  <h2>Ready-made paths: whom to play with and when to swap heroes</h2>
+  
+  <p class="sub"><b>A «temporary hero»</b> is one you use now and later replace with a stronger one. Don't put many Skill Badges into such a hero: skills at level 8–10 are enough.</p>
+  
+  <div class="tabs-ui">
+    
+    <div class="tabbar" role="tablist"><button type="button" role="tab"><img src="assets/game/hero/arthur.png" alt="" style="border-radius:6px">No spending</button><button type="button" role="tab"><img src="assets/game/hero/marlena.png" alt="" style="border-radius:6px">With Marlena purchased</button><button type="button" role="tab"><img src="assets/game/hero/cynthia.png" alt="" style="border-radius:6px">Moderate spending</button></div>
+    
+    <div class="tabpanel">
+      
+      <div class="tbl"><table><tr><th>When</th><th>Tanks (front)</th><th>Damage and support (back)</th></tr>
+        
+        <tr><td>Days 1–7</td><td><span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Arthur</span> · <span class="hn"><img class="i" src="assets/game/hero/bella.png" alt="">Bella</span></td><td><span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Claire</span> · <span class="hn"><img class="i" src="assets/game/hero/celia.png" alt="">Celia</span> <small>(temporary)</small> · <span class="hn"><img class="i" src="assets/game/hero/sivir.png" alt="">Sivir</span> <small>(temporary)</small></td></tr>
+        
+        <tr><td>Days 8–30</td><td><span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Arthur</span> · <span class="hn"><img class="i" src="assets/game/hero/bella.png" alt="">Bella</span></td><td><span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Claire</span> · <span class="hn"><img class="i" src="assets/game/hero/celia.png" alt="">Celia</span> · best purple hero</td></tr>
+        
+        <tr><td>From day 31</td><td><span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Arthur</span> · <span class="hn"><img class="i" src="assets/game/hero/bella.png" alt="">Bella</span></td><td><span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Claire</span> · <span class="hn"><img class="i" src="assets/game/hero/celia.png" alt="">Celia</span> · <span class="hn"><img class="i" src="assets/game/hero/harper.png" alt=""><b>Harper</b></span> (arrived in the Tavern)</td></tr>
+        
+        <tr class="hl"><td>Later</td><td><span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Arthur</span> · <span class="hn"><img class="i" src="assets/game/hero/daskal.png" alt=""><b>Daskal</b></span> (free in the Tavern after the Era of Revival)</td><td><span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt="">Marlena</span> (once she appears in the Tavern) · <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Claire</span> · <span class="hn"><img class="i" src="assets/game/hero/harper.png" alt="">Harper</span></td></tr></table></div>
+      
+      <p class="cap"><b>Bella is a long-term second tank</b>: she ranks higher than Lucius (A+ vs B+), and her shards are sold for free in the Alliance Shop. She is only replaced by a gold tank — Daskal. Lucius is a backup tank if you don't have Bella yet.</p>
+      
+      <div class="note gold"><img src="assets/game/shard-ur.png" alt=""><div><p><b>How to save up for Marlena for free, simply.</b> Marlena appears in the Tavern around day 66. To make her strong right away you need about 975 gold shards. So: <b>don't spend all</b> the gold universal shards you get. Put half into Arthur and Harper, set half aside. When Marlena appears, put the savings into her.</p></div></div>
+    
+    </div>
+    
+    <div class="tabpanel">
+      
+      <div class="tbl"><table><tr><th>When</th><th>Tanks (front)</th><th>Damage and support (back)</th></tr>
+        
+        <tr><td>Days 1–7</td><td><span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Arthur</span> · <span class="hn"><img class="i" src="assets/game/hero/bella.png" alt="">Bella</span></td><td><span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt=""><b>Marlena</b></span> · <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Claire</span> · <span class="hn"><img class="i" src="assets/game/hero/celia.png" alt="">Celia</span></td></tr>
+        
+        <tr><td>From day 31</td><td><span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Arthur</span> · <span class="hn"><img class="i" src="assets/game/hero/bella.png" alt="">Bella</span></td><td><span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt="">Marlena</span> · <span class="hn"><img class="i" src="assets/game/hero/harper.png" alt="">Harper</span> · <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Claire</span></td></tr>
+        
+        <tr class="hl"><td>Later</td><td><span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Arthur</span> · <span class="hn"><img class="i" src="assets/game/hero/daskal.png" alt="">Daskal</span></td><td><span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt="">Marlena</span> · <span class="hn"><img class="i" src="assets/game/hero/harper.png" alt="">Harper</span> · <span class="hn"><img class="i" src="assets/game/hero/red-lady.png" alt="">Red Lady</span> or <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Claire</span></td></tr></table></div>
+      
+      <p>All gold shards go first to <b>Marlena, up to 10 stars</b>. Raise Harper to 8 stars once Marlena is at 10: he unlocks a skill that speeds up the whole squad's skills by 10%.</p>
+    
+    </div>
+    
+    <div class="tabpanel">
+      
+      <p>Players who spend more advise switching to <b>Rangers</b> already in mid-game: by the end they are stronger than Warriors even against fully leveled Warriors.</p>
+      
+      <div class="tbl"><table><tr><th>Lineup</th><th>Heroes</th></tr>
+        
+        <tr><td>Days 8–30</td><td><span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Arthur</span> · <span class="hn"><img class="i" src="assets/game/hero/shadow.png" alt="">Shadow</span> · <span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt="">Marlena</span> · <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Claire</span> · <span class="hn"><img class="i" src="assets/game/hero/cynthia.png" alt="">Cynthia</span></td></tr>
+        
+        <tr class="hl"><td>Full Ranger squad</td><td><span class="hn"><img class="i" src="assets/game/hero/louis.png" alt="">Louis</span> · <span class="hn"><img class="i" src="assets/game/hero/shadow.png" alt="">Shadow</span> · <span class="hn"><img class="i" src="assets/game/hero/cynthia.png" alt="">Cynthia</span> · <span class="hn"><img class="i" src="assets/game/hero/bell.png" alt="">Bell</span> · <span class="hn"><img class="i" src="assets/game/hero/red-lady.png" alt="">Red Lady</span></td></tr>
+        
+        <tr><td>Then — Warlocks</td><td><span class="hn"><img class="i" src="assets/game/hero/ulfrid.png" alt="">Ulfrid</span> · <span class="hn"><img class="i" src="assets/game/hero/billy.png" alt="">Billy</span> · <span class="hn"><img class="i" src="assets/game/hero/annie.png" alt="">Annie</span> · <span class="hn"><img class="i" src="assets/game/hero/nicole.png" alt="">Nicole</span> · <span class="hn"><img class="i" src="assets/game/hero/jester.png" alt="">Joker</span></td></tr></table></div>
+      
+      <p>Pick one faction and don't jump between them: spreading resources across three squads is the slowest path.</p>
+    
+    </div>
+  
+  </div>
+
+</section>
+
+
+
+<section class="band soft pad" id="how">
+  
+  <div class="eyebrow">Upgrading</div>
+  
+  <h2>How to upgrade a hero: 4 things</h2>
+  
+  <p class="sub">All of this is in the hero window: on the main screen, the <b>Hero</b> button at the bottom left → tap the hero you need.</p>
+  
+  <div class="grid2">
+    
+    <figure class="side-shot"><div class="shot"><img src="assets/shots/hero-window.webp" alt="Arthur's hero window: the Stats tab"><span class="ring rect" style="left:12%;top:26.8%;width:16%;aspect-ratio:1"></span><span class="ring rect" style="left:50%;top:86.3%;width:38.1%;aspect-ratio:2.98"></span><span class="ring rect" style="left:65.5%;top:96.9%;width:62.3%;aspect-ratio:5.08"></span></div><p class="cap">The hero window. Frames: gear, «Upgrade», «Stars» and «Skill».</p></figure>
+    
+    <div class="grid2">
+      
+      <div class="card"><img class="ic" src="assets/game/antidote.png" alt=""><h3>1. Level</h3><p>The <b>Upgrade</b> button under the stats. Leveled with <b>Antitoxin</b> — the button shows how much you have and how much you need (a red number — not enough). Gives attack, HP, defense and CMD. The level cap depends on the Sanctuary: Sanctuary 20 — hero up to level 100, Sanctuary 30 — up to 150.</p></div>
+      
+      <div class="card"><img class="ic" src="assets/game/star.png" alt=""><h3>2. Stars</h3><p>The <b>Stars</b> tab at the bottom of the window. Leveled with this hero's <b>shards</b> <img class="inl" src="assets/game/shard-marlena.png" alt=""> (the picture with their face) or universal ones. Stars unlock new skills and raise power a lot. After the 4th star a hero gets noticeably tougher.</p></div>
+      
+      <div class="card"><img class="ic" src="assets/game/skill-badge.png" alt=""><h3>3. Skills</h3><p>The <b>Skill</b> tab at the bottom of the window. Leveled with <b>Skill Badges</b> <img class="inl" src="assets/game/skill-badge.png" alt="">. They raise skill numbers: damage, shields, buffs. Badges are always scarce — the main damage hero comes first.</p></div>
+      
+      <div class="card"><img class="ic" src="assets/game/go-gear.png" alt=""><h3>4. Gear</h3><p>Four slots on the sides of the hero: on the left the <b>sword</b> and <b>gauntlets</b>, on the right the <b>armor</b> and <b>boots</b>. A gray slot with a silhouette means nothing is equipped — tap it to equip. Details — in the <a href="gear.html#sets">Gear</a> section.</p></div>
+    
+    </div>
+  
+  </div>
+  
+  <h3>The order — step by step</h3>
+  
+  <div class="nsteps">
+    
+    <div class="step noimg"><div class="no">1</div><div><b>Main damage hero — to 10 stars</b><p>There is a huge difference between 9 and 10 stars: at 10 all their skills become maxed. The other heroes of the squad only need 8 stars. Note: the road from 0 to 8 stars costs about as much as from 8 to 10.</p></div></div>
+    
+    <div class="step noimg"><div class="no">2</div><div><b>Skills of the whole first squad — to level 10</b><p>Except the first skill of tanks and supports: it is their basic attack, damage doesn't matter for them.</p></div></div>
+    
+    <div class="step noimg"><div class="no">3</div><div><b>Then the damage hero's skills — to the max</b><p>Then support, then tanks (for tanks — defensive skills, not attack). For purple heroes don't level anti-monster skills, except Claire and Celia.</p></div></div>
+    
+    <div class="step noimg"><div class="no">4</div><div><b>All of this — on Thursday</b><p>Save shards, badges, Antitoxin and recruit tickets since last Thursday and spend them on the Duel's hero day. Antitoxin — in the «Enhance Hero» round of the Survival Battle.</p></div></div>
+  
+  </div>
+  
+  <div class="note blue"><img src="assets/game/shard-awaken.png" alt=""><div><p><b>Awaken.</b> Marlena, Cynthia and Annie can be «awakened» after 10 stars with special shards: stats and skills grow. Daskal, Louis and Ulfrid got their own weapons, which boost them too.</p></div></div>
+  
+  <h3>Where to get Antitoxin</h3>
+  
+  <div class="items">
+    
+    <div class="item"><img src="assets/game/go-hq.png" alt=""><div><b>Antitoxin Workshop</b><span>produces it all the time — collect it</span></div></div>
+    
+    <div class="item"><img src="assets/game/go-build.png" alt=""><div><b>Upgrading any building</b><span>each one gives a little Antitoxin</span></div></div>
+    
+    <div class="item"><img src="assets/game/falcon.png" alt=""><div><b>Falcon Quests</b><span>almost every one has Antitoxin</span></div></div>
+    
+    <div class="item"><img src="assets/game/covert.png" alt=""><div><b>Covert Operations and caravans</b><span>your own and plundered ones, gold ones give the most</span></div></div>
+    
+    <div class="item"><img src="assets/game/blight.png" alt=""><div><b>Blight on the map</b><span>10 Stamina, elite — 20 Stamina</span></div></div>
+    
+    <div class="item"><img src="assets/game/cheese.png" alt=""><div><b>Cheese Trap</b><span>generous rewards for damage</span></div></div>
+  
+  </div>
+
+</section>
+
+
+
+<section class="band pad">
+  
+  <div class="eyebrow">Why exactly them</div>
+  
+  <h2>Main heroes — short and clear</h2>
+  
+  <p class="sub">These are not «the best by ranking», but the heroes most often leveled at the start: you <b>can get them for free or in the first days</b> (Arthur, Bella, Claire, Celia — from the first days; Harper — in the Tavern from day 31; Marlena and Cynthia — for purchases), and the squads from the «Squads» section are built on them. Each one says why you take them.</p>
+  
+  <div class="grid3">
+    
+    <div class="card"><img class="ic" src="assets/game/hero/arthur.png" alt="" style="border-radius:14px"><h3>Arthur — the main tank</h3><p>Reduces damage to all tanks in the squad, shields himself, and his main strike hits everyone nearby and reduces damage to allies. Goes in slot 1 — that is where hits are strongest. The first hero to invest in.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/hero/marlena.png" alt="" style="border-radius:14px"><h3>Marlena — the main damage</h3><p>The strongest damage at the start. Deals area energy damage, boosts it herself and recharges skills faster. Good both against players and against monsters.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/hero/harper.png" alt="" style="border-radius:14px"><h3>Harper — Warrior buffs</h3><p>Raises attack for all heroes of the squad and separately for all Warriors. Next to Arthur and Marlena — a huge boost. From day 31 free in the Tavern.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/hero/bella.png" alt="" style="border-radius:14px"><h3>Bella — a free tank</h3><p>Shards — in the Alliance Shop. Reduces monster damage to allies, her strike weakens enemies' attack. Temporary: later she is replaced by Lucius or Daskal.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/hero/claire.png" alt="" style="border-radius:14px"><h3>Claire — against monsters</h3><p>Adds about 15% damage to monsters for the three strongest Warriors in the squad. Irreplaceable on the Demon King. Can be upgraded to gold (UR) in the Era of Revival.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/hero/celia.png" alt="" style="border-radius:14px"><h3>Celia — more resources</h3><p>Given at the start. Adds damage to monsters and up to 40% resources from resource and elite monsters. Temporary.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/hero/cynthia.png" alt="" style="border-radius:14px"><h3>Cynthia — Ranger damage</h3><p>Hits all enemies in an area and raises her own crit rate. For a free-to-play Ranger she is the best choice for the Demon King.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/hero/daskal.png" alt="" style="border-radius:14px"><h3>Daskal — the second Warrior tank</h3><p>Shields the whole squad and heals himself. Together with Harper the squad lives much longer. Give him a sword and gauntlets right away — his healing depends on attack.</p></div>
+    
+    <div class="card"><img class="ic" src="assets/game/hero/greenwald.png" alt="" style="border-radius:14px"><h3>Grenwald — damage without gold</h3><p>The best purple hero for damage, especially against monsters. Fragile himself — only behind a tank. A replacement for Marlena if you don't have her.</p></div>
+  
+  </div>
+
+</section>
+
+
+
+<section class="band paper pad">
+  
+  <div class="eyebrow">Common mistakes</div>
+  
+  <h2>How not to waste resources</h2>
+  
+  <div class="errs">
+    
+    <div class="err"><b>Leveling everyone a little</b><p>Five heroes at 50% are weaker than three at 100%. First squad first.</p></div>
+    
+    <div class="err"><b>Gold shards into Arthur instead of Marlena</b><p>If you have Marlena — almost all universal gold shards go to her first, up to 10 stars.</p></div>
+    
+    <div class="err"><b>Skill Badges into a temporary hero</b><p>For Bella, Sivir and Celia, skills at level 8–10 are enough.</p></div>
+    
+    <div class="err"><b>Attack skills for tanks</b><p>Level defensive skills and shields for tanks: they win by surviving, not by hitting.</p></div>
+    
+    <div class="err"><b>Spent shards on Monday</b><p>On Thursday the same shards would have given Duel points.</p></div>
+    
+    <div class="err"><b>Diamonds on building speedups in the first days</b><p>The first levels build in seconds. Diamonds — for recruiting heroes.</p></div>
+  
+  </div>
+
+</section>
+
