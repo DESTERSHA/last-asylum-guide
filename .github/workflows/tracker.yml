@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       players:
-        description: "Сколько игроков обновить за этот запуск (обычно 25; на игрока 2 запроса)"
+        description: "Сколько игроков обновить за этот запуск (обычно 45; на игрока до 2 запросов)"
         required: false
-        default: "25"
+        default: "45"
 permissions:
   contents: write
   pages: write
@@ -40,7 +40,7 @@ jobs:
           PRIVATE_DIR: private
           TRACKER_KEY: ${{ secrets.TRACKER_KEY }}
           TRACKER_API: ${{ secrets.TRACKER_API }}
-          PLAYERS: ${{ github.event.inputs.players || '25' }}
+          PLAYERS: ${{ github.event.inputs.players || '45' }}
           FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: python tools/tracker_sync.py
       - name: Сохранить

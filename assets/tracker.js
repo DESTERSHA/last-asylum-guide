@@ -40,6 +40,11 @@
     return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()] + ", " + WD[d.getUTCDay()];
   }
   function isoLabel(iso) { var p = iso.split("-"); return Number(p[2]) + " " + MONTHS[Number(p[1]) - 1]; }
+  /* «сегодня в 16:28 по серверу · 21:28 МСК» */
+  function atLabel(t) {
+    var diff = srvDay(Date.now() / 1000) - srvDay(t), d = new Date((t - 2 * 3600) * 1000);
+    return (diff <= 0 ? "сегодня" : diff === 1 ? "вчера" : d.getUTCDate() + " " + MONTHS[d.getUTCMonth()]) + " в " + both(t);
+  }
   function dateOf(t) { var d = new Date((t - 2 * 3600) * 1000); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear(); }
 
   /* ---------- кирпичики ---------- */
@@ -412,19 +417,22 @@
     });
     mv.sort(function (x, y) { return y.t - x.t; });
     var place = function (slug) { var n = placeOf(slug, uid); return n ? n + " место на сервере" : ""; };
-    var onl = p.online ? '<span class="on">в сети</span>' : p.last ? "был в сети " + ago(p.last) : null;
+    /* «в сети» — только если трекер видел игрока в сети меньше 45 мин назад; иначе честно «был в сети N назад» */
+    var onNow = p.online && p.last && Date.now() / 1000 - p.last < 45 * 60;
+    var onl = onNow ? '<span class="on">в сети</span>' : p.last ? "был в сети " + ago(p.last) : null;
+    var dt = p.dt || p.card || p.seen;
     var g = p.gender === "Female" ? "женский" : p.gender === "Male" ? "мужской" : null;
     var al = S.al[p.aid];
     var mm = al && al.members.filter(function (m) { return String(m.uid) === String(uid); })[0];
     if (mm) ["active", "honor", "tech"].forEach(function (k) { if (p[k] == null) p[k] = mm[k]; });
     $("view").innerHTML = '<div class="ap-wrap">' +
-      '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Назад</a><span class="ap-upd">обновлено ' + ago(p.card || p.seen) + "</span></div>" +
+      '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Назад</a><span class="ap-upd">цифры сняты ' + atLabel(dt) + (p.seen ? " · проверено " + ago(p.seen) : "") + "</span></div>" +
       '<div class="ap-hero"><img class="emb av" src="' + G + 'doctor.png" alt=""><div><h2>' + esc(p.nick) + '</h2><div class="ap-chips"><span>Сервер 397</span>' +
       (p.aid ? '<a href="#a=' + p.aid + '"><span class="tag">[' + esc(p.abbr) + "]</span> " + esc(al ? al.name : "") + " · " + esc(p.rank || "") + "</a>" : (p.abbr ? '<span><span class="tag">[' + esc(p.abbr) + "]</span> · альянс вне топ-30</span>" : "<span>без альянса</span>")) + (onl ? "<span>" + onl + "</span>" : "") + "</div></div></div>" +
       '<div class="ap-cells c4">' + cell("Мощь", num(p.power), place("power")) + cell("Убийства", num(p.kills), place("kills")) + cell("Святилище", p.lv || "—", place("castle")) + cell("VIP", p.vip != null ? p.vip : "—", p.vip == null && p.card ? "пока нет данных" : "") + "</div>" +
       '<div class="ap-kvs">' + kv("ID", uid) + kv("Пол", g || "—") + kv("Язык", p.lang === "ru" ? "русский" : p.lang ? esc(p.lang) : "—") + kv("Лайки", p.likes != null ? full(p.likes) : "—") +
       kv("Город на карте", p.x != null ? p.x + ", " + p.y : "—") + kv("Недельная активность", p.active != null ? full(p.active) : "—") + kv("Честь за день", p.honor != null ? full(p.honor) : "—") +
-      kv("Пожертвовано технологий", p.tech != null ? full(p.tech) : "—") + kv("В сети", p.online ? '<span class="up">сейчас</span>' : p.last ? ago(p.last) : "—") + kv("Место по мощи героев", placeOf("heroes", uid) || "вне топ-100") + kv("Впервые замечен", p.first ? dateOf(p.first) : "—") + kv("Мощь точно", full(p.power)) + "</div>" +
+      kv("Пожертвовано технологий", p.tech != null ? full(p.tech) : "—") + kv("В сети", onNow ? '<span class="up">сейчас</span>' : p.last ? ago(p.last) : "—") + kv("Место по мощи героев", placeOf("heroes", uid) || "вне топ-100") + kv("Впервые замечен", p.first ? dateOf(p.first) : "—") + kv("Мощь точно", full(p.power)) + "</div>" +
       (!p.card ? '<p class="ap-note">Защитный состав, ворон и полная история этого игрока загрузятся с одним из ближайших обновлений.</p>' : "") +
       (p.card && p.vip == null ? '<p class="ap-note">VIP, пол, язык и лайки этого игрока пока не получены (проверено ' + ago(p.card) + '). Проверяем регулярно — появятся здесь сами.</p>' : "") + "</div>" +
       '<div id="pdef"></div>' +

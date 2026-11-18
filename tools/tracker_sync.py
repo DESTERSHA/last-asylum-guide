@@ -29,8 +29,8 @@ OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 PRIV = Path(os.environ["PRIVATE_DIR"]) if os.environ.get("PRIVATE_DIR") else None
 UNION_KEYS = ("union_id", "union_abbr", "union_name", "alliance_abbr", "alliance_name")
 TOP = 30
-MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 25)  # на игрока 2 запроса: карточка + защита/ворон
-PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 25)  # карточки игроков за запуск: 8 запусков × (62 + 45) + 30 историй альянсов ≈ 890 в сутки при лимите 1000
+MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 45)  # на игрока до 2 запросов: карточка + защита/ворон (защита — раз в 20 ч)
+PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 45)  # карточки игроков за запуск: [SLAV] (≈110) раз в 1,5 ч ≈ 37 за запуск + очередь остальных
 HOME_AID = 67181437   # [SLAV] — их карточки берём первыми
 KEY = os.environ.get("TRACKER_KEY", "").strip()
 used = 0
@@ -172,9 +172,16 @@ def main():
         if mem:
             live_ids.append(aid)
         for m in mem:
-            players.setdefault(str(m["uid"]), {}).update({"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "power": m["power"], "lv": m["lv"], "kills": m["kills"], "rank": m["rank"], "seen": now, "x": m.get("x"), "y": m.get("y"), **({"vip": m["vip"]} if m.get("vip") is not None else {}),
-                                                       "active": m.get("active"), "honor": m.get("honor"), "tech": m.get("tech")})
-            series.setdefault(m["uid"] % 32, {})[str(m["uid"])] = [m["power"], m["kills"]]
+            pp = players.setdefault(str(m["uid"]), {})
+            # когда трекер снял эти цифры: у состава по карте — дата, когда видели игрока; у окна альянса — дата состава
+            src_t = (m.get("seen") if roster == "map" else roster_t) or 0
+            pp.update({"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "rank": m["rank"], "seen": now,
+                       "active": m.get("active"), "honor": m.get("honor"), "tech": m.get("tech")})
+            # мощь/убийства/город — только если они не старее того, что уже есть (личная карточка бывает свежее состава альянса)
+            if src_t >= (pp.get("dt") or pp.get("last") or 0):  # "last" — дата из прошлой карточки, пока "dt" не записан
+                pp.update({"power": m["power"], "lv": m["lv"], "kills": m["kills"], "x": m.get("x"), "y": m.get("y"), "dt": src_t,
+                           **({"vip": m["vip"]} if m.get("vip") is not None else {})})
+            series.setdefault(m["uid"] % 32, {})[str(m["uid"])] = [pp.get("power"), pp.get("kills")]
 
     # игрок не может быть в двух альянсах: оставляем там, где его видели позже всего
     # (у состава по карте — дата, когда игрока видели; у состава из окна альянса — дата этого состава)
@@ -227,15 +234,16 @@ def main():
     # первыми — игроки нашего альянса [SLAV], потом остальные по мощи
     order = sorted(players.items(), key=lambda kv: (kv[1].get("aid") != HOME_AID, -(kv[1].get("power") or 0)))
     details = {}
-    # очередь: 0) ещё ни разу не брали; 1) [SLAV] — каждый день; 2) в API не было VIP/лайков/пола — раз в 3 дня;
-    # 3) остальные — раз в 7 дней. Лимит ключа 1000 запросов в сутки, на игрока 2 запроса.
+    # очередь: 0) ещё ни разу не брали; 1) [SLAV] — раз в 1,5 часа (трекер сам записывает игрока раз в 2–6 ч);
+    # 2) в API не было VIP/лайков/пола — раз в 3 дня; 3) остальные — раз в 7 дней.
+    # Защитный состав и ворона перезапрашиваем не чаще раза в 20 ч — они меняются редко, а это лишний запрос.
     def due(uid, p):
         if not p.get("aid") and not p.get("top"):
             return None
         age = now - done_at.get(uid, 0)
         if uid not in done_at:
             return 0
-        if p.get("aid") == HOME_AID and age > 20 * 3600:
+        if p.get("aid") == HOME_AID and age > 90 * 60:
             return 1
         if p.get("vip") is None and age > 3 * 86400:
             return 2
@@ -249,21 +257,26 @@ def main():
         except Exception as e:
             print("игрок", uid, "пропущен:", e, file=sys.stderr)
             continue
-        if uid in players and pl.get("power"):  # личная карточка свежее данных альянса
-            if not players[uid].get("aid"):  # вне альянсов топ-30 — тег альянса из карточки
-                players[uid]["abbr"] = pl.get("union_abbr") or ""
-            players[uid].update({"power": pl.get("power"), "lv": pl.get("level") or players[uid].get("lv"), "kills": pl.get("kills"), "nick": pl.get("nick") or players[uid]["nick"]})
-            players[uid].update({"vip": pl.get("vip"), "likes": pl.get("likes"), "lang": pl.get("language"), "gender": pl.get("gender"),
-                                 "x": pl.get("x"), "y": pl.get("y"), "first": pl.get("first_seen_at"), "card": now,
-                                 "online": pl.get("online"), "last": pl.get("last_seen_at"), "skin": pl.get("skin_name") or None, "shield": pl.get("shielding")})
-            players[uid].pop("log", None)
-            try:  # защитный состав и ворон — отдельный адрес API
-                arena = get(f"/players/{uid}/arena")
-            except Exception as e:
-                print("защита игрока", uid, "пропущена:", e, file=sys.stderr)
-                arena = None
+        if uid in players and pl.get("power"):
+            pp = players[uid]
+            if not pp.get("aid"):  # вне альянсов топ-30 — тег альянса из карточки
+                pp["abbr"] = pl.get("union_abbr") or ""
+            # когда трекер снял цифры карточки
+            card_t = max([pl.get("map_updated_at") or 0, pl.get("last_seen_at") or 0] + [h.get("observed_at") or 0 for h in pl.get("history", [])]) or now
+            if card_t >= (pp.get("dt") or 0):  # цифры карточки не старее того, что уже есть
+                pp.update({"power": pl.get("power"), "lv": pl.get("level") or pp.get("lv"), "kills": pl.get("kills"), "x": pl.get("x"), "y": pl.get("y"), "dt": card_t})
+            pp.update({"nick": pl.get("nick") or pp["nick"], "vip": pl.get("vip"), "likes": pl.get("likes"), "lang": pl.get("language"), "gender": pl.get("gender"),
+                       "first": pl.get("first_seen_at"), "card": now,
+                       "online": pl.get("online"), "last": pl.get("last_seen_at"), "skin": pl.get("skin_name") or None, "shield": pl.get("shielding")})
+            pp.pop("log", None)
             pf = OUT / "p" / f"{uid}.json"
             old = load(PRIV / "p" / f"{uid}.json", {}) if PRIV else load(pf, {})
+            arena = None
+            if not old.get("arena_t") or now - old["arena_t"] > 20 * 3600:
+                try:  # защитный состав и ворон — отдельный адрес API
+                    arena = get(f"/players/{uid}/arena")
+                except Exception as e:
+                    print("защита игрока", uid, "пропущена:", e, file=sys.stderr)
             # история в API — последние 30 дней; у нас копится вся
             hist = {str(h.get("id") or h["observed_at"]): h for h in old.get("history", [])}
             for h in pl.get("history", []):
