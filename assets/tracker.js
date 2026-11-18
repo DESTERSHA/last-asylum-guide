@@ -420,7 +420,7 @@
     $("view").innerHTML = '<div class="ap-wrap">' +
       '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Назад</a><span class="ap-upd">обновлено ' + ago(p.card || p.seen) + "</span></div>" +
       '<div class="ap-hero"><img class="emb av" src="' + G + 'doctor.png" alt=""><div><h2>' + esc(p.nick) + '</h2><div class="ap-chips"><span>Сервер 397</span>' +
-      (p.aid ? '<a href="#a=' + p.aid + '"><span class="tag">[' + esc(p.abbr) + "]</span> " + esc(al ? al.name : "") + " · " + esc(p.rank || "") + "</a>" : "<span>без альянса</span>") + (onl ? "<span>" + onl + "</span>" : "") + "</div></div></div>" +
+      (p.aid ? '<a href="#a=' + p.aid + '"><span class="tag">[' + esc(p.abbr) + "]</span> " + esc(al ? al.name : "") + " · " + esc(p.rank || "") + "</a>" : (p.abbr ? '<span><span class="tag">[' + esc(p.abbr) + "]</span> · альянс вне топ-30</span>" : "<span>без альянса</span>")) + (onl ? "<span>" + onl + "</span>" : "") + "</div></div></div>" +
       '<div class="ap-cells c4">' + cell("Мощь", num(p.power), place("power")) + cell("Убийства", num(p.kills), place("kills")) + cell("Святилище", p.lv || "—", place("castle")) + cell("VIP", p.vip != null ? p.vip : "—", p.vip == null && p.card ? "пока нет данных" : "") + "</div>" +
       '<div class="ap-kvs">' + kv("ID", uid) + kv("Пол", g || "—") + kv("Язык", p.lang === "ru" ? "русский" : p.lang ? esc(p.lang) : "—") + kv("Лайки", p.likes != null ? full(p.likes) : "—") +
       kv("Город на карте", p.x != null ? p.x + ", " + p.y : "—") + kv("Недельная активность", p.active != null ? full(p.active) : "—") + kv("Честь за день", p.honor != null ? full(p.honor) : "—") +

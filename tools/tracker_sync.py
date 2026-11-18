@@ -177,10 +177,49 @@ def main():
                                                        "active": m.get("active"), "honor": m.get("honor"), "tech": m.get("tech")})
             series.setdefault(m["uid"] % 32, {})[str(m["uid"])] = [m["power"], m["kills"]]
 
+    # игрок не может быть в двух альянсах: оставляем там, где его видели позже всего
+    # (у состава по карте — дата, когда игрока видели; у состава из окна альянса — дата этого состава)
+    best = {}
+    files = {}
+    for row in top:
+        fp = OUT / "a" / f"{row['id']}.json"
+        af = load(fp, None)
+        if not af or not af.get("members"):
+            continue
+        files[row["id"]] = (fp, af)
+        for m in af["members"]:
+            t = m.get("seen") if af.get("roster") == "map" else af.get("roster_t") or 0
+            u = str(m["uid"])
+            if u not in best or (t or 0) > best[u][0]:
+                best[u] = (t or 0, row["id"])
+    moved = 0
+    for aid2, (fp, af) in files.items():
+        keep = [m for m in af["members"] if best.get(str(m["uid"]), (0, aid2))[1] == aid2]
+        if len(keep) != len(af["members"]):
+            moved += len(af["members"]) - len(keep)
+            af["members"] = keep
+            af["members_count"] = len(keep)
+            save(fp, af)
+    for u, (t, aid2) in best.items():
+        if u in players and players[u].get("aid") != aid2:
+            players[u]["aid"] = aid2
+            players[u]["abbr"] = files[aid2][1].get("abbr")
+    if moved:
+        print("убрано устаревших записей (игрок уже в другом альянсе):", moved)
+    # игроки топ-100, которых нет в составах топ-30 — тоже в базу (чтобы открывались и получили полные данные)
+    for b in boards:
+        if b["alliance"]:
+            continue
+        for r in b["rows"]:
+            u = str(r["id"])
+            if u not in players:
+                players[u] = {"nick": r["name"], "aid": 0, "abbr": r.get("abbr", ""), "top": True, "seen": now}
+            elif not players[u].get("aid"):
+                players[u]["top"] = True
     # игроки, которых больше нет ни в одном из собранных альянсов, — помечаем «без альянса», если они были в обработанном альянсе
     done = set(live_ids)  # «вышел» ставим только по альянсам, у которых есть свежий состав
     for uid, p in players.items():
-        if p.get("aid") in done and p.get("seen", 0) < now - 1:
+        if p.get("aid") in done and p.get("seen", 0) < now - 1 and str(uid) not in best:
             p.update({"aid": 0, "abbr": ""})
 
     # история игроков: по очереди, сначала самые сильные; кому уже взяли — повторно через 7 дней
@@ -192,7 +231,7 @@ def main():
     # очередь: 0) ещё ни разу не брали; 1) [SLAV] — каждый день; 2) в API не было VIP/лайков/пола — раз в 3 дня;
     # 3) остальные — раз в 7 дней. Лимит ключа 1000 запросов в сутки, на игрока 2 запроса.
     def due(uid, p):
-        if not p.get("aid"):
+        if not p.get("aid") and not p.get("top"):
             return None
         age = now - done_at.get(uid, 0)
         if uid not in done_at:
@@ -212,6 +251,8 @@ def main():
             print("игрок", uid, "пропущен:", e, file=sys.stderr)
             continue
         if uid in players and pl.get("power"):  # личная карточка свежее данных альянса
+            if not players[uid].get("aid"):  # вне альянсов топ-30 — тег альянса из карточки
+                players[uid]["abbr"] = pl.get("union_abbr") or ""
             players[uid].update({"power": pl.get("power"), "lv": pl.get("level") or players[uid].get("lv"), "kills": pl.get("kills"), "nick": pl.get("nick") or players[uid]["nick"]})
             players[uid].update({"vip": pl.get("vip"), "likes": pl.get("likes"), "lang": pl.get("language"), "gender": pl.get("gender"),
                                  "x": pl.get("x"), "y": pl.get("y"), "first": pl.get("first_seen_at"), "card": now,
