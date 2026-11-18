@@ -50,8 +50,9 @@ jobs:
           git add -A data/tracker
           if git diff --cached --quiet; then echo "без изменений"; exit 0; fi
           git commit -m "Данные сервера 397: $(date -u +'%Y-%m-%d %H:%M') UTC"
-          git pull --rebase
-          git push
+          # если прошлый запуск успел записать те же файлы — оставляем наш снимок (он свежее); -X theirs при rebase = наш коммит
+          for i in 1 2 3; do git pull --rebase -X theirs && git push && exit 0; git rebase --abort 2>/dev/null || true; sleep 5; done
+          exit 1
       - name: Сохранить закрытое
         if: always()
         run: |
@@ -61,7 +62,8 @@ jobs:
           git add -A
           if git diff --cached --quiet; then echo "без изменений"; exit 0; fi
           git commit -m "Вступления и выходы: $(date -u +'%Y-%m-%d %H:%M') UTC"
-          git push
+          for i in 1 2 3; do git pull --rebase -X theirs && git push && exit 0; git rebase --abort 2>/dev/null || true; sleep 5; done
+          exit 1
       - name: Пересобрать сайт
         env:
           GH_TOKEN: ${{ github.token }}
