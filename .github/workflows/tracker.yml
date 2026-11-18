@@ -3,7 +3,7 @@ name: Данные сервера 397
 # (ключ — в закрытых настройках репозитория, TRACKER_KEY) и обновляет файлы data/tracker/.
 on:
   schedule:
-    - cron: "17 */3 * * *"
+    - cron: "7,27,47 * * * *"  # GitHub пропускает запуски по расписанию; робот сам ждёт 2 ч 50 мин между обновлениями
   workflow_dispatch:
     inputs:
       players:
@@ -30,6 +30,7 @@ jobs:
           TRACKER_KEY: ${{ secrets.TRACKER_KEY }}
           TRACKER_API: ${{ secrets.TRACKER_API }}
           PLAYERS: ${{ github.event.inputs.players || '25' }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: python tools/tracker_sync.py
       - name: Сохранить
         run: |
