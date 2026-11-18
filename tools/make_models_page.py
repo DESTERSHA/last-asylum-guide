@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 M = ROOT / "assets" / "models"
 NAMES = json.loads((M / "names.json").read_text(encoding="utf-8")) if (M / "names.json").exists() else {}
+NAMES["boss_48"] = "Знать скверны / Осквернённая графиня"  # та же модель — босс события «День охоты Селии»
 GROUPS = [
     ("boss", "Боссы", "Боссы событий и карты мира: появление, атака, навык, смерть."),
     ("monster", "Монстры", "Обычные противники на карте и в событиях."),
@@ -22,7 +23,7 @@ TYPES = {  # слово в имени файла -> по-русски
     "gongren": "Рабочий", "hugong": "Санитарка", "laoshu": "Крыса", "reader": "Читатель", "shenfu": "Священник", "thinker": "Мыслитель",
     "tiaojiushi": "Бармен", "shibing": "Солдат", "xiaoguai": "Заражённый", "monster": "Заражённый житель", "jushuwang": "Крысиный вожак",
     "xgzf_qizi": "Знаменосец", "bing_box": "Ледяная глыба", "dilei": "Ловушка", "feiting_gonghuimache": "Повозка альянса", "qizi": "Флаг",
-    "reqiqiu_luche": "Тыквенная повозка", "reqiqiu_mache": "Повозка", "xunluobing": "Патрульный", "zhanqi": "Знамя", "zhanji": "Ворон, облик",
+    "reqiqiu_luche": "Тыквенная повозка", "reqiqiu_mache": "Повозка", "xunluobing": "Патрульный", "zhanqi": "Знамя", "zhanji": "Облик ворона", "world_": "Логово на карте",
 }
 
 
@@ -38,9 +39,9 @@ def label(g, key):
                 t = "Раненый солдат"
             if g == "citynpc" and k == "shibing":
                 t = "Солдат города"
-            return t + num
-    base = {"boss": "Босс", "monster": "Монстр", "raven": "Ворон, облик", "citynpc": "Солдат", "npc": "Житель", "other": "Предмет"}[g]
-    return base + num
+            return t
+    base = {"boss": "Босс карты мира", "monster": "Монстр", "raven": "Облик ворона", "citynpc": "Солдат города", "npc": "Житель", "other": "Предмет"}[g]
+    return base
 
 
 parts, lists = [], {}
@@ -55,6 +56,15 @@ for g, title, sub in GROUPS:
         items.append([f"assets/models/{g}/{f.name}", label(g, f.stem), f"assets/models/{g}/{thumb.name}" if thumb.exists() else ""])
     if not items:
         continue
+    seen = {}
+    for it in items:
+        seen[it[1]] = seen.get(it[1], 0) + 1
+    cnt = {}
+    for it in items:
+        if seen[it[1]] > 1:
+            cnt[it[1]] = cnt.get(it[1], 0) + 1
+            if not re.search(r"\d$", it[1]):
+                it[1] = it[1] + " " + str(cnt[it[1]])
     total += len(items)
     lists[g] = items
     parts.append(f'''<section class="band {'soft ' if len(parts) % 2 else ''}pad" id="{g}">
@@ -80,7 +90,7 @@ html = f'''<!--{{"title":"3D-модели игры: боссы, монстры, 
 {chr(10).join(parts)}
 <script>window.M3D_LISTS=window.M3D_LISTS||{{}};Object.assign(window.M3D_LISTS,{json.dumps(lists, ensure_ascii=False, separators=(",", ":"))});</script>
 <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
-<script src="assets/viewer3d.js?v=2" defer></script>
+<script src="assets/viewer3d.js?v=3" defer></script>
 '''
 (ROOT / "src" / "models.html").write_text(html, encoding="utf-8")
 print("моделей на странице:", total, {k: len(v) for k, v in lists.items()})

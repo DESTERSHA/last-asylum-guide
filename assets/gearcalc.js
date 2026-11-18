@@ -30,7 +30,13 @@
       var maxL = it.levels.length - 1, P = it.promotion, hasP = P.length > 0;
       S.lt = Math.min(S.lt, maxL); S.lf = Math.min(S.lf, S.lt);
       if (!hasP) { S.pf = S.pt = 0; } else { S.pt = Math.min(S.pt, P.length); S.pf = Math.min(S.pf, S.pt); }
-      var plab = function (i) { return i === 0 ? "0.0 (без продвижения)" : P[i - 1].to + (P[i - 1].to === "5.0" ? " (MR)" : ""); };
+      var plab = function (i) {
+        if (i === 0) return "нет звёзд";
+        var t = P[i - 1].to.split("."), st = Number(t[0]), sub = Number(t[1]);
+        if (st === 5) return "5★ — вещь становится MR";
+        return sub ? (st ? st + "★ + " : "") + "шаг " + sub + " из 4" + (st ? "" : " к 1★") : st + "★";
+      };
+      var llab = function (i) { return "ур. " + i; };
       var k = S.all ? 4 : 1, tot = {};
       for (var l = S.lf + 1; l <= S.lt; l++) add(tot, it.levels[l].cost, k);
       for (var p = S.pf + 1; p <= S.pt; p++) add(tot, P[p - 1].cost, k);
@@ -46,13 +52,14 @@
       box.querySelector(".gc-body").innerHTML =
         '<div class="gc-item"><img src="' + G + "gear/" + it.icon + '.webp" alt=""><div><b>' + it.name + "</b><span>Создаётся в Мастерской снаряжения ур. " + (it.craft.building || "—") + " · " +
         it.craft.cost.map(function (c) { return fmt(c[1]) + " " + c[0]; }).join(" · ") + (it.craft.time ? " · " + time(it.craft.time) : "") + "</span></div></div>" +
-        '<div class="gc-sel"><label>Усиление<span><select data-k="lf">' + opts(maxL + 1, S.lf) + '</select> → <select data-k="lt">' + opts(maxL + 1, S.lt) + "</select></span></label>" +
-        (hasP ? '<label>Продвижение<span><select data-k="pf">' + opts(P.length + 1, S.pf, plab) + '</select> → <select data-k="pt">' + opts(P.length + 1, S.pt, plab) + "</select></span></label>" : "") +
-        '<label class="gc-chk"><input type="checkbox" data-k="all"' + (S.all ? " checked" : "") + "> на все 4 вещи этой редкости</label></div>" +
-        '<div class="gc-out"><h4>Нужно ' + (S.all ? "на 4 вещи" : "на одну вещь") + "</h4>" + (Object.keys(tot).length ? '<div class="gc-ress">' + Object.keys(tot).map(function (n) { return res(n, tot[n]); }).join("") + "</div>" : '<p class="gc-mut">Ничего — выбери уровень «по» больше, чем «с».</p>') +
+        '<div class="gc-quick"><span>Быстро:</span><button type="button" data-q="max">С нуля до максимума</button><button type="button" data-q="lv">Только уровень 0 → ' + maxL + "</button>" + (hasP ? '<button type="button" data-q="star">Только звёзды до MR</button>' : "") + "</div>" +
+        '<div class="gc-sel"><div class="gc-step"><b>Уровень вещи</b><small>кнопка «Улучшить» в окне вещи · число уровня видно на иконке</small><span>сейчас <select data-k="lf">' + opts(maxL + 1, S.lf, llab) + '</select> хочу <select data-k="lt">' + opts(maxL + 1, S.lt, llab) + "</select></span></div>" +
+        (hasP ? '<div class="gc-step"><b>Звёзды вещи</b><small>кнопка «Повысить» · без звёзд вещь не поднимется выше ур. 20, 30, 40 · 5★ превращает UR в MR</small><span>сейчас <select data-k="pf">' + opts(P.length + 1, S.pf, plab) + '</select> хочу <select data-k="pt">' + opts(P.length + 1, S.pt, plab) + "</select></span></div>" : "") +
+        '<label class="gc-chk"><input type="checkbox" data-k="all"' + (S.all ? " checked" : "") + "> считать сразу на 4 вещи (меч, броню, наручи, сапоги)</label></div>" +
+        '<div class="gc-out"><h4>Сколько ресурсов нужно ' + (S.all ? "на 4 вещи" : "на одну вещь") + "</h4>" + (Object.keys(tot).length ? '<div class="gc-ress">' + Object.keys(tot).map(function (n) { return res(n, tot[n]); }).join("") + "</div>" : '<p class="gc-mut">Ничего не нужно — выбери в поле «хочу» больше, чем в поле «сейчас».</p>') +
         '<div class="gc-pow"><span>Мощь вещи</span><b>' + full(powA) + " → " + full(powB) + '</b><em>+' + full((powB - powA) * k) + (S.all ? " на 4 вещи" : "") + "</em></div>" +
         '<table class="gc-st"><tr><th>Характеристика</th><th>Было</th><th>Станет</th></tr>' + names.map(function (n) { return "<tr><td>" + n + "</td><td>" + stat(sA[n] || 0) + "</td><td><b>" + stat(sB[n]) + "</b></td></tr>"; }).join("") + "</table></div>" +
-        '<details class="gc-tbl"><summary>Все уровни усиления: цена, характеристики, мощь</summary><div class="gc-lv"></div></details>';
+        '<details class="gc-tbl"><summary>Таблица: цена и характеристики на каждом уровне</summary><div class="gc-lv"></div></details>';
       // таблица уровней — со страницами
       var lvBox = box.querySelector(".gc-lv"), page = 0, size = 15, rows = it.levels;
       var head = rows[0].stats.map(function (x) { return "<th>" + x[0] + "</th>"; }).join("");
@@ -78,6 +85,14 @@
       var g = b.parentNode.dataset.g; S[g] = b.dataset.v;
       [].forEach.call(b.parentNode.children, function (x) { x.classList.toggle("on", x === b); });
       if (g === "q") slots();
+      draw();
+    });
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-q]"); if (!b) return;
+      var it = item(), maxL = it.levels.length - 1, np = it.promotion.length;
+      if (b.dataset.q === "max") { S.lf = 0; S.lt = maxL; S.pf = 0; S.pt = np; }
+      if (b.dataset.q === "lv") { S.lf = 0; S.lt = maxL; S.pf = S.pt = 0; }
+      if (b.dataset.q === "star") { S.lf = S.lt = 0; S.pf = 0; S.pt = np; }
       draw();
     });
     box.addEventListener("change", function (e) {
