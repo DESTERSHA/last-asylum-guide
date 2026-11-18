@@ -115,21 +115,35 @@ def main():
             save(PRIV / "a" / f"{aid}.raw.json", {"t": now, "alliance": a, "events": ev})  # ответы API целиком, без отбора
         a = json.loads(json.dumps(a))
         a["name"] = a.get("name") or row["name"]; a["abbr"] = a.get("abbr") or row["abbr"]  # API иногда не присылает название — берём из рейтинга
-        # в ответе бывают «хвосты» со сканов карты: без ранга и без статуса «в сети» — это не участники
-        a["members"] = [m for m in a.get("members", []) if m.get("rank_label")]
+        raw_members = list(a.get("members", []))
+        # с рангами — состав из окна альянса; без рангов — игроки, замеченные на карте с тегом альянса
+        a["members"] = [m for m in raw_members if m.get("rank_label")]
         mem = [{"uid": m["uid"], "nick": m.get("nick_name", ""), "power": m.get("power", 0), "lv": m.get("lv", 0), "kills": m.get("kills", 0),
                 "rank": m.get("rank_label", ""), "x": m.get("x"), "y": m.get("y"), "active": m.get("active"), "honor": m.get("daily_honor"), "tech": m.get("daily_tech")}
                for m in a.get("members", [])]
         old = load(OUT / "a" / f"{aid}.json", {})
         old_ev = load(PRIV / "a" / f"{aid}.json", {"events": []}) if PRIV else {"events": []}
         stale = not a.get("live")
-        if stale and old.get("live"):  # в API старая копия, а у нас есть свежий состав — состав и цифры не трогаем
-            mem = old["members"]
+        roster, roster_t = "live", a.get("updated_at") or now
+        # состав по карте: игроки с тегом альянса, которых видели за последние 3 дня (ушедшие отсеиваются), не больше вместимости
+        def seen_t(m):
+            return m.get("map_updated_at") or m.get("last_seen_at") or 0
+        cap = a.get("capacity") or old.get("capacity") or 100
+        mapped = sorted([m for m in raw_members if not m.get("rank_label") and now - seen_t(m) <= 3 * 86400], key=lambda m: -seen_t(m))[:cap]
+        live_old = now - roster_t > 3 * 86400  # «живой» состав, но давно не обновлялся
+        if (stale or live_old) and len(mapped) >= 10:
+            ranks = {str(m["uid"]): m.get("rank") for m in (old.get("members") or []) if m.get("rank")}
+            mem = [{"uid": m["uid"], "nick": m.get("nick_name") or m.get("nick", ""), "power": m.get("power", 0), "lv": m.get("lv") or m.get("level", 0), "kills": m.get("kills", 0),
+                    "rank": ranks.get(str(m["uid"]), ""), "x": m.get("x"), "y": m.get("y"), "vip": m.get("vip"), "seen": seen_t(m)} for m in mapped]
+            roster, roster_t = "map", max(seen_t(m) for m in mapped)
+            a["member_count"] = len(mem)
+        elif stale and old.get("members"):  # карты нет — оставляем прошлый состав с его датой
+            mem = old["members"]; roster = old.get("roster", "live"); roster_t = old.get("roster_t") or old.get("updated")
             for k_new, k_old in (("leader_name", "leader"), ("capacity", "capacity"), ("level", "level")):
                 a[k_new] = old.get(k_old)
-            a["member_count"] = len(mem); a["live"] = True; a["power"] = old.get("power")
+            a["member_count"] = len(mem)
         elif stale:
-            mem = []  # свежего состава ещё не было ни разу — не показываем устаревший
+            mem = []
         seen = {(e["t"], e["uid"], e["kind"]) for e in old_ev.get("events", [])}
         events = list(old_ev.get("events", []))
         for e in ev.get("events", []):
@@ -142,7 +156,7 @@ def main():
         events.sort(key=lambda e: -e["t"])
         save(OUT / "a" / f"{aid}.json", {"updated": now, "id": aid, "name": a.get("name"), "abbr": a.get("abbr"), "power": a.get("power"), "level": a.get("level"),
                                          "members_count": len(mem) if mem else None, "capacity": a.get("capacity"), "leader": a.get("leader_name"), "language": a.get("language"),
-                                         "summary": ev.get("summary"), "live": bool(a.get("live")), "members": sorted(mem, key=lambda m: -(m["power"] or 0))})  # без ленты — она в закрытом хранилище
+                                         "summary": ev.get("summary"), "live": bool(mem), "roster": roster, "roster_t": roster_t, "members": sorted(mem, key=lambda m: -(m["power"] or 0))})  # без ленты — она в закрытом хранилище
         if PRIV:
             save(PRIV / "a" / f"{aid}.json", {"updated": now, "id": aid, "abbr": a.get("abbr"), "events": events})
         ent = index["alliances"].get(str(aid), {"days": {}})
@@ -159,7 +173,7 @@ def main():
         if mem:
             live_ids.append(aid)
         for m in mem:
-            players.setdefault(str(m["uid"]), {}).update({"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "power": m["power"], "lv": m["lv"], "kills": m["kills"], "rank": m["rank"], "seen": now, "x": m.get("x"), "y": m.get("y"),
+            players.setdefault(str(m["uid"]), {}).update({"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "power": m["power"], "lv": m["lv"], "kills": m["kills"], "rank": m["rank"], "seen": now, "x": m.get("x"), "y": m.get("y"), **({"vip": m["vip"]} if m.get("vip") is not None else {}),
                                                        "active": m.get("active"), "honor": m.get("honor"), "tech": m.get("tech")})
             series.setdefault(m["uid"] % 32, {})[str(m["uid"])] = [m["power"], m["kills"]]
 

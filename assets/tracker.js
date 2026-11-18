@@ -204,7 +204,7 @@
       '<div class="ap-wrap">' +
       '<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>обновлено ' + ago(S.server.updated) + " · данные обновляются каждые 3 часа</p></div></div>" +
       '<div class="ap-cells c5">' + cell("Игроков", full(s.players), (s.age_days || "—") + " дней серверу") + cell("Альянсов", full(s.alliances)) + cell("Общая мощь", num(s.power)) +
-      cell("Король", esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell("Альянсов со свежим составом", Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + " из 30", "у остальных состав появится позже") + "</div></div>" +
+      cell("Король", esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell("Альянсов со свежим составом", Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + " из 30", "у остальных — состав по карте за 3 дня, без рангов") + "</div></div>" +
       '<div class="ap-card"><div class="ap-h"><div><h3>Поиск</h3><p>игроки альянсов топ-30 и альянсы топ-100</p></div>' + pills("skind", [["p", "Игроки"], ["a", "Альянсы"]], "p") + '</div><input id="sq" class="ap-in" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off"><div id="sres"></div></div>' +
       '<div class="ap-sec"><h3>Альянсы</h3>' + pills("atop", [["30", "Топ-30"], ["100", "Места 31–100"]], "30") + "</div>" +
       '<div class="ap-card flush"><div id="alist"></div></div>' +
@@ -296,9 +296,12 @@
         var rk = function (m) { var k = (m.rank || "").slice(0, 2); return k in order ? order[k] : 9; };
         var by = {}; a.members.forEach(function (m) { var k = (m.rank || "").slice(0, 2); by[k] = (by[k] || 0) + 1; });
         var tot = a.members.reduce(function (s, m) { return s + (m.power || 0); }, 0);
-        P.innerHTML = '<div class="ap-card"><div class="ap-h"><div><h3>Ранги</h3><p>нажми ранг — в списке останутся только его участники</p></div></div><div class="ap-ranks">' +
+        var hasRanks = a.members.some(function (m) { return m.rank; });
+        var rosterNote = a.roster === "map" ? '<div class="ap-demo"><b>Состав по карте</b><span>Игроки с тегом альянса, которых видели на карте за последние 3 дня (последний раз — ' + ago(a.roster_t) + '). Ушедшие сюда не попадают. Ранги в таких данных не видны.</span></div>'
+          : (a.roster_t && Date.now() / 1000 - a.roster_t > 3 * 86400 ? '<div class="ap-demo"><b>Состав от ' + ago(a.roster_t) + '</b><span>Свежее данных по этому альянсу пока нет.</span></div>' : "");
+        P.innerHTML = rosterNote + (hasRanks ? '<div class="ap-card"><div class="ap-h"><div><h3>Ранги</h3><p>нажми ранг — в списке останутся только его участники</p></div></div><div class="ap-ranks">' +
           ["R5", "R4", "R3", "R2", "R1"].map(function (k) { return '<button type="button" class="ap-rt r' + k.slice(1) + '" data-r="' + k + '"><span class="l">' + k + "</span><b>" + (by[k] || 0) + '</b><span class="s">' + (k === "R5" ? "лидер" : k === "R4" ? "офицеры" : "участники") + "</span></button>"; }).join("") +
-          '</div><div class="ap-kvs">' + kv("Средняя мощь участника", num(tot / cnt)) + kv("Святилище 25+", a.members.filter(function (m) { return m.lv >= 25; }).length + " чел.") + kv("Сильнейший", esc(a.members.slice().sort(function (x, y) { return y.power - x.power; })[0].nick)) + "</div></div>" +
+          '</div><div class="ap-kvs">' + kv("Средняя мощь участника", num(tot / cnt)) + kv("Святилище 25+", a.members.filter(function (m) { return m.lv >= 25; }).length + " чел.") + kv("Сильнейший", esc(a.members.slice().sort(function (x, y) { return y.power - x.power; })[0].nick)) + "</div></div>" : "") +
           '<div class="ap-card flush"><div class="ap-tools"><input id="mq" class="ap-in" type="search" placeholder="Ник участника…"><span id="mcount" class="mut"></span></div><div id="mlist"></div></div>';
         var st = { sort: "rank", dir: 1, rank: "", q: "" };
         var COLS = [["nick", "Игрок"], ["rank", "Ранг"], ["lv", "Святилище"], ["power", "Мощь"], ["kills", "Убийства"], ["active", "Недельная активность"], ["honor", "Честь за день"], ["tech", "Пожертвовано технологий"]];
@@ -324,7 +327,7 @@
           var th = e.target.closest("th[data-s]"); if (!th) return;
           var k = th.dataset.s; if (st.sort === k) st.dir = -st.dir; else { st.sort = k; st.dir = 1; } draw();
         });
-        P.querySelector(".ap-ranks").addEventListener("click", function (e) {
+        if (P.querySelector(".ap-ranks")) P.querySelector(".ap-ranks").addEventListener("click", function (e) {
           var b = e.target.closest("button"); if (!b) return;
           st.rank = st.rank === b.dataset.r ? "" : b.dataset.r;
           [].forEach.call(this.children, function (x) { x.classList.toggle("on", x.dataset.r === st.rank); });
