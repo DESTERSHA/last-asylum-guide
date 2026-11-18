@@ -1,113 +1,110 @@
-0	<b>Хастар</b><span><span class="chip ssr">SSR</span> Колдун · танк</span>
-1	<b>Стеллар</b><span><span class="chip ssr">SSR</span> Колдун · поддержка</span>
-2	<b>Клэр</b><span><span class="chip ssr">SSR</span> Воин · урон</span>
-3	<b>Бестар</b><span><span class="chip ssr">SSR</span> Рейнджер · урон</span>
-4	<b>Кессо</b><span><span class="chip ssr">SSR</span> Воин · урон</span>
-5	<span class="tier t-bp">B+</span> <span class="tier t-b">B</span> <span class="tier t-c">C</span> Временные и слабые
-6	<b>Луций</b><span><span class="chip ssr">SSR</span> Воин · танк · B+</span>
-7	<b>Селия</b><span><span class="chip ssr">SSR</span> Воин · поддержка · B+</span>
-8	<b>Сивир</b><span><span class="chip ssr">SSR</span> Воин · урон · B+</span>
-9	<b>Эш</b><span><span class="chip ssr">SSR</span> Рейнджер · урон · B</span>
-10	<b>Дюрант</b><span><span class="chip sr">SR</span> не качать · C</span>
-11	<b>Робин</b><span><span class="chip sr">SR</span> не качать · C</span>
-12	<b>Уильям</b><span><span class="chip sr">SR</span> не качать · C</span>
-13	<b>Кафа</b><span><span class="chip sr">SR</span> не качать · C</span>
-14	Кого качать
-15	Готовые пути: с кем играть и когда менять героев
-16	<b>«Временный герой»</b> — тот, кого ты поставишь сейчас, а потом заменишь более сильным. В такого героя не вкладывай много значков навыков: хватит прокачать навыки до 8–10 уровня.
-17	<img src="assets/game/hero/arthur.png" alt="" style="border-radius:6px">Без доната
-18	<img src="assets/game/hero/marlena.png" alt="" style="border-radius:6px">С покупкой Марлены
-19	<img src="assets/game/hero/cynthia.png" alt="" style="border-radius:6px">Средний донат
-20	Когда
-21	Танки (впереди)
-22	Урон и поддержка (сзади)
-23	Дни 1–7
-24	<span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Артур</span> · <span class="hn"><img class="i" src="assets/game/hero/bella.png" alt="">Белла</span>
-25	<span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Клэр</span> · <span class="hn"><img class="i" src="assets/game/hero/celia.png" alt="">Селия</span> <small>(временная)</small> · <span class="hn"><img class="i" src="assets/game/hero/sivir.png" alt="">Сивир</span> <small>(временный)</small>
-26	Дни 8–30
-27	<span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Клэр</span> · <span class="hn"><img class="i" src="assets/game/hero/celia.png" alt="">Селия</span> · лучший фиолетовый
-28	С 31-го дня
-29	<span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Клэр</span> · <span class="hn"><img class="i" src="assets/game/hero/celia.png" alt="">Селия</span> · <span class="hn"><img class="i" src="assets/game/hero/harper.png" alt=""><b>Харпер</b></span> (появился в Таверне)
-30	<span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Артур</span> · <span class="hn"><img class="i" src="assets/game/hero/daskal.png" alt=""><b>Даскал</b></span> (бесплатно в Таверне после Эры Возрождения)
-31	<span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt="">Марлена</span> (когда появится в Таверне) · <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Клэр</span> · <span class="hn"><img class="i" src="assets/game/hero/harper.png" alt="">Харпер</span>
-32	<b>Белла — второй танк надолго</b>: она в рейтинге выше Луция (A+ против B+), а её фрагменты бесплатно продаются в магазине альянса. Её меняют только на золотого танка — Даскала. Луций — запасной танк, если Беллы ещё нет.
-33	<b>Как копить на Марлену бесплатно, по-простому.</b> Марлена появится в Таверне примерно на 66-й день. Чтобы сразу сделать её сильной, нужно около 975 золотых фрагментов. Значит: золотые универсальные фрагменты, которые получаешь, <b>не трать все</b>. Половину вкладывай в Артура и Харпера, половину откладывай. Когда Марлена появится, вложи накопленное в неё.
-34	<span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt=""><b>Марлена</b></span> · <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Клэр</span> · <span class="hn"><img class="i" src="assets/game/hero/celia.png" alt="">Селия</span>
-35	<span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt="">Марлена</span> · <span class="hn"><img class="i" src="assets/game/hero/harper.png" alt="">Харпер</span> · <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Клэр</span>
-36	Дальше
-37	<span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Артур</span> · <span class="hn"><img class="i" src="assets/game/hero/daskal.png" alt="">Даскал</span>
-38	<span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt="">Марлена</span> · <span class="hn"><img class="i" src="assets/game/hero/harper.png" alt="">Харпер</span> · <span class="hn"><img class="i" src="assets/game/hero/red-lady.png" alt="">Красная леди</span> или <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Клэр</span>
-39	Все золотые фрагменты в первую очередь — <b>Марлене, до 10 звёзд</b>. Харпера подними до 8 звёзд, когда Марлена уже на 10: у него откроется навык, который на 10% ускоряет навыки всего отряда.
-40	Игроки, которые тратят больше, советуют уже в середине игры переходить на <b>Рейнджеров</b>: к концу они сильнее Воинов даже против полностью прокачанных Воинов.
-41	Герои
-42	<span class="hn"><img class="i" src="assets/game/hero/arthur.png" alt="">Артур</span> · <span class="hn"><img class="i" src="assets/game/hero/shadow.png" alt="">Шэдоу</span> · <span class="hn"><img class="i" src="assets/game/hero/marlena.png" alt="">Марлена</span> · <span class="hn"><img class="i" src="assets/game/hero/claire.png" alt="">Клэр</span> · <span class="hn"><img class="i" src="assets/game/hero/cynthia.png" alt="">Синтия</span>
-43	Полный отряд Рейнджеров
-44	<span class="hn"><img class="i" src="assets/game/hero/louis.png" alt="">Луи</span> · <span class="hn"><img class="i" src="assets/game/hero/shadow.png" alt="">Шэдоу</span> · <span class="hn"><img class="i" src="assets/game/hero/cynthia.png" alt="">Синтия</span> · <span class="hn"><img class="i" src="assets/game/hero/bell.png" alt="">Белл</span> · <span class="hn"><img class="i" src="assets/game/hero/red-lady.png" alt="">Красная леди</span>
-45	Потом — Колдуны
-46	<span class="hn"><img class="i" src="assets/game/hero/ulfrid.png" alt="">Ульфрид</span> · <span class="hn"><img class="i" src="assets/game/hero/billy.png" alt="">Билли</span> · <span class="hn"><img class="i" src="assets/game/hero/annie.png" alt="">Энни</span> · <span class="hn"><img class="i" src="assets/game/hero/nicole.png" alt="">Николь</span> · <span class="hn"><img class="i" src="assets/game/hero/jester.png" alt="">Джестер</span>
-47	Выбирай одну фракцию и не прыгай между ними: распылять ресурсы на три отряда — самый медленный путь.
-48	Прокачка
-49	Как прокачивать героя: 4 вещи
-50	Всё это — в окне героя: на главном экране слева внизу кнопка <b>«Герой»</b> → нажми на нужного героя.
-51	<img src="assets/shots/hero-window.webp" alt="Окно героя Артура: вкладка «Характеристики»"><span class="ring rect" style="left:12%;top:26.8%;width:16%;aspect-ratio:1"></span><span class="ring rect" style="left:50%;top:86.3%;width:38.1%;aspect-ratio:2.98"></span><span class="ring rect" style="left:65.5%;top:96.9%;width:62.3%;aspect-ratio:5.08"></span>
-52	Окно героя. Рамки: снаряжение, «Улучшить», «Звезды» и «Навык».
-53	1. Уровень
-54	Кнопка <b>«Улучшить»</b> под характеристиками. Качается <b>противоядием</b> — на кнопке видно, сколько его есть и сколько нужно (красное число — не хватает). Даёт атаку, здоровье, защиту и лидерство. Потолок уровня зависит от Святилища: Святилище 20 — герой до 100 уровня, Святилище 30 — до 150.
-55	2. Звёзды
-56	Вкладка <b>«Звезды»</b> внизу окна. Качаются <b>фрагментами</b> <img class="inl" src="assets/game/shard-marlena.png" alt=""> этого героя (картинка с его лицом) или универсальными. Звёзды открывают новые навыки и сильно поднимают силу. После 4-й звезды герой заметно крепнет.
-57	3. Навыки
-58	Вкладка <b>«Навык»</b> внизу окна. Качаются <b>значками навыков</b> <img class="inl" src="assets/game/skill-badge.png" alt="">. Поднимают цифры навыков: урон, щиты, усиления. Значков всегда мало — главному герою урона в первую очередь.
-59	4. Снаряжение
-60	Четыре клетки по бокам героя: слева <b>меч</b> и <b>наручи</b>, справа <b>броня</b> и <b>сапоги</b>. Серая клетка с силуэтом — вещь не надета, нажми на неё, чтобы надеть. Подробно — в разделе <a href="gear.html#sets">Снаряжение</a>.
-61	Порядок — по шагам
-62	<b>Главного героя урона — до 10 звёзд</b>
-63	Между 9 и 10 звёздами огромная разница: на 10 все его навыки становятся максимальными. Остальных героев отряда достаточно поднять до 8 звёзд. Учти: дорога от 0 до 8 звёзд стоит примерно столько же, сколько от 8 до 10.
-64	<b>Навыки всего первого отряда — до 10 уровня</b>
-65	Кроме первого навыка у танков и поддержки: это их обычная атака, им урон не важен.
-66	<b>Потом навыки героя урона — до максимума</b>
-67	Потом поддержка, потом танки (у танков — защитные навыки, а не атаку). У фиолетовых героев навыки против монстров не качай, кроме Клэр и Селии.
-68	<b>Всё это — в четверг</b>
-69	Фрагменты, значки, противоядие и билеты найма копи с прошлого четверга и трать в день героев Дуэли. Противоядие — в раунд «Усиление героев» Битвы на выживание.
-70	<b>Пробуждение.</b> Марлена, Синтия и Энни после 10 звёзд можно «пробудить» особыми фрагментами: растут характеристики и навыки. Даскал, Луи и Ульфрид получили своё оружие, которое тоже их усиливает.
-71	Откуда брать противоядие
-72	<b>Мастерская противоядия</b><span>производит его постоянно — собирай</span>
-73	<b>Улучшение любого здания</b><span>каждое даёт немного противоядия</span>
-74	<b>Задания сокола</b><span>почти в каждом есть противоядие</span>
-75	<b>Секретные операции и караваны</b><span>свои и ограбленные, золотые — больше всего</span>
-76	<b>Скверна на карте</b><span>10 энергии, элитная — 20 энергии</span>
-77	<b>Сырная ловушка</b><span>щедрые награды за урон</span>
-78	Почему именно они
-79	Главные герои — коротко и понятно
-80	Это не «лучшие по рейтингу», а герои, которых чаще всего качают на старте: их <b>можно получить бесплатно или в первые дни</b> (Артур, Белла, Клэр, Селия — с первых дней; Харпер — в Таверне с 31-го дня; Марлена и Синтия — за покупки) и на них строятся отряды из раздела «Отряды». У каждого написано, за что его берут.
-81	Артур — главный танк
-82	Снижает урон по всем танкам отряда, ставит себе щит, а его главный удар бьёт всех рядом и снижает урон по своим. Ставится на место 1 — туда бьют сильнее всего. Первый герой, в которого вкладываться.
-83	Марлена — главный урон
-84	Самый сильный урон на старте. Бьёт энергетическим уроном по площади, сама его усиливает и быстрее перезаряжает навыки. Хороша и против людей, и против монстров.
-85	Харпер — усиление Воинов
-86	Поднимает атаку всем героям отряда и отдельно всем Воинам. Рядом с Артуром и Марленой — огромная прибавка. С 31-го дня бесплатно в Таверне.
-87	Белла — бесплатный танк
-88	Фрагменты — в магазине альянса. Снижает урон от монстров по своим, её удар ослабляет атаку врагов. Временная: потом её заменят Луций или Даскал.
-89	Клэр — против монстров
-90	Трём самым сильным Воинам отряда добавляет около 15% урона по монстрам. Незаменима на Короле демонов. Можно перевести в золото (UR) в Эре Возрождения.
-91	Селия — больше ресурсов
-92	Даётся на старте. Добавляет урон по монстрам и до 40% ресурсов с ресурсных и элитных монстров. Временная.
-93	Синтия — урон Рейнджеров
-94	Бьёт всех врагов в зоне, сама повышает себе шанс крита. Для Короля демонов у бесплатного Рейнджера — лучший выбор.
-95	Даскал — второй танк Воинов
-96	Ставит щиты всему отряду и лечит себя. Вместе с Харпером отряд живёт намного дольше. Ему сразу делай меч и наручи — его лечение зависит от атаки.
-97	Гренвальд — урон без золота
-98	Лучший фиолетовый по урону, особенно по монстрам. Сам хрупкий — только за спиной танка. Замена Марлене, если её нет.
-99	Частые ошибки
-100	Как не слить ресурсы
-101	<b>Качаю всех понемногу</b>
-102	Пять героев на 50% слабее трёх на 100%. Сначала первый отряд.
-103	<b>Золотые фрагменты в Артура вместо Марлены</b>
-104	Если Марлена есть — почти все универсальные золотые фрагменты сначала ей, до 10 звёзд.
-105	<b>Значки навыков во временного героя</b>
-106	Белле, Сивиру и Селии хватит навыков 8–10 уровня.
-107	<b>Атакующие навыки танкам</b>
-108	Танкам качай защитные навыки и щиты: они побеждают тем, что живут, а не тем, что бьют.
-109	<b>Потратил фрагменты в понедельник</b>
-110	В четверг те же фрагменты дали бы очки Дуэли.
-111	<b>Алмазы на ускорения стройки в первые дни</b>
-112	Первые уровни строятся секунды. Алмазы — на найм героев.
+0	Что открывается на каком уровне Святилища — с 1 по 30
+1	Что появляется
+2	Старт
+3	<span class="hn"><img class="i" src="assets/game/bld/1001.png" alt="">Святилище</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">Ферма</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">Лесопилка</span><span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">Цветник</span><span class="hn"><img class="i" src="assets/game/bld/5021.png" alt="">Резиденция</span>
+4	<span class="hn"><img class="i" src="assets/game/bld/5031.png" alt="">Хижина строителя</span><span class="hn"><img class="i" src="assets/game/bld/5023.png" alt="">Зерновой склад</span><span class="hn"><img class="i" src="assets/game/bld/5024.png" alt="">Древесный склад</span><span class="hn"><img class="i" src="assets/game/bld/5025.png" alt="">Травяной склад</span>
+5	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены</span><span class="hn"><img class="i" src="assets/game/c-squad.png" alt="">Отряд 1</span><span class="hn"><img class="i" src="assets/game/bld/1008.png" alt="">Мастерская снаряжения</span><span class="hn"><img class="i" src="assets/game/bld/5008.png" alt="">Таверна</span><span class="hn"><img class="i" src="assets/game/bld/5002.png" alt="">Лагерь исследователя</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">2-я Ферма</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">2-я Лесопилка</span><span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">2-й Цветник</span>
+6	<span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">Мастерская противоядий</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">Плавильный цех</span><span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">Ткацкая мастерская</span><span class="hn"><img class="i" src="assets/game/bld/5035.png" alt="">Мастерская эпиграфов</span><span class="hn"><img class="i" src="assets/game/c-squad.png" alt="">Отряд 4 (с месячным пропуском)</span>
+7	<span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон ×2</span><span class="hn"><img class="i" src="assets/game/bld/5006.png" alt="">Казарма</span><span class="hn"><img class="i" src="assets/game/bld/5033.png" alt="">Отряд разведки</span><span class="hn"><img class="i" src="assets/game/bld/1006.png" alt="">Соколиная башня</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса</span><span class="hn"><img class="i" src="assets/game/bld/5040.png" alt="">Кочевой торговец</span>
+8	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория</span><span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">Лазарет</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина</span><span class="hn"><img class="i" src="assets/game/bld/5036.png" alt="">Гнездо ворона</span><span class="hn"><img class="i" src="assets/game/bld/5010.png" alt="">Арена</span><span class="hn"><img class="i" src="assets/game/bld/5053.png" alt="">Храм</span>
+9	<span class="hn"><img class="i" src="assets/game/bld/5049.png" alt="">Сторожевая башня</span><span class="hn"><img class="i" src="assets/game/c-squad.png" alt="">Отряд 2</span><span class="hn"><img class="i" src="assets/game/bld/5039.png" alt="">Зал реликвий</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">3-я Ферма</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">3-я Лесопилка</span>
+10	<span class="hn"><img class="i" src="assets/game/bld/5047.png" alt="">2-й верстак (2-я лаборатория)</span><span class="hn"><img class="i" src="assets/game/bld/5029.png" alt="">Центр тайных операций</span><span class="hn"><img class="i" src="assets/game/bld/5038.png" alt="">Монумент</span>
+11	<span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">2-я Мастерская противоядий</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">2-й Плавильный цех</span>
+12	<span class="hn"><img class="i" src="assets/game/bld/5045.png" alt="">Статуя колдуна</span><span class="hn"><img class="i" src="assets/game/bld/5051.png" alt="">Личная конюшня</span><span class="hn"><img class="i" src="assets/game/bld/5052.png" alt="">Конюшня альянса</span><span class="hn"><img class="i" src="assets/game/bld/5033.png" alt="">2-й Отряд разведки</span><span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">2-я Ткацкая мастерская</span>
+13	<span class="hn"><img class="i" src="assets/game/bld/5046.png" alt="">Статуя рейнджера</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">4-я Ферма</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">4-я Лесопилка</span>
+14	<span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">3-я Мастерская противоядий</span><span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">2-й Лазарет</span>
+15	<span class="hn"><img class="i" src="assets/game/bld/5056.png" alt="">Статуя лорда</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">3-й Плавильный цех</span><span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">3-я Ткацкая мастерская</span>
+16	<span class="hn"><img class="i" src="assets/game/bld/5034.png" alt="">Мастерская ворона</span><span class="hn"><img class="i" src="assets/game/bld/5054.png" alt="">Зал чести</span><span class="hn"><img class="i" src="assets/game/bld/5006.png" alt="">2-я Казарма</span>
+17	<span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">4-я и 5-я Мастерская противоядий</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">4-й Плавильный цех</span>
+18	<span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">3-й Цветник</span><span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">3-й Полигон</span>
+19	<span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">3-й Лазарет</span><span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">4-я Ткацкая мастерская</span>
+20	<span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">4-й Цветник</span><span class="hn"><img class="i" src="assets/game/bld/5033.png" alt="">3-й Отряд разведки</span>
+21	<span class="hn"><img class="i" src="assets/game/c-squad.png" alt="">Отряд 3</span><span class="hn"><img class="i" src="assets/game/bld/5006.png" alt="">3-я Казарма</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">5-й Плавильный цех</span>
+22	<span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">5-я Ткацкая мастерская</span>
+23	<span class="hn"><img class="i" src="assets/game/bld/5055.png" alt="">Солдатский приют</span>
+24	<span class="more">Новых зданий нет — каждый уровень поднимает потолок всех зданий и героев (+5 к уровню героев за каждый уровень Святилища, на 30-м — 150).</span>
+25	«2-я», «3-я» — дополнительная копия здания, которую можно поставить с этого уровня. Ещё по одной Ферме, Лесопилке, Полигону, Цветнику, Лазарету и Казарме дают исследования Лаборатории. Мастерская эпиграфов строится рано, но сами эпиграфы включаются примерно на 78-й день сервера.
+26	Что нужно для каждого уровня Святилища — до 30
+27	Здания, которые надо поднять до указанного уровня, и цена улучшения <b>без ускорений и скидок</b> (в игре будет меньше). Зерна и древесины нужно поровну. «Герои до» — потолок уровня героев после улучшения.
+28	Сначала поднять
+29	Зерно и древесина
+30	Травы
+31	Герои до
+32	2 с
+33	3 с
+34	<span class="hn"><img class="i" src="assets/game/bld/5024.png" alt="">Древесный склад 1</span><span class="hn"><img class="i" src="assets/game/bld/5023.png" alt="">Зерновой склад 1</span><span class="hn"><img class="i" src="assets/game/bld/5025.png" alt="">Травяной склад 1</span>
+35	5 мин
+36	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 3</span>
+37	10 мин
+38	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 5</span>
+39	34 мин
+40	<span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 4</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 3</span>
+41	235,8 тыс.
+42	1 ч 30 мин
+43	<span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 6</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 5</span>
+44	395,6 тыс.
+45	3 ч 1 мин
+46	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 8</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 7</span>
+47	605,8 тыс.
+48	208,7 тыс.
+49	4 ч 16 мин
+50	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 9</span><span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">Лазарет 7</span>
+51	748,7 тыс.
+52	232,9 тыс.
+53	5 ч 35 мин
+54	<span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 10</span><span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 7</span>
+55	1,85 млн
+56	601,8 тыс.
+57	7 ч 14 мин
+58	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 11</span><span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 10</span><span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">Мастерская противоядий 7</span>
+59	3,1 млн
+60	959 тыс.
+61	9 ч 24 мин
+62	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 12</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 11</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">Ферма 7</span>
+63	3,52 млн
+64	1,08 млн
+65	12 ч 13 мин
+66	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 13</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина 12</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">Лесопилка 7</span>
+67	4,91 млн
+68	1,65 млн
+69	15 ч 53 мин
+70	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 14</span><span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 14</span><span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">Цветник 7</span>
+71	6,47 млн
+72	2,29 млн
+73	22 ч 15 мин
+74	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 15</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина 14</span><span class="hn"><img class="i" src="assets/game/bld/5023.png" alt="">Зерновой склад 7</span>
+75	11,9 млн
+76	3,97 млн
+77	1 д 7 ч 9 мин
+78	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 16</span><span class="hn"><img class="i" src="assets/game/bld/5006.png" alt="">Казарма 15</span><span class="hn"><img class="i" src="assets/game/bld/5024.png" alt="">Древесный склад 7</span>
+79	16,67 млн
+80	5,14 млн
+81	1 д 19 ч 36 мин
+82	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 17</span><span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 17</span><span class="hn"><img class="i" src="assets/game/bld/5025.png" alt="">Травяной склад 7</span>
+83	28,22 млн
+84	9,33 млн
+85	2 д 13 ч 3 мин
+86	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 18</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина 17</span><span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">Мастерская противоядий 10</span>
+87	32,71 млн
+88	11,34 млн
+89	3 д 13 ч 28 мин
+90	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 19</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 18</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">Ферма 10</span>
+91	60,03 млн
+92	18,41 млн
+93	4 д 23 ч 40 мин
+94	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 20</span><span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 20</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">Лесопилка 10</span>
+95	85,45 млн
+96	27,64 млн
+97	6 д 16 ч 20 мин
+98	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 21</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина 21</span><span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">Цветник 10</span>
+99	111,2 млн
+100	36,66 млн
+101	8 д 16 ч 26 мин
+102	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 22</span><span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">Лазарет 22</span><span class="hn"><img class="i" src="assets/game/bld/5023.png" alt="">Зерновой склад 10</span>
+103	145,2 млн
+104	42,76 млн
+105	11 д 6 ч 58 мин
+106	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 23</span><span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 23</span><span class="hn"><img class="i" src="assets/game/bld/5024.png" alt="">Древесный склад 10</span>
+107	171,2 млн
+108	56,25 млн
+109	15 д 19 ч 21 мин

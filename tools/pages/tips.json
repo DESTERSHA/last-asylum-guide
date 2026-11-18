@@ -1,275 +1,275 @@
 [
 [
 "Фишки, мощь, здания и ежедневные дела | Last Asylum: Plague · сервер 397",
-""
+"Tips, Might, buildings and daily tasks | Last Asylum: Plague · kingdom 397"
 ],
 [
 "Неочевидные приёмы Last Asylum: Plague простыми словами: от чего растёт мощь, какие здания качать первыми, исследования, солдаты, куда тратить алмазы, ежедневный список дел и ошибки новичков.",
-""
+"Non-obvious Last Asylum: Plague tricks in plain words: what raises Might, which buildings to upgrade first, research, troops, where to spend Diamonds, a daily to-do list and beginner mistakes."
 ],
 [
 "<img src=\"assets/game/diamond.png\" alt=\"\">Фишки и мощь",
-""
+"<img src=\"assets/game/diamond.png\" alt=\"\">Tips and Might"
 ],
 [
 "Фишки, о которых игра не рассказывает",
-""
+"Tricks the game doesn't tell you"
 ],
 [
 "Что реально делает аккаунт сильнее, а что только раздувает цифру мощи. Какие здания качать первыми, куда тратить алмазы и что делать каждый день за 10 минут.",
-""
+"What really makes your account stronger and what only inflates the Might number. Which buildings to upgrade first, where to spend Diamonds and what to do every day in 10 minutes."
 ],
 [
 "<a class=\"btn pri\" href=\"#daily\">Дела на каждый день</a><a class=\"btn\" href=\"#secrets\">Фишки</a><a class=\"btn\" href=\"#buildings\">Что строить</a>",
-""
+"<a class=\"btn pri\" href=\"#daily\">Daily to-do list</a><a class=\"btn\" href=\"#secrets\">Tricks</a><a class=\"btn\" href=\"#buildings\">What to build</a>"
 ],
 [
 "<img src=\"assets/art/hero-tips.webp\" alt=\"Фишки и мощь\">",
-""
+"<img src=\"assets/art/hero-tips.webp\" alt=\"Tips and Might\">"
 ],
 [
 "Держи молоток",
-""
+"Hold the hammer"
 ],
 [
 "Достроил — не нажимай на молоток до нужного дня Дуэли. Очки дают за нажатие.",
-""
+"Finished building — don't tap the hammer until the right Duel day. Points are given for the tap."
 ],
 [
 "Копи сокола",
-""
+"Save the Falcon"
 ],
 [
 "Задания сокола сдавай в дни Дуэли, когда за них дают очки: пн, ср, пт.",
-""
+"Hand in Falcon Quests on the Duel days that give points for them: Mon, Wed, Fri."
 ],
 [
 "2 флакона энергии в день",
-""
+"2 Stamina flasks a day"
 ],
 [
 "Бесплатные, по 50 энергии. Не выпил до конца дня — сгорели.",
-""
+"Free, 50 Stamina each. Didn't drink them by the end of the day — they burn."
 ],
 [
 "Алмазы — сначала на VIP",
-""
+"Diamonds — VIP first"
 ],
 [
 "Потом Колесо желаний (там герои). Ускорять стройку в первые дни — нет.",
-""
+"Then the Wishing Wheel (heroes are there). Speeding up building in the first days — no."
 ],
 [
 "Каждый день",
-""
+"Every day"
 ],
 [
 "Дела на каждый день — 10 минут",
-""
+"Daily to-do list — 10 minutes"
 ],
 [
 "Галочки сохраняются в твоём браузере. Новый игровой день — в 05:00 МСК (00:00 по игре).",
-""
+"The checkmarks are saved in your browser. A new game day starts at 05:00 Moscow (00:00 game time)."
 ],
 [
 "<img src=\"assets/game/build-queue.png\" alt=\"\"><span>Все очереди стройки и исследований заняты. Перед сном — самые длинные таймеры.</span>",
-""
+"<img src=\"assets/game/build-queue.png\" alt=\"\"><span>All building and research queues are busy. Before bed — the longest timers.</span>"
 ],
 [
 "<img src=\"assets/game/food.png\" alt=\"\"><span>Собрал ресурсы со зданий: зерно, древесину, травы, противоядие.</span>",
-""
+"<img src=\"assets/game/food.png\" alt=\"\"><span>Collected resources from buildings: Grain, Timber, Herb, Antitoxin.</span>"
 ],
 [
 "<img src=\"assets/game/energy.png\" alt=\"\"><span>Выпил 2 бесплатных флакона энергии и потратил её на скверну.</span>",
-""
+"<img src=\"assets/game/energy.png\" alt=\"\"><span>Drank 2 free Stamina flasks and spent it on Blight.</span>"
 ],
 [
 "<img src=\"assets/game/c-help.png\" alt=\"\"><span>Нажал «Помощь» всем в альянсе, вложился в технологии альянса.</span>",
-""
+"<img src=\"assets/game/c-help.png\" alt=\"\"><span>Tapped «Help» for everyone in the alliance, donated to Alliance Tech.</span>"
 ],
 [
 "<img src=\"assets/game/boss-demon.png\" alt=\"\"><span>Король демонов — все 10 ударов (кроме воскресенья).</span>",
-""
+"<img src=\"assets/game/boss-demon.png\" alt=\"\"><span>Demon King — all 10 hits (except Sunday).</span>"
 ],
 [
 "<img src=\"assets/game/btn-caravan.png\" alt=\"\"><span>4 удачных грабежа караванов <b>чужих</b> серверов. Своя повозка отправлена.</span>",
-""
+"<img src=\"assets/game/btn-caravan.png\" alt=\"\"><span>4 successful plunders of caravans from <b>other</b> kingdoms. Your own cart sent out.</span>"
 ],
 [
 "<img src=\"assets/game/btn-covert.png\" alt=\"\"><span>Секретные операции: свои отправлены, 5 грабежей чужих серверов, 5 помощей союзникам.</span>",
-""
+"<img src=\"assets/game/btn-covert.png\" alt=\"\"><span>Covert Operations: yours sent, 5 plunders in other kingdoms, 5 assists to allies.</span>"
 ],
 [
 "<img src=\"assets/game/ev-arena.png\" alt=\"\"><span>Арена: бесплатные бои сыграны.</span>",
-""
+"<img src=\"assets/game/ev-arena.png\" alt=\"\"><span>Arena: free battles played.</span>"
 ],
 [
 "<img src=\"assets/game/ev-daily.png\" alt=\"\"><span>Битва на выживание — задания текущей темы.</span>",
-""
+"<img src=\"assets/game/ev-daily.png\" alt=\"\"><span>Survival Battle — quests of the current theme.</span>"
 ],
 [
 "<img src=\"assets/game/go-gather.png\" alt=\"\"><span>Пока не играешь — отряды на сборе ресурсов.</span>",
-""
+"<img src=\"assets/game/go-gather.png\" alt=\"\"><span>While you are not playing — squads are gathering resources.</span>"
 ],
 [
 "<img src=\"assets/game/shield.png\" alt=\"\"><span>Перед сном с полными складами — щит.</span>",
-""
+"<img src=\"assets/game/shield.png\" alt=\"\"><span>Before bed with full storage — a shield.</span>"
 ],
 [
 "Сбросить галочки",
-""
+"Reset checkmarks"
 ],
 [
 "Неочевидное",
-""
+"Non-obvious"
 ],
 [
 "Фишки, которые дают преимущество",
-""
+"Tricks that give you an edge"
 ],
 [
 "Бесплатный перенос Святилища в КвК",
-""
+"Free Sanctuary relocation in Kingdom War"
 ],
 [
 "Переезд между королевствами не тратит предметы: игра пишет «Это межкоролевское перемещение не расходует продвинутые перемещения». Нужно встать в другое место своей карты — не трать «Прямое перемещение» или алмазы. Переезжай на сервер врага, а оттуда сразу обратно к себе, в нужную точку. Между переносами — перезарядка 5 минут. Работает, когда перенос на сервер врага открыт (суббота с 05:05 МСК у нападающих). Подробно — в разделе <a href=\"kvk.html#jump\">КвК</a>.",
-""
+"Moving between kingdoms doesn't use up items: the game says «This cross-kingdom relocation will not consume Advanced Relocates». Need to move to another spot on your own map — don't spend a «Direct Relocate» or Diamonds. Move to the enemy kingdom, and from there straight back home to the spot you need. There is a 5-minute cooldown between moves. It works when moving to the enemy kingdom is open (Saturday from 05:05 Moscow for attackers). Details — in the <a href=\"kvk.html#jump\">Kingdom War</a> section."
 ],
 [
 "Разведка перед боссом",
-""
+"Scout before the boss"
 ],
 [
 "Перед ударом по Королю демонов разведай любую цель. Включится «Боевое безумие» — проверь, что оно горит, и бей.",
-""
+"Before hitting the Demon King, scout any target. «War Frenzy» turns on — check that it is lit, then hit."
 ],
 [
 "Король демонов сокращает путь",
-""
+"The Demon King shortens the trip"
 ],
 [
 "Если отряд долго идёт куда-то далеко, удар по Королю демонов делает дорогу туда и обратно не дольше 30 секунд.",
-""
+"If a squad is on a long march far away, hitting the Demon King makes the trip there and back no longer than 30 seconds."
 ],
 [
 "Фиолетовые наручи на босса",
-""
+"Purple gauntlets for the boss"
 ],
 [
 "Фиолетовые наручи 30 уровня дают +6% урона по монстрам и на боссе часто сильнее золотых. Две пары не разбирай. <a href=\"gear.html#why\">Почему</a>.",
-""
+"Purple level 30 gauntlets give +6% damage to monsters and are often stronger than gold ones on the boss. Don't dismantle two pairs. <a href=\"gear.html#why\">Why</a>."
 ],
 [
 "Двойные очки",
-""
+"Double points"
 ],
 [
 "Трать ресурсы дня Дуэли в те 4 часа Битвы на выживание, когда тема совпадает. Очки идут в оба события сразу.",
-""
+"Spend the Duel day's resources in the 4 hours of the Survival Battle when the theme matches. The points go to both events at once."
 ],
 [
 "Золото — во вторник",
-""
+"Gold — on Tuesday"
 ],
 [
 "Золотой караван = 100 000 очков Дуэли (как 2 000 минут ускорений стройки). Золотая секретная операция — 75 000.",
-""
+"A gold caravan = 100,000 Duel points (like 2,000 minutes of building speedups). A gold Covert Operation — 75,000."
 ],
 [
 "Сундуки ворона — в среду",
-""
+"Raven chests — on Wednesday"
 ],
 [
 "Сундук снаряжения ворона 7 уровня в среду = 810 000 очков Дуэли.",
-""
+"A Lv.7 Raven Gear Chest on Wednesday = 810,000 Duel points."
 ],
 [
 "Титул министра — до запуска",
-""
+"Minister title — before you start"
 ],
 [
 "Титул ускоряет только то, что запущено <b>после</b> его получения. Сначала получи титул, потом запускай стройку.",
-""
+"A title only speeds up what is started <b>after</b> you get it. First get the title, then start building."
 ],
 [
 "Облик «Ворон Чёрная крепость»",
-""
+"The «Black Raven Fortress» skin"
 ],
 [
 "+1% урона по монстрам просто за то, что он есть, и +5%, если он надет.",
-""
+"+1% damage to monsters just for owning it, and +5% if it is worn."
 ],
 [
 "Магазин за медали славы",
-""
+"The Fame Medal shop"
 ],
 [
 "Покупай только чертежи снаряжения. Сундуки реликвий и универсальные фрагменты там невыгодны.",
-""
+"Buy only gear blueprints. Curio Chests and universal shards there are a bad deal."
 ],
 [
 "Арена — награды руками",
-""
+"Arena — rewards by hand"
 ],
 [
 "Бои на арене <b>солдат не тратят</b>. Награды за место забирай каждый день — на следующий день они сгорают.",
-""
+"Arena battles <b>don't cost troops</b>. Collect placement rewards every day — the next day they are gone."
 ],
 [
 "Ветка «Дуэль альянсов»",
-""
+"The «Alliance Duel» branch"
 ],
 [
 "Отдельная плитка в Лаборатории. Она увеличивает очки Дуэли и открывает следующие сундуки наград Дуэли — качай её сразу, как появится.",
-""
+"A separate tile in the Lab. It increases Duel points and unlocks the next Duel reward chests — level it as soon as it appears."
 ],
 [
 "Энергия: как не терять",
-""
+"Stamina: how not to lose it"
 ],
 [
 "Энергия сама восстанавливается по 1 единице раз в 5 минут («каждые 300 сек»). Флаконом её можно поднять <b>выше максимума</b> (например, до 170 при максимуме 120), так что пить бесплатный флакон можно, даже когда полоска полная.",
-""
+"Stamina regenerates by itself at 1 unit every 5 minutes («every 300 s»). With a flask you can raise it <b>above the maximum</b> (for example, to 170 with a max of 120), so you can drink the free flask even when the bar is full."
 ],
 [
 "<b>Нажми на полоску энергии</b>",
-""
+"<b>Tap the Stamina bar</b>"
 ],
 [
 "Зелёная полоска с молнией слева вверху, под портретом. Откроется окно «Восстановить энергию»: сверху сколько энергии сейчас, ниже — способы её пополнить.",
-""
+"The green bar with a lightning bolt at the top left, under the portrait. The «Restore Stamina» window opens: at the top how much Stamina you have now, below — ways to refill it."
 ],
 [
 "<b>Верхняя строка — бесплатные 50 энергии</b>",
-""
+"<b>The top row — 50 free Stamina</b>"
 ],
 [
 "«Осталось сегодня: 0/2» — сколько бесплатных флаконов из двух ещё можно взять сегодня. Пока флакон не готов, вместо кнопки серый таймер; следующий — через 4 часа после предыдущего.",
-""
+"«Left Today: 0/2» — how many of the two free flasks you can still take today. While a flask is not ready, a gray timer replaces the button; the next one comes 4 hours after the previous."
 ],
 [
 "<b>Нажимай, как только доступно</b>",
-""
+"<b>Tap as soon as it is available</b>"
 ],
 [
 "До конца игрового дня (05:00 МСК) неиспользованные бесплатные флаконы сгорают.",
-""
+"Unused free flasks burn at the end of the game day (05:00 Moscow)."
 ],
 [
 "<b>Остальные строки — за алмазы и из сумки</b>",
-""
+"<b>Other rows — for Diamonds and from your bag</b>"
 ],
 [
 "Жёлтая кнопка — купить 50 энергии за 150 алмазов (невыгодно). Синие «Использовать» — выпить флаконы, которые уже есть (на 10 и на 50 энергии, «В наличии» — сколько их). Окошко с числом рядом — сколько флаконов выпить за раз.",
-""
+"The yellow button — buy 50 Stamina for 150 Diamonds (a bad deal). The blue «Use» buttons — drink flasks you already have (10 and 50 Stamina, «Owned» shows how many). The box with a number next to it — how many flasks to drink at once."
 ],
 [
 "<img src=\"assets/shots/energy.webp\" alt=\"Окно «Восстановить энергию»: 75/120, бесплатный флакон 50 энергии раз в 4 часа\"><span class=\"ring rect\" style=\"left:49.9%;top:41.2%;width:91.2%;aspect-ratio:4.6\"></span><span class=\"ring rect\" style=\"left:80.7%;top:86.7%;width:24%;aspect-ratio:2.92\"></span>",
-""
+"<img src=\"assets/shots/energy.webp\" alt=\"The Restore Stamina window: 75/120, a free 50 Stamina flask every 4 hours\"><span class=\"ring rect\" style=\"left:49.9%;top:41.2%;width:91.2%;aspect-ratio:4.6\"></span><span class=\"ring rect\" style=\"left:80.7%;top:86.7%;width:24%;aspect-ratio:2.92\"></span>"
 ],
 [
 "Окно «Восстановить энергию». Рамки: бесплатный флакон и «Использовать».",
-""
+"The «Restore Stamina» window. Frames: the free flask and «Use»."
 ],
 [
 "Мощь",
@@ -277,195 +277,195 @@
 ],
 [
 "От чего растёт мощь — и что из этого настоящая сила",
-""
+"What raises Might — and what of it is real strength"
 ],
 [
 "Часть мощи",
-""
+"Part of Might"
 ],
 [
 "Что её поднимает",
-""
+"What raises it"
 ],
 [
 "Делает сильнее в бою?",
-""
+"Makes you stronger in battle?"
 ],
 [
 "<img class=\"i\" src=\"assets/game/go-build.png\" alt=\"\">Здания",
-""
+"<img class=\"i\" src=\"assets/game/go-build.png\" alt=\"\">Buildings"
 ],
 [
 "Уровни зданий",
-""
+"Building levels"
 ],
 [
 "Почти нет — в основном раздувает цифру. Кроме Святилища и статуй фракций.",
-""
+"Barely — it mostly inflates the number. Except the Sanctuary and faction statues."
 ],
 [
 "<img class=\"i\" src=\"assets/game/go-lab.png\" alt=\"\">Исследования",
-""
+"<img class=\"i\" src=\"assets/game/go-lab.png\" alt=\"\">Research"
 ],
 [
 "Уровни исследований",
-""
+"Research levels"
 ],
 [
 "<b>Да</b>, навсегда",
-""
+"<b>Yes</b>, permanently"
 ],
 [
 "<img class=\"i\" src=\"assets/game/go-hero.png\" alt=\"\">Герои",
-""
+"<img class=\"i\" src=\"assets/game/go-hero.png\" alt=\"\">Heroes"
 ],
 [
 "Уровни, звёзды, навыки, снаряжение",
-""
+"Levels, stars, skills, gear"
 ],
 [
 "<b>Да, главное</b>",
-""
+"<b>Yes, the most</b>"
 ],
 [
 "<img class=\"i\" src=\"assets/game/go-train.png\" alt=\"\">Солдаты",
-""
+"<img class=\"i\" src=\"assets/game/go-train.png\" alt=\"\">Troops"
 ],
 [
 "Обученные солдаты (погибшие — минус)",
-""
+"Trained troops (dead ones — minus)"
 ],
 [
 "<b>Да</b>, второе по важности",
-""
+"<b>Yes</b>, second most important"
 ],
 [
 "<img class=\"i\" src=\"assets/game/ticket-survivor.png\" alt=\"\">Выжившие",
-""
+"<img class=\"i\" src=\"assets/game/ticket-survivor.png\" alt=\"\">Survivors"
 ],
 [
 "Наём и прокачка выживших",
-""
+"Hiring and leveling Survivors"
 ],
 [
 "Больше ресурсов и скорости",
-""
+"More resources and speed"
 ],
 [
 "<img class=\"i\" src=\"assets/game/raven.png\" alt=\"\">Ворон",
-""
+"<img class=\"i\" src=\"assets/game/raven.png\" alt=\"\">Raven"
 ],
 [
 "Уровень, снаряжение, эпиграфы",
-""
+"Level, gear, Epigraphs"
 ],
 [
 "<b>Да</b>, на все отряды сразу",
-""
+"<b>Yes</b>, for all squads at once"
 ],
 [
 "Что даёт больше мощи за 1 млн ресурсов",
-""
+"What gives more Might per 1M resources"
 ],
 [
 "Солдаты",
-""
+"Troops"
 ],
 [
 "Первые 10 уровней здания",
-""
+"First 10 building levels"
 ],
 [
 "Уровни 11–20",
-""
+"Levels 11–20"
 ],
 [
 "Уровни 21–30",
-""
+"Levels 21–30"
 ],
 [
 "Что это значит",
-""
+"What it means"
 ],
 [
 "Нужно быстро поднять цифру (например, к событию на мощь) — обучай солдат и докачай дешёвые первые уровни второстепенных зданий.",
-""
+"Need to raise the number fast (for example, for a Might event) — train troops and finish the cheap first levels of secondary buildings."
 ],
 [
 "Нужна настоящая сила — герои, исследования, солдаты, ворон.",
-""
+"Need real strength — heroes, research, troops, Raven."
 ],
 [
 "Один полностью прокачанный золотой герой весит больше, чем Святилище 30 и Лаборатория 30 вместе.",
-""
+"One fully leveled gold hero weighs more than Sanctuary 30 and Lab 30 together."
 ],
 [
 "Здания",
-""
+"Buildings"
 ],
 [
 "Какие здания качать первыми",
-""
+"Which buildings to upgrade first"
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1001.png\" alt=\"\"></span><b>Святилище — всегда первым</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1001.png\" alt=\"\"></span><b>Sanctuary — always first</b>"
 ],
 [
 "Ни одно здание не может быть выше него, и от него зависит, до какого уровня поднимаются герои. В окне улучшения так и написано: «Максимальный уровень героя +5».",
-""
+"No building can be higher than it, and it sets how far heroes can level. The upgrade window says so: «Max hero level +5»."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1001.png\" alt=\"\"></span><b>Читай окно улучшения Святилища</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1001.png\" alt=\"\"></span><b>Read the Sanctuary upgrade window</b>"
 ],
 [
 "Внизу — что нужно для следующего уровня: здания (красным — чего не хватает, кнопка «Пойти» ведёт к нему) и ресурсы (кнопка «Получить»). Это и есть твой список дел.",
-""
+"At the bottom — what the next level needs: buildings (red — what is missing, the «Go» button takes you there) and resources (the «Get» button). That is your to-do list."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1007.png\" alt=\"\"></span><b>Лаборатория — вместе со Святилищем</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1007.png\" alt=\"\"></span><b>Lab — together with the Sanctuary</b>"
 ],
 [
 "Она нужна для большинства его улучшений. Запускай её в тот же час, что и Святилище, — тогда ни один таймер не ждёт другого.",
-""
+"Most Sanctuary upgrades need it. Start it in the same hour as the Sanctuary — then neither timer waits for the other."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/5031.png\" alt=\"\"></span><b>Хижина строителя</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/5031.png\" alt=\"\"></span><b>Builder's Hut</b>"
 ],
 [
 "Даёт бесплатное ускорение каждой стройки. Особенно ценна до 15 уровня Святилища — держи её на уровне Святилища.",
-""
+"Gives a free speedup to every construction. Especially valuable before Sanctuary 15 — keep it at the Sanctuary's level."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1019.png\" alt=\"\"></span><b>Травяной сад — первым из ресурсных</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1019.png\" alt=\"\"></span><b>Herb Garden — first among resource buildings</b>"
 ],
 [
 "Травы — главный дефицит: на них идут стройка, исследования и снаряжение.",
-""
+"Herb is the main shortage: building, research and gear need it."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/5042.png\" alt=\"\"></span><b>Плавильня — до 25 уровня пораньше</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/5042.png\" alt=\"\"></span><b>Smelting Workshop — to level 25 early</b>"
 ],
 [
 "Она даёт камни снаряжения.",
-""
+"It gives Gearstone."
 ],
 [
 "<img src=\"assets/shots/castle-up.webp\" alt=\"Окно улучшения Святилища: эффект улучшения, требования, кнопки Пойти и Получить\"><span class=\"ring rect\" style=\"left:50%;top:42.4%;width:90.1%;aspect-ratio:2.25\"></span><span class=\"ring rect\" style=\"left:84%;top:70.2%;width:18.7%;aspect-ratio:.52\"></span>",
-""
+"<img src=\"assets/shots/castle-up.webp\" alt=\"Sanctuary upgrade window: upgrade effect, requirements, Go and Get buttons\"><span class=\"ring rect\" style=\"left:50%;top:42.4%;width:90.1%;aspect-ratio:2.25\"></span><span class=\"ring rect\" style=\"left:84%;top:70.2%;width:18.7%;aspect-ratio:.52\"></span>"
 ],
 [
 "Окно улучшения Святилища. Рамки: что даст уровень; кнопки «Пойти» (к зданию, которое надо поднять) и «Получить» (где взять ресурс).",
-""
+"The Sanctuary upgrade window. Frames: what the level gives; the «Go» (to the building you need to raise) and «Get» (where to get the resource) buttons."
 ],
 [
 "Что открывается на каком уровне Святилища — с 1 по 30",
-""
+"What unlocks at each Sanctuary level — from 1 to 30"
 ],
 [
 "Ур.",
@@ -473,123 +473,123 @@
 ],
 [
 "Что появляется",
-""
+"What appears"
 ],
 [
 "Старт",
-""
+"Start"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1001.png\" alt=\"\">Святилище</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">Ферма</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">Лесопилка</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">Цветник</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5021.png\" alt=\"\">Резиденция</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1001.png\" alt=\"\">Sanctuary</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">Farm</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">Lumberyard</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">Herb Garden</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5021.png\" alt=\"\">Residence</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5031.png\" alt=\"\">Хижина строителя</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5023.png\" alt=\"\">Зерновой склад</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5024.png\" alt=\"\">Древесный склад</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5025.png\" alt=\"\">Травяной склад</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5031.png\" alt=\"\">Builder's Hut</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5023.png\" alt=\"\">Granary</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5024.png\" alt=\"\">Lumber Depot</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5025.png\" alt=\"\">Herb Storage</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Стены</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/c-squad.png\" alt=\"\">Отряд 1</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1008.png\" alt=\"\">Мастерская снаряжения</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5008.png\" alt=\"\">Таверна</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5002.png\" alt=\"\">Лагерь исследователя</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">2-я Ферма</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">2-я Лесопилка</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">2-й Цветник</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Walls</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/c-squad.png\" alt=\"\">Squad 1</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1008.png\" alt=\"\">Gear Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5008.png\" alt=\"\">Tavern</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5002.png\" alt=\"\">Explorer's Camp</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">2nd Farm</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">2nd Lumberyard</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">2nd Herb Garden</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Мастерская противоядий</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">Плавильный цех</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">Ткацкая мастерская</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5035.png\" alt=\"\">Мастерская эпиграфов</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/c-squad.png\" alt=\"\">Отряд 4 (с месячным пропуском)</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Antitoxin Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">Smelting Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">Weaving Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5035.png\" alt=\"\">Epigraph Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/c-squad.png\" alt=\"\">Squad 4 (with the Monthly Pass)</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон ×2</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">Казарма</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5033.png\" alt=\"\">Отряд разведки</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1006.png\" alt=\"\">Соколиная башня</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Зал альянса</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5040.png\" alt=\"\">Кочевой торговец</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds ×2</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">Barracks</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5033.png\" alt=\"\">Scout Squad</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1006.png\" alt=\"\">Falcon Tower</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Alliance Hall</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5040.png\" alt=\"\">Nomad Trader</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">Лазарет</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Статуя воина</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5036.png\" alt=\"\">Гнездо ворона</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5010.png\" alt=\"\">Арена</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5053.png\" alt=\"\">Храм</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">Infirmary</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Warrior Statue</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5036.png\" alt=\"\">Raven Nest</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5010.png\" alt=\"\">Arena</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5053.png\" alt=\"\">Temple</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5049.png\" alt=\"\">Сторожевая башня</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/c-squad.png\" alt=\"\">Отряд 2</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5039.png\" alt=\"\">Зал реликвий</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">3-я Ферма</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">3-я Лесопилка</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5049.png\" alt=\"\">Watchtower</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/c-squad.png\" alt=\"\">Squad 2</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5039.png\" alt=\"\">Curio Hall</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">3rd Farm</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">3rd Lumberyard</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5047.png\" alt=\"\">2-й верстак (2-я лаборатория)</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5029.png\" alt=\"\">Центр тайных операций</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5038.png\" alt=\"\">Монумент</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5047.png\" alt=\"\">2nd workbench (2nd Lab)</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5029.png\" alt=\"\">Black Ops</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5038.png\" alt=\"\">Monument</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">2-я Мастерская противоядий</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">2-й Плавильный цех</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">2nd Antitoxin Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">2nd Smelting Workshop</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5045.png\" alt=\"\">Статуя колдуна</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5051.png\" alt=\"\">Личная конюшня</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5052.png\" alt=\"\">Конюшня альянса</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5033.png\" alt=\"\">2-й Отряд разведки</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">2-я Ткацкая мастерская</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5045.png\" alt=\"\">Warlock Statue</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5051.png\" alt=\"\">Private Stable</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5052.png\" alt=\"\">Alliance Stable</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5033.png\" alt=\"\">2nd Scout Squad</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">2nd Weaving Workshop</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5046.png\" alt=\"\">Статуя рейнджера</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">4-я Ферма</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">4-я Лесопилка</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5046.png\" alt=\"\">Ranger Statue</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">4th Farm</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">4th Lumberyard</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">3-я Мастерская противоядий</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">2-й Лазарет</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">3rd Antitoxin Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">2nd Infirmary</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5056.png\" alt=\"\">Статуя лорда</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">3-й Плавильный цех</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">3-я Ткацкая мастерская</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5056.png\" alt=\"\">Lord Statue</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">3rd Smelting Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">3rd Weaving Workshop</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5034.png\" alt=\"\">Мастерская ворона</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5054.png\" alt=\"\">Зал чести</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">2-я Казарма</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5034.png\" alt=\"\">Raven Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5054.png\" alt=\"\">Hall of Honor</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">2nd Barracks</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">4-я и 5-я Мастерская противоядий</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">4-й Плавильный цех</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">4th and 5th Antitoxin Workshop</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">4th Smelting Workshop</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">3-й Цветник</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">3-й Полигон</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">3rd Herb Garden</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">3rd Training Grounds</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">3-й Лазарет</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">4-я Ткацкая мастерская</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">3rd Infirmary</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">4th Weaving Workshop</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">4-й Цветник</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5033.png\" alt=\"\">3-й Отряд разведки</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">4th Herb Garden</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5033.png\" alt=\"\">3rd Scout Squad</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/c-squad.png\" alt=\"\">Отряд 3</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">3-я Казарма</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">5-й Плавильный цех</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/c-squad.png\" alt=\"\">Squad 3</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">3rd Barracks</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5042.png\" alt=\"\">5th Smelting Workshop</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">5-я Ткацкая мастерская</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5043.png\" alt=\"\">5th Weaving Workshop</span>"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5055.png\" alt=\"\">Солдатский приют</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5055.png\" alt=\"\">Soldier's Rest</span>"
 ],
 [
 "<span class=\"more\">Новых зданий нет — каждый уровень поднимает потолок всех зданий и героев (+5 к уровню героев за каждый уровень Святилища, на 30-м — 150).</span>",
-""
+"<span class=\"more\">No new buildings — each level raises the cap of all buildings and heroes (+5 hero levels for each Sanctuary level, at 30 — 150).</span>"
 ],
 [
 "«2-я», «3-я» — дополнительная копия здания, которую можно поставить с этого уровня. Ещё по одной Ферме, Лесопилке, Полигону, Цветнику, Лазарету и Казарме дают исследования Лаборатории. Мастерская эпиграфов строится рано, но сами эпиграфы включаются примерно на 78-й день сервера.",
-""
+"«2nd», «3rd» — an extra copy of the building you can place from this level. One more Farm, Lumberyard, Training Grounds, Herb Garden, Infirmary and Barracks each come from Lab research. The Epigraph Workshop is built early, but Epigraphs themselves turn on around server day 78."
 ],
 [
 "Что нужно для каждого уровня Святилища — до 30",
-""
+"What each Sanctuary level needs — up to 30"
 ],
 [
 "Здания, которые надо поднять до указанного уровня, и цена улучшения <b>без ускорений и скидок</b> (в игре будет меньше). Зерна и древесины нужно поровну. «Герои до» — потолок уровня героев после улучшения.",
-""
+"Buildings that must be raised to the given level, and the upgrade cost <b>without speedups and discounts</b> (in the game it will be less). Grain and Timber are needed in equal amounts. «Heroes up to» — the hero level cap after the upgrade."
 ],
 [
 "Сначала поднять",
-""
+"Raise first"
 ],
 [
 "Зерно и древесина",
-""
+"Grain and Timber"
 ],
 [
 "Травы",
-""
+"Herb"
 ],
 [
 "Время",
@@ -597,635 +597,635 @@
 ],
 [
 "Герои до",
-""
+"Heroes up to"
 ],
 [
 "2 с",
-""
+"2s"
 ],
 [
 "3 с",
-""
+"3s"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5024.png\" alt=\"\">Древесный склад 1</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5023.png\" alt=\"\">Зерновой склад 1</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5025.png\" alt=\"\">Травяной склад 1</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5024.png\" alt=\"\">Lumber Depot 1</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5023.png\" alt=\"\">Granary 1</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5025.png\" alt=\"\">Herb Storage 1</span>"
 ],
 [
 "5 мин",
-""
+"5m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Стены 3</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Walls 3</span>"
 ],
 [
 "10 мин",
-""
+"10m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Стены 5</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Walls 5</span>"
 ],
 [
 "34 мин",
-""
+"34m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 4</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Зал альянса 3</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 4</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Alliance Hall 3</span>"
 ],
 [
 "235,8 тыс.",
-""
+"235.8K"
 ],
 [
 "1 ч 30 мин",
-""
+"1h 30m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 6</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Зал альянса 5</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 6</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Alliance Hall 5</span>"
 ],
 [
 "395,6 тыс.",
-""
+"395.6K"
 ],
 [
 "3 ч 1 мин",
-""
+"3h 1m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Стены 8</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Зал альянса 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Walls 8</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Alliance Hall 7</span>"
 ],
 [
 "605,8 тыс.",
-""
+"605.8K"
 ],
 [
 "208,7 тыс.",
-""
+"208.7K"
 ],
 [
 "4 ч 16 мин",
-""
+"4h 16m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Стены 9</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">Лазарет 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Walls 9</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">Infirmary 7</span>"
 ],
 [
 "748,7 тыс.",
-""
+"748.7K"
 ],
 [
 "232,9 тыс.",
-""
+"232.9K"
 ],
 [
 "5 ч 35 мин",
-""
+"5h 35m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 10</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 10</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 7</span>"
 ],
 [
 "1,85 млн",
-""
+"1.85M"
 ],
 [
 "601,8 тыс.",
-""
+"601.8K"
 ],
 [
 "7 ч 14 мин",
-""
+"7h 14m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 11</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Стены 10</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Мастерская противоядий 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 11</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Walls 10</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Antitoxin Workshop 7</span>"
 ],
 [
 "3,1 млн",
-""
+"3.1M"
 ],
 [
 "959 тыс.",
-""
+"959K"
 ],
 [
 "9 ч 24 мин",
-""
+"9h 24m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 12</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Зал альянса 11</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">Ферма 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 12</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Alliance Hall 11</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">Farm 7</span>"
 ],
 [
 "3,52 млн",
-""
+"3.52M"
 ],
 [
 "1,08 млн",
-""
+"1.08M"
 ],
 [
 "12 ч 13 мин",
-""
+"12h 13m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 13</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Статуя воина 12</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">Лесопилка 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 13</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Warrior Statue 12</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">Lumberyard 7</span>"
 ],
 [
 "4,91 млн",
-""
+"4.91M"
 ],
 [
 "1,65 млн",
-""
+"1.65M"
 ],
 [
 "15 ч 53 мин",
-""
+"15h 53m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 14</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 14</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">Цветник 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 14</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 14</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">Herb Garden 7</span>"
 ],
 [
 "6,47 млн",
-""
+"6.47M"
 ],
 [
 "2,29 млн",
-""
+"2.29M"
 ],
 [
 "22 ч 15 мин",
-""
+"22h 15m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 15</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Статуя воина 14</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5023.png\" alt=\"\">Зерновой склад 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 15</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Warrior Statue 14</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5023.png\" alt=\"\">Granary 7</span>"
 ],
 [
 "11,9 млн",
-""
+"11.9M"
 ],
 [
 "3,97 млн",
-""
+"3.97M"
 ],
 [
 "1 д 7 ч 9 мин",
-""
+"1d 7h 9m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 16</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">Казарма 15</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5024.png\" alt=\"\">Древесный склад 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 16</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">Barracks 15</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5024.png\" alt=\"\">Lumber Depot 7</span>"
 ],
 [
 "16,67 млн",
-""
+"16.67M"
 ],
 [
 "5,14 млн",
-""
+"5.14M"
 ],
 [
 "1 д 19 ч 36 мин",
-""
+"1d 19h 36m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 17</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 17</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5025.png\" alt=\"\">Травяной склад 7</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 17</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 17</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5025.png\" alt=\"\">Herb Storage 7</span>"
 ],
 [
 "28,22 млн",
-""
+"28.22M"
 ],
 [
 "9,33 млн",
-""
+"9.33M"
 ],
 [
 "2 д 13 ч 3 мин",
-""
+"2d 13h 3m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 18</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Статуя воина 17</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Мастерская противоядий 10</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 18</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Warrior Statue 17</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Antitoxin Workshop 10</span>"
 ],
 [
 "32,71 млн",
-""
+"32.71M"
 ],
 [
 "11,34 млн",
-""
+"11.34M"
 ],
 [
 "3 д 13 ч 28 мин",
-""
+"3d 13h 28m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 19</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Зал альянса 18</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">Ферма 10</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 19</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Alliance Hall 18</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">Farm 10</span>"
 ],
 [
 "60,03 млн",
-""
+"60.03M"
 ],
 [
 "18,41 млн",
-""
+"18.41M"
 ],
 [
 "4 д 23 ч 40 мин",
-""
+"4d 23h 40m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 20</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 20</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">Лесопилка 10</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 20</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 20</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">Lumberyard 10</span>"
 ],
 [
 "85,45 млн",
-""
+"85.45M"
 ],
 [
 "27,64 млн",
-""
+"27.64M"
 ],
 [
 "6 д 16 ч 20 мин",
-""
+"6d 16h 20m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 21</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Статуя воина 21</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">Цветник 10</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 21</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Warrior Statue 21</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">Herb Garden 10</span>"
 ],
 [
 "111,2 млн",
-""
+"111.2M"
 ],
 [
 "36,66 млн",
-""
+"36.66M"
 ],
 [
 "8 д 16 ч 26 мин",
-""
+"8d 16h 26m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 22</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">Лазарет 22</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5023.png\" alt=\"\">Зерновой склад 10</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 22</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1004.png\" alt=\"\">Infirmary 22</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5023.png\" alt=\"\">Granary 10</span>"
 ],
 [
 "145,2 млн",
-""
+"145.2M"
 ],
 [
 "42,76 млн",
-""
+"42.76M"
 ],
 [
 "11 д 6 ч 58 мин",
-""
+"11d 6h 58m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 23</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Стены 23</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5024.png\" alt=\"\">Древесный склад 10</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 23</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1002.png\" alt=\"\">Walls 23</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5024.png\" alt=\"\">Lumber Depot 10</span>"
 ],
 [
 "171,2 млн",
-""
+"171.2M"
 ],
 [
 "56,25 млн",
-""
+"56.25M"
 ],
 [
 "15 д 19 ч 21 мин",
-""
+"15d 19h 21m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 24</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 24</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5025.png\" alt=\"\">Травяной склад 10</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 24</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 24</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5025.png\" alt=\"\">Herb Storage 10</span>"
 ],
 [
 "277,9 млн",
-""
+"277.9M"
 ],
 [
 "97,53 млн",
-""
+"97.53M"
 ],
 [
 "22 д 3 ч 5 мин",
-""
+"22d 3h 5m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 25</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Статуя воина 25</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Мастерская противоядий 13</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 25</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5044.png\" alt=\"\">Warrior Statue 25</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Antitoxin Workshop 13</span>"
 ],
 [
 "386,8 млн",
-""
+"386.8M"
 ],
 [
 "123,5 млн",
-""
+"123.5M"
 ],
 [
 "30 д 23 ч 32 мин",
-""
+"30d 23h 32m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 26</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 26</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">Ферма 13</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 26</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 26</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1016.png\" alt=\"\">Farm 13</span>"
 ],
 [
 "548 млн",
-""
+"548M"
 ],
 [
 "168,6 млн",
-""
+"168.6M"
 ],
 [
 "43 д 8 ч 57 мин",
-""
+"43d 8h 57m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 27</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">Казарма 27</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">Лесопилка 13</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 27</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/5006.png\" alt=\"\">Barracks 27</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1017.png\" alt=\"\">Lumberyard 13</span>"
 ],
 [
 "731,1 млн",
-""
+"731.1M"
 ],
 [
 "236,5 млн",
-""
+"236.5M"
 ],
 [
 "60 д 17 ч 20 мин",
-""
+"60d 17h 20m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 28</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Зал альянса 28</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">Цветник 13</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 28</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1010.png\" alt=\"\">Alliance Hall 28</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1019.png\" alt=\"\">Herb Garden 13</span>"
 ],
 [
 "1,05 млрд",
-""
+"1.05B"
 ],
 [
 "316,4 млн",
-""
+"316.4M"
 ],
 [
 "78 д 22 ч 32 мин",
-""
+"78d 22h 32m"
 ],
 [
 "<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Лаборатория 29</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Полигон 29</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Мастерская противоядий 15</span>",
-""
+"<span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1007.png\" alt=\"\">Lab 29</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1020.png\" alt=\"\">Training Grounds 29</span><span class=\"hn\"><img class=\"i\" src=\"assets/game/bld/1027.png\" alt=\"\">Antitoxin Workshop 15</span>"
 ],
 [
 "1,36 млрд",
-""
+"1.36B"
 ],
 [
 "441,3 млн",
-""
+"441.3M"
 ],
 [
 "102 д 14 ч 53 мин",
-""
+"102d 14h 53m"
 ],
 [
 "Исследования и солдаты",
-""
+"Research and troops"
 ],
 [
 "Порядок исследований",
-""
+"Research order"
 ],
 [
 "<img src=\"assets/shots/lab.webp\" alt=\"Исследовательская лаборатория: плитки веток исследований\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:50%;top:69.8%;width:26.5%;aspect-ratio:.64\"></span>",
-""
+"<img src=\"assets/shots/lab.webp\" alt=\"Research Lab: research branch tiles\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:50%;top:69.8%;width:26.5%;aspect-ratio:.64\"></span>"
 ],
 [
 "Лаборатория: каждая плитка — своя ветка (Развитие, Экономика, Герой, Солдат, Отряд 1–3, Дуэль альянсов, Перевозка каравана), процент — сколько изучено. Рамка — ветка «Дуэль альянсов».",
-""
+"The Lab: each tile is its own branch (Development, Economy, Hero, Soldier, Squad 1–3, Alliance Duel, Caravan Transport), the percentage is how much is researched. The frame is the «Alliance Duel» branch."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-develop.png\" alt=\"\"></span><b>Развитие</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-develop.png\" alt=\"\"></span><b>Development</b>"
 ],
 [
 "Самая дешёвая ветка, ускоряет стройку и исследования.",
-""
+"The cheapest branch, speeds up building and research."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-duel.png\" alt=\"\"></span><b>Дуэль альянсов — как только откроется</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-duel.png\" alt=\"\"></span><b>Alliance Duel — as soon as it opens</b>"
 ],
 [
 "Даёт больше очков Дуэли и открывает сундуки 4–9. <a href=\"duel.html#research\">Подробно</a>.",
-""
+"Gives more Duel points and unlocks chests 4–9. <a href=\"duel.html#research\">Details</a>."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-economy.png\" alt=\"\"></span><b>Экономика</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-economy.png\" alt=\"\"></span><b>Economy</b>"
 ],
 [
 "Больше ресурсов.",
-""
+"More resources."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-combat.png\" alt=\"\"></span><b>Боевые ветки: герои, солдаты, отряды</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-combat.png\" alt=\"\"></span><b>Combat branches: heroes, troops, squads</b>"
 ],
 [
 "Сначала то, что усиливает отряд 1.",
-""
+"First what boosts squad 1."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-elite.png\" alt=\"\"></span><b>Элитные войска</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/sci-elite.png\" alt=\"\"></span><b>Elite Troop</b>"
 ],
 [
 "Открывает самых сильных солдат (T10).",
-""
+"Unlocks the strongest troops (T10)."
 ],
 [
 "<img src=\"assets/shots/barrack.webp\" alt=\"Окно «Полигон»: солдаты T6–T10, характеристики, кнопка «Обучение»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:54.8%;top:23.5%;width:20%;aspect-ratio:0.82\"></span><span class=\"ring rect\" style=\"left:87.8%;top:65.9%;width:12%;aspect-ratio:1.1\"></span><span class=\"ring rect\" style=\"left:71.7%;top:90.9%;width:39%;aspect-ratio:3.1\"></span>",
-""
+"<img src=\"assets/shots/barrack.webp\" alt=\"The Training Grounds window: T6–T10 troops, stats, the Train button\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:54.8%;top:23.5%;width:20%;aspect-ratio:0.82\"></span><span class=\"ring rect\" style=\"left:87.8%;top:65.9%;width:12%;aspect-ratio:1.1\"></span><span class=\"ring rect\" style=\"left:71.7%;top:90.9%;width:39%;aspect-ratio:3.1\"></span>"
 ],
 [
 "Окно «Полигон»: сверху солдаты по уровням (T6, T7…; с замком — ещё не открыты), под ними характеристики выбранного. Зелёная стрелка — <b>повысить</b> уже обученных до следующего уровня, синяя кнопка — «Обучение» новых.",
-""
+"The «Training Grounds» window: troops by tier at the top (T6, T7…; with a lock — not unlocked yet), the selected one's stats below. The green arrow — <b>promote</b> already trained troops to the next tier, the blue button — «Train» new ones."
 ],
 [
 "<b>Один Полигон — на максимум, три — до 10 уровня</b>",
-""
+"<b>One Training Grounds at max, three at level 10</b>"
 ],
 [
 "Три дешёвых Полигона быстро учат солдат среднего уровня (T4), а потом их повышаешь до лучших. Так экономится 6–7 часов за круг.",
-""
+"Three cheap Training Grounds quickly train mid-tier troops (T4), and then you promote them to the best. This saves 6–7 hours per cycle."
 ],
 [
 "<b>Повышай, а не учи с нуля</b>",
-""
+"<b>Promote, don't train from scratch</b>"
 ],
 [
 "Старых слабых солдат переводи в сильных — дешевле и быстрее.",
-""
+"Turn old weak troops into strong ones — cheaper and faster."
 ],
 [
 "<b>Лазарет полон — раненые погибают</b>",
-""
+"<b>Infirmary full — wounded die</b>"
 ],
 [
 "Лечи вовремя, особенно перед КвК.",
-""
+"Heal on time, especially before Kingdom War."
 ],
 [
 "Король демонов, караваны, Гонка за эликсиром и арена — почти без потерь солдат. Это безопасные награды.",
-""
+"The Demon King, caravans, Elixir Scramble and the arena — almost no troop losses. These are safe rewards."
 ],
 [
 "Алмазы и покупки",
-""
+"Diamonds and purchases"
 ],
 [
 "Куда тратить алмазы и что покупать",
-""
+"Where to spend Diamonds and what to buy"
 ],
 [
 "Покупка",
-""
+"Purchase"
 ],
 [
 "Стоит?",
-""
+"Worth it?"
 ],
 [
 "<b>Да, в первую очередь.</b> VIP даёт постоянные бонусы к атаке, защите и здоровью героев, стройке, исследованиям, обучению, лечению и сбору. Подробно — ниже.",
-""
+"<b>Yes, first of all.</b> VIP gives permanent bonuses to heroes' attack, defense and HP, building, research, training, healing and gathering. Details — below."
 ],
 [
 "<img class=\"i\" src=\"assets/game/roulette.png\" alt=\"\">2. Колесо желаний",
-""
+"<img class=\"i\" src=\"assets/game/roulette.png\" alt=\"\">2. Wishing Wheel"
 ],
 [
 "<b>Да, во вторую.</b> Докручивай колесо в конце события до гарантированного героя — так берут Синтию и других золотых героев.",
-""
+"<b>Yes, second.</b> Spin the wheel at the end of the event up to the guaranteed hero — that's how people get Cynthia and other gold heroes."
 ],
 [
 "<img class=\"i\" src=\"assets/game/ticket-hero.png\" alt=\"\">3. Найм героев",
-""
+"<img class=\"i\" src=\"assets/game/ticket-hero.png\" alt=\"\">3. Hero recruiting"
 ],
 [
 "Да. Бесплатные попытки — каждый день по таймеру, алмазы — когда закрыты VIP и колесо.",
-""
+"Yes. Free attempts every day on a timer, Diamonds — once VIP and the wheel are covered."
 ],
 [
 "<img class=\"i\" src=\"assets/game/move-command.png\" alt=\"\">«Направленное перемещение»",
-""
+"<img class=\"i\" src=\"assets/game/move-command.png\" alt=\"\">«Targeted relocate»"
 ],
 [
 "<b>Не за алмазы.</b> Его дают бесплатно (награды событий) и продают в магазине альянса за очки альянса — бери там.",
-""
+"<b>Not for Diamonds.</b> It is given for free (event rewards) and sold in the Alliance Shop for alliance points — get it there."
 ],
 [
 "<img class=\"i\" src=\"assets/game/speed-build.png\" alt=\"\">Ускорения стройки в первые дни",
-""
+"<img class=\"i\" src=\"assets/game/speed-build.png\" alt=\"\">Building speedups in the first days"
 ],
 [
 "<b>Нет.</b> Первые уровни строятся секунды и минуты.",
-""
+"<b>No.</b> The first levels build in seconds and minutes."
 ],
 [
 "<img class=\"i\" src=\"assets/game/energy.png\" alt=\"\">Энергия за алмазы",
-""
+"<img class=\"i\" src=\"assets/game/energy.png\" alt=\"\">Stamina for Diamonds"
 ],
 [
 "Только если очень нужно к событию.",
-""
+"Only if you really need it for an event."
 ],
 [
 "<b>Если платишь деньги — что выгодно.</b> Месячный пропуск (VIP на 30 дней, бонусы к стройке, сбору, атаке и защите, четвёртый отряд). Ежедневный набор со снаряжением и эссенцией ворона. Первая покупка — в ней Марлена.",
-""
+"<b>If you pay money — what's worth it.</b> The Monthly Pass (VIP for 30 days, bonuses to building, gathering, attack and defense, a fourth squad). The daily pack with gear and Raven Essence. The first purchase — Marlena is in it."
 ],
 [
 "<b>Что невыгодно.</b> Покупать «Алмазы» в магазине — там худшая цена. И раздел «Наборы» без разбора.",
-""
+"<b>What's not worth it.</b> Buying «Diamonds» in the shop — the worst price there. And the «Packs» section without thinking."
 ],
 [
 "VIP и выжившие",
-""
+"VIP and Survivors"
 ],
 [
 "VIP и выжившие — что они дают",
-""
+"VIP and Survivors — what they give"
 ],
 [
 "<b>VIP-очки</b> копятся сами: каждый день за вход в игру, и чем больше дней подряд заходишь, тем больше очков («Вы в игре N д. подряд» в окне VIP). Пропустил день — серия начинается заново.",
-""
+"<b>VIP points</b> build up by themselves: every day for logging in, and the more days in a row you log in, the more points («Logged in for N days in a row» in the VIP window). Miss a day — the streak starts over."
 ],
 [
 "Бонусы уровня работают, пока идёт <b>VIP-время</b> («Осталось VIP-времени» — его продлевают предметами и покупками).",
-""
+"Level bonuses work while <b>VIP time</b> is running («Remaining VIP Time» — extended with items and purchases)."
 ],
 [
 "здоровье, атака и защита героев, скорость похода;",
-""
+"heroes' HP, attack and defense, march speed;"
 ],
 [
 "производство зерна, древесины, трав; скорость стройки, исследований, обучения и лечения; вместимость казарм;",
-""
+"Grain, Timber, Herb production; building, research, training and healing speed; barracks capacity;"
 ],
 [
 "<b>VIP 6</b> — автоотправка секретных операций, <b>VIP 8</b> — быстрый вызов в Битве экспедиции, <b>VIP 12</b> — суперрежим секретных операций;",
-""
+"<b>VIP 6</b> — auto-dispatch of Covert Operations, <b>VIP 8</b> — quick summon in the Expedition Battle, <b>VIP 12</b> — Covert Operations super mode;"
 ],
 [
 "каждый уровень — свой ежедневный бесплатный набор: забирай каждый день.",
-""
+"each level has its own free daily pack: collect it every day."
 ],
 [
 "Выжившие",
-""
+"Survivors"
 ],
 [
 "Выжившие — жители, которых нанимаешь и <b>отправляешь работать в здания</b> (кнопка «Отправить» / «Быстрая отправка» в «Списке выживших»). У каждого своя должность: <b>Фермер, Дровосек, Травник</b> — больше ресурсов; <b>Строитель</b> — бесплатное ускорение стройки; <b>Исследователь, Учёный</b> — исследования; <b>Наставник, Офицер</b> — солдаты; <b>Сиделка</b> — лечение; <b>Кузнец</b> — снаряжение; хранители складов — защита ресурсов.",
-""
+"Survivors are residents you hire and <b>send to work in buildings</b> (the «Send» / «Quick Dispatch» button in the «Survivor List»). Each has a post: <b>Farmer, Lumberjack, Herbalist</b> — more resources; <b>Builder</b> — a free building speedup; <b>Explorer, Researcher</b> — research; <b>Instructor, Officer</b> — troops; <b>Nurse</b> — healing; <b>Blacksmith</b> — gear; storage keepers — resource protection."
 ],
 [
 "Чем выше редкость (UR, SSR) и звёзды выжившего, тем сильнее бонус. Звёзды поднимают фрагментами того же выжившего.",
-""
+"The higher a Survivor's rarity (UR, SSR) and stars, the stronger the bonus. Stars are raised with shards of the same Survivor."
 ],
 [
 "<b>Две особые выжившие UR:</b> охотница за головами <b>Фрейя</b> — с ней задания сокола дают дополнительные сундуки наград; <b>Теневой наёмник Элейн</b>. Обеих нельзя вытянуть из обычного случайного сундука UR.",
-""
+"<b>Two special UR Survivors:</b> the bounty hunter <b>Freya</b> — with her Falcon Quests give extra reward chests; <b>Shadow Mercenary Elaine</b>. Neither can be pulled from a regular random UR chest."
 ],
 [
 "Арены и реликвии",
-""
+"Arenas and Curios"
 ],
 [
 "Арены: обычная и Треугольная",
-""
+"Arenas: regular and Triangular"
 ],
 [
 "Во всех аренах <b>солдаты не погибают</b> — бои идут солдатами наивысшего уровня твоей территории. Правила ниже — коротко по окну правил в самой игре.",
-""
+"In all arenas <b>troops don't die</b> — battles use the highest-tier troops of your territory. The rules below are a short summary of the rules window in the game itself."
 ],
 [
 "Арена новичков",
@@ -1233,15 +1233,15 @@
 ],
 [
 "Регистрация сама. Вызываешь соперников со схожим рангом; победил того, кто выше, — <b>меняетесь местами</b>. Защищает тебя <b>Отряд 1</b> (состав защиты можно поменять). Награды за рейтинг — раз в неделю на почту.",
-""
+"Registration is automatic. You challenge opponents of a similar rank; beat someone ranked higher and <b>you swap places</b>. You are defended by <b>Squad 1</b> (the defense line-up can be changed). Ranking rewards come by mail once a week."
 ],
 [
 "Арена лучших и Арена судьбы",
-""
+"Apex Arena and Arena of Fate"
 ],
 [
 "Неделя, с понедельника 01:00 по серверу. Старт — 1000 очков, в каждом вызове 5 соперников на выбор: победа добавляет очки, поражение отнимает. За 1, 3 и 5 вызовов в день — ежедневные награды. В Арену судьбы пускают по мощи героев: топ-200 королевства — продвинутая, 201–1200 — промежуточная.",
-""
+"A week long, from Monday 01:00 server time. Start — 1000 points, each challenge offers 5 opponents to choose from: a win adds points, a loss takes them away. 1, 3 and 5 challenges a day give daily rewards. The Arena of Fate admits by Hero Might: top 200 of the kingdom — advanced, 201–1200 — intermediate."
 ],
 [
 "Треугольная арена",
@@ -1249,23 +1249,23 @@
 ],
 [
 "Только для <b>топ-200 по мощи героев</b> в королевстве. Собираешь <b>3 команды</b>, бой идёт <b>до двух побед</b> — три команды каждой стороны дерутся по очереди. Строи для атаки и для обороны сохраняются отдельно. <b>30 попыток в день.</b> Каждый день можно оценить троих из топ-3 — по <b>30 алмазов</b> за оценку.",
-""
+"Only for the <b>top 200 by Hero Might</b> in the kingdom. You build <b>3 teams</b>, the battle goes <b>to two wins</b> — each side's three teams fight in turn. Attack and defense formations are saved separately. <b>30 attempts a day.</b> Every day you can like three of the top 3 — <b>30 Diamonds</b> per like."
 ],
 [
 "<b>Совет для Треугольной арены:</b> раздели силу <b>ровно</b> между тремя командами — врагу хватит выиграть две из трёх. Одна супер-команда и две слабые проигрывают.",
-""
+"<b>Tip for the Triangular Arena:</b> split your strength <b>evenly</b> between three teams — the enemy only needs to win two of three. One super team and two weak ones lose."
 ],
 [
 "Реликвии",
-""
+"Curios"
 ],
 [
 "<img src=\"assets/shots/relics.webp\" alt=\"Окно «Зал реликвий»: общая мощь реликвий, прогресс коллекции UR/SSR/SR\"><span class=\"ring rect\" style=\"left:50%;top:84%;width:98%;aspect-ratio:7.8\"></span>",
-""
+"<img src=\"assets/shots/relics.webp\" alt=\"The Curio Hall window: total Curio Might, UR/SSR/SR collection progress\"><span class=\"ring rect\" style=\"left:50%;top:84%;width:98%;aspect-ratio:7.8\"></span>"
 ],
 [
 "Окно «Зал реликвий» (здание открывается на Святилище 8). Вкладки «Обзор» и «Галерея», рамка — прогресс коллекции по редкости.",
-""
+"The «Curio Hall» window (the building opens at Sanctuary 8). The «View» and «Gallery» tabs, the frame is the collection progress by rarity."
 ],
 [
 "Зал реликвий",
@@ -1273,82 +1273,82 @@
 ],
 [
 "Реликвии — особые постройки-украшения в городе. Игра пишет: «Собирайте и активируйте реликвии, чтобы активировать их характеристики. Чем выше качество реликвии, тем больше характеристик она даёт».",
-""
+"Curios are special decorative buildings in the city. The game says: «Collect and activate Curios to activate their stats. The higher the Curio quality, the more stats it gives»."
 ],
 [
 "Каждая активная реликвия даёт бонусы к <b>атаке, защите, особым характеристикам и экономике</b> и повышает мощь <b>всех героев</b> сразу.",
-""
+"Each active Curio gives bonuses to <b>attack, defense, special stats and economy</b> and raises the Might of <b>all heroes</b> at once."
 ],
 [
 "Как качать",
-""
+"How to level"
 ],
 [
 "Реликвию улучшают её фрагментами или <b>универсальными фрагментами реликвий</b> (не у всех реликвий — игра предупредит).",
-""
+"A Curio is upgraded with its own shards or <b>universal Curio shards</b> (not for every Curio — the game will warn you)."
 ],
 [
 "Лишние фрагменты меняются на целую реликвию («Обмен реликвий»).",
-""
+"Extra shards can be exchanged for a whole Curio («Curio Exchange»)."
 ],
 [
 "Ставить можно ограниченное число («Здание: N/M»). Убрал реликвию на хранение — её бонус пропадает.",
-""
+"You can place a limited number («Building: N/M»). Put a Curio into storage — its bonus disappears."
 ],
 [
 "Ошибки новичков",
-""
+"Beginner mistakes"
 ],
 [
 "Чего не делать",
-""
+"What not to do"
 ],
 [
 "<b>Качать здания ради мощи</b>",
-""
+"<b>Upgrading buildings for Might</b>"
 ],
 [
 "Цифра растёт, а армия нет. В бою решают герои, солдаты, исследования.",
-""
+"The number grows, but the army doesn't. Battles are decided by heroes, troops, research."
 ],
 [
 "<b>Тратить всё сразу, как получил</b>",
-""
+"<b>Spending everything as soon as you get it</b>"
 ],
 [
 "Те же ресурсы в свой день Дуэли принесли бы альянсу победу.",
-""
+"The same resources on their Duel day would have brought the alliance a win."
 ],
 [
 "<b>Играть без альянса</b>",
-""
+"<b>Playing without an alliance</b>"
 ],
 [
 "Нет помощи, подарков, магазина альянса. Святилищу с 7 уровня нужен Зал альянса.",
-""
+"No help, gifts, Alliance Shop. From level 7 the Sanctuary needs an Alliance Hall."
 ],
 [
 "<b>Не ставить щит на ночь</b>",
-""
+"<b>No shield overnight</b>"
 ],
 [
 "Город с полными складами без щита — первая цель для набегов.",
-""
+"A city with full storage and no shield is the first target for raids."
 ],
 [
 "<b>Марлене звёзды раньше Артура</b>",
-""
+"<b>Stars for Marlena before Arthur</b>"
 ],
 [
 "Сначала танк должен выживать, иначе Марлена не успеет ударить.",
-""
+"The tank must survive first, otherwise Marlena won't get to hit."
 ],
 [
 "<b>Камни в меч танка</b>",
-""
+"<b>Gearstone into a tank's sword</b>"
 ],
 [
 "Танку меч не нужен. Камни — в оружие героя урона.",
-""
+"A tank doesn't need a sword. Gearstone goes into the damage hero's weapon."
 ]
 ]
