@@ -205,9 +205,10 @@
 
   function homeView() {
     var s = S.server.server, rows = S.rows;
+    var pulled = Math.max.apply(null, (S.server.boards || []).map(function (b) { return b.pulled_at || 0; }).concat([0]));
     $("view").innerHTML =
       '<div class="ap-wrap">' +
-      '<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>обновлено ' + ago(S.server.updated) + " · данные обновляются раз в 30 минут</p></div></div>" +
+      '<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>проверено ' + ago(S.server.updated) + " · робот спрашивает трекер раз в 30 минут" + (pulled ? " · рейтинги трекер обновляет раз в сутки, последние — " + atLabel(pulled) : "") + "</p></div></div>" +
       '<div class="ap-cells c5">' + cell("Игроков", full(s.players), (s.age_days || "—") + " дней серверу") + cell("Альянсов", full(s.alliances)) + cell("Общая мощь", num(s.power)) +
       cell("Король", esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell("Альянсов со свежим составом", Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + " из 30", "у остальных — состав по карте за 3 дня, без рангов") + "</div></div>" +
       '<div class="ap-card"><div class="ap-h"><div><h3>Поиск</h3><p>игроки альянсов топ-30 и альянсы топ-100</p></div>' + pills("skind", [["p", "Игроки"], ["a", "Альянсы"]], "p") + '</div><input id="sq" class="ap-in" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off"><div id="sres"></div></div>' +
@@ -259,17 +260,47 @@
     }
     return out;
   }
-  function moveList(el) {
-    var list = demoMoves(), out = '<div class="ap-demo"><b>Демо-версия</b><span>Так выглядит платная функция «Кто вступил, кто вышел и куда ушёл». Игроки и альянсы здесь вымышленные — для примера.</span></div>', last = "";
+  var tagH = function (s) { return '<span class="tag">[' + esc(s) + "]</span>"; };
+  /* list: [{t, kind, nick, power, from, now, al}] ; f.uid — лента одного игрока (тогда пишем, в какой альянс он вступил / из какого вышел) */
+  function moveRows(list, note, f) {
+    var out = note, last = "";
     list.forEach(function (e) {
       var dl = dayLabel(e.t);
       if (dl !== last) { out += '<div class="ap-day">' + dl + "</div>"; last = dl; }
-      var join = e.kind === "join";
-      var where = join ? (e.from ? 'пришёл из <span class="tag">[' + esc(e.from) + "]</span>" : "до этого без альянса") : (e.now ? 'ушёл в <span class="tag">[' + esc(e.now) + "]</span>" : "теперь без альянса");
-      out += '<div class="ap-mv"><div class="ap-who"><img class="av" src="' + G + 'doctor.png" alt=""><div><b>' + esc(e.nick) + "</b><span>мощь " + num(e.power) + '</span></div></div>' +
+      var join = e.kind === "join", where;
+      if (f && f.uid && e.al) where = join ? "в " + tagH(e.al) + (e.from ? ", пришёл из " + tagH(e.from) : ", до этого без альянса") : "из " + tagH(e.al) + (e.now ? ", ушёл в " + tagH(e.now) : ", теперь без альянса");
+      else where = join ? (e.from ? "пришёл из " + tagH(e.from) : "до этого без альянса") : (e.now ? "ушёл в " + tagH(e.now) : "теперь без альянса");
+      var who = e.uid && !(f && f.uid) ? '<a href="#p=' + e.uid + '"><b>' + esc(e.nick) + "</b></a>" : "<b>" + esc(e.nick) + "</b>";
+      out += '<div class="ap-mv"><div class="ap-who"><img class="av" src="' + G + 'doctor.png" alt=""><div>' + who + "<span>мощь " + num(e.power) + '</span></div></div>' +
         '<div class="ap-mv-r"><span class="ap-bd ' + (join ? "in" : "out") + '">' + (join ? "Вступил" : "Вышел") + '</span><span class="wh">' + where + '</span><span class="tm">' + both(e.t) + "</span></div></div>";
     });
-    el.innerHTML = '<div class="ap-list">' + out + "</div>";
+    return '<div class="ap-list">' + out + "</div>";
+  }
+  /* настоящие данные — только подписчикам (база отдаёт их только при действующей подписке), остальным — демо */
+  var mvCur = null, mvHooked = false;
+  function moveList(el, f) {
+    mvCur = { el: el, f: f || {} };
+    if (!mvHooked && window.LAAuth) { mvHooked = true; LAAuth.on(drawMoves); } else drawMoves();
+  }
+  function drawMoves() {
+    var c = mvCur, A = window.LAAuth;
+    if (!c || !document.body.contains(c.el)) return;
+    var paid = A && A.ready && A.state.user && (A.hasSub() || A.state.admin);
+    if (!paid) {
+      c.el.innerHTML = moveRows(demoMoves(), '<div class="ap-demo"><b>Демо-версия</b><span>Так выглядит платная функция «Кто вступил, кто вышел и куда ушёл». Игроки и альянсы здесь вымышленные — для примера. ' +
+        '<a href="cabinet.html">' + (A && A.state && A.state.user ? "Как оформить подписку" : "Войти или зарегистрироваться") + "</a></span></div>", null);
+      return;
+    }
+    c.el.innerHTML = '<p class="ap-empty">Загружаю…</p>';
+    var q = A.client.from("moves").select("t,kind,uid,nick,power,from_abbr,now_abbr,al_abbr").order("t", { ascending: false }).limit(2000);
+    q = c.f.uid ? q.eq("uid", c.f.uid) : q.eq("al_id", c.f.al);
+    q.then(function (r) {
+      if (mvCur !== c) return;
+      if (r.error) { c.el.innerHTML = '<p class="ap-empty">Не удалось загрузить данные: ' + esc(r.error.message) + "</p>"; return; }
+      var list = (r.data || []).map(function (x) { return { t: x.t, kind: x.kind, uid: x.uid, nick: x.nick, power: x.power, from: x.from_abbr, now: x.now_abbr, al: x.al_abbr }; });
+      var note = '<div class="ap-demo"><b>Настоящие данные · подписка</b><span>Вступления и выходы по альянсам топ-30 с 27 октября 2026. Обновляются раз в 30 минут.</span></div>';
+      c.el.innerHTML = list.length ? moveRows(list, note, c.f) : note + '<p class="ap-empty">' + (c.f.uid ? "Этот игрок за это время не менял альянс среди топ-30." : "Пока никто не вступал и не выходил.") + "</p>";
+    });
   }
 
   /* ---------- карточка альянса ---------- */
@@ -281,7 +312,7 @@
     if (!w7) { var ev7 = (a.events || []).filter(function (e) { return e.t >= now - 7 * 86400; }), j7 = ev7.filter(function (e) { return e.kind === "join"; }).length; w7 = { joined: j7, left: ev7.length - j7 }; }
     var lead = a.members.filter(function (m) { return (m.rank || "").slice(0, 2) === "R5"; })[0];
     $("view").innerHTML = '<div class="ap-wrap">' +
-      '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Все альянсы</a><span class="ap-upd">обновлено ' + ago(a.updated) + "</span></div>" +
+      '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Все альянсы</a><span class="ap-upd">состав снят ' + atLabel(a.roster_t || a.updated) + " · проверено " + ago(a.updated) + "</span></div>" +
       '<div class="ap-hero"><img class="emb" src="' + G + 'alliance.png" alt=""><div><h2><span class="tag">[' + esc(a.abbr) + "]</span> " + esc(a.name) + '</h2><div class="ap-chips"><span>Сервер 397</span><span>место ' + (r.rank || "—") + " по мощи</span>" + (a.language ? "<span>язык: " + esc(a.language) + "</span>" : "") + (a.live ? "" : '<span class="warn">состав ещё не обновлялся</span>') + "</div></div></div>" +
       '<div class="ap-cells c5">' + cell("Мощь", num(r.score || a.power), delta(wk(ix)) + " за 7 дней") +
       cell("Участники", cnt ? cnt + '<small>/' + cap + "</small>" : "—", cnt ? '<i class="ap-mini"><u style="width:' + Math.min(100, cnt / cap * 100) + '%"></u></i>' : "") +
@@ -361,7 +392,7 @@
         P.innerHTML = '<div class="ap-card"><div class="ap-cells c4">' + cell("Вступили за 7 дней", '<span class="up">+' + w7.joined + "</span>") + cell("Вышли за 7 дней", '<span class="dn">−' + w7.left + "</span>") +
           cell("Итого за 7 дней", signed(w7.joined - w7.left, String)) + cell("За 30 дней", m30 ? '<span class="up">+' + m30.joined + '</span> <span class="dn">−' + m30.left + "</span>" : "—") + "</div></div>" +
           '<div class="ap-sec"><h3>Кто и когда</h3>' + "" + '</div><div class="ap-card flush"><div id="elist"></div></div>';
-        moveList($("elist"));
+        moveList($("elist"), { al: id });
       }
     };
     pane("m"); bindPills("atabs", pane);
@@ -472,7 +503,7 @@
         }, p.card ? "Изменений пока нет." : "История загрузится с ближайшими обновлениями.");
       } else {
         P.innerHTML = '<div class="ap-card flush"><div id="mvl"></div></div>';
-        moveList($("mvl"));
+        moveList($("mvl"), { uid: uid });
       }
     };
     var stars = function (h) { return Math.floor((Number(h.star) || 0) / 5); };

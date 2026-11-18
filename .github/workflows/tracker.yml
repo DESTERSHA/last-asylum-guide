@@ -40,6 +40,7 @@ jobs:
           PRIVATE_DIR: private
           TRACKER_KEY: ${{ secrets.TRACKER_KEY }}
           TRACKER_API: ${{ secrets.TRACKER_API }}
+          LA_SB_PUSH: ${{ secrets.LA_SB_PUSH }}
           PLAYERS: ${{ github.event.inputs.players || '45' }}
           FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: python tools/tracker_sync.py

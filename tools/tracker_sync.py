@@ -101,6 +101,7 @@ def main():
     players = load(OUT / "players.json", {"players": {}})["players"]
     series = {}
     live_ids = []
+    moves_all = []  # вступления/выходы — для подписчиков, уходят в закрытую базу (push_moves)
 
     for row in top:
         aid = row["id"]
@@ -158,6 +159,8 @@ def main():
                                          "summary": ev.get("summary"), "live": bool(mem), "roster": roster, "roster_t": roster_t, "members": sorted(mem, key=lambda m: -(m["power"] or 0))})  # без ленты — она в закрытом хранилище
         if PRIV:
             save(PRIV / "a" / f"{aid}.json", {"updated": now, "id": aid, "abbr": a.get("abbr"), "events": events})
+        moves_all.extend({"al_id": aid, "al_abbr": a.get("abbr"), "t": e["t"], "kind": e["kind"], "uid": e["uid"], "nick": e.get("nick"),
+                          "power": e.get("power"), "from_abbr": e.get("from") or "", "now_abbr": e.get("now") or ""} for e in events)
         ent = index["alliances"].get(str(aid), {"days": {}})
         if datetime.now(timezone.utc).hour < 3 or not ent.get("hist"):
             try:
@@ -222,6 +225,12 @@ def main():
                 players[u] = {"nick": r["name"], "aid": 0, "abbr": r.get("abbr", ""), "top": True, "seen": now}
             elif not players[u].get("aid"):
                 players[u]["top"] = True
+            # рейтинг трекер обновляет раз в сутки: берём из него цифру, только если она свежее той, что уже есть
+            # (нужно игрокам вне топ-30 альянсов — их карточка обновляется раз в неделю)
+            fld = {"power": "power", "kills": "kills", "castle": "lv"}.get(b["slug"])
+            pp = players[u]
+            if fld and r.get("score") and (b.get("pulled_at") or 0) > (pp.get("dt") or pp.get("last") or 0):
+                pp[fld] = r["score"]
     # игроки, которых больше нет ни в одном из собранных альянсов, — помечаем «без альянса», если они были в обработанном альянсе
     done = set(live_ids)  # «вышел» ставим только по альянсам, у которых есть свежий состав
     for uid, p in players.items():
@@ -320,7 +329,41 @@ def main():
             else:
                 s.setdefault(uid, {})[day] = list(v)
         save(p, s)
+    push_moves(moves_all)
     print(f"готово: альянсов {len(top)}, игроков в базе {len(players)}, запросов {used}")
+
+
+SB_URL = "https://mhicplqgnnvoloyjmhud.supabase.co"
+SB_KEY = "sb_publishable_piDd1XwlLrQuLZIVUCi3mw_bSqPRba9"  # публичный ключ сайта; запись проверяет пароль робота внутри базы
+
+
+def push_moves(moves):
+    """Новые вступления/выходы — в закрытую базу подписчиков. Отправляем всё новее (последняя отправка − 3 дня):
+    повторы база отбрасывает сама, а сбой одной отправки догоняется следующей."""
+    token = os.environ.get("LA_SB_PUSH", "").strip()
+    if not token or not PRIV:
+        print("платные данные: пароль робота или закрытое хранилище не заданы — пропускаю", file=sys.stderr)
+        return
+    mark_p = PRIV / "sb_pushed.json"
+    mark = load(mark_p, {}).get("t", 0)
+    rows = [m for m in moves if m["t"] > mark - 3 * 86400]
+    sent = 0
+    for i in range(0, len(rows), 500):
+        body = json.dumps({"p_token": token, "p_rows": rows[i:i + 500]}).encode("utf-8")
+        req = urllib.request.Request(SB_URL + "/rest/v1/rpc/push_moves", data=body, method="POST",
+                                     headers={"apikey": SB_KEY, "Authorization": f"Bearer {SB_KEY}", "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                sent += int(json.loads(r.read().decode("utf-8")) or 0)
+        except urllib.error.HTTPError as e:
+            print("платные данные: база отказала:", e.code, e.read().decode("utf-8", "replace")[:300], file=sys.stderr)
+            return
+        except (urllib.error.URLError, TimeoutError) as e:
+            print("платные данные: нет связи с базой:", e, file=sys.stderr)
+            return
+    if rows:
+        save(mark_p, {"t": max(m["t"] for m in rows)})
+    print(f"платные данные: отправлено {len(rows)}, новых в базе {sent}")
 
 
 if __name__ == "__main__":
