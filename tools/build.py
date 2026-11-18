@@ -44,6 +44,9 @@ TEMPLATE = """<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v={ver}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css?v={ver}">
+<script>(function(){{try{{var q=location.search.match(/[?&]design=(old|new)/);if(q)localStorage.setItem("la_design",q[1]);if(localStorage.getItem("la_design")!=="old")document.documentElement.classList.add("t-ap")}}catch(e){{document.documentElement.classList.add("t-ap")}}}})()</script>
 </head>
 <body>
 <header class="site-head"><div class="wrap hdr">
@@ -81,7 +84,7 @@ def nav_html(current):
 
 def main():
     h = hashlib.sha1()
-    for f in ("assets/style.css", "assets/app.js", "assets/fav.js"):
+    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css"):
         h.update((ROOT / f).read_bytes())
     ver = h.hexdigest()[:10]
     for slug, _, _ in PAGES:

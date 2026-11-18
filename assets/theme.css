@@ -1,0 +1,102 @@
+/* Новый вид всего сайта — в стиле страницы «Сервер 397» (серая подложка, белые карточки, светлые плитки, Inter, кнопки-«таблетки»).
+   Включён классом html.t-ap; «Как было» — ?design=old (переключатель внизу справа). */
+html.t-ap body{background:#f2f3f5;font-family:Inter,system-ui,sans-serif;color:#1c1c1e}
+html.t-ap .site-head{background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid #e6e7eb}
+html.t-ap .logo b{font:700 16px Inter,system-ui,sans-serif;letter-spacing:-.2px}
+html.t-ap nav.main a{border-radius:999px;color:#5d636f;font-weight:600}
+html.t-ap nav.main a:hover{background:#f1f2f5;color:#1c1c1e}
+html.t-ap nav.main a.on{background:#1c1c1e;color:#fff}
+html.t-ap .clock{border-color:#e6e7eb;border-radius:16px;background:#fff}
+html.t-ap .clock b{font:700 17px Inter,system-ui,sans-serif}
+
+/* разделы — белые карточки на серой подложке */
+html.t-ap main{padding:14px 0 10px}
+html.t-ap main>.wrap,html.t-ap main>section,html.t-ap main>.band{max-width:1240px;margin:0 auto 14px;background:#fff;border-radius:28px;box-sizing:border-box}
+html.t-ap main>.wrap{padding:22px 26px}
+html.t-ap main>section.band,html.t-ap main>.band{padding:26px 26px}
+html.t-ap .band.soft,html.t-ap .band.sand,html.t-ap .band.paper{background:#fff}
+html.t-ap .band.dark{background:#1c1c1e}
+html.t-ap .ap-band{background:transparent!important;padding:0!important;max-width:none!important}
+html.t-ap main>section.ap-band{background:transparent;border-radius:0}
+
+/* заголовки */
+html.t-ap h1{font:700 clamp(26px,2.8vw,38px)/1.12 Inter,system-ui,sans-serif;letter-spacing:-.6px}
+html.t-ap h2{font:600 clamp(21px,2vw,27px)/1.2 Inter,system-ui,sans-serif;letter-spacing:-.3px}
+html.t-ap h3{font-family:Inter,system-ui,sans-serif;font-weight:600}
+html.t-ap .eyebrow{color:#8a8a8e;letter-spacing:.8px;font-size:11.5px}
+html.t-ap .kick{color:#8a8a8e}
+html.t-ap .sub,html.t-ap .lead{color:#6b6e78}
+
+/* заглавный блок */
+html.t-ap .hero{padding-top:6px;padding-bottom:6px}
+html.t-ap .art{border-radius:22px;box-shadow:none}
+html.t-ap .art .count{border-radius:16px;background:rgba(255,255,255,.94)}
+
+/* плитки и карточки внутри разделов */
+html.t-ap .fact,html.t-ap .card,html.t-ap .day,html.t-ap .steps>.step,html.t-ap .note,html.t-ap .evc{background:#f6f6f8;border:0!important;border-radius:18px;box-shadow:none}
+html.t-ap .fact.hot{background:#fdecea}html.t-ap .fact.gold{background:#fdf3dc}
+html.t-ap .fact h3,html.t-ap .day b{font-family:Inter,system-ui,sans-serif;font-weight:700}
+html.t-ap .fact .big{font-family:Inter,system-ui,sans-serif;font-weight:300;letter-spacing:-.5px}
+html.t-ap .card .ic{background:#fff}
+html.t-ap .day.sat{background:#1c1c1e}
+html.t-ap .step{border-top-color:#ececef}
+html.t-ap .step .no{border-radius:999px;font-family:Inter,system-ui,sans-serif}
+
+/* кнопки — «таблетки» */
+html.t-ap .btn{border-radius:999px;border-color:#e3e3e7;font-weight:600}
+html.t-ap .btn.pri{background:#1c1c1e;border-color:#1c1c1e}
+html.t-ap .tabbar button,html.t-ap .tabbar a{border-radius:999px}
+
+/* таблицы — тонкие разделители */
+html.t-ap table{border-collapse:collapse}
+html.t-ap .tbl{border:0;border-radius:18px;background:#fff}
+html.t-ap .tbl th{background:#f6f6f8;color:#8a8a8e;font-weight:600}
+html.t-ap .tbl td,html.t-ap .tbl th{border-color:#ececef}
+
+/* подвал */
+html.t-ap .foot{background:#1c1c1e;border-radius:28px 28px 0 0;max-width:none}
+
+/* переключатель «Стало / Как было» */
+.design-sw{position:fixed;left:16px;bottom:16px;z-index:60;display:flex;gap:4px;background:#fff;border:1px solid #e3e3e7;border-radius:999px;padding:4px;box-shadow:0 8px 24px -12px rgba(0,0,0,.25);font:600 12.5px Inter,system-ui,sans-serif}
+.design-sw button{font:inherit;border:0;background:transparent;border-radius:999px;height:30px;padding:0 12px;cursor:pointer;color:#5d636f}
+.design-sw button.on{background:#1c1c1e;color:#fff}
+@media (max-width:760px){html.t-ap main>.wrap,html.t-ap main>section.band,html.t-ap main>.band{border-radius:22px;margin:0 8px 10px;padding:18px 16px}}
+
+/* единый шрифт везде (в старом виде местами был декоративный Unbounded и PT Serif) */
+html.t-ap body,html.t-ap body *{font-family:Inter,system-ui,sans-serif!important}
+
+/* === «чище», как страница «Сервер 397» (её просьба 18.11) === */
+/* одна общая серая подложка, белые карточки внутри */
+html.t-ap body{background:#f6f7f9}
+html.t-ap main{max-width:1268px;margin:16px auto 24px;background:#efefef;border-radius:30px;padding:14px;box-sizing:border-box}
+html.t-ap main>.wrap,html.t-ap main>section,html.t-ap main>.band{max-width:none;margin:0 0 14px;border-radius:28px}
+html.t-ap main>:last-child{margin-bottom:0}
+html.t-ap main>section.ap-band{margin:0;padding:0!important}
+html.t-ap main>section.ap-band .ap-in-wrap{padding:0}
+html.t-ap main>section.ap-band .ap-wrap{background:transparent;padding:0}
+/* заголовки тоньше и спокойнее */
+html.t-ap h1{font-weight:600!important;font-size:clamp(24px,2.4vw,32px)!important;letter-spacing:-.4px}
+html.t-ap h2{font-weight:400!important;font-size:clamp(20px,1.8vw,24px)!important;letter-spacing:-.2px;margin-top:2px}
+html.t-ap h3{font-weight:600!important}
+html.t-ap .eyebrow{text-transform:none;letter-spacing:0;font-size:12.5px;font-weight:500;color:#8a8a8e}
+html.t-ap .kick{font-weight:500;font-size:13px}
+html.t-ap .sub{font-size:13.5px;color:#8a8a8e}
+html.t-ap .lead{font-size:15px;color:#6b6e78}
+/* плитки — как на странице сервера: подпись серая, без рамок и теней */
+html.t-ap .fact,html.t-ap .card,html.t-ap .day,html.t-ap .steps>.step,html.t-ap .note,html.t-ap .evc{border-radius:16px}
+html.t-ap .fact h3,html.t-ap .card h3{font-size:15px!important}
+html.t-ap .fact p,html.t-ap .card p{font-size:13.5px;color:#6b6e78}
+html.t-ap .fact .big{font-weight:300!important;color:#1c1c1e!important;font-size:30px}
+html.t-ap .fact.hot,html.t-ap .fact.gold{background:#f6f6f8}
+html.t-ap .fact.hot h3::before,html.t-ap .fact.gold h3::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:2px;background:#e0453a}
+html.t-ap .fact.gold h3::before{background:#f0a531}
+/* «В избранное» — тихая серая кнопка */
+html.t-ap .fav-star{background:#f6f6f8;border-color:transparent;color:#6b6e78;font-weight:500}
+html.t-ap .fav-star:hover{background:#ececef}
+html.t-ap .fav-star.on{background:#1c1c1e;color:#fff}
+html.t-ap .cab-link{background:#f6f6f8;border-color:transparent;color:#1c1c1e;border-radius:999px}
+html.t-ap .cab-link i{background:#1c1c1e}
+/* заставка справа — спокойнее */
+html.t-ap .art{border-radius:22px}
+html.t-ap .art .count{box-shadow:none}
+@media (max-width:760px){html.t-ap main{margin:8px;border-radius:22px;padding:8px}html.t-ap main>.wrap,html.t-ap main>section.band,html.t-ap main>.band{margin:0 0 8px}}
