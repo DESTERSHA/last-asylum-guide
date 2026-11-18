@@ -17,7 +17,7 @@
   }
   function remove(url) { write(read().filter(function (x) { return x.url !== url; })); if (window.LAAuth) window.LAAuth.favDel(url); }
   function slug(s) { return String(s).toLowerCase().replace(/[^a-zа-яё0-9]+/gi, "-").replace(/^-+|-+$/g, "").slice(0, 60); }
-  var T = window.T || function (s) { return s; };
+  var T = function (s) { return window.T ? window.T(s) : s; };
   var page = (location.pathname.split("/").pop() || "index.html");
   var pageName = (document.querySelector('nav.main a.on') || {}).textContent || document.title.split("|")[0].trim();
   function star(el, item) {

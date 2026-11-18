@@ -1,7 +1,7 @@
 /* Кабинет: вход/регистрация, подписка, избранное по группам, выдача подписки (для админа). */
 (function () {
   "use strict";
-  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
+  var T = function (s) { return window.T ? window.T(s) : s; };  // перевод подписей на английской странице (assets/i18n.js)
   var box = document.getElementById("cabList"), acc = document.getElementById("cabAcc");
   if (!box || !window.LAFav) return;
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };

@@ -2,7 +2,7 @@
    Разметка: <div class="m3d" data-list="<имя списка>"> … </div>; списки — window.M3D_LISTS[имя] = [[файл, подпись, картинка], …] */
 (function () {
   "use strict";
-  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
+  var T = function (s) { return window.T ? window.T(s) : s; };  // перевод подписей на английской странице (assets/i18n.js)
   var ANIM = [
     [/^(stand|idle|stand_?\d*)$/i, T("Покой")], [/^idle\d+$/i, T("Покой")], [/attack/i, T("Атака")], [/skill/i, T("Навык")], [/^(story\d*_)?walk/i, T("Ходьба")],
     [/^run/i, T("Бег")], [/stun/i, T("Оглушение")], [/^die|death|dead/i, T("Смерть")], [/killer|kill/i, T("Добивание")], [/born|appear|show/i, T("Появление")],

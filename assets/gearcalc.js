@@ -1,7 +1,7 @@
 /* Калькулятор снаряжения: цифры — из таблиц игры (data/gear.json). */
 (function () {
   "use strict";
-  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
+  var T = function (s) { return window.T ? window.T(s) : s; };  // перевод подписей на английской странице (assets/i18n.js)
   var box = document.getElementById("gcalc");
   if (!box) return;
   var ICON = { "Трава": "herb.png", "Камень снаряжения": "gearstone.png", "Закаленная сталь": "mat-steel.png", "Латунь": "mat-brass.png",

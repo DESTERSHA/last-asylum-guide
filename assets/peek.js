@@ -1,7 +1,7 @@
 /* Быстрый просмотр: ссылка в тексте открывает нужный раздел окном поверх страницы (не уводит со страницы).
    В окне — страница сайта в режиме ?embed=1: без шапки и подвала, показан только раздел по якорю. */
 (function () {
-  var T = window.T || function (s) { return s; };
+  var T = function (s) { return window.T ? window.T(s) : s; };
   "use strict";
   var embed = /[?&]embed=1/.test(location.search);
   if (embed) {

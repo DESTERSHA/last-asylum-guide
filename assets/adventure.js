@@ -1,7 +1,7 @@
 /* «Приключение»: таблица этапов и дохода в простое из data/adventure.json (таблицы игры). */
 (function () {
   "use strict";
-  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
+  var T = function (s) { return window.T ? window.T(s) : s; };  // перевод подписей на английской странице (assets/i18n.js)
   var box = document.getElementById("advTable"), inc = document.getElementById("advIncome");
   if (!box) return;
   var ICON = { "Зерно": "food.png", "Древесина": "wood.png", "Трава": "herb.png", "Противоядие": "antidote.png",

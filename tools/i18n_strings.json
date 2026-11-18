@@ -287,5 +287,6 @@
  "Готово: подписка до ": "Done: subscription until ",
  "Подписка снята.": "Subscription revoked.",
  "<div class=\"cab-empty\"><b>Пока пусто.</b><span>Открой любую страницу — у разделов и событий есть кнопка «☆ В избранное», а на странице «Сервер 397» — у альянсов и игроков.</span><a class=\"btn pri\" href=\"events.html\">Например, события</a></div>": "<div class=\"cab-empty\"><b>Nothing here yet.</b><span>Open any page — sections and events have a «☆ Save» button, and on the «Server 397» page alliances and players have one too.</span><a class=\"btn pri\" href=\"events.en.html\">For example, events</a></div>",
- "\" title=\"Убрать из избранного\">Убрать</button></div>": "\" title=\"Remove from saved\">Remove</button></div>"
+ "\" title=\"Убрать из избранного\">Убрать</button></div>": "\" title=\"Remove from saved\">Remove</button></div>",
+ "Игрок": "Player"
 }

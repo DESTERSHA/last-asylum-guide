@@ -91,9 +91,9 @@ def wrap(path, apply=True):
     if apply and res != src:
         US = '(function () {\n  "use strict";'
         if "var T = window.T" not in res and US in res:
-            res = res.replace(US, US + "\n  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)", 1)
+            res = res.replace(US, US + "\n  var T = function (s) { return window.T ? window.T(s) : s; };  // перевод подписей на английской странице (assets/i18n.js)", 1)
         if "var T = window.T" not in res:
-            res = res.replace("(function () {", "(function () {\n  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)", 1)
+            res = res.replace("(function () {", "(function () {\n  var T = function (s) { return window.T ? window.T(s) : s; };  // перевод подписей на английской странице (assets/i18n.js)", 1)
         path.write_text(res, encoding="utf-8")
     return found
 

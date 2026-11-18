@@ -5,7 +5,7 @@
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* приватный режим: галочки просто не запомнятся */ } }
   };
-  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
+  var T = function (s) { return window.T ? window.T(s) : s; };  // перевод подписей на английской странице (assets/i18n.js)
   var SRV = -2, MSK = 3; // время в игре = UTC−2, Москва = UTC+3
   function at(off) { return new Date(Date.now() + off * 36e5); }
   function hhmm(d) { return String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0"); }

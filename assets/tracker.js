@@ -1,7 +1,7 @@
 /* Страница «Сервер 397»: список альянсов, карточка альянса, карточка игрока. Данные — data/tracker/*.json (робот обновляет раз в 3 часа). */
 (function () {
   "use strict";
-  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
+  var T = function (s) { return window.T ? window.T(s) : s; };  // перевод подписей на английской странице (assets/i18n.js)
   var D = "data/tracker/";
   var S = { server: null, index: {}, players: {}, al: {}, rows: [], board: {}, heroes: {} };
   var $ = function (id) { return document.getElementById(id); };
@@ -18,7 +18,7 @@
     if (a >= 1e3) return s + (a / 1e3).toFixed(1) + "K";
     return s + a;
   }
-  var EN = (window.LA_LANG === "en");  // английская страница: свои даты, «назад», разделители чисел
+  var EN = (document.documentElement.lang === "en");  // язык берём со страницы: скрипт может запуститься раньше assets/i18n.js  // английская страница: свои даты, «назад», разделители чисел
   function full(n) { return (Number(n) || 0).toLocaleString(EN ? "en-US" : "ru-RU"); }
   function signed(n, f) { n = Number(n) || 0; return (n > 0 ? "+" : n < 0 ? "−" : "±") + (f || num)(Math.abs(n)); }
   function ago(t) {
@@ -108,11 +108,11 @@
     var span = ts ? Math.max(1, Math.round((pts[pts.length - 1][0] - pts[0][0]) / 86400)) : pts.length;
     box.innerHTML = '<div class="ap-ch-h"><div><span class="l">' + title + '</span><b class="cur">' + fmt(last) + '</b><span class="chg">' + delta(last - first, fmt) + T(" за ") + span + T(" дн.</span></div>") + (opt.right || "") + '</div><div class="ap-ch-body"><svg></svg><div class="ap-tip"></div></div>';
     var body = box.querySelector(".ap-ch-body"), svg = box.querySelector("svg"), tip = box.querySelector(".ap-tip");
-    var W = Math.max(280, body.clientWidth), H = opt.h || 240, L = 54, R = 14, T = 14, B = 28;
+    var W = Math.max(280, body.clientWidth), H = opt.h || 240, L = 54, R = 14, TP = 14, B = 28;
     var v = pts.map(function (p) { return p[1]; }), mn = Math.min.apply(null, v), mx = Math.max.apply(null, v);
     var pad = (mx - mn) * 0.12 || Math.max(1, mx * 0.02); mn -= pad; mx += pad;
     if (opt.zero && mn < 0) mn = 0;
-    var x = function (i) { return L + i * (W - L - R) / (pts.length - 1); }, y = function (n) { return T + (mx - n) * (H - T - B) / (mx - mn); };
+    var x = function (i) { return L + i * (W - L - R) / (pts.length - 1); }, y = function (n) { return TP + (mx - n) * (H - TP - B) / (mx - mn); };
     var NS = "http://www.w3.org/2000/svg";
     svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("width", W); svg.setAttribute("height", H);
     var g = "";
@@ -123,7 +123,7 @@
     var gid = "gr" + id;
     svg.innerHTML = '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--ap-acc)" stop-opacity=".22"/><stop offset="1" stop-color="var(--ap-acc)" stop-opacity="0"/></linearGradient></defs>' + g +
       '<path d="' + line + " L" + x(pts.length - 1).toFixed(1) + " " + (H - B) + " L" + L + " " + (H - B) + 'Z" fill="url(#' + gid + ')"/><path class="ln" d="' + line + '"/>' +
-      '<line class="vl" y1="' + T + '" y2="' + (H - B) + '" x1="-9" x2="-9"/><circle class="dot" r="5" cx="-9" cy="-9"/><rect class="hit" x="' + L + '" y="0" width="' + (W - L - R) + '" height="' + H + '"/>';
+      '<line class="vl" y1="' + TP + '" y2="' + (H - B) + '" x1="-9" x2="-9"/><circle class="dot" r="5" cx="-9" cy="-9"/><rect class="hit" x="' + L + '" y="0" width="' + (W - L - R) + '" height="' + H + '"/>';
     var vl = svg.querySelector(".vl"), dot = svg.querySelector(".dot");
     var show = function (i) {
       var p = pts[i], px = x(i), py = y(p[1]);
@@ -162,26 +162,26 @@
       '<div class="ap-ch-body"><svg></svg></div><div class="ap-tr-rng">' + whenFull(f.t) + " → " + whenFull(l.t) + "</div>";
     bindPills(boxId + "-rng", function (v) { cfg.days = Number(v); drawTrend(boxId, all, cfg); });
     var body = box.querySelector(".ap-ch-body"), svg = box.querySelector("svg"), chips = box.querySelector(".chips");
-    var W = Math.max(300, body.clientWidth), H = 230, L = 70, R = hasS ? 44 : 14, T = 12, B = 14;
+    var W = Math.max(300, body.clientWidth), H = 230, L = 70, R = hasS ? 44 : 14, TP = 12, B = 14;
     var t0 = f.t, t1 = l.t, X = function (t) { return L + (t - t0) * (W - L - R) / Math.max(1, t1 - t0); };
     var rng = function (key) { var v = pts.map(function (p) { return p[key]; }).filter(function (x) { return x != null; }); var mn = Math.min.apply(null, v), mx = Math.max.apply(null, v); if (mx === mn) { mx += 1; mn -= 1; } return [mn, mx]; };
     var ra = rng("a"), rk = hasK ? rng("k") : null, rs = hasS ? rng("s") : null;
-    var Y = function (v, r) { return T + (r[1] - v) * (H - T - B) / (r[1] - r[0]); };
+    var Y = function (v, r) { return TP + (r[1] - v) * (H - TP - B) / (r[1] - r[0]); };
     var path = function (key, r, step) {
       var out = "", prev = null;
       pts.forEach(function (p) { if (p[key] == null) return; var x = X(p.t), y = Y(p[key], r); if (prev === null) out += "M" + x.toFixed(1) + " " + y.toFixed(1); else { if (step) out += " L" + x.toFixed(1) + " " + prev.toFixed(1); out += " L" + x.toFixed(1) + " " + y.toFixed(1); } prev = y; });
       return out;
     };
     var la = path("a", ra), gid = "tg" + boxId;
-    var g = '<line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + T + '" y2="' + T + '"/><line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + (T + (H - T - B) / 2) + '" y2="' + (T + (H - T - B) / 2) + '"/><line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>';
-    g += '<text class="axa" x="' + (L - 8) + '" y="' + (T + 4) + '" text-anchor="end">' + num(ra[1]) + '</text><text class="axa" x="' + (L - 8) + '" y="' + (H - B + 4) + '" text-anchor="end">' + num(ra[0]) + "</text>";
-    if (rk) g += '<text class="axk" x="' + (L - 8) + '" y="' + (T + 20) + '" text-anchor="end">' + num(rk[1]) + '</text><text class="axk" x="' + (L - 8) + '" y="' + (H - B - 12) + '" text-anchor="end">' + num(rk[0]) + "</text>";
-    if (rs) g += '<text class="axs" x="' + (W - R + 8) + '" y="' + (T + 4) + '">' + rs[1] + '</text><text class="axs" x="' + (W - R + 8) + '" y="' + (H - B + 4) + '">' + rs[0] + "</text>";
+    var g = '<line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + TP + '" y2="' + TP + '"/><line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + (TP + (H - TP - B) / 2) + '" y2="' + (TP + (H - TP - B) / 2) + '"/><line class="gr" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>';
+    g += '<text class="axa" x="' + (L - 8) + '" y="' + (TP + 4) + '" text-anchor="end">' + num(ra[1]) + '</text><text class="axa" x="' + (L - 8) + '" y="' + (H - B + 4) + '" text-anchor="end">' + num(ra[0]) + "</text>";
+    if (rk) g += '<text class="axk" x="' + (L - 8) + '" y="' + (TP + 20) + '" text-anchor="end">' + num(rk[1]) + '</text><text class="axk" x="' + (L - 8) + '" y="' + (H - B - 12) + '" text-anchor="end">' + num(rk[0]) + "</text>";
+    if (rs) g += '<text class="axs" x="' + (W - R + 8) + '" y="' + (TP + 4) + '">' + rs[1] + '</text><text class="axs" x="' + (W - R + 8) + '" y="' + (H - B + 4) + '">' + rs[0] + "</text>";
     svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("width", W); svg.setAttribute("height", H);
     svg.innerHTML = '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7fd6" stop-opacity=".2"/><stop offset="1" stop-color="#2f7fd6" stop-opacity=".04"/></linearGradient></defs>' + g +
       '<path d="' + la + " L" + X(t1).toFixed(1) + " " + (H - B) + " L" + X(t0).toFixed(1) + " " + (H - B) + 'Z" fill="url(#' + gid + ')"/>' +
       (hasS ? '<path class="ls" d="' + path("s", rs, true) + '"/>' : "") + (hasK ? '<path class="lk" d="' + path("k", rk) + '"/>' : "") + '<path class="la" d="' + la + '"/>' +
-      '<line class="vl" y1="' + T + '" y2="' + (H - B) + '" x1="-9" x2="-9"/><circle class="da" r="5" cx="-9" cy="-9"/>' + (hasK ? '<circle class="dk" r="4.5" cx="-9" cy="-9"/>' : "") + (hasS ? '<circle class="ds" r="5" cx="-9" cy="-9"/>' : "") +
+      '<line class="vl" y1="' + TP + '" y2="' + (H - B) + '" x1="-9" x2="-9"/><circle class="da" r="5" cx="-9" cy="-9"/>' + (hasK ? '<circle class="dk" r="4.5" cx="-9" cy="-9"/>' : "") + (hasS ? '<circle class="ds" r="5" cx="-9" cy="-9"/>' : "") +
       '<rect class="hit" x="' + L + '" y="0" width="' + (W - L - R) + '" height="' + H + '"/>';
     var set = function (sel, x, y) { var c = svg.querySelector(sel); if (c) { c.setAttribute("cx", x); c.setAttribute("cy", y); } };
     var show = function (i) {
@@ -346,7 +346,7 @@
           '</div><div class="ap-kvs">' + kv(T("Средняя мощь участника"), num(tot / cnt)) + kv(T("Святилище 25+"), a.members.filter(function (m) { return m.lv >= 25; }).length + T(" чел.")) + kv(T("Сильнейший"), esc(a.members.slice().sort(function (x, y) { return y.power - x.power; })[0].nick)) + "</div></div>" : "") +
           T('<div class="ap-card flush"><div class="ap-tools"><input id="mq" class="ap-in" type="search" placeholder="Ник участника…"><span id="mcount" class="mut"></span></div><div id="mlist"></div></div>');
         var st = { sort: "rank", dir: 1, rank: "", q: "" };
-        var COLS = [["nick", "Игрок"], ["rank", T("Ранг")], ["lv", T("Святилище")], ["power", T("Мощь")], ["kills", T("Убийства")], ["active", T("Недельная активность")], ["honor", T("Честь за день")], ["tech", T("Пожертвовано технологий")]];
+        var COLS = [["nick", T("Игрок")], ["rank", T("Ранг")], ["lv", T("Святилище")], ["power", T("Мощь")], ["kills", T("Убийства")], ["active", T("Недельная активность")], ["honor", T("Честь за день")], ["tech", T("Пожертвовано технологий")]];
         var draw = function () {
           var list = a.members.filter(function (m) { return (!st.rank || (m.rank || "").slice(0, 2) === st.rank) && (!st.q || (m.nick || "").toLowerCase().indexOf(st.q) >= 0); });
           list.sort(function (x, y) {
@@ -594,7 +594,7 @@
     else homeView();
   }
 
-  Promise.all([get("server.json"), get("alliances.json"), get("players.json"), fetch(window.LA_LANG === "en" ? "data/heroes.en.json" : "data/heroes.json").then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (r) {
+  Promise.all([get("server.json"), get("alliances.json"), get("players.json"), fetch(EN ? "data/heroes.en.json" : "data/heroes.json").then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (r) {
     S.heroes = r[3]; S.server = r[0]; S.index = r[1].alliances; S.players = r[2].players;
     S.rows = S.server.boards.filter(function (b) { return b.slug === "alliance_power"; })[0].rows;
     S.server.boards.forEach(function (b) { if (b.alliance) return; var m = {}; b.rows.forEach(function (x) { m[x.id] = x.rank; }); S.board[b.slug] = m; });
