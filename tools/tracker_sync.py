@@ -18,6 +18,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+import http.client
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -57,7 +58,8 @@ def get(path):
             if e.code >= 500 and attempt < 3:
                 time.sleep(10 * (attempt + 1)); continue
             raise
-        except (urllib.error.URLError, TimeoutError):
+        except (urllib.error.URLError, TimeoutError, http.client.IncompleteRead, ConnectionError, json.JSONDecodeError):
+            # обрыв связи или недочитанный/битый ответ трекера — повторяем, а не роняем весь сбор
             if attempt < 3:
                 time.sleep(10 * (attempt + 1)); continue
             raise
