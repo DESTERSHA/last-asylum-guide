@@ -219,7 +219,7 @@
             var a = S.al[r.id], ix = S.index[r.id] || {}, cnt = a && a.members.length, cap = (a && a.capacity) || 100;
             return "<tr" + (a ? ' class="go" data-a="' + r.id + '"' : "") + '><td class="n">' + r.rank + '</td><td><div class="ap-who"><img src="' + G + 'alliance.png" alt=""><div><b><span class="tag">[' + esc(r.abbr) + "]</span> " + esc(r.name) + "</b><span>" + (ix.leader ? "лидер " + esc(ix.leader) : v === "30" ? "" : "вне топ-30 — без карточки") + "</span></div></div></td>" +
               "<td>" + (cnt ? '<div class="ap-bar"><span>' + cnt + "/" + cap + '</span><i><u style="width:' + Math.min(100, cnt / cap * 100) + '%"></u></i></div>' : '<span class="mut">' + (a ? "обновляется" : "—") + "</span>") + "</td>" +
-              '<td class="r strong">' + num(a && a.live && a.power ? a.power : r.score) + '</td><td class="r">' + delta(wk(ix)) + "</td></tr>";
+              '<td class="r strong">' + num(r.score) + '</td><td class="r">' + delta(wk(ix)) + "</td></tr>";
           }).join("") + "</tbody></table>";
       });
     };
@@ -278,7 +278,7 @@
     $("view").innerHTML = '<div class="ap-wrap">' +
       '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Все альянсы</a><span class="ap-upd">обновлено ' + ago(a.updated) + "</span></div>" +
       '<div class="ap-hero"><img class="emb" src="' + G + 'alliance.png" alt=""><div><h2><span class="tag">[' + esc(a.abbr) + "]</span> " + esc(a.name) + '</h2><div class="ap-chips"><span>Сервер 397</span><span>место ' + (r.rank || "—") + " по мощи</span>" + (a.language ? "<span>язык: " + esc(a.language) + "</span>" : "") + (a.live ? "" : '<span class="warn">состав ещё не обновлялся</span>') + "</div></div></div>" +
-      '<div class="ap-cells c5">' + cell("Мощь", num(a.power || r.score), delta(wk(ix)) + " за 7 дней") +
+      '<div class="ap-cells c5">' + cell("Мощь", num(r.score || a.power), delta(wk(ix)) + " за 7 дней") +
       cell("Участники", cnt ? cnt + '<small>/' + cap + "</small>" : "—", cnt ? '<i class="ap-mini"><u style="width:' + Math.min(100, cnt / cap * 100) + '%"></u></i>' : "") +
       cell("Лидер", esc(a.leader || "—"), lead ? "мощь " + num(lead.power) : "", "", lead ? lead.uid : null) +
       cell("Уровень альянса", a.level || "—") +
