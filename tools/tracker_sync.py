@@ -30,7 +30,7 @@ OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 PRIV = Path(os.environ["PRIVATE_DIR"]) if os.environ.get("PRIVATE_DIR") else None
 UNION_KEYS = ("union_id", "union_abbr", "union_name", "alliance_abbr", "alliance_name")
 TOP = 30
-MAX_REQ = 130 + 2 * int(os.environ.get("PLAYERS") or 45)  # +35 — просьбы обновить альянсы  # на игрока до 2 запросов: карточка + защита/ворон (защита — раз в 20 ч)
+MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 45)  # на игрока до 2 запросов: карточка + защита/ворон (защита — раз в 20 ч)
 PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 45)  # карточки игроков за запуск: [SLAV] (≈110) раз в 1,5 ч ≈ 37 за запуск + очередь остальных
 HOME_AID = 67181437   # [SLAV] — их карточки берём первыми
 KEY = os.environ.get("TRACKER_KEY", "").strip()
@@ -77,6 +77,10 @@ def load(p, default):
 def save(p, obj):
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+
+# Обновить альянс/игрока «сейчас» трекер через API не даёт (ответ 403 «Refresh only from the site», проверено 19.11.2026) —
+# только кнопкой на его сайте. Поэтому робот берёт то, что трекер обновил сам, и забирает это не позже чем через 30 мин.
 
 
 def main():
@@ -334,41 +338,7 @@ def main():
                 s.setdefault(uid, {})[day] = list(v)
         save(p, s)
     push_moves(moves_all)
-    ask_refresh([row["id"] for row in top])
     print(f"готово: альянсов {len(top)}, игроков в базе {len(players)}, запросов {used}")
-
-
-def ask_refresh(aids):
-    """Просим трекер обновить альянсы (у него так можно раз в 10 мин на альянс). Сам трекер обновляет их когда придётся —
-    бывало по 22 ч; после нашей просьбы следующий запуск (через 30 мин) заберёт свежий состав и свежие вступления/выходы."""
-    global used
-    ok = cd = 0
-    for aid in aids:
-        if blocked or used >= MAX_REQ:
-            break
-        used += 1
-        req = urllib.request.Request(f"{API}/alliances/{aid}/refresh?force=1", data=b"", method="POST",
-                                     headers={"Authorization": f"Bearer {KEY}", "User-Agent": "la397-guide/1.0"})
-        try:
-            with urllib.request.urlopen(req, timeout=60) as r:
-                res = json.loads(r.read().decode("utf-8") or "{}")
-            ok += 1 if res.get("accepted") else 0
-            cd += 0 if res.get("accepted") else 1
-        except urllib.error.HTTPError as e:
-            body = e.read().decode("utf-8", "replace")[:200]
-            if e.code in (404, 405, 401, 403):
-                print(f"обновление альянсов: трекер не даёт ({e.code}) — {body}", file=sys.stderr)
-                return
-            if e.code == 429:
-                cd += 1  # у этого альянса ещё не прошли 10 минут
-                if "cooldown" not in body:
-                    print("обновление альянсов: 429 — лимит, останавливаюсь", file=sys.stderr)
-                    return
-        except Exception as e:
-            print("обновление альянса", aid, "не отправлено:", e, file=sys.stderr)
-        finally:
-            time.sleep(1.2)
-    print(f"обновление альянсов: принято {ok}, ещё не прошло 10 мин {cd}")
 
 
 SB_URL = "https://mhicplqgnnvoloyjmhud.supabase.co"
