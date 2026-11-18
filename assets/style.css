@@ -218,7 +218,7 @@ img.inl{display:inline-block;width:24px;height:24px;object-fit:contain;vertical-
 /* редкость героя — залитой плашкой своего цвета: золото UR, фиолет SSR, синий SR — видно сразу, без чтения букв */
 .chip.ur{background:var(--ur);border-color:var(--ur);color:#fff}.chip.ssr{background:var(--ssr);border-color:var(--ssr);color:#fff}.chip.sr{background:var(--sr);border-color:var(--sr);color:#fff}.war{color:var(--war)}.ran{color:var(--ran)}.wlk{color:var(--wlk)}
 .tier{display:inline-grid;place-items:center;min-width:34px;height:28px;border-radius:8px;font:800 15px Onest;color:#fff;padding:0 6px}
-.t-s{background:#e0533a}.t-ap{background:#ec8a2e}.t-a{background:#d9a514}.t-bp{background:#7cae38}.t-b{background:#3f9c8f}.t-c{background:#8a94a3}
+.t-s{background:#e0533a}.tier.t-ap{background:#ec8a2e}.t-a{background:#d9a514}.t-bp{background:#7cae38}.t-b{background:#3f9c8f}.t-c{background:#8a94a3}
 
 /* вкладки */
 .tabs-ui{margin:6px 0}
@@ -879,3 +879,60 @@ html.t-ap.embed main{background:transparent;padding:6px;margin:0 auto}
 .m3d-hint.off{opacity:0}
 .m3d-stage model-viewer{cursor:grab}
 @media(min-width:700px){.bigday .t br{display:none}}
+
+
+/* === правки 18.11, круг 3 === */
+/* избранное — справа вверху карточки, со словом */
+section.has-fav{position:relative}
+section.has-fav>.fav-row{position:absolute;top:22px;right:24px;margin:0}
+section.has-fav>h2{padding-right:170px}
+.evc{padding-right:150px}
+.fav-star.corner{width:auto;height:28px;padding:0 11px;font-size:12.5px;border-radius:999px;display:inline-flex}
+.ap-top .fav-star{margin-left:auto;margin-right:10px}
+.ap-top{gap:8px}
+@media(max-width:700px){section.has-fav>.fav-row{position:static;margin:2px 0 10px}section.has-fav>h2{padding-right:0}.evc{padding-right:14px;padding-top:44px}}
+/* шаги: без тёмных полос вокруг снимка; широкий снимок — сверху во всю ширину, высокий — сбоку, пониже */
+.steps>.step>.shot{box-shadow:none!important;background:transparent;align-self:start}
+.steps>.step:not(.wide)>.shot img{max-height:min(var(--shot-h,340px),340px)}
+.steps>.step.wide{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto}
+.steps>.step.wide>.shot{justify-self:stretch;width:100%;max-width:none}
+.steps>.step.wide>.shot img{width:100%;max-width:100%;max-height:none}
+/* плотная укладка (mason.js) */
+.steps.mason{display:grid!important;grid-template-columns:repeat(var(--mcols,2),minmax(0,1fr))!important;grid-auto-rows:4px;row-gap:0!important;column-count:auto;align-items:start}
+.steps.mason>.step{margin:0!important;align-self:start}
+.steps.flow.mason>.step{width:auto}
+/* заметки: одиночная — на всю ширину, две рядом — одной высоты */
+.notes>:only-child{grid-column:1/-1}
+.notes{align-items:stretch}.notes>.note,.notes>.word{align-self:stretch!important}
+/* калькулятор: выбор и результат рядом */
+.gc-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.gc-two>.gc-sel{margin-bottom:0}
+.gc-two .gc-ress{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+@media(max-width:900px){.gc-two{grid-template-columns:1fr}}
+
+
+/* круг 3 (продолжение) */
+.grid2>.card:only-child,.grid2>div:only-child{grid-column:1/-1}
+img.inl{display:inline-block;width:20px;height:20px;vertical-align:-4px;margin:0 3px 0 2px}
+.nsteps>.step.noimg .bis{float:none;position:absolute;left:14px;top:12px;margin:0}
+.nsteps>.step.noimg:has(.bis){padding-left:78px;min-height:64px}
+.nsteps>.step.noimg .bi{width:50px;height:50px}
+/* «Приключение» */
+.adv-pg{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.adv-pg button{font:inherit;font-size:12.5px;height:30px;padding:0 11px;border-radius:999px;border:0;background:#f1f2f5;cursor:pointer}
+.adv-pg button.on{background:#1c1c1e;color:#fff}
+.adv-scroll{overflow-x:auto;background:#fff;border-radius:16px;border:1px solid #ececef}
+.adv-t{width:100%;border-collapse:collapse;font-size:13.5px;min-width:620px}
+.adv-t th{font-size:12px;color:#8a8a8e;font-weight:600;text-align:left;padding:9px 10px;border-bottom:1px solid #ececef;background:#f8f8fa}
+.adv-t td{padding:7px 10px;border-bottom:1px solid #f1f1f4;white-space:nowrap;font-variant-numeric:tabular-nums}
+.adv-r{display:inline-flex;align-items:center;gap:3px;margin-right:12px}
+.adv-r img{width:20px;height:20px;object-fit:contain}
+.adv-chest{color:#d08a12;cursor:help}
+
+/* «Мы нападаем / защищаемся»: ровные ряды по порядку шагов */
+.steps.flow{display:grid!important;column-count:auto;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch}
+.steps.flow>.step{margin:0!important;width:auto}
+@media(max-width:1100px){.steps.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.steps.flow{grid-template-columns:1fr}}
+
+.gc-step select{min-width:0;max-width:210px}.gc-step span{flex-wrap:nowrap}
+@media(max-width:600px){.gc-step span{flex-wrap:wrap}}

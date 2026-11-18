@@ -285,7 +285,7 @@
       cell("За 7 дней", '<span class="up">+' + w7.joined + '</span> <span class="dn">−' + w7.left + "</span>", m30 ? "за 30 дней: +" + m30.joined + " −" + m30.left : "вступили / вышли") + "</div></div>" +
       pills("atabs", [["m", "Участники · " + (cnt || "—")], ["h", "История"], ["e", "Вступления и выходы"]], "m") +
       '<div id="apane"></div></div>';
-    if (window.LAFav) LAFav.star($("view").querySelector(".ap-hero > div"), { url: "server.html#a=" + id, title: "[" + a.abbr + "] " + a.name, page: "Сервер 397", kind: "Альянс", icon: G + "alliance.png" }).classList.add("mini");
+    if (window.LAFav) LAFav.star($("view").querySelector(".ap-top"), { url: "server.html#a=" + id, title: "[" + a.abbr + "] " + a.name, page: "Сервер 397", kind: "Альянс", icon: G + "alliance.png" }).classList.add("mini");
     if (lead) { var lc = $("view").querySelectorAll(".ap-cell")[2]; lc.classList.add("go"); lc.dataset.p = lead.uid; }
 
     var pane = function (v) {
@@ -430,7 +430,7 @@
       '<div id="pdef"></div>' +
       pills("ptabs", [["h", "Рост"], ["c", "История изменений"], ["a", "Альянсы"]], "h") + '<div id="ppane"></div></div>';
 
-    if (window.LAFav) LAFav.star($("view").querySelector(".ap-hero > div"), { url: "server.html#p=" + uid, title: p.nick, page: "Сервер 397" + (p.abbr ? " · [" + p.abbr + "]" : ""), kind: "Игрок", icon: G + "doctor.png" }).classList.add("mini");
+    if (window.LAFav) LAFav.star($("view").querySelector(".ap-top"), { url: "server.html#p=" + uid, title: p.nick, page: "Сервер 397" + (p.abbr ? " · [" + p.abbr + "]" : ""), kind: "Игрок", icon: G + "doctor.png" }).classList.add("mini");
     var X = { log: p.log || [] };
     var pane = function (v) {
       var P = $("ppane");

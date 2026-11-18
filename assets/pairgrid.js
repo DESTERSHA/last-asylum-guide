@@ -9,11 +9,20 @@
   });
   if (!grids.length) return;
   grids.forEach(function (g) { g._orig = [].slice.call(g.children); });
+  function fillLast(g, cols) {
+    var k = [].slice.call(g.children), r = k.length % cols;
+    k.forEach(function (c) { c.style.gridColumn = ""; });
+    g.style.gridTemplateColumns = "";
+    if (!r || cols < 2) return;
+    g.style.gridTemplateColumns = "repeat(" + (cols * r) + ",minmax(0,1fr))";
+    k.forEach(function (c, i) { c.style.gridColumn = "span " + (i >= k.length - r ? cols : r); });
+  }
   function arrange() {
     grids.forEach(function (g) {
-      g._orig.forEach(function (c) { g.appendChild(c); });  // сперва исходный порядок
+      g.style.gridTemplateColumns = ""; g._orig.forEach(function (c) { c.style.gridColumn = ""; g.appendChild(c); });  // сперва исходный порядок
       var cols = getComputedStyle(g).gridTemplateColumns.split(" ").length;
       if (cols < 2) return;
+      var allCards = true;
       g.style.alignItems = "start";
       var h = new Map(); g._orig.forEach(function (c) { h.set(c, c.offsetHeight); });
       g.style.alignItems = "";
@@ -31,6 +40,7 @@
         }
       }
       out.forEach(function (c) { g.appendChild(c); });
+      fillLast(g, cols);
     });
   }
   var t;

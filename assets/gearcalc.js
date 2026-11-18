@@ -53,13 +53,13 @@
         '<div class="gc-item"><img src="' + G + "gear/" + it.icon + '.webp" alt=""><div><b>' + it.name + "</b><span>Создаётся в Мастерской снаряжения ур. " + (it.craft.building || "—") + " · " +
         it.craft.cost.map(function (c) { return fmt(c[1]) + " " + c[0]; }).join(" · ") + (it.craft.time ? " · " + time(it.craft.time) : "") + "</span></div></div>" +
         '<div class="gc-quick"><span>Быстро:</span><button type="button" data-q="max">С нуля до максимума</button><button type="button" data-q="lv">Только уровень 0 → ' + maxL + "</button>" + (hasP ? '<button type="button" data-q="star">Только звёзды до MR</button>' : "") + "</div>" +
-        '<div class="gc-sel"><div class="gc-step"><b>Уровень вещи</b><small>кнопка «Улучшить» в окне вещи · число уровня видно на иконке</small><span>сейчас <select data-k="lf">' + opts(maxL + 1, S.lf, llab) + '</select> хочу <select data-k="lt">' + opts(maxL + 1, S.lt, llab) + "</select></span></div>" +
+        '<div class="gc-two"><div class="gc-sel"><div class="gc-step"><b>Уровень вещи</b><small>кнопка «Улучшить» в окне вещи · число уровня видно на иконке</small><span>сейчас <select data-k="lf">' + opts(maxL + 1, S.lf, llab) + '</select> хочу <select data-k="lt">' + opts(maxL + 1, S.lt, llab) + "</select></span></div>" +
         (hasP ? '<div class="gc-step"><b>Звёзды вещи</b><small>кнопка «Повысить» · без звёзд вещь не поднимется выше ур. 20, 30, 40 · 5★ превращает UR в MR</small><span>сейчас <select data-k="pf">' + opts(P.length + 1, S.pf, plab) + '</select> хочу <select data-k="pt">' + opts(P.length + 1, S.pt, plab) + "</select></span></div>" : "") +
         '<label class="gc-chk"><input type="checkbox" data-k="all"' + (S.all ? " checked" : "") + "> считать сразу на 4 вещи (меч, броню, наручи, сапоги)</label></div>" +
         '<div class="gc-out"><h4>Сколько ресурсов нужно ' + (S.all ? "на 4 вещи" : "на одну вещь") + "</h4>" + (Object.keys(tot).length ? '<div class="gc-ress">' + Object.keys(tot).map(function (n) { return res(n, tot[n]); }).join("") + "</div>" : '<p class="gc-mut">Ничего не нужно — выбери в поле «хочу» больше, чем в поле «сейчас».</p>') +
         '<div class="gc-pow"><span>Мощь вещи</span><b>' + full(powA) + " → " + full(powB) + '</b><em>+' + full((powB - powA) * k) + (S.all ? " на 4 вещи" : "") + "</em></div>" +
         '<table class="gc-st"><tr><th>Характеристика</th><th>Было</th><th>Станет</th></tr>' + names.map(function (n) { return "<tr><td>" + n + "</td><td>" + stat(sA[n] || 0) + "</td><td><b>" + stat(sB[n]) + "</b></td></tr>"; }).join("") + "</table></div>" +
-        '<details class="gc-tbl"><summary>Таблица: цена и характеристики на каждом уровне</summary><div class="gc-lv"></div></details>';
+        '</div><details class="gc-tbl"><summary>Таблица: цена и характеристики на каждом уровне</summary><div class="gc-lv"></div></details>';
       // таблица уровней — со страницами
       var lvBox = box.querySelector(".gc-lv"), page = 0, size = 15, rows = it.levels;
       var head = rows[0].stats.map(function (x) { return "<th>" + x[0] + "</th>"; }).join("");

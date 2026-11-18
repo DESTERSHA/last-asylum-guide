@@ -21,7 +21,7 @@
     var b = document.createElement("button");
     b.type = "button";
     b.className = "fav-star";
-    function upd() { var on = has(item.url); b.classList.toggle("on", on); b.textContent = item.icon_only ? (on ? "★" : "☆") : (on ? "★ В избранном" : "☆ В избранное"); b.title = on ? "Убрать из избранного" : "Добавить в избранное — появится в «Кабинете»"; }
+    function upd() { var on = has(item.url); b.classList.toggle("on", on); b.textContent = on ? "★ В избранном" : "☆ В избранное"; b.title = on ? "Убрать из избранного" : "Добавить в избранное — появится в «Кабинете»"; }
     b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); toggle(item); upd(); });
     subs.push(upd);
     upd();
@@ -42,7 +42,8 @@
       if (!sec.id) sec.id = slug(h.textContent);
       var wrap = document.createElement("div");
       wrap.className = "fav-row";
-      h.parentNode.insertBefore(wrap, h.nextSibling);
+      sec.classList.add("has-fav");
+      sec.insertBefore(wrap, sec.firstChild);
       star(wrap, { url: page + "#" + sec.id, title: h.textContent.trim(), page: pageName, kind: "Раздел" });
     });
     /* отдельные события (страница «События») */

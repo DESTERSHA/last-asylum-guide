@@ -69,6 +69,7 @@ TEMPLATE = """<!doctype html>
 <script src="assets/fav.js?v={ver}"></script>
 <script src="assets/peek.js?v={ver}"></script>
 <script src="assets/pairgrid.js?v={ver}"></script>
+<script src="assets/mason.js?v={ver}"></script>
 </body>
 </html>
 """
@@ -86,7 +87,7 @@ def nav_html(current):
 
 def main():
     h = hashlib.sha1()
-    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js"):
+    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js"):
         h.update((ROOT / f).read_bytes())
     ver = h.hexdigest()[:10]
     for slug, _, _ in PAGES:

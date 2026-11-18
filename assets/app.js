@@ -117,6 +117,7 @@
       img.style.maxHeight = h + "px";
     });
   }
+  document.querySelectorAll(".side-shot img[loading=lazy]").forEach(function (i) { i.loading = "eager"; });
   /* скрин слева от текста — по высоте текстовой колонки (от 240 до 520 px) */
   function fitSideShot() {
     document.querySelectorAll(".grid2>.side-shot").forEach(function (f) {
