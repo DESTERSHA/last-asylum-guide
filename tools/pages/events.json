@@ -545,7 +545,7 @@
 ],
 [
 "День охоты Селии",
-"Celia\\'s Hunting Day"
+"Celia's Hunting Day"
 ],
 [
 "<span class=\"when\">2 дня</span>",
@@ -1633,7 +1633,7 @@
 ],
 [
 "Как улучшить награды, получаемые в Лагере исследователя?",
-"How do you enhance the rewards obtained from the Explorer\\'s Camp?"
+"How do you enhance the rewards obtained from the Explorer's Camp?"
 ],
 [
 "<b>Проходить больше этапов</b>",
@@ -1713,7 +1713,7 @@
 ],
 [
 "Каково основное применение посоха чумного доктора?",
-"What is the primary use of the plague doctor\\'s staff?"
+"What is the primary use of the plague doctor's staff?"
 ],
 [
 "<b>Удерживать дистанцию от пациентов</b>",
@@ -2205,23 +2205,23 @@
 ],
 [
 "<b>Кто может участвовать.</b> Нужно состоять в альянсе, Святилище нужного уровня (его покажет «Требования»), территория альянса 10 уровня и выше, и чтобы в альянсе записалось <b>минимум 15 человек</b> — иначе альянсу не дадут места («Недостаточно участников, состязание невозможно»).",
-""
+"<b>Who can take part.</b> You need to be in an alliance, have the required Sanctuary level (shown under «Requirements»), alliance territory level 10 or higher, and <b>at least 15 members</b> of the alliance must sign up — otherwise the alliance won't get a slot («Insufficient participants, unable to compete»)."
 ],
 [
 "<b>Кто сражается.</b> На каждой линии в бой идут войска <b>из топ-15 по мощи</b>. Остальные не сражаются, но награды получают <b>все записавшиеся</b> — даже те, кто не попал в бой. Чтобы победить, нужно выиграть <b>2 линии из 3</b>.",
-""
+"<b>Who fights.</b> On each lane the troops of <b>the top 15 by Might</b> go into battle. The rest don't fight, but <b>everyone who signed up</b> gets rewards — even those who didn't make it into battle. To win, you need to win <b>2 lanes of 3</b>."
 ],
 [
 "Экспедиции · без потерь солдат",
-""
+"Expeditions · no troop losses"
 ],
 [
 "Экспедиции: Битва экспедиции, Экспедиция альянса, Приключение",
-""
+"Expeditions: Expedition Battle, Alliance Expedition, Campaign"
 ],
 [
 "В игре три разных режима со словом «экспедиция». Правила ниже — из окон правил в самой игре.",
-""
+"The game has three different modes with the word «expedition». The rules below come from the rules windows in the game itself."
 ],
 [
 "Битва экспедиции",
@@ -2229,47 +2229,47 @@
 ],
 [
 "<img src=\"assets/shots/expedition.webp\" alt=\"Окно «Битва экспедиции»: вкладки Арена воинов, рейнджеров, колдунов, уровни, награды, «Испытание»\"><span class=\"ring rect\" style=\"left:50%;top:9.6%;width:98%;aspect-ratio:8.6\"></span><span class=\"ring rect\" style=\"left:44%;top:94.3%;width:39%;aspect-ratio:3\"></span>",
-""
+"<img src=\"assets/shots/expedition.webp\" alt=\"The Expedition Battle window: Warrior, Ranger, Warlock Arena tabs, levels, rewards, Challenge\"><span class=\"ring rect\" style=\"left:50%;top:9.6%;width:98%;aspect-ratio:8.6\"></span><span class=\"ring rect\" style=\"left:44%;top:94.3%;width:39%;aspect-ratio:3\"></span>"
 ],
 [
 "Окно «Битва экспедиции». Рамки: три поля боя по фракциям и кнопка «Испытание».",
-""
+"The «Expedition Battle» window. Frames: three battlefields by faction and the «Challenge» button."
 ],
 [
 "<b>Три поля боя — по фракциям</b>",
-""
+"<b>Three battlefields — by faction</b>"
 ],
 [
 "Вкладки сверху: <b>Арена воинов</b>, <b>Арена рейнджеров</b>, <b>Арена колдунов</b>. На каждое поле пускают героев только своей фракции. «Этап: 26_12» под названием — уровень сложности и этап, до которого ты дошёл.",
-""
+"Tabs at the top: <b>Warrior Arena</b>, <b>Ranger Arena</b>, <b>Warlock Arena</b>. Each field admits only heroes of its own faction. «Stage: 26_12» under the name — the difficulty level and the stage you reached."
 ],
 [
 "<b>Выбери уровень сложности — один раз</b>",
-""
+"<b>Choose a difficulty level — once</b>"
 ],
 [
 "Звёзды с «Ур.» посередине — уровни сложности, в каждом <b>20 этапов</b>. До сброса для каждого поля выбирается один уровень, поменять его потом нельзя. Игра предупредит, если твоя мощь низкая — тогда бери уровень пониже.",
-""
+"The stars with «Lv.» in the middle are difficulty levels, each with <b>20 stages</b>. Until the reset one level is chosen for each field, and you can't change it afterwards. The game warns you if your Might is low — then take a lower level."
 ],
 [
 "<b>«Испытание» — до 2 уровней за раз</b>",
-""
+"<b>«Challenge» — up to 2 levels at a time</b>"
 ],
 [
 "Прошёл все этапы уровня впервые — сразу открывается следующий. Быстрое испытание (бой в один клик) открывается на <b>VIP 8</b> или после нужного этапа.",
-""
+"Clear all stages of a level for the first time — the next one opens right away. Quick challenge (a one-click battle) unlocks at <b>VIP 8</b> or after the required stage."
 ],
 [
 "<b>Сброс — вт, чт и вс в 00:00 по серверу</b>",
-""
+"<b>Reset — Tue, Thu and Sun at 00:00 server time</b>"
 ],
 [
 "(05:00 МСК). Каждое испытание после сброса длится 48 часов — внизу окна «До сброса экспедиции». Награда — <b>Медали экспедиции</b>: их меняют на предметы в <b>Магазине экспедиции</b> (кнопка с прилавком справа внизу), в том числе на сундук снаряжения ворона.",
-""
+"(05:00 Moscow). Each challenge after a reset lasts 48 hours — at the bottom of the window «Expedition Resets In». The reward is <b>Expedition Medals</b>: they are exchanged for items in the <b>Expedition Shop</b> (the button with a counter at the bottom right), including a Raven Gear Chest."
 ],
 [
 "Героям ниже 100 уровня во время события можно сразу поднять уровень на 1 особым улучшением (но не выше потолка Святилища). Солдаты здесь не гибнут.",
-""
+"During the event heroes below level 100 can be raised by 1 level right away with a special upgrade (but not above the Sanctuary cap). Troops don't die here."
 ],
 [
 "Экспедиция альянса",
@@ -2277,27 +2277,27 @@
 ],
 [
 "Событие альянса против <b>Лагеря скверны</b>: «Бушующий вирус поразил некогда доблестный легион… Воины альянса призваны истребить этот падший легион».",
-""
+"An alliance event against the <b>Blight Camp</b>: «A raging virus has struck a once-valiant legion… Alliance warriors are called to wipe out this fallen legion»."
 ],
 [
 "Запускают <b>R4 или R5</b>, если в альянсе больше <b>10 участников со Святилищем 6+</b>.",
-""
+"Started by <b>R4 or R5</b> if the alliance has more than <b>10 members with Sanctuary 6+</b>."
 ],
 [
 "Кнопка «Поиск Лагеря скверны» ведёт к цели. Бьёшь босса лагеря — копится урон альянса, за пороги урона — сундуки для всех.",
-""
+"The «Search Blight Camp» button leads to the target. You hit the camp boss — alliance damage accumulates, and damage thresholds give chests to everyone."
 ],
 [
 "<b>3 попытки в день</b>, сбрасываются в 00:00 по серверу.",
-""
+"<b>3 attempts a day</b>, reset at 00:00 server time."
 ],
 [
 "Чем сильнее разовый удар лидера рейтинга, тем больше бонус к урону у всего альянса. У события есть подсказанные герои — с ними характеристики в бою с этим монстром заметно выше.",
-""
+"The stronger the single hit of the ranking leader, the bigger the damage bonus for the whole alliance. The event has suggested heroes — with them, stats in battle against this monster are noticeably higher."
 ],
 [
 "Поход по этапам",
-""
+"A march through stages"
 ],
 [
 "Приключение",
@@ -2305,331 +2305,331 @@
 ],
 [
 "Правила из самой игры: доступна только зона 1, следующая открывается после зачистки текущей — сложнее, но награды ценнее. В каждой зоне припасы, награды и монстры: одолей босса и забери награду, чтобы зачистить зону. У каждой зоны свои цели исследования; в пройденные зоны можно вернуться, но награды берутся один раз.",
-""
+"Rules from the game itself: only zone 1 is available, the next one opens after clearing the current one — harder, but with more valuable rewards. Each zone has supplies, rewards and monsters: beat the boss and collect the reward to clear the zone. Each zone has its own exploration goals; you can return to cleared zones, but rewards are taken only once."
 ],
 [
 "Все 500 этапов",
-""
+"All 500 stages"
 ],
 [
 "На каждом — рекомендуемая мощь, отряд врага и награда за первое прохождение. ◆ — у этапа есть сундук (наведи, чтобы увидеть, что в нём). Цифры — из таблиц игры.",
-""
+"Each one shows the recommended Might, the enemy squad and the first-clear reward. ◆ — the stage has a chest (hover to see what is inside). Numbers are from the game's tables."
 ],
 [
 "Загружаю этапы…",
-""
+"Loading stages…"
 ],
 [
 "Доход в простое",
-""
+"Idle income"
 ],
 [
 "Пока тебя нет в игре, Приключение каждые 5 минут выдаёт награду. Уровень дохода растёт по мере прохождения этапов.",
-""
+"While you are out of the game, the Campaign gives a reward every 5 minutes. The income level grows as you clear stages."
 ],
 [
 "Альянсовые и короткие события",
-""
+"Alliance and short events"
 ],
 [
 "Остальные события",
-""
+"Other events"
 ],
 [
 "Опыт пандемии (сиделки)",
-""
+"Pandemic Experience (nurses)"
 ],
 [
 "<b>Раз в 2 недели</b>, сразу после «Дня охоты Селии». Длится 3 дня. В начале выбираешь сложность. Задача — убить 30 сиделок, с 1 по 30 уровень (кнопка сиделок слева внизу во время события).",
-""
+"<b>Once every 2 weeks</b>, right after «Celia's Hunting Day». Lasts 3 days. At the start you choose a difficulty. The task is to kill 30 nurses, from level 1 to 30 (the nurse button at the bottom left during the event)."
 ],
 [
 "Чем больше игроков альянса убьют всех своих сиделок, тем больше уровней <b>Доктора-крысы</b> откроется для альянса — его бьют штурмами в назначенное R4/R5 время.",
-""
+"The more alliance players kill all their nurses, the more levels of the <b>Rat Doctor</b> open for the alliance — it is hit with rallies at a time set by R4/R5."
 ],
 [
 "Если прошлый уровень дался с трудом — не повышай сложность, можно вообще не пройти.",
-""
+"If the previous level was hard — don't raise the difficulty, you may not clear it at all."
 ],
 [
 "По субботам и воскресеньям (одна награда на два дня). Задача — улучшать снаряжение героев. Лёгкое и обязательное: копи камни снаряжения на выходные.",
-""
+"On Saturdays and Sundays (one reward for two days). The task is to upgrade heroes' gear. Easy and a must: save Gearstone for the weekend."
 ],
 [
 "Магазин за монеты события. Монеты дают в соседней вкладке «Загадка отшельника»: карта из 15 заданий на 7 дней (ряд или столбец целиком — открывает сундук, все 15 — супер-сундук). Потом там же «Путь отшельника» — монеты за задания сокола, секретные операции и монстров.",
-""
+"A shop for event coins. Coins come from the neighboring «Recluse's Enigma» tab: a map of 15 quests for 7 days (a full row or column opens a chest, all 15 — a super chest). Later, in the same place, «Path of the Recluse» — coins for Falcon Quests, Covert Operations and monsters."
 ],
 [
 "Первый товар <b>всегда бесплатный</b>, второй и третий — со скидкой.",
-""
+"The first item is <b>always free</b>, the second and third are discounted."
 ],
 [
 "Магазин можно обновить ещё 8 раз в день: 2 бесплатно, потом +10 кристаллов за каждые 2 (всего 120). После каждого обновления — снова бесплатный товар.",
-""
+"The shop can be refreshed 8 more times a day: 2 for free, then +10 crystals for every 2 (120 in total). After each refresh there is a free item again."
 ],
 [
 "Самое ценное — сундуки для пробуждения героев и их оружия.",
-""
+"The most valuable items are chests for awakening heroes and their weapons."
 ],
 [
 "События первой недели нового игрока",
-""
+"A new player's first-week events"
 ],
 [
 "Лечебное событие (7 дней): левая ветка наград — бесплатная, правая — платная. Битва на выживание открывается с 3-го дня. Финальный рассвет — нужно 4,6 млн мощи за неделю, бесплатным игрокам — забирать то, что получается.",
-""
+"The healing event (7 days): the left reward branch is free, the right one is paid. The Survival Battle opens from day 3. Final Dawn — you need 4.6M Might in a week; free players should just take what they can."
 ],
 [
 "Праздники",
-""
+"Holidays"
 ],
 [
 "На праздники игра включает целый набор событий сразу — они появляются отдельной кнопкой праздника на главном экране, справа в столбике значков. Устроены все праздники одинаково, меняются только названия и предметы. Ниже — что в каждом наборе, словами самой игры.",
-""
+"For holidays the game turns on a whole set of events at once — they appear as a separate holiday button on the main screen, in the column of icons on the right. All holidays work the same way, only the names and items change. Below is what each set contains, in the game's own words."
 ],
 [
 "Как устроен любой праздник — 5 частей",
-""
+"How any holiday works — 5 parts"
 ],
 [
 "<b>Сбор праздничного предмета</b>",
-""
+"<b>Collecting the holiday item</b>"
 ],
 [
 "Пряники, маски, рыба, кексы — их «собирайте в Соколиной башне, с ресурсных монстров, элитной скверны, тайных отрядов и блуждающей скверны». Есть дневной лимит; неиспользованный лимит переносится на следующий день.",
-""
+"Gingerbread, masks, fish, cupcakes — you «collect them in the Falcon Tower, from resource monsters, elite Blight, covert squads and Wandering Blight». There is a daily limit; unused limit carries over to the next day."
 ],
 [
 "<b>Общая шкала сервера</b>",
-""
+"<b>The shared server bar</b>"
 ],
 [
 "Собранное сдаёшь в общее событие (пир, дегустация, примерка наряда, карнавал). Шкала <b>общая для всего сервера</b>: набрали опыт все вместе — уровень растёт, и награды уровня забирают все.",
-""
+"You hand in what you collected to the shared event (a feast, a tasting, a gown fitting, a carnival). The bar is <b>shared by the whole server</b>: everyone earns experience together — the level grows, and everyone collects the level rewards."
 ],
 [
 "<b>Розыгрыш за праздничные монеты</b>",
-""
+"<b>A draw for holiday coins</b>"
 ],
 [
 "Тратишь монеты события на розыгрыш, за каждый розыгрыш — очки и награды фаз. Режим 5x тратит в 5 раз больше монет и даёт в 5 раз больше. <b>Неиспользованные монеты после конца превращаются в ускорения</b>: 1 монета = 30 универсальных ускорений по 1 минуте.",
-""
+"You spend event coins on a draw; each draw gives points and phase rewards. The 5x mode spends 5 times more coins and gives 5 times more. <b>Unused coins turn into speedups after the end</b>: 1 coin = 30 universal 1-minute speedups."
 ],
 [
 "<b>Праздничный магазин</b>",
-""
+"<b>The holiday shop</b>"
 ],
 [
 "Обмен валюты события (шляпы, знаки, пиратское золото) на предметы. Валюту дают розыгрыш и наборы.",
-""
+"Exchanging event currency (hats, tokens, pirate gold) for items. The currency comes from the draw and packs."
 ],
 [
 "<b>Задания и пропуск</b>",
-""
+"<b>Quests and the pass</b>"
 ],
 [
 "Ежедневные задания дают очки и награды; забытые награды за день приходят на почту на следующий день. Эпические и мифические награды пропуска — платные.",
-""
+"Daily quests give points and rewards; forgotten rewards for a day arrive by mail the next day. Epic and mythic pass rewards are paid."
 ],
 [
 "<b>Мини-игра «три одинаковые карты»</b>",
-""
+"<b>The «three matching cards» mini-game</b>"
 ],
 [
 "Нажимаешь карты — они попадают в 7 ячеек, три одинаковые исчезают. Помогают «Удалить», «Вернуть», «Обновить». Заполнились все 7 ячеек — этап провален.",
-""
+"You tap cards — they go into 7 slots, three matching ones disappear. «Remove», «Return», «Refresh» help. If all 7 slots fill up — the stage is failed."
 ],
 [
 "Хэллоуин",
-""
+"Halloween"
 ],
 [
 "<b>«Бал-маскарад»</b> — поле из 26 клеток, кубики за Хэллоуинские монеты; клетки предметов растут в уровне, на поле появляются «Благословенные сундуки бала».",
-""
+"<b>«Masquerade Ball»</b> — a field of 26 squares, dice for Halloween coins; item squares level up, and blessed ball chests appear on the field."
 ],
 [
 "Ещё: «Сладость или гадость» (задания за конфеты), «Создание масок» → «Примерка наряда» (общая шкала), «Хэллоуинский базар» (обмен Волшебных шляп), «Сокровища фантома» (три карты), «Хэллоуинское печенье».",
-""
+"Also: «Trick-or-Treat» (quests for candy), «Mask Crafting» → «Gown Fitting» (shared bar), «Halloween Bazaar» (exchanging Magic Hats), «Phantom Treasure» (three cards), «Halloween Cookie»."
 ],
 [
 "Праздник луны (Ночь полнолуния)",
-""
+"The Moon Festival (Full Moon Night)"
 ],
 [
 "<b>«Звездная клятва»</b> — розыгрыш за Лунные монеты. «Выпечка лунных пряников» → «Дегустация лунных пряников» (общая шкала), «Звездный базар» (обмен звездно-лунных знаков), «Эликсир Нефритового кролика» (задания), «Тайна лунной тени» (три карты), «Пожелание Нефритового кролика».",
-""
+"<b>«Starry Promise»</b> — a draw for Moon coins. «Mooncake Making» → «Mooncake Tasting» (shared bar), «Starry Bazaar» (exchanging star-moon tokens), «Jade Rabbit's Elixir» (quests), «Moon Shadow Secret» (three cards), «Jade Rabbit's Blessing»."
 ],
 [
 "В 2026 году праздник луны начался 21 сентября.",
-""
+"In 2026 the Moon Festival started on 21 September."
 ],
 [
 "Пиратский праздник",
-""
+"The pirate festival"
 ],
 [
 "<b>«Пиратская игра»</b> — розыгрыш за Якорные монеты. «Лакомая охота» (морская рыба) → «Великий пир» (общая шкала), «Пиратский рынок» (обмен Пиратского золота), «Пиратское мифическое сокровище» (задания за кортики), «Зарытый клад» (три карты), «Дар морских глубин».",
-""
+"<b>«Pirate's Game»</b> — a draw for Anchor coins. «Delicious Hunt» (sea fish) → «Grand Feast» (shared bar), «Pirate Market» (exchanging Pirate gold), «Pirate's Mythic Treasure» (quests for cutlasses), «Buried Treasure» (three cards), «Deep Sea's Gift»."
 ],
 [
 "Пасха",
-""
+"Easter"
 ],
 [
 "<b>«Охота за пасхальными яйцами»</b> — 7 дней, каждый день новый набор с золотым молотом; молотом разбиваешь яйцо, всего 7 призов, повторов нет. Неиспользованные удары сгорают.",
-""
+"<b>«Easter Egg Hunt»</b> — 7 days, each day a new pack with a golden hammer; the hammer breaks an egg, 7 prizes in total, no repeats. Unused hits burn."
 ],
 [
 "Ещё: «Празднование Пасхи» (задания и уровни) и «Рынок искусств» (обмен карт цветов).",
-""
+"Also: «Easter Celebration» (quests and levels) and «Art Market» (exchanging flower cards)."
 ],
 [
 "Праздник банкета",
-""
+"The banquet festival"
 ],
 [
 "<b>«Утерянная карта»</b> — задания за Игральные карты. «Ларец чудесных игрушек» (7 дней, Игрушечные ключи открывают ларцы, внутри Чашки) → «Чайный рынок» (обмен Чашек). «Подготовка банкета» (Кексы) → «Романтический банкет» (общая шкала).",
-""
+"<b>«Lost Card»</b> — quests for Playing cards. «Wondrous Toy Box» (7 days, Toy keys open boxes, Teacups inside) → «Teacup Market» (exchanging Teacups). «Banquet Preparation» (Cupcakes) → «Sweetheart Banquet» (shared bar)."
 ],
 [
 "Рождество и Новый год",
-""
+"Christmas and New Year"
 ],
 [
 "<b>Рождество:</b> «Рождественский карнавал» (сдаёшь Рождественские огни — общая шкала сервера), «Защита подарков» (бьёшь Рождественского вора и Рождественских Эльфов предметами события), «Рождественский пропуск», «Рождественский магазин».",
-""
+"<b>Christmas:</b> «Christmas Carnival» (you hand in Christmas lights — shared server bar), «Gift Defense» (you hit the Christmas Thief and Christmas Elves with event items), «Christmas Pass», «Christmas Shop»."
 ],
 [
 "<b>Новый год:</b> «Новогодний салют» (запускаешь фейерверки, на 100% энергии — фейерверк-шоу со случайной наградой), «Новогодний праздник» (задания за очки), «Новогодний пропуск», «Новогодний магазин».",
-""
+"<b>New Year:</b> «New Year Fireworks Show» (you launch fireworks; at 100% energy — a fireworks show with a random reward), «New Year Celebration» (quests for points), «New Year Pass», «New Year Shop»."
 ],
 [
 "Хэллоуин: «Бал-маскарад» — как это выглядит (картинки из «Инструкций» в игре)",
-""
+"Halloween: «Masquerade Ball» — what it looks like (pictures from the in-game «Instructions»)"
 ],
 [
 "«Это зал из 26 клеток, который охраняет Тыквенный призрак. Каждый шаг здесь даёт сюрприз. Доверьтесь кубикам.» Бросок — за Хэллоуинские монеты: обычный (1 кубик) или двойной (2 кубика; награды не удваиваются, прогресс одинаковый).",
-""
+"«This is a hall of 26 squares guarded by the Pumpkin Ghost. Every step here brings a surprise. Trust the dice.» A roll costs Halloween coins: normal (1 die) or double (2 dice; rewards aren't doubled, progress is the same)."
 ],
 [
 "<b>1.</b> Расходуй предметы события для броска кубика — выпавшее число определит количество шагов.",
-""
+"<b>1.</b> Spend event items to roll the dice — the number rolled sets how many steps you take."
 ],
 [
 "<b>2.</b> За обычные и двойные броски растёт прогресс бала, дают Волшебные шляпы и другие награды.",
-""
+"<b>2.</b> Normal and double rolls raise ball progress and give Magic Hats and other rewards."
 ],
 [
 "<b>3.</b> Пройди клетку старта — получишь дополнительные награды с 2–4 случайных клеток предметов.",
-""
+"<b>3.</b> Pass the start square — get extra rewards from 2–4 random item squares."
 ],
 [
 "<b>4.</b> Дошёл до рубежа прогресса — забирай награду. Цели сбрасываются каждый день, поэтому заходи ежедневно.",
-""
+"<b>4.</b> Reached a progress milestone — collect the reward. Goals reset every day, so come back daily."
 ],
 [
 "<b>5.</b> Каждое попадание на клетку предмета даёт ей 1 опыт. Улучшенная клетка при следующем попадании даёт больше.",
-""
+"<b>5.</b> Each landing on an item square gives it 1 experience. An upgraded square gives more on the next landing."
 ],
 [
 "<b>Главное правило праздников:</b> праздничные монеты не пропадают даром — после конца они сами превращаются в ускорения. А вот праздничные предметы для сдачи и удары молотом сгорают: сдавай их до конца события.",
-""
+"<b>The main holiday rule:</b> holiday coins aren't wasted — after the end they turn into speedups by themselves. But holiday items for handing in and hammer hits burn: hand them in before the event ends."
 ],
 [
 "Чего тут раньше не было",
-""
+"What wasn't here before"
 ],
 [
 "Ещё события, которые встречаются в игре",
-""
+"More events found in the game"
 ],
 [
 "Эти события есть в самой игре, но в гайдах про них почти не пишут. Всё ниже сверено с текстом внутри игры, а не с чужими сайтами.",
-""
+"These events exist in the game itself, but guides barely write about them. Everything below is checked against the text inside the game, not other websites."
 ],
 [
 "Это <b>не отдельное событие</b>: графиня появляется на карте во время события <b>«День охоты Селии»</b> (оно ниже). У неё <b>12 уровней</b>, с 1-го по 12-й.",
-""
+"This is <b>not a separate event</b>: the Countess appears on the map during the <b>«Celia's Hunting Day»</b> event (below). She has <b>12 levels</b>, from 1 to 12."
 ],
 [
 "<b>Как найти:</b> нажми лупу («Поиск») слева внизу и выбери в списке целей «Осквернённая графиня» — игра отвезёт к ближайшей.",
-""
+"<b>How to find her:</b> tap the magnifier («Search») at the bottom left and choose «Blighted Countess» in the target list — the game takes you to the nearest one."
 ],
 [
 "<b>Как бить:</b> только <b>штурмом</b>. В одиночку на неё не ходят: это полноценный альянсовый монстр, а не обычная скверна.",
-""
+"<b>How to hit her:</b> only with a <b>rally</b>. Nobody goes at her alone: she is a full alliance monster, not regular Blight."
 ],
 [
 "Уровень бери по силам альянса: каждый следующий заметно крепче.",
-""
+"Pick a level your alliance can handle: each next one is noticeably tougher."
 ],
 [
 "Рулетка. Крутишь её за <b>«Монеты желаний»</b> — это отдельный предмет, он так и называется и нужен только здесь.",
-""
+"A roulette. You spin it with <b>«Wish Coins»</b> — a separate item, that's exactly what it is called, and it is only needed here."
 ],
 [
 "Есть <b>дневной лимит</b> попыток: игра покажет «Суточные попытки: 3» и не даст крутить больше. Исчерпал — напишет «Дневной лимит розыгрышей исчерпан».",
-""
+"There is a <b>daily attempt limit</b>: the game shows «Daily Attempts: 3» and won't let you spin more. Used them up — it says «Daily draw limit reached»."
 ],
 [
 "Выигрыш крупного приза объявляется в чате всему серверу.",
-""
+"A big prize win is announced in chat to the whole server."
 ],
 [
 "Рядом бывает <b>«Благословенное колесо»</b> — то же самое, но за «Монеты благословения». Это разные колёса и разные монеты, не путай.",
-""
+"Sometimes a <b>«Blessing Wheel»</b> runs alongside — the same thing, but for «Blessing Coins». These are different wheels and different coins, don't mix them up."
 ],
 [
 "Событие про истребление скверны. Игра пишет: «Объедините силы с Селией, чтобы искоренить зло. Выполняйте <b>задания штурма</b>, чтобы получить редкие награды».",
-""
+"An event about wiping out Blight. The game says: «Join forces with Celia to eradicate evil. Complete <b>rally quests</b> to get rare rewards»."
 ],
 [
 "<b>Что делать:</b> бить скверну <b>с 1 по 20 уровень</b> штурмами. За выполнение целей открывается <b>«Сундук Селии»</b> и бонусная награда сверху.",
-""
+"<b>What to do:</b> hit Blight <b>from level 1 to 20</b> with rallies. Completing goals opens <b>«Celia's Chest»</b> and a bonus reward on top."
 ],
 [
 "Смотреть прогресс и забирать награды — в окне события, кнопки «Вперёд» (прыгнуть к цели) и «Получить».",
-""
+"Check progress and collect rewards in the event window, with the «Go» (jump to the target) and «Claim» buttons."
 ],
 [
 "<b>Когда бывает:</b> событие длится <b>2 дня</b>, за день альянс может запустить до <b>20 штурмов</b> на Осквернённую графиню. Бывает <b>раз в 2 недели</b>: сначала День охоты Селии, сразу за ним начинается «Опыт пандемии». После начала Эры Возрождения его место занимает событие «Внутренний демон Клэр».",
-""
+"<b>When it happens:</b> the event lasts <b>2 days</b>, and per day the alliance can launch up to <b>20 rallies</b> on the Blighted Countess. It comes <b>once every 2 weeks</b>: first Celia's Hunting Day, right after it «Pandemic Experience» begins. After the Era of Revival begins, the «Claire's Inner Demon» event takes its place."
 ],
 [
 "Это не «Охотничий бой»: тот запускают R4/R5 на территории альянса, а этот идёт сам по себе.",
-""
+"This is not the «Hunt Battle»: that one is started by R4/R5 on alliance territory, while this one runs by itself."
 ],
 [
 "Копаешь вниз по этажам. Одна раскопка = одна <b>гномья кирка</b>; кирки дают за задания, задания обновляются <b>каждый день в 00:00 по серверу</b> (05:00 МСК).",
-""
+"You dig down floor by floor. One dig = one <b>Dwarven Pickaxe</b>; pickaxes come from quests, and quests refresh <b>every day at 00:00 server time</b> (05:00 Moscow)."
 ],
 [
 "<b>Главное правило:</b> перед раскопками <b>выбери награду для текущего этажа</b> — иначе копаешь вслепую.",
-""
+"<b>The main rule:</b> before digging, <b>choose the reward for the current floor</b> — otherwise you dig blind."
 ],
 [
 "Чем больше копаешь на одном этаже, тем выше шанс особой награды: после 3 раскопок он растёт в 5 раз, после 6 — в 10, после 9 — в 30. А на некоторых этажах следующая раскопка даёт особую награду <b>гарантированно</b>.",
-""
+"The more you dig on one floor, the higher the chance of a special reward: after 3 digs it grows 5-fold, after 6 — 10-fold, after 9 — 30-fold. And on some floors the next dig gives a special reward <b>guaranteed</b>."
 ],
 [
 "Отдельные награды на этажах 5, 10, 20, 30, 40, 60, 80 и 100. Глубина события — до 200 этажа.",
-""
+"Separate rewards on floors 5, 10, 20, 30, 40, 60, 80 and 100. The event goes down to floor 200."
 ],
 [
 "Приключение за алмазы. <b>Одно приключение в день бесплатное</b> — его стоит делать всегда.",
-""
+"An adventure for Diamonds. <b>One adventure a day is free</b> — always worth doing."
 ],
 [
 "Каждое приключение точно даёт предмет и может дать сундук-сюрприз. Сундуки открываются за «эмблемы сюрприза», при открытии есть 5% шанс удвоить награду.",
-""
+"Each adventure surely gives an item and may give a surprise chest. Chests open with Surprise Emblems, with a 5% chance to double the reward on opening."
 ],
 [
 "<b>Ловушка:</b> держать можно не больше <b>4 неоткрытых сундуков</b>. Набрал 4 — новые перестают выпадать, и бесплатные приключения тратятся впустую. Открывай вовремя.",
-""
+"<b>The trap:</b> you can hold no more than <b>4 unopened chests</b>. Got 4 — new ones stop dropping, and free adventures are wasted. Open them on time."
 ],
 [
 "Два события-магазина — туда ходят только за донат",
-""
+"Two shop events — only for spenders"
 ],
 [
 "Странный базар",
@@ -2637,11 +2637,11 @@
 ],
 [
 "«Странные монеты» дают <b>за покупку наборов</b> за деньги, потом меняешь их на предметы. Неистраченные монеты <b>не сгорают</b> и останутся до следующего раза.",
-""
+"«Strange Coins» are given <b>for buying packs</b> with money, then you exchange them for items. Unspent coins <b>don't burn</b> and stay until next time."
 ],
 [
 "Бесплатному игроку здесь делать нечего, но и терять ничего не надо: монеты сохранятся.",
-""
+"A free player has nothing to do here, but nothing to lose either: the coins are kept."
 ],
 [
 "Клинки наголо",
@@ -2649,6 +2649,6 @@
 ],
 [
 "То же самое: «Каменные клинки» дают за покупку наборов, наборы обновляются каждый день в 00:00 по серверу. Покупка даёт столько же VIP-очков, сколько обычные алмазные наборы.",
-""
+"Same thing: «Stone Blades» are given for buying packs, packs refresh every day at 00:00 server time. A purchase gives as many VIP points as regular Diamond packs."
 ]
 ]
