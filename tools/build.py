@@ -46,7 +46,7 @@ TEMPLATE = """<!doctype html>
 <link rel="stylesheet" href="assets/style.css?v={ver}">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
 <link rel="stylesheet" href="assets/theme.css?v={ver}">
-<script>(function(){{try{{var q=location.search.match(/[?&]design=(old|new)/);if(q)localStorage.setItem("la_design",q[1]);if(localStorage.getItem("la_design")!=="old")document.documentElement.classList.add("t-ap")}}catch(e){{document.documentElement.classList.add("t-ap")}}}})()</script>
+<script>(function(){{try{{var q=location.search.match(/[?&]design=(old|new)/);if(q)localStorage.setItem("la_design",q[1]);if(localStorage.getItem("la_design")!=="old")document.documentElement.classList.add("t-ap");if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add("embed")}}catch(e){{document.documentElement.classList.add("t-ap")}}}})()</script>
 </head>
 <body>
 <header class="site-head"><div class="wrap hdr">
@@ -67,6 +67,8 @@ TEMPLATE = """<!doctype html>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
 <script src="assets/app.js?v={ver}"></script>
 <script src="assets/fav.js?v={ver}"></script>
+<script src="assets/peek.js?v={ver}"></script>
+<script src="assets/pairgrid.js?v={ver}"></script>
 </body>
 </html>
 """
@@ -84,7 +86,7 @@ def nav_html(current):
 
 def main():
     h = hashlib.sha1()
-    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css"):
+    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js"):
         h.update((ROOT / f).read_bytes())
     ver = h.hexdigest()[:10]
     for slug, _, _ in PAGES:

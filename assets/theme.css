@@ -100,3 +100,11 @@ html.t-ap .cab-link i{background:#1c1c1e}
 html.t-ap .art{border-radius:22px}
 html.t-ap .art .count{box-shadow:none}
 @media (max-width:760px){html.t-ap main{margin:8px;border-radius:22px;padding:8px}html.t-ap main>.wrap,html.t-ap main>section.band,html.t-ap main>.band{margin:0 0 8px}}
+/* === починка 18.11: шаги в новом виде === */
+/* текстовая часть шага — того же цвета, что карточка (иначе по углам «дуги») */
+html.t-ap .steps>.step>.body{background:#f6f6f8}
+html.t-ap .steps>.step{overflow:hidden}
+/* маленькие карточки внутри шага: по две в ряд, только если есть место (≥ 230 точек каждой), иначе — одна под другой */
+.nsteps{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))!important}
+.nsteps>.step.noimg{min-width:0}
+.nsteps>.step.noimg b,.nsteps>.step.noimg p{overflow-wrap:anywhere}
