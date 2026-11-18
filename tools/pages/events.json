@@ -1337,207 +1337,207 @@
 ],
 [
 "<b>Важная поблажка:</b> в этом событии время марша и возвращения войск <b>фиксированное — 15 секунд</b>. Поэтому участвовать можно, даже если твой город стоит далеко от территории альянса. Переезжать не надо.",
-""
+"<b>An important concession:</b> in this event the march and return time of troops is <b>fixed — 15 seconds</b>. So you can take part even if your city is far from alliance territory. No need to relocate."
 ],
 [
 "<img src=\"assets/game/hunt-button.png\" alt=\"Кнопка события слева на главном экране\"><span>Эта кнопка появляется слева на экране, пока идёт бой. Нажми её — игра покажет, кого бить.</span>",
-""
+"<img src=\"assets/game/hunt-button.png\" alt=\"The event button on the left of the main screen\"><span>This button appears on the left of the screen while the battle is on. Tap it — the game shows whom to hit.</span>"
 ],
 [
 "Не бегите всем альянсом на одну цель.",
-""
+"Don't all run at one target as a whole alliance."
 ],
 [
 "Лечите солдат между волнами.",
-""
+"Heal troops between waves."
 ],
 [
 "После 5-й волны заберите награду в «Особых событиях».",
-""
+"After the 5th wave collect the reward in «Special Event»."
 ],
 [
 "Альянс · по уликам",
-""
+"Alliance · by clues"
 ],
 [
 "<img src=\"assets/shots/ev-siege.webp\" alt=\"Окно события «Осада нежити»: тюрьма найдена, «Мощь врага: 2.4M»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:14.1%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:14.1%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:50%;top:86.5%;width:38.4%;aspect-ratio:2.98\"></span>",
-""
+"<img src=\"assets/shots/ev-siege.webp\" alt=\"The Undead Siege event window: prison found, Enemy Might: 2.4M\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:14.1%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:14.1%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:50%;top:86.5%;width:38.4%;aspect-ratio:2.98\"></span>"
 ],
 [
 "Вкладка «Осада нежити»",
-""
+"The «Undead Siege» tab"
 ],
 [
 "Сверху — <b>«Мощь врага»</b>: насколько сильны монстры на выбранной сложности. Посередине тюрьма смерти (пока её не нашли, вместо неё туман и надпись «Тюрьма смерти окутана туманом»). Ниже — «Требуемый уровень владений» и выбор сложности: золотой шестиугольник — выбранный уровень, с замком — ещё закрытые (открываются, когда 20 участников альянса отобьют все волны предыдущего уровня). Полоса со свитком — сколько улик собрано из 300 000. Внизу: «Награда», жёлтая кнопка <b>«Получить подсказки»</b> (рамка) и «Подробнее».",
-""
+"At the top — <b>«Enemy Might»</b>: how strong the monsters are at the chosen difficulty. In the middle is the death prison (until it is found, fog and the text «The death prison is shrouded in fog» are shown instead). Below — the «Required territory level» and difficulty choice: the gold hexagon is the chosen level, locked ones are not open yet (they open when 20 alliance members repel all waves of the previous level). The bar with a scroll — how many clues of 300,000 are collected. At the bottom: «Reward», the yellow <b>«Get hints»</b> button (frame) and «Details»."
 ],
 [
 "За задания сокола альянс копит «Тюремные улики». Набрали 300 000 — R4/R5 запускают событие (раз в 2 дня). На город каждого волнами нападают монстры, до 20 волн.",
-""
+"The alliance collects «Prison Clues» for Falcon Quests. Reached 300,000 — R4/R5 launch the event (once every 2 days). Monsters attack everyone's city in waves, up to 20 waves."
 ],
 [
 "<b>Щиты не работают.</b> Твои отряды должны стоять на стене — прорвали оборону, и для тебя событие кончилось. Прорванные могут слать подкрепление другим.",
-""
+"<b>Shields don't work.</b> Your squads must be on the wall — once your defense is broken, the event is over for you. Those whose defense was broken can send reinforcements to others."
 ],
 [
 "Важно: перед днём набега в Дуэли отряды со стены убирают, а к Осаде нужно вернуть — не забудь.",
-""
+"Important: before the Duel raid day squads are taken off the wall, and for the Siege they must be put back — don't forget."
 ],
 [
 "1 день · Святилище 8+",
-""
+"1 day · Sanctuary 8+"
 ],
 [
 "<img src=\"assets/shots/ev-wander.webp\" alt=\"Окно события «Блуждающий фантом»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span>",
-""
+"<img src=\"assets/shots/ev-wander.webp\" alt=\"The Wandering Phantom event window\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span>"
 ],
 [
 "Вкладка «Блуждающий фантом»",
-""
+"The «Wandering Phantom» tab"
 ],
 [
 "Сверху — сколько длится событие. «Охотник королевства» — игрок, нанёсший больше всех урона. Ниже список Блуждающих скверн на карте: уровень, расстояние, сколько ей осталось жить и координаты — нажми на неё, чтобы перейти. Вкладки «Угроза королевства» и «Угроза альянса». В самом низу — когда появится следующая волна.",
-""
+"At the top — how long the event lasts. «Kingdom Hunter» — the player who dealt the most damage. Below is the list of Wandering Blights on the map: level, distance, how long it has left to live and coordinates — tap one to go to it. Tabs «Kingdom Threat» and «Alliance Threat». At the very bottom — when the next wave appears."
 ],
 [
 "Длится 1 день. Нужно Святилище <b>8 уровня</b>. Бьёшь Блуждающую скверну — огромного монстра, который гуляет по карте и нападает на города.",
-""
+"Lasts 1 day. You need Sanctuary <b>level 8</b>. You hit the Wandering Blight — a huge monster that roams the map and attacks cities."
 ],
 [
 "Если она прорвёт твою оборону, <b>город останется на месте</b> (его не выкинет), а потери среди простаивающих войск будут меньше обычного. Награду за первое убийство можно взять <b>до 3 раз</b> за событие.",
-""
+"If it breaks your defense, <b>the city stays in place</b> (it isn't thrown out), and losses among idle troops are lower than usual. The first-kill reward can be taken <b>up to 3 times</b> per event."
 ],
 [
 "Внизу окна события — список таких монстров на сервере, новые появляются каждые 10 минут. Не бей тех, кто тебе не по силам.",
-""
+"At the bottom of the event window is the list of such monsters in the kingdom; new ones appear every 10 minutes. Don't hit ones you can't handle."
 ],
 [
 "Каждый день · раунды по 4 часа",
-""
+"Every day · 4-hour rounds"
 ],
 [
 "Каждый день в 00:00 по игре (05:00 МСК) игра собирает тебя в группу с 12–20 игроками похожего уровня Святилища. Сутки поделены на раунды по 4 часа, у каждого своя тема. Набираешь очки темы — открываешь награды. 1-е место в группе во время КвК даёт серверу 2 200 очков.",
-""
+"Every day at 00:00 game time (05:00 Moscow) the game puts you into a group with 12–20 players of a similar Sanctuary level. The day is split into 4-hour rounds, each with its own theme. Earn the theme's points — unlock rewards. 1st place in the group during Kingdom War gives the kingdom 2,200 points."
 ],
 [
 "<img src=\"assets/shots/ev-survival.webp\" alt=\"Окно «Битва на выживание», раунд «Усиление ворона»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:16.8%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"ring rect\" style=\"left:30.6%;top:33.5%;width:57%;aspect-ratio:5.5\"></span><span class=\"ring rect\" style=\"left:88.5%;top:42.2%;width:12.6%;aspect-ratio:.92\"></span>",
-""
+"<img src=\"assets/shots/ev-survival.webp\" alt=\"The Survival Battle window, the Raven Enhancement round\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:16.8%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"ring rect\" style=\"left:30.6%;top:33.5%;width:57%;aspect-ratio:5.5\"></span><span class=\"ring rect\" style=\"left:88.5%;top:42.2%;width:12.6%;aspect-ratio:.92\"></span>"
 ],
 [
 "Вкладка «Битва на выживание»",
-""
+"The «Survival Battle» tab"
 ],
 [
 "Первая вкладка. Сверху — тема текущего раунда (на картинке «Усиление ворона»), сколько до его конца и «Уровни: 21-22» — с игроками какого уровня Святилища ты в группе.",
-""
+"The first tab. At the top — the current round's theme («Raven Enhancement» in the picture), how long until it ends, and «Levels: 21-22» — players of which Sanctuary level are in your group."
 ],
 [
 "<b>Полоска с сундуками</b> (рамка слева): число на медали — сколько наград этапов ты уже взял за день; сундуки открываются за 2, 8 и 18 наград. <b>«Мой ранг»</b> и <b>«Всего очков»</b> — твоё место в группе за день, полный список — «Таблица лидеров» (рамка справа). Справа вверху — «Календарь» раундов.",
-""
+"<b>The chest bar</b> (frame on the left): the number on the medal is how many stage rewards you have taken today; chests open at 2, 8 and 18 rewards. <b>«My Rank»</b> and <b>«Total Points»</b> — your place in the group for the day, the full list is the «Leaderboard» (frame on the right). At the top right — the rounds «Calendar»."
 ],
 [
 "Ниже <b>«Как получить очки»</b> — что засчитывается в этом раунде (палец вверх — самый выгодный способ), и <b>этапы</b>: набрал очки этапа — забираешь его награды, взятые отмечены галочкой.",
-""
+"Below is <b>«How to get points»</b> — what counts in this round (a thumbs-up marks the best way), and the <b>stages</b>: reach a stage's points — collect its rewards, collected ones are checked."
 ],
 [
 "Темы раундов и очки",
-""
+"Round themes and points"
 ],
 [
 "Тема раунда",
-""
+"Round theme"
 ],
 [
 "За что дают очки",
-""
+"What gives points"
 ],
 [
 "<img class=\"i\" src=\"assets/game/raven-fruit.png\" alt=\"\">Усиление ворона",
-""
+"<img class=\"i\" src=\"assets/game/raven-fruit.png\" alt=\"\">Raven Enhancement"
 ],
 [
 "10 вороньих плодов — 1 очко; 1 энергия — 100 очков; набор с алмазами — 30 очков за каждый алмаз",
-""
+"10 Raven Fruit — 1 point; 1 Stamina — 100 points; a pack with Diamonds — 30 points per Diamond"
 ],
 [
 "<img class=\"i\" src=\"assets/game/ticket-hero.png\" alt=\"\">Усиление героев",
-""
+"<img class=\"i\" src=\"assets/game/ticket-hero.png\" alt=\"\">Enhance Hero"
 ],
 [
 "Найм героя — 400; каждые 1 950 противоядия — 1",
-""
+"Recruiting a hero — 400; every 1,950 Antitoxin — 1"
 ],
 [
 "<img class=\"i\" src=\"assets/game/speed-build.png\" alt=\"\">Развитие владений",
-""
+"<img class=\"i\" src=\"assets/game/speed-build.png\" alt=\"\">Build Territory"
 ],
 [
 "1 минута ускорения стройки — 10; +1 мощь здания — 1",
-""
+"1 minute of building speedup — 10; +1 building Might — 1"
 ],
 [
 "<img class=\"i\" src=\"assets/game/speed-train.png\" alt=\"\">Обучение войск",
-""
+"<img class=\"i\" src=\"assets/game/speed-train.png\" alt=\"\">Train Soldiers"
 ],
 [
 "1 минута ускорения обучения — 10; 1 солдат — 22",
-""
+"1 minute of training speedup — 10; 1 soldier — 22"
 ],
 [
 "<img class=\"i\" src=\"assets/game/speed-research.png\" alt=\"\">Исследование технологий",
-""
+"<img class=\"i\" src=\"assets/game/speed-research.png\" alt=\"\">Technology Research"
 ],
 [
 "1 минута ускорения исследований — 10; +1 мощь технологий — 1",
-""
+"1 minute of research speedup — 10; +1 tech Might — 1"
 ],
 [
 "<b>Совмещай с Дуэлью альянсов.</b> Тратишь вещи дня Дуэли в раунд Битвы с той же темой — очки идут в оба события. Например, в понедельник корми Ворона именно в раунд «Усиление Ворона».",
-""
+"<b>Combine it with the Alliance Duel.</b> Spend the Duel day's items in the Battle round with the same theme — points go to both events. For example, on Monday feed the Raven exactly in the «Raven Enhancement» round."
 ],
 [
 "Не выполняй все задания Битвы каждый день без разбора — на Дуэль ничего не останется. В каждом раунде 4 награды, а за 2, 8 и 18 наград за день открываются дополнительные сундуки.",
-""
+"Don't do all Battle quests every day without thinking — nothing will be left for the Duel. Each round has 4 rewards, and 2, 8 and 18 rewards a day unlock extra chests."
 ],
 [
 "Ответы на вопросы Викторины",
-""
+"Quiz answers"
 ],
 [
 "Ответы, которые засчитывает игра (собрали игроки). Нажми Ctrl+F и введи начало вопроса, чтобы быстро найти.",
-""
+"Answers the game accepts (collected by players). Press Ctrl+F and type the start of the question to find it fast. The questions are in Russian alphabetical order; where the game has an English version of the question, its English text is used."
 ],
 [
 "Ответы про фракции совпадают с подсказкой самой игры (окно Арены): «Воины получают на 20% меньше урона от рейнджеров», «Рейнджеры — от колдунов», «Колдуны — от воинов». Значит, <b>Воин сильнее Рейнджера, Рейнджер сильнее Колдуна, Колдун сильнее Воина</b>.",
-""
+"The faction answers match the game's own hint (the Arena window): «Warriors take 20% less damage from Rangers», «Rangers — from Warlocks», «Warlocks — from Warriors». So <b>Warrior beats Ranger, Ranger beats Warlock, Warlock beats Warrior</b>."
 ],
 [
 "Вопросы — по алфавиту.",
-""
+"Questions — in alphabetical order (of the Russian version)."
 ],
 [
 "Вопрос",
-""
+"Question"
 ],
 [
 "Ответ",
-""
+"Answer"
 ],
 [
 "Артура (танк) следует размещать в тылу строя",
-""
+"Arthur (tank) should be placed in the back row of the formation"
 ],
 [
 "<b>Неверно</b>",
-""
+"<b>Incorrect</b>"
 ],
 [
 "В какие дни событие Дуэль альянсов не проводится?",
-""
+"On which days is the Alliance Duel event not held?"
 ],
 [
 "<b>Воскресенье</b>",
-""
+"<b>Sunday</b>"
 ],
 [
 "Где производится игровое Противоядие?",
@@ -1545,15 +1545,15 @@
 ],
 [
 "<b>Мастерская противоядий</b>",
-""
+"<b>Antitoxin Workshop</b>"
 ],
 [
 "Для чего используются предметы из Ткацкой мастерской?",
-""
+"What are items from the Weaving Workshop used for?"
 ],
 [
 "<b>Создание снаряжения</b>",
-""
+"<b>Crafting gear</b>"
 ],
 [
 "Для чего нужно противоядие?",
@@ -1561,23 +1561,23 @@
 ],
 [
 "<b>Улучшение и усиление героя</b>",
-""
+"<b>Enhances or upgrades hero</b>"
 ],
 [
 "Для чего нужны Реликвии?",
-""
+"What is the purpose of Curios?"
 ],
 [
 "<b>Оба варианта</b>",
-""
+"<b>Both of the above</b>"
 ],
 [
 "За что отвечает слот Каравана?",
-""
+"What is the Caravan slot responsible for?"
 ],
 [
 "<b>Численность отряда</b>",
-""
+"<b>Squad size</b>"
 ],
 [
 "Занимает ли Тайная операция ячейку похода?",
@@ -1585,31 +1585,31 @@
 ],
 [
 "<b>Нет</b>",
-""
+"<b>No</b>"
 ],
 [
 "Изучение технологии Дуэли альянсов повышает очки, получаемые в Дуэли альянсов",
-""
+"Researching Alliance Duel technology can increase the points gained per Alliance Duel."
 ],
 [
 "<b>Верно</b>",
-""
+"<b>Correct</b>"
 ],
 [
 "К какой фракции принадлежит Марлена?",
-""
+"Which faction does Marlena belong to?"
 ],
 [
 "<b>Воин</b>",
-""
+"<b>Warrior</b>"
 ],
 [
 "Как воинам передаётся скверна?",
-""
+"How is Blight transmitted to Warriors?"
 ],
 [
 "<b>Укус блохи</b>",
-""
+"<b>Flea bite</b>"
 ],
 [
 "Как можно получить медные монеты?",
@@ -1617,19 +1617,19 @@
 ],
 [
 "<b>Сбор в святилище</b>",
-""
+"<b>Collect in the Sanctuary</b>"
 ],
 [
 "Как повысить мощность отряда после неудачной экспедиции?",
-""
+"How to raise squad power after a failed expedition?"
 ],
 [
 "Как подбирать героев для максимального урона при формировании строя?",
-""
+"How to pick heroes for maximum damage when building a formation?"
 ],
 [
 "<b>5 участников из одной фракции</b>",
-""
+"<b>5 members from the same faction</b>"
 ],
 [
 "Как улучшить награды, получаемые в Лагере исследователя?",
@@ -1637,31 +1637,31 @@
 ],
 [
 "<b>Проходить больше этапов</b>",
-""
+"<b>Clear more stages</b>"
 ],
 [
 "Какая еженедельная тема Дуэли альянсов по понедельникам?",
-""
+"What is the weekly Alliance Duel theme on Mondays?"
 ],
 [
 "<b>Усиление ворона</b>",
-""
+"<b>Enhance Raven</b>"
 ],
 [
 "Какая еженедельная тема Дуэли альянсов по средам?",
-""
+"What is the weekly Alliance Duel theme on Wednesdays?"
 ],
 [
 "<b>Изучение технологии</b>",
-""
+"<b>Technology research</b>"
 ],
 [
 "Какая еженедельная тема Дуэли альянсов по четвергам?",
-""
+"What is the weekly Alliance Duel theme on Thursdays?"
 ],
 [
 "<b>Усиление героев</b>",
-""
+"<b>Enhance Heroes</b>"
 ],
 [
 "Какие бонусы могут дать союзники по альянсу?",
@@ -1669,11 +1669,11 @@
 ],
 [
 "Какие награды Заданий может улучшить выжившая Фрея?",
-""
+"Which quest rewards can the Survivor Freya improve?"
 ],
 [
 "<b>Задание сокола</b>",
-""
+"<b>Falcon Quest</b>"
 ],
 [
 "Какие способы не повышают мощь отряда после поражения?",
@@ -1681,7 +1681,7 @@
 ],
 [
 "<b>Нанять выживших</b>",
-""
+"<b>Recruit Survivors</b>"
 ],
 [
 "Какие усиления не открываются с повышением VIP-уровня?",
@@ -1689,27 +1689,27 @@
 ],
 [
 "<b>Улучшение характеристик солдат</b>",
-""
+"<b>Enhance Soldier Stats</b>"
 ],
 [
 "Какова вероятность получения SSR-награды в найме героев?",
-""
+"What is the chance of getting an SSR reward in hero recruiting?"
 ],
 [
 "Какова роль Ворона в игре?",
-""
+"What is the Raven's role in the game?"
 ],
 [
 "<b>Все перечисленное</b>",
-""
+"<b>All of the above</b>"
 ],
 [
 "Какова цель пожертвования Мышиной приманки в событии «Сырная ловушка»?",
-""
+"What is the purpose of donating Mouse Lures in the «Cheese Trap» event?"
 ],
 [
 "<b>Повышает урон игрока</b>",
-""
+"<b>Increases the player's damage</b>"
 ],
 [
 "Каково основное применение посоха чумного доктора?",
@@ -1717,23 +1717,23 @@
 ],
 [
 "<b>Удерживать дистанцию от пациентов</b>",
-""
+"<b>Keep a distance from patients</b>"
 ],
 [
 "Каковы преимущества высокого уровня казармы?",
-""
+"What are the benefits of a high Barracks level?"
 ],
 [
 "<b>Увеличить лимит солдат</b>",
-""
+"<b>Increase the soldier limit</b>"
 ],
 [
 "Какое снаряжение производит Камень снаряжения?",
-""
+"Which gear does Gearstone produce?"
 ],
 [
 "<b>Плавильный цех</b>",
-""
+"<b>Smelting Workshop</b>"
 ],
 [
 "Какой из перечисленных героев относится к качеству UR?",
@@ -1741,83 +1741,83 @@
 ],
 [
 "<b>Селия</b>",
-""
+"<b>Celia</b>"
 ],
 [
 "Какой интервал между двумя ежедневными получениями энергии?",
-""
+"What is the interval between the two daily Stamina claims?"
 ],
 [
 "<b>4 часа</b>",
-""
+"<b>4 Hours</b>"
 ],
 [
 "Какой класс у Шэдоу в игре?",
-""
+"What is Shadow's class in the game?"
 ],
 [
 "<b>Танк</b>",
-""
+"<b>Tank</b>"
 ],
 [
 "Какой особый наряд носили в Средние века для предотвращения Скверны?",
-""
+"What special outfit was worn in the Middle Ages to prevent Blight?"
 ],
 [
 "<b>Одеяние Чумного доктора</b>",
-""
+"<b>Plague Doctor's Garb</b>"
 ],
 [
 "Какой цвет редкости снаряжения даёт наибольший прирост к мощи героя?",
-""
+"Which gear rarity color gives the biggest boost to hero Might?"
 ],
 [
 "Количество солдат не ограничено",
-""
+"There is no limit to the number of Soldiers."
 ],
 [
 "Кто виноват в тяжёлом ранении и заражении Селии?",
-""
+"Who is to blame for Celia's severe wound and infection?"
 ],
 [
 "<b>Крысиный король</b>",
-""
+"<b>Rat King</b>"
 ],
 [
 "Кто стоит за атаками чёрных крыс на город?",
-""
+"Who is behind the black rat attacks on the city?"
 ],
 [
 "<b>Чёрный маг</b>",
-""
+"<b>Black Wizard</b>"
 ],
 [
 "Кто управляет чёрными крысами и нападает на город?",
-""
+"Who controls the black rats and attacks the city?"
 ],
 [
 "На каком VIP-уровне открывается автоотправка для Секретных операций?",
-""
+"At which VIP level is Auto Dispatch for Covert Operations unlocked?"
 ],
 [
 "На каком VIP-уровне открывается быстрое испытание в Битве экспедиции?",
-""
+"At which VIP level is the Quick Challenge feature for Expedition Battle unlocked?"
 ],
 [
 "На каком VIP-уровне открывается суперрежим Секретных операций?",
-""
+"At which VIP level is the Super Mode for Covert Operations unlocked?"
 ],
 [
 "Против героев какой фракции сильны воины?",
-""
+"Against which faction's heroes are Warriors strong?"
 ],
 [
 "<b>Рейнджер</b>",
-""
+"<b>Ranger</b>"
 ],
 [
 "Против героев какой фракции Чернокнижники наиболее эффективны?",
-""
+"Against which faction's heroes are Warlocks most effective?"
 ],
 [
 "Сколько минут длится Гонка за эликсиром?",
@@ -1825,11 +1825,11 @@
 ],
 [
 "<b>30 минут</b>",
-""
+"<b>30 Minutes</b>"
 ],
 [
 "Сколько секретных операций может одновременно выполнить каждая экспедиционная очередь?",
-""
+"How many Covert Operations can each expedition queue run at once?"
 ],
 [
 "Сколько часов длится каждая Битва на выживание в игре?",
@@ -1837,23 +1837,23 @@
 ],
 [
 "Что даёт казарма более высокого уровня?",
-""
+"What does a higher-level Barracks give?"
 ],
 [
 "<b>Увеличивает вместимость казарм</b>",
-""
+"<b>Soldier capacity increased</b>"
 ],
 [
 "Что делать при нехватке ресурсов для улучшения построек/технологий?",
-""
+"What can you do when lacking resources for building/technology upgrades?"
 ],
 [
 "Что из перечисленного можно получить путём повышения?",
-""
+"Which of the following can be obtained by promotion?"
 ],
 [
 "<b>Усиление клиники</b>",
-""
+"<b>Clinic Buff</b>"
 ],
 [
 "Что ограничивает максимальный уровень героя?",
@@ -1861,7 +1861,7 @@
 ],
 [
 "<b>Уровень святилища</b>",
-""
+"<b>Sanctuary Level</b>"
 ],
 [
 "Что ограничивает уровень навыков героя?",
@@ -1869,15 +1869,15 @@
 ],
 [
 "<b>Звёздный рейтинг героя</b>",
-""
+"<b>Hero star rating</b>"
 ],
 [
 "Что произойдёт с заражёнными без своевременного лечения?",
-""
+"What happens to the infected without timely treatment?"
 ],
 [
 "<b>Скверна</b>",
-""
+"<b>Blight</b>"
 ],
 [
 "Что является доказательством статуса мэра в игре?",
@@ -1885,159 +1885,159 @@
 ],
 [
 "<b>Перстень-перчатка</b>",
-""
+"<b>Ring-gauntlet</b>"
 ],
 [
 "Воскресенье · 07:00, 14:00, 23:00, 04:00 МСК · 30 минут",
-""
+"Sunday · 07:00, 14:00, 23:00, 04:00 Moscow · 30 minutes"
 ],
 [
 "По воскресеньям слева внизу на главном экране появляется кнопка в виде кристалла. Нажми её в нужное время — переместишься на отдельную карту события. Там 30 минут. Задача — набрать как можно больше <b>очищенных кристаллов</b> <img class=\"inl\" src=\"assets/game/crystal-pure.png\" alt=\"\">: по их количеству считают рейтинг и награды.",
-""
+"On Sundays a crystal-shaped button appears at the bottom left of the main screen. Tap it at the right time — you move to a separate event map. You have 30 minutes there. The goal is to collect as many <b>Purified Crystals</b> <img class=\"inl\" src=\"assets/game/crystal-pure.png\" alt=\"\"> as possible: the ranking and rewards are counted by them."
 ],
 [
 "<b>Регистрации нет — вход свободный.</b> В воскресенье в часы матчей нажми кнопку-кристалл слева внизу главного экрана — и попадёшь в долину. Матчей четыре: <b>02:00, 09:00, 18:00 и 23:00 по серверу</b> (07:00, 14:00, 23:00 и 04:00 МСК), каждый идёт 30 минут.",
-""
+"<b>No registration — free entry.</b> On Sunday during match hours tap the crystal button at the bottom left of the main screen — and you get into the valley. There are four matches: <b>02:00, 09:00, 18:00 and 23:00 server time</b> (07:00, 14:00, 23:00 and 04:00 Moscow), each lasts 30 minutes."
 ],
 [
 "<b>Свои войска не тратятся.</b> При входе игра даёт тебе солдат «в количестве, равном максимальной вместимости вашей казармы, самого высокого доступного вам ранга». Атаковать чужие города здесь нельзя — только точки сбора кристаллов. Переезд по карте бесплатный, потом перезарядка.",
-""
+"<b>Your own troops are not spent.</b> On entry the game gives you soldiers «equal to the maximum capacity of your Barracks, of the highest rank available to you». You can't attack other cities here — only crystal gathering points. Relocating on the map is free, then there is a cooldown."
 ],
 [
 "<b>Два вида кристаллов.</b> <img class=\"inl\" src=\"assets/game/crystal-pure.png\" alt=\"\"> <b>Очищенный кристалл</b> — очки, за них рейтинг. <img class=\"inl\" src=\"assets/game/crystal-skill.png\" alt=\"\"> <b>Кристалл навыка</b> — падает с чумных крыс, на него учат навыки долины. Навыки действуют только в долине и сбрасываются к следующему разу.",
-""
+"<b>Two kinds of crystals.</b> <img class=\"inl\" src=\"assets/game/crystal-pure.png\" alt=\"\"> <b>Purified Crystal</b> — points, the ranking is by them. <img class=\"inl\" src=\"assets/game/crystal-skill.png\" alt=\"\"> <b>Skill Crystal</b> — drops from Plague Rats, valley skills are learned with it. Skills only work in the valley and reset by next time."
 ],
 [
 "Что ты видишь внутри долины",
-""
+"What you see inside the valley"
 ],
 [
 "<img src=\"assets/shots/valley-map.webp\" alt=\"Экран внутри Долины: Священная пещера, кристальные скопления, осколки, кнопки события\"><span class=\"ring rect\" style=\"left:34.1%;top:1.9%;width:35%;aspect-ratio:5.4\"></span><span class=\"ring rect\" style=\"left:62.9%;top:1.9%;width:20.3%;aspect-ratio:3.2\"></span><span class=\"ring rect\" style=\"left:84.9%;top:28.9%;width:28.7%;aspect-ratio:1.69\"></span><span class=\"ring rect\" style=\"left:19.2%;top:64.2%;width:34.4%;aspect-ratio:2.03\"></span><span class=\"ring rect\" style=\"left:6.7%;top:72.6%;width:9.3%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:6.7%;top:85.7%;width:9.3%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:6.7%;top:79.2%;width:9.3%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:91.7%;top:71.4%;width:10.6%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:91.7%;top:78.4%;width:10.6%;aspect-ratio:1\"></span>",
-""
+"<img src=\"assets/shots/valley-map.webp\" alt=\"Inside the Valley: Sacred Cave, crystal clusters, shards, event buttons\"><span class=\"ring rect\" style=\"left:34.1%;top:1.9%;width:35%;aspect-ratio:5.4\"></span><span class=\"ring rect\" style=\"left:62.9%;top:1.9%;width:20.3%;aspect-ratio:3.2\"></span><span class=\"ring rect\" style=\"left:84.9%;top:28.9%;width:28.7%;aspect-ratio:1.69\"></span><span class=\"ring rect\" style=\"left:19.2%;top:64.2%;width:34.4%;aspect-ratio:2.03\"></span><span class=\"ring rect\" style=\"left:6.7%;top:72.6%;width:9.3%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:6.7%;top:85.7%;width:9.3%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:6.7%;top:79.2%;width:9.3%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:91.7%;top:71.4%;width:10.6%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:91.7%;top:78.4%;width:10.6%;aspect-ratio:1\"></span>"
 ],
 [
 "Экран долины собран из картинок самой игры (объекты и кнопки — 1:1, расстановка на карте — для наглядности).",
-""
+"The valley screen is assembled from the game's own pictures (objects and buttons — 1:1, placement on the map — for clarity)."
 ],
 [
 "<b>Сверху слева — синий кристалл и число</b><span>сколько <b>очищенных кристаллов</b> ты уже собрал (по ним рейтинг и награды).</span>",
-""
+"<b>Top left — a blue crystal and a number</b><span>how many <b>Purified Crystals</b> you have collected (ranking and rewards are by them).</span>"
 ],
 [
 "<b>Часы рядом</b><span>сколько минут осталось до конца долины (всего 30).</span>",
-""
+"<b>The clock next to it</b><span>how many minutes are left until the valley ends (30 in total).</span>"
 ],
 [
 "<b>Большая гора в центре — Священная пещера</b><span>первые 23 минуты под защитой, потом её захватывают все.</span>",
-""
+"<b>The big mountain in the center — the Sacred Cave</b><span>protected for the first 23 minutes, then everyone captures it.</span>"
 ],
 [
 "<b>Каменные холмы с синими кристаллами — скопления 1–3 уровня</b><span>с деревянной вышкой — уровень выше, кристаллы идут быстрее.</span>",
-""
+"<b>Rocky hills with blue crystals — level 1–3 clusters</b><span>with a wooden tower — a higher level, crystals come faster.</span>"
 ],
 [
 "<b>Крысы на карте — чумные крысы</b><span>за них дают кристаллы навыков.</span>",
-""
+"<b>Rats on the map — Plague Rats</b><span>they give Skill Crystals.</span>"
 ],
 [
 "<b>Маленькие кристаллы на земле — осколки</b><span>остаются, когда скопление отбили; подбирай.</span>",
-""
+"<b>Small crystals on the ground — shards</b><span>left when a cluster is retaken; pick them up.</span>"
 ],
 [
 "<b>Справа «Уведомления перезарядки»</b><span>когда появится следующая волна мгновенных скоплений и когда откроется пещера.</span>",
-""
+"<b>On the right «Notification CD»</b><span>when the next wave of instant clusters appears and when the cave opens.</span>"
 ],
 [
 "<b>Слева «Специальный отряд»</b><span>твои отряды в пути и их таймеры.</span>",
-""
+"<b>On the left «Special Squad»</b><span>your squads on the move and their timers.</span>"
 ],
 [
 "<b>Слева: EXP 450/500</b><span>шкала навыков долины: сколько <b>кристаллов навыков</b> собрано до следующего навыка. Нажми — откроется окно «Навыки долины» (ниже на странице).</span>",
-""
+"<b>On the left: EXP 450/500</b><span>the valley skill bar: how many <b>Skill Crystals</b> are collected toward the next skill. Tap it — the «Valley Skills» window opens (further down the page).</span>"
 ],
 [
 "<b>Слева внизу: дом с крестом</b><span>лазарет долины — очередь лечения без ограничений и без ресурсов. <b>Прицел</b> ниже — активный навык 5-го уровня (жми вручную).</span>",
-""
+"<b>Bottom left: a house with a cross</b><span>the valley infirmary — an unlimited healing queue with no resources. The <b>crosshair</b> below is the level 5 active skill (tap it manually).</span>"
 ],
 [
 "<b>Справа: череп</b><span>«Характеристики героя» — провалы и ослабления твоих героев. <b>Перо со стрелкой</b> — бесплатное перемещение и его перезарядка.</span>",
-""
+"<b>On the right: a skull</b><span>«Hero Stats» — your heroes' failures and debuffs. <b>A feather with an arrow</b> — free relocation and its cooldown.</span>"
 ],
 [
 "Что делать — по шагам (картинки — из игрового «Руководства» долины)",
-""
+"What to do — step by step (pictures — from the valley's in-game «Guide»)"
 ],
 [
 "<img src=\"assets/shots/valley-rats.webp\" alt=\"Чумные крысы долины — модели из файлов игры\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/valley-rats.webp\" alt=\"Valley Plague Rats — models from the game files\" loading=\"lazy\">"
 ],
 [
 "ШАГ 1 · С ПЕРВОЙ МИНУТЫ",
-""
+"STEP 1 · FROM THE FIRST MINUTE"
 ],
 [
 "Бей чумных крыс",
-""
+"Hit Plague Rats"
 ],
 [
 "В долине живут два вида чумных крыс (на картинке — их модели из игры: без оружия и с тесаком). Они бродят по карте — нажми на крысу и атакуй. За каждую дают <b>кристаллы навыков</b> <img class=\"inl\" src=\"assets/game/crystal-skill.png\" alt=\"\">, а на них учат навыки долины (ниже). Чем раньше выучишь навыки — тем быстрее пойдёт весь сбор.",
-""
+"Two kinds of Plague Rats live in the valley (in the picture — their models from the game: unarmed and with a cleaver). They roam the map — tap a rat and attack. Each one gives <b>Skill Crystals</b> <img class=\"inl\" src=\"assets/game/crystal-skill.png\" alt=\"\">, and valley skills are learned with them (below). The sooner you learn skills, the faster all your gathering goes."
 ],
 [
 "<img src=\"assets/shots/valley-g2.webp\" alt=\"Кристальные скопления 1–3 уровня и кнопки «Разведка» и «Атака»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:34.8%;top:81.3%;width:16%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:62.4%;top:81.3%;width:16%;aspect-ratio:1\"></span>",
-""
+"<img src=\"assets/shots/valley-g2.webp\" alt=\"Level 1–3 crystal clusters and the Scout and Attack buttons\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:34.8%;top:81.3%;width:16%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:62.4%;top:81.3%;width:16%;aspect-ratio:1\"></span>"
 ],
 [
 "Займи кристальное скопление",
-""
+"Take a crystal cluster"
 ],
 [
 "Нажми на скопление — появятся две кнопки (рамки): <b>разведка</b> (подзорная труба) и <b>атака</b> (мечи). Свободное скопление охраняют защитники — разбей их, и отряд начнёт собирать. Скопления 1–3 уровня: чем выше, тем быстрее очищаются кристаллы.",
-""
+"Tap a cluster — two buttons appear (frames): <b>scout</b> (a spyglass) and <b>attack</b> (swords). A free cluster is guarded by defenders — beat them, and your squad starts gathering. Level 1–3 clusters: the higher, the faster crystals are purified."
 ],
 [
 "Скопление, которое собирает другой игрок (даже соратник), можно отбить — его кристаллы рассыплются осколками вокруг.",
-""
+"A cluster gathered by another player (even an alliance member) can be taken — its crystals scatter as shards around it."
 ],
 [
 "<img src=\"assets/shots/valley-g5.webp\" alt=\"Мгновенные скопления кристаллов\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/valley-g5.webp\" alt=\"Instant crystal clusters\" loading=\"lazy\">"
 ],
 [
 "ШАГ 3 · 10–12 и 20–22 МИНУТА",
-""
+"STEP 3 · MINUTES 10–12 AND 20–22"
 ],
 [
 "Мгновенные скопления",
-""
+"Instant clusters"
 ],
 [
 "Особые скопления, с которых кристаллы добываются очень быстро. Появляются шестью волнами — на 10-й, 11-й, 12-й, 20-й, 21-й и 22-й минуте (время видно справа в «Уведомлениях перезарядки»). Держи свободный отряд, чтобы успеть.",
-""
+"Special clusters where crystals are mined very fast. They appear in six waves — at minutes 10, 11, 12, 20, 21 and 22 (the time is shown on the right in «Notification CD»). Keep a free squad ready to make it."
 ],
 [
 "<img src=\"assets/shots/valley-g4.webp\" alt=\"Священная пещера в центре долины\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/valley-g4.webp\" alt=\"The Sacred Cave in the center of the valley\" loading=\"lazy\">"
 ],
 [
 "ШАГ 4 · С 23-Й МИНУТЫ",
-""
+"STEP 4 · FROM MINUTE 23"
 ],
 [
 "Священная пещера в центре",
-""
+"The Sacred Cave in the center"
 ],
 [
 "Первые 23 минуты она под защитой. Потом её могут захватывать все, но каждый игрок шлёт туда <b>только одну команду</b>. 10 лучших по рейтингу захвата получают большую пачку очищенных кристаллов прямо в итог.",
-""
+"For the first 23 minutes it is protected. Then everyone can capture it, but each player sends <b>only one team</b> there. The top 10 by capture ranking get a big batch of Purified Crystals straight into their total."
 ],
 [
 "<img src=\"assets/shots/valley-g3.webp\" alt=\"Бесплатное перемещение города в долине\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:73.2%;top:85.3%;width:39.8%;aspect-ratio:3.3\"></span>",
-""
+"<img src=\"assets/shots/valley-g3.webp\" alt=\"Free city relocation in the valley\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:73.2%;top:85.3%;width:39.8%;aspect-ratio:3.3\"></span>"
 ],
 [
 "ПЕРЕЕЗД",
-""
+"RELOCATING"
 ],
 [
 "Бесплатное перемещение",
@@ -2045,43 +2045,43 @@
 ],
 [
 "Город в долине переставляется <b>бесплатно раз в 360 секунд</b>: выбери место и жми «Бесплатное перемещение» (рамка). Во время перезарядки переезд стоит предмет «Целевое перемещение», каждый следующий — на 1 больше, но не больше 5.",
-""
+"In the valley the city is moved <b>for free once every 360 seconds</b>: pick a spot and tap «Free Relocation» (frame). During the cooldown a move costs a targeted relocation item, each next one costs 1 more, but no more than 5."
 ],
 [
 "<img src=\"assets/shots/valley-g7.webp\" alt=\"Главный город в долине нельзя атаковать и разведывать\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:34.4%;top:75.7%;width:18.5%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:67.3%;top:75.7%;width:18.5%;aspect-ratio:1\"></span>",
-""
+"<img src=\"assets/shots/valley-g7.webp\" alt=\"A main city in the valley can't be attacked or scouted\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:34.4%;top:75.7%;width:18.5%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:67.3%;top:75.7%;width:18.5%;aspect-ratio:1\"></span>"
 ],
 [
 "ВАЖНО",
-""
+"IMPORTANT"
 ],
 [
 "Города игроков атаковать нельзя",
-""
+"Player cities can't be attacked"
 ],
 [
 "В долине кнопки разведки и атаки у чужого города перечёркнуты (рамки): главные города не трогают. Бьются только за скопления и пещеру. Свои солдаты не тратятся — игра выдаёт отряд по вместимости твоей казармы, самого высокого доступного ранга.",
-""
+"In the valley the scout and attack buttons on another city are crossed out (frames): main cities are off limits. Fights are only for clusters and the cave. Your own troops are not spent — the game gives a squad based on your Barracks capacity, of the highest available rank."
 ],
 [
 "<b>Не лезь много раз туда, где проигрываешь.</b> Каждая неудачная попытка отбить скопление даёт герою «провал». Провалы копятся, и после нескольких подряд герой получает ослабление (видно по кнопке-черепу). Провалы проходят со временем: таймер кончился — минус один.",
-""
+"<b>Don't keep going where you lose.</b> Each failed attempt to take a cluster gives a hero a «failure». Failures stack, and after several in a row the hero gets a debuff (shown on the skull button). Failures wear off over time: when the timer ends — minus one."
 ],
 [
 "Навыки долины — что выбрать",
-""
+"Valley skills — what to choose"
 ],
 [
 "<img src=\"assets/shots/valley-skills.webp\" alt=\"Окно «Навыки долины»: кристаллы навыков сверху, 5 уровней по 2 навыка\"><span class=\"ring rect\" style=\"left:50%;top:29.2%;width:19%;aspect-ratio:1\"></span>",
-""
+"<img src=\"assets/shots/valley-skills.webp\" alt=\"The Valley Skills window: Skill Crystals at the top, 5 levels with 2 skills each\"><span class=\"ring rect\" style=\"left:50%;top:29.2%;width:19%;aspect-ratio:1\"></span>"
 ],
 [
 "Сверху — кристаллы навыков (рамка), ниже 5 уровней; светится выбранный навык.",
-""
+"At the top — Skill Crystals (frame), below — 5 levels; the chosen skill glows."
 ],
 [
 "На каждом уровне — два навыка, выбрать можно <b>только один</b>. Уровни 1–4 — пассивные (работают сами после изучения), 5-й уровень — <b>активный</b>, его надо нажимать вручную. Учатся за <img class=\"inl\" src=\"assets/game/crystal-skill.png\" alt=\"\"> кристаллы навыков.",
-""
+"Each level has two skills, and you can choose <b>only one</b>. Levels 1–4 are passive (they work by themselves after learning), level 5 is <b>active</b> and must be tapped manually. Learned with <img class=\"inl\" src=\"assets/game/crystal-skill.png\" alt=\"\"> Skill Crystals."
 ],
 [
 "Уровень",
@@ -2089,119 +2089,119 @@
 ],
 [
 "Навык 1",
-""
+"Skill 1"
 ],
 [
 "Навык 2",
-""
+"Skill 2"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-1a.png\" alt=\"\"><b>Всплеск кристалла</b> — периодически даёт 1 080 очищенных кристаллов",
-""
+"<img class=\"i\" src=\"assets/game/vs-1a.png\" alt=\"\"><b>Crystal Surge</b> — periodically gives 1,080 Purified Crystals"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-1b.png\" alt=\"\"><b>Охотник на чумных крыс</b> — +1 500 кристаллов за каждую убитую чумную крысу",
-""
+"<img class=\"i\" src=\"assets/game/vs-1b.png\" alt=\"\"><b>Plague Rat Hunter</b> — +1,500 crystals for each Plague Rat killed"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-2a.png\" alt=\"\"><b>Увеличение силы</b> — вместимость похода героя +50",
-""
+"<img class=\"i\" src=\"assets/game/vs-2a.png\" alt=\"\"><b>Force Expansion</b> — hero march capacity +50"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-2b.png\" alt=\"\"><b>Быстрый марш</b> — скорость похода в долине +25%",
-""
+"<img class=\"i\" src=\"assets/game/vs-2b.png\" alt=\"\"><b>Swift March</b> — march speed in the valley +25%"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-3a.png\" alt=\"\"><b>Разграбление в долине</b> — +5 000 очищенных кристаллов при захвате жилы (раз в 60 сек.)",
-""
+"<img class=\"i\" src=\"assets/game/vs-3a.png\" alt=\"\"><b>Valley Plunder</b> — +5,000 Purified Crystals when capturing a vein (once every 60 s)"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-3b.png\" alt=\"\"><b>Дозор в долине</b> — +5 000 очищенных кристаллов при <b>неудачной</b> попытке захвата (раз в 60 сек.)",
-""
+"<img class=\"i\" src=\"assets/game/vs-3b.png\" alt=\"\"><b>Valley Vigil</b> — +5,000 Purified Crystals on a <b>failed</b> capture attempt (once every 60 s)"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-4a.png\" alt=\"\"><b>Добыча кристаллов</b> — сбор со скоплений быстрее на 15%",
-""
+"<img class=\"i\" src=\"assets/game/vs-4a.png\" alt=\"\"><b>Crystal Mining</b> — gathering from clusters 15% faster"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-4b.png\" alt=\"\"><b>Стальная воля</b> — ослабления короче на 30 сек.",
-""
+"<img class=\"i\" src=\"assets/game/vs-4b.png\" alt=\"\"><b>Iron Will</b> — debuffs 30 s shorter"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-5a.png\" alt=\"\"><b>Пробуждение долины</b> (нажать) — урон героя +15% на 60 сек., перезарядка 300 сек.",
-""
+"<img class=\"i\" src=\"assets/game/vs-5a.png\" alt=\"\"><b>Valley Awakening</b> (tap) — hero damage +15% for 60 s, cooldown 300 s"
 ],
 [
 "<img class=\"i\" src=\"assets/game/vs-5b.png\" alt=\"\"><b>Резонанс кристалла</b> (нажать) — сбор со скоплений +50% на 60 сек., перезарядка 300 сек.",
-""
+"<img class=\"i\" src=\"assets/game/vs-5b.png\" alt=\"\"><b>Crystal Resonance</b> (tap) — gathering from clusters +50% for 60 s, cooldown 300 s"
 ],
 [
 "Названия и цифры — из самой игры. Если ты в основном собираешь — бери навыки на сбор (Всплеск, Быстрый марш, Добыча, Резонанс). Если отбиваешь скопления у других — Разграбление и Пробуждение долины.",
-""
+"Names and numbers are from the game itself. If you mostly gather — take gathering skills (Surge, Swift March, Mining, Resonance). If you take clusters from others — Valley Plunder and Valley Awakening."
 ],
 [
 "Альянс · войска не гибнут",
-""
+"Alliance · troops don't die"
 ],
 [
 "Альянсы бьются на трёх линиях каньона. От тебя нужно только <b>записаться и выбрать линию</b> — бои идут сами, без тебя. Войска здесь <b>не гибнут</b> и очередь маршей не занимают, поэтому записываться безопасно.",
-""
+"Alliances fight on the three lanes of the canyon. All you need to do is <b>sign up and choose a lane</b> — battles run by themselves, without you. Troops <b>don't die</b> here and don't take up march queues, so signing up is safe."
 ],
 [
 "Как записаться — по шагам",
-""
+"How to sign up — step by step"
 ],
 [
 "Справа на главном экране, второй сверху в столбике круглых значков. Откроется окно «Событие» с вкладками.",
-""
+"On the right of the main screen, second from the top in the column of round icons. The «Event» window with tabs opens."
 ],
 [
 "<img src=\"assets/shots/canyon-reg.webp\" alt=\"Вкладка «Завоевание каньона»: фаза регистрации, таймер, требования, кнопка «Регистрация»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"ring rect\" style=\"left:50%;top:87.9%;width:38.1%;aspect-ratio:3.11\"></span>",
-""
+"<img src=\"assets/shots/canyon-reg.webp\" alt=\"The Canyon Conquest tab: registration phase, timer, requirements, the Register button\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"ring rect\" style=\"left:50%;top:87.9%;width:38.1%;aspect-ratio:3.11\"></span>"
 ],
 [
 "Вкладка «Завоевание каньона» → «Регистрация»",
-""
+"The «Canyon Conquest» tab → «Register»"
 ],
 [
 "Сверху четыре фазы: <b>регистрации, подбора, сражения, расчёта</b>. Ниже — медаль альянса (Bronze III и выше), таймер до конца текущей фазы и «Требования»: сколько человек из альянса уже записалось. Пока идёт фаза регистрации — жми жёлтую <b>«Регистрация»</b>.",
-""
+"At the top are four phases: <b>registration, matching, battle, settlement</b>. Below — the alliance medal (Bronze III and up), the timer to the end of the current phase and «Requirements»: how many alliance members have signed up. While the registration phase is on — tap the yellow <b>Register</b>."
 ],
 [
 "<img src=\"assets/shots/canyon-lanes.webp\" alt=\"Окно расстановки: Левая, Центральная и Правая линия, кнопка «Регистрация»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:48.2%;top:33.8%;width:29.6%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:29.8%;top:84.2%;width:38.1%;aspect-ratio:3.11\"></span>",
-""
+"<img src=\"assets/shots/canyon-lanes.webp\" alt=\"Line-up window: Left, Mid and Right Lane, the Register button\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:48.2%;top:33.8%;width:29.6%;aspect-ratio:1\"></span><span class=\"ring rect\" style=\"left:29.8%;top:84.2%;width:38.1%;aspect-ratio:3.11\"></span>"
 ],
 [
 "ШАГ 3",
-""
+"STEP 3"
 ],
 [
 "Выбери линию и собери команду",
-""
+"Choose a lane and build a team"
 ],
 [
 "Внизу три карточки: <b>Левая, Центральная и Правая линия</b> — сколько участников и какая мощь уже стоит на каждой. Нажми на линию (она подсветится) и затем «Регистрация» — выберешь героев в команду. Если не знаешь куда — ставь на <b>центральную</b>: лидеры потом переставят. «Обзор войска» — посмотреть, кто где стоит.",
-""
+"At the bottom are three cards: <b>Left, Mid and Right Lane</b> — how many participants and how much Might already stand on each. Tap a lane (it lights up) and then «Register» — you pick heroes for the team. If you don't know where — go <b>Mid</b>: the leaders will move you later. «View Troop» — see who stands where."
 ],
 [
 "<img src=\"assets/shots/canyon-match.webp\" alt=\"Каньон, фаза подбора: таймер и «Идет подбор...»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:38.6%;top:17.5%;width:23%;aspect-ratio:2.6\"></span>",
-""
+"<img src=\"assets/shots/canyon-match.webp\" alt=\"Canyon, matching phase: timer and Matching...\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:38.6%;top:17.5%;width:23%;aspect-ratio:2.6\"></span>"
 ],
 [
 "ШАГ 4",
-""
+"STEP 4"
 ],
 [
 "Фазы подбора, сражения и расчёта",
-""
+"Matching, battle and settlement phases"
 ],
 [
 "После записи вкладка переключается на <b>«Фаза подбора»</b> (рамка): таймер — сколько до конца подбора, ниже «Расписание» — пока идёт подбор, там «Идет подбор…», потом появятся раунды, альянс-соперник и время каждого боя.",
-""
+"After signing up the tab switches to the <b>«Matching Phase»</b> (frame): the timer shows how long until matching ends, below is the «Schedule» — while matching it says «Matching…», then the rounds, the rival alliance and the time of each battle appear."
 ],
 [
 "В <b>«Фазе сражения»</b> бои на трёх линиях идут <b>сами</b>: перед боем лидеры могут менять команды местами между линиями, после — смотреть «Историю матчей». В <b>«Фазе расчёта»</b> всем записавшимся приходят награды, медаль альянса растёт или падает (Bronze → Silver…).",
-""
+"In the <b>«Battle Phase»</b> battles on the three lanes run <b>by themselves</b>: before a battle leaders can swap teams between lanes, after it — view the «Match History». In the <b>«Settlement Phase»</b> everyone who signed up gets rewards, and the alliance medal goes up or down (Bronze → Silver…)."
 ],
 [
 "<b>Кто может участвовать.</b> Нужно состоять в альянсе, Святилище нужного уровня (его покажет «Требования»), территория альянса 10 уровня и выше, и чтобы в альянсе записалось <b>минимум 15 человек</b> — иначе альянсу не дадут места («Недостаточно участников, состязание невозможно»).",
