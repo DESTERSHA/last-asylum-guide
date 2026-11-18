@@ -1,0 +1,21 @@
+name: Таймер данных сервера 397
+# GitHub выбрасывает запуски по расписанию. Этот таймер ждёт 2 ч 55 мин и запускает робота
+# как ручной запуск (их GitHub выполняет всегда). Робот в конце снова заводит таймер.
+on:
+  workflow_dispatch:
+permissions:
+  actions: write
+concurrency:
+  group: tracker-timer
+  cancel-in-progress: true   # новый завод таймера сбрасывает старый — таймер всегда один
+jobs:
+  wait:
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - name: Ждать 2 ч 55 мин
+        run: sleep 10500
+      - name: Запустить робота
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run tracker.yml --repo ${{ github.repository }}

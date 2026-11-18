@@ -13,6 +13,7 @@ on:
 permissions:
   contents: write
   pages: write
+  actions: write
 concurrency:
   group: tracker
   cancel-in-progress: false
@@ -65,3 +66,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X POST repos/${{ github.repository }}/pages/builds || true
+      - name: Завести таймер на следующее обновление
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run tracker-timer.yml --repo ${{ github.repository }} || true
