@@ -3,13 +3,17 @@ name: Данные сервера 397
 # (ключ — в закрытых настройках репозитория, TRACKER_KEY) и обновляет файлы data/tracker/.
 on:
   schedule:
-    - cron: "7,27,47 * * * *"  # запасной будильник; основной — tracker-timer (раз в 30 мин)
+    - cron: "*/10 * * * *"  # запасной будильник (GitHub часть пропускает); срабатывает, только если робот молчит больше 40 мин; основной — tracker-timer
   workflow_dispatch:
     inputs:
       players:
         description: "Сколько игроков обновить за этот запуск (обычно 45; на игрока до 2 запросов)"
         required: false
         default: "45"
+      force:
+        description: "1 — обновить сразу, даже если с прошлого раза меньше 25 мин (таймер шлёт 0)"
+        required: false
+        default: "1"
 permissions:
   contents: write
   pages: write
@@ -42,15 +46,18 @@ jobs:
           TRACKER_API: ${{ secrets.TRACKER_API }}
           LA_SB_PUSH: ${{ secrets.LA_SB_PUSH }}
           PLAYERS: ${{ github.event.inputs.players || '45' }}
-          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == '1' && '1' || '' }}
+          MINGAP: ${{ github.event_name == 'schedule' && '40' || '15' }}
         run: python tools/tracker_sync.py
       - name: Сохранить
+        id: save
         run: |
           git config user.name "tracker-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A data/tracker
           if git diff --cached --quiet; then echo "без изменений"; exit 0; fi
           git commit -m "Данные сервера 397: $(date -u +'%Y-%m-%d %H:%M') UTC"
+          echo "changed=1" >> "$GITHUB_OUTPUT"
           # если прошлый запуск успел записать те же файлы — оставляем наш снимок (он свежее); -X theirs при rebase = наш коммит
           for i in 1 2 3; do git pull --rebase -X theirs && git push && exit 0; git rebase --abort 2>/dev/null || true; sleep 5; done
           exit 1
@@ -66,11 +73,14 @@ jobs:
           for i in 1 2 3; do git pull --rebase -X theirs && git push && exit 0; git rebase --abort 2>/dev/null || true; sleep 5; done
           exit 1
       - name: Пересобрать сайт
+        if: steps.save.outputs.changed == '1'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X POST repos/${{ github.repository }}/pages/builds || true
-      - name: Завести таймер на следующее обновление
+      - name: Проверить, что таймер работает (если пропал — завести)
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run tracker-timer.yml --repo ${{ github.repository }} || true
+        run: |
+          n=$(gh run list --repo ${{ github.repository }} --workflow tracker-timer.yml --limit 10 --json status -q '[.[] | select(.status=="in_progress" or .status=="queued" or .status=="waiting" or .status=="pending")] | length')
+          if [ "${n:-0}" = "0" ]; then echo "таймера нет — завожу"; gh workflow run tracker-timer.yml --repo ${{ github.repository }} || true; else echo "таймер работает ($n)"; fi
