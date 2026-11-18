@@ -1,5 +1,5 @@
 name: Таймер данных сервера 397
-# GitHub выбрасывает запуски по расписанию. Этот таймер ждёт 2 ч 55 мин и запускает робота
+# GitHub выбрасывает запуски по расписанию. Этот таймер ждёт 29 мин и запускает робота
 # как ручной запуск (их GitHub выполняет всегда). Робот в конце снова заводит таймер.
 on:
   workflow_dispatch:
@@ -11,10 +11,10 @@ concurrency:
 jobs:
   wait:
     runs-on: ubuntu-latest
-    timeout-minutes: 200
+    timeout-minutes: 45
     steps:
-      - name: Ждать 2 ч 55 мин
-        run: sleep 10500
+      - name: Ждать 29 мин
+        run: sleep 1740
       - name: Запустить робота
         env:
           GH_TOKEN: ${{ github.token }}

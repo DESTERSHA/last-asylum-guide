@@ -82,10 +82,9 @@ def main():
         sys.exit("нет TRACKER_KEY или TRACKER_API")
     now = time.time()
     day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    # GitHub пропускает запуски по расписанию — робот просыпается чаще и сам решает, пора ли:
-    # если последнее обновление было меньше 2 ч 50 мин назад, выходим без единого запроса
+    # обновление раз в 30 минут (её решение 18.11): если с прошлого прошло меньше 25 мин — выходим без единого запроса
     last = load(OUT / "server.json", {}).get("updated", 0)
-    if not os.environ.get("FORCE") and now - last < 170 * 60:
+    if not os.environ.get("FORCE") and now - last < 25 * 60:
         print(f"рано: последнее обновление {round((now - last) / 60)} мин назад — пропускаю")
         return
 

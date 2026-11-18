@@ -202,7 +202,7 @@
     var s = S.server.server, rows = S.rows;
     $("view").innerHTML =
       '<div class="ap-wrap">' +
-      '<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>обновлено ' + ago(S.server.updated) + " · данные обновляются каждые 3 часа</p></div></div>" +
+      '<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>обновлено ' + ago(S.server.updated) + " · данные обновляются раз в 30 минут</p></div></div>" +
       '<div class="ap-cells c5">' + cell("Игроков", full(s.players), (s.age_days || "—") + " дней серверу") + cell("Альянсов", full(s.alliances)) + cell("Общая мощь", num(s.power)) +
       cell("Король", esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell("Альянсов со свежим составом", Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + " из 30", "у остальных — состав по карте за 3 дня, без рангов") + "</div></div>" +
       '<div class="ap-card"><div class="ap-h"><div><h3>Поиск</h3><p>игроки альянсов топ-30 и альянсы топ-100</p></div>' + pills("skind", [["p", "Игроки"], ["a", "Альянсы"]], "p") + '</div><input id="sq" class="ap-in" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off"><div id="sres"></div></div>' +
