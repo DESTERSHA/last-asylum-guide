@@ -1,95 +1,95 @@
 [
 [
 "Снаряжение героев: золотое — против людей, фиолетовое — против скверны | Last Asylum: Plague · сервер 397",
-""
+"Hero gear: gold — against players, purple — against Blight | Last Asylum: Plague · kingdom 397"
 ],
 [
 "Снаряжение простыми словами: 4 вещи героя, цвета и редкость, почему золото для людей, а фиолет для монстров, два комплекта, как переодеть, порядок прокачки и материалы.",
-""
+"Gear in plain words: a hero's 4 items, colors and rarity, why gold is for players and purple for monsters, two sets, how to re-equip, upgrade order and materials."
 ],
 [
 "<img src=\"assets/game/go-gear.png\" alt=\"\">Снаряжение героев",
-""
+"<img src=\"assets/game/go-gear.png\" alt=\"\">Hero gear"
 ],
 [
 "Снаряжение: что надевать и зачем",
-""
+"Gear: what to wear and why"
 ],
 [
 "Коротко: <b>золотое снаряжение — основное, оно для боёв с людьми</b>. <b>Фиолетовое — против монстров и скверны</b>, потому что у него есть особый бонус против монстров. Ниже — почему так, с цифрами, и как держать два комплекта.",
-""
+"In short: <b>gold gear is your main gear, it is for fighting players</b>. <b>Purple is for monsters and Blight</b>, because it has a special bonus against monsters. Below — why, with numbers, and how to keep two sets."
 ],
 [
 "<a class=\"btn pri\" href=\"#calc\">Калькулятор</a><a class=\"btn\" href=\"#why\">Почему золотое и фиолетовое</a><a class=\"btn\" href=\"#sets\">Что на ком</a><a class=\"btn\" href=\"#order\">Что качать первым</a>",
-""
+"<a class=\"btn pri\" href=\"#calc\">Calculator</a><a class=\"btn\" href=\"#why\">Why gold and purple</a><a class=\"btn\" href=\"#sets\">What goes on whom</a><a class=\"btn\" href=\"#order\">What to upgrade first</a>"
 ],
 [
 "<img src=\"assets/art/hero-gear.webp\" alt=\"Снаряжение\">",
-""
+"<img src=\"assets/art/hero-gear.webp\" alt=\"Gear\">"
 ],
 [
 "4 вещи на героя",
-""
+"4 items per hero"
 ],
 [
 "Меч, броня, наручи, сапоги. Каждая вещь — только в свой слот.",
-""
+"Sword, armor, gauntlets, boots. Each item goes only into its own slot."
 ],
 [
 "Золото — против людей",
-""
+"Gold — against players"
 ],
 [
 "Чистые атака, защита, здоровье, крит и сопротивления. Работают везде.",
-""
+"Pure attack, defense, HP, crit and resistances. They work everywhere."
 ],
 [
 "Фиолет — против монстров",
-""
+"Purple — against monsters"
 ],
 [
 "На 10, 20 и 30 уровне получает по +2% против монстров. На 30 — до +6%.",
-""
+"At levels 10, 20 and 30 it gets +2% against monsters each time. At 30 — up to +6%."
 ],
 [
 "Цель — 40 уровень",
-""
+"Goal — level 40"
 ],
 [
 "Дальше цена в травах вырастает в 17 раз. Сначала доведи основные вещи до 40.",
-""
+"After that the Herb cost grows 17-fold. First get your main items to 40."
 ],
 [
 "Цифры из самой игры",
-""
+"Numbers from the game itself"
 ],
 [
 "Калькулятор снаряжения",
-""
+"Gear calculator"
 ],
 [
 "Выбери вещь и уровни — калькулятор посчитает, сколько травы, камня снаряжения, стали и чертежей нужно, сколько прибавится мощи и характеристик. Цена одинаковая у всех вещей одной редкости.",
-""
+"Pick an item and levels — the calculator counts how much Herb, Gearstone, steel and blueprints you need and how much Might and stats you gain. The cost is the same for all items of one rarity."
 ],
 [
 "Загружаю цифры…",
-""
+"Loading numbers…"
 ],
 [
 "4 вещи",
-""
+"4 items"
 ],
 [
 "Что даёт каждая вещь",
-""
+"What each item gives"
 ],
 [
 "Меч",
-""
+"Sword"
 ],
 [
 "Атака и шанс крита (сильного удара). <b>Главное для героев урона.</b>",
-""
+"Attack and crit rate (a strong hit). <b>The key item for damage heroes.</b>"
 ],
 [
 "Броня",
@@ -97,311 +97,311 @@
 ],
 [
 "Здоровье и защита от физического урона. <b>Главное для танков.</b>",
-""
+"HP and physical damage resistance. <b>The key item for tanks.</b>"
 ],
 [
 "Наручи",
-""
+"Gauntlets"
 ],
 [
 "Атака и защита от любого урона. <b>Героям урона — вторыми после меча.</b>",
-""
+"Attack and resistance to all damage. <b>For damage heroes — second after the sword.</b>"
 ],
 [
 "Сапоги",
-""
+"Boots"
 ],
 [
 "Защита и защита от энергетического урона. <b>Танкам — вторыми после брони.</b>",
-""
+"Defense and energy damage resistance. <b>For tanks — second after the armor.</b>"
 ],
 [
 "Цвета — от слабого к сильному",
-""
+"Colors — from weak to strong"
 ],
 [
 "<b>Серое и зелёное</b><span>Не улучшается или почти. Не трать на него ничего.</span>",
-""
+"<b>Gray and green</b><span>Can't be upgraded, or barely. Don't spend anything on it.</span>"
 ],
 [
 "<b>Синее (SR)</b><span>Мастерская снаряжения ур.1. Потолок — 15 уровень.</span>",
-""
+"<b>Blue (SR)</b><span>Gear Workshop Lv.1. Cap — level 15.</span>"
 ],
 [
 "<b>Фиолетовое (SSR)</b><span>Мастерская ур.5. Потолок — 30 уровень. Бонус против монстров.</span>",
-""
+"<b>Purple (SSR)</b><span>Workshop Lv.5. Cap — level 30. Bonus against monsters.</span>"
 ],
 [
 "<b>Золотое (UR)</b><span>Мастерская ур.10. Потолок — 44 уровень, со звёздами — 60.</span>",
-""
+"<b>Gold (UR)</b><span>Workshop Lv.10. Cap — level 44, with stars — 60.</span>"
 ],
 [
 "Мастерская снаряжения появляется на Святилище 4 и не может быть выше Святилища. Звёзды для золотых вещей открываются на <b>Мастерской 20</b>. Золотая вещь с 5 звёздами становится высшей редкостью (MR) и даёт +10% урона, когда твоя фракция сильнее вражеской.",
-""
+"The Gear Workshop appears at Sanctuary 4 and cannot be higher than the Sanctuary. Stars for gold items unlock at <b>Workshop 20</b>. A gold item with 5 stars becomes the top rarity (MR) and gives +10% damage when your faction counters the enemy's."
 ],
 [
 "С цифрами",
-""
+"With numbers"
 ],
 [
 "Почему золотое снаряжение — против людей, а фиолетовое — против скверны",
-""
+"Why gold gear is for players and purple for Blight"
 ],
 [
 "У каждой вещи есть «особые» уровни: 10, 20, 30 (у золотых ещё 40). На них вещь получает прибавку сверх обычной. У фиолетовых и золотых эти прибавки <b>разные</b>:",
-""
+"Every item has «special» levels: 10, 20, 30 (gold ones also 40). At them the item gets a bonus on top of the usual one. Purple and gold items get <b>different</b> bonuses:"
 ],
 [
 "Вещь",
-""
+"Item"
 ],
 [
 "<span class=\"gq ssr\">Фиолетовая</span> — на 10, 20 и 30 уровне",
-""
+"<span class=\"gq ssr\">Purple</span> — at levels 10, 20 and 30"
 ],
 [
 "<span class=\"gq ur\">Золотая</span> — на 10, 20, 30 и 40 уровне",
-""
+"<span class=\"gq ur\">Gold</span> — at levels 10, 20, 30 and 40"
 ],
 [
 "<img class=\"i\" src=\"assets/game/eq-sword-4.png\" alt=\"\"><b>+2% урона по монстрам</b> каждый раз",
-""
+"<img class=\"i\" src=\"assets/game/eq-sword-4.png\" alt=\"\"><b>+2% damage to monsters</b> each time"
 ],
 [
 "<img class=\"i\" src=\"assets/game/eq-sword-5.png\" alt=\"\">+250 атаки, +2,5% крита, +250 атаки, +2,5% крита",
-""
+"<img class=\"i\" src=\"assets/game/eq-sword-5.png\" alt=\"\">+250 attack, +2.5% crit, +250 attack, +2.5% crit"
 ],
 [
 "<img class=\"i\" src=\"assets/game/eq-gloves-4.png\" alt=\"\"><b>+2% урона по монстрам</b> каждый раз",
-""
+"<img class=\"i\" src=\"assets/game/eq-gloves-4.png\" alt=\"\"><b>+2% damage to monsters</b> each time"
 ],
 [
 "<img class=\"i\" src=\"assets/game/eq-gloves-5.png\" alt=\"\">+250 атаки, +2% защиты от урона, +250 атаки, +2%",
-""
+"<img class=\"i\" src=\"assets/game/eq-gloves-5.png\" alt=\"\">+250 attack, +2% damage resistance, +250 attack, +2%"
 ],
 [
 "<img class=\"i\" src=\"assets/game/eq-armor-4.png\" alt=\"\"><b>−2% урона от монстров</b> каждый раз",
-""
+"<img class=\"i\" src=\"assets/game/eq-armor-4.png\" alt=\"\"><b>−2% damage from monsters</b> each time"
 ],
 [
 "<img class=\"i\" src=\"assets/game/eq-armor-5.png\" alt=\"\">+68 000 здоровья, +10% защиты от физического урона…",
-""
+"<img class=\"i\" src=\"assets/game/eq-armor-5.png\" alt=\"\">+68,000 HP, +10% physical damage resistance…"
 ],
 [
 "<img class=\"i\" src=\"assets/game/eq-boots-4.png\" alt=\"\"><b>−2% урона от монстров</b> каждый раз",
-""
+"<img class=\"i\" src=\"assets/game/eq-boots-4.png\" alt=\"\"><b>−2% damage from monsters</b> each time"
 ],
 [
 "<img class=\"i\" src=\"assets/game/eq-boots-5.png\" alt=\"\">+500 защиты, +10% защиты от энергетического урона…",
-""
+"<img class=\"i\" src=\"assets/game/eq-boots-5.png\" alt=\"\">+500 defense, +10% energy damage resistance…"
 ],
 [
 "<b>Что это значит на деле.</b> Фиолетовая вещь 30 уровня = +6% против монстров. У золотой такого бонуса нет: её прибавки общие (атака, крит, защита), поэтому они работают и против людей.",
-""
+"<b>What it means in practice.</b> A level 30 purple item = +6% against monsters. A gold one has no such bonus: its bonuses are general (attack, crit, defense), so they also work against players."
 ],
 [
 "<b>Почему фиолетовые наручи сильнее золотых на боссе.</b> У золотых наручей часть силы уходит в «защиту от урона», а Король демонов не бьёт в ответ — она бесполезна. Фиолетовые дают «урон по монстрам», и он добавляется в самом конце расчёта удара.",
-""
+"<b>Why purple gauntlets beat gold ones on the boss.</b> Part of gold gauntlets' power goes into «damage resistance», and the Demon King doesn't hit back — so it is useless. Purple ones give «damage to monsters», which is added at the very end of the hit calculation."
 ],
 [
 "<b>Правило:</b> фиолетовую вещь надевай против монстров, если её уровень такой же или выше, чем у золотой. Если золотая намного выше — оставь золотую.",
-""
+"<b>Rule:</b> wear a purple item against monsters if its level is the same as or higher than the gold one's. If the gold one is much higher — keep the gold."
 ],
 [
 "Два комплекта",
-""
+"Two sets"
 ],
 [
 "Что на ком — для каждого случая",
-""
+"What goes on whom — for each case"
 ],
 [
 "<img src=\"assets/game/c-war.png\" alt=\"\">Против людей, арена, КвК",
-""
+"<img src=\"assets/game/c-war.png\" alt=\"\">Against players, arena, Kingdom War"
 ],
 [
 "<img src=\"assets/game/blight.png\" alt=\"\">Против скверны и монстров",
-""
+"<img src=\"assets/game/blight.png\" alt=\"\">Against Blight and monsters"
 ],
 [
 "<img src=\"assets/game/boss-demon.png\" alt=\"\">Король демонов",
-""
+"<img src=\"assets/game/boss-demon.png\" alt=\"\">Demon King"
 ],
 [
 "<b>Главный герой урона</b><span>Золотые меч и наручи, самые прокачанные</span>",
-""
+"<b>Main damage hero</b><span>Gold sword and gauntlets, the most upgraded</span>"
 ],
 [
 "<b>Главный танк (место 1)</b><span>Золотые броня и сапоги, самые прокачанные</span>",
-""
+"<b>Main tank (slot 1)</b><span>Gold armor and boots, the most upgraded</span>"
 ],
 [
 "<b>Второй танк</b><span>Золотые броня и сапоги — следующими</span>",
-""
+"<b>Second tank</b><span>Gold armor and boots — next</span>"
 ],
 [
 "<b>Поддержка</b><span>Сначала броня и сапоги — чтобы дожила до своих усилений</span>",
-""
+"<b>Support</b><span>Armor and boots first — so they live long enough to cast their buffs</span>"
 ],
 [
 "<b>Второй герой урона (место 5)</b><span>Золотые меч и наручи — после главного героя урона</span>",
-""
+"<b>Second damage hero (slot 5)</b><span>Gold sword and gauntlets — after the main damage hero</span>"
 ],
 [
 "<b>Героям урона</b><span>Фиолетовые меч и наручи 30 уровня — до +6% урона по монстрам каждая (если не ниже золотых по уровню)</span>",
-""
+"<b>For damage heroes</b><span>Purple level 30 sword and gauntlets — up to +6% damage to monsters each (if not lower level than the gold ones)</span>"
 ],
 [
 "<b>Танкам на скверне, которая бьёт в ответ</b><span>Фиолетовые броня и сапоги — до −6% урона от монстров каждая</span>",
-""
+"<b>For tanks against Blight that hits back</b><span>Purple armor and boots — up to −6% damage from monsters each</span>"
 ],
 [
 "<b>Плюс герои против монстров</b><span>Клэр, Селия, Гренвальд, Стеллар — см. <a href=\"squads.html#monsters\">Отряды</a></span>",
-""
+"<b>Plus anti-monster heroes</b><span>Claire, Celia, Grenwald, Stellar — see <a href=\"squads.html#monsters\">Squads</a></span>"
 ],
 [
 "<b>Броня и сапоги — неважно</b><span>Босс не бьёт в ответ, оставь то, что надето</span>",
-""
+"<b>Armor and boots — don't matter</b><span>The boss doesn't hit back, keep what you are wearing</span>"
 ],
 [
 "<b>Мечи</b><span>Самые прокачанные — героям урона. Фиолетовый, если он не ниже золотого</span>",
-""
+"<b>Swords</b><span>The most upgraded — to damage heroes. Purple, if it is not lower than the gold</span>"
 ],
 [
 "<b>Наручи — фиолетовые 30 уровня</b><span>На двух самых сильных героев урона. Бонус у каждого свой (не 12% на весь отряд)</span>",
-""
+"<b>Gauntlets — purple level 30</b><span>On the two strongest damage heroes. Each one gets its own bonus (not 12% for the whole squad)</span>"
 ],
 [
 "<b>После удара верни вещи обратно</b> — иначе на арену и в КвК пойдёшь в фиолетовом.",
-""
+"<b>After hitting, put your items back</b> — otherwise you'll go to the arena and Kingdom War in purple."
 ],
 [
 "Как переодеть героя",
-""
+"How to re-equip a hero"
 ],
 [
 "<img src=\"assets/shots/main-hero.webp\" alt=\"Главный экран: внизу слева плитка «Герой»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:13%;top:93.8%;width:24.4%;aspect-ratio:1\"></span>",
-""
+"<img src=\"assets/shots/main-hero.webp\" alt=\"Main screen: the Hero tile at the bottom left\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:13%;top:93.8%;width:24.4%;aspect-ratio:1\"></span>"
 ],
 [
 "ШАГ 1",
-""
+"STEP 1"
 ],
 [
 "Открой «Герой»",
-""
+"Open «Hero»"
 ],
 [
 "Плитка <b>«Герой»</b> на главном экране внизу слева.",
-""
+"The <b>Hero</b> tile at the bottom left of the main screen."
 ],
 [
 "<img src=\"assets/shots/hero-list.webp\" alt=\"Окно «Герой»: список всех героев карточками, вкладки «Все» и фракции\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:14.8%;top:44.6%;width:23%;aspect-ratio:.6\"></span>",
-""
+"<img src=\"assets/shots/hero-list.webp\" alt=\"The Hero window: all heroes as cards, the All tab and faction tabs\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:14.8%;top:44.6%;width:23%;aspect-ratio:.6\"></span>"
 ],
 [
 "ШАГ 2",
-""
+"STEP 2"
 ],
 [
 "Выбери героя в списке",
-""
+"Pick a hero from the list"
 ],
 [
 "Откроется окно <b>«Герой»</b> со всеми героями. Сверху вкладки: <b>«Все»</b> и три фракции (значки Воинов, Рейнджеров, Колдунов). На карточке — цвет редкости, значок роли, уровень и звёзды; флажок с цифрой справа сверху — в каком отряде герой стоит. Нажми на нужного героя.",
-""
+"The <b>Hero</b> window opens with all your heroes. Tabs at the top: <b>All</b> and the three factions (Warrior, Ranger, Warlock icons). A card shows the rarity color, role icon, level and stars; the flag with a number at the top right shows which squad the hero is in. Tap the hero you need."
 ],
 [
 "<img src=\"assets/shots/hero-window.webp\" alt=\"Окно героя: клетки вещей по бокам\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:12%;top:26.8%;width:16%;aspect-ratio:1\"></span>",
-""
+"<img src=\"assets/shots/hero-window.webp\" alt=\"Hero window: item slots on both sides\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:12%;top:26.8%;width:16%;aspect-ratio:1\"></span>"
 ],
 [
 "ШАГ 3",
-""
+"STEP 3"
 ],
 [
 "Нажми на клетку вещи",
-""
+"Tap an item slot"
 ],
 [
 "Четыре клетки по бокам героя: слева <b>меч</b> и <b>наручи</b>, справа <b>броня</b> и <b>сапоги</b>. На клетке — уровень вещи. Серая клетка с силуэтом — вещь не надета.",
-""
+"Four slots on the sides of the hero: on the left the <b>sword</b> and <b>gauntlets</b>, on the right the <b>armor</b> and <b>boots</b>. The slot shows the item level. A gray slot with a silhouette means nothing is equipped."
 ],
 [
 "<img src=\"assets/shots/equip-replace.webp\" alt=\"Окно «Экипировать снаряжение»: список мечей\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:76.9%;top:40.1%;width:23.7%;aspect-ratio:2.62\"></span><span class=\"ring rect\" style=\"left:77.1%;top:54.2%;width:23.7%;aspect-ratio:2.62\"></span>",
-""
+"<img src=\"assets/shots/equip-replace.webp\" alt=\"The Equip Gear window: list of swords\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:76.9%;top:40.1%;width:23.7%;aspect-ratio:2.62\"></span><span class=\"ring rect\" style=\"left:77.1%;top:54.2%;width:23.7%;aspect-ratio:2.62\"></span>"
 ],
 [
 "ШАГ 4",
-""
+"STEP 4"
 ],
 [
 "Выбери вещь",
-""
+"Choose the item"
 ],
 [
 "Откроется окно <b>«Экипировать снаряжение»</b>: сверху то, что надето сейчас, ниже — все подходящие вещи. <b>«Экипировать»</b> — вещь свободна. <b>«Заменить»</b> — она на другом герое (его портрет рядом): игра снимет её с него и наденет на этого.",
-""
+"The <b>Equip Gear</b> window opens: at the top what is equipped now, below — all suitable items. <b>Equip</b> — the item is free. <b>Replace</b> — it is on another hero (their portrait is next to it): the game takes it off them and puts it on this one."
 ],
 [
 "<b>После боя с боссом — верни как было.</b> Те же шаги: открой героя, нажми на клетку и верни золотую вещь кнопкой «Заменить».",
-""
+"<b>After the boss fight — put it back.</b> The same steps: open the hero, tap the slot and put the gold item back with the «Replace» button."
 ],
 [
 "Порядок",
-""
+"Order"
 ],
 [
 "Что делать и качать первым",
-""
+"What to do and upgrade first"
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1001.png\" alt=\"\"><img class=\"bi\" src=\"assets/game/bld/1008.png\" alt=\"\"></span><b>Святилище 10 → Мастерская снаряжения 10 → сразу золото</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1001.png\" alt=\"\"><img class=\"bi\" src=\"assets/game/bld/1008.png\" alt=\"\"></span><b>Sanctuary 10 → Gear Workshop 10 → straight to gold</b>"
 ],
 [
 "Не трать травы на синие и фиолетовые вещи, которые потом заменишь (кроме двух пар фиолетовых наручей для босса). Синие и фиолетовые выпадут сами из сундуков.",
-""
+"Don't spend Herb on blue and purple items you will replace later (except two pairs of purple gauntlets for the boss). Blue and purple ones will drop from chests by themselves."
 ],
 [
 "<b>Кому делать в первую очередь</b>",
-""
+"<b>Who to gear first</b>"
 ],
 [
 "1) героям урона — полный комплект; 2) танкам — броня и сапоги; 3) поддержке — броня и сапоги; 4) поддержке — меч и наручи; 5) танкам — наручи. Танку меч не нужен совсем.",
-""
+"1) damage heroes — a full set; 2) tanks — armor and boots; 3) support — armor and boots; 4) support — sword and gauntlets; 5) tanks — gauntlets. A tank doesn't need a sword at all."
 ],
 [
 "<b>Куда вкладывать камни снаряжения</b>",
-""
+"<b>Where to put Gearstone</b>"
 ],
 [
 "Сначала всё по этому порядку до 20 уровня. Потом меч героя урона — до 40 уровня и 1 звезды, потом его наручи — до 40.",
-""
+"First everything in this order up to level 20. Then the damage hero's sword — to level 40 and 1 star, then their gauntlets — to 40."
 ],
 [
 "<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1008.png\" alt=\"\"></span><b>Мастерская 20 → звёзды</b>",
-""
+"<span class=\"bis\"><img class=\"bi\" src=\"assets/game/bld/1008.png\" alt=\"\"></span><b>Workshop 20 → stars</b>"
 ],
 [
 "Доводи одну вещь до следующей звезды, а не размазывай чертежи по всем. Каждая звезда поднимает потолок уровня на 4.",
-""
+"Take one item to the next star instead of spreading blueprints over all of them. Each star raises the level cap by 4."
 ],
 [
 "<b>Разбирай всё ненужное</b>",
-""
+"<b>Dismantle everything you don't need</b>"
 ],
 [
 "Разбор возвращает материалы, камни снаряжения и чертежи. <b>Травы не возвращаются.</b>",
-""
+"Dismantling returns materials, Gearstone and blueprints. <b>Herb is not returned.</b>"
 ],
 [
 "<b>Ловушка 41-го уровня.</b> До 40 уровня золотая вещь стоит около 1,4 млн трав за уровень. С 41-го — 23,4 млн трав и 150 закалённой стали за уровень. Посмотри запас трав, прежде чем лезть выше 40.",
-""
+"<b>The level 41 trap.</b> Up to level 40 a gold item costs about 1.4M Herb per level. From level 41 — 23.4M Herb and 150 Tempered Steel per level. Check your Herb stock before going above 40."
 ],
 [
 "<b>Снаряжение качай в субботу и воскресенье</b> — в эти дни идёт событие «Улучшение снаряжения», за то же самое дают награду. Дуэль альянсов за снаряжение очков не даёт.",
-""
+"<b>Upgrade gear on Saturday and Sunday</b> — those days run the «Gear Upgrade» event, which rewards you for the same thing. The Alliance Duel gives no points for gear."
 ],
 [
 "Материалы",
@@ -409,90 +409,90 @@
 ],
 [
 "Из чего делают снаряжение и где это брать",
-""
+"What gear is made of and where to get it"
 ],
 [
 "<b>Камни снаряжения</b><span>Из Плавилен (до 5 штук). Плавильню подними до 25 уровня пораньше.</span>",
-""
+"<b>Gearstone</b><span>From Smelting Workshops (up to 5 of them). Get the Smelting Workshop to level 25 early.</span>"
 ],
 [
 "<b>Ткань</b><span>Из Ткацких мастерских (до 5 штук). Первый материал цепочки.</span>",
-""
+"<b>Cloth</b><span>From Weaving Workshops (up to 5 of them). The first material of the chain.</span>"
 ],
 [
 "<b>Кожа → латунь → железо → закалённая сталь</b><span>4 штуки одного материала = 1 следующего (вкладка «Синтез» в мастерской).</span>",
-""
+"<b>Leather → Brass → iron → Tempered Steel</b><span>4 of one material = 1 of the next (the «Fuse» tab in the workshop).</span>"
 ],
 [
 "<b>Чертёж (золотой)</b><span>Нужен для звёзд: 50 на одну вещь. Лучшее, что можно купить за медали славы.</span>",
-""
+"<b>Blueprint (gold)</b><span>Needed for stars: 50 per item. The best thing to buy with Fame Medals.</span>"
 ],
 [
 "<b>Чертёж высшей редкости</b><span>Для 5-й звезды. Странный базар и магазин Эры.</span>",
-""
+"<b>Top-rarity blueprint</b><span>For the 5th star. Strange Bazaar and the Era Shop.</span>"
 ],
 [
 "<b>Травы</b><span>Главный дефицит. Сначала качай Травяной сад.</span>",
-""
+"<b>Herb</b><span>The main shortage. Upgrade the Herb Garden first.</span>"
 ],
 [
 "<b>Магазин за медали славы:</b> покупай <b>только чертежи</b> — 10 000 медалей за штуку, лимит 50. Не бери там сундуки реликвий и универсальные золотые фрагменты — это частая ошибка новичков.",
-""
+"<b>Fame Medal shop:</b> buy <b>only blueprints</b> — 10,000 medals each, limit 50. Don't take Curio Chests or universal gold shards there — a common beginner mistake."
 ],
 [
 "Частые ошибки",
-""
+"Common mistakes"
 ],
 [
 "Как не слить материалы",
-""
+"How not to waste materials"
 ],
 [
 "<b>Разобрал все фиолетовые наручи</b>",
-""
+"<b>Dismantled all purple gauntlets</b>"
 ],
 [
 "Потом нечего надеть на босса. Оставь 2 пары 30 уровня.",
-""
+"Then there is nothing to wear on the boss. Keep 2 pairs at level 30."
 ],
 [
 "<b>Качаю пять комплектов сразу</b>",
-""
+"<b>Leveling five sets at once</b>"
 ],
 [
 "Один готовый комплект на главного героя урона сильнее пяти недоделанных.",
-""
+"One finished set on the main damage hero is stronger than five unfinished ones."
 ],
 [
 "<b>Камни в меч танка</b>",
-""
+"<b>Gearstone into a tank's sword</b>"
 ],
 [
 "Цифра мощи растёт, а в бою толку нет.",
-""
+"The Might number grows, but it does nothing in battle."
 ],
 [
 "<b>Дорогие камни в фиолетовые вещи</b>",
-""
+"<b>Expensive Gearstone into purple items</b>"
 ],
 [
 "Фиолетовое — временное. Камни — в золотые вещи главных героев.",
-""
+"Purple is temporary. Gearstone goes into the main heroes' gold items."
 ],
 [
 "<b>Забыл переодеть после босса</b>",
-""
+"<b>Forgot to re-equip after the boss</b>"
 ],
 [
 "И пошёл в КвК в фиолетовом.",
-""
+"And went to Kingdom War in purple."
 ],
 [
 "<b>Полез выше 40 уровня без запаса трав</b>",
-""
+"<b>Went above level 40 without a Herb stock</b>"
 ],
 [
 "Встали и стройка, и исследования.",
-""
+"Both building and research came to a halt."
 ]
 ]
