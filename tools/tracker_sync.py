@@ -83,18 +83,41 @@ def save(p, obj):
 # только кнопкой на его сайте. Поэтому робот берёт то, что трекер обновил сам, и забирает это не позже чем через 30 мин.
 
 
+def probe_sig(a):
+    """Отпечаток нашего альянса у трекера: меняется, когда трекер подтянул новые цифры участников или окно альянса."""
+    m = a.get("members") or []
+    return [a.get("updated_at"), len(m), sum(x.get("power") or 0 for x in m), sum(x.get("kills") or 0 for x in m),
+            max([x.get("map_updated_at") or x.get("last_seen_at") or 0 for x in m] or [0])]
+
+
 def main():
     if not KEY or not API:
         sys.exit("нет TRACKER_KEY или TRACKER_API")
     now = time.time()
     day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    # обновление раз в 30 минут (её решение 18.11): если с прошлого прошло меньше 25 мин — выходим без единого запроса
-    last = load(OUT / "server.json", {}).get("updated", 0)
-    # порог: таймер — 15 мин (чтобы задержка запуска не съела полчаса), запасное расписание — 40 мин (только закрывает провалы)
-    gap = int(os.environ.get("MINGAP") or 25)
-    if not os.environ.get("FORCE") and now - last < gap * 60:
-        print(f"рано: последнее обновление {round((now - last) / 60)} мин назад — пропускаю")
-        return
+    prev = load(OUT / "server.json", {})
+    last = prev.get("updated", 0)
+    force = bool(os.environ.get("FORCE"))
+    mode = os.environ.get("MODE") or "timer"
+    # Трекер обновляет карту не по часам, а раз в 2–3 ч в разное время (19.11: 15:10, 18:29, 21:08, 23:23 МСК).
+    # Таймер будит робота каждые 10 мин: робот одним запросом смотрит наш альянс — изменился ли он у трекера.
+    # Изменился — сразу полный сбор; нет — выходим. Полный сбор в любом случае не реже раза в 30 мин.
+    # Запасное расписание (schedule) — только если полного сбора не было больше 40 мин.
+    if not force:
+        if mode == "schedule":
+            if now - last < 40 * 60:
+                print(f"запасное расписание: полный сбор был {round((now - last) / 60)} мин назад — не нужно")
+                return
+        elif now - last < 28 * 60:
+            try:
+                sig = probe_sig(get(f"/alliances/{HOME_AID}"))
+            except Exception as e:
+                print("проверка свежести не удалась:", e, "— делаю полный сбор", file=sys.stderr)
+                sig = None
+            if sig is not None and sig == prev.get("probe"):
+                print(f"у трекера нового нет (полный сбор был {round((now - last) / 60)} мин назад)")
+                return
+            print("у трекера новые данные — полный сбор")
 
     cat = get(f"/servers/catalog/{SID}")
     ranks = get(f"/servers/catalog/{SID}/ranks")
@@ -109,12 +132,15 @@ def main():
     players = load(OUT / "players.json", {"players": {}})["players"]
     series = {}
     live_ids = []
+    home_probe = None
     moves_all = []  # вступления/выходы — для подписчиков, уходят в закрытую базу (push_moves)
 
     for row in top:
         aid = row["id"]
         try:
             a = get(f"/alliances/{aid}")
+            if aid == HOME_AID:
+                home_probe = probe_sig(a)  # отпечаток — для быстрой проверки «есть ли у трекера новое»
             ev = get(f"/alliances/{aid}/events?limit=40")
         except Exception as e:  # один альянс не должен ронять весь сбор
             print("альянс", aid, "пропущен:", e, file=sys.stderr)
@@ -139,6 +165,7 @@ def main():
         cap = a.get("capacity") or old.get("capacity") or 100
         mapped = sorted([m for m in raw_members if not m.get("rank_label") and now - seen_t(m) <= 3 * 86400], key=lambda m: -seen_t(m))[:cap]
         live_old = now - roster_t > 3 * 86400  # «живой» состав, но давно не обновлялся
+        kept = False  # True — трекер состав не прислал, показываем прошлый
         if (stale or live_old) and len(mapped) >= 10:
             ranks = {str(m["uid"]): m.get("rank") for m in (old.get("members") or []) if m.get("rank")}
             mem = [{"uid": m["uid"], "nick": m.get("nick_name") or m.get("nick", ""), "power": m.get("power", 0), "lv": m.get("lv") or m.get("level", 0), "kills": m.get("kills", 0),
@@ -146,6 +173,7 @@ def main():
             roster, roster_t = "map", max(seen_t(m) for m in mapped)
             a["member_count"] = len(mem)
         elif stale and old.get("members"):  # карты нет — оставляем прошлый состав с его датой
+            kept = True
             mem = old["members"]; roster = old.get("roster", "live"); roster_t = old.get("roster_t") or old.get("updated")
             for k_new, k_old in (("leader_name", "leader"), ("capacity", "capacity"), ("level", "level")):
                 a[k_new] = old.get(k_old)
@@ -162,7 +190,29 @@ def main():
             events.append({"t": e["t"], "kind": e["kind"], "uid": e["uid"], "nick": e.get("nick_then") or e.get("nick_name", ""), "power": e.get("power"),
                            "from": e.get("other_abbr", ""), "now": e.get("now_abbr", "")})
         events.sort(key=lambda e: -e["t"])
-        save(OUT / "a" / f"{aid}.json", {"updated": now, "id": aid, "name": a.get("name"), "abbr": a.get("abbr"), "power": a.get("power"), "level": a.get("level"),
+        # Когда трекер снял цифры участника. У состава по карте — дата, когда игрока видели.
+        # У окна альянса дата (updated_at) — это дата самого окна: трекер обновляет его редко, но цифры участников
+        # подтягивает с карты каждые ~30 мин (у [SLAV] сумма мощи менялась при одной и той же дате 16:29, проверено 19.11).
+        # Поэтому время цифры = когда робот впервые увидел её изменившейся; в первый раз — дата окна (осторожно).
+        obs = {}
+        for m in mem:
+            u = str(m["uid"]); pp0 = players.get(u, {})
+            if roster == "map":
+                obs[u] = m.get("seen") or roster_t or 0
+            elif kept:
+                obs[u] = roster_t or 0
+            else:
+                sig = [m.get("power"), m.get("kills"), m.get("lv"), m.get("x"), m.get("y")]
+                if pp0.get("rsig") is None:
+                    t0 = roster_t
+                elif pp0.get("rsig") != sig:
+                    t0 = now
+                else:
+                    t0 = pp0.get("rt") or roster_t
+                obs[u] = max(t0 or 0, roster_t or 0)
+                players.setdefault(u, {}).update({"rsig": sig, "rt": obs[u]})
+        fresh_t = max(obs.values()) if obs else roster_t
+        save(OUT / "a" / f"{aid}.json", {"updated": now, "fresh_t": fresh_t, "id": aid, "name": a.get("name"), "abbr": a.get("abbr"), "power": a.get("power"), "level": a.get("level"),
                                          "members_count": len(mem) if mem else None, "capacity": a.get("capacity"), "leader": a.get("leader_name"), "language": a.get("language"),
                                          "summary": ev.get("summary"), "live": bool(mem), "roster": roster, "roster_t": roster_t, "members": sorted(mem, key=lambda m: -(m["power"] or 0))})  # без ленты — она в закрытом хранилище
         if PRIV:
@@ -184,8 +234,7 @@ def main():
             live_ids.append(aid)
         for m in mem:
             pp = players.setdefault(str(m["uid"]), {})
-            # когда трекер снял эти цифры: у состава по карте — дата, когда видели игрока; у окна альянса — дата состава
-            src_t = (m.get("seen") if roster == "map" else roster_t) or 0
+            src_t = obs.get(str(m["uid"]), 0)  # когда трекер снял эти цифры (см. выше)
             pp.update({"nick": m["nick"], "aid": aid, "abbr": a.get("abbr"), "rank": m["rank"], "seen": now,
                        "active": m.get("active"), "honor": m.get("honor"), "tech": m.get("tech")})
             # мощь/убийства/город — только если они не старее того, что уже есть (личная карточка бывает свежее состава альянса)
@@ -340,6 +389,9 @@ def main():
             else:
                 s.setdefault(uid, {})[day] = list(v)
         save(p, s)
+    sj = load(OUT / "server.json", {})
+    sj["probe"] = home_probe
+    save(OUT / "server.json", sj)
     push_moves(moves_all)
     print(f"готово: альянсов {len(top)}, игроков в базе {len(players)}, запросов {used}")
 

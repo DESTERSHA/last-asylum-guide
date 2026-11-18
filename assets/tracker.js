@@ -312,7 +312,7 @@
     if (!w7) { var ev7 = (a.events || []).filter(function (e) { return e.t >= now - 7 * 86400; }), j7 = ev7.filter(function (e) { return e.kind === "join"; }).length; w7 = { joined: j7, left: ev7.length - j7 }; }
     var lead = a.members.filter(function (m) { return (m.rank || "").slice(0, 2) === "R5"; })[0];
     $("view").innerHTML = '<div class="ap-wrap">' +
-      '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Все альянсы</a><span class="ap-upd">состав снят ' + atLabel(a.roster_t || a.updated) + " · проверено " + ago(a.updated) + "</span></div>" +
+      '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Все альянсы</a><span class="ap-upd">цифры участников от ' + atLabel(a.fresh_t || a.roster_t || a.updated) + " · проверено " + ago(a.updated) + "</span></div>" +
       '<div class="ap-hero"><img class="emb" src="' + G + 'alliance.png" alt=""><div><h2><span class="tag">[' + esc(a.abbr) + "]</span> " + esc(a.name) + '</h2><div class="ap-chips"><span>Сервер 397</span><span>место ' + (r.rank || "—") + " по мощи</span>" + (a.language ? "<span>язык: " + esc(a.language) + "</span>" : "") + (a.live ? "" : '<span class="warn">состав ещё не обновлялся</span>') + "</div></div></div>" +
       '<div class="ap-cells c5">' + cell("Мощь", num(r.score || a.power), delta(wk(ix)) + " за 7 дней") +
       cell("Участники", cnt ? cnt + '<small>/' + cap + "</small>" : "—", cnt ? '<i class="ap-mini"><u style="width:' + Math.min(100, cnt / cap * 100) + '%"></u></i>' : "") +
@@ -334,7 +334,7 @@
         var tot = a.members.reduce(function (s, m) { return s + (m.power || 0); }, 0);
         var hasRanks = a.members.some(function (m) { return m.rank; });
         var rosterNote = a.roster === "map" ? '<div class="ap-demo"><b>Состав по карте</b><span>Игроки с тегом альянса, которых видели на карте за последние 3 дня (последний раз — ' + ago(a.roster_t) + '). Ушедшие сюда не попадают. Ранги в таких данных не видны.</span></div>'
-          : (a.roster_t && Date.now() / 1000 - a.roster_t > 3 * 86400 ? '<div class="ap-demo"><b>Состав от ' + ago(a.roster_t) + '</b><span>Свежее данных по этому альянсу пока нет.</span></div>' : "");
+          : ((a.fresh_t || a.roster_t) && Date.now() / 1000 - (a.fresh_t || a.roster_t) > 3 * 86400 ? '<div class="ap-demo"><b>Состав от ' + ago(a.fresh_t || a.roster_t) + '</b><span>Свежее данных по этому альянсу пока нет.</span></div>' : "");
         P.innerHTML = rosterNote + (hasRanks ? '<div class="ap-card"><div class="ap-h"><div><h3>Ранги</h3><p>нажми ранг — в списке останутся только его участники</p></div></div><div class="ap-ranks">' +
           ["R5", "R4", "R3", "R2", "R1"].map(function (k) { return '<button type="button" class="ap-rt r' + k.slice(1) + '" data-r="' + k + '"><span class="l">' + k + "</span><b>" + (by[k] || 0) + '</b><span class="s">' + (k === "R5" ? "лидер" : k === "R4" ? "офицеры" : "участники") + "</span></button>"; }).join("") +
           '</div><div class="ap-kvs">' + kv("Средняя мощь участника", num(tot / cnt)) + kv("Святилище 25+", a.members.filter(function (m) { return m.lv >= 25; }).length + " чел.") + kv("Сильнейший", esc(a.members.slice().sort(function (x, y) { return y.power - x.power; })[0].nick)) + "</div></div>" : "") +

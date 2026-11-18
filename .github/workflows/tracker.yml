@@ -47,7 +47,7 @@ jobs:
           LA_SB_PUSH: ${{ secrets.LA_SB_PUSH }}
           PLAYERS: ${{ github.event.inputs.players || '60' }}
           FORCE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == '1' && '1' || '' }}
-          MINGAP: ${{ github.event_name == 'schedule' && '40' || '15' }}
+          MODE: ${{ github.event_name == 'schedule' && 'schedule' || 'timer' }}
         run: python tools/tracker_sync.py
       - name: Сохранить
         id: save
