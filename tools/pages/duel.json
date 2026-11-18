@@ -1,818 +1,818 @@
 [
 [
 "Дуэль альянсов по дням | Last Asylum: Plague · сервер 397",
-""
+"Alliance Duel day by day | Last Asylum: Plague · kingdom 397"
 ],
 [
 "Дуэль альянсов простыми словами: что делать в каждый день, что копить, сколько очков дают задания, как сохранять задания сокола и держать молоток.",
-""
+"The Alliance Duel in plain words: what to do on each day, what to save, how many points quests give, how to keep Falcon Quests and «hold the hammer»."
 ],
 [
 "<img src=\"assets/game/ev-duel.png\" alt=\"\">Дуэль альянсов",
-""
+"<img src=\"assets/game/ev-duel.png\" alt=\"\">Alliance Duel"
 ],
 [
 "Дуэль альянсов: что делать в каждый день",
-""
+"Alliance Duel: what to do on each day"
 ],
 [
 "Каждую неделю наш альянс соревнуется с другим альянсом. Шесть дней — шесть тем. Очки дают <b>только</b> дела темы этого дня. Кто копит заранее и тратит в свой день — тот побеждает.",
-""
+"Every week our alliance competes with another alliance. Six days — six themes. Points are given <b>only</b> for the day's theme. Whoever saves up in advance and spends on the right day wins."
 ],
 [
 "<a class=\"btn pri\" href=\"#days\">Что делать сегодня</a><a class=\"btn\" href=\"#save\">Как копить</a><a class=\"btn\" href=\"#research\">Исследования Дуэли</a>",
-""
+"<a class=\"btn pri\" href=\"#days\">What to do today</a><a class=\"btn\" href=\"#save\">How to save up</a><a class=\"btn\" href=\"#research\">Duel research</a>"
 ],
 [
 "<img src=\"assets/art/hero-duel.webp\" alt=\"Дуэль альянсов\">",
-""
+"<img src=\"assets/art/hero-duel.webp\" alt=\"Alliance Duel\">"
 ],
 [
 "<small>Сегодня в игре</small><b data-today=\"name\">—</b><small data-today=\"duel\">—</small>",
-""
+"<small>Today in the game</small><b data-today=\"name\">—</b><small data-today=\"duel\">—</small>"
 ],
 [
 "Где кнопка",
-""
+"Where the button is"
 ],
 [
 "Справа на главном экране — значок со скрещёнными мечами. Нажми — откроются задания дня и сундуки.",
-""
+"On the right of the main screen — an icon with crossed swords. Tap it — the day's quests and chests open."
 ],
 [
 "Новый день Дуэли",
-""
+"New Duel day"
 ],
 [
 "По Москве (00:00 в игре). Перед большой тратой глянь таймер в окне Дуэли.",
-""
+"Moscow time (00:00 game time). Before a big spend, check the timer in the Duel window."
 ],
 [
 "Пн, Ср, Пт — сокол",
-""
+"Mon, Wed, Fri — Falcon"
 ],
 [
 "Задание сокола в эти дни = 13 000 очков. В остальные дни его выполняют, но награду не забирают.",
-""
+"A Falcon Quest on these days = 13,000 points. On other days you do them but don't claim the reward."
 ],
 [
 "Кто участвует",
-""
+"Who takes part"
 ],
 [
 "Альянсы от 20 человек из топ-32 сервера по мощи. Сменил альянс — в этот день очки альянсу не идут.",
-""
+"Alliances of 20+ members from the kingdom's top 32 by Might. Changed alliance — that day your points don't go to the alliance."
 ],
 [
 "По дням",
-""
+"By day"
 ],
 [
 "Нажми на день — увидишь, что делать",
-""
+"Tap a day to see what to do"
 ],
 [
 "Сегодняшний день открыт сам (по времени игры). Очки в таблицах — как написано в самой игре, до бонуса исследований Дуэли.",
-""
+"Today's tab opens by itself (by game time). Points in the tables are as written in the game itself, before the Duel research bonus."
 ],
 [
 "<img src=\"assets/game/raven-fruit.png\" alt=\"\">Пн · Ворон",
-""
+"<img src=\"assets/game/raven-fruit.png\" alt=\"\">Mon · Raven"
 ],
 [
 "<img src=\"assets/game/speed-build.png\" alt=\"\">Вт · Стройка",
-""
+"<img src=\"assets/game/speed-build.png\" alt=\"\">Tue · Building"
 ],
 [
 "<img src=\"assets/game/speed-research.png\" alt=\"\">Ср · Наука",
-""
+"<img src=\"assets/game/speed-research.png\" alt=\"\">Wed · Research"
 ],
 [
 "<img src=\"assets/game/ticket-hero.png\" alt=\"\">Чт · Герои",
-""
+"<img src=\"assets/game/ticket-hero.png\" alt=\"\">Thu · Heroes"
 ],
 [
 "<img src=\"assets/game/speed-train.png\" alt=\"\">Пт · Войска",
-""
+"<img src=\"assets/game/speed-train.png\" alt=\"\">Fri · Troops"
 ],
 [
 "<img src=\"assets/game/c-war.png\" alt=\"\">Сб · Набег",
-""
+"<img src=\"assets/game/c-war.png\" alt=\"\">Sat · Raid"
 ],
 [
 "<img src=\"assets/game/shield.png\" alt=\"\">Вс · Отдых",
-""
+"<img src=\"assets/game/shield.png\" alt=\"\">Sun · Rest"
 ],
 [
 "Понедельник — «Ворон»",
-""
+"Monday — «Raven»"
 ],
 [
 "ШАГ 1",
-""
+"STEP 1"
 ],
 [
 "Забери все задания сокола, которые копил",
-""
+"Claim all the Falcon Quests you saved"
 ],
 [
 "Открой Башню сокола (птица слева внизу на главном экране) и нажми «Забрать» у всех выполненных заданий. Каждое — 13 000 очков.",
-""
+"Open the Falcon Tower (the bird at the bottom left of the main screen) and tap «Claim» on all completed quests. Each one is 13,000 points."
 ],
 [
 "<span><img src=\"assets/game/falcon.png\" alt=\"\">Задание сокола — <b>13 000</b></span>",
-""
+"<span><img src=\"assets/game/falcon.png\" alt=\"\">Falcon Quest — <b>13,000</b></span>"
 ],
 [
 "ШАГ 2",
-""
+"STEP 2"
 ],
 [
 "Скорми Ворону вороньи плоды и эссенцию",
-""
+"Feed the Raven Raven Fruit and Raven Essence"
 ],
 [
 "Гнездо ворона → первая вкладка. Тратишь всё, что копил неделю. Сундуки с эпиграфами тоже открывай сегодня.",
-""
+"Raven Nest → first tab. Spend everything you saved during the week. Open Epigraph chests today too."
 ],
 [
 "<span><img src=\"assets/game/raven-essence.png\" alt=\"\">Воронья эссенция — <b>2 500</b></span><span><img src=\"assets/game/raven-fruit.png\" alt=\"\">1 вороний плод — <b>3</b></span><span><img src=\"assets/game/chip1.png\" alt=\"\">Сундук с эпиграфами — <b>3 100</b></span>",
-""
+"<span><img src=\"assets/game/raven-essence.png\" alt=\"\">Raven Essence — <b>2,500</b></span><span><img src=\"assets/game/raven-fruit.png\" alt=\"\">1 Raven Fruit — <b>3</b></span><span><img src=\"assets/game/chip1.png\" alt=\"\">Epigraph chest — <b>3,100</b></span>"
 ],
 [
 "ШАГ 3",
-""
+"STEP 3"
 ],
 [
 "Трать энергию",
-""
+"Spend Stamina"
 ],
 [
 "Бей скверну на карте и ходи в штурмы — каждая единица энергии даёт 150 очков. Не забудь выпить два бесплатных флакона энергии.",
-""
+"Hit Blight on the map and join rallies — each unit of Stamina gives 150 points. Don't forget to drink the two free Stamina flasks."
 ],
 [
 "<span><img src=\"assets/game/energy.png\" alt=\"\">1 энергия — <b>150</b></span>",
-""
+"<span><img src=\"assets/game/energy.png\" alt=\"\">1 Stamina — <b>150</b></span>"
 ],
 [
 "ШАГ 4",
-""
+"STEP 4"
 ],
 [
 "Все свободные отряды — на сбор ресурсов",
-""
+"All free squads — to gathering"
 ],
 [
 "Ресурсы засчитываются, когда отряд <b>вернулся домой</b>, а не когда собрал. Ресурсы из сундуков и мешков не идут.",
-""
+"Resources count when the squad <b>comes back home</b>, not when it gathers. Resources from chests and bags don't count."
 ],
 [
 "<span><img src=\"assets/game/food.png\" alt=\"\">100 зерна / 100 древесины / 60 трав — <b>5</b></span>",
-""
+"<span><img src=\"assets/game/food.png\" alt=\"\">100 Grain / 100 Timber / 60 Herb — <b>5</b></span>"
 ],
 [
 "ЕЩЁ ОЧКИ В ПОНЕДЕЛЬНИК",
-""
+"MORE POINTS ON MONDAY"
 ],
 [
 "<span><img src=\"assets/game/antidote.png\" alt=\"\">660 противоядия: 1 очко — трать, только если не хватает до сундука</span>",
-""
+"<span><img src=\"assets/game/antidote.png\" alt=\"\">660 Antitoxin: 1 point — spend only if you are short of a chest</span>"
 ],
 [
 "<b>Не открывай сундуки снаряжения Ворона</b> — их день среда.",
-""
+"<b>Don't open Raven Gear Chests</b> — their day is Wednesday."
 ],
 [
 "<b>Перед сном</b> отправь отряды так, чтобы они вернулись <b>до 05:00 по Москве</b> вторника — иначе ресурсы уйдут уже в другой день.",
-""
+"<b>Before bed</b> send squads so they come back <b>before 05:00 Moscow</b> on Tuesday — otherwise the resources go to the next day."
 ],
 [
 "Вторник — «Развитие территории» (стройка)",
-""
+"Tuesday — «Territory Development» (building)"
 ],
 [
 "Возьми титул министра стройки",
-""
+"Get the Minister of Construction title"
 ],
 [
 "Если король раздаёт титулы — попроси «министра строительства» до того, как жмёшь стройки. Титул действует только на стройки, начатые после его получения.",
-""
+"If the king hands out titles — ask for «Minister of Construction» before you start building. The title only works for construction started after you get it."
 ],
 [
 "Нажми молотки над готовыми зданиями",
-""
+"Tap the hammers above finished buildings"
 ],
 [
 "Все стройки, которые ты держал готовыми (см. «держать молоток» ниже), — забирай сейчас.",
-""
+"All the constructions you kept finished (see «hold the hammer» below) — collect them now."
 ],
 [
 "<span><img src=\"assets/game/go-build.png\" alt=\"\">+1 мощь здания — <b>10</b></span>",
-""
+"<span><img src=\"assets/game/go-build.png\" alt=\"\">+1 building Might — <b>10</b></span>"
 ],
 [
 "Трать ускорения стройки",
-""
+"Spend building speedups"
 ],
 [
 "Каждая минута ускорения — 65 очков. Универсальные ускорения лучше оставить на среду или пятницу.",
-""
+"Each minute of speedup is 65 points. Better keep universal speedups for Wednesday or Friday."
 ],
 [
 "<span><img src=\"assets/game/speed-build.png\" alt=\"\">1 минута ускорения стройки — <b>65</b></span>",
-""
+"<span><img src=\"assets/game/speed-build.png\" alt=\"\">1 minute of building speedup — <b>65</b></span>"
 ],
 [
 "Отправь золотой караван и золотую секретную операцию",
-""
+"Send a gold caravan and a gold Covert Operation"
 ],
 [
 "Это самые жирные очки дня: золотой (UR) караван — 100 000, золотая операция — 75 000. Обнови их до золотых билетами обновления.",
-""
+"These are the fattest points of the day: a gold (UR) caravan — 100,000, a gold operation — 75,000. Refresh them to gold with refresh tickets."
 ],
 [
 "<span><img src=\"assets/game/btn-caravan.png\" alt=\"\">Отправить UR (золотой) караван — <b>100 000</b></span><span><img src=\"assets/game/covert.png\" alt=\"\">Провести UR секретную операцию — <b>75 000</b></span>",
-""
+"<span><img src=\"assets/game/btn-caravan.png\" alt=\"\">Send a UR (gold) caravan — <b>100,000</b></span><span><img src=\"assets/game/covert.png\" alt=\"\">Complete a UR Covert Operation — <b>75,000</b></span>"
 ],
 [
 "ШАГ 5",
-""
+"STEP 5"
 ],
 [
 "Найми выживших в Таверне",
-""
+"Recruit Survivors in the Tavern"
 ],
 [
 "Вкладка выживших, все билеты, которые копил. По 1 500 очков за найм.",
-""
+"The Survivor tab, all the tickets you saved. 1,500 points per recruit."
 ],
 [
 "<span><img src=\"assets/game/ticket-survivor.png\" alt=\"\">Найм выжившего — <b>1 500</b></span>",
-""
+"<span><img src=\"assets/game/ticket-survivor.png\" alt=\"\">Recruit a Survivor — <b>1,500</b></span>"
 ],
 [
 "ЕЩЁ ОЧКИ ВО ВТОРНИК",
-""
+"MORE POINTS ON TUESDAY"
 ],
 [
 "<span><img src=\"assets/game/shard-awaken.png\" alt=\"\">Фрагмент пробуждения оружия — <b>10 000</b></span>",
-""
+"<span><img src=\"assets/game/shard-awaken.png\" alt=\"\">Weapon Awaken Shard — <b>10,000</b></span>"
 ],
 [
 "Задания сокола сегодня <b>выполняй, но награду не забирай</b> — заберёшь в среду.",
-""
+"Today <b>do Falcon Quests but don't claim the reward</b> — you'll claim it on Wednesday."
 ],
 [
 "Среда — «Технологии» (исследования)",
-""
+"Wednesday — «Tech» (research)"
 ],
 [
 "Возьми титул министра развития",
-""
+"Get the Minister of Development title"
 ],
 [
 "Он ускоряет исследования. Сначала титул — потом жми исследования.",
-""
+"It speeds up research. Title first — then start research."
 ],
 [
 "Открой все сундуки снаряжения Ворона",
-""
+"Open all Raven Gear Chests"
 ],
 [
 "Каждый сундук 1 уровня — 1 100 очков, сундуки выше уровнем дают намного больше. Их копили всю неделю именно для этого.",
-""
+"Each Lv.1 chest is 1,100 points, higher-level chests give much more. You saved them all week for exactly this."
 ],
 [
 "<span><img src=\"assets/game/raven-chest.png\" alt=\"\">Сундук снаряжения Ворона ур.1 — <b>1 100</b></span>",
-""
+"<span><img src=\"assets/game/raven-chest.png\" alt=\"\">Lv.1 Raven Gear Chest — <b>1,100</b></span>"
 ],
 [
 "Заверши исследования и трать ускорения исследований",
-""
+"Finish research and spend research speedups"
 ],
 [
 "По 65 очков за минуту. Свитки обучения — по 300 за штуку: вкладывай их в ветку «Дуэль альянсов».",
-""
+"65 points per minute. Study Scrolls — 300 each: put them into the «Alliance Duel» branch."
 ],
 [
 "<span><img src=\"assets/game/speed-research.png\" alt=\"\">1 минута ускорения исследований — <b>65</b></span><span><img src=\"assets/game/research-scroll.png\" alt=\"\">1 свиток обучения — <b>300</b></span><span><img src=\"assets/game/go-lab.png\" alt=\"\">+1 мощь технологий — <b>10</b></span>",
-""
+"<span><img src=\"assets/game/speed-research.png\" alt=\"\">1 minute of research speedup — <b>65</b></span><span><img src=\"assets/game/research-scroll.png\" alt=\"\">1 Study Scroll — <b>300</b></span><span><img src=\"assets/game/go-lab.png\" alt=\"\">+1 tech Might — <b>10</b></span>"
 ],
 [
 "Забери задания сокола",
-""
+"Claim Falcon Quests"
 ],
 [
 "Все, что копил со вторника.",
-""
+"Everything you saved since Tuesday."
 ],
 [
 "Не трать фрагменты героев, противоядие и билеты найма — это завтра.",
-""
+"Don't spend hero shards, Antitoxin and recruit tickets — that's tomorrow."
 ],
 [
 "Четверг — «Развитие героев»",
-""
+"Thursday — «Hero Growth»"
 ],
 [
 "Найми героев в Таверне",
-""
+"Recruit heroes in the Tavern"
 ],
 [
 "Все билеты найма, которые копил неделю. Каждый найм — 1 950 очков.",
-""
+"All the recruit tickets you saved during the week. Each recruit is 1,950 points."
 ],
 [
 "<span><img src=\"assets/game/ticket-hero.png\" alt=\"\">Найм героя один раз — <b>1 950</b></span>",
-""
+"<span><img src=\"assets/game/ticket-hero.png\" alt=\"\">Recruit a hero once — <b>1,950</b></span>"
 ],
 [
 "Вложи все фрагменты в звёзды",
-""
+"Put all shards into stars"
 ],
 [
 "Сначала фрагменты конкретного героя (с его лицом), потом универсальные. Каждый золотой фрагмент — 10 000 очков. Универсальные тоже считаются.",
-""
+"First a specific hero's shards (with their face), then universal ones. Each gold shard is 10,000 points. Universal ones count too."
 ],
 [
 "<span><img src=\"assets/game/shard-ur.png\" alt=\"\">1 фрагмент UR (золотого) героя — <b>10 000</b></span><span><img src=\"assets/game/shard-ssr.png\" alt=\"\">1 фрагмент SSR (фиолетового) героя — <b>3 500</b></span><span><img src=\"assets/game/shard-sr.png\" alt=\"\">1 фрагмент SR (синего) героя — <b>1 000</b></span>",
-""
+"<span><img src=\"assets/game/shard-ur.png\" alt=\"\">1 UR (gold) hero shard — <b>10,000</b></span><span><img src=\"assets/game/shard-ssr.png\" alt=\"\">1 SSR (purple) hero shard — <b>3,500</b></span><span><img src=\"assets/game/shard-sr.png\" alt=\"\">1 SR (blue) hero shard — <b>1,000</b></span>"
 ],
 [
 "Прокачай уровни противоядием и навыки значками",
-""
+"Level up with Antitoxin and skills with badges"
 ],
 [
 "Противоядие лучше тратить в 4-часовой раунд «Усиление героев» Битвы на выживание — очки пойдут в оба события.",
-""
+"Antitoxin is best spent in the 4-hour «Enhance Hero» round of the Survival Battle — the points go to both events."
 ],
 [
 "<span><img src=\"assets/game/skill-badge.png\" alt=\"\">1 значок навыка — <b>10</b></span><span><img src=\"assets/game/antidote.png\" alt=\"\">660 противоядия — <b>1</b></span>",
-""
+"<span><img src=\"assets/game/skill-badge.png\" alt=\"\">1 Skill Badge — <b>10</b></span><span><img src=\"assets/game/antidote.png\" alt=\"\">660 Antitoxin — <b>1</b></span>"
 ],
 [
 "Используй фрагменты пробуждения",
-""
+"Use Awaken Shards"
 ],
 [
 "Если у тебя есть Марлена, Синтия или Энни на 10 звёздах.",
-""
+"If you have Marlena, Cynthia or Annie at 10 stars."
 ],
 [
 "<span><img src=\"assets/game/shard-awaken.png\" alt=\"\">Фрагмент пробуждения героя — <b>10 000</b></span>",
-""
+"<span><img src=\"assets/game/shard-awaken.png\" alt=\"\">Hero Awaken Shard — <b>10,000</b></span>"
 ],
 [
 "<b>Подготовь пятницу:</b> поставь обучение солдат на 1–3 уровня ниже твоего максимума <b>без ускорений</b>. Завтра будешь их повышать — за это дают очки. Задания сокола сегодня не забирай.",
-""
+"<b>Prepare Friday:</b> start training troops 1–3 levels below your maximum <b>without speedups</b>. Tomorrow you will promote them — that gives points. Don't claim Falcon Quests today."
 ],
 [
 "Пятница — «Подготовка к войне» (войска)",
-""
+"Friday — «War Preparation» (troops)"
 ],
 [
 "Возьми титул министра войны",
-""
+"Get the Minister of War title"
 ],
 [
 "Он ускоряет обучение войск.",
-""
+"It speeds up troop training."
 ],
 [
 "Повышай солдат, которых обучил вчера, и трать ускорения обучения",
-""
+"Promote the troops you trained yesterday and spend training speedups"
 ],
 [
 "Очки дают и за начало обучения или повышения, и за его окончание. Солдат — 80 очков, минута ускорения — 65.",
-""
+"Points are given both for starting training or promotion and for finishing it. A soldier — 80 points, a minute of speedup — 65."
 ],
 [
 "<span><img src=\"assets/game/go-train.png\" alt=\"\">Обучить 1 солдата — <b>80</b></span><span><img src=\"assets/game/speed-train.png\" alt=\"\">1 минута ускорения обучения — <b>65</b></span>",
-""
+"<span><img src=\"assets/game/go-train.png\" alt=\"\">Train 1 soldier — <b>80</b></span><span><img src=\"assets/game/speed-train.png\" alt=\"\">1 minute of training speedup — <b>65</b></span>"
 ],
 [
 "Все, что копил с четверга.",
-""
+"Everything you saved since Thursday."
 ],
 [
 "Если не хватает — добери стройкой и исследованиями",
-""
+"If you are short — top up with building and research"
 ],
 [
 "Сегодня они тоже дают очки. Хватило войсками — оставь готовые здания на следующий вторник.",
-""
+"Today they give points too. If troops were enough — keep finished buildings for next Tuesday."
 ],
 [
 "<span><img src=\"assets/game/speed-build.png\" alt=\"\">Ускорения стройки и исследований — <b>65 / мин</b></span>",
-""
+"<span><img src=\"assets/game/speed-build.png\" alt=\"\">Building and research speedups — <b>65 / min</b></span>"
 ],
 [
 "<b>Перед сном:</b> включи щит и убери отряд со стены (в Стенах у отряда выключи «Присоединиться к обороне»). Завтра день набега, и щит может кончиться.",
-""
+"<b>Before bed:</b> turn on a shield and take your squad off the wall (in the Walls, untick «Join Defense» for the squad). Tomorrow is the raid day, and the shield may run out."
 ],
 [
 "Суббота — «Набег» на альянс-соперник",
-""
+"Saturday — «Raid» on the rival alliance"
 ],
 [
 "Весь день (24 часа) можно бить альянс, с которым у нас Дуэль. За их солдат дают в 5 раз больше очков, чем за чужих.",
-""
+"All day (24 hours) you can hit the alliance we are dueling. Their troops give 5 times more points than others'."
 ],
 [
 "ШАГ 1 · если ты слабый",
-""
+"STEP 1 · if you are weak"
 ],
 [
 "Щит до 05:00 по Москве",
-""
+"Shield until 05:00 Moscow"
 ],
 [
 "Есть 5 бесплатных щитов по 8 часов. Держи щит, пока не закончится день — до воскресенья 05:00 МСК.",
-""
+"There are 5 free 8-hour shields. Keep a shield up until the day ends — until Sunday 05:00 Moscow."
 ],
 [
 "ШАГ 2 · если ты слабый",
-""
+"STEP 2 · if you are weak"
 ],
 [
 "Отряды — домой",
-""
+"Squads — home"
 ],
 [
 "Щит не защищает отряды на карте.",
-""
+"A shield doesn't protect squads on the map."
 ],
 [
 "ШАГ 3 · если ты слабый",
-""
+"STEP 3 · if you are weak"
 ],
 [
 "Убери отряд со стены",
-""
+"Take your squad off the wall"
 ],
 [
 "В Стенах у отряда выключи «Присоединиться к обороне» — если щит слетит, потеряешь меньше.",
-""
+"In the Walls, untick «Join Defense» for the squad — if the shield drops, you lose less."
 ],
 [
 "ШАГ 4 · если ты слабый",
-""
+"STEP 4 · if you are weak"
 ],
 [
 "Набирай очки без драки",
-""
+"Earn points without fighting"
 ],
 [
 "Золотой караван, золотая секретная операция, ускорения лечения, стройки, исследований и обучения.",
-""
+"A gold caravan, a gold Covert Operation, healing, building, research and training speedups."
 ],
 [
 "<span><img src=\"assets/game/btn-caravan.png\" alt=\"\">UR караван — <b>100 000</b></span><span><img src=\"assets/game/covert.png\" alt=\"\">UR секретная операция — <b>75 000</b></span><span><img src=\"assets/game/speed-heal.png\" alt=\"\">1 минута ускорения лечения — <b>65</b></span><span><img src=\"assets/game/speed-any.png\" alt=\"\">Ускорения стройки, исследований, обучения — <b>65 / мин</b></span>",
-""
+"<span><img src=\"assets/game/btn-caravan.png\" alt=\"\">UR caravan — <b>100,000</b></span><span><img src=\"assets/game/covert.png\" alt=\"\">UR Covert Operation — <b>75,000</b></span><span><img src=\"assets/game/speed-heal.png\" alt=\"\">1 minute of healing speedup — <b>65</b></span><span><img src=\"assets/game/speed-any.png\" alt=\"\">Building, research, training speedups — <b>65 / min</b></span>"
 ],
 [
 "ЕСЛИ ТЫ СИЛЬНЫЙ",
-""
+"IF YOU ARE STRONG"
 ],
 [
 "Бей альянс-соперника",
-""
+"Hit the rival alliance"
 ],
 [
 "Нажми «Перейти» в окне Дуэли — игра покажет вражеский альянс и перенесёт тебя к нему (между серверами переезд бесплатный). Бей вместе с альянсом. Вернуться — кнопка «Вернуться» (синяя стрелка сверху), город встанет у точки сбора альянса.",
-""
+"Tap «Go Now» in the Duel window — the game shows the enemy alliance and moves you to it (moving between kingdoms is free). Hit together with the alliance. To come back — the «Return» button (the blue arrow at the top), your city will land at the Alliance Assembly Point."
 ],
 [
 "<span><img src=\"assets/game/c-war.png\" alt=\"\">Побеждённый солдат соперника по Дуэли — <b>40</b></span><span><img src=\"assets/game/c-squad.png\" alt=\"\">Любой побеждённый солдат / твой павший солдат — <b>8</b></span>",
-""
+"<span><img src=\"assets/game/c-war.png\" alt=\"\">Defeated soldier of the Duel rival — <b>40</b></span><span><img src=\"assets/game/c-squad.png\" alt=\"\">Any defeated soldier / your fallen soldier — <b>8</b></span>"
 ],
 [
 "Суббота — ещё и КвК. Бой за трон в 17:00 по Москве. Ускорения лечения нужны и там — не сжигай всё утром.",
-""
+"Saturday is also Kingdom War. The battle for the throne at 17:00 Moscow. Healing speedups are needed there too — don't burn them all in the morning."
 ],
 [
 "Воскресенье — отдых, готовимся к неделе",
-""
+"Sunday — rest, getting ready for the week"
 ],
 [
 "<b>Ничего не трать</b>",
-""
+"<b>Don't spend anything</b>"
 ],
 [
 "Ни ускорения, ни фрагменты, ни сундуки — всё это даст очки в свой день.",
-""
+"Not speedups, not shards, not chests — all of them give points on their own day."
 ],
 [
 "<b>Задания сокола: выполняй, но не забирай</b>",
-""
+"<b>Falcon Quests: do them, but don't claim</b>"
 ],
 [
 "Заберёшь в понедельник.",
-""
+"You'll claim them on Monday."
 ],
 [
 "<b>Перед сном — все отряды на сбор</b>",
-""
+"<b>Before bed — all squads to gathering</b>"
 ],
 [
 "Так, чтобы они вернулись уже <b>после 05:00 по Москве</b> в понедельник — сбор засчитается в день Ворона.",
-""
+"So that they return <b>after 05:00 Moscow</b> on Monday — the gathering will count for the Raven day."
 ],
 [
 "<b>Начни долгие стройки и исследования</b>",
-""
+"<b>Start long constructions and research</b>"
 ],
 [
 "Те, что идут больше суток и закончатся ко вторнику или среде. Молоток не жми.",
-""
+"Those that take more than a day and will finish by Tuesday or Wednesday. Don't tap the hammer."
 ],
 [
 "Главное умение",
-""
+"The key skill"
 ],
 [
 "Как копить: два приёма, которые выигрывают Дуэль",
-""
+"How to save up: two tricks that win the Duel"
 ],
 [
 "<img src=\"assets/shots/falcon.webp\" alt=\"Соколиная башня: метки заданий на карте, уровень сокола, «сколько ждёт / сколько можно», «Забрать все»\"><span class=\"ring rect\" style=\"left:5.9%;top:12%;width:9.6%;aspect-ratio:.88\"></span><span class=\"ring rect\" style=\"left:83.5%;top:7.7%;width:14.4%;aspect-ratio:2.1\"></span><span class=\"ring rect\" style=\"left:50%;top:93.9%;width:38.1%;aspect-ratio:3.11\"></span>",
-""
+"<img src=\"assets/shots/falcon.webp\" alt=\"Falcon Tower: quest markers on the map, Falcon level, «waiting / max», Claim All\"><span class=\"ring rect\" style=\"left:5.9%;top:12%;width:9.6%;aspect-ratio:.88\"></span><span class=\"ring rect\" style=\"left:83.5%;top:7.7%;width:14.4%;aspect-ratio:2.1\"></span><span class=\"ring rect\" style=\"left:50%;top:93.9%;width:38.1%;aspect-ratio:3.11\"></span>"
 ],
 [
 "Соколиная башня: цветные метки — задания сокола.",
-""
+"Falcon Tower: colored markers are Falcon Quests."
 ],
 [
 "«Сохранять» задания сокола — что это и как",
-""
+"«Saving» Falcon Quests — what it is and how"
 ],
 [
 "<b>Задания сокола</b> — короткие задания из Соколиной башни: на её карте они висят цветными метками (череп — бить скверну, рука — помочь союзнику, подарок — забрать награду и т. д.). Выполнил — метка ждёт, пока не нажмёшь «Забрать все».",
-""
+"<b>Falcon Quests</b> are short quests from the Falcon Tower: they hang on its map as colored markers (a skull — hit Blight, a hand — help an ally, a gift — collect a reward, etc.). Once done, a marker waits until you tap «Claim All»."
 ],
 [
 "<b>«Сохранить» значит: выполнить задание, но НЕ нажимать «Забрать».</b> Выполненное задание висит в башне «в ожидании». Ты забираешь его в нужный день — и только тогда игра даёт очки Дуэли.",
-""
+"<b>«Saving» means: complete the quest but DON'T tap «Claim».</b> The completed quest stays in the tower «pending». You claim it on the right day — and only then the game gives Duel points."
 ],
 [
 "В <b>воскресенье, вторник и четверг</b> выполняешь задания сокола и не забираешь награду.",
-""
+"On <b>Sunday, Tuesday and Thursday</b> you do Falcon Quests and don't claim the reward."
 ],
 [
 "В <b>понедельник, среду и пятницу</b> заходишь в башню и забираешь всё — каждое по 13 000 очков.",
-""
+"On <b>Monday, Wednesday and Friday</b> you go to the tower and claim everything — 13,000 points each."
 ],
 [
 "В субботу выполняешь и забираешь сразу.",
-""
+"On Saturday you do and claim right away."
 ],
 [
 "<b>Сколько можно накопить.</b> Новые задания появляются каждые 6 часов, но «в ожидании» может висеть ограниченное число — это уровень твоего сокола. Справа вверху у знака вопроса видно «сколько ждёт / сколько можно». Слева вверху — компас с цифрой, это уровень сокола. Нажми на компас, чтобы увидеть, сколько заданий осталось до следующего уровня.",
-""
+"<b>How many you can save.</b> New quests appear every 6 hours, but only a limited number can stay «pending» — that is your Falcon level. At the top right next to the question mark you see «waiting / max». At the top left is a compass with a number — that is the Falcon level. Tap the compass to see how many quests are left until the next level."
 ],
 [
 "Если лимит забит, новые задания не появятся — лишние лучше забрать, чтобы не пропадали.",
-""
+"If the limit is full, new quests won't appear — better claim the extras so they aren't wasted."
 ],
 [
 "<img src=\"assets/shots/hammer.webp\" alt=\"Здание с молотком над крышей — стройка закончена, но не засчитана\"><span class=\"ring rect\" style=\"left:50%;top:13.9%;width:25.5%;aspect-ratio:.93\"></span>",
-""
+"<img src=\"assets/shots/hammer.webp\" alt=\"A building with a hammer above the roof — construction finished but not counted\"><span class=\"ring rect\" style=\"left:50%;top:13.9%;width:25.5%;aspect-ratio:.93\"></span>"
 ],
 [
 "Молоток над зданием — стройка готова, но не засчитана.",
-""
+"A hammer above a building — construction is done but not counted."
 ],
 [
 "«Держать молоток» — что это и как",
-""
+"«Holding the hammer» — what it is and how"
 ],
 [
 "Когда стройка заканчивается, над зданием появляется <b>молоток</b>. Пока ты его не нажал, улучшение не засчитано.",
-""
+"When construction finishes, a <b>hammer</b> appears above the building. Until you tap it, the upgrade is not counted."
 ],
 [
 "<b>Очки Дуэли дают за нажатие на молоток, а не за конец стройки.</b> Поэтому:",
-""
+"<b>Duel points are given for tapping the hammer, not for the end of construction.</b> So:"
 ],
 [
 "Начни долгую стройку заранее (в воскресенье или понедельник).",
-""
+"Start a long construction in advance (on Sunday or Monday)."
 ],
 [
 "Стройка закончилась — <b>не нажимай молоток</b>. Очередь стройки при этом освобождается, можно строить дальше.",
-""
+"Construction finished — <b>don't tap the hammer</b>. The building queue is freed up anyway, you can keep building."
 ],
 [
 "Во вторник (день стройки) нажми все молотки — получишь очки за всё сразу.",
-""
+"On Tuesday (building day) tap all the hammers — you get points for everything at once."
 ],
 [
 "С исследованиями то же самое: готовое исследование забирай в среду или пятницу.",
-""
+"Same with research: collect finished research on Wednesday or Friday."
 ],
 [
 "Что копить всю неделю и когда тратить",
-""
+"What to save all week and when to spend it"
 ],
 [
 "<b>Вороньи плоды и эссенция, сундуки эпиграфов</b><span>→ понедельник</span>",
-""
+"<b>Raven Fruit and Raven Essence, Epigraph chests</b><span>→ Monday</span>"
 ],
 [
 "<b>Энергия</b><span>→ понедельник</span>",
-""
+"<b>Stamina</b><span>→ Monday</span>"
 ],
 [
 "<b>Ускорения стройки, готовые здания</b><span>→ вторник (запасной день — пятница)</span>",
-""
+"<b>Building speedups, finished buildings</b><span>→ Tuesday (backup day — Friday)</span>"
 ],
 [
 "<b>«Тайные приказы» (обновление секретных операций) и «Торговые соглашения» (обновление караванов), около 30</b><span>→ вторник и суббота</span>",
-""
+"<b>Covert Orders (refreshing Covert Operations) and Trade Agreements (refreshing caravans), about 30</b><span>→ Tuesday and Saturday</span>"
 ],
 [
 "<b>Билеты найма выживших</b><span>→ вторник</span>",
-""
+"<b>Survivor recruit tickets</b><span>→ Tuesday</span>"
 ],
 [
 "<b>Сундуки снаряжения Ворона, свитки обучения</b><span>→ среда</span>",
-""
+"<b>Raven Gear Chests, Study Scrolls</b><span>→ Wednesday</span>"
 ],
 [
 "<b>Ускорения исследований, готовые исследования</b><span>→ среда</span>",
-""
+"<b>Research speedups, finished research</b><span>→ Wednesday</span>"
 ],
 [
 "<b>Билеты найма, фрагменты, противоядие, значки навыков</b><span>→ четверг</span>",
-""
+"<b>Recruit tickets, shards, Antitoxin, Skill Badges</b><span>→ Thursday</span>"
 ],
 [
 "<b>Ускорения обучения</b><span>→ пятница</span>",
-""
+"<b>Training speedups</b><span>→ Friday</span>"
 ],
 [
 "<b>Ускорения лечения</b><span>→ суббота</span>",
-""
+"<b>Healing speedups</b><span>→ Saturday</span>"
 ],
 [
 "<b>Задания сокола</b><span>→ забирать в пн, ср, пт</span>",
-""
+"<b>Falcon Quests</b><span>→ claim on Mon, Wed, Fri</span>"
 ],
 [
 "<b>Камни снаряжения</b><span>→ когда угодно (Дуэль за них не платит)</span>",
-""
+"<b>Gearstone</b><span>→ any time (the Duel doesn't pay for it)</span>"
 ],
 [
 "Двойная выгода",
-""
+"Double benefit"
 ],
 [
 "Совмещай Дуэль с Битвой на выживание",
-""
+"Combine the Duel with the Survival Battle"
 ],
 [
 "<b>Битва на выживание</b> идёт каждый день. Сутки поделены на раунды по 4 часа, у каждого своя тема: «Усиление Ворона», «Усиление героев», «Развитие владений», «Обучение войск», «Исследование технологий». Кнопка — в «Особых событиях» справа вверху.",
-""
+"<b>The Survival Battle</b> runs every day. The day is split into 4-hour rounds, each with its own theme: «Raven Enhancement», «Enhance Hero», «Build Territory», «Train Soldiers», «Technology Research». The button is in «Special Events» at the top right."
 ],
 [
 "Если тратить вещи дня Дуэли <b>в тот 4-часовой раунд, где тема совпадает</b>, очки идут сразу в два события.",
-""
+"If you spend the Duel day's items <b>in the 4-hour round with the matching theme</b>, the points go to two events at once."
 ],
 [
 "<b>Пример:</b> в понедельник день Ворона. Открой Битву на выживание, посмотри, во сколько начнётся раунд «Усиление Ворона», — и корми Ворона именно тогда.",
-""
+"<b>Example:</b> Monday is Raven day. Open the Survival Battle, see when the «Raven Enhancement» round starts — and feed the Raven exactly then."
 ],
 [
 "<b>Осторожно:</b> если каждый день выполнять все задания Битвы на выживание без разбора, на Дуэль ничего не останется. Сначала Дуэль, а Битву подстраивай под неё.",
-""
+"<b>Careful:</b> if you do all Survival Battle quests every day without thinking, nothing will be left for the Duel. The Duel comes first; fit the Battle around it."
 ],
 [
 "Удвоить очки",
-""
+"Double the points"
 ],
 [
 "Исследования Дуэли — сделай это первым делом",
-""
+"Duel research — do this first"
 ],
 [
 "В Лаборатории есть ветка «Дуэль альянсов». Она открывается на <b>Лаборатории 15 уровня</b> и качается свитками обучения. Без неё ты получаешь только первые 3 сундука из 9.",
-""
+"The Lab has an «Alliance Duel» branch. It opens at <b>Lab level 15</b> and is leveled with Study Scrolls. Without it you only get the first 3 chests of 9."
 ],
 [
 "<b>Сначала узел «Супер награды» — открывает награды уровней 4–6</b>",
-""
+"<b>First the «Super Rewards» node — unlocks level 4–6 rewards</b>"
 ],
 [
 "Стоит около 100 свитков. Каждая следующая Дуэль сразу платит больше.",
-""
+"Costs about 100 scrolls. Every following Duel pays more right away."
 ],
 [
 "<b>Потом «Лучшие награды» — открывает награды уровней 7–9</b>",
-""
+"<b>Then «Top Rewards» — unlocks level 7–9 rewards</b>"
 ],
 [
 "Около 450 свитков.",
-""
+"About 450 scrolls."
 ],
 [
 "<b>Потом «Эксперт арены» — до максимума</b>",
-""
+"<b>Then «Arena Expert» — to the max</b>"
 ],
 [
 "Он увеличивает все очки Дуэли, кроме покупок за алмазы; на максимуме — вдвое. Около 3 800 свитков.",
-""
+"It increases all Duel points except Diamond purchases; at max — double. About 3,800 scrolls."
 ],
 [
 "<b>Остальная ветка</b>",
-""
+"<b>The rest of the branch</b>"
 ],
 [
 "Отдельные узлы: «Очки Сокола», «Очки ускорения», «Очки найма», «Очки строительства», «Очки технологий», «Очки обучения», «Очки убийств», «Очки торговли каравана», «Очки тайных операций», «Очки найма выживших».",
-""
+"Separate nodes: «Falcon Points», «Speedup Points», «Recruitment Points», «Building Points», «Tech Points», «Training Points», «Kill Points», «Caravan Trade Points», «Covert Operation Points», «Survivor Recruitment Points»."
 ],
 [
 "<img src=\"assets/shots/lab.webp\" alt=\"Исследовательская лаборатория, ветка «Дуэль альянсов»\"><span class=\"ring rect\" style=\"left:50%;top:69.9%;width:26.7%;aspect-ratio:.64\"></span>",
-""
+"<img src=\"assets/shots/lab.webp\" alt=\"Research Lab, the Alliance Duel branch\"><span class=\"ring rect\" style=\"left:50%;top:69.9%;width:26.7%;aspect-ratio:.64\"></span>"
 ],
 [
 "Здание «Исследовательская лаборатория» → плитка «Дуэль альянсов» (третий ряд, посередине). Названия узлов — как в игре.",
-""
+"The «Research Lab» building → the «Alliance Duel» tile (third row, middle). Node names are as in the game."
 ],
 [
 "Свитки обучения дают сундуки самой Дуэли — получается круг: больше исследований → больше очков → больше сундуков → больше свитков.",
-""
+"Study Scrolls come from the Duel's own chests — it's a loop: more research → more points → more chests → more scrolls."
 ],
 [
 "Для лидеров",
-""
+"For leaders"
 ],
 [
 "Как вести альянс в Дуэли",
-""
+"How to lead the alliance in the Duel"
 ],
 [
 "План в воскресенье",
-""
+"The plan on Sunday"
 ],
 [
 "Выложи в объявление альянса, что копить и когда тратить (таблица выше). Новички без этого жгут ускорения не в тот день.",
-""
+"Post in the alliance announcement what to save and when to spend it (the table above). Without it, newcomers burn speedups on the wrong day."
 ],
 [
 "Не обязательно выиграть все дни",
-""
+"You don't have to win every day"
 ],
 [
 "Каждый день даёт свои победные очки. Если день без шансов — пусть все копят на следующий, а не сливают запасы.",
-""
+"Each day gives its own victory points. If a day is hopeless — let everyone save for the next one instead of wasting their stock."
 ],
 [
 "Проверь исследования у всех",
-""
+"Check everyone's research"
 ],
 [
 "Кто ниже Лаборатории 15 или без узлов сундуков — помоги ускорениями помощи альянса.",
-""
+"Whoever is below Lab 15 or lacks the chest nodes — help them with alliance help speedups."
 ],
 [
 "Перед неделей",
-""
+"Before the week"
 ],
 [
 "Чек-лист на воскресенье",
-""
+"Sunday checklist"
 ],
 [
 "<img src=\"assets/game/speed-any.png\" alt=\"\"><span>Ничего не потратил из того, что даёт очки Дуэли</span>",
-""
+"<img src=\"assets/game/speed-any.png\" alt=\"\"><span>Spent nothing that gives Duel points</span>"
 ],
 [
 "<img src=\"assets/game/falcon.png\" alt=\"\"><span>Задания сокола выполнены, но награды НЕ забраны</span>",
-""
+"<img src=\"assets/game/falcon.png\" alt=\"\"><span>Falcon Quests done, but rewards NOT claimed</span>"
 ],
 [
 "<img src=\"assets/game/go-gather.png\" alt=\"\"><span>Отряды отправлены на сбор так, что вернутся после 05:00 МСК понедельника</span>",
-""
+"<img src=\"assets/game/go-gather.png\" alt=\"\"><span>Squads sent to gather so they return after 05:00 Moscow on Monday</span>"
 ],
 [
 "<img src=\"assets/game/go-build.png\" alt=\"\"><span>Долгие стройки и исследования запущены, молоток не нажат</span>",
-""
+"<img src=\"assets/game/go-build.png\" alt=\"\"><span>Long constructions and research started, hammer not tapped</span>"
 ],
 [
 "<img src=\"assets/game/raven-fruit.png\" alt=\"\"><span>Вороньи плоды и эссенция лежат нетронутые</span>",
-""
+"<img src=\"assets/game/raven-fruit.png\" alt=\"\"><span>Raven Fruit and Raven Essence untouched</span>"
 ],
 [
 "<img src=\"assets/game/raven-chest.png\" alt=\"\"><span>Сундуки снаряжения Ворона не открыты</span>",
-""
+"<img src=\"assets/game/raven-chest.png\" alt=\"\"><span>Raven Gear Chests not opened</span>"
 ],
 [
 "<img src=\"assets/game/refresh.png\" alt=\"\"><span>Есть билеты обновления на золотой караван и операцию ко вторнику</span>",
-""
+"<img src=\"assets/game/refresh.png\" alt=\"\"><span>Refresh tickets for a gold caravan and operation ready for Tuesday</span>"
 ],
 [
 "Сбросить галочки",
-""
+"Reset checkmarks"
 ]
 ]
