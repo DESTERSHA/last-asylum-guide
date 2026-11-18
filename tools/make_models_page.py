@@ -90,7 +90,7 @@ html = f'''<!--{{"title":"3D-модели игры: боссы, монстры, 
 {chr(10).join(parts)}
 <script>window.M3D_LISTS=window.M3D_LISTS||{{}};Object.assign(window.M3D_LISTS,{json.dumps(lists, ensure_ascii=False, separators=(",", ":"))});</script>
 <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
-<script src="assets/viewer3d.js?v=3" defer></script>
+<script src="assets/viewer3d.js?v=4" defer></script>
 '''
 (ROOT / "src" / "models.html").write_text(html, encoding="utf-8")
 print("моделей на странице:", total, {k: len(v) for k, v in lists.items()})

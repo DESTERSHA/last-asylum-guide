@@ -846,3 +846,36 @@ html.embed .site-head,html.embed .foot,html.embed .totop,html.embed .design-sw{d
 html.embed main{margin-top:0!important}
 html.embed body{background:#fff}
 html.t-ap.embed main{background:transparent;padding:6px;margin:0 auto}
+
+/* === правки 18.11 (её список) === */
+/* звёздочка события — в правом верхнем углу */
+.evc{position:relative;padding-right:46px}
+.fav-star.corner{position:absolute;top:8px;right:8px;width:30px;height:30px;padding:0;font-size:16px;line-height:1;display:grid;place-items:center;border-radius:50%}
+/* картинки зданий — в одинаковых рамках, целиком и по центру */
+.card.bld>.shot{height:220px;display:flex;align-items:center;justify-content:center;background:#1e2027;overflow:hidden}
+.card.bld>.shot img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+/* фигуры воров — одного размера */
+.card.boss .fig{width:120px;height:160px;object-fit:contain;object-position:center bottom;flex:0 0 120px}
+/* карточки шагов: по 2 в ряд, номер — в правом нижнем углу, текст на всю ширину */
+.nsteps:not(.one){grid-template-columns:repeat(2,minmax(0,1fr))}
+.step .body .nsteps,.steps-split .nsteps{grid-template-columns:1fr}
+@media(max-width:700px){.nsteps:not(.one){grid-template-columns:1fr}}
+.nsteps>.step.noimg{display:block;position:relative;padding:14px 16px 34px}
+.nsteps>.step.noimg>.no{position:absolute;right:12px;bottom:10px;width:24px;height:24px;font-size:12px;border-radius:50%;background:#e4e5ea;color:#6b6e78}
+/* роли и редкости: значок слева, текст ровно справа */
+.rar li{display:block;position:relative;padding-left:38px;min-height:28px;padding-top:3px}
+.rar li img.i{position:absolute;left:0;top:0}
+.rar li:not(:has(img.i)){padding-left:0}
+/* рейтинг героев — меньше карточки, 8 в ряд */
+.heroes{grid-template-columns:repeat(auto-fill,minmax(128px,1fr))}
+/* заглавный блок без картинки — на всю ширину */
+.hero:not(:has(.art)){grid-template-columns:1fr}
+/* «78-й день…» — на всю ширину, без переноса */
+.bigday{max-width:none}
+@media(min-width:700px){.bigday .t{white-space:nowrap}}
+/* 3D: подсказка, что модель крутится */
+.m3d-hint{position:absolute;left:50%;transform:translateX(-50%);top:62px;background:rgba(28,28,30,.78);color:#fff;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;pointer-events:none;transition:opacity .4s;white-space:nowrap}
+.m3d-hint span{font-size:14px}
+.m3d-hint.off{opacity:0}
+.m3d-stage model-viewer{cursor:grab}
+@media(min-width:700px){.bigday .t br{display:none}}

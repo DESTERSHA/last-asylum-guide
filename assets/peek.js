@@ -39,6 +39,7 @@
     if (u.origin !== location.origin) return false;
     var p = u.pathname.split("/").pop() || "index.html";
     if (!/\.html$/.test(p)) return false;
+    if (!u.hash) return false;  // ссылка на всю страницу — обычный переход
     if (p === page && !u.hash) return false;
     if (p === "server.html" || p === "cabinet.html") return false; // живые страницы — открываем как обычно
     return true;

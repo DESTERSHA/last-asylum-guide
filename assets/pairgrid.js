@@ -3,7 +3,10 @@
    В одну колонку (телефон) — исходный порядок. Работает для .evgrid (страница «События»). */
 (function () {
   "use strict";
-  var grids = [].slice.call(document.querySelectorAll(".evgrid"));
+  var grids = [].slice.call(document.querySelectorAll(".evgrid, .grid2, .grid3")).filter(function (g) {
+    var k = [].slice.call(g.children);
+    return g.classList.contains("evgrid") || (k.length >= 3 && k.every(function (c) { return c.classList.contains("card") && !c.classList.contains("link") && !c.querySelector(".no"); }));
+  });
   if (!grids.length) return;
   grids.forEach(function (g) { g._orig = [].slice.call(g.children); });
   function arrange() {
@@ -21,6 +24,11 @@
         var best = 0, bd = Infinity;
         left.forEach(function (c, i) { var d = Math.abs(h.get(c) - h.get(a)) + i * 0.5; if (d < bd) { bd = d; best = i; } });  // при равной высоте — ближайшая по порядку
         out.push(left.splice(best, 1)[0]);
+        for (var n = 2; n < cols && left.length; n++) {  // третья в ряду — тоже ближайшая по высоте
+          var b2 = 0, d2 = Infinity;
+          left.forEach(function (c, i) { var d = Math.abs(h.get(c) - h.get(a)) + i * 0.5; if (d < d2) { d2 = d; b2 = i; } });
+          out.push(left.splice(b2, 1)[0]);
+        }
       }
       out.forEach(function (c) { g.appendChild(c); });
     });

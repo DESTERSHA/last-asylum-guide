@@ -21,7 +21,7 @@
     var b = document.createElement("button");
     b.type = "button";
     b.className = "fav-star";
-    function upd() { var on = has(item.url); b.classList.toggle("on", on); b.textContent = on ? "★ В избранном" : "☆ В избранное"; b.title = on ? "Убрать из избранного" : "Добавить в избранное — появится в «Кабинете»"; }
+    function upd() { var on = has(item.url); b.classList.toggle("on", on); b.textContent = item.icon_only ? (on ? "★" : "☆") : (on ? "★ В избранном" : "☆ В избранное"); b.title = on ? "Убрать из избранного" : "Добавить в избранное — появится в «Кабинете»"; }
     b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); toggle(item); upd(); });
     subs.push(upd);
     upd();
@@ -51,8 +51,8 @@
       if (!n) return;
       if (!c.id) c.id = "ev-" + slug(n.textContent);
       var icon = c.querySelector("img");
-      var b = star(c.querySelector(".evm") || c, { url: page + "#" + c.id, title: n.textContent.trim(), page: pageName, kind: "Событие", icon: icon ? icon.getAttribute("src") : "" });
-      b.classList.add("mini");
+      var b = star(c, { url: page + "#" + c.id, title: (n.firstChild && n.firstChild.nodeType === 3 ? n.firstChild.textContent : n.textContent).trim(), page: pageName, kind: "Событие", icon: icon ? icon.getAttribute("src") : "", icon_only: true });
+      b.classList.add("corner");
     });
     /* переход по ссылке из избранного к нужному месту (якоря появились после загрузки) */
     if (location.hash.length > 1) { var t = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (t) setTimeout(function () { t.scrollIntoView({ behavior: "smooth", block: "start" }); }, 150); }

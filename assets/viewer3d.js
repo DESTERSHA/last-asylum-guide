@@ -19,8 +19,10 @@
     var list = (window.M3D_LISTS || {})[box.dataset.list] || [];
     if (!list.length) return;
     box.innerHTML = '<div class="m3d-stage"><model-viewer camera-controls autoplay shadow-intensity="1" exposure="1.1" interaction-prompt="none" camera-orbit="0deg 80deg auto" min-camera-orbit="auto 15deg auto" max-camera-orbit="auto 100deg auto"></model-viewer>' +
-      '<div class="m3d-name"></div><div class="m3d-anims"></div><div class="m3d-load">Загружаю модель…</div></div><div class="m3d-grid"></div>';
-    var mv = box.querySelector("model-viewer"), nameEl = box.querySelector(".m3d-name"), animsEl = box.querySelector(".m3d-anims"), grid = box.querySelector(".m3d-grid"), load = box.querySelector(".m3d-load");
+      '<div class="m3d-name"></div><div class="m3d-hint"><span>↻</span> Крути мышкой или пальцем · колёсико — приблизить</div><div class="m3d-anims"></div><div class="m3d-load">Загружаю модель…</div></div><div class="m3d-grid"></div>';
+    var mv = box.querySelector("model-viewer"), hint = box.querySelector(".m3d-hint");
+    mv.addEventListener("pointerdown", function () { if (hint) hint.classList.add("off"); }, { once: true });
+    var _x = 0, nameEl = box.querySelector(".m3d-name"), animsEl = box.querySelector(".m3d-anims"), grid = box.querySelector(".m3d-grid"), load = box.querySelector(".m3d-load");
     grid.innerHTML = list.map(function (m, i) {
       return '<button type="button" data-i="' + i + '" title="' + m[1] + '">' + (m[2] ? '<img src="' + m[2] + '" alt="" loading="lazy">' : '<span class="ph"></span>') + "<span>" + m[1] + "</span></button>";
     }).join("");
