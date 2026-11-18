@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       players:
-        description: "Сколько игроков обновить за этот запуск (обычно 45; на игрока до 2 запросов)"
+        description: "Сколько игроков обновить за этот запуск (обычно 60; на игрока до 2 запросов)"
         required: false
-        default: "45"
+        default: "60"
       force:
         description: "1 — обновить сразу, даже если с прошлого раза меньше 25 мин (таймер шлёт 0)"
         required: false
@@ -45,7 +45,7 @@ jobs:
           TRACKER_KEY: ${{ secrets.TRACKER_KEY }}
           TRACKER_API: ${{ secrets.TRACKER_API }}
           LA_SB_PUSH: ${{ secrets.LA_SB_PUSH }}
-          PLAYERS: ${{ github.event.inputs.players || '45' }}
+          PLAYERS: ${{ github.event.inputs.players || '60' }}
           FORCE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == '1' && '1' || '' }}
           MINGAP: ${{ github.event_name == 'schedule' && '40' || '15' }}
         run: python tools/tracker_sync.py

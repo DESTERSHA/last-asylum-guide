@@ -30,8 +30,8 @@ OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
 PRIV = Path(os.environ["PRIVATE_DIR"]) if os.environ.get("PRIVATE_DIR") else None
 UNION_KEYS = ("union_id", "union_abbr", "union_name", "alliance_abbr", "alliance_name")
 TOP = 30
-MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 45)  # на игрока до 2 запросов: карточка + защита/ворон (защита — раз в 20 ч)
-PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 45)  # карточки игроков за запуск: [SLAV] (≈110) раз в 1,5 ч ≈ 37 за запуск + очередь остальных
+MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 60)  # на игрока до 2 запросов: карточка + защита/ворон (защита — раз в 20 ч)
+PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 60)  # карточки игроков за запуск: [SLAV] (≈110) раз в 1,5 ч ≈ 37 за запуск + очередь остальных
 HOME_AID = 67181437   # [SLAV] — их карточки берём первыми
 KEY = os.environ.get("TRACKER_KEY", "").strip()
 used = 0
@@ -262,10 +262,13 @@ def main():
             return 0
         if p.get("aid") == HOME_AID and age > 90 * 60:
             return 1
-        if p.get("vip") is None and age > 3 * 86400:
+        # цифрам игрока больше суток (у альянса трекер давно не обновлял состав — бывает по 26 дней) — карточка раз в сутки
+        if now - (p.get("dt") or p.get("last") or 0) > 86400 and age > 20 * 3600:
             return 2
-        if age > 7 * 86400:
+        if p.get("vip") is None and age > 3 * 86400:
             return 3
+        if age > 7 * 86400:
+            return 4
         return None
     todo = [t[2] for t in sorted((due(u, p), i, u) for i, (u, p) in enumerate(order) if due(u, p) is not None)][:PLAYERS_PER_RUN]
     for uid in todo:
