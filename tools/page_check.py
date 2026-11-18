@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 ATTR = re.compile(r'\b(alt|title|placeholder|aria-label|data-title|data-hint)="[^"]*"')
-EMPH = re.compile(r"</?(b|i|em|strong)[\s>]")
+EMPH = re.compile(r"</?(b|i|em|strong|small)[\s>]")
 
 
 def tags(p):
