@@ -11,6 +11,7 @@ SRC = ROOT / "src"
 
 # (файл, значок из assets/game, подпись в меню)
 PAGES = [
+    ("server", "ev-throne", "Сервер 397"),
     ("index", "go-hq", "Главная"),
     ("kvk", "ev-kvk", "КвК"),
     ("duel", "ev-duel", "Дуэль"),
@@ -23,7 +24,6 @@ PAGES = [
     ("rules", "btn-caravan", "Правила"),
     ("glossary", "btn-search", "Слова"),
     ("tips", "diamond", "Фишки"),
-    ("server", "ev-throne", "Сервер 397"),
 ]
 
 TEMPLATE = """<!doctype html>

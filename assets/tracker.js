@@ -27,6 +27,8 @@
   }
   /* время сервера = UTC−2 */
   function srvDay(t) { return Math.floor((t - 2 * 3600) / 86400); }
+  function hmMsk(t) { var d = new Date((t + 3 * 3600) * 1000); return ("0" + d.getUTCHours()).slice(-2) + ":" + ("0" + d.getUTCMinutes()).slice(-2); }
+  function both(t) { return hm(t) + " по серверу · " + hmMsk(t) + " МСК"; }
   function hm(t) { var d = new Date((t - 2 * 3600) * 1000); return ("0" + d.getUTCHours()).slice(-2) + ":" + ("0" + d.getUTCMinutes()).slice(-2); }
   var MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
   var WD = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
@@ -132,7 +134,7 @@
 
   /* ---------- график «Рост»: 1/7/30 дней, мощь + убийства + вторая величина ---------- */
   function whenTxt(t) { var d = new Date((t - 2 * 3600) * 1000); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()].slice(0, 4) + ".", ", " + hm(t); }
-  function whenFull(t) { var d = new Date((t - 2 * 3600) * 1000); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()].slice(0, 4) + "., " + hm(t); }
+  function whenFull(t) { var d = new Date((t - 2 * 3600) * 1000); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()].slice(0, 4) + "., " + hm(t) + " (МСК " + hmMsk(t) + ")"; }
   function drawTrend(boxId, all, cfg) {
     var box = $(boxId); if (!box) return;
     var days = cfg.days || 7;
@@ -240,19 +242,29 @@
   }
 
   /* ---------- вступления и выходы ---------- */
-  function moveList(el, list) {
-    paged(el, list, 25, function (part) {
-      var out = "", last = "";
-      part.forEach(function (e) {
-        var dl = dayLabel(e.t);
-        if (dl !== last) { out += '<div class="ap-day">' + dl + "</div>"; last = dl; }
-        var join = e.kind === "join", known = S.players[e.uid];
-        var where = join ? (e.from ? 'пришёл из <span class="tag">[' + esc(e.from) + "]</span>" : "до этого без альянса") : (e.now ? 'ушёл в <span class="tag">[' + esc(e.now) + "]</span>" : "теперь без альянса");
-        out += '<div class="ap-row' + (known ? " go" : "") + '"' + (known ? ' data-p="' + e.uid + '"' : "") + '><div class="ap-who"><img class="av" src="' + G + 'doctor.png" alt=""><div><b>' + esc(e.nick) + "</b><span>мощь " + num(e.power) + (e.al ? " · " + '<span class="tag">[' + esc(e.al) + "]</span>" : "") + "</span></div></div>" +
-          '<span class="ap-bd ' + (join ? "in" : "out") + '">' + (join ? "Вступил" : "Вышел") + '</span><span class="wh">' + where + '</span><span class="tm">' + hm(e.t) + " <small>по серверу</small></span></div>";
-      });
-      return '<div class="ap-list">' + out + "</div>";
-    }, "Вступлений и выходов пока нет.");
+  /* «Кто вступил и вышел, куда ушёл» — платная функция: на сайте показываем ДЕМО на вымышленных игроках */
+  function demoMoves() {
+    var nicks = ["Player1", "Player2", "Player3", "Player4", "Player5", "Player6", "Player7", "Player8", "Player9", "Player10"];
+    var tags = ["ABC", "XYZ", "", "QWE", "", "ABC"];
+    var now = Date.now() / 1000, out = [];
+    for (var i = 0; i < 14; i++) {
+      var join = i % 3 !== 1;
+      out.push({ t: now - i * 4300 - (i > 6 ? 86400 : 0), kind: join ? "join" : "leave", nick: nicks[i % nicks.length], power: 3e6 + ((i * 7919) % 40) * 6e5,
+        from: join ? tags[i % tags.length] : "", now: join ? "" : tags[(i + 2) % tags.length] });
+    }
+    return out;
+  }
+  function moveList(el) {
+    var list = demoMoves(), out = '<div class="ap-demo"><b>Демо-версия</b><span>Так выглядит платная функция «Кто вступил, кто вышел и куда ушёл». Игроки и альянсы здесь вымышленные — для примера.</span></div>', last = "";
+    list.forEach(function (e) {
+      var dl = dayLabel(e.t);
+      if (dl !== last) { out += '<div class="ap-day">' + dl + "</div>"; last = dl; }
+      var join = e.kind === "join";
+      var where = join ? (e.from ? 'пришёл из <span class="tag">[' + esc(e.from) + "]</span>" : "до этого без альянса") : (e.now ? 'ушёл в <span class="tag">[' + esc(e.now) + "]</span>" : "теперь без альянса");
+      out += '<div class="ap-mv"><div class="ap-who"><img class="av" src="' + G + 'doctor.png" alt=""><div><b>' + esc(e.nick) + "</b><span>мощь " + num(e.power) + '</span></div></div>' +
+        '<div class="ap-mv-r"><span class="ap-bd ' + (join ? "in" : "out") + '">' + (join ? "Вступил" : "Вышел") + '</span><span class="wh">' + where + '</span><span class="tm">' + both(e.t) + "</span></div></div>";
+    });
+    el.innerHTML = '<div class="ap-list">' + out + "</div>";
   }
 
   /* ---------- карточка альянса ---------- */
@@ -339,9 +351,8 @@
       } else {
         P.innerHTML = '<div class="ap-card"><div class="ap-cells c4">' + cell("Вступили за 7 дней", '<span class="up">+' + w7.joined + "</span>") + cell("Вышли за 7 дней", '<span class="dn">−' + w7.left + "</span>") +
           cell("Итого за 7 дней", signed(w7.joined - w7.left, String)) + cell("За 30 дней", m30 ? '<span class="up">+' + m30.joined + '</span> <span class="dn">−' + m30.left + "</span>" : "—") + "</div></div>" +
-          '<div class="ap-sec"><h3>Кто и когда</h3>' + pills("ekind", [["", "Все"], ["join", "Вступил"], ["leave", "Вышел"]], "") + '</div><div class="ap-card flush"><div id="elist"></div></div>';
-        var drawE = function (k) { moveList($("elist"), a.events.filter(function (e) { return !k || e.kind === k; })); };
-        drawE(""); bindPills("ekind", drawE);
+          '<div class="ap-sec"><h3>Кто и когда</h3>' + "" + '</div><div class="ap-card flush"><div id="elist"></div></div>';
+        moveList($("elist"));
       }
     };
     pane("m"); bindPills("atabs", pane);
@@ -442,13 +453,13 @@
             var nm = NAMES(h), other = (h.f || "").split(",").map(function (f) { return nm[f] || ""; }).filter(Boolean).join(" · ");
             var kd = prev && h.kills != null && prev.kills != null && h.kills !== prev.kills;
             out += '<div class="ap-row ap-log"><div><span class="k">Мощь</span> <b>' + num(h.power) + "</b> " + (prev ? delta(h.power - prev.power) : "") +
-              (kd ? ' <span class="k sp">Убийства</span> <b>' + num(h.kills) + "</b> " + delta(h.kills - prev.kills) : "") + (other ? ' <span class="k sp">' + other + "</span>" : "") + '</div><span class="tm">' + hm(h.t) + "</span></div>";
+              (kd ? ' <span class="k sp">Убийства</span> <b>' + num(h.kills) + "</b> " + delta(h.kills - prev.kills) : "") + (other ? ' <span class="k sp">' + other + "</span>" : "") + '</div><span class="tm">' + both(h.t) + "</span></div>";
           });
           return '<div class="ap-list">' + out + "</div>";
         }, p.card ? "Изменений пока нет." : "История загрузится с ближайшими обновлениями.");
       } else {
         P.innerHTML = '<div class="ap-card flush"><div id="mvl"></div></div>';
-        moveList($("mvl"), mv);
+        moveList($("mvl"));
       }
     };
     var stars = function (h) { return Math.floor((Number(h.star) || 0) / 5); };
