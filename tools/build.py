@@ -54,7 +54,7 @@ TEMPLATE = """<!doctype html>
   <nav class="main" aria-label="Разделы">
 {nav}
   </nav>
-  <a class="cab-link" href="cabinet.html" title="Кабинет: избранные разделы, события, альянсы и игроки"><span class="ic">★</span>Кабинет<i data-fav-count></i></a>
+  <a class="cab-link" href="cabinet.html" title="Кабинет: избранные разделы, события, альянсы и игроки"><span class="ic">★</span><span data-acc-name>Кабинет</span><i data-fav-count></i></a>
   <div class="clock" title="Разница между временем сервера и московским — 5 часов. На сервере время меньше."><div><b data-clock="srv">--:--</b><span>в игре</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
 </div></header>
 <main>
@@ -67,6 +67,9 @@ TEMPLATE = """<!doctype html>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
 <script src="assets/app.js?v={ver}"></script>
 <script src="assets/fav.js?v={ver}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="assets/auth-config.js?v={ver}"></script>
+<script src="assets/auth.js?v={ver}"></script>
 <script src="assets/peek.js?v={ver}"></script>
 <script src="assets/pairgrid.js?v={ver}"></script>
 <script src="assets/mason.js?v={ver}"></script>
@@ -87,7 +90,7 @@ def nav_html(current):
 
 def main():
     h = hashlib.sha1()
-    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js"):
+    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js", "assets/auth.js", "assets/auth-config.js", "assets/cabinet.js"):
         h.update((ROOT / f).read_bytes())
     ver = h.hexdigest()[:10]
     for slug, _, _ in PAGES:

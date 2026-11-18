@@ -9,11 +9,13 @@
   function has(url) { return read().some(function (x) { return x.url === url; }); }
   function toggle(item) {
     var l = read(), i = l.findIndex(function (x) { return x.url === item.url; });
+    var added = i < 0;
     if (i >= 0) l.splice(i, 1); else l.unshift(Object.assign({ t: Date.now() }, item));
     write(l);
+    if (window.LAAuth) { if (added) window.LAAuth.favAdd(l[0]); else window.LAAuth.favDel(item.url); }
     return i < 0;
   }
-  function remove(url) { write(read().filter(function (x) { return x.url !== url; })); }
+  function remove(url) { write(read().filter(function (x) { return x.url !== url; })); if (window.LAAuth) window.LAAuth.favDel(url); }
   function slug(s) { return String(s).toLowerCase().replace(/[^a-zа-яё0-9]+/gi, "-").replace(/^-+|-+$/g, "").slice(0, 60); }
   var page = (location.pathname.split("/").pop() || "index.html");
   var pageName = (document.querySelector('nav.main a.on') || {}).textContent || document.title.split("|")[0].trim();
@@ -32,7 +34,7 @@
     var n = read().length;
     document.querySelectorAll("[data-fav-count]").forEach(function (e) { e.textContent = n ? n : ""; e.style.display = n ? "" : "none"; });
   }
-  window.LAFav = { list: read, has: has, toggle: toggle, remove: remove, star: star, onchange: function (f) { subs.push(f); } };
+  window.LAFav = { list: read, has: has, toggle: toggle, remove: remove, star: star, onchange: function (f) { subs.push(f); }, _replace: function (l) { write(l); } };
 
   if (page !== "cabinet.html" && page !== "server.html") {
     /* разделы страницы */

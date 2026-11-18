@@ -1,11 +1,78 @@
-/* Кабинет: список избранного по группам. Данные — window.LAFav (assets/fav.js). */
+/* Кабинет: вход/регистрация, подписка, избранное по группам, выдача подписки (для админа). */
 (function () {
   "use strict";
   var box = document.getElementById("cabList"), acc = document.getElementById("cabAcc");
   if (!box || !window.LAFav) return;
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var fdate = function (d) { return new Date(d).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" }); };
   var GROUPS = [["Альянс", "Альянсы"], ["Игрок", "Игроки"], ["Событие", "События"], ["Раздел", "Разделы сайта"]];
-  acc.innerHTML = '<div class="cab-note"><b>Вход и регистрация — скоро.</b> Сейчас избранное хранится в этом браузере на этом устройстве. После входа по почте и паролю оно будет в вашем аккаунте и на всех устройствах.</div>';
+  var A = window.LAAuth;
+
+  function accountView(st) {
+    if (!A || !A.ready) {
+      acc.innerHTML = '<div class="cab-note"><b>Вход и регистрация скоро заработают.</b> Пока избранное хранится в этом браузере на этом устройстве.</div>';
+      return;
+    }
+    if (!st.user) {
+      acc.innerHTML = '<div class="cab-auth"><div class="cab-tabs"><button type="button" data-m="in" class="on">Вход</button><button type="button" data-m="up">Регистрация</button></div>' +
+        '<form id="authForm"><label>Почта<input type="email" name="e" required autocomplete="email"></label><label>Пароль<input type="password" name="p" required minlength="6" autocomplete="current-password"></label>' +
+        '<button type="submit" class="btn pri">Войти</button><p class="cab-msg"></p></form>' +
+        '<p class="cab-hint">Без подтверждения почты: зарегистрировался — и сразу в кабинете. Избранное из этого браузера перенесётся в аккаунт и будет на всех устройствах.</p></div>';
+      var mode = "in", form = acc.querySelector("#authForm"), msg = acc.querySelector(".cab-msg");
+      acc.querySelector(".cab-tabs").onclick = function (e) {
+        var b = e.target.closest("button"); if (!b) return; mode = b.dataset.m;
+        [].forEach.call(this.children, function (x) { x.classList.toggle("on", x === b); });
+        form.querySelector("button[type=submit]").textContent = mode === "in" ? "Войти" : "Зарегистрироваться";
+        form.p.autocomplete = mode === "in" ? "current-password" : "new-password"; msg.textContent = "";
+      };
+      form.onsubmit = async function (e) {
+        e.preventDefault(); msg.className = "cab-msg"; msg.textContent = "Секунду…";
+        try {
+          if (mode === "in") await A.signIn(form.e.value.trim(), form.p.value);
+          else { await A.signUp(form.e.value.trim(), form.p.value); try { await A.signIn(form.e.value.trim(), form.p.value); } catch (x) { /* вход после регистрации может уже произойти сам */ } }
+          msg.textContent = "";
+        } catch (err) {
+          var m = String(err && err.message || err);
+          msg.className = "cab-msg err";
+          msg.textContent = /Invalid login/i.test(m) ? "Неверная почта или пароль." : /already registered|exists/i.test(m) ? "Такая почта уже зарегистрирована — войдите." : /least 6/i.test(m) ? "Пароль — не короче 6 символов." : "Не получилось: " + m;
+        }
+      };
+      return;
+    }
+    var sub = A.hasSub();
+    acc.innerHTML = '<div class="cab-me"><div><b>' + esc(st.user.email) + '</b><span>' + (sub ? 'Подписка до <b>' + fdate(st.profile.sub_until) + "</b>" : "Подписки нет") + '</span></div><button type="button" class="btn" id="outBtn">Выйти</button></div>' +
+      (sub ? "" : '<div class="cab-note"><b>Подписка</b> открывает «Кто вступил, кто вышел и куда ушёл» с настоящими игроками. Чтобы оформить — напишите лидеру альянса свою почту <b>' + esc(st.user.email) + "</b>.</div>") +
+      (st.admin ? adminHtml() : "");
+    acc.querySelector("#outBtn").onclick = function () { A.signOut(); };
+    if (st.admin) bindAdmin();
+  }
+
+  function adminHtml() {
+    return '<div class="cab-admin"><h3>Выдать подписку</h3><form id="grantForm"><input type="email" name="e" placeholder="почта пользователя" required>' +
+      '<select name="d"><option value="30">30 дней</option><option value="7">7 дней</option><option value="90">90 дней</option><option value="365">365 дней</option></select>' +
+      '<button type="submit" class="btn pri">Выдать</button><button type="button" class="btn" id="revBtn">Снять</button></form><p class="cab-msg" id="grantMsg"></p><div id="userList"></div></div>';
+  }
+  async function bindAdmin() {
+    var f = acc.querySelector("#grantForm"), m = acc.querySelector("#grantMsg"), sb = A.client;
+    async function list() {
+      var r = await sb.rpc("list_users");
+      var rows = r.data || [];
+      acc.querySelector("#userList").innerHTML = '<table class="cab-users"><tr><th>Почта</th><th>Подписка до</th><th>Зарегистрирован</th></tr>' +
+        rows.map(function (u) { var on = u.sub_until && new Date(u.sub_until) > new Date(); return "<tr><td>" + esc(u.email) + '</td><td class="' + (on ? "on" : "") + '">' + (u.sub_until ? fdate(u.sub_until) : "—") + "</td><td>" + fdate(u.created_at) + "</td></tr>"; }).join("") + "</table>";
+    }
+    f.onsubmit = async function (e) {
+      e.preventDefault(); m.className = "cab-msg"; m.textContent = "…";
+      var r = await sb.rpc("grant_sub", { p_email: f.e.value.trim(), p_days: +f.d.value });
+      if (r.error) { m.className = "cab-msg err"; m.textContent = r.error.message; } else { m.textContent = "Готово: подписка до " + fdate(r.data); list(); }
+    };
+    acc.querySelector("#revBtn").onclick = async function () {
+      if (!f.e.value.trim()) return;
+      var r = await sb.rpc("revoke_sub", { p_email: f.e.value.trim() });
+      m.className = r.error ? "cab-msg err" : "cab-msg"; m.textContent = r.error ? r.error.message : "Подписка снята."; list();
+    };
+    list();
+  }
+
   function draw() {
     var l = LAFav.list();
     if (!l.length) {
@@ -24,4 +91,5 @@
   box.addEventListener("click", function (e) { var b = e.target.closest("[data-rm]"); if (b) { LAFav.remove(b.dataset.rm); draw(); } });
   LAFav.onchange(draw);
   draw();
+  if (A) A.on(accountView); else accountView({});
 })();
