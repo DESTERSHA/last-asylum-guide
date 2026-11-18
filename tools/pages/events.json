@@ -1,55 +1,55 @@
 [
 [
 "События: Гонка за эликсиром, Поиск вора, Сырная ловушка и другие | Last Asylum: Plague · сервер 397",
-""
+"Events: Elixir Scramble, Thief Hunt, Cheese Trap and more | Last Asylum: Plague · kingdom 397"
 ],
 [
 "Все события Last Asylum: Plague простыми словами: когда проходят, где кнопка, что делать по шагам. Гонка за эликсиром, Поиск вора, Сырная ловушка, Король демонов, Викторина и другие.",
-""
+"All Last Asylum: Plague events in plain words: when they run, where the button is, what to do step by step. Elixir Scramble, Thief Hunt, Cheese Trap, Demon King, the Quiz and more."
 ],
 [
 "<img src=\"assets/game/ev-special.png\" alt=\"\">События",
-""
+"<img src=\"assets/game/ev-special.png\" alt=\"\">Events"
 ],
 [
 "Все события: когда, где и как играть",
-""
+"All events: when, where and how to play"
 ],
 [
 "В игре постоянно идут события. За каждое дают награды — и тебе, и альянсу. Здесь каждое событие разобрано отдельно: что это, когда проходит, куда нажать и как не слить войска.",
-""
+"Events run in the game all the time. Each one gives rewards — to you and to the alliance. Here every event is covered separately: what it is, when it runs, where to tap and how not to waste troops."
 ],
 [
 "<a class=\"btn pri\" href=\"#list\">Список событий</a><a class=\"btn\" href=\"#elixir\">Гонка за эликсиром</a><a class=\"btn\" href=\"#cheese\">Сырная ловушка</a><a class=\"btn\" href=\"#quiz\">Ответы Викторины</a>",
-""
+"<a class=\"btn pri\" href=\"#list\">Event list</a><a class=\"btn\" href=\"#elixir\">Elixir Scramble</a><a class=\"btn\" href=\"#cheese\">Cheese Trap</a><a class=\"btn\" href=\"#quiz\">Quiz answers</a>"
 ],
 [
 "<img src=\"assets/art/hero-events.webp\" alt=\"События\">",
-""
+"<img src=\"assets/art/hero-events.webp\" alt=\"Events\">"
 ],
 [
 "<small>Где найти почти все события</small><b>«Особые события»</b><small>кнопка справа вверху на главном экране</small>",
-""
+"<small>Where to find almost all events</small><b>«Special Event»</b><small>the button at the top right of the main screen</small>"
 ],
 [
 "Особые события",
-""
+"Special Event"
 ],
 [
 "Кнопка справа вверху. Внутри: Битва на выживание, Гонка за эликсиром, Викторина, Король демонов, Поиск вора, Сырная ловушка.",
-""
+"The button at the top right. Inside: Survival Battle, Elixir Scramble, Quiz, Demon King, Thief Hunt, Cheese Trap."
 ],
 [
 "Каждый день",
-""
+"Every day"
 ],
 [
 "Король демонов (кроме воскресенья) и Битва на выживание. Делай их всегда.",
-""
+"Demon King (except Sunday) and Survival Battle. Always do them."
 ],
 [
 "2 дня",
-""
+"2 days"
 ],
 [
 "Сырная ловушка",
@@ -57,7 +57,7 @@
 ],
 [
 "Раз в 2 дня. Время назначают R4 или R5 альянса.",
-""
+"Once every 2 days. The time is set by the alliance's R4 or R5."
 ],
 [
 "Штурм",
@@ -65,283 +65,283 @@
 ],
 [
 "Во многих событиях монстра бьют штурмом: один начинает, остальные нажимают «Вступить».",
-""
+"In many events the monster is hit with a rally: one player starts it, the rest tap «Join»."
 ],
 [
 "Главное — расписание",
-""
+"The main thing — the schedule"
 ],
 [
 "Какое событие когда бывает",
-""
+"Which event runs when"
 ],
 [
 "Сначала расписание, потом подробности по каждому. Время сервера: оно <b>меньше московского на 5 часов</b>. Новый игровой день начинается в 00:00 на сервере, это 05:00 по Москве.",
-""
+"First the schedule, then the details for each one. Server time: it is <b>5 hours behind Moscow</b>. A new game day starts at 00:00 server time, which is 05:00 Moscow."
 ],
 [
 "<b class=\"evn\">Король демонов</b>",
-""
+"<b class=\"evn\">Demon King</b>"
 ],
 [
 "каждый день, кроме воскресенья<br><span style=\"color:#5d636f;font-size:14px\">Колдун — пн и чт · Рейнджер — вт и пт · Воин — ср и сб</span>",
-""
+"every day except Sunday<br><span style=\"color:#5d636f;font-size:14px\">Warlock — Mon and Thu · Ranger — Tue and Fri · Warrior — Wed and Sat</span>"
 ],
 [
 "<span>⏱ весь день, <b>10 атак</b></span><span>▶ само</span>",
-""
+"<span>⏱ all day, <b>10 attacks</b></span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Теневая скверна</b>",
-""
+"<b class=\"evn\">Shadow Blight</b>"
 ],
 [
 "<b>пн и чт</b>, 4 захода: 00:00, 06:00, 12:00, 18:00 по серверу<br><span style=\"color:#5d636f;font-size:14px\">это 05:00, 11:00, 17:00 и 23:00 МСК</span>",
-""
+"<b>Mon and Thu</b>, 4 runs: 00:00, 06:00, 12:00, 18:00 server time<br><span style=\"color:#5d636f;font-size:14px\">that is 05:00, 11:00, 17:00 and 23:00 Moscow</span>"
 ],
 [
 "<span>⏱ по 3 часа, <b>5 атак</b></span><span>▶ само</span>",
-""
+"<span>⏱ 3 hours each, <b>5 attacks</b></span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Битва на выживание</b>",
-""
+"<b class=\"evn\">Survival Battle</b>"
 ],
 [
 "каждый день, раунды меняются в 00:00 по серверу (05:00 МСК)<br><span style=\"color:#5d636f;font-size:13px\">открывается со 2-го дня сервера, нужно Святилище 7</span>",
-""
+"every day, rounds change at 00:00 server time (05:00 Moscow)<br><span style=\"color:#5d636f;font-size:13px\">opens from server day 2, needs Sanctuary 7</span>"
 ],
 [
 "<span>⏱ раунды по 4 часа</span><span>▶ само</span>",
-""
+"<span>⏱ 4-hour rounds</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Дуэль альянсов</b>",
-""
+"<b class=\"evn\">Alliance Duel</b>"
 ],
 [
 "пн — сб",
-""
+"Mon — Sat"
 ],
 [
 "<span>⏱ сутки на день темы</span><span>▶ само</span>",
-""
+"<span>⏱ a full day per theme</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Сырная ловушка</b>",
-""
+"<b class=\"evn\">Cheese Trap</b>"
 ],
 [
 "раз в 2 дня",
-""
+"once every 2 days"
 ],
 [
 "<span>⏱ 30 минут</span><span>▶ <b>R4 / R5</b> выбирают час</span>",
-""
+"<span>⏱ 30 minutes</span><span>▶ <b>R4 / R5</b> pick the hour</span>"
 ],
 [
 "<b class=\"evn\">Осада нежити</b>",
-""
+"<b class=\"evn\">Undead Siege</b>"
 ],
 [
 "раз в 2 дня, когда альянс накопил 300 000 улик",
-""
+"once every 2 days, when the alliance has collected 300,000 clues"
 ],
 [
 "<span>⏱ до 20 волн</span><span>▶ <b>R4 / R5</b></span>",
-""
+"<span>⏱ up to 20 waves</span><span>▶ <b>R4 / R5</b></span>"
 ],
 [
 "<b class=\"evn\">Охотничий бой</b>",
-""
+"<b class=\"evn\">Hunt Battle</b>"
 ],
 [
 "один раз за событие",
-""
+"once per event"
 ],
 [
 "<span>⏱ 5 мин подготовки + 5 волн</span><span>▶ <b>R4 / R5</b></span>",
-""
+"<span>⏱ 5 min of preparation + 5 waves</span><span>▶ <b>R4 / R5</b></span>"
 ],
 [
 "<b class=\"evn\">Война королевств</b>",
-""
+"<b class=\"evn\">Kingdom War</b>"
 ],
 [
 "<b>суббота</b>",
-""
+"<b>Saturday</b>"
 ],
 [
 "<span>⏱ бой 17:00–21:00 МСК</span><span>▶ само</span>",
-""
+"<span>⏱ battle 17:00–21:00 Moscow</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Королевский переполох</b>",
-""
+"<b class=\"evn\">Royal City Scramble</b>"
 ],
 [
 "<b>пятница</b>",
-""
+"<b>Friday</b>"
 ],
 [
 "<span>⏱ 17:00 МСК, 8 часов</span><span>▶ само</span>",
-""
+"<span>⏱ 17:00 Moscow, 8 hours</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Долина Кристальных Гроздей</b>",
-""
+"<b class=\"evn\">Crystal Cluster Valley</b>"
 ],
 [
 "<b>воскресенье</b>, 4 захода",
-""
+"<b>Sunday</b>, 4 runs"
 ],
 [
 "<span>⏱ 30 минут</span><span>▶ само</span>",
-""
+"<span>⏱ 30 minutes</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Улучшение снаряжения</b>",
-""
+"<b class=\"evn\">Gear Upgrade</b>"
 ],
 [
 "<b>суббота и воскресенье</b>",
-""
+"<b>Saturday and Sunday</b>"
 ],
 [
 "<span>⏱ одна награда на 2 дня</span><span>▶ само</span>",
-""
+"<span>⏱ one reward for 2 days</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Гонка за эликсиром</b>",
-""
+"<b class=\"evn\">Elixir Scramble</b>"
 ],
 [
 "<b>каждую неделю</b>: запись с понедельника, в четверг подбор соперника, бой в пятницу — в окно, выбранное при записи: 09:00, 18:00 или 23:00 по серверу<br><span style=\"color:#5d636f;font-size:13px\">это 14:00, 23:00 или 04:00 МСК; участвуют 32 сильнейших альянса сервера, Святилище 15+</span>",
-""
+"<b>every week</b>: sign-up from Monday, matchmaking on Thursday, the battle on Friday — in the slot chosen at sign-up: 09:00, 18:00 or 23:00 server time<br><span style=\"color:#5d636f;font-size:13px\">that is 14:00, 23:00 or 04:00 Moscow; the kingdom's 32 strongest alliances take part, Sanctuary 15+</span>"
 ],
 [
 "<span>⏱ 30 минут</span><span>▶ <b>R4 / R5</b> записывают 20 основных и 10 запасных</span>",
-""
+"<span>⏱ 30 minutes</span><span>▶ <b>R4 / R5</b> sign up 20 main players and 10 substitutes</span>"
 ],
 [
 "<b class=\"evn\">Завоевание каньона</b>",
-""
+"<b class=\"evn\">Canyon Conquest</b>"
 ],
 [
 "<b>каждую неделю</b>; первый раз — между 15-м и 21-м днём сервера: запись → подбор (группа из 6 альянсов) → 5 раундов боёв<br><span style=\"color:#5d636f;font-size:13px\">нужно: состоять в альянсе, в альянсе записались хотя бы 15 человек со Святилищем 15+</span>",
-""
+"<b>every week</b>; the first time — between server days 15 and 21: sign-up → matchmaking (a group of 6 alliances) → 5 battle rounds<br><span style=\"color:#5d636f;font-size:13px\">requirements: be in an alliance, at least 15 alliance members with Sanctuary 15+ signed up</span>"
 ],
 [
 "<span>⏱ 5 раундов, бои идут сами</span><span>▶ каждый записывается сам</span>",
-""
+"<span>⏱ 5 rounds, battles run by themselves</span><span>▶ everyone signs up themselves</span>"
 ],
 [
 "<b class=\"evn\">Поиск вора</b>",
-""
+"<b class=\"evn\">Thief Hunt</b>"
 ],
 [
 "<b>раз в 2 недели</b> (у некоторых — раз в 2–3), со среды по пятницу<br><span style=\"color:#5d636f;font-size:13px\">первый раз — примерно на 20-й день сервера; в другую неделю на эти дни идёт «Опыт пандемии»; львиные монеты не сгорают до следующего раза</span>",
-""
+"<b>once every 2 weeks</b> (for some — every 2–3), Wednesday to Friday<br><span style=\"color:#5d636f;font-size:13px\">the first time — around server day 20; in the other week «Pandemic Experience» runs on these days; Lion Coins don't burn until the next time</span>"
 ],
 [
 "<span>⏱ <b>3 дня</b></span><span>▶ само</span>",
-""
+"<span>⏱ <b>3 days</b></span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Блуждающий фантом</b>",
-""
+"<b class=\"evn\">Wandering Phantom</b>"
 ],
 [
 "<b>1 день</b>, со Святилища 8<br><span style=\"color:#5d636f;font-size:13px\">как часто повторяется — пока неизвестно</span>",
-""
+"<b>1 day</b>, from Sanctuary 8<br><span style=\"color:#5d636f;font-size:13px\">how often it repeats — not known yet</span>"
 ],
 [
 "<span>⏱ 1 день</span><span>▶ само</span>",
-""
+"<span>⏱ 1 day</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Опыт пандемии (сиделки)</b>",
-""
+"<b class=\"evn\">Pandemic Experience (nurses)</b>"
 ],
 [
 "<b>раз в 2 недели</b>, сразу после «Дня охоты Селии» — в неделю без «Поиска вора»<br><span style=\"color:#5d636f;font-size:13px\">сложность, выбранная в начале, не меняется до конца события; прошёл её всю — в следующий раз откроется следующая</span>",
-""
+"<b>once every 2 weeks</b>, right after «Celia's Hunting Day» — in the week without «Thief Hunt»<br><span style=\"color:#5d636f;font-size:13px\">the difficulty chosen at the start doesn't change until the end of the event; clear it fully — next time the next one opens</span>"
 ],
 [
 "<span>⏱ 3 дня</span><span>▶ само + R4/R5 на босса</span>",
-""
+"<span>⏱ 3 days</span><span>▶ automatic + R4/R5 for the boss</span>"
 ],
 [
 "<b class=\"evn\">Торговец-отшельник</b>",
-""
+"<b class=\"evn\">Recluse Merchant</b>"
 ],
 [
 "<b>7 дней</b><br><span style=\"color:#5d636f;font-size:13px\">как часто повторяется — пока неизвестно</span>",
-""
+"<b>7 days</b><br><span style=\"color:#5d636f;font-size:13px\">how often it repeats — not known yet</span>"
 ],
 [
 "<span>⏱ 7 дней</span><span>▶ само</span>",
-""
+"<span>⏱ 7 days</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Колесо желаний</b>",
-""
+"<b class=\"evn\">Wishing Wheel</b>"
 ],
 [
 "<b>каждый день</b> — постоянное<br><span style=\"color:#5d636f;font-size:13px\">каждый день приходит 1 бесплатная монета; колёс два: с героями и с ресурсами ворона</span>",
-""
+"<b>every day</b> — permanent<br><span style=\"color:#5d636f;font-size:13px\">1 free coin arrives every day; there are two wheels: with heroes and with Raven resources</span>"
 ],
 [
 "<span>⏱ всегда</span><span>▶ само</span>",
-""
+"<span>⏱ always</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">День охоты Селии<br><span style=\"color:#5d636f;font-size:13px\">в нём же — Осквернённая графиня</span></b>",
-""
+"<b class=\"evn\">Celia's Hunting Day<br><span style=\"color:#5d636f;font-size:13px\">the Blighted Countess is part of it</span></b>"
 ],
 [
 "<b>раз в 2 недели</b>, 2 дня; бьёте Осквернённую графиню штурмами — до 20 штурмов в день; сразу после него начинается «Опыт пандемии»<br><span style=\"color:#5d636f;font-size:13px\">после начала Эры Возрождения его место занимает «Внутренний демон Клэр»</span>",
-""
+"<b>once every 2 weeks</b>, 2 days; you hit the Blighted Countess with rallies — up to 20 rallies a day; «Pandemic Experience» starts right after it<br><span style=\"color:#5d636f;font-size:13px\">after the Era of Revival begins, «Claire's Inner Demon» takes its place</span>"
 ],
 [
 "<span>⏱ 2 дня</span><span>▶ штурмы альянсом</span>",
-""
+"<span>⏱ 2 days</span><span>▶ alliance rallies</span>"
 ],
 [
 "<b class=\"evn\">Викторина мудрости</b>",
-""
+"<b class=\"evn\">Quiz of Wisdom</b>"
 ],
 [
 "<b>каждое воскресенье</b><br><span style=\"color:#5d636f;font-size:13px\">со Святилища 6; 15 вопросов, алмазы дают даже за неверный ответ</span>",
-""
+"<b>every Sunday</b><br><span style=\"color:#5d636f;font-size:13px\">from Sanctuary 6; 15 questions, Diamonds even for a wrong answer</span>"
 ],
 [
 "<span>⏱ 15 вопросов по 30 секунд</span><span>▶ само</span>",
-""
+"<span>⏱ 15 questions, 30 seconds each</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Шахта гномов</b>",
-""
+"<b class=\"evn\">Dwarven Mine</b>"
 ],
 [
 "приходит как «неожиданное событие»<br><span style=\"color:#5d636f;font-size:13px\">кирки за задания, задания обновляются в 00:00 по серверу (05:00 МСК); как часто повторяется — пока неизвестно</span>",
-""
+"arrives as a «surprise event»<br><span style=\"color:#5d636f;font-size:13px\">pickaxes for quests, quests refresh at 00:00 server time (05:00 Moscow); how often it repeats — not known yet</span>"
 ],
 [
 "<span>⏱ по таймеру в окне</span><span>▶ само</span>",
-""
+"<span>⏱ by the timer in the window</span><span>▶ automatic</span>"
 ],
 [
 "<b class=\"evn\">Неожиданная встреча</b>",
-""
+"<b class=\"evn\">Surprise Encounter</b>"
 ],
 [
 "<b>каждый день</b> — постоянное<br><span style=\"color:#5d636f;font-size:13px\">1 приключение в день бесплатно</span>",
-""
+"<b>every day</b> — permanent<br><span style=\"color:#5d636f;font-size:13px\">1 free adventure a day</span>"
 ],
 [
 "<b>Как узнать заранее, когда придёт событие:</b> в городе есть лента у Монумента — она показывает, в какой день придёт событие. Дни считаются от открытия сервера, поэтому у разных серверов день недели может отличаться. Где написано «пока неизвестно» — если знаешь, как часто приходит событие, скажи, допишем.",
-""
+"<b>How to know in advance when an event comes:</b> the city has a ribbon at the Monument — it shows on which day an event arrives. Days are counted from the server opening, so the weekday can differ between servers. Where it says «not known yet» — if you know how often the event comes, tell us and we'll add it."
 ],
 [
 "Список",
@@ -349,7 +349,7 @@
 ],
 [
 "Все события на одной странице",
-""
+"All events on one page"
 ],
 [
 "Гонка за эликсиром",
@@ -357,11 +357,11 @@
 ],
 [
 "<span class=\"when\">каждую неделю, бой в пятницу, 30 минут</span>",
-""
+"<span class=\"when\">every week, battle on Friday, 30 minutes</span>"
 ],
 [
 "Альянс против альянса, 20 на 20. Захват зданий на отдельной карте.",
-""
+"Alliance against alliance, 20 vs 20. Capturing buildings on a separate map."
 ],
 [
 "Поиск вора",
@@ -369,31 +369,31 @@
 ],
 [
 "<span class=\"when\">раз в 2 недели, 3 дня (ср–пт)</span>",
-""
+"<span class=\"when\">once every 2 weeks, 3 days (Wed–Fri)</span>"
 ],
 [
 "Вместо скверны ловишь золотых воров и бьёшь их главаря штурмом.",
-""
+"Instead of Blight you catch gold thieves and hit their leader with a rally."
 ],
 [
 "<span class=\"when\">раз в 2 дня, 30 минут</span>",
-""
+"<span class=\"when\">once every 2 days, 30 minutes</span>"
 ],
 [
 "Альянс ловит Крысу в ловушку и бьёт её штурмами.",
-""
+"The alliance lures the Rat into a trap and hits it with rallies."
 ],
 [
 "Король демонов",
-""
+"Demon King"
 ],
 [
 "<span class=\"when\">каждый день, кроме Вс</span>",
-""
+"<span class=\"when\">every day except Sun</span>"
 ],
 [
 "Мировой босс: 10 ударов в день. Даёт серверу очки КвК.",
-""
+"A world boss: 10 hits a day. Gives the kingdom Kingdom War points."
 ],
 [
 "Битва на выживание",
@@ -401,11 +401,11 @@
 ],
 [
 "<span class=\"when\">каждый день</span>",
-""
+"<span class=\"when\">every day</span>"
 ],
 [
 "Раунды по 4 часа со своей темой. Соревнуешься с игроками своего уровня.",
-""
+"4-hour rounds, each with its own theme. You compete with players of your level."
 ],
 [
 "Викторина",
@@ -413,11 +413,11 @@
 ],
 [
 "<span class=\"when\">каждое воскресенье</span>",
-""
+"<span class=\"when\">every Sunday</span>"
 ],
 [
 "Вопросы про игру. Ниже — готовые ответы.",
-""
+"Questions about the game. Ready answers below."
 ],
 [
 "Долина Кристальных Гроздей",
@@ -425,11 +425,11 @@
 ],
 [
 "<span class=\"when\">воскресенье, 4 раза</span>",
-""
+"<span class=\"when\">Sunday, 4 times</span>"
 ],
 [
 "Собирай кристаллы: бей крыс и копай шахты. В конце — «царь горы».",
-""
+"Collect crystals: hit rats and dig mines. At the end — «king of the hill»."
 ],
 [
 "Охотничий бой",
@@ -437,11 +437,11 @@
 ],
 [
 "<span class=\"when\">по команде R4/R5</span>",
-""
+"<span class=\"when\">on R4/R5 command</span>"
 ],
 [
 "5 волн скверны с боссом после каждой волны.",
-""
+"5 waves of Blight with a boss after each wave."
 ],
 [
 "Блуждающий фантом",
@@ -449,11 +449,11 @@
 ],
 [
 "<span class=\"when\">1 день</span>",
-""
+"<span class=\"when\">1 day</span>"
 ],
 [
 "Бить огромную Блуждающую скверну, которая гуляет по карте.",
-""
+"Hit the huge Wandering Blight that roams the map."
 ],
 [
 "Опыт пандемии",
@@ -461,11 +461,11 @@
 ],
 [
 "<span class=\"when\">3 дня</span>",
-""
+"<span class=\"when\">3 days</span>"
 ],
 [
 "Убить 30 сиделок от 1 до 30 уровня и Докторов-крыс альянсом.",
-""
+"Kill 30 nurses of levels 1 to 30 and the Rat Doctors as an alliance."
 ],
 [
 "Осада нежити",
@@ -473,7 +473,7 @@
 ],
 [
 "Волны монстров атакуют твой город. Щиты не работают.",
-""
+"Waves of monsters attack your city. Shields don't work."
 ],
 [
 "Завоевание каньона",
@@ -481,23 +481,23 @@
 ],
 [
 "<span class=\"when\">каждую неделю, с 3-й недели сервера</span>",
-""
+"<span class=\"when\">every week, from the server's 3rd week</span>"
 ],
 [
 "Записался — и бои идут сами. 3 линии, нужно выиграть 2.",
-""
+"Sign up — and the battles run by themselves. 3 lanes, you need to win 2."
 ],
 [
 "Экспедиции",
-""
+"Expeditions"
 ],
 [
 "<span class=\"when\">сброс вт, чт, вс</span>",
-""
+"<span class=\"when\">reset Tue, Thu, Sun</span>"
 ],
 [
 "Битва экспедиции по фракциям, Экспедиция альянса, Приключение.",
-""
+"Expedition Battle by faction, Alliance Expedition, Campaign."
 ],
 [
 "Улучшение снаряжения",
@@ -505,11 +505,11 @@
 ],
 [
 "<span class=\"when\">суббота и воскресенье</span>",
-""
+"<span class=\"when\">Saturday and Sunday</span>"
 ],
 [
 "Улучшай снаряжение героев — получай награду.",
-""
+"Upgrade heroes' gear — get a reward."
 ],
 [
 "Торговец-отшельник",
@@ -517,23 +517,23 @@
 ],
 [
 "<span class=\"when\">7 дней</span>",
-""
+"<span class=\"when\">7 days</span>"
 ],
 [
 "Магазин за монеты события. Первый товар всегда бесплатный.",
-""
+"A shop for event coins. The first item is always free."
 ],
 [
 "Осквернённая графиня",
-""
+"Blighted Countess"
 ],
 [
 "<span class=\"when\">во время «Дня охоты Селии»</span>",
-""
+"<span class=\"when\">during «Celia's Hunting Day»</span>"
 ],
 [
 "Монстр события Селии, 12 уровней. Бьют только штурмом альянса.",
-""
+"Celia's event monster, 12 levels. Hit only with an alliance rally."
 ],
 [
 "Колесо желаний",
@@ -541,7 +541,7 @@
 ],
 [
 "Рулетка за «Монеты желаний». Рядом бывает «Благословенное колесо».",
-""
+"A roulette for «Wish Coins». A «Blessing Wheel» sometimes runs alongside."
 ],
 [
 "День охоты Селии",
@@ -549,11 +549,11 @@
 ],
 [
 "<span class=\"when\">2 дня</span>",
-""
+"<span class=\"when\">2 days</span>"
 ],
 [
 "Бей скверну 1–20 уровня штурмами, получай «Сундук Селии».",
-""
+"Hit level 1–20 Blight with rallies, get «Celia's Chest»."
 ],
 [
 "Теневая скверна",
@@ -561,11 +561,11 @@
 ],
 [
 "<span class=\"when\">пн и чт, 4 захода</span>",
-""
+"<span class=\"when\">Mon and Thu, 4 runs</span>"
 ],
 [
 "Отдельное событие, не обычный босс: по 3 часа, 5 атак вместо 10.",
-""
+"A separate event, not the regular boss: 3 hours each, 5 attacks instead of 10."
 ],
 [
 "Шахта гномов",
@@ -573,11 +573,11 @@
 ],
 [
 "<span class=\"when\">кирки раз в день</span>",
-""
+"<span class=\"when\">pickaxes once a day</span>"
 ],
 [
 "Копаешь этажи. Перед раскопкой выбери награду этажа.",
-""
+"You dig floors. Before digging, pick the floor reward."
 ],
 [
 "Неожиданная встреча",
@@ -585,35 +585,35 @@
 ],
 [
 "<span class=\"when\">1 раз в день бесплатно</span>",
-""
+"<span class=\"when\">once a day for free</span>"
 ],
 [
 "Приключение за алмазы. Больше 4 сундуков копить нельзя.",
-""
+"An adventure for Diamonds. You can't store more than 4 chests."
 ],
 [
 "Война королевств (КвК)",
-""
+"Kingdom War"
 ],
 [
 "<span class=\"when\">суббота 17:00 МСК</span>",
-""
+"<span class=\"when\">Saturday 17:00 Moscow</span>"
 ],
 [
 "Наш сервер против чужого. Отдельный раздел.",
-""
+"Our kingdom against another. A separate section."
 ],
 [
 "Праздничные события",
-""
+"Holiday events"
 ],
 [
 "<span class=\"when\">на праздники</span>",
-""
+"<span class=\"when\">on holidays</span>"
 ],
 [
 "Хэллоуин, праздник луны, пираты, Пасха, банкет, Рождество и Новый год.",
-""
+"Halloween, the moon festival, pirates, Easter, a banquet, Christmas and New Year."
 ],
 [
 "Дуэль альянсов",
@@ -621,107 +621,107 @@
 ],
 [
 "<span class=\"when\">пн — сб</span>",
-""
+"<span class=\"when\">Mon — Sat</span>"
 ],
 [
 "Альянс против альянса, 6 тем. Отдельный раздел.",
-""
+"Alliance against alliance, 6 themes. A separate section."
 ],
 [
 "Альянс против альянса · 30 минут",
-""
+"Alliance against alliance · 30 minutes"
 ],
 [
 "Два альянса по 20 человек попадают на отдельную карту. Захватываешь здания — капают очки. Через 30 минут побеждает тот, у кого больше очков. <b>Солдаты здесь не погибают</b>: после боя все войска возвращаются как были. Победа во время КвК даёт нашему серверу 50 000 очков.",
-""
+"Two alliances of 20 players each go to a separate map. Capture buildings — points drip in. After 30 minutes the side with more points wins. <b>Troops don't die here</b>: after the battle all troops come back as they were. A win during Kingdom War gives our kingdom 50,000 points."
 ],
 [
 "Где найти — по шагам",
-""
+"Where to find it — step by step"
 ],
 [
 "<img src=\"assets/shots/step-special.webp\" alt=\"Главный экран: справа значок «Особое событие»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:89.8%;top:39.8%;width:17.5%;aspect-ratio:1\"></span><span class=\"arrow\" style=\"left:72%;top:39.8%;--rot:0deg\"></span>",
-""
+"<img src=\"assets/shots/step-special.webp\" alt=\"Main screen: the Special Event icon on the right\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:89.8%;top:39.8%;width:17.5%;aspect-ratio:1\"></span><span class=\"arrow\" style=\"left:72%;top:39.8%;--rot:0deg\"></span>"
 ],
 [
 "ШАГ 1",
-""
+"STEP 1"
 ],
 [
 "Значок «Особое событие»",
-""
+"The «Special Event» icon"
 ],
 [
 "Справа на главном экране, в столбике круглых значков — второй сверху (с галочкой на планшете). Откроется окно «Событие» с вкладками сверху.",
-""
+"On the right of the main screen, in the column of round icons — second from the top (a clipboard with a checkmark). The «Event» window opens with tabs at the top."
 ],
 [
 "<img src=\"assets/shots/ev-elixir.webp\" alt=\"Окно события «Гонка за эликсиром» во время записи\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:16.8%;top:8.8%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:16.8%;top:16.5%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:50%;top:95.4%;width:79.6%;aspect-ratio:6.6\"></span>",
-""
+"<img src=\"assets/shots/ev-elixir.webp\" alt=\"The Elixir Scramble event window during sign-up\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:16.8%;top:8.8%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:16.8%;top:16.5%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:50%;top:95.4%;width:79.6%;aspect-ratio:6.6\"></span>"
 ],
 [
 "ШАГ 2",
-""
+"STEP 2"
 ],
 [
 "Вкладка «Гонка за эликсиром»",
-""
+"The «Elixir Scramble» tab"
 ],
 [
 "Первая вкладка. Так окно выглядит во время записи: «Команда А» / «Команда Б», отсчёт до конца регистрации, день и время боя (переключатель «Время сервера»), «Зарегистрирован» — альянс записан, и сколько участников выбрано из 20. Внизу кнопки лидеров (R4/R5): <b>«Выбор времени»</b> и <b>«Выбор участников»</b>. Справа «Магазин», «Правила», «История», «Участники», слева «Журнал».",
-""
+"The first tab. This is how the window looks during sign-up: «Team A» / «Team B», the countdown to the end of registration, the battle day and time (the «Server Time» toggle), «Registered» — the alliance is signed up, and how many participants of 20 are chosen. At the bottom are the leaders' (R4/R5) buttons: <b>Select Time</b> and <b>Select Participants</b>. On the right «Shop», «Rules», «History», «Participants», on the left «Record»."
 ],
 [
 "После подбора соперника (в четверг) вместо этого появляется наш альянс против соперника.",
-""
+"After matchmaking (on Thursday) our alliance versus the rival appears here instead."
 ],
 [
 "Когда до боя остаётся 5 минут, внизу появляется кнопка <b>«В бой!»</b> — она переносит на карту события. Записывают лидеры кнопками «Регистрация», «Выбор времени», «Выбор участников».",
-""
+"When 5 minutes are left before the battle, an <b>Enter Battlefield</b> button appears at the bottom — it takes you to the event map. Leaders sign up with the «Register», «Select Time», «Select Participants» buttons."
 ],
 [
 "Как попасть",
-""
+"How to get in"
 ],
 [
 "<b>Запишись у R4 или R5</b>",
-""
+"<b>Sign up with R4 or R5</b>"
 ],
 [
 "Лидеры альянса выбирают 20 основных участников и 10 запасных. Основные заходят первыми. После записи список закрывается. Обычно заявки собирают до четверга.",
-""
+"Alliance leaders choose 20 main participants and 10 substitutes. Main ones go in first. After sign-up the list closes. Applications are usually collected until Thursday."
 ],
 [
 "<b>Купи ускорения лечения в магазине альянса</b>",
-""
+"<b>Buy healing speedups in the Alliance Shop</b>"
 ],
 [
 "Пригодятся, если лечебных палаток не хватит.",
-""
+"They come in handy if Healing Tents aren't enough."
 ],
 [
 "<b>За 5 минут до начала — вход</b>",
-""
+"<b>5 minutes before the start — go in</b>"
 ],
 [
 "Справа вверху «Особые события» → «Гонка за эликсиром». Тебя перенесёт на карту в свою зону: наши — синие, враги — красные. В своей зоне тебя не трогают.",
-""
+"Top right «Special Event» → «Elixir Scramble». You are moved to your zone on the map: ours are blue, enemies red. Nobody touches you in your zone."
 ],
 [
 "Соперника игра подбирает по общей мощи записанных участников (берётся самая большая мощь, какая у них когда-либо была).",
-""
+"The game picks the rival by the total Might of the signed-up participants (the highest Might they ever had is used)."
 ],
 [
 "<img src=\"assets/shots/elx-faq-2.webp\" alt=\"Окно «Руководство»: входные зоны\">",
-""
+"<img src=\"assets/shots/elx-faq-2.webp\" alt=\"The Guide window: entry zones\">"
 ],
 [
 "Окно игры «Руководство»: наши входят с запада (синие), враги — с востока (красные).",
-""
+"The in-game «Guide» window: ours enter from the west (blue), enemies from the east (red)."
 ],
 [
 "Что происходит по минутам",
-""
+"What happens minute by minute"
 ],
 [
 "Подготовка",
@@ -729,59 +729,59 @@
 ],
 [
 "за 5 минут до начала",
-""
+"5 minutes before the start"
 ],
 [
 "Заходим в свои зоны. Нас никто не может атаковать.",
-""
+"We enter our zones. Nobody can attack us."
 ],
 [
 "Фаза 1",
-""
+"Phase 1"
 ],
 [
 "0–10 минута",
-""
+"minutes 0–10"
 ],
 [
 "Открыты Алхимические мастерские, Врата миграции, Наблюдательный пункт, Лечебные палатки.",
-""
+"Alchemy Workshops, Migration Portals, the Observatory and Healing Tents are open."
 ],
 [
 "Фаза 2",
-""
+"Phase 2"
 ],
 [
 "с 10 минуты",
-""
+"from minute 10"
 ],
 [
 "В центре открываются Замок эликсира, Реликвии войны, Проклятый алтарь.",
-""
+"The Elixir Castle, War Relics and the Cursed Altar open in the center."
 ],
 [
 "Фаза 3",
-""
+"Phase 3"
 ],
 [
 "с 13 минуты",
-""
+"from minute 13"
 ],
 [
 "Появляются Лагеря с травами — сбор тоже даёт очки.",
-""
+"Herb camps appear — gathering also gives points."
 ],
 [
 "Что дают здания",
-""
+"What the buildings give"
 ],
 [
 "Это окно самой игры: в окне события справа кнопка «Правила» → вкладка <b>«Здание»</b>. «Альянс» — сколько очков в секунду здание даёт альянсу, «Личное» — тебе, пока твой отряд в нём.",
-""
+"This is the game's own window: in the event window, the «Rules» button on the right → the <b>Building</b> tab. «Alliance» — how many points per second the building gives the alliance, «Personal» — to you while your squad is in it."
 ],
 [
 "<img src=\"assets/shots/elx-b-castle.png\" alt=\"Здание «Замок эликсира»\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-b-castle.png\" alt=\"The Elixir Castle building\" loading=\"lazy\">"
 ],
 [
 "Замок эликсира",
@@ -789,11 +789,11 @@
 ],
 [
 "В центре, открывается на 10-й минуте. <b>Даёт больше всего очков.</b> К 10-й минуте все сильные должны быть у центра.",
-""
+"In the center, opens at minute 10. <b>Gives the most points.</b> By minute 10 all strong players should be near the center."
 ],
 [
 "<img src=\"assets/shots/elx-b-workshop.png\" alt=\"Здание «Алхимическая мастерская»\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-b-workshop.png\" alt=\"The Alchemy Workshop building\" loading=\"lazy\">"
 ],
 [
 "Алхимическая мастерская",
@@ -801,11 +801,11 @@
 ],
 [
 "Две штуки, у входов каждого альянса. Дают много очков постоянно — <b>берём первыми</b>.",
-""
+"Two of them, at each alliance's entrance. Give lots of points constantly — <b>take them first</b>."
 ],
 [
 "<img src=\"assets/shots/elx-b-healing.png\" alt=\"Здание «Лечебная палатка»\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-b-healing.png\" alt=\"The Healing Tent building\" loading=\"lazy\">"
 ],
 [
 "Лечебная палатка",
@@ -813,11 +813,11 @@
 ],
 [
 "4 штуки. Немного очков, но главное — <b>лечит 15 твоих раненых каждые 10 секунд</b>. Вылеченных забирай слева внизу, нажимая зелёную кнопку.",
-""
+"4 of them. A few points, but the main thing — <b>heals 15 of your wounded every 10 seconds</b>. Collect the healed at the bottom left by tapping the green button."
 ],
 [
 "<img src=\"assets/shots/elx-b-gate.png\" alt=\"Здание «Врата миграции»\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-b-gate.png\" alt=\"The Migration Portal building\" loading=\"lazy\">"
 ],
 [
 "Врата миграции",
@@ -825,11 +825,11 @@
 ],
 [
 "Открываются в начале битвы. Пока они наши, <b>перезарядка переезда по карте вдвое короче</b>.",
-""
+"Open at the start of the battle. While they are ours, <b>the map relocation cooldown is halved</b>."
 ],
 [
 "<img src=\"assets/shots/elx-b-observatory.png\" alt=\"Здание «Наблюдательный пункт»\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-b-observatory.png\" alt=\"The Observatory building\" loading=\"lazy\">"
 ],
 [
 "Наблюдательный пункт",
@@ -837,11 +837,11 @@
 ],
 [
 "Открывается в начале битвы. Захват даёт <b>+10% к очкам альянса</b> от всех занятых нами зданий.",
-""
+"Opens at the start of the battle. Capturing it gives <b>+10% to alliance points</b> from all buildings we hold."
 ],
 [
 "<img src=\"assets/shots/elx-b-relic.png\" alt=\"Здание «Реликвии войны»\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-b-relic.png\" alt=\"The War Relics building\" loading=\"lazy\">"
 ],
 [
 "Реликвии войны",
@@ -849,11 +849,11 @@
 ],
 [
 "Открываются на 10-й минуте. Пока они наши, у <b>наших героев +15%</b> атаки, защиты и здоровья.",
-""
+"Open at minute 10. While they are ours, <b>our heroes get +15%</b> attack, defense and HP."
 ],
 [
 "<img src=\"assets/shots/elx-b-altar.png\" alt=\"Здание «Проклятый алтарь»\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-b-altar.png\" alt=\"The Cursed Altar building\" loading=\"lazy\">"
 ],
 [
 "Проклятый алтарь",
@@ -861,175 +861,175 @@
 ],
 [
 "Открывается на 10-й минуте. Пока он наш, у <b>вражеских героев −15%</b> атаки, защиты и здоровья. Если враг сильнее — алтарь наш главный шанс.",
-""
+"Opens at minute 10. While it is ours, <b>enemy heroes get −15%</b> attack, defense and HP. If the enemy is stronger, the altar is our main chance."
 ],
 [
 "<img src=\"assets/shots/elx-b-camp.png\" alt=\"Лагерь с травами\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-b-camp.png\" alt=\"Herb camp\" loading=\"lazy\">"
 ],
 [
 "Лагеря и аптечки",
-""
+"Camps and first-aid kits"
 ],
 [
 "С 13-й минуты отправляй самые слабые отряды в лагеря за травами — это очки. Вокруг захваченных зданий появляются аптечки — подбирать их тоже дают очки.",
-""
+"From minute 13 send your weakest squads to the camps for Herb — that's points. First-aid kits appear around captured buildings — picking them up also gives points."
 ],
 [
 "Карта события — по шагам",
-""
+"The event map — step by step"
 ],
 [
 "Это окно самой игры «Руководство» (в окне события — кнопка «Правила», значок «!»). Листаешь стрелками — на карте подсвечиваются здания по очереди.",
-""
+"This is the game's own «Guide» window (in the event window — the «Rules» button, the «!» icon). Flip with the arrows — buildings light up on the map one by one."
 ],
 [
 "<img src=\"assets/shots/elx-faq-2.webp\" alt=\"Окно «Руководство»: Входная зона\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-2.webp\" alt=\"The Guide window: entry zone\" loading=\"lazy\">"
 ],
 [
 "<b>1. Входная зона.</b> Наши входят с запада (синий ромб), враги — с востока (красный).",
-""
+"<b>1. Entry zone.</b> Ours enter from the west (blue diamond), enemies from the east (red)."
 ],
 [
 "<img src=\"assets/shots/elx-faq-3.webp\" alt=\"Окно «Руководство»: Замок эликсира\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-3.webp\" alt=\"The Guide window: Elixir Castle\" loading=\"lazy\">"
 ],
 [
 "<b>2. Замок эликсира.</b> В центре. Ворота открываются на 10-й минуте.",
-""
+"<b>2. Elixir Castle.</b> In the center. Its gates open at minute 10."
 ],
 [
 "<img src=\"assets/shots/elx-faq-4.webp\" alt=\"Окно «Руководство»: Алхимические мастерские\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-4.webp\" alt=\"The Guide window: Alchemy Workshops\" loading=\"lazy\">"
 ],
 [
 "<b>3. Алхимические мастерские.</b> Две, у входов каждого альянса. Берём первыми.",
-""
+"<b>3. Alchemy Workshops.</b> Two, at each alliance's entrance. We take them first."
 ],
 [
 "<img src=\"assets/shots/elx-faq-5.webp\" alt=\"Окно «Руководство»: Лечебные палатки\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-5.webp\" alt=\"The Guide window: Healing Tents\" loading=\"lazy\">"
 ],
 [
 "<b>4. Лечебные палатки.</b> 4 палатки, лечат раненых.",
-""
+"<b>4. Healing Tents.</b> 4 tents, they heal the wounded."
 ],
 [
 "<img src=\"assets/shots/elx-faq-6.webp\" alt=\"Окно «Руководство»: Стратегические аванпосты I\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-6.webp\" alt=\"The Guide window: Strategic Outposts I\" loading=\"lazy\">"
 ],
 [
 "<b>5. Стратегические аванпосты I.</b> Врата миграции и Наблюдательный пункт — с начала боя.",
-""
+"<b>5. Strategic Outposts I.</b> Migration Portals and the Observatory — from the start of the battle."
 ],
 [
 "<img src=\"assets/shots/elx-faq-7.webp\" alt=\"Окно «Руководство»: Стратегические аванпосты II\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-7.webp\" alt=\"The Guide window: Strategic Outposts II\" loading=\"lazy\">"
 ],
 [
 "<b>6. Стратегические аванпосты II.</b> Реликвии войны и Проклятый алтарь — с 10-й минуты.",
-""
+"<b>6. Strategic Outposts II.</b> War Relics and the Cursed Altar — from minute 10."
 ],
 [
 "<img src=\"assets/shots/elx-faq-8.webp\" alt=\"Окно «Руководство»: Очки захвата\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-8.webp\" alt=\"The Guide window: Occupation Points\" loading=\"lazy\">"
 ],
 [
 "<b>7. Очки захвата.</b> Захваченное здание копит очки, их можно разграбить.",
-""
+"<b>7. Occupation Points.</b> A captured building accumulates points, and they can be plundered."
 ],
 [
 "<img src=\"assets/shots/elx-faq-9.webp\" alt=\"Окно «Руководство»: Аптечки\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-9.webp\" alt=\"The Guide window: Healing Kits\" loading=\"lazy\">"
 ],
 [
 "<b>8. Аптечки.</b> Появляются вокруг захваченного здания — подбирай.",
-""
+"<b>8. Healing Kits.</b> Appear around a captured building — pick them up."
 ],
 [
 "<img src=\"assets/shots/elx-faq-10.webp\" alt=\"Окно «Руководство»: Лагеря с травами\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/elx-faq-10.webp\" alt=\"The Guide window: Herb camps\" loading=\"lazy\">"
 ],
 [
 "<b>9. Лагеря с травами.</b> С 13-й минуты — сбор трав даёт очки.",
-""
+"<b>9. Herb camps.</b> From minute 13 — gathering Herb gives points."
 ],
 [
 "Тактика — как выиграть",
-""
+"Tactics — how to win"
 ],
 [
 "<b>Захватывай штурмом, а не в одиночку</b>",
-""
+"<b>Capture with a rally, not alone</b>"
 ],
 [
 "Серое здание — ничьё: просто отправь отряд. Красное — вражеское: сначала выбей их штурмом. Одиночная атака на занятое здание сливает войска.",
-""
+"A gray building is nobody's: just send a squad. A red one is the enemy's: first knock them out with a rally. A solo attack on an occupied building wastes troops."
 ],
 [
 "<b>Свободные отряды — в гарнизон своих зданий</b>",
-""
+"<b>Free squads — into the garrison of our buildings</b>"
 ],
 [
 "Чем больше наших отрядов внутри, тем сложнее врагу его отбить.",
-""
+"The more of our squads inside, the harder it is for the enemy to retake it."
 ],
 [
 "<b>Делимся на две команды</b>",
-""
+"<b>We split into two teams</b>"
 ],
 [
 "Команда 1: Алхимическая мастерская, Врата миграции, с 10-й минуты — Замок эликсира. Команда 2: Лечебные палатки (держать хотя бы 2 из 4) и Проклятый алтарь. Если нас 15 и больше — третья команда жжёт города врага.",
-""
+"Team 1: Alchemy Workshop, Migration Portal, from minute 10 — the Elixir Castle. Team 2: Healing Tents (hold at least 2 of 4) and the Cursed Altar. If there are 15 or more of us — a third team burns enemy cities."
 ],
 [
 "<b>Лечи с умом</b>",
-""
+"<b>Heal wisely</b>"
 ],
 [
 "Не ставь лечение на всё сразу: лечи столько, сколько закроют твои ускорения, иначе они зависнут.",
-""
+"Don't queue healing for everything at once: heal as much as your speedups can cover, otherwise they get stuck."
 ],
 [
 "<b>Главная хитрость — жечь города врага.</b>",
-""
+"<b>The main trick — burn enemy cities.</b>"
 ],
 [
 "У каждого города в событии прочность 5 000. Каждая удачная атака снимает 1 000. После 5 атак город врага улетает на его базу — <b>вместе со всеми его отрядами</b>. Если он держал здание, его отряды оттуда исчезают, и здание можно занять без боя.",
-""
+"Each city in the event has 5,000 durability. Each successful attack removes 1,000. After 5 attacks the enemy city flies back to its base — <b>together with all its squads</b>. If it held a building, its squads disappear from there, and the building can be taken without a fight."
 ],
 [
 "Почти никто не держит войска на стене, поэтому даже слабый игрок может «сжечь» сильного. Переезд по карте — раз в 3 минуты, и сожжённый игрок ждёт, пока мы набираем очки.",
-""
+"Almost nobody keeps troops on the wall, so even a weak player can «burn» a strong one. Relocating on the map is once every 3 minutes, and the burned player waits while we collect points."
 ],
 [
 "Раз в 2 недели · 3 дня, со среды по пятницу",
-""
+"Once every 2 weeks · 3 days, Wednesday to Friday"
 ],
 [
 "Три дня (со среды по пятницу, раз в две недели) на карте появляются <b>золотые воры</b>. Ты ловишь их — получаешь <b>львиные монеты</b> и тратишь в магазине события. Здесь же хорошие награды для Ворона: эссенция и снаряжение.",
-""
+"For three days (Wednesday to Friday, once every two weeks) <b>Gold Thieves</b> appear on the map. You catch them — get <b>Lion Coins</b> and spend them in the event shop. There are also good Raven rewards here: Raven Essence and gear."
 ],
 [
 "<img src=\"assets/shots/ev-thief.webp\" alt=\"Окно события «Поиск вора»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:28.2%;top:93.8%;width:38.1%;aspect-ratio:3.11\"></span>",
-""
+"<img src=\"assets/shots/ev-thief.webp\" alt=\"The Thief Hunt event window\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:28.2%;top:93.8%;width:38.1%;aspect-ratio:3.11\"></span>"
 ],
 [
 "Вкладка «Поиск вора»",
-""
+"The «Thief Hunt» tab"
 ],
 [
 "Сверху — сколько осталось до конца события. Посередине переключатель «Мое открытие» / «Открытие альянса». Внизу кнопки <b>«Поиск»</b> (ближайший золотой вор) и <b>«Поиск босса»</b> (главарь воров). Справа — «Награда», «Журнал», «Магазин обмена» и «Ранг».",
-""
+"At the top — how long until the event ends. In the middle — the «My Discovery» / «Alliance Discovery» toggle. At the bottom — the <b>Search</b> (nearest Gold Thief) and <b>Search for Boss</b> (Thief Leader) buttons. On the right — «Reward», «Record», «Exchange Shop» and «Rank»."
 ],
 [
 "Кто есть кто в событии",
-""
+"Who is who in the event"
 ],
 [
 "<img class=\"fig\" src=\"assets/game/golden-thief-full.png\" alt=\"Золотой вор\">",
-""
+"<img class=\"fig\" src=\"assets/game/golden-thief-full.png\" alt=\"Gold Thief\">"
 ],
 [
 "Золотой вор",
@@ -1037,11 +1037,11 @@
 ],
 [
 "Приходит на карту <b>волнами</b>: внизу окна события таймер «Следующая волна золотого вора прибудет через…». В окне наград игра пишет диапазон уровней волн — <b>5–75</b>. Кнопка «Поиск» находит ближайшего — <b>5 уровня</b>, его побеждает один отряд. За каждого — <b>львиные монеты</b>.",
-""
+"Arrives on the map <b>in waves</b>: at the bottom of the event window is the timer «Next wave of Gold Thief arrives in…». The rewards window gives the wave level range — <b>5–75</b>. The «Search» button finds the nearest one — <b>level 5</b>, one squad beats it. Each one gives <b>Lion Coins</b>."
 ],
 [
 "<img class=\"fig\" src=\"assets/game/thief-chief-full.png\" alt=\"Главарь воров\">",
-""
+"<img class=\"fig\" src=\"assets/game/thief-chief-full.png\" alt=\"Thief Leader\">"
 ],
 [
 "Главарь воров",
@@ -1049,115 +1049,115 @@
 ],
 [
 "Появляется, когда бьёшь золотых воров: в чат альянса приходит «…одолел золотых воров. Появился главарь воров ур. N». Найти — кнопка <b>«Поиск босса»</b>. Он намного сильнее — бейте <b>штурмом</b>. Сначала у него время защиты для зачистки своим альянсом. Нашедший и командир победившего штурма получают отдельные награды.",
-""
+"Appears when you beat Gold Thieves: the alliance chat gets «…defeated the Gold Thieves. A Lv. N Thief Leader has appeared». To find it — the <b>Search for Boss</b> button. It is much stronger — hit it with a <b>rally</b>. At first it has a protection period for its own alliance to clear it. The finder and the commander of the winning rally get separate rewards."
 ],
 [
 "Что делать",
-""
+"What to do"
 ],
 [
 "<b>«Поиск» — лови золотых воров</b>",
-""
+"<b>«Search» — catch Gold Thieves</b>"
 ],
 [
 "Кнопка внизу слева в окне события (в рамке на картинке выше). Игра покажет ближайшего золотого вора 5 уровня.",
-""
+"The button at the bottom left of the event window (framed in the picture above). The game shows the nearest level 5 Gold Thief."
 ],
 [
 "<b>Следи за таймером волн</b>",
-""
+"<b>Watch the wave timer</b>"
 ],
 [
 "Новая волна золотых воров приходит по таймеру внизу окна — в это время воров на карте больше всего.",
-""
+"A new wave of Gold Thieves arrives by the timer at the bottom of the window — that's when there are the most thieves on the map."
 ],
 [
 "<b>Появился главарь — штурм</b>",
-""
+"<b>A leader appeared — rally</b>"
 ],
 [
 "«Поиск босса» ведёт к главарю. Собирайте штурм альянсом, пока его не перехватили.",
-""
+"«Search for Boss» leads to the Thief Leader. Gather an alliance rally before someone else grabs it."
 ],
 [
 "<b>Трать монеты в «Магазине обмена»</b>",
-""
+"<b>Spend coins in the «Exchange Shop»</b>"
 ],
 [
 "Награды за рейтинг урона приходят на почту после конца события.",
-""
+"Damage ranking rewards arrive by mail after the event ends."
 ],
 [
 "Раз в 2 дня · 30 минут",
-""
+"Once every 2 days · 30 minutes"
 ],
 [
 "Альянс ставит ловушку с сыром, в неё попадается Сырный вор (крыса), и все бьют её штурмами. Бой длится <b>30 минут</b>. Чем больше урона — тем лучше награды каждому и всему альянсу. Хороший источник противоядия и материалов Ворона.",
-""
+"The alliance sets a cheese trap, the Cheese Thief (a rat) gets caught in it, and everyone hits it with rallies. The fight lasts <b>30 minutes</b>. The more damage — the better the rewards for everyone and for the alliance. A good source of Antitoxin and Raven materials."
 ],
 [
 "<img src=\"assets/shots/ev-cheese.webp\" alt=\"Окно события «Сырная ловушка»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:59.3%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:59.3%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:88.4%;top:92%;width:8.5%;aspect-ratio:1\"></span>",
-""
+"<img src=\"assets/shots/ev-cheese.webp\" alt=\"The Cheese Trap event window\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:59.3%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:59.3%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:88.4%;top:92%;width:8.5%;aspect-ratio:1\"></span>"
 ],
 [
 "Вкладка «Сырная ловушка»",
-""
+"The «Cheese Trap» tab"
 ],
 [
 "Переключатель «Сырная ловушка I» / «Сырная ловушка II», ниже «Данные бонуса» — уровень усиления от взносов и прибавка к урону. Внизу: <b>«Награда»</b>, большая кнопка <b>«Обзор»</b> (переносит к ловушке на карте) и <b>«Взнос»</b> — справа внизу, туда кладут Мышиную приманку.",
-""
+"The «Cheese Trap I» / «Cheese Trap II» toggle, below it «Bonus Details» — the boost level from donations and the damage bonus. At the bottom: <b>Reward</b>, the big <b>View</b> button (takes you to the trap on the map) and <b>Donate</b> — at the bottom right, where Mouse Lures go."
 ],
 [
 "Как это устроено",
-""
+"How it works"
 ],
 [
 "<b>Лидеры выбирают время и сложность</b>",
-""
+"<b>Leaders pick the time and difficulty</b>"
 ],
 [
 "R4 или R5 выбирают ловушку I или II, уровень и время начала. Выбрали одну — вторая блокируется. Нужно минимум 20 участников. Если не назначить до 22:00 по игре (03:00 МСК) в последний день — ловушка пропадёт.",
-""
+"R4 or R5 choose trap I or II, the level and the start time. Choosing one locks the other. At least 20 participants are needed. If it isn't scheduled by 22:00 game time (03:00 Moscow) on the last day, the trap is lost."
 ],
 [
 "<b>Все кладут Мышиную приманку</b>",
-""
+"<b>Everyone donates Mouse Lures</b>"
 ],
 [
 "Кнопка <b>«Взнос»</b> справа внизу окна события (в рамке на картинке выше). За это ты получаешь монеты альянса, а ловушка — больше урона. До лимита усиление растёт, после — дают только монеты.",
-""
+"The <b>Donate</b> button at the bottom right of the event window (framed in the picture above). You get Alliance Coins for it, and the trap gets more damage. Up to the limit the boost grows, after that only coins are given."
 ],
 [
 "<b>В назначенное время R4/R5 запускают ловушку</b>",
-""
+"<b>At the set time R4/R5 launch the trap</b>"
 ],
 [
 "Крыса попадается, и у альянса 30 минут. Бить её можно только штурмами.",
-""
+"The Rat gets caught, and the alliance has 30 minutes. It can only be hit with rallies."
 ],
 [
 "<b>Бей только до своих личных наград — не все 30 минут</b>",
-""
+"<b>Hit only until your personal rewards — not all 30 minutes</b>"
 ],
 [
 "Нажми на ловушку → «Ранг»: там видно, сколько личного урона нужно на награды и сколько ты уже нанёс. Добрал нужную планку — <b>остановись</b>. Если бить все 30 минут, просто потеряешь войска: Крыса с каждой фазой бьёт сильнее, а награды сверх планки не растут.",
-""
+"Tap the trap → «Rank»: it shows how much personal damage the rewards need and how much you have dealt. Reached the bar — <b>stop</b>. If you hit for all 30 minutes you just lose troops: the Rat hits harder with each phase, and rewards above the bar don't grow."
 ],
 [
 "<b>Чей штурм бьёт сильнее.</b> Игра даёт бонус к урону штурмам, которые начал руководитель альянса: штурм <b>R5 или R4 с титулом — +5%</b> урона, штурм <b>R4 без титула — +2,5%</b>. Поэтому вступай в штурмы лидеров, а не создавай свои.",
-""
+"<b>Whose rally hits harder.</b> The game gives a damage bonus to rallies started by alliance leadership: a rally by <b>R5 or a titled R4 — +5%</b> damage, by an <b>untitled R4 — +2.5%</b>. So join the leaders' rallies instead of starting your own."
 ],
 [
 "<b>Кнопка «Участие офлайн».</b> В окне ловушки можно включить «Участие офлайн». Тогда, пока тебя нет в игре, твой <b>самый сильный отряд</b> сам вступит в штурм за 20 секунд до конца сбора, если в нём есть место. Игра честно предупреждает: это может привести к потерям войск. Включай, только если уходишь и лазарет пустой.",
-""
+"<b>The «Join Offline» button.</b> In the trap window you can turn on «Join Offline». Then, while you are out of the game, your <b>strongest squad</b> joins a rally by itself 20 seconds before the gathering ends, if there is room. The game honestly warns: this may lead to troop losses. Turn it on only if you are leaving and your Infirmary is empty."
 ],
 [
 "Личный урон",
-""
+"Personal damage"
 ],
 [
 "Нажми на ловушку → «Ранг»: видно, сколько урона нужно и сколько ты нанёс. Добрал планку — остановись. Тот, кто нанёс больше всех урона в альянсе, получает в 1–10 раз больше наград альянса.",
-""
+"Tap the trap → «Rank»: it shows how much damage is needed and how much you have dealt. Reached the bar — stop. Whoever dealt the most damage in the alliance gets 1–10 times more alliance rewards."
 ],
 [
 "Сложность",
@@ -1165,7 +1165,7 @@
 ],
 [
 "Каждый новый уровень Крысы примерно в 4 раза сложнее. Повышайте уровень с умом: войск теряется больше.",
-""
+"Each new Rat level is about 4 times harder. Raise the level wisely: more troops are lost."
 ],
 [
 "Лечение",
@@ -1173,39 +1173,39 @@
 ],
 [
 "После каждой атаки лечи войска, чтобы лазарет не переполнился. С помощью альянса это быстро.",
-""
+"Heal troops after each attack so the Infirmary doesn't overflow. With alliance help it's quick."
 ],
 [
 "Каждый день, кроме воскресенья",
-""
+"Every day except Sunday"
 ],
 [
 "Король демонов (мировой босс)",
-""
+"Demon King (world boss)"
 ],
 [
 "<img src=\"assets/shots/ev-demon.webp\" alt=\"Окно события «Король Демонов: Колдун скверны»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:50%;top:86.8%;width:89.3%;aspect-ratio:18.5\"></span>",
-""
+"<img src=\"assets/shots/ev-demon.webp\" alt=\"The Demon King: Warlock Blight event window\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:50%;top:86.8%;width:89.3%;aspect-ratio:18.5\"></span>"
 ],
 [
 "Вкладка «Король Демонов: Колдун скверны»",
-""
+"The «Demon King: Warlock Blight» tab"
 ],
 [
 "Вкладка называется по сегодняшнему боссу: «Колдун скверны», «Рейнджер скверны» или «Воин скверны». В окне — сколько до конца дня, какой фракции обещан бонус, «Осталось атак» и кнопка <b>«Бой»</b>: она переносит к боссу на карте.",
-""
+"The tab is named after today's boss: «Warlock Blight», «Ranger Blight» or «Warrior Blight». The window shows how long until the day ends, which faction gets the bonus, «Attacks Left» and the <b>Battle</b> button: it takes you to the boss on the map."
 ],
 [
 "Босс на карте мира. Нужно Святилище <b>8 уровня и выше</b>. <b>10 атак в день</b>, штурмы нельзя — бьёшь только сам. Рейтинг дня считается по твоему <b>самому сильному одному удару</b>. За число атак тоже дают награды.",
-""
+"A boss on the world map. You need Sanctuary <b>level 8 or higher</b>. <b>10 attacks a day</b>, no rallies — you hit only by yourself. The daily ranking counts your <b>strongest single hit</b>. The number of attacks also gives rewards."
 ],
 [
 "Король демонов <b>не бьёт в ответ</b>, поэтому танки против него не нужны — только урон.",
-""
+"The Demon King <b>doesn't hit back</b>, so you don't need tanks against him — only damage."
 ],
 [
 "<b>Почему «каждый день, кроме воскресенья».</b> На самом деле это <b>три разных события</b>, каждое идёт по два дня в неделю: Колдун — понедельник и четверг, Рейнджер — вторник и пятница, Воин — среда и суббота. Вместе и выходит шесть дней без воскресенья. Поэтому фракция босса и меняется: это просто сегодня другое событие.",
-""
+"<b>Why «every day except Sunday».</b> It is actually <b>three different events</b>, each running two days a week: Warlock — Monday and Thursday, Ranger — Tuesday and Friday, Warrior — Wednesday and Saturday. Together that makes six days without Sunday. That's why the boss's faction changes: it is simply a different event today."
 ],
 [
 "День",
@@ -1213,127 +1213,127 @@
 ],
 [
 "Бей героями",
-""
+"Hit with heroes"
 ],
 [
 "Пн, Чт",
-""
+"Mon, Thu"
 ],
 [
 "<img class=\"i\" src=\"assets/game/boss-demon-mage.png\" alt=\"\">Колдун скверны",
-""
+"<img class=\"i\" src=\"assets/game/boss-demon-mage.png\" alt=\"\">Warlock Blight"
 ],
 [
 "<b>Воинами</b>",
-""
+"<b>Warriors</b>"
 ],
 [
 "Вт, Пт",
-""
+"Tue, Fri"
 ],
 [
 "<img class=\"i\" src=\"assets/game/boss-demon-ranger.png\" alt=\"\">Рейнджер скверны",
-""
+"<img class=\"i\" src=\"assets/game/boss-demon-ranger.png\" alt=\"\">Ranger Blight"
 ],
 [
 "<b>Колдунами</b>",
-""
+"<b>Warlocks</b>"
 ],
 [
 "Ср, Сб",
-""
+"Wed, Sat"
 ],
 [
 "<img class=\"i\" src=\"assets/game/boss-demon-warrior.png\" alt=\"\">Воин скверны",
-""
+"<img class=\"i\" src=\"assets/game/boss-demon-warrior.png\" alt=\"\">Warrior Blight"
 ],
 [
 "<b>Рейнджерами</b>",
-""
+"<b>Rangers</b>"
 ],
 [
 "Какая фракция бьёт сильнее — написано в самой игре, в правилах события. А вот <b>насколько</b> сильнее, игра не пишет: цифра «+50%» ходит по гайдам игроков, но подтвердить её по игре не удалось. Фракцию соблюдай обязательно, а на точный процент не опирайся.",
-""
+"Which faction hits harder is written in the game itself, in the event rules. But <b>how much</b> harder, the game doesn't say: the «+50%» figure circulates in player guides, but we couldn't confirm it in the game. Always follow the faction, but don't rely on an exact percentage."
 ],
 [
 "Как собрать отряд — в разделе <a href=\"squads.html#boss\">Отряды → Король демонов</a>.",
-""
+"How to build a squad — in <a href=\"squads.html#boss\">Squads → Demon King</a>."
 ],
 [
 "<b>Фишка:</b> если твой отряд долго идёт куда-то далеко, отправь его в атаку на Короля демонов — путь до демона и обратно сократится до 30 секунд. Так можно быстро вернуть отряд домой.",
-""
+"<b>Trick:</b> if your squad is on a long march far away, send it to attack the Demon King — the trip to the demon and back shrinks to 30 seconds. That's a quick way to bring a squad home."
 ],
 [
 "<b>Перед ударом</b> разведай любую цель — включится «Боевое безумие», и удар будет сильнее. Проверь, что оно горит, и бей.",
-""
+"<b>Before hitting</b>, scout any target — «War Frenzy» turns on and the hit is stronger. Check that it is lit, then hit."
 ],
 [
 "Во время КвК урон 200 лучших игроков сервера складывается. Сервер с большим уроном получает 250 000 очков.",
-""
+"During Kingdom War the damage of the kingdom's top 200 players is added up. The kingdom with more damage gets 250,000 points."
 ],
 [
 "Пн и Чт · 4 захода по 3 часа",
-""
+"Mon and Thu · 4 runs of 3 hours"
 ],
 [
 "<img src=\"assets/shots/ev-shadow.webp\" alt=\"Окно события «Теневая скверна»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span>",
-""
+"<img src=\"assets/shots/ev-shadow.webp\" alt=\"The Shadow Blight event window\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span>"
 ],
 [
 "Вкладка «Теневая скверна»",
-""
+"The «Shadow Blight» tab"
 ],
 [
 "Заголовок окна в игре — «Тень скверны». Сверху отсчёт до конца захода, внизу — какой босс сейчас на карте и сколько у него здоровья. Справа — «Ранг».",
-""
+"The window title in the game is «Shadow Blight». At the top — the countdown to the end of the run, at the bottom — which boss is on the map now and how much HP it has. On the right — «Rank»."
 ],
 [
 "Что важно знать",
-""
+"What to know"
 ],
 [
 "<b>Это отдельное событие, а не обычный Король демонов.</b> В игре у него своё окно, свои награды и своя почта («Теневая скверна — Награда за убийство»).",
-""
+"<b>This is a separate event, not the regular Demon King.</b> In the game it has its own window, its own rewards and its own mail (a Shadow Blight kill reward)."
 ],
 [
 "<b>Когда:</b> понедельник и четверг, <b>четыре захода в сутки</b> — в 00:00, 06:00, 12:00 и 18:00 по времени сервера (это 05:00, 11:00, 17:00 и 23:00 по Москве). Каждый заход босс стоит на карте <b>3 часа</b>, потом исчезает до следующего.",
-""
+"<b>When:</b> Monday and Thursday, <b>four runs a day</b> — at 00:00, 06:00, 12:00 and 18:00 server time (that is 05:00, 11:00, 17:00 and 23:00 Moscow). Each run the boss stays on the map for <b>3 hours</b>, then disappears until the next one."
 ],
 [
 "<b>Чем отличается от обычного:</b> здесь <b>5 атак в день</b>, а не 10. Штурм так же запрещён, нужно Святилище 8. Ранг — по самому сильному одному удару за день.",
-""
+"<b>How it differs from the regular one:</b> here you get <b>5 attacks a day</b>, not 10. Rallies are also forbidden, Sanctuary 8 is needed. The ranking is by the strongest single hit of the day."
 ],
 [
 "Следить за боссом удобнее через само окно события: там видно «Осталось атак» и обратный отсчёт до следующего появления.",
-""
+"It is easier to track the boss through the event window itself: it shows «Attacks Left» and the countdown to the next appearance."
 ],
 [
 "Альянс · запускают R4/R5",
-""
+"Alliance · started by R4/R5"
 ],
 [
 "<img src=\"assets/shots/ev-hunt.webp\" alt=\"Окно события «Охотничий бой»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:50.1%;top:93.2%;width:38.1%;aspect-ratio:3.11\"></span>",
-""
+"<img src=\"assets/shots/ev-hunt.webp\" alt=\"The Hunt Battle event window\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:32.4%;top:10.7%;width:26.1%;aspect-ratio:2.45\"></span><span class=\"arrow\" style=\"left:32.4%;top:20%;--rot:-90deg\"></span><span class=\"ring rect\" style=\"left:50.1%;top:93.2%;width:38.1%;aspect-ratio:3.11\"></span>"
 ],
 [
 "Вкладка «Охотничий бой»",
-""
+"The «Hunt Battle» tab"
 ],
 [
 "Пока R4/R5 не начали, в окне написано «Ожидается начало R4/R5». Посередине — плитки сложности 1–5: выбранная обведена золотом, с замком — ещё закрытые. Лидер жмёт <b>«Выберите сложность»</b> — внизу посередине, выбирает уровень, и бой стартует. Награды за выбранную сложность — кнопка «Награда» справа вверху.",
-""
+"Until R4/R5 start it, the window says «Awaiting R4/R5 to start». In the middle — difficulty tiles 1–5: the chosen one is outlined in gold, locked ones are not open yet. The leader taps <b>Select Difficulty</b> — at the bottom center, picks a level, and the battle starts. Rewards for the chosen difficulty — the «Reward» button at the top right."
 ],
 [
 "Как идёт бой",
-""
+"How the battle goes"
 ],
 [
 "Запускают <b>R4 или R5</b>, и только если в альянсе <b>больше 20 участников</b>. За одно событие альянс может начать бой <b>один раз</b> и выбрать <b>только один</b> уровень сложности — переиграть нельзя.",
-""
+"It is started by <b>R4 or R5</b>, and only if the alliance has <b>more than 20 members</b>. Per event an alliance can start the battle <b>once</b> and choose <b>only one</b> difficulty level — no do-overs."
 ],
 [
 "После запуска даётся <b>5 минут на подготовку</b>: на территории альянса появляются скопления скверны. Потом идут <b>5 волн</b>, каждая следующая сложнее. Чем больше скверны успели перебить, тем лучше награды.",
-""
+"After launch there are <b>5 minutes to prepare</b>: Blight clusters appear on alliance territory. Then come <b>5 waves</b>, each harder than the last. The more Blight you managed to kill, the better the rewards."
 ],
 [
 "<b>Важная поблажка:</b> в этом событии время марша и возвращения войск <b>фиксированное — 15 секунд</b>. Поэтому участвовать можно, даже если твой город стоит далеко от территории альянса. Переезжать не надо.",
