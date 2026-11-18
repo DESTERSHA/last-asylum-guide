@@ -517,7 +517,7 @@
         (pct ? "<span>Наносит " + pct + "% атаки физич. урона 2 противникам с наибольшим здоровьем (перезарядка: 13 сек.)</span>" : "") + '</div></div><ul>' +
         STAR.map(function (t, i) { return "<li" + (i < st ? ' class="on"' : "") + '><span class="n">' + "★".repeat(i + 1) + "</span><span>" + t + "</span></li>"; }).join("") + "</ul></div></div></div>";
     };
-    (R ? Promise.resolve(null) : get("x/" + ("0" + (Number(uid) % 32)).slice(-2) + ".json").catch(function () { return {}; })).then(function (x) {
+    Promise.resolve({}).then(function (x) {
       var d = R ? fromRaw(R) : x[uid]; if (d) { if (d.log && d.log.length) X.log = d.log; $("pdef").innerHTML = squadsBlock(d.squads) + defenseBlock(d.arena) + ravenBlock(d.arena && d.arena.raven); }
       pane("h"); bindPills("ptabs", pane);
     });
