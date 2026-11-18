@@ -24,8 +24,10 @@ PAGES = [
     ("rules", "btn-caravan", "Правила"),
     ("glossary", "btn-search", "Слова"),
     ("tips", "diamond", "Фишки"),
+    ("cabinet", "diamond", "Кабинет"),
 ]
 
+HIDDEN = {"cabinet"}  # страницы без пункта в меню (кабинет открывается из шапки)
 TEMPLATE = """<!doctype html>
 <html lang="ru">
 <head>
@@ -49,6 +51,7 @@ TEMPLATE = """<!doctype html>
   <nav class="main" aria-label="Разделы">
 {nav}
   </nav>
+  <a class="cab-link" href="cabinet.html" title="Кабинет: избранные разделы, события, альянсы и игроки"><span class="ic">★</span>Кабинет<i data-fav-count></i></a>
   <div class="clock" title="Разница между временем сервера и московским — 5 часов. На сервере время меньше."><div><b data-clock="srv">--:--</b><span>в игре</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
 </div></header>
 <main>
@@ -60,6 +63,7 @@ TEMPLATE = """<!doctype html>
 </footer>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
 <script src="assets/app.js?v={ver}"></script>
+<script src="assets/fav.js?v={ver}"></script>
 </body>
 </html>
 """
@@ -68,6 +72,8 @@ TEMPLATE = """<!doctype html>
 def nav_html(current):
     out = []
     for slug, icon, name in PAGES:
+        if slug in HIDDEN:
+            continue
         cls = ' class="on" aria-current="page"' if slug == current else ""
         out.append(f'    <a href="{slug}.html"{cls}><img src="assets/game/{icon}.png" alt="">{name}</a>')
     return "\n".join(out)
@@ -75,7 +81,7 @@ def nav_html(current):
 
 def main():
     h = hashlib.sha1()
-    for f in ("assets/style.css", "assets/app.js"):
+    for f in ("assets/style.css", "assets/app.js", "assets/fav.js"):
         h.update((ROOT / f).read_bytes())
     ver = h.hexdigest()[:10]
     for slug, _, _ in PAGES:
