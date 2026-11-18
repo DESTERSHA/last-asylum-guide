@@ -1,2 +1,1 @@
-/* адрес и публичный ключ базы Supabase (не секретные). Пусто — вход выключен. */
-window.LA_SB = { url: "", key: "" };
+window.LA_SB = { url: "https://mhicplqgnnvoloyjmhud.supabase.co", key: "sb_publishable_piDd1XwlLrQuLZIVUCi3mw_bSqPRba9" };
