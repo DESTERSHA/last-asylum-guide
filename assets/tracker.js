@@ -298,7 +298,7 @@
       if (mvCur !== c) return;
       if (r.error) { c.el.innerHTML = '<p class="ap-empty">Не удалось загрузить данные: ' + esc(r.error.message) + "</p>"; return; }
       var list = (r.data || []).map(function (x) { return { t: x.t, kind: x.kind, uid: x.uid, nick: x.nick, power: x.power, from: x.from_abbr, now: x.now_abbr, al: x.al_abbr }; });
-      var note = '<div class="ap-demo"><b>Настоящие данные · подписка</b><span>Вступления и выходы по альянсам топ-30 с 27 октября 2026. Обновляются раз в 30 минут.</span></div>';
+      var note = '<div class="ap-demo"><b>Настоящие данные · подписка</b><span>Вступления и выходы по альянсам топ-30 с 27 октября 2026. Обновляются раз в 30 минут. Время — когда трекер заметил переход, поэтому у нескольких игроков оно может совпадать.</span></div>';
       c.el.innerHTML = list.length ? moveRows(list, note, c.f) : note + '<p class="ap-empty">' + (c.f.uid ? "Этот игрок за это время не менял альянс среди топ-30." : "Пока никто не вступал и не выходил.") + "</p>";
     });
   }
