@@ -40,11 +40,21 @@
     favDel: function (url) { if (sb && state.user) sb.from("favorites").delete().eq("user_id", state.user.id).eq("url", url).then(function (r) { if (r.error) console.warn(r.error); }); }
   };
   if (!sb) { emit(); return; }
-  sb.auth.onAuthStateChange(async function (ev, session) {
+  /* Внутри этого сигнала библиотека держит свой замок: запрос к базе прямо отсюда ждёт сам себя и виснет навсегда.
+     Поэтому здесь только запоминаем пользователя, а запросы — следующим шагом (setTimeout). */
+  var seq = 0;
+  sb.auth.onAuthStateChange(function (ev, session) {
     state.user = session ? session.user : null;
-    await loadProfile();
-    if (state.user && (ev === "SIGNED_IN" || ev === "INITIAL_SESSION")) await syncFavs();
-    emit();
-    document.querySelectorAll("[data-acc-name]").forEach(function (e) { e.textContent = state.user ? "Кабинет" : "Войти"; });
+    var my = ++seq;
+    setTimeout(async function () {
+      try {
+        await loadProfile();
+        if (my !== seq) return;
+        if (state.user && (ev === "SIGNED_IN" || ev === "INITIAL_SESSION")) await syncFavs();
+      } catch (e) { console.warn("Кабинет: не удалось загрузить аккаунт", e); }
+      if (my !== seq) return;
+      emit();
+      document.querySelectorAll("[data-acc-name]").forEach(function (e) { e.textContent = state.user ? "Кабинет" : "Войти"; });
+    }, 0);
   });
 })();
