@@ -1,110 +1,106 @@
-0	Что открывается на каком уровне Святилища — с 1 по 30
-1	Что появляется
-2	Старт
-3	<span class="hn"><img class="i" src="assets/game/bld/1001.png" alt="">Святилище</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">Ферма</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">Лесопилка</span><span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">Цветник</span><span class="hn"><img class="i" src="assets/game/bld/5021.png" alt="">Резиденция</span>
-4	<span class="hn"><img class="i" src="assets/game/bld/5031.png" alt="">Хижина строителя</span><span class="hn"><img class="i" src="assets/game/bld/5023.png" alt="">Зерновой склад</span><span class="hn"><img class="i" src="assets/game/bld/5024.png" alt="">Древесный склад</span><span class="hn"><img class="i" src="assets/game/bld/5025.png" alt="">Травяной склад</span>
-5	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены</span><span class="hn"><img class="i" src="assets/game/c-squad.png" alt="">Отряд 1</span><span class="hn"><img class="i" src="assets/game/bld/1008.png" alt="">Мастерская снаряжения</span><span class="hn"><img class="i" src="assets/game/bld/5008.png" alt="">Таверна</span><span class="hn"><img class="i" src="assets/game/bld/5002.png" alt="">Лагерь исследователя</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">2-я Ферма</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">2-я Лесопилка</span><span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">2-й Цветник</span>
-6	<span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">Мастерская противоядий</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">Плавильный цех</span><span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">Ткацкая мастерская</span><span class="hn"><img class="i" src="assets/game/bld/5035.png" alt="">Мастерская эпиграфов</span><span class="hn"><img class="i" src="assets/game/c-squad.png" alt="">Отряд 4 (с месячным пропуском)</span>
-7	<span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон ×2</span><span class="hn"><img class="i" src="assets/game/bld/5006.png" alt="">Казарма</span><span class="hn"><img class="i" src="assets/game/bld/5033.png" alt="">Отряд разведки</span><span class="hn"><img class="i" src="assets/game/bld/1006.png" alt="">Соколиная башня</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса</span><span class="hn"><img class="i" src="assets/game/bld/5040.png" alt="">Кочевой торговец</span>
-8	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория</span><span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">Лазарет</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина</span><span class="hn"><img class="i" src="assets/game/bld/5036.png" alt="">Гнездо ворона</span><span class="hn"><img class="i" src="assets/game/bld/5010.png" alt="">Арена</span><span class="hn"><img class="i" src="assets/game/bld/5053.png" alt="">Храм</span>
-9	<span class="hn"><img class="i" src="assets/game/bld/5049.png" alt="">Сторожевая башня</span><span class="hn"><img class="i" src="assets/game/c-squad.png" alt="">Отряд 2</span><span class="hn"><img class="i" src="assets/game/bld/5039.png" alt="">Зал реликвий</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">3-я Ферма</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">3-я Лесопилка</span>
-10	<span class="hn"><img class="i" src="assets/game/bld/5047.png" alt="">2-й верстак (2-я лаборатория)</span><span class="hn"><img class="i" src="assets/game/bld/5029.png" alt="">Центр тайных операций</span><span class="hn"><img class="i" src="assets/game/bld/5038.png" alt="">Монумент</span>
-11	<span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">2-я Мастерская противоядий</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">2-й Плавильный цех</span>
-12	<span class="hn"><img class="i" src="assets/game/bld/5045.png" alt="">Статуя колдуна</span><span class="hn"><img class="i" src="assets/game/bld/5051.png" alt="">Личная конюшня</span><span class="hn"><img class="i" src="assets/game/bld/5052.png" alt="">Конюшня альянса</span><span class="hn"><img class="i" src="assets/game/bld/5033.png" alt="">2-й Отряд разведки</span><span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">2-я Ткацкая мастерская</span>
-13	<span class="hn"><img class="i" src="assets/game/bld/5046.png" alt="">Статуя рейнджера</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">4-я Ферма</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">4-я Лесопилка</span>
-14	<span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">3-я Мастерская противоядий</span><span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">2-й Лазарет</span>
-15	<span class="hn"><img class="i" src="assets/game/bld/5056.png" alt="">Статуя лорда</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">3-й Плавильный цех</span><span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">3-я Ткацкая мастерская</span>
-16	<span class="hn"><img class="i" src="assets/game/bld/5034.png" alt="">Мастерская ворона</span><span class="hn"><img class="i" src="assets/game/bld/5054.png" alt="">Зал чести</span><span class="hn"><img class="i" src="assets/game/bld/5006.png" alt="">2-я Казарма</span>
-17	<span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">4-я и 5-я Мастерская противоядий</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">4-й Плавильный цех</span>
-18	<span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">3-й Цветник</span><span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">3-й Полигон</span>
-19	<span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">3-й Лазарет</span><span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">4-я Ткацкая мастерская</span>
-20	<span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">4-й Цветник</span><span class="hn"><img class="i" src="assets/game/bld/5033.png" alt="">3-й Отряд разведки</span>
-21	<span class="hn"><img class="i" src="assets/game/c-squad.png" alt="">Отряд 3</span><span class="hn"><img class="i" src="assets/game/bld/5006.png" alt="">3-я Казарма</span><span class="hn"><img class="i" src="assets/game/bld/5042.png" alt="">5-й Плавильный цех</span>
-22	<span class="hn"><img class="i" src="assets/game/bld/5043.png" alt="">5-я Ткацкая мастерская</span>
-23	<span class="hn"><img class="i" src="assets/game/bld/5055.png" alt="">Солдатский приют</span>
-24	<span class="more">Новых зданий нет — каждый уровень поднимает потолок всех зданий и героев (+5 к уровню героев за каждый уровень Святилища, на 30-м — 150).</span>
-25	«2-я», «3-я» — дополнительная копия здания, которую можно поставить с этого уровня. Ещё по одной Ферме, Лесопилке, Полигону, Цветнику, Лазарету и Казарме дают исследования Лаборатории. Мастерская эпиграфов строится рано, но сами эпиграфы включаются примерно на 78-й день сервера.
-26	Что нужно для каждого уровня Святилища — до 30
-27	Здания, которые надо поднять до указанного уровня, и цена улучшения <b>без ускорений и скидок</b> (в игре будет меньше). Зерна и древесины нужно поровну. «Герои до» — потолок уровня героев после улучшения.
-28	Сначала поднять
-29	Зерно и древесина
-30	Травы
-31	Герои до
-32	2 с
-33	3 с
-34	<span class="hn"><img class="i" src="assets/game/bld/5024.png" alt="">Древесный склад 1</span><span class="hn"><img class="i" src="assets/game/bld/5023.png" alt="">Зерновой склад 1</span><span class="hn"><img class="i" src="assets/game/bld/5025.png" alt="">Травяной склад 1</span>
-35	5 мин
-36	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 3</span>
-37	10 мин
-38	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 5</span>
-39	34 мин
-40	<span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 4</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 3</span>
-41	235,8 тыс.
-42	1 ч 30 мин
-43	<span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 6</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 5</span>
-44	395,6 тыс.
-45	3 ч 1 мин
-46	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 8</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 7</span>
-47	605,8 тыс.
-48	208,7 тыс.
-49	4 ч 16 мин
-50	<span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 9</span><span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">Лазарет 7</span>
-51	748,7 тыс.
-52	232,9 тыс.
-53	5 ч 35 мин
-54	<span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 10</span><span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 7</span>
-55	1,85 млн
-56	601,8 тыс.
-57	7 ч 14 мин
-58	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 11</span><span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 10</span><span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">Мастерская противоядий 7</span>
-59	3,1 млн
-60	959 тыс.
-61	9 ч 24 мин
-62	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 12</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 11</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">Ферма 7</span>
-63	3,52 млн
-64	1,08 млн
-65	12 ч 13 мин
-66	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 13</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина 12</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">Лесопилка 7</span>
-67	4,91 млн
-68	1,65 млн
-69	15 ч 53 мин
-70	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 14</span><span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 14</span><span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">Цветник 7</span>
-71	6,47 млн
-72	2,29 млн
-73	22 ч 15 мин
-74	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 15</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина 14</span><span class="hn"><img class="i" src="assets/game/bld/5023.png" alt="">Зерновой склад 7</span>
-75	11,9 млн
-76	3,97 млн
-77	1 д 7 ч 9 мин
-78	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 16</span><span class="hn"><img class="i" src="assets/game/bld/5006.png" alt="">Казарма 15</span><span class="hn"><img class="i" src="assets/game/bld/5024.png" alt="">Древесный склад 7</span>
-79	16,67 млн
-80	5,14 млн
-81	1 д 19 ч 36 мин
-82	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 17</span><span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 17</span><span class="hn"><img class="i" src="assets/game/bld/5025.png" alt="">Травяной склад 7</span>
-83	28,22 млн
-84	9,33 млн
-85	2 д 13 ч 3 мин
-86	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 18</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина 17</span><span class="hn"><img class="i" src="assets/game/bld/1027.png" alt="">Мастерская противоядий 10</span>
-87	32,71 млн
-88	11,34 млн
-89	3 д 13 ч 28 мин
-90	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 19</span><span class="hn"><img class="i" src="assets/game/bld/1010.png" alt="">Зал альянса 18</span><span class="hn"><img class="i" src="assets/game/bld/1016.png" alt="">Ферма 10</span>
-91	60,03 млн
-92	18,41 млн
-93	4 д 23 ч 40 мин
-94	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 20</span><span class="hn"><img class="i" src="assets/game/bld/1020.png" alt="">Полигон 20</span><span class="hn"><img class="i" src="assets/game/bld/1017.png" alt="">Лесопилка 10</span>
-95	85,45 млн
-96	27,64 млн
-97	6 д 16 ч 20 мин
-98	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 21</span><span class="hn"><img class="i" src="assets/game/bld/5044.png" alt="">Статуя воина 21</span><span class="hn"><img class="i" src="assets/game/bld/1019.png" alt="">Цветник 10</span>
-99	111,2 млн
-100	36,66 млн
-101	8 д 16 ч 26 мин
-102	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 22</span><span class="hn"><img class="i" src="assets/game/bld/1004.png" alt="">Лазарет 22</span><span class="hn"><img class="i" src="assets/game/bld/5023.png" alt="">Зерновой склад 10</span>
-103	145,2 млн
-104	42,76 млн
-105	11 д 6 ч 58 мин
-106	<span class="hn"><img class="i" src="assets/game/bld/1007.png" alt="">Лаборатория 23</span><span class="hn"><img class="i" src="assets/game/bld/1002.png" alt="">Стены 23</span><span class="hn"><img class="i" src="assets/game/bld/5024.png" alt="">Древесный склад 10</span>
-107	171,2 млн
-108	56,25 млн
-109	15 д 19 ч 21 мин
+0	<b>Слабый или новичок</b>
+1	Садись отрядом в <b>гарнизон</b> башни или города, которые держит наш сервер: +25 очков в секунду без драки, за 4 часа — до 360 000 (а на все награды этапов на нашей КвК нужно было около 1,5 млн). Присоединяйся к штурмам лидера. Свой город держи под щитом и <b>вне</b> Проклятых земель.
+2	<b>Средний</b>
+3	Штурмы на башни и город. Лечись понемногу и возвращайся. Между штурмами — гарнизон.
+4	<b>Сильный</b>
+5	Держать город и башни под ударом, начинать штурмы. По команде — бить вражеские города в Проклятых землях.
+6	<b>Очки за города врага.</b> Пока идёт бой, удачная атака по городу игрока вражеского королевства снимает с него защиту: за каждую снятую единицу защиты — <b>+10</b> личных очков. Если довести город до того, что его вытеснит с места («вытесните территорию вражеского доктора»), — <b>+50 000</b>. Обе строки есть в окне «Получение очков». Бей только тех, кто тебе по силам, и только по команде лидера: проигранная атака — это раненые и очки врагу.
+7	Награды за победную серию дают только тем, у кого больше <b>50 000</b> личных очков. Любой, кто хоть раз зашёл в бой за трон, получает награду за участие.
+8	Чтобы не было хаоса
+9	Короткие команды в чате
+10	В прошлую субботу был бардак, потому что каждый решал сам. Договоримся: команды пишет один человек — лидер боя, остальные делают. Координаты руками никто не набирает и по карте не ищет: лидер кидает точку <b>ссылкой</b>, ты нажимаешь на неё.
+11	<b>ТП</b> + ссылка
+12	Лидер в чате нажимает «Поделиться» на нужной точке — в чате появляется синяя ссылка с координатами. Ты нажимаешь на неё → «Перейти к этим координатам?» → да. Карта прыгает в эту точку: нажми на пустую клетку рядом и переставь туда Святилище (как — в разделе <a href="#jump">выше</a>).
+13	<b>ТП СБОР</b>
+14	Переехать к точке сбора альянса, которую поставили R4/R5. Если ты далеко, игра сама предложит «Перемещение альянса».
+15	<b>ШТУРМ З</b>
+16	Сейчас будет штурм Западной башни — жми «Вступить». Буквы — стороны света: С — Северная, Ю — Южная, З — Западная, В — Восточная башня, ГОРОД — Королевский город.
+17	<b>ГАРНИЗОН В</b>
+18	Отправить свободный отряд в гарнизон Восточной башни.
+19	<b>ЛЕЧИСЬ</b>
+20	Всем вылечить раненых, пока затишье.
+21	<b>НАЗАД</b>
+22	Отходим. Отозвать отряды, не догонять врага.
+23	<b>ЩИТ</b>
+24	Кто вне Проклятых земель и уходит — включить щит.
+25	Частые ошибки
+26	Из-за этого был хаос
+27	<b>Полез один</b>
+28	Одиночный удар по сильному игроку или башне — почти все войска в лазарет. Только штурмом, по команде.
+29	<b>Догонял отступающего врага</b>
+30	Утянули к их толпе — подарил им очки. Держись своих.
+31	<b>Оставил город в Проклятых землях</b>
+32	Щит там не работает. Город сожгут, врагу +50 000, а тебя перекинет в случайное место.
+33	<b>Не лечил раненых</b>
+34	Лазарет полный — каждый новый раненый сразу погибает навсегда.
+35	<b>Отряды на сборе ресурсов</b>
+36	Щит не защищает отряды вне города. Верни всех домой до субботы.
+37	<b>Сжёг ускорения лечения во вторник</b>
+38	Ускорения лечения копи на субботу.
+39	Перед боем
+40	Чек-лист на вечер пятницы
+41	Галочки запоминаются на твоём телефоне.
+42	<img src="assets/game/ev-kvk.png" alt=""><span>Посмотрел «Недельный обзор»: мы нападаем или защищаемся</span>
+43	<img src="assets/game/btn-heal.png" alt=""><span>Все раненые вылечены, лазарет пустой</span>
+44	<img src="assets/game/speed-heal.png" alt=""><span>Есть ускорения лечения (купил в магазине альянса)</span>
+45	<img src="assets/game/go-gather.png" alt=""><span>Все отряды дома, никто не на сборе ресурсов</span>
+46	<img src="assets/game/hero/marlena.png" alt=""><span>Отряд 1 — самые сильные герои, снаряжение надето (золотое)</span>
+47	<img src="assets/game/move-command.png" alt=""><span>Знаю точку сбора и свою башню (спросил лидера)</span>
+48	<img src="assets/game/energy.png" alt=""><span>Будильник на 16:30 по Москве</span>
+49	<img src="assets/game/shield.png" alt=""><span>Ухожу спать — щит включён, город не в Проклятых землях</span>
+50	Сбросить галочки
+51	Не путай
+52	«Королевский переполох» внутри нашего сервера
+53	Что это за бой
+54	Кроме КвК, есть ещё <b>обычный бой за Королевский город внутри нашего сервера</b> — без чужого сервера. Проходит <b>по пятницам в 17:00 по Москве</b> (12:00 в игре), идёт 8 часов. Здесь альянсы нашего сервера бьются друг с другом, и лидер победившего альянса становится королём сервера.
+55	Участвовать за трон может альянс, у которого есть город 6-го уровня. Обычно это топ-альянсы, и бои часто договорные.
+56	Как простому игроку забрать все награды
+57	Переедь в «грязевую» зону вокруг Королевского города.
+58	Атакуй своими самыми слабыми отрядами ресурсные клетки с игроками, помеченные красным молотком (или встань на клетку и жди, пока атакуют тебя).
+59	Лечи только по 200–300 солдат за раз — так тратится минимум ускорений.
+60	Набрал 100 000 очков чести — остановись. Этого хватает на все награды события.
+61	Бонус одной фракции в отряде (до +20%) включается только после первого такого «Королевского переполоха» на сервере.
+62	Король и должности
+63	Королевский город: король, королева, министры
+64	После первого захвата Королевского города лидер альянса, который его держит, становится <b>королём</b>, а на сервере открываются <b>должности</b> — королева и пять министров. Каждая должность даёт своему владельцу большие бонусы: к скорости стройки, исследований, обучения, лечения, к добыче. Должности не навсегда: они по очереди переходят от игрока к игроку, и попасть на них может любой из нас.
+65	<img src="assets/shots/royal-menu.webp" alt="Меню Королевского города на карте: владелец, бонус альянсу, король, кнопка «Управление»" loading="lazy"><span class="ring rect" style="left:83.5%;top:53.9%;width:26.5%;aspect-ratio:2.8"></span>
+66	Нажми на Королевский город
+67	Он в центре карты сервера. В меню: уровень города, <b>«Владение город»</b> — какой альянс его держит, и бонус этому альянсу (сейчас <b>+10% к скорости похода</b>). Ниже — король и кнопка <b>«Управление»</b>. «Событие откроется» — сколько осталось до следующего боя за город.
+68	<img src="assets/shots/royal-manage.webp" alt="Окно «Управление Королевским городом»" loading="lazy"><span class="ring rect" style="left:49.9%;top:54.2%;width:90.7%;aspect-ratio:5.3"></span>
+69	«Управление» → «Официальное назначение»
+70	Окно «Управление Королевским городом»: текущий король и его объявление всему серверу. Ниже — <b>«Официальное назначение»</b> (должности), «Награды Королевского города», «Бывшие короли», «Королевская почта» (письмо короля всем на сервере) и «Значок королевства».
+71	<img src="assets/shots/royal-hall.webp" alt="Зал должностей: король, королева, министры, у каждого — таймер" loading="lazy"><span class="ring rect" style="left:17%;top:79.9%;width:26.3%;aspect-ratio:.71"></span>
+72	Зал должностей
+73	В центре король, под ним <b>королева и пять министров</b>. Под каждым — кто сейчас на посту и <b>таймер</b>: сколько ему осталось. Когда время выходит, должность сама переходит к следующему в очереди. Нажми на нужную должность.
+74	Две верхние — <b>Военный командир</b> и <b>Политический командир</b> — появляются, только если наш сервер победил в Войне королевств как нападающий: тогда король становится <b>Королём битвы</b>, и у сервера на время появляются эти две должности со своими бонусами.
+75	<img src="assets/shots/royal-title.webp" alt="Окно должности «Министр стройки»: бонусы, очередь, «Подать заявку»" loading="lazy"><span class="ring rect" style="left:50.3%;top:92.4%;width:27.1%;aspect-ratio:2.8"></span>
+76	«Подать заявку» — и ждать своей очереди
+77	В окне должности: кто на посту и сколько он уже сидит, <b>какие бонусы даёт</b> должность и <b>«Список автоназначений»</b> — очередь, до 50 человек, с датой и временем, когда каждый вступит в должность, и кто сейчас онлайн. Нажми <b>«Подать заявку»</b> — встанешь в конец очереди. Стрелки по бокам листают должности, «Журнал» — кто сидел раньше.
+78	Что даёт каждая должность
+79	Должность
+80	Бонус владельцу
+81	Когда брать
+82	<b>Министр стройки</b>
+83	Скорость строительства <b>+50%</b>, исследований +25%
+84	Перед долгим улучшением Святилища и больших зданий
+85	<b>Министр развития</b>
+86	Скорость исследований <b>+50%</b>, строительства +25%
+87	Перед долгим исследованием в Лаборатории
+88	<b>Министр войны</b>
+89	Вместимость обучения +20%, скорость обучения +20%
+90	Перед обучением большой партии войск
+91	<b>Министр стратегии</b>
+92	Вместимость лазарета +20%, скорость лечения +20%
+93	После КвК и больших боёв, когда лазарет полон
+94	<b>Министр двора</b>
+95	Продукция зерна, древесины и травы <b>+100%</b>
+96	Когда нужны ресурсы
+97	<b>Королева</b>
+98	Скорость строительства +20%, исследований +20%, обучения +10%. Помогает королю назначать должности и распределяет ресурсы казны
+99	Её назначает король, обычно надолго
+100	<b>Военный и Политический командир</b>
+101	Свои бонусы к характеристикам
+102	Только когда наш король — Король битвы
+103	<b>Каждая должность — ровно 5 минут.</b> Потом она автоматически переходит следующему в очереди. Срок для каждой должности выставляет король; у нас министры сидят по 5 минут, а королева — дольше. В очереди видно, когда именно ты вступишь в должность, — будь в игре в эту минуту.
+104	<b>Как выжать из 5 минут максимум.</b> Бонус к скорости считается, когда процесс <b>запускается</b>. Поэтому заранее накопи ресурсы, а когда сел на «Министра стройки» — сразу запусти самое долгое улучшение; на «Министре развития» — самое долгое исследование; на «Министре войны» — обучение на всю вместимость.
+105	<b>Правила очереди.</b> Заявку можно подать только на одну должность за раз. Отменил заявку — подать снова можно через 30 минут. Нужен достаточный уровень территории, иначе игра не даст подать заявку. Пока в зале нет короля, заявки не принимаются.
