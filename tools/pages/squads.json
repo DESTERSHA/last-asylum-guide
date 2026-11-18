@@ -1,63 +1,63 @@
 [
 [
 "Отряды 1–4: кого куда ставить | Last Asylum: Plague · сервер 397",
-""
+"Squads 1–4: who goes where | Last Asylum: Plague · kingdom 397"
 ],
 [
 "Отряды простыми словами: кто стоит впереди и сзади, как идёт бой, бонус одной фракции, зачем нужны отряды 1–4, составы против монстров, Короля демонов, людей и на арене.",
-""
+"Squads in plain words: who stands in front and behind, how a battle goes, the one-faction bonus, why you need squads 1–4, line-ups against monsters, the Demon King, players and in the arena."
 ],
 [
 "<img src=\"assets/game/c-squad.png\" alt=\"\">Отряды",
-""
+"<img src=\"assets/game/c-squad.png\" alt=\"\">Squads"
 ],
 [
 "Отряды 1–4: кого куда ставить",
-""
+"Squads 1–4: who goes where"
 ],
 [
 "Отряд — это 5 героев и их солдаты. Сила отряда = правильные герои + правильная расстановка + бонус одной фракции. Одни и те же герои могут выиграть или проиграть — всё зависит от того, кто где стоит.",
-""
+"A squad is 5 heroes and their troops. Squad strength = the right heroes + the right positions + the one-faction bonus. The same heroes can win or lose — it all depends on who stands where."
 ],
 [
 "<a class=\"btn pri\" href=\"#formation\">Кто куда</a><a class=\"btn\" href=\"#roles\">Отряды 1–4</a><a class=\"btn\" href=\"#boss\">Король демонов</a><a class=\"btn\" href=\"#pvp\">Против людей</a>",
-""
+"<a class=\"btn pri\" href=\"#formation\">Who goes where</a><a class=\"btn\" href=\"#roles\">Squads 1–4</a><a class=\"btn\" href=\"#boss\">Demon King</a><a class=\"btn\" href=\"#pvp\">Against players</a>"
 ],
 [
 "<img src=\"assets/art/hero-squads.webp\" alt=\"Отряды 1–4\">",
-""
+"<img src=\"assets/art/hero-squads.webp\" alt=\"Squads 1–4\">"
 ],
 [
 "2 впереди, 3 сзади",
-""
+"2 in front, 3 behind"
 ],
 [
 "Впереди два танка. Сзади два героя урона и одна поддержка.",
-""
+"Two tanks in front. Behind — two damage heroes and one support."
 ],
 [
 "Все 5 одной фракции",
-""
+"All 5 of one faction"
 ],
 [
 "Весь отряд получает +20% к атаке, здоровью и защите.",
-""
+"The whole squad gets +20% attack, HP and defense."
 ],
 [
 "Отряд 1 — главный",
-""
+"Squad 1 is the main one"
 ],
 [
 "Он же твоя защита на арене. Все ресурсы — в него.",
-""
+"It is also your arena defense. All resources go into it."
 ],
 [
 "Босс без танков",
-""
+"Boss without tanks"
 ],
 [
 "Король демонов не бьёт в ответ — ставь только урон и поддержку.",
-""
+"The Demon King doesn't hit back — use only damage and support."
 ],
 [
 "Расстановка",
@@ -65,207 +65,207 @@
 ],
 [
 "Кто стоит впереди, кто сзади — и почему",
-""
+"Who stands in front, who behind — and why"
 ],
 [
 "Строй: впереди места 1 и 2, сзади места 3, 4, 5",
-""
+"Formation: slots 1 and 2 in front, slots 3, 4, 5 behind"
 ],
 [
 "ЗАДНИЙ РЯД — урон и поддержка",
-""
+"BACK ROW — damage and support"
 ],
 [
 "главный урон",
-""
+"main damage"
 ],
 [
 "урон",
-""
+"damage"
 ],
 [
 "поддержка",
-""
+"support"
 ],
 [
 "ПЕРЕДНИЙ РЯД — танки",
-""
+"FRONT ROW — tanks"
 ],
 [
 "главный танк",
-""
+"main tank"
 ],
 [
 "второй танк",
-""
+"second tank"
 ],
 [
 "↓ здесь враг ↓",
-""
+"↓ enemy here ↓"
 ],
 [
 "На картинках боя ниже подписи вида «1-3»: первая цифра — отряд (1 — твой, 2 — враг), вторая — место героя по этой схеме.",
-""
+"In the battle pictures below, labels look like «1-3»: the first number is the squad (1 — yours, 2 — the enemy), the second is the hero's slot in this layout."
 ],
 [
 "Как идёт бой — три этапа",
-""
+"How a battle goes — three phases"
 ],
 [
 "<b>Начало: бьют по танкам</b>",
-""
+"<b>Start: they hit the tanks</b>"
 ],
 [
 "Враг делится на две группы. Его места 1, 3 и 4 бьют твоё место 1, а места 2 и 5 — твоё место 2. Значит, <b>в место 1 бьют трое, в место 2 — двое</b>.",
-""
+"The enemy splits into two groups. Its slots 1, 3 and 4 hit your slot 1, and slots 2 and 5 hit your slot 2. So <b>three hit slot 1 and two hit slot 2</b>."
 ],
 [
 "<b>Один танк упал — все бьют второго</b>",
-""
+"<b>One tank falls — everyone hits the second</b>"
 ],
 [
 "Это переломный момент: все пятеро врагов переключаются на оставшегося танка.",
-""
+"This is the turning point: all five enemies switch to the remaining tank."
 ],
 [
 "<b>Оба танка упали — бьют задний ряд</b>",
-""
+"<b>Both tanks fall — they hit the back row</b>"
 ],
 [
 "Обычно это конец боя.",
-""
+"Usually that is the end of the battle."
 ],
 [
 "<b>Вывод:</b> в место 1 — самого живучего танка (Артур). Танк сзади никого не защитит, а хрупкий герой урона впереди умрёт первым.",
-""
+"<b>Takeaway:</b> put the toughest tank (Arthur) in slot 1. A tank in the back protects nobody, and a fragile damage hero in front dies first."
 ],
 [
 "<img src=\"assets/shots/battle-1.webp\" alt=\"Бой, фаза 1: враг бьёт двух танков\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/battle-1.webp\" alt=\"Battle, phase 1: the enemy hits two tanks\" loading=\"lazy\">"
 ],
 [
 "<b>Фаза 1: враг бьёт по двум танкам.</b> Синие подписи — твой отряд, красные — враг; цифра после чёрточки — место героя (1–5). Вражеские места 1, 3 и 4 бьют твоё место 1, места 2 и 5 — твоё место 2.",
-""
+"<b>Phase 1: the enemy hits two tanks.</b> Blue labels — your squad, red — the enemy; the number after the dash is the hero's slot (1–5). Enemy slots 1, 3 and 4 hit your slot 1, slots 2 and 5 hit your slot 2."
 ],
 [
 "<img src=\"assets/shots/battle-2.webp\" alt=\"Бой, фаза 2: танк на месте 1 упал, все бьют второго\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/battle-2.webp\" alt=\"Battle, phase 2: the tank in slot 1 fell, everyone hits the second\" loading=\"lazy\">"
 ],
 [
 "<b>Фаза 2: один танк упал — все бьют второго.</b> Крест — упавший герой. Все пятеро врагов переключились на оставшегося танка.",
-""
+"<b>Phase 2: one tank fell — everyone hits the second.</b> A cross marks a fallen hero. All five enemies switched to the remaining tank."
 ],
 [
 "<img src=\"assets/shots/battle-3.webp\" alt=\"Бой, фаза 3: оба танка упали, враг бьёт задний ряд\" loading=\"lazy\">",
-""
+"<img src=\"assets/shots/battle-3.webp\" alt=\"Battle, phase 3: both tanks fell, the enemy hits the back row\" loading=\"lazy\">"
 ],
 [
 "<b>Фаза 3: танков нет — бьют задний ряд.</b> Теперь удары идут по героям урона и поддержке. Обычно это конец боя.",
-""
+"<b>Phase 3: no tanks — they hit the back row.</b> Now the hits go to damage heroes and support. Usually that is the end of the battle."
 ],
 [
 "Одна фракция",
-""
+"One faction"
 ],
 [
 "Бонус за героев одной фракции",
-""
+"The bonus for heroes of one faction"
 ],
 [
 "Если в отряде несколько героев одной фракции (Воины, Рейнджеры или Колдуны), <b>весь отряд</b> получает прибавку к атаке, здоровью и защите:",
-""
+"If a squad has several heroes of one faction (Warriors, Rangers or Warlocks), <b>the whole squad</b> gets a bonus to attack, HP and defense:"
 ],
 [
 "Кто в отряде",
-""
+"Who is in the squad"
 ],
 [
 "Прибавка",
-""
+"Bonus"
 ],
 [
 "3 героя одной фракции",
-""
+"3 heroes of one faction"
 ],
 [
 "3 одной + 2 другой фракции",
-""
+"3 of one + 2 of another faction"
 ],
 [
 "4 героя одной фракции",
-""
+"4 heroes of one faction"
 ],
 [
 "<b>Бонус включается не сразу</b> — только после первого «Королевского переполоха» на сервере. Так написано в окне отряда.",
-""
+"<b>The bonus doesn't turn on right away</b> — only after the first «Royal City Scramble» in the kingdom. That is what the squad window says."
 ],
 [
 "Брать ли «чужого» пятого героя?",
-""
+"Should you take an «outside» fifth hero?"
 ],
 [
 "Если пятый герой твоей фракции намного слабее (мало звёзд, плохие навыки, нет снаряжения), а «чужой» сильный — оставь чужого. 4 своих + 1 чужой даёт +15%, и это нормально.",
-""
+"If the fifth hero of your faction is much weaker (few stars, poor skills, no gear) and the «outside» one is strong — keep the outside one. 4 of yours + 1 outside gives +15%, and that is fine."
 ],
 [
 "Переходи на всех пятерых одной фракции, когда пятый герой нормально держит свою роль. Позже эпиграфы Ворона, которые работают только на одну фракцию, сделают такой отряд ещё сильнее.",
-""
+"Switch to all five of one faction when the fifth hero holds their role properly. Later, Raven Epigraphs that work for only one faction will make such a squad even stronger."
 ],
 [
 "<b>Как проверить:</b> не смотри на число мощи. Поменяй героя и сравни результат: тот же соперник на арене, тот же урон по боссу.",
-""
+"<b>How to check:</b> don't look at the Might number. Swap the hero and compare the result: the same arena opponent, the same boss damage."
 ],
 [
 "Кто кого бьёт",
-""
+"Who beats whom"
 ],
 [
 "<img src=\"assets/game/fac-war.png\" alt=\"\">Воины",
-""
+"<img src=\"assets/game/fac-war.png\" alt=\"\">Warriors"
 ],
 [
 "Сильнее <b class=\"ran\">Рейнджеров</b>, слабее <b class=\"wlk\">Колдунов</b>.",
-""
+"Stronger than <b class=\"ran\">Rangers</b>, weaker than <b class=\"wlk\">Warlocks</b>."
 ],
 [
 "Артур, Марлена, Харпер, Даскал, Белла, Клэр…",
-""
+"Arthur, Marlena, Harper, Daskal, Bella, Claire…"
 ],
 [
 "<img src=\"assets/game/fac-wlk.png\" alt=\"\">Колдуны",
-""
+"<img src=\"assets/game/fac-wlk.png\" alt=\"\">Warlocks"
 ],
 [
 "Сильнее <b class=\"war\">Воинов</b>, слабее <b class=\"ran\">Рейнджеров</b>.",
-""
+"Stronger than <b class=\"war\">Warriors</b>, weaker than <b class=\"ran\">Rangers</b>."
 ],
 [
 "Ульфрид, Энни, Джестер, Гренвальд, Стеллар, Хастар…",
-""
+"Ulfrid, Annie, Joker, Grenwald, Stellar, Hastar…"
 ],
 [
 "<img src=\"assets/game/fac-ran.png\" alt=\"\">Рейнджеры",
-""
+"<img src=\"assets/game/fac-ran.png\" alt=\"\">Rangers"
 ],
 [
 "Сильнее <b class=\"wlk\">Колдунов</b>, слабее <b class=\"war\">Воинов</b>.",
-""
+"Stronger than <b class=\"wlk\">Warlocks</b>, weaker than <b class=\"war\">Warriors</b>."
 ],
 [
 "Шэдоу, Синтия, Красная леди, Луи, Белл, Гриффит…",
-""
+"Shadow, Cynthia, Red Lady, Louis, Bell, Griffith…"
 ],
 [
 "<b>«Сильнее» значит:</b> герой получает на 20% меньше урона от той фракции, которую он бьёт. Так написано в подсказке Арены в самой игре: «Воины получают на 20% меньше урона от рейнджеров», «Рейнджеры — от колдунов», «Колдуны — от воинов». Поэтому перед атакой на игрока посмотри, какой фракции его отряд, и выставь тех, кто против неё сильнее.",
-""
+"<b>«Stronger» means:</b> the hero takes 20% less damage from the faction it beats. That is what the Arena hint in the game says: «Warriors take 20% less damage from Rangers», «Rangers — from Warlocks», «Warlocks — from Warriors». So before attacking a player, check their squad's faction and send those who are strong against it."
 ],
 [
 "Отряды 1, 2, 3 и 4",
-""
+"Squads 1, 2, 3 and 4"
 ],
 [
 "Зачем нужен каждый отряд",
-""
+"What each squad is for"
 ],
 [
 "Отряд",
@@ -273,235 +273,235 @@
 ],
 [
 "Когда открывается",
-""
+"When it unlocks"
 ],
 [
 "Для чего",
-""
+"What for"
 ],
 [
 "Кого ставить",
-""
+"Who to put in"
 ],
 [
 "<b>Отряд 1</b>",
-""
+"<b>Squad 1</b>"
 ],
 [
 "Святилище 4",
-""
+"Sanctuary 4"
 ],
 [
 "Главный боевой: монстры, штурмы, Король демонов, КвК. Он же <b>защита на арене</b>.",
-""
+"The main combat squad: monsters, rallies, the Demon King, Kingdom War. It is also your <b>arena defense</b>."
 ],
 [
 "5 лучших героев, лучше одной фракции. Всё снаряжение и навыки — сюда.",
-""
+"Your 5 best heroes, ideally of one faction. All gear and skills go here."
 ],
 [
 "<b>Отряд 2</b>",
-""
+"<b>Squad 2</b>"
 ],
 [
 "Святилище 8",
-""
+"Sanctuary 8"
 ],
 [
 "Второй боевой: вторая цель, гарнизон в КвК, оборона.",
-""
+"The second combat squad: a second target, a Kingdom War garrison, defense."
 ],
 [
 "Следующие 5 героев. Хорошо собрать <b>из другой фракции</b> — против тех, кто сильнее твоего первого отряда.",
-""
+"The next 5 heroes. Good to build it <b>from another faction</b> — against those who beat your first squad."
 ],
 [
 "<b>Отряд 3</b>",
-""
+"<b>Squad 3</b>"
 ],
 [
 "Святилище 20",
-""
+"Sanctuary 20"
 ],
 [
 "Сбор ресурсов и гарнизон.",
-""
+"Gathering resources and garrison."
 ],
 [
 "Кто остался. Для сбора важны солдаты высокого уровня, а не звёзды героев.",
-""
+"Whoever is left. For gathering, high-level troops matter, not hero stars."
 ],
 [
 "<b>Отряд 4</b>",
-""
+"<b>Squad 4</b>"
 ],
 [
 "Святилище 5 + <b>месячный пропуск</b>",
-""
+"Sanctuary 5 + <b>Monthly Pass</b>"
 ],
 [
 "Сбор (пропуск даёт +15% скорости сбора) или ещё один боевой.",
-""
+"Gathering (the pass gives +15% gathering speed) or one more combat squad."
 ],
 [
 "Как отряд 3. Пропуск кончился — отряд 4 не работает.",
-""
+"Like squad 3. When the pass runs out, squad 4 stops working."
 ],
 [
 "<img src=\"assets/shots/lab.webp\" alt=\"Исследовательская лаборатория: плитки «Отряд 1», «Отряд 2», «Отряд 3»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:50%;top:46%;width:26.5%;aspect-ratio:.64\"></span><span class=\"ring rect\" style=\"left:81.7%;top:46%;width:26.5%;aspect-ratio:.64\"></span><span class=\"ring rect\" style=\"left:18.3%;top:69.8%;width:26.5%;aspect-ratio:.64\"></span>",
-""
+"<img src=\"assets/shots/lab.webp\" alt=\"Research Lab: the Squad 1, Squad 2, Squad 3 tiles\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:50%;top:46%;width:26.5%;aspect-ratio:.64\"></span><span class=\"ring rect\" style=\"left:81.7%;top:46%;width:26.5%;aspect-ratio:.64\"></span><span class=\"ring rect\" style=\"left:18.3%;top:69.8%;width:26.5%;aspect-ratio:.64\"></span>"
 ],
 [
 "ИССЛЕДОВАНИЯ ОТРЯДОВ",
-""
+"SQUAD RESEARCH"
 ],
 [
 "Своя ветка у каждого отряда",
-""
+"Each squad has its own branch"
 ],
 [
 "В Исследовательской лаборатории у отрядов свои плитки — <b>«Отряд 1»</b>, <b>«Отряд 2»</b>, <b>«Отряд 3»</b> (рамки); процент на плитке — сколько ветки уже изучено.",
-""
+"In the Research Lab squads have their own tiles — <b>«Squad 1»</b>, <b>«Squad 2»</b>, <b>«Squad 3»</b> (frames); the percentage on a tile is how much of the branch is already researched."
 ],
 [
 "Ветки отрядов 1 и 4 дешёвые — качай. Ветка 2 дороже в 15 раз, ветка 3 — в 76 раз: в них бери только защиту и здоровье.",
-""
+"Squad 1 and 4 branches are cheap — level them. Branch 2 costs 15 times more, branch 3 — 76 times more: take only defense and HP there."
 ],
 [
 "<img src=\"assets/shots/wall-defend.webp\" alt=\"Окно «Настроить оборону города»: отряды 1–3 и галочки «Присоединиться к обороне»\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:81.1%;top:10.6%;width:31%;aspect-ratio:4.4\"></span>",
-""
+"<img src=\"assets/shots/wall-defend.webp\" alt=\"The Configure City Defense window: squads 1–3 and Join Defense checkboxes\" loading=\"lazy\"><span class=\"ring rect\" style=\"left:81.1%;top:10.6%;width:31%;aspect-ratio:4.4\"></span>"
 ],
 [
 "ОТРЯД НА СТЕНЕ",
-""
+"SQUAD ON THE WALL"
 ],
 [
 "«Настроить оборону города»",
-""
+"«Configure City Defense»"
 ],
 [
 "Нажми на Стены города. В окне — твои отряды по порядку: они сражаются с нападающим <b>в порядке 1–4</b> (стрелки справа меняют порядок). Галочка <b>«Присоединиться к обороне»</b> (рамка) — отряд защищает город.",
-""
+"Tap the city Walls. The window lists your squads in order: they fight the attacker <b>in order 1–4</b> (the arrows on the right change the order). The <b>Join Defense</b> checkbox (frame) — the squad defends the city."
 ],
 [
 "Перед днём набега в Дуэли (суббота) сними галочку у сильных отрядов: если щит слетит, потеряешь меньше. К Осаде нежити — поставь обратно.",
-""
+"Before the raid day in the Duel (Saturday), untick it for strong squads: if your shield drops, you lose less. For the Undead Siege — tick it back."
 ],
 [
 "Готовые составы",
-""
+"Ready-made line-ups"
 ],
 [
 "С кем играть",
-""
+"Who to play with"
 ],
 [
 "Первые два — танки (места 1 и 2), остальные — урон и поддержка (места 3–5).",
-""
+"The first two are tanks (slots 1 and 2), the rest are damage and support (slots 3–5)."
 ],
 [
 "Места 1 → 5",
-""
+"Slots 1 → 5"
 ],
 [
 "Новичок, бесплатно, все 5 Воинов (+20%)",
-""
+"Beginner, free, all 5 Warriors (+20%)"
 ],
 [
 "<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Артур</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\">Белла</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Марлена</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Селия</span></span>",
-""
+"<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Arthur</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\">Bella</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Marlena</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/celia.png\" alt=\"\">Celia</span></span>"
 ],
 [
 "Совсем без золотых героев",
-""
+"No gold heroes at all"
 ],
 [
 "<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\">Белла</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/griffith.png\" alt=\"\">Гриффит</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/greenwald.png\" alt=\"\">Гренвальд</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/stellar.png\" alt=\"\">Стеллар</span></span>",
-""
+"<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\">Bella</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/griffith.png\" alt=\"\">Griffith</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/greenwald.png\" alt=\"\">Grenwald</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/stellar.png\" alt=\"\">Stellar</span></span>"
 ],
 [
 "Нашествие крыс и Король крыс",
-""
+"Rat Invasion and the Rat King"
 ],
 [
 "<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Артур</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\">Белла</span> <i>или</i> <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/griffith.png\" alt=\"\">Гриффит</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Марлена</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/greenwald.png\" alt=\"\">Гренвальд</span> <i>или</i> <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/stellar.png\" alt=\"\">Стеллар</span></span>",
-""
+"<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Arthur</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bella.png\" alt=\"\">Bella</span> <i>or</i> <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/griffith.png\" alt=\"\">Griffith</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Marlena</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/greenwald.png\" alt=\"\">Grenwald</span> <i>or</i> <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/stellar.png\" alt=\"\">Stellar</span></span>"
 ],
 [
 "Против людей",
-""
+"Against players"
 ],
 [
 "<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Артур</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/hastar.png\" alt=\"\">Хастар</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Марлена</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/stellar.png\" alt=\"\">Стеллар</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/ulfrid.png\" alt=\"\">Ульфрид</span> <i>или</i> <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/griffith.png\" alt=\"\">Гриффит</span> <i>или</i> <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Клэр</span></span>",
-""
+"<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Arthur</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/hastar.png\" alt=\"\">Hastar</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Marlena</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/stellar.png\" alt=\"\">Stellar</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/ulfrid.png\" alt=\"\">Ulfrid</span> <i>or</i> <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/griffith.png\" alt=\"\">Griffith</span> <i>or</i> <span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/claire.png\" alt=\"\">Claire</span></span>"
 ],
 [
 "Все Воины, поздняя игра",
-""
+"All Warriors, late game"
 ],
 [
 "<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Артур</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/daskal.png\" alt=\"\">Даскал</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Марлена</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/zoya.png\" alt=\"\">Зоя</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\">Харпер</span></span>",
-""
+"<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/arthur.png\" alt=\"\">Arthur</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/daskal.png\" alt=\"\">Daskal</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/marlena.png\" alt=\"\">Marlena</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/zoya.png\" alt=\"\">Zoya</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/harper.png\" alt=\"\">Harper</span></span>"
 ],
 [
 "Все Рейнджеры",
-""
+"All Rangers"
 ],
 [
 "<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/shadow.png\" alt=\"\">Шэдоу</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/louis.png\" alt=\"\">Луи</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/cynthia.png\" alt=\"\">Синтия</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/red-lady.png\" alt=\"\">Красная леди</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bell.png\" alt=\"\">Белл</span></span>",
-""
+"<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/shadow.png\" alt=\"\">Shadow</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/louis.png\" alt=\"\">Louis</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/cynthia.png\" alt=\"\">Cynthia</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/red-lady.png\" alt=\"\">Red Lady</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/bell.png\" alt=\"\">Bell</span></span>"
 ],
 [
 "Все Колдуны",
-""
+"All Warlocks"
 ],
 [
 "<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/ulfrid.png\" alt=\"\">Ульфрид</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/billy.png\" alt=\"\">Билли</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/annie.png\" alt=\"\">Энни</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/nicole.png\" alt=\"\">Николь</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/jester.png\" alt=\"\">Джестер</span></span>",
-""
+"<span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/ulfrid.png\" alt=\"\">Ulfrid</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/billy.png\" alt=\"\">Billy</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/annie.png\" alt=\"\">Annie</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/nicole.png\" alt=\"\">Nicole</span></span><span class=\"sep\">·</span><span class=\"slot\"><span class=\"hn\"><img class=\"i\" src=\"assets/game/hero/jester.png\" alt=\"\">Joker</span></span>"
 ],
 [
 "Против монстров (скверна)",
-""
+"Against monsters (Blight)"
 ],
 [
 "<img src=\"assets/shots/monster-info.webp\" alt=\"Окно монстра на карте: награды, рекомендуемая мощь, энергия, кнопка «Атака»\"><span class=\"ring rect\" style=\"left:29.3%;top:63.2%;width:52.6%;aspect-ratio:8.4\"></span>",
-""
+"<img src=\"assets/shots/monster-info.webp\" alt=\"Monster window on the map: rewards, recommended Might, Stamina, the Attack button\"><span class=\"ring rect\" style=\"left:29.3%;top:63.2%;width:52.6%;aspect-ratio:8.4\"></span>"
 ],
 [
 "Нажми на монстра: «Реком. мощь» в рамке.",
-""
+"Tap a monster: «Rec. Might» in the frame."
 ],
 [
 "<b>Все пятеро одной фракции</b>",
-""
+"<b>All five of one faction</b>"
 ],
 [
 "+20% ко всему. Монстры не «сильнее» какой-то фракции, поэтому отряд одной фракции здесь выгоднее всего.",
-""
+"+20% to everything. Monsters are not «stronger» against any faction, so a one-faction squad is the best choice here."
 ],
 [
 "<b>Добавь героев, которые сильнее против монстров</b>",
-""
+"<b>Add heroes who are strong against monsters</b>"
 ],
 [
 "Клэр (+15% урона по монстрам трём сильнейшим Воинам), Селия (урон по монстрам и больше ресурсов), Гренвальд, Стеллар. Белла и Луций снижают урон монстров по своим.",
-""
+"Claire (+15% damage to monsters for the three strongest Warriors), Celia (damage to monsters and more resources), Grenwald, Stellar. Bella and Lucius reduce monster damage to your heroes."
 ],
 [
 "<b>Надень фиолетовое снаряжение</b>",
-""
+"<b>Wear purple gear</b>"
 ],
 [
 "Фиолетовые вещи на 10, 20 и 30 уровне получают бонус против монстров. Подробно — в разделе <a href=\"gear.html#why\">Снаряжение</a>.",
-""
+"Purple items get a bonus against monsters at levels 10, 20 and 30. Details — in the <a href=\"gear.html#why\">Gear</a> section."
 ],
 [
 "<b>Не лезь выше своей силы</b>",
-""
+"<b>Don't go above your strength</b>"
 ],
 [
 "Нажми на монстра на карте. Внизу окна — <b>«Реком. мощь»</b>: бей тех, у кого она ниже мощи твоего отряда. Выше — <b>«Гарантировано»</b> (что выпадет точно) и <b>«Возможные награды»</b>, справа внизу — сколько энергии стоит удар (молния). Ударить — круглая кнопка <b>«Атака»</b> под монстром.",
-""
+"Tap a monster on the map. At the bottom of the window is <b>«Rec. Might»</b>: hit those whose value is below your squad's Might. Above it are <b>«Guaranteed»</b> (what drops for sure) and <b>«Potential Rewards»</b>, at the bottom right — how much Stamina a hit costs (lightning). To hit — the round <b>Attack</b> button under the monster."
 ],
 [
 "Мировой босс",
@@ -509,103 +509,103 @@
 ],
 [
 "Против Короля демонов",
-""
+"Against the Demon King"
 ],
 [
 "Босс <b>не бьёт в ответ</b>, поэтому защита не нужна — только урон. Рейтинг дня — по твоему лучшему одному удару.",
-""
+"The boss <b>doesn't hit back</b>, so you need no defense — only damage. The daily ranking is by your best single hit."
 ],
 [
 "<b>Убери танков</b>",
-""
+"<b>Remove the tanks</b>"
 ],
 [
 "4 героя урона + 1 поддержка, или 3 урона + 2 поддержки, которые усиливают сразу нескольких.",
-""
+"4 damage heroes + 1 support, or 3 damage + 2 supports that buff several heroes at once."
 ],
 [
 "<b>Урон — вперёд, поддержку — назад</b>",
-""
+"<b>Damage in front, support behind</b>"
 ],
 [
 "Это начальный вариант. Потом пробуй переставлять по одному герою и записывай урон.",
-""
+"This is a starting point. Then try moving heroes one at a time and write down the damage."
 ],
 [
 "<b>Нужная фракция дня бьёт сильнее</b>",
-""
+"<b>The faction of the day hits harder</b>"
 ],
 [
 "Пн и Чт — Воины, Вт и Пт — Колдуны, Ср и Сб — Рейнджеры. Насколько именно сильнее, игра не пишет. Но если герой нужной фракции намного слабее — бери своего прокачанного.",
-""
+"Mon and Thu — Warriors, Tue and Fri — Warlocks, Wed and Sat — Rangers. The game doesn't say exactly how much harder. But if a hero of the right faction is much weaker — take your leveled one."
 ],
 [
 "<b>Фиолетовые наручи 30 уровня на главных героев урона</b>",
-""
+"<b>Purple level 30 gauntlets on the main damage heroes</b>"
 ],
 [
 "Они дают около 6% урона по монстрам и часто бьют сильнее золотых.",
-""
+"They give about 6% damage to monsters and often hit harder than gold ones."
 ],
 [
 "<b>Перед ударом разведай любую цель</b>",
-""
+"<b>Scout any target before hitting</b>"
 ],
 [
 "Включится «Боевое безумие» — удар станет сильнее.",
-""
+"«War Frenzy» turns on — the hit gets stronger."
 ],
 [
 "<b>Пример сильной связки:</b> Марлена, Клэр, Синтия, Харпер, Белл. Харпер поднимает атаку всем и ещё больше Воинам, Белл — двум самым сильным и всем Рейнджерам, Клэр — урон по монстрам трём сильнейшим Воинам. Марлена получает сразу 4 усиления.",
-""
+"<b>Example of a strong combo:</b> Marlena, Claire, Cynthia, Harper, Bell. Harper raises everyone's attack and Warriors' even more, Bell — the two strongest and all Rangers, Claire — damage to monsters for the three strongest Warriors. Marlena gets 4 buffs at once."
 ],
 [
 "Следи за порядком: если Марлена ударила раньше, чем Харпер дал усиление, урон меньше.",
-""
+"Watch the order: if Marlena hits before Harper gives the buff, the damage is lower."
 ],
 [
 "<b>Облик Святилища «Ворон Чёрная крепость»:</b> просто иметь его — +1% урона по монстрам, надеть — ещё +5%.",
-""
+"<b>The «Black Raven Fortress» Sanctuary skin:</b> just owning it gives +1% damage to monsters, wearing it — another +5%."
 ],
 [
 "Из фиолетовых героев для босса стоит качать навыки только Эш (урон по боссу) и Селии (ресурсы).",
-""
+"Of the purple heroes, for the boss it is only worth leveling the skills of Ash (boss damage) and Celia (resources)."
 ],
 [
 "Против людей и на арене",
-""
+"Against players and in the arena"
 ],
 [
 "<b>Посмотри фракцию врага до атаки</b>",
-""
+"<b>Check the enemy's faction before attacking</b>"
 ],
 [
 "Против Воинов ставь Колдунов, против Колдунов — Рейнджеров, против Рейнджеров — Воинов.",
-""
+"Against Warriors send Warlocks, against Warlocks — Rangers, against Rangers — Warriors."
 ],
 [
 "<b>3 одной фракции + 2 другой — гибкий вариант</b>",
-""
+"<b>3 of one faction + 2 of another — a flexible option</b>"
 ],
 [
 "Даёт +10% и позволяет не проигрывать вчистую никакой фракции. Если враг не сильнее твоей фракции — 4 + 1 (+15%).",
-""
+"Gives +10% and lets you avoid losing outright to any faction. If the enemy doesn't counter your faction — 4 + 1 (+15%)."
 ],
 [
 "<b>Танки — впереди, обязательно</b>",
-""
+"<b>Tanks in front, always</b>"
 ],
 [
 "Хастар, Стеллар, Ульфрид (отражает урон) в боях с людьми ценнее, чем против монстров.",
-""
+"Hastar, Stellar, Ulfrid (reflects damage) are worth more in fights with players than against monsters."
 ],
 [
 "<b>Золотое снаряжение</b>",
-""
+"<b>Gold gear</b>"
 ],
 [
 "Против людей нужны чистые характеристики золотых вещей, а не бонус против монстров.",
-""
+"Against players you need the pure stats of gold items, not the anti-monster bonus."
 ],
 [
 "Арена",
@@ -613,39 +613,39 @@
 ],
 [
 "Здание Арены — со Святилища 7. Бои на арене <b>солдат не убивают</b> — рискуешь только местом в рейтинге.",
-""
+"The Arena building — from Sanctuary 7. Arena battles <b>don't kill troops</b> — you only risk your ranking place."
 ],
 [
 "Обычная арена: 5 бесплатных боёв и 3 бесплатных обновления списка в день.",
-""
+"Regular arena: 5 free battles and 3 free list refreshes a day."
 ],
 [
 "<b>Награды за место забирай руками каждый день</b> — на следующий день они сгорают.",
-""
+"<b>Collect placement rewards by hand every day</b> — the next day they are gone."
 ],
 [
 "<b>Отряд 1 — твоя защита на арене.</b> Поставь туда лучших.",
-""
+"<b>Squad 1 is your arena defense.</b> Put your best there."
 ],
 [
 "Старшие арены открываются по месту в рейтинге мощи сервера.",
-""
+"Higher arenas unlock by your place in the kingdom Might ranking."
 ],
 [
 "Там, где нужно 3 отряда защиты, распредели силу ровно: врагу хватит выиграть 2 боя из 3.",
-""
+"Where 3 defense squads are needed, spread the strength evenly: the enemy only needs to win 2 battles of 3."
 ],
 [
 "Шпаргалка",
-""
+"Cheat sheet"
 ],
 [
 "Что ставить — куда идёшь",
-""
+"What to send — by where you go"
 ],
 [
 "Куда идёшь",
-""
+"Where you go"
 ],
 [
 "Состав",
@@ -657,66 +657,66 @@
 ],
 [
 "<img class=\"i\" src=\"assets/game/blight.png\" alt=\"\">Скверна, монстры на карте",
-""
+"<img class=\"i\" src=\"assets/game/blight.png\" alt=\"\">Blight, monsters on the map"
 ],
 [
 "5 одной фракции, 2 танка, плюс Клэр / Селия / Гренвальд",
-""
+"5 of one faction, 2 tanks, plus Claire / Celia / Grenwald"
 ],
 [
 "Фиолетовое",
-""
+"Purple"
 ],
 [
 "<img class=\"i\" src=\"assets/game/boss-demon.png\" alt=\"\">Король демонов",
-""
+"<img class=\"i\" src=\"assets/game/boss-demon.png\" alt=\"\">Demon King"
 ],
 [
 "Без танков: 4 урона + 1 поддержка, фракция дня",
-""
+"No tanks: 4 damage + 1 support, faction of the day"
 ],
 [
 "Фиолетовые наручи, лучшие мечи героям урона",
-""
+"Purple gauntlets, the best swords for damage heroes"
 ],
 [
 "<img class=\"i\" src=\"assets/game/cheese.png\" alt=\"\">Сырная ловушка, Охотничий бой",
-""
+"<img class=\"i\" src=\"assets/game/cheese.png\" alt=\"\">Cheese Trap, Hunt Battle"
 ],
 [
 "Одна фракция, 2 танка, урон и поддержка",
-""
+"One faction, 2 tanks, damage and support"
 ],
 [
 "<img class=\"i\" src=\"assets/game/c-war.png\" alt=\"\">Город игрока, КвК",
-""
+"<img class=\"i\" src=\"assets/game/c-war.png\" alt=\"\">A player's city, Kingdom War"
 ],
 [
 "2 танка, фракция сильнее вражеской, 3+2 или 4+1",
-""
+"2 tanks, a faction that beats the enemy's, 3+2 or 4+1"
 ],
 [
 "Золотое",
-""
+"Gold"
 ],
 [
 "<img class=\"i\" src=\"assets/game/ev-arena.png\" alt=\"\">Арена",
-""
+"<img class=\"i\" src=\"assets/game/ev-arena.png\" alt=\"\">Arena"
 ],
 [
 "Лучшие 5 в отряде 1",
-""
+"Best 5 in squad 1"
 ],
 [
 "<img class=\"i\" src=\"assets/game/go-gather.png\" alt=\"\">Сбор ресурсов",
-""
+"<img class=\"i\" src=\"assets/game/go-gather.png\" alt=\"\">Gathering resources"
 ],
 [
 "Любые герои, главное — солдаты высокого уровня",
-""
+"Any heroes, what matters is high-level troops"
 ],
 [
 "Неважно",
-""
+"Doesn't matter"
 ]
 ]
