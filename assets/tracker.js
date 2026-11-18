@@ -1,7 +1,7 @@
 /* Страница «Сервер 397»: список альянсов, карточка альянса, карточка игрока. Данные — data/tracker/*.json (робот обновляет раз в 3 часа). */
 (function () {
-  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
   "use strict";
+  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
   var D = "data/tracker/";
   var S = { server: null, index: {}, players: {}, al: {}, rows: [], board: {}, heroes: {} };
   var $ = function (id) { return document.getElementById(id); };
@@ -594,7 +594,7 @@
     else homeView();
   }
 
-  Promise.all([get("server.json"), get("alliances.json"), get("players.json"), fetch("data/heroes.json").then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (r) {
+  Promise.all([get("server.json"), get("alliances.json"), get("players.json"), fetch(window.LA_LANG === "en" ? "data/heroes.en.json" : "data/heroes.json").then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (r) {
     S.heroes = r[3]; S.server = r[0]; S.index = r[1].alliances; S.players = r[2].players;
     S.rows = S.server.boards.filter(function (b) { return b.slug === "alliance_power"; })[0].rows;
     S.server.boards.forEach(function (b) { if (b.alliance) return; var m = {}; b.rows.forEach(function (x) { m[x.id] = x.rank; }); S.board[b.slug] = m; });

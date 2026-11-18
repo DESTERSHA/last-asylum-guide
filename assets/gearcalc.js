@@ -1,10 +1,13 @@
 /* Калькулятор снаряжения: цифры — из таблиц игры (data/gear.json). */
 (function () {
   "use strict";
+  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
   var box = document.getElementById("gcalc");
   if (!box) return;
   var ICON = { "Трава": "herb.png", "Камень снаряжения": "gearstone.png", "Закаленная сталь": "mat-steel.png", "Латунь": "mat-brass.png",
-    "Чертеж снаряжения (UR)": "blueprint-ur.png", "Чертеж снаряжения (MR)": "blueprint-mr.png" };
+    "Чертеж снаряжения (UR)": "blueprint-ur.png", "Чертеж снаряжения (MR)": "blueprint-mr.png",
+    /* те же ресурсы в английских данных (data/gear.en.json) */
+    "Herb": "herb.png", "Gearstone": "gearstone.png", "Tempered Steel": "mat-steel.png", "Brass": "mat-brass.png", "Gear Blueprint (UR)": "blueprint-ur.png", "Gear Blueprint (MR)": "blueprint-mr.png" };
   var G = "assets/game/";
   function fmt(n) {
     n = Number(n) || 0;
@@ -12,17 +15,17 @@
     if (a >= 1e9) return (n / 1e9).toFixed(2).replace(/\.?0+$/, "") + "B";
     if (a >= 1e6) return (n / 1e6).toFixed(2).replace(/\.?0+$/, "") + "M";
     if (a >= 1e4) return (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
-    return Math.round(n).toLocaleString("ru-RU");
+    return Math.round(n).toLocaleString(window.LA_LANG === "en" ? "en-US" : "ru-RU");
   }
-  function full(n) { return Math.round(Number(n) || 0).toLocaleString("ru-RU"); }
+  function full(n) { return Math.round(Number(n) || 0).toLocaleString(window.LA_LANG === "en" ? "en-US" : "ru-RU"); }
   function stat(v) { return Math.abs(v) < 1 && v !== 0 ? (v * 100).toFixed(2).replace(/\.?0+$/, "") + "%" : full(v); }
-  function time(s) { var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return (d ? d + " д " : "") + (h ? h + " ч " : "") + (m ? m + " мин" : "") || "—"; }
+  function time(s) { var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return (d ? d + T(" д ") : "") + (h ? h + T(" ч ") : "") + (m ? m + T(" мин") : "") || "—"; }
   function res(name, n) { return '<div class="gc-res">' + (ICON[name] ? '<img src="' + G + ICON[name] + '" alt="">' : "") + "<span>" + name + "</span><b>" + fmt(n) + '</b><small>' + full(n) + "</small></div>"; }
   function add(acc, list, k) { (list || []).forEach(function (c) { acc[c[0]] = (acc[c[0]] || 0) + c[1] * (k || 1); }); }
 
-  fetch("data/gear.json").then(function (r) { return r.json(); }).then(function (D) {
-    var S = { q: "UR", slot: "Оружие", lf: 0, lt: 60, pf: 0, pt: 0, all: false };
-    var QS = ["UR", "SSR", "SR", "R"], SLOTS = ["Оружие", "Броня", "Наручи", "Сапоги"];
+  fetch(window.LA_LANG === "en" ? "data/gear.en.json" : "data/gear.json").then(function (r) { return r.json(); }).then(function (D) {
+    var S = { q: "UR", slot: T("Оружие"), lf: 0, lt: 60, pf: 0, pt: 0, all: false };
+    var QS = ["UR", "SSR", "SR", "R"], SLOTS = [T("Оружие"), T("Броня"), T("Наручи"), T("Сапоги")];
     function item() { return D.items.filter(function (i) { return i.q === S.q && i.slot === S.slot; })[0]; }
     function opts(n, sel, lab) { var o = ""; for (var i = 0; i < n; i++) o += '<option value="' + i + '"' + (i === sel ? " selected" : "") + ">" + (lab ? lab(i) : i) + "</option>"; return o; }
     function draw() {
@@ -31,12 +34,12 @@
       S.lt = Math.min(S.lt, maxL); S.lf = Math.min(S.lf, S.lt);
       if (!hasP) { S.pf = S.pt = 0; } else { S.pt = Math.min(S.pt, P.length); S.pf = Math.min(S.pf, S.pt); }
       var plab = function (i) {
-        if (i === 0) return "нет звёзд";
+        if (i === 0) return T("нет звёзд");
         var t = P[i - 1].to.split("."), st = Number(t[0]), sub = Number(t[1]);
-        if (st === 5) return "5★ — вещь становится MR";
-        return sub ? (st ? st + "★ + " : "") + "шаг " + sub + " из 4" + (st ? "" : " к 1★") : st + "★";
+        if (st === 5) return T("5★ — вещь становится MR");
+        return sub ? (st ? st + "★ + " : "") + T("шаг ") + sub + T(" из 4") + (st ? "" : T(" к 1★")) : st + "★";
       };
-      var llab = function (i) { return "ур. " + i; };
+      var llab = function (i) { return T("ур. ") + i; };
       var k = S.all ? 4 : 1, tot = {};
       for (var l = S.lf + 1; l <= S.lt; l++) add(tot, it.levels[l].cost, k);
       for (var p = S.pf + 1; p <= S.pt; p++) add(tot, P[p - 1].cost, k);
@@ -50,24 +53,24 @@
       if (S.pt) (P[S.pt - 1].extra || []).forEach(function (x) { sB[x[0]] = (sB[x[0]] || 0) + x[1]; });
       var names = Object.keys(sB);
       box.querySelector(".gc-body").innerHTML =
-        '<div class="gc-item"><img src="' + G + "gear/" + it.icon + '.webp" alt=""><div><b>' + it.name + "</b><span>Создаётся в Мастерской снаряжения ур. " + (it.craft.building || "—") + " · " +
+        '<div class="gc-item"><img src="' + G + "gear/" + it.icon + '.webp" alt=""><div><b>' + it.name + T("</b><span>Создаётся в Мастерской снаряжения ур. ") + (it.craft.building || "—") + " · " +
         it.craft.cost.map(function (c) { return fmt(c[1]) + " " + c[0]; }).join(" · ") + (it.craft.time ? " · " + time(it.craft.time) : "") + "</span></div></div>" +
-        '<div class="gc-quick"><span>Быстро:</span><button type="button" data-q="max">С нуля до максимума</button><button type="button" data-q="lv">Только уровень 0 → ' + maxL + "</button>" + (hasP ? '<button type="button" data-q="star">Только звёзды до MR</button>' : "") + "</div>" +
-        '<div class="gc-two"><div class="gc-sel"><div class="gc-step"><b>Уровень вещи</b><small>кнопка «Улучшить» в окне вещи · число уровня видно на иконке</small><span>сейчас <select data-k="lf">' + opts(maxL + 1, S.lf, llab) + '</select> хочу <select data-k="lt">' + opts(maxL + 1, S.lt, llab) + "</select></span></div>" +
-        (hasP ? '<div class="gc-step"><b>Звёзды вещи</b><small>кнопка «Повысить» · без звёзд вещь не поднимется выше ур. 20, 30, 40 · 5★ превращает UR в MR</small><span>сейчас <select data-k="pf">' + opts(P.length + 1, S.pf, plab) + '</select> хочу <select data-k="pt">' + opts(P.length + 1, S.pt, plab) + "</select></span></div>" : "") +
-        '<label class="gc-chk"><input type="checkbox" data-k="all"' + (S.all ? " checked" : "") + "> считать сразу на 4 вещи (меч, броню, наручи, сапоги)</label></div>" +
-        '<div class="gc-out"><h4>Сколько ресурсов нужно ' + (S.all ? "на 4 вещи" : "на одну вещь") + "</h4>" + (Object.keys(tot).length ? '<div class="gc-ress">' + Object.keys(tot).map(function (n) { return res(n, tot[n]); }).join("") + "</div>" : '<p class="gc-mut">Ничего не нужно — выбери в поле «хочу» больше, чем в поле «сейчас».</p>') +
-        '<div class="gc-pow"><span>Мощь вещи</span><b>' + full(powA) + " → " + full(powB) + '</b><em>+' + full((powB - powA) * k) + (S.all ? " на 4 вещи" : "") + "</em></div>" +
-        '<table class="gc-st"><tr><th>Характеристика</th><th>Было</th><th>Станет</th></tr>' + names.map(function (n) { return "<tr><td>" + n + "</td><td>" + stat(sA[n] || 0) + "</td><td><b>" + stat(sB[n]) + "</b></td></tr>"; }).join("") + "</table></div>" +
-        '</div><details class="gc-tbl"><summary>Таблица: цена и характеристики на каждом уровне</summary><div class="gc-lv"></div></details>';
+        T('<div class="gc-quick"><span>Быстро:</span><button type="button" data-q="max">С нуля до максимума</button><button type="button" data-q="lv">Только уровень 0 → ') + maxL + "</button>" + (hasP ? T('<button type="button" data-q="star">Только звёзды до MR</button>') : "") + "</div>" +
+        T('<div class="gc-two"><div class="gc-sel"><div class="gc-step"><b>Уровень вещи</b><small>кнопка «Улучшить» в окне вещи · число уровня видно на иконке</small><span>сейчас <select data-k="lf">') + opts(maxL + 1, S.lf, llab) + T('</select> хочу <select data-k="lt">') + opts(maxL + 1, S.lt, llab) + "</select></span></div>" +
+        (hasP ? T('<div class="gc-step"><b>Звёзды вещи</b><small>кнопка «Повысить» · без звёзд вещь не поднимется выше ур. 20, 30, 40 · 5★ превращает UR в MR</small><span>сейчас <select data-k="pf">') + opts(P.length + 1, S.pf, plab) + T('</select> хочу <select data-k="pt">') + opts(P.length + 1, S.pt, plab) + "</select></span></div>" : "") +
+        '<label class="gc-chk"><input type="checkbox" data-k="all"' + (S.all ? " checked" : "") + T("> считать сразу на 4 вещи (меч, броню, наручи, сапоги)</label></div>") +
+        T('<div class="gc-out"><h4>Сколько ресурсов нужно ') + (S.all ? T("на 4 вещи") : T("на одну вещь")) + "</h4>" + (Object.keys(tot).length ? '<div class="gc-ress">' + Object.keys(tot).map(function (n) { return res(n, tot[n]); }).join("") + "</div>" : T('<p class="gc-mut">Ничего не нужно — выбери в поле «хочу» больше, чем в поле «сейчас».</p>')) +
+        T('<div class="gc-pow"><span>Мощь вещи</span><b>') + full(powA) + " → " + full(powB) + '</b><em>+' + full((powB - powA) * k) + (S.all ? T(" на 4 вещи") : "") + "</em></div>" +
+        T('<table class="gc-st"><tr><th>Характеристика</th><th>Было</th><th>Станет</th></tr>') + names.map(function (n) { return "<tr><td>" + n + "</td><td>" + stat(sA[n] || 0) + "</td><td><b>" + stat(sB[n]) + "</b></td></tr>"; }).join("") + "</table></div>" +
+        T('</div><details class="gc-tbl"><summary>Таблица: цена и характеристики на каждом уровне</summary><div class="gc-lv"></div></details>');
       // таблица уровней — со страницами
       var lvBox = box.querySelector(".gc-lv"), page = 0, size = 15, rows = it.levels;
       var head = rows[0].stats.map(function (x) { return "<th>" + x[0] + "</th>"; }).join("");
       function lv() {
         var part = rows.slice(page * size, page * size + size), pages = Math.ceil(rows.length / size);
-        lvBox.innerHTML = '<div class="gc-scroll"><table><tr><th>Ур.</th><th>Цена этого уровня</th>' + head + "<th>Мощь</th></tr>" + part.map(function (r) {
+        lvBox.innerHTML = T('<div class="gc-scroll"><table><tr><th>Ур.</th><th>Цена этого уровня</th>') + head + T("<th>Мощь</th></tr>") + part.map(function (r) {
           return "<tr><td>" + r.lv + "</td><td>" + (r.cost.length ? r.cost.map(function (c) { return fmt(c[1]) + " " + c[0]; }).join(" · ") : "—") + "</td>" + r.stats.map(function (x) { return "<td>" + stat(x[1]) + "</td>"; }).join("") + "<td>" + full(r.power) + "</td></tr>";
-        }).join("") + "</table></div>" + '<div class="gc-pg"><button type="button" data-d="-1"' + (page ? "" : " disabled") + '>‹ Назад</button><span>Уровни ' + (page * size) + "–" + Math.min(rows.length - 1, page * size + size - 1) + " из " + (rows.length - 1) + '</span><button type="button" data-d="1"' + (page < pages - 1 ? "" : " disabled") + ">Дальше ›</button></div>";
+        }).join("") + "</table></div>" + '<div class="gc-pg"><button type="button" data-d="-1"' + (page ? "" : " disabled") + T('>‹ Назад</button><span>Уровни ') + (page * size) + "–" + Math.min(rows.length - 1, page * size + size - 1) + T(" из ") + (rows.length - 1) + '</span><button type="button" data-d="1"' + (page < pages - 1 ? "" : " disabled") + T(">Дальше ›</button></div>");
       }
       lvBox.onclick = function (e) { var b = e.target.closest("button[data-d]"); if (b) { page += Number(b.dataset.d); lv(); } };
       lv();

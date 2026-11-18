@@ -2,16 +2,17 @@
    Разметка: <div class="m3d" data-list="<имя списка>"> … </div>; списки — window.M3D_LISTS[имя] = [[файл, подпись, картинка], …] */
 (function () {
   "use strict";
+  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
   var ANIM = [
-    [/^(stand|idle|stand_?\d*)$/i, "Покой"], [/^idle\d+$/i, "Покой"], [/attack/i, "Атака"], [/skill/i, "Навык"], [/^(story\d*_)?walk/i, "Ходьба"],
-    [/^run/i, "Бег"], [/stun/i, "Оглушение"], [/^die|death|dead/i, "Смерть"], [/killer|kill/i, "Добивание"], [/born|appear|show/i, "Появление"],
-    [/hit|hurt/i, "Удар по нему"], [/wave/i, "Машет"], [/^sit/i, "Сидит"], [/^lie/i, "Лежит"], [/transport/i, "Несёт"], [/^act/i, "Действие"],
-    [/fly/i, "Полёт"], [/victory|win/i, "Победа"], [/^(cast|spell)/i, "Колдует"]
+    [/^(stand|idle|stand_?\d*)$/i, T("Покой")], [/^idle\d+$/i, T("Покой")], [/attack/i, T("Атака")], [/skill/i, T("Навык")], [/^(story\d*_)?walk/i, T("Ходьба")],
+    [/^run/i, T("Бег")], [/stun/i, T("Оглушение")], [/^die|death|dead/i, T("Смерть")], [/killer|kill/i, T("Добивание")], [/born|appear|show/i, T("Появление")],
+    [/hit|hurt/i, T("Удар по нему")], [/wave/i, T("Машет")], [/^sit/i, T("Сидит")], [/^lie/i, T("Лежит")], [/transport/i, T("Несёт")], [/^act/i, T("Действие")],
+    [/fly/i, T("Полёт")], [/victory|win/i, T("Победа")], [/^(cast|spell)/i, T("Колдует")]
   ];
-  var ORDER = ["Покой", "Атака", "Навык", "Добивание", "Ходьба", "Бег", "Оглушение", "Смерть", "Появление"];
+  var ORDER = [T("Покой"), T("Атака"), T("Навык"), T("Добивание"), T("Ходьба"), T("Бег"), T("Оглушение"), T("Смерть"), T("Появление")];
   function label(n) {
     for (var i = 0; i < ANIM.length; i++) if (ANIM[i][0].test(n)) return ANIM[i][1];
-    return "Движение";
+    return T("Движение");
   }
   function setup(box) {
     if (box.dataset.ready) return;
@@ -19,7 +20,7 @@
     var list = (window.M3D_LISTS || {})[box.dataset.list] || [];
     if (!list.length) return;
     box.innerHTML = '<div class="m3d-stage"><model-viewer camera-controls autoplay shadow-intensity="1" exposure="1.1" interaction-prompt="none" camera-orbit="0deg 80deg auto" min-camera-orbit="auto 15deg auto" max-camera-orbit="auto 100deg auto"></model-viewer>' +
-      '<div class="m3d-name"></div><div class="m3d-hint"><span>↻</span> Крути мышкой или пальцем · колёсико — приблизить</div><div class="m3d-anims"></div><div class="m3d-load">Загружаю модель…</div></div><div class="m3d-grid"></div>';
+      T('<div class="m3d-name"></div><div class="m3d-hint"><span>↻</span> Крути мышкой или пальцем · колёсико — приблизить</div><div class="m3d-anims"></div><div class="m3d-load">Загружаю модель…</div></div><div class="m3d-grid"></div>');
     var mv = box.querySelector("model-viewer"), hint = box.querySelector(".m3d-hint");
     mv.addEventListener("pointerdown", function () { if (hint) hint.classList.add("off"); }, { once: true });
     var _x = 0, nameEl = box.querySelector(".m3d-name"), animsEl = box.querySelector(".m3d-anims"), grid = box.querySelector(".m3d-grid"), load = box.querySelector(".m3d-load");
@@ -54,7 +55,7 @@
         return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a[1].localeCompare(b[1], "ru", { numeric: true });
       });
       animsEl.innerHTML = items.map(function (it) { return '<button type="button" data-a="' + it[0] + '">' + it[1] + "</button>"; }).join("");
-      var first = items.filter(function (it) { return it[2] === "Покой"; })[0] || items[0];
+      var first = items.filter(function (it) { return it[2] === T("Покой"); })[0] || items[0];
       play(first[0]);
     });
     function play(n) {
@@ -85,6 +86,6 @@
       if (!hb.m3dShow) setup(hb);
       if (hb.m3dShow) hb.m3dShow("assets/hero3d/" + m[1] + ".glb", true);
     });
-    document.querySelectorAll('img[src*="assets/game/hero/"]').forEach(function (img) { if (!hb.contains(img)) { img.style.cursor = "pointer"; img.title = img.title || "Открыть в 3D"; } });
+    document.querySelectorAll('img[src*="assets/game/hero/"]').forEach(function (img) { if (!hb.contains(img)) { img.style.cursor = "pointer"; img.title = img.title || T("Открыть в 3D"); } });
   }
 })();

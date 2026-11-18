@@ -80,12 +80,18 @@ def wrap(path, apply=True):
                 val = unq(piece)
             except Exception:
                 val = None
-            if val is not None and val not in SKIP and not before.endswith("T("):
+            after = src[b:b + 40].lstrip()
+            prev = src[:a].rstrip()[-1:] if src[:a].rstrip() else ""
+            is_key = after.startswith(":") and prev in ("{", ",")  # ключ объекта — не подпись
+            if val is not None and val not in SKIP and not is_key and not before.endswith("T("):
                 found.append(val)
                 piece = "T(" + piece + ")"
         out.append(piece)
     res = "".join(out)
     if apply and res != src:
+        US = '(function () {\n  "use strict";'
+        if "var T = window.T" not in res and US in res:
+            res = res.replace(US, US + "\n  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)", 1)
         if "var T = window.T" not in res:
             res = res.replace("(function () {", "(function () {\n  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)", 1)
         path.write_text(res, encoding="utf-8")

@@ -1,0 +1,538 @@
+[
+[
+"3D-модели игры: боссы, монстры, ворон, жители | Last Asylum: Plague",
+"3D models from the game: bosses, monsters, Raven, residents | Last Asylum: Plague"
+],
+[
+"Все 3D-модели Last Asylum: Plague из файлов игры — боссы, монстры, ворон, солдаты, жители и предметы — со всеми их движениями: атака, навык, ходьба, смерть.",
+"All Last Asylum: Plague 3D models from the game files — bosses, monsters, Raven, soldiers, residents and objects — with all their animations: attack, skill, walk, death."
+],
+[
+"<img src=\"assets/game/ev-wander.png\" alt=\"\">Модели",
+"<img src=\"assets/game/ev-wander.png\" alt=\"\">Models"
+],
+[
+"Все 3D-модели игры",
+"All 3D models from the game"
+],
+[
+"113 моделей прямо из файлов игры. Крути мышкой или пальцем, колёсиком приближай, кнопками под моделью включай движения. Герои — на странице «Герои».",
+"113 models straight from the game files. Rotate with the mouse or a finger, zoom with the wheel, play animations with the buttons under the model. Heroes are on the «Heroes» page."
+],
+[
+"<a class=\"btn pri\" href=\"heroes.html#h3d-sec\">Герои в 3D</a><a class=\"btn\" href=\"#boss\">Боссы</a> <a class=\"btn\" href=\"#monster\">Монстры</a> <a class=\"btn\" href=\"#raven\">Ворон</a> <a class=\"btn\" href=\"#citynpc\">Солдаты города</a> <a class=\"btn\" href=\"#npc\">Жители и NPC</a> <a class=\"btn\" href=\"#other\">Знамёна, повозки и прочее</a>",
+"<a class=\"btn pri\" href=\"heroes.html#h3d-sec\">Heroes in 3D</a><a class=\"btn\" href=\"#boss\">Bosses</a> <a class=\"btn\" href=\"#monster\">Monsters</a> <a class=\"btn\" href=\"#raven\">Raven</a> <a class=\"btn\" href=\"#citynpc\">City soldiers</a> <a class=\"btn\" href=\"#npc\">Residents and NPCs</a> <a class=\"btn\" href=\"#other\">Banners, carts and more</a>"
+],
+[
+"33 моделей",
+"33 models"
+],
+[
+"Боссы",
+"Bosses"
+],
+[
+"Боссы событий и карты мира: появление, атака, навык, смерть.",
+"Event and world map bosses: entrance, attack, skill, death."
+],
+[
+"24 моделей",
+"24 models"
+],
+[
+"Монстры",
+"Monsters"
+],
+[
+"Обычные противники на карте и в событиях.",
+"Regular enemies on the map and in events."
+],
+[
+"8 моделей",
+"8 models"
+],
+[
+"Ворон",
+"Raven"
+],
+[
+"Облики ворона.",
+"Raven skins."
+],
+[
+"6 моделей",
+"6 models"
+],
+[
+"Солдаты города",
+"City soldiers"
+],
+[
+"Солдаты и знамёна у зданий города.",
+"Soldiers and banners by the city buildings."
+],
+[
+"Жители и NPC",
+"Residents and NPCs"
+],
+[
+"Больные в клинике, жители, рабочие, посетители таверны — со всеми их движениями.",
+"Clinic patients, residents, workers, tavern visitors — with all their animations."
+],
+[
+"9 моделей",
+"9 models"
+],
+[
+"Знамёна, повозки и прочее",
+"Banners, carts and more"
+],
+[
+"Знамёна, повозки, воздушный шар, ящики и другие предметы мира.",
+"Banners, carts, a hot-air balloon, crates and other world objects."
+],
+[
+"Крысиный король",
+"Rat King"
+],
+[
+"Клыкастый страж",
+"Fang Guard"
+],
+[
+"Ученый скверны",
+"Scholar Blight"
+],
+[
+"Страж скверны",
+"Guard Blight"
+],
+[
+"Крысиная чума",
+"Rat Plague"
+],
+[
+"Меч крысиной чумы",
+"Rat Plague Greatsword"
+],
+[
+"Элитная скверна",
+"Elite Blight"
+],
+[
+"Скверна душегуба",
+"Soulstealer Blight"
+],
+[
+"Папа скверны",
+"\\\"Pope\\\" Blight"
+],
+[
+"Гигантский топорщик",
+"Giant Axe Warrior"
+],
+[
+"Королевский воин скверны",
+"Warrior Blight King"
+],
+[
+"Крысиная чумная повозка",
+"Rat Plague Wagon"
+],
+[
+"Золотой вор",
+"Gold Thief"
+],
+[
+"Королевский рейнджер скверны",
+"Ranger Blight King"
+],
+[
+"Босс опорного пункта 1",
+"Outpost boss 1"
+],
+[
+"Босс опорного пункта 2",
+"Outpost boss 2"
+],
+[
+"Босс опорного пункта 4",
+"Outpost boss 4"
+],
+[
+"Босс опорного пункта 6",
+"Outpost boss 6"
+],
+[
+"Босс опорного пункта 5",
+"Outpost boss 5"
+],
+[
+"Босс опорного пункта 3",
+"Outpost boss 3"
+],
+[
+"Сборный босс 2-го сезона",
+"Season 2 rally boss"
+],
+[
+"Босс карты мира 1",
+"World map boss 1"
+],
+[
+"Королевский колдун скверны",
+"Warlock Blight King"
+],
+[
+"Адская сиделка",
+"Hell Nurse"
+],
+[
+"Адский доктор",
+"Hell Doctor"
+],
+[
+"Знать скверны / Осквернённая графиня",
+"Noble Blight / Blighted Countess"
+],
+[
+"Главарь воров 1",
+"Thief Leader 1"
+],
+[
+"Главарь воров 2",
+"Thief Leader 2"
+],
+[
+"Босс карты мира 2",
+"World map boss 2"
+],
+[
+"Босс карты мира 3",
+"World map boss 3"
+],
+[
+"Босс карты мира 4",
+"World map boss 4"
+],
+[
+"Логово на карте 1",
+"Map lair 1"
+],
+[
+"Логово на карте 2",
+"Map lair 2"
+],
+[
+"Крысиный вожак",
+"Rat leader"
+],
+[
+"Заражённый житель 1",
+"Infected resident 1"
+],
+[
+"Заражённый житель 2",
+"Infected resident 2"
+],
+[
+"Солдат 1",
+"Soldier 1"
+],
+[
+"Солдат 2",
+"Soldier 2"
+],
+[
+"Одинокая крыса",
+"Lone Rat"
+],
+[
+"Парные крысы",
+"Paired Rats"
+],
+[
+"Монстр 2-го сезона 1",
+"Season 2 monster 1"
+],
+[
+"Монахиня",
+"Nun"
+],
+[
+"Фермер",
+"Farmer"
+],
+[
+"Женщина 2",
+"Woman 2"
+],
+[
+"Гончая скверны мутант",
+"Mutant Blight Hound"
+],
+[
+"Монстр 2-го сезона 2",
+"Season 2 monster 2"
+],
+[
+"Блуждающая скверна",
+"Wandering Blight"
+],
+[
+"Нашествие скверны",
+"Blight Invasion"
+],
+[
+"Бард скверны",
+"Bard Blight"
+],
+[
+"Силы зла",
+"Evil Forces"
+],
+[
+"Женщина",
+"Woman"
+],
+[
+"Чумной дровосек",
+"Lumberjack Blight"
+],
+[
+"Чумной травник",
+"Blighted Herbalist"
+],
+[
+"Послушник скверны",
+"Blight Disciple"
+],
+[
+"Павший легион",
+"Fallen Legion"
+],
+[
+"Заражённый 1",
+"Infected 1"
+],
+[
+"Заражённый 2",
+"Infected 2"
+],
+[
+"Облик ворона 1",
+"Raven skin 1"
+],
+[
+"Облик ворона 2",
+"Raven skin 2"
+],
+[
+"Облик ворона 3",
+"Raven skin 3"
+],
+[
+"Облик ворона 4",
+"Raven skin 4"
+],
+[
+"Облик ворона 5",
+"Raven skin 5"
+],
+[
+"Облик ворона 6",
+"Raven skin 6"
+],
+[
+"Облик ворона 7",
+"Raven skin 7"
+],
+[
+"Облик ворона 8",
+"Raven skin 8"
+],
+[
+"Солдат города 1",
+"City soldier 1"
+],
+[
+"Солдат города 2",
+"City soldier 2"
+],
+[
+"Солдат города 3",
+"City soldier 3"
+],
+[
+"Солдат города 4",
+"City soldier 4"
+],
+[
+"Солдат города 5",
+"City soldier 5"
+],
+[
+"Знаменосец",
+"Standard-bearer"
+],
+[
+"Больной 1",
+"Patient 1"
+],
+[
+"Больной 2",
+"Patient 2"
+],
+[
+"Больной 3",
+"Patient 3"
+],
+[
+"Больной 4",
+"Patient 4"
+],
+[
+"Больной 5",
+"Patient 5"
+],
+[
+"Больной 6",
+"Patient 6"
+],
+[
+"Больной 7",
+"Patient 7"
+],
+[
+"Больной 8",
+"Patient 8"
+],
+[
+"Больной 9",
+"Patient 9"
+],
+[
+"Больной 10",
+"Patient 10"
+],
+[
+"Уборщик 1",
+"Cleaner 1"
+],
+[
+"Уборщик 2",
+"Cleaner 2"
+],
+[
+"Житель деревни",
+"Villager"
+],
+[
+"Посетитель таверны 1",
+"Tavern visitor 1"
+],
+[
+"Посетитель таверны 2",
+"Tavern visitor 2"
+],
+[
+"Посетитель таверны 3",
+"Tavern visitor 3"
+],
+[
+"Посетитель таверны 4",
+"Tavern visitor 4"
+],
+[
+"Рабочий 1",
+"Worker 1"
+],
+[
+"Рабочий 2",
+"Worker 2"
+],
+[
+"Рабочий 3",
+"Worker 3"
+],
+[
+"Санитарка",
+"Nurse"
+],
+[
+"Крыса",
+"Rat"
+],
+[
+"Читатель 1",
+"Reader 1"
+],
+[
+"Читатель 2",
+"Reader 2"
+],
+[
+"Читатель 3",
+"Reader 3"
+],
+[
+"Священник",
+"Priest"
+],
+[
+"Раненый солдат 1",
+"Wounded soldier 1"
+],
+[
+"Раненый солдат 2",
+"Wounded soldier 2"
+],
+[
+"Раненый солдат 3",
+"Wounded soldier 3"
+],
+[
+"Мыслитель 1",
+"Thinker 1"
+],
+[
+"Мыслитель 2",
+"Thinker 2"
+],
+[
+"Ловушка",
+"Trap"
+],
+[
+"Повозка альянса 1",
+"Alliance Caravan 1"
+],
+[
+"Повозка альянса 2",
+"Alliance Caravan 2"
+],
+[
+"Флаг",
+"Flag"
+],
+[
+"Тыквенная повозка",
+"Pumpkin cart"
+],
+[
+"Повозка",
+"Cart"
+],
+[
+"Патрульный 1",
+"Patrol 1"
+],
+[
+"Патрульный 2",
+"Patrol 2"
+],
+[
+"Знамя",
+"Banner"
+]
+]
