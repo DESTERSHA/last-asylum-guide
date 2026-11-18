@@ -273,7 +273,7 @@
     if (!a) { $("view").innerHTML = '<div class="ap-wrap"><div class="ap-card"><p class="ap-empty">Этого альянса нет в топ-30.</p></div></div>'; return; }
     var cnt = a.members.length, cap = a.capacity || 100, now = Date.now() / 1000;
     var sm = a.summary || {}, w7 = sm.week, m30 = sm.month;
-    if (!w7) { var ev7 = a.events.filter(function (e) { return e.t >= now - 7 * 86400; }), j7 = ev7.filter(function (e) { return e.kind === "join"; }).length; w7 = { joined: j7, left: ev7.length - j7 }; }
+    if (!w7) { var ev7 = (a.events || []).filter(function (e) { return e.t >= now - 7 * 86400; }), j7 = ev7.filter(function (e) { return e.kind === "join"; }).length; w7 = { joined: j7, left: ev7.length - j7 }; }
     var lead = a.members.filter(function (m) { return (m.rank || "").slice(0, 2) === "R5"; })[0];
     $("view").innerHTML = '<div class="ap-wrap">' +
       '<div class="ap-card"><div class="ap-top"><a class="ap-back" href="#">‹ Все альянсы</a><span class="ap-upd">обновлено ' + ago(a.updated) + "</span></div>" +
@@ -400,7 +400,7 @@
     if (!p) { $("view").innerHTML = '<div class="ap-wrap"><div class="ap-card"><p class="ap-empty">Игрок не найден среди альянсов топ-30.</p></div></div>'; return; }
     var mv = [], seen = {};
     Object.keys(S.al).forEach(function (id) {
-      S.al[id].events.forEach(function (e) {
+      (S.al[id].events || []).forEach(function (e) {
         if (String(e.uid) !== String(uid)) return;
         var k = e.t + e.kind; if (seen[k]) return; seen[k] = 1;
         var c = Object.assign({}, e); c.al = S.al[id].abbr; mv.push(c);

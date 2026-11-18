@@ -24,6 +24,10 @@ from pathlib import Path
 SID = 397
 API = os.environ.get("TRACKER_API", "").strip().lstrip("﻿").strip().rstrip("/")
 OUT = Path(__file__).resolve().parent.parent / "data" / "tracker"
+# закрытое хранилище (отдельный закрытый репозиторий): лента «кто вступил/вышел, откуда и куда», полные ответы API.
+# В открытые файлы сайта это НЕ пишется — функция платная, на сайте только демо.
+PRIV = Path(os.environ["PRIVATE_DIR"]) if os.environ.get("PRIVATE_DIR") else None
+UNION_KEYS = ("union_id", "union_abbr", "union_name", "alliance_abbr", "alliance_name")
 TOP = 30
 MAX_REQ = 95 + 2 * int(os.environ.get("PLAYERS") or 25)  # на игрока 2 запроса: карточка + защита/ворон
 PLAYERS_PER_RUN = int(os.environ.get("PLAYERS") or 25)  # карточки игроков за запуск: 8 запусков × (62 + 45) + 30 историй альянсов ≈ 890 в сутки при лимите 1000
@@ -107,7 +111,8 @@ def main():
         except Exception as e:  # один альянс не должен ронять весь сбор
             print("альянс", aid, "пропущен:", e, file=sys.stderr)
             continue
-        save(OUT / "a" / f"{aid}.raw.json", {"t": now, "alliance": a, "events": ev})  # ответы API целиком, без отбора
+        if PRIV:
+            save(PRIV / "a" / f"{aid}.raw.json", {"t": now, "alliance": a, "events": ev})  # ответы API целиком, без отбора
         a = json.loads(json.dumps(a))
         a["name"] = a.get("name") or row["name"]; a["abbr"] = a.get("abbr") or row["abbr"]  # API иногда не присылает название — берём из рейтинга
         # в ответе бывают «хвосты» со сканов карты: без ранга и без статуса «в сети» — это не участники
@@ -115,7 +120,8 @@ def main():
         mem = [{"uid": m["uid"], "nick": m.get("nick_name", ""), "power": m.get("power", 0), "lv": m.get("lv", 0), "kills": m.get("kills", 0),
                 "rank": m.get("rank_label", ""), "x": m.get("x"), "y": m.get("y"), "active": m.get("active"), "honor": m.get("daily_honor"), "tech": m.get("daily_tech")}
                for m in a.get("members", [])]
-        old = load(OUT / "a" / f"{aid}.json", {"events": []})
+        old = load(OUT / "a" / f"{aid}.json", {})
+        old_ev = load(PRIV / "a" / f"{aid}.json", {"events": []}) if PRIV else {"events": []}
         stale = not a.get("live")
         if stale and old.get("live"):  # в API старая копия, а у нас есть свежий состав — состав и цифры не трогаем
             mem = old["members"]
@@ -124,8 +130,8 @@ def main():
             a["member_count"] = len(mem); a["live"] = True; a["power"] = old.get("power")
         elif stale:
             mem = []  # свежего состава ещё не было ни разу — не показываем устаревший
-        seen = {(e["t"], e["uid"], e["kind"]) for e in old.get("events", [])}
-        events = list(old.get("events", []))
+        seen = {(e["t"], e["uid"], e["kind"]) for e in old_ev.get("events", [])}
+        events = list(old_ev.get("events", []))
         for e in ev.get("events", []):
             k = (e["t"], e["uid"], e["kind"])
             if k in seen:
@@ -136,7 +142,9 @@ def main():
         events.sort(key=lambda e: -e["t"])
         save(OUT / "a" / f"{aid}.json", {"updated": now, "id": aid, "name": a.get("name"), "abbr": a.get("abbr"), "power": a.get("power"), "level": a.get("level"),
                                          "members_count": len(mem) if mem else None, "capacity": a.get("capacity"), "leader": a.get("leader_name"), "language": a.get("language"),
-                                         "summary": ev.get("summary"), "live": bool(a.get("live")), "members": sorted(mem, key=lambda m: -(m["power"] or 0)), "events": events})
+                                         "summary": ev.get("summary"), "live": bool(a.get("live")), "members": sorted(mem, key=lambda m: -(m["power"] or 0))})  # без ленты — она в закрытом хранилище
+        if PRIV:
+            save(PRIV / "a" / f"{aid}.json", {"updated": now, "id": aid, "abbr": a.get("abbr"), "events": events})
         ent = index["alliances"].get(str(aid), {"days": {}})
         if datetime.now(timezone.utc).hour < 3 or not ent.get("hist"):
             try:
@@ -201,7 +209,7 @@ def main():
                 print("защита игрока", uid, "пропущена:", e, file=sys.stderr)
                 arena = None
             pf = OUT / "p" / f"{uid}.json"
-            old = load(pf, {})
+            old = load(PRIV / "p" / f"{uid}.json", {}) if PRIV else load(pf, {})
             # история в API — последние 30 дней; у нас копится вся
             hist = {str(h.get("id") or h["observed_at"]): h for h in old.get("history", [])}
             for h in pl.get("history", []):
@@ -210,7 +218,13 @@ def main():
             rec = {"t": now, "card": card, "arena": arena if arena is not None else old.get("arena"),
                    "arena_t": now if arena is not None else old.get("arena_t"),
                    "history": sorted(hist.values(), key=lambda h: h["observed_at"])}
-            save(pf, rec)
+            if PRIV:
+                save(PRIV / "p" / f"{uid}.json", rec)  # полный ответ — в закрытое хранилище
+            # в открытый файл — без сведений о смене альянса (это платная часть)
+            pub_hist = [{k: v for k, v in h.items() if k not in UNION_KEYS} for h in rec["history"]]
+            for h in pub_hist:
+                h["change_flags"] = ",".join(f for f in str(h.get("change_flags") or "").split(",") if f and f != "union")
+            save(pf, {"t": now, "card": {k: v for k, v in card.items() if k != "history"}, "arena": rec["arena"], "arena_t": rec["arena_t"], "history": pub_hist})
         for hrec in sorted(pl.get("history", []), key=lambda h: h["observed_at"]):  # за день — последняя запись дня
             d = datetime.fromtimestamp(hrec["observed_at"], timezone.utc).strftime("%Y-%m-%d")
             series.setdefault(int(uid) % 32, {}).setdefault("__hist__" + uid, {})[d] = [hrec.get("power"), hrec.get("kills")]
