@@ -1,6 +1,7 @@
 /* Быстрый просмотр: ссылка в тексте открывает нужный раздел окном поверх страницы (не уводит со страницы).
    В окне — страница сайта в режиме ?embed=1: без шапки и подвала, показан только раздел по якорю. */
 (function () {
+  var T = window.T || function (s) { return s; };
   "use strict";
   var embed = /[?&]embed=1/.test(location.search);
   if (embed) {
@@ -41,7 +42,7 @@
     if (!/\.html$/.test(p)) return false;
     if (!u.hash) return false;  // ссылка на всю страницу — обычный переход
     if (p === page && !u.hash) return false;
-    if (p === "server.html" || p === "cabinet.html") return false; // живые страницы — открываем как обычно
+    if (/^(server|cabinet)(\.en)?\.html$/.test(p)) return false; // живые страницы — открываем как обычно
     return true;
   }
   var box, frame, title, full, keepY = 0;
@@ -49,7 +50,7 @@
   function build() {
     box = document.createElement("div");
     box.className = "peek";
-    box.innerHTML = '<div class="peek-bg"></div><div class="peek-win" role="dialog" aria-modal="true"><div class="peek-bar"><button type="button" class="peek-x" aria-label="Закрыть">✕<span> Назад</span></button><b class="peek-t"></b><a class="peek-full" href="#">Открыть страницу целиком ↗</a></div><iframe class="peek-f" title="Быстрый просмотр"></iframe></div>';
+    box.innerHTML = '<div class="peek-bg"></div><div class="peek-win" role="dialog" aria-modal="true"><div class="peek-bar"><button type="button" class="peek-x" aria-label="' + T("Закрыть") + '">✕<span> ' + T("Назад") + '</span></button><b class="peek-t"></b><a class="peek-full" href="#">' + T("Открыть страницу целиком ↗") + '</a></div><iframe class="peek-f" title="' + T("Быстрый просмотр") + '"></iframe></div>';
     document.body.appendChild(box);
     frame = box.querySelector("iframe"); title = box.querySelector(".peek-t"); full = box.querySelector(".peek-full");
     box.querySelector(".peek-bg").addEventListener("click", close);
@@ -69,7 +70,7 @@
     full.href = u.pathname.split("/").pop() + u.hash;
     u.searchParams.set("embed", "1");
     keepY = window.scrollY;
-    title.textContent = "Загружаю…";
+    title.textContent = T("Загружаю…");
     frame.src = u.href;
     box.classList.add("on");
     document.documentElement.classList.add("peek-open");

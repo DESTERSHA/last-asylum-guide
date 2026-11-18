@@ -9,27 +9,40 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
 
-# (файл, значок из assets/game, подпись в меню)
+# (файл, значок из assets/game, подпись в меню, подпись в меню EN — игровые слова из английских текстов игры)
 PAGES = [
-    ("server", "ev-throne", "Сервер 397"),
-    ("index", "go-hq", "Главная"),
-    ("kvk", "ev-kvk", "КвК"),
-    ("duel", "ev-duel", "Дуэль"),
-    ("events", "ev-special", "События"),
-    ("heroes", "hero/arthur", "Герои"),
-    ("models", "ev-wander", "Модели"),
-    ("squads", "c-squad", "Отряды"),
-    ("gear", "go-gear", "Снаряжение"),
-    ("raven", "ev-raven", "Ворон"),
-    ("rules", "btn-caravan", "Правила"),
-    ("glossary", "btn-search", "Слова"),
-    ("tips", "diamond", "Фишки"),
-    ("cabinet", "diamond", "Кабинет"),
+    ("server", "ev-throne", "Сервер 397", "Server 397"),
+    ("index", "go-hq", "Главная", "Home"),
+    ("kvk", "ev-kvk", "КвК", "Kingdom War"),
+    ("duel", "ev-duel", "Дуэль", "Alliance Duel"),
+    ("events", "ev-special", "События", "Events"),
+    ("heroes", "hero/arthur", "Герои", "Heroes"),
+    ("models", "ev-wander", "Модели", "Models"),
+    ("squads", "c-squad", "Отряды", "Squads"),
+    ("gear", "go-gear", "Снаряжение", "Gear"),
+    ("raven", "ev-raven", "Ворон", "Raven"),
+    ("rules", "btn-caravan", "Правила", "Rules"),
+    ("glossary", "btn-search", "Слова", "Glossary"),
+    ("tips", "diamond", "Фишки", "Tips"),
+    ("cabinet", "diamond", "Кабинет", "My page"),
 ]
+# английская страница = src/en/<файл>.html -> <файл>.en.html (рядом с русской, чтобы все пути к картинкам и данным работали как есть)
+UI = {
+    "ru": {"tagline": "гайд альянса · сервер 397", "nav": "Разделы", "cab_title": "Кабинет: избранные разделы, события, альянсы и игроки", "cab": "Кабинет",
+           "clock_title": "Разница между временем сервера и московским — 5 часов. На сервере время меньше.", "srv": "в игре", "msk": "Москва", "top": "Наверх",
+           "foot1": "<b>Гайд альянса сервера 397</b> · обновлён 15.11.2026. Фанатский гайд, к разработчикам игры отношения не имеет. Значки и картинки — из самой игры и от сообщества игроков.",
+           "foot2": "Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.",
+           "switch": "EN", "switch_title": "English version"},
+    "en": {"tagline": "alliance guide · kingdom 397", "nav": "Sections", "cab_title": "My page: saved sections, events, alliances and players", "cab": "My page",
+           "clock_title": "Server time is 5 hours behind Moscow time.", "srv": "server", "msk": "Moscow", "top": "Back to top",
+           "foot1": "<b>Kingdom 397 alliance guide</b> · updated 15.11.2026. A fan-made guide, not affiliated with the game developers. Icons and images come from the game itself and from the player community.",
+           "foot2": "Server time is 5 hours behind Moscow time: when it is 17:00 in Moscow, it is 12:00 on the server. A new game day starts at 05:00 Moscow time. If something in the game has changed, trust the game and tell the alliance leader — we will fix it.",
+           "switch": "RU", "switch_title": "Русская версия"},
+}
 
 HIDDEN = {"cabinet"}  # страницы без пункта в меню (кабинет открывается из шапки)
 TEMPLATE = """<!doctype html>
-<html lang="ru">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -40,6 +53,7 @@ TEMPLATE = """<!doctype html>
 <meta property="og:image" content="assets/art/hero-index.webp">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/game/ev-kvk.png">
+{alt}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
@@ -50,21 +64,23 @@ TEMPLATE = """<!doctype html>
 </head>
 <body>
 <header class="site-head"><div class="wrap hdr">
-  <a class="logo" href="index.html"><img src="assets/icons/art-doctor.jpg" alt=""><span><b>Last Asylum: Plague</b><small>гайд альянса · сервер 397</small></span></a>
-  <nav class="main" aria-label="Разделы">
+  <a class="logo" href="{home}"><img src="assets/icons/art-doctor.jpg" alt=""><span><b>Last Asylum: Plague</b><small>{tagline}</small></span></a>
+  <nav class="main" aria-label="{navl}">
 {nav}
   </nav>
-  <a class="cab-link" href="cabinet.html" title="Кабинет: избранные разделы, события, альянсы и игроки"><span class="ic">★</span><span data-acc-name>Кабинет</span><i data-fav-count></i></a>
-  <div class="clock" title="Разница между временем сервера и московским — 5 часов. На сервере время меньше."><div><b data-clock="srv">--:--</b><span>в игре</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
+  <a class="cab-link" href="{cabhref}" title="{cab_title}"><span class="ic">★</span><span data-acc-name>{cab}</span><i data-fav-count></i></a>
+  {switch}
+  <div class="clock" title="{clock_title}"><div><b data-clock="srv">--:--</b><span>{srv}</span></div><div><b data-clock="msk">--:--</b><span>{msk}</span></div></div>
 </div></header>
 <main>
 {content}
 </main>
 <footer class="foot">
-  <p><b>Гайд альянса сервера 397</b> · обновлён 15.11.2026. Фанатский гайд, к разработчикам игры отношения не имеет. Значки и картинки — из самой игры и от сообщества игроков.</p>
-  <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
+  <p>{foot1}</p>
+  <p>{foot2}</p>
 </footer>
-<button class="totop" id="toTop" aria-label="Наверх">↑</button>
+<button class="totop" id="toTop" aria-label="{top}">↑</button>
+{dict}<script src="assets/i18n.js?v={ver}"></script>
 <script src="assets/app.js?v={ver}"></script>
 <script src="assets/fav.js?v={ver}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
@@ -78,30 +94,74 @@ TEMPLATE = """<!doctype html>
 """
 
 
-def nav_html(current):
+def page_file(slug, lang):
+    return f"{slug}.en.html" if lang == "en" else f"{slug}.html"
+
+
+def nav_html(current, lang, have_en):
     out = []
-    for slug, icon, name in PAGES:
+    for slug, icon, name, name_en in PAGES:
         if slug in HIDDEN:
             continue
         cls = ' class="on" aria-current="page"' if slug == current else ""
-        out.append(f'    <a href="{slug}.html"{cls}><img src="assets/game/{icon}.png" alt="">{name}</a>')
+        href = page_file(slug, "en" if lang == "en" and slug in have_en else "ru")
+        out.append(f'    <a href="{href}"{cls}><img src="assets/game/{icon}.png" alt="">{name_en if lang == "en" else name}</a>')
     return "\n".join(out)
 
 
+PAGE_LINK = re.compile(r'(href=")([a-z0-9]+)\.html([#?"])')
+SHOT = re.compile(r'(assets/shots/)([A-Za-z0-9_.-]+\.(?:webp|png|jpg))')
+
+
+def localize_en(html, have_en):
+    """английская страница: ссылки на страницы — на их английские версии (если есть), экраны игры — английские (если готовы)"""
+    html = PAGE_LINK.sub(lambda m: m.group(1) + (page_file(m.group(2), "en") if m.group(2) in have_en else m.group(2) + ".html") + m.group(3), html)
+    return SHOT.sub(lambda m: m.group(1) + ("en/" + m.group(2) if (ROOT / "assets/shots/en" / m.group(2)).exists() else m.group(2)), html)
+
+
+def write_dict():
+    """словарь подписей скриптов RU -> EN (tools/i18n_strings.json, переведённые строки) -> assets/i18n-dict.js (грузится только на английских страницах)"""
+    src = ROOT / "tools" / "i18n_strings.json"
+    d = {k: v for k, v in json.loads(src.read_text(encoding="utf-8")).items() if v} if src.exists() else {}
+    (ROOT / "assets" / "i18n-dict.js").write_text("window.LA_I18N_EXTRA = " + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+    return len(d)
+
+
 def main():
+    print("словарь подписей EN:", write_dict(), "строк")
     h = hashlib.sha1()
-    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js", "assets/auth.js", "assets/auth-config.js", "assets/cabinet.js"):
+    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js", "assets/auth.js", "assets/auth-config.js", "assets/cabinet.js", "assets/i18n.js", "assets/i18n-dict.js"):
         h.update((ROOT / f).read_bytes())
     ver = h.hexdigest()[:10]
-    for slug, _, _ in PAGES:
-        raw = (SRC / f"{slug}.html").read_text(encoding="utf-8")
-        m = re.match(r"\s*<!--(\{.*?\})-->\s*", raw, re.S)
-        if not m:
-            raise SystemExit(f"{slug}: нет заголовка <!--{{json}}-->")
-        meta = json.loads(m.group(1))
-        html = TEMPLATE.format(title=meta["title"], desc=meta["desc"], ver=ver, nav=nav_html(slug), content=raw[m.end():])
-        (ROOT / f"{slug}.html").write_text(html, encoding="utf-8")
-        print(f"ok {slug}.html  {len(html):>7} байт")
+    have_en = {slug for slug, *_ in PAGES if (SRC / "en" / f"{slug}.html").exists()}
+    for slug, *_ in PAGES:
+        for lang in ("ru", "en"):
+            if lang == "en" and slug not in have_en:
+                continue
+            raw = (SRC / ("en/" if lang == "en" else "") / f"{slug}.html").read_text(encoding="utf-8")
+            m = re.match(r"\s*<!--(\{.*?\})-->\s*", raw, re.S)
+            if not m:
+                raise SystemExit(f"{lang}/{slug}: нет заголовка <!--{{json}}-->")
+            meta = json.loads(m.group(1))
+            ui = UI[lang]
+            content = raw[m.end():]
+            other = "ru" if lang == "en" else "en"
+            enlist = f'<meta name="la-en" content="{",".join(sorted(have_en))}">'
+            if slug in have_en:
+                sw = f'<a class="lang-sw" href="{page_file(slug, other)}" hreflang="{other}" lang="{other}" title="{ui["switch_title"]}" data-lang-sw="{other}">{ui["switch"]}</a>'
+                alt = enlist + f'\n<link rel="alternate" hreflang="ru" href="{slug}.html">\n<link rel="alternate" hreflang="en" href="{slug}.en.html">'
+            else:
+                sw, alt = "", enlist
+            if lang == "en":
+                content = localize_en(content, have_en)
+            home = page_file("index", "en" if lang == "en" and "index" in have_en else "ru")
+            cabhref = page_file("cabinet", "en" if lang == "en" and "cabinet" in have_en else "ru")
+            fields = {k: v for k, v in ui.items() if k not in ("nav", "switch", "switch_title")}
+            html = TEMPLATE.format(title=meta["title"], desc=meta["desc"], ver=ver, nav=nav_html(slug, lang, have_en), content=content,
+                                   lang=lang, alt=alt, home=home, dict=(f'<script src="assets/i18n-dict.js?v={ver}"></script>\n' if lang == "en" else ""), cabhref=cabhref, switch=sw, navl=ui["nav"], **fields)
+            out = ROOT / page_file(slug, lang)
+            out.write_text(html, encoding="utf-8")
+            print(f"ok {out.name}  {len(html):>7} байт")
 
 
 if __name__ == "__main__":

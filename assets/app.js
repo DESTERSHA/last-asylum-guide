@@ -5,6 +5,7 @@
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* приватный режим: галочки просто не запомнятся */ } }
   };
+  var T = window.T || function (s) { return s; };  // перевод подписей на английской странице (assets/i18n.js)
   var SRV = -2, MSK = 3; // время в игре = UTC−2, Москва = UTC+3
   function at(off) { return new Date(Date.now() + off * 36e5); }
   function hhmm(d) { return String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0"); }
@@ -17,9 +18,9 @@
     t.setUTCDate(t.getUTCDate() + (6 - now.getUTCDay() + 7) % 7);
     if (t - now < -4 * 36e5) t.setUTCDate(t.getUTCDate() + 7); // бой идёт 4 часа
     var s = (t - now) / 1e3;
-    if (s <= 0) return "бой идёт!";
+    if (s <= 0) return T("бой идёт!");
     var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
-    return "через " + (d ? d + " д " : "") + h + " ч " + m + " м";
+    return T("через ") + (d ? d + T(" д ") : "") + h + T(" ч ") + m + T(" м");
   }
 
   var DAYS = [
@@ -37,9 +38,9 @@
     document.querySelectorAll("[data-clock=msk]").forEach(function (e) { e.textContent = hhmm(at(MSK)); });
     document.querySelectorAll("[data-cd=kvk]").forEach(function (e) { e.textContent = untilKvk(); });
     var d = DAYS[srvDay()];
-    document.querySelectorAll("[data-today=name]").forEach(function (e) { e.textContent = d.n; });
-    document.querySelectorAll("[data-today=duel]").forEach(function (e) { e.textContent = d.duel; });
-    document.querySelectorAll("[data-today=boss]").forEach(function (e) { e.textContent = d.boss; });
+    document.querySelectorAll("[data-today=name]").forEach(function (e) { e.textContent = T(d.n); });
+    document.querySelectorAll("[data-today=duel]").forEach(function (e) { e.textContent = T(d.duel); });
+    document.querySelectorAll("[data-today=boss]").forEach(function (e) { e.textContent = T(d.boss); });
   }
   tick(); setInterval(tick, 20000);
 
@@ -61,7 +62,7 @@
       btns.forEach(function (b, i) {
         if (Number(b.getAttribute("data-dow")) === srvDay()) {
           start = i;
-          var t = document.createElement("span"); t.className = "td"; t.textContent = "сегодня"; b.appendChild(t);
+          var t = document.createElement("span"); t.className = "td"; t.textContent = T("сегодня"); b.appendChild(t);
         }
       });
     }

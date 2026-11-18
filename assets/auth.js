@@ -54,7 +54,7 @@
       } catch (e) { console.warn("Кабинет: не удалось загрузить аккаунт", e); }
       if (my !== seq) return;
       emit();
-      document.querySelectorAll("[data-acc-name]").forEach(function (e) { e.textContent = state.user ? "Кабинет" : "Войти"; });
+      document.querySelectorAll("[data-acc-name]").forEach(function (e) { e.textContent = (window.T || String)(state.user ? "Кабинет" : "Войти"); });
     }, 0);
   });
 })();

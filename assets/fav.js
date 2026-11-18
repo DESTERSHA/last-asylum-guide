@@ -17,13 +17,14 @@
   }
   function remove(url) { write(read().filter(function (x) { return x.url !== url; })); if (window.LAAuth) window.LAAuth.favDel(url); }
   function slug(s) { return String(s).toLowerCase().replace(/[^a-zа-яё0-9]+/gi, "-").replace(/^-+|-+$/g, "").slice(0, 60); }
+  var T = window.T || function (s) { return s; };
   var page = (location.pathname.split("/").pop() || "index.html");
   var pageName = (document.querySelector('nav.main a.on') || {}).textContent || document.title.split("|")[0].trim();
   function star(el, item) {
     var b = document.createElement("button");
     b.type = "button";
     b.className = "fav-star";
-    function upd() { var on = has(item.url); b.classList.toggle("on", on); b.textContent = on ? "★ В избранном" : "☆ В избранное"; b.title = on ? "Убрать из избранного" : "Добавить в избранное — появится в «Кабинете»"; }
+    function upd() { var on = has(item.url); b.classList.toggle("on", on); b.textContent = T(on ? "★ В избранном" : "☆ В избранное"); b.title = T(on ? "Убрать из избранного" : "Добавить в избранное — появится в «Кабинете»"); }
     b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); toggle(item); upd(); });
     subs.push(upd);
     upd();
@@ -36,7 +37,8 @@
   }
   window.LAFav = { list: read, has: has, toggle: toggle, remove: remove, star: star, onchange: function (f) { subs.push(f); }, _replace: function (l) { write(l); } };
 
-  if (page !== "cabinet.html" && page !== "server.html") {
+  var base = page.replace(/\.en\.html$/, ".html");  // английская версия страницы — <файл>.en.html
+  if (base !== "cabinet.html" && base !== "server.html") {
     /* разделы страницы */
     document.querySelectorAll("section").forEach(function (sec) {
       var h = sec.querySelector("h2");
