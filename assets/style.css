@@ -1228,3 +1228,4 @@ html.t-ap .sup-head{border-radius:999px}
 .chp{display:flex;flex-direction:column;align-items:flex-start;width:100%;text-align:left;font:inherit;border:0;background:none;padding:8px 6px;border-bottom:1px solid #f0f1f4;cursor:pointer;border-radius:8px}
 .chp:hover{background:var(--soft)}.chp b{font-size:14px}.chp small{font-size:12px;color:var(--faint)}
 .news-share{text-decoration:none;margin-left:6px}
+.news-feed,.news-form-box{max-width:none}
