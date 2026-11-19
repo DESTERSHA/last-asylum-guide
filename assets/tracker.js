@@ -209,6 +209,25 @@
   }
   function shift(iso, days) { var d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + days); return d.toISOString().slice(0, 10); }
 
+  /* Список рейтингов трекер отдаёт раз в сутки (pulled_at), а цифры каждого игрока обновляются каждые 30 мин.
+     Мощь, убийства и святилище пересчитываем из свежих цифр игроков (у кого свежих нет — цифра из суточного списка);
+     мощь героев есть только в суточном списке. */
+  var FRESH = { power: "power", kills: "kills", castle: "lv" };
+  var topRows = function (slug) {
+    var b = S.server.boards.filter(function (x) { return x.slug === slug; })[0], f = FRESH[slug];
+    if (!f) return b.rows;
+    var by = {};
+    b.rows.forEach(function (r) { by[r.id] = { id: r.id, name: r.name, abbr: r.abbr, score: r.score }; });
+    Object.keys(S.players).forEach(function (id) {
+      var p = S.players[id], v = p[f];
+      if (v == null) return;
+      by[id] = { id: isNaN(+id) ? id : +id, name: p.nick || (by[id] && by[id].name) || "?", abbr: p.abbr != null ? p.abbr : (by[id] && by[id].abbr) || "", score: v };
+    });
+    var list = Object.keys(by).map(function (k) { return by[k]; }).sort(function (a, c) { return c.score - a.score; }).slice(0, 100);
+    list.forEach(function (r, i) { r.rank = i + 1; });
+    return list;
+  };
+
   function homeView() {
     var s = S.server.server, rows = S.rows;
     var pulled = Math.max.apply(null, (S.server.boards || []).map(function (b) { return b.pulled_at || 0; }).concat([0]));
@@ -238,24 +257,6 @@
     alRows("30"); bindPills("atop", alRows);
 
     var NAMES = { power: T("Мощь"), kills: T("Убийства"), heroes: T("Мощь героев"), castle: T("Святилище") };
-    /* Список рейтингов трекер отдаёт раз в сутки (pulled_at), а цифры каждого игрока обновляются каждые 30 мин.
-       Мощь, убийства и святилище пересчитываем из свежих цифр игроков (у кого свежих нет — цифра из суточного списка);
-       мощь героев есть только в суточном списке. */
-    var FRESH = { power: "power", kills: "kills", castle: "lv" };
-    var topRows = function (slug) {
-      var b = S.server.boards.filter(function (x) { return x.slug === slug; })[0], f = FRESH[slug];
-      if (!f) return b.rows;
-      var by = {};
-      b.rows.forEach(function (r) { by[r.id] = { id: r.id, name: r.name, abbr: r.abbr, score: r.score }; });
-      Object.keys(S.players).forEach(function (id) {
-        var p = S.players[id], v = p[f];
-        if (v == null) return;
-        by[id] = { id: isNaN(+id) ? id : +id, name: p.nick || (by[id] && by[id].name) || "?", abbr: p.abbr != null ? p.abbr : (by[id] && by[id].abbr) || "", score: v };
-      });
-      var list = Object.keys(by).map(function (k) { return by[k]; }).sort(function (a, c) { return c.score - a.score; }).slice(0, 100);
-      list.forEach(function (r, i) { r.rank = i + 1; });
-      return list;
-    };
     var renderTop = function (slug) {
       paged($("plist"), topRows(slug), 20, function (part) {
         return T('<table class="ap-t"><colgroup><col style="width:56px"><col><col style="width:150px"><col style="width:130px"></colgroup><thead><tr><th>#</th><th>Игрок</th><th>Альянс</th><th class="r">') + NAMES[slug] + "</th></tr></thead><tbody>" +
@@ -629,6 +630,7 @@
         ["power", "kills", "lv"].forEach(function (k) { if (p[k] != null) m[k] = p[k]; });
       });
     });
+    Object.keys(FRESH).forEach(function (slug) { var m = {}; topRows(slug).forEach(function (x) { m[x.id] = x.rank; }); S.board[slug] = m; });  // «место на сервере» = место в свежем топе
     route();
     window.addEventListener("hashchange", route);
     document.addEventListener("click", function (e) {
