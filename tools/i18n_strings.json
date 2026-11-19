@@ -369,5 +369,6 @@
  "двойник": "duplicate",
  "Ник этого пользователя:": "This user's nickname:",
  "Скрины новостей: занято ": "News screenshots: used ",
- " МБ из 1024 МБ": " MB of 1024 MB"
+ " МБ из 1024 МБ": " MB of 1024 MB",
+ " · робот проверяет трекер каждые 10 минут": " · the robot checks the tracker every 10 minutes"
 }

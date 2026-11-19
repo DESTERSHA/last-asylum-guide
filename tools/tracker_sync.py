@@ -116,6 +116,7 @@ def main():
                 sig = None
             if sig is not None and sig == prev.get("probe"):
                 print(f"у трекера нового нет (полный сбор был {round((now - last) / 60)} мин назад)")
+                save(OUT / "checked.json", {"t": now})  # время проверки — на сайте «проверено N мин назад» (а не время последних изменений)
                 return
             print("у трекера новые данные — полный сбор")
 
@@ -375,6 +376,7 @@ def main():
     index["updated"] = now
     save(OUT / "alliances.json", index)
     save(OUT / "players.json", {"updated": now, "players": players})
+    save(OUT / "checked.json", {"t": now})
     for shard, vals in series.items():
         p = OUT / "s" / f"{shard:02d}.json"
         s = load(p, {})

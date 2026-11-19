@@ -214,7 +214,7 @@
     var pulled = Math.max.apply(null, (S.server.boards || []).map(function (b) { return b.pulled_at || 0; }).concat([0]));
     $("view").innerHTML =
       '<div class="ap-wrap">' +
-      T('<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>проверено ') + ago(S.server.updated) + T(" · робот спрашивает трекер раз в 30 минут") + (pulled ? T(" · рейтинги трекер обновляет раз в сутки, последние — ") + atLabel(pulled) : "") + "</p></div></div>" +
+      T('<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>проверено ') + ago(S.checked || S.server.updated) + T(" · робот проверяет трекер каждые 10 минут") + (pulled ? T(" · рейтинги трекер обновляет раз в сутки, последние — ") + atLabel(pulled) : "") + "</p></div></div>" +
       '<div class="ap-cells c5">' + cell(T("Игроков"), full(s.players), (s.age_days || "—") + T(" дней серверу")) + cell(T("Альянсов"), full(s.alliances)) + cell(T("Общая мощь"), num(s.power)) +
       cell(T("Король"), esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell(T("Альянсов со свежим составом"), Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + T(" из 30"), T("у остальных — состав по карте за 3 дня, без рангов")) + "</div></div>" +
       T('<div class="ap-card"><div class="ap-h"><div><h3>Поиск</h3><p>игроки альянсов топ-30 и альянсы топ-100</p></div>') + pills("skind", [["p", T("Игроки")], ["a", T("Альянсы")]], "p") + T('</div><input id="sq" class="ap-in" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off"><div id="sres"></div></div>') +
@@ -594,8 +594,11 @@
     else homeView();
   }
 
-  Promise.all([get("server.json"), get("alliances.json"), get("players.json"), fetch(EN ? "data/heroes.en.json" : "data/heroes.json").then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (r) {
+  Promise.all([get("server.json"), get("alliances.json"), get("players.json"), fetch(EN ? "data/heroes.en.json" : "data/heroes.json").then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    /* время последней проверки робота (каждые 10 мин) — без 10-минутной округлки адреса, чтобы было свежим */
+    fetch(D + "checked.json?t=" + Date.now()).then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })]).then(function (r) {
     S.heroes = r[3]; S.server = r[0]; S.index = r[1].alliances; S.players = r[2].players;
+    S.checked = Math.max(r[4].t || 0, S.server.updated || 0);
     S.rows = S.server.boards.filter(function (b) { return b.slug === "alliance_power"; })[0].rows;
     S.server.boards.forEach(function (b) { if (b.alliance) return; var m = {}; b.rows.forEach(function (x) { m[x.id] = x.rank; }); S.board[b.slug] = m; });
     return Promise.all(S.rows.slice(0, 30).map(function (row) { return get("a/" + row.id + ".json").then(function (a) { S.al[row.id] = a; }).catch(function () {}); }));
