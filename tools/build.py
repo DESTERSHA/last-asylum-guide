@@ -145,6 +145,17 @@ def nav_html(current, lang, have_en):
     return "\n".join(out)
 
 
+SCRIPT_V = re.compile(r'(assets/[A-Za-z0-9_.-]+\.js)\?v=[A-Za-z0-9]+')
+_VER = {}
+
+
+def file_ver(rel):
+    if rel not in _VER:
+        f = ROOT / rel
+        _VER[rel] = hashlib.sha1(f.read_bytes()).hexdigest()[:10] if f.exists() else "0"
+    return _VER[rel]
+
+
 PAGE_LINK = re.compile(r'(href=")([a-z0-9]+)\.html([#?"])')
 SHOT = re.compile(r'(assets/shots/)([A-Za-z0-9_.-]+\.(?:webp|png|jpg))')
 
@@ -190,6 +201,9 @@ def main():
                 sw, alt = "", enlist
             if lang == "en":
                 content = localize_en(content, have_en)
+            # скрипты страниц (tracker.js, chat.js, news.js…): метка версии = отпечаток самого файла.
+            # Раньше метки были вписаны руками (?v=26, ?v=191126a) и не менялись — браузер на ПК держал старый скрипт (20.11: чат на ПК со старым скриптом)
+            content = SCRIPT_V.sub(lambda m: m.group(1) + "?v=" + file_ver(m.group(1)), content)
             home = page_file("index", "en" if lang == "en" and "index" in have_en else "ru")
             cabhref = page_file("cabinet", "en" if lang == "en" and "cabinet" in have_en else "ru")
             fields = {k: v for k, v in ui.items() if k not in ("nav", "switch", "switch_title") and not k.startswith("sup_")}
