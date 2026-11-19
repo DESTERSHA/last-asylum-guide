@@ -1280,6 +1280,18 @@ html.t-ap .sup-head{border-radius:999px}
 .cab-ranks button{font:inherit;font-weight:700;font-size:15px;width:56px;height:44px;border-radius:12px;border:1px solid #d9dce3;background:#fff;cursor:pointer}
 .cab-ranks button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .cm-tag.rk{background:#eef0f4;color:#3b4a5e;font-weight:700}.cm-tag[hidden]{display:none}
+.cm-tag.rk.un{background:transparent;color:#9aa3ad;box-shadow:inset 0 0 0 1px #d3d8df;font-weight:600}
+/* кабинет: альянс и ранг, «Мой альянс» */
+.nick-found.ok{color:#2e7d32}.nick-found.no{color:#b5651d}
+.cab-al b{margin-right:6px}.al-ok{color:#2e7d32;font-style:normal;font-weight:600}.al-wait{color:#8a7a5c;font-style:normal}
+.cab-ally{background:#fff;border:1px solid #e3e6ec;border-radius:18px;padding:16px 18px;margin:0 0 16px}
+.cab-ally h3{margin:0 0 6px}
+.ally-bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:8px 0}
+.ally-all{display:flex;gap:6px;align-items:center;font-size:14px}
+.ally-sum{margin:6px 0}
+.ally-t td{vertical-align:middle}.ally-t tr.off td{color:#9aa3ad}
+.ally-t select,.ld-al select,#allySel{padding:4px 6px;border-radius:8px;border:1px solid #d3d8df;background:#fff;font:inherit}
+.ld-al{font-size:12px;color:#7a5410;white-space:nowrap}
 /* чат: сверху одно (последнее) закреплённое, все — в панели «Закреплённые» */
 .ch-pins{flex-direction:row;align-items:center;gap:10px;max-height:none;overflow:hidden}
 .ch-pins .ch-pin{flex:1;min-width:0}

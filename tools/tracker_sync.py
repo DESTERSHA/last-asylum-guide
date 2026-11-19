@@ -117,6 +117,8 @@ def main():
             if sig is not None and sig == prev.get("probe"):
                 print(f"у трекера нового нет (полный сбор был {round((now - last) / 60)} мин назад)")
                 save(OUT / "checked.json", {"t": now})  # время проверки — на сайте «проверено N мин назад» (а не время последних изменений)
+                if not roster_pushed_ok():
+                    push_roster()  # прошлая отправка составов не прошла (или ещё не было) — из уже сохранённых файлов, без запросов к трекеру
                 return
             print("у трекера новые данные — полный сбор")
 
@@ -373,6 +375,7 @@ def main():
     sj["probe"] = home_probe
     save(OUT / "server.json", sj)
     push_moves(moves_all)
+    push_roster()
     print(f"готово: альянсов {len(top)}, игроков в базе {len(players)}, запросов {used}")
 
 
@@ -407,6 +410,53 @@ def push_moves(moves):
     if rows:
         save(mark_p, {"t": max(m["t"] for m in rows)})
     print(f"платные данные: отправлено {len(rows)}, новых в базе {sent}")
+
+
+def roster_mark():
+    return (PRIV or OUT.parent / "_local") / "roster_pushed.json"
+
+
+def roster_pushed_ok():
+    return bool(load(roster_mark(), {}).get("ok"))
+
+
+def push_roster():
+    """Составы топ-30 альянсов (ник, ранг в игре) — в базу сайта: по нику сайт сам находит альянс и ранг человека,
+    лидер подтверждает «это наш» (tools/supabase_alliance.sql). Берётся из уже сохранённых файлов data/tracker/a/ —
+    ровно то, что показывает трекер, без своих правил."""
+    token = os.environ.get("LA_SB_PUSH", "").strip()
+    if not token:
+        print("составы: пароль робота не задан — пропускаю", file=sys.stderr)
+        return
+    sj = load(OUT / "server.json", {})
+    top = [r["id"] for r in next((b for b in sj.get("boards", []) if b["slug"] == "alliance_power"), {"rows": []})["rows"][:TOP]]
+    done, rows = [], []
+    for aid in top:
+        a = load(OUT / "a" / f"{aid}.json", {})
+        mem = a.get("members") or []
+        if not mem:
+            continue  # состава нет — прошлый в базе не трогаем
+        done.append(aid)
+        known = a.get("roster") == "live"
+        rows.extend({"al_id": aid, "al_abbr": a.get("abbr") or "", "uid": m["uid"], "nick": m.get("nick") or "",
+                     "rank": m.get("rank") or "", "ranks_known": known} for m in mem)
+    if not top or not rows:
+        print("составы: нечего отправлять", file=sys.stderr)
+        return
+    body = json.dumps({"p_token": token, "p_done": done, "p_top": top, "p_rows": rows}).encode("utf-8")
+    req = urllib.request.Request(SB_URL + "/rest/v1/rpc/push_roster", data=body, method="POST",
+                                 headers={"apikey": SB_KEY, "Authorization": f"Bearer {SB_KEY}", "Content-Type": "application/json"})
+    ok = False
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            n = json.loads(r.read().decode("utf-8") or "0")
+        ok = True
+        print(f"составы: отправлено {len(rows)} игроков из {len(done)} альянсов, записано {n}")
+    except urllib.error.HTTPError as e:
+        print("составы: база отказала:", e.code, e.read().decode("utf-8", "replace")[:300], file=sys.stderr)
+    except (urllib.error.URLError, TimeoutError) as e:
+        print("составы: нет связи с базой:", e, file=sys.stderr)
+    save(roster_mark(), {"t": time.time(), "ok": ok})
 
 
 if __name__ == "__main__":
