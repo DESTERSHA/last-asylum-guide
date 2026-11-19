@@ -1,0 +1,54 @@
+name: Копия сайта на destersha.github.io
+# Работает ТОЛЬКО в репозитории DESTERSHA/last-asylum-guide (в основном ozzi3690-oss/last-asylum-guide выключен).
+# Основной сайт — ozzi3690-oss.github.io/last-asylum-guide (там же робот трекера и все секреты). Копия по адресу
+# destersha.github.io/last-asylum-guide каждые 5 минут забирает новое из основного (он открытый — пароль не нужен)
+# и пересобирает сайт. Один запуск держится 5,5 ч и заводит себя заново (GitHub выбрасывает часть запусков по расписанию);
+# расписание — запасной будильник, если запуск всё же пропал.
+# Если в основном поменялись файлы самих роботов (.github/workflows), копия их принять не может (так устроен GitHub) —
+# такие изменения отправляются в копию с компьютера (у origin два адреса отправки).
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  actions: write
+concurrency:
+  group: mirror
+  cancel-in-progress: false
+jobs:
+  sync:
+    if: github.repository == 'DESTERSHA/last-asylum-guide'
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Забирать обновления основного сайта каждые 5 мин
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          git init -q m && cd m
+          git remote add up https://github.com/ozzi3690-oss/last-asylum-guide.git
+          git remote add self "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          for i in $(seq 1 66); do
+            if git fetch -q self main && git fetch -q up main; then
+              A=$(git rev-parse up/main); B=$(git rev-parse self/main)
+              if [ "$A" != "$B" ]; then
+                if git push -q self up/main:refs/heads/main; then
+                  echo "$(date -u +'%H:%M') UTC: копия обновлена до ${A:0:7}"
+                  gh api -X POST "repos/${REPO}/pages/builds" >/dev/null || echo "не удалось запустить пересборку сайта"
+                else
+                  echo "$(date -u +'%H:%M') UTC: копия НЕ обновлена (${B:0:7} -> ${A:0:7}) — нужна отправка с компьютера"
+                fi
+              fi
+            else
+              echo "$(date -u +'%H:%M') UTC: не удалось связаться с GitHub, повтор через 5 мин"
+            fi
+            sleep 300
+          done
+      - name: Завести себя заново
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run mirror.yml --repo ${{ github.repository }}
