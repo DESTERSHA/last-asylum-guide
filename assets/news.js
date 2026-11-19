@@ -65,6 +65,29 @@
       (posts.length > shown ? '<button type="button" class="btn news-more" id="newsMore">' + T("Показать ещё") + "</button>" : "");
     var mb = document.getElementById("newsMore");
     if (mb) mb.onclick = function () { shown += PAGE; draw(); };
+    posts.slice(0, shown).forEach(function (p) { if (!showOrig[p.id]) trPost(p); });
+  }
+  var TARGET = EN ? "en" : "ru", showOrig = {}, trDone = {};
+  function trApply(p, tr) {
+    var art = document.getElementById("post-" + p.id); if (!art || showOrig[p.id]) return;
+    if (tr.title != null) art.querySelector("[data-tt]").textContent = tr.title;
+    if (tr.body != null && art.querySelector("[data-tb]")) art.querySelector("[data-tb]").innerHTML = bodyHtml(tr.body);
+    if (tr.q != null && art.querySelector("[data-tq]")) art.querySelector("[data-tq]").textContent = tr.q;
+    (tr.opts || []).forEach(function (o, i) { var el = art.querySelector('[data-to="' + i + '"]'); if (el && o != null) el.textContent = o; });
+    var b = art.querySelector("[data-orig]"); if (b) b.hidden = false;
+  }
+  async function trPost(p) {
+    if (!window.LATr) return;
+    var all = [p.title, p.body, p.poll ? p.poll.q : "", (p.poll && p.poll.options || []).join(" ")].join(" ");
+    if (!LATr.needs(all, TARGET)) return;
+    if (trDone[p.id]) { trApply(p, trDone[p.id]); return; }
+    try {
+      var r = await Promise.all([LATr.translate(p.title, TARGET), p.body ? LATr.translate(p.body, TARGET) : null,
+        p.poll ? LATr.translate(p.poll.q, TARGET) : null,
+        p.poll ? Promise.all((p.poll.options || []).map(function (o) { return LATr.translate(o, TARGET); })) : null]);
+      trDone[p.id] = { title: r[0], body: r[1], q: r[2], opts: r[3] || [] };
+      trApply(p, trDone[p.id]);
+    } catch (e) { console.warn("новости: перевод поста", p.id, e); }
   }
   function postHtml(p) {
     var imgs = (p.images || []).map(function (x) { return '<img src="' + esc(imgUrl(x)) + '" alt="" loading="lazy">'; }).join("");
@@ -73,8 +96,9 @@
       "<span>" + fmtWhen(p.created_at) + "</span>" + (p.author_nick ? "<span>· " + esc(p.author_nick) + "</span>" : "") +
       (p.updated_at ? '<span class="news-ed">· ' + T("изменено") + "</span>" : "") +
       (canEdit(p) ? '<span class="news-act"><button type="button" class="linkbtn" data-edit="' + p.id + '">' + T("Изменить") + '</button><button type="button" class="linkbtn del" data-del="' + p.id + '">' + T("Удалить") + "</button></span>" : "") +
-      "</div><h3>" + esc(p.title) + "</h3>" +
-      (p.body ? '<div class="news-body">' + bodyHtml(p.body) + "</div>" : "") +
+      '<button type="button" class="linkbtn news-orig" data-orig="' + p.id + '" hidden>' + T("Показать оригинал") + "</button>" +
+      "</div><h3 data-tt>" + esc(p.title) + "</h3>" +
+      (p.body ? '<div class="news-body" data-tb>' + bodyHtml(p.body) + "</div>" : "") +
       (imgs ? '<div class="news-imgs">' + imgs + "</div>" : "") +
       (p.poll ? pollHtml(p) : "") + "</article>";
   }
@@ -87,7 +111,7 @@
     var rows = opts.map(function (o, i) {
       var x = by[i], vs = x.voters || [];
       return '<div class="poll-opt' + (my === i ? " mine" : "") + '">' +
-        '<button type="button" class="poll-vote" data-vote="' + p.id + '" data-opt="' + i + '"' + (over ? " disabled" : "") + "><span>" + esc(o) + "</span></button>" +
+        '<button type="button" class="poll-vote" data-vote="' + p.id + '" data-opt="' + i + '"' + (over ? " disabled" : "") + '><span data-to="' + i + '">' + esc(o) + "</span></button>" +
         '<div class="poll-bars"><div class="poll-bar ld"><i style="width:' + pct(x.leaders, totL) + '%"></i><span>' + T("Лидеры") + ": <b>" + x.leaders + "</b> · " + pct(x.leaders, totL) + "%</span></div>" +
         '<div class="poll-bar pl"><i style="width:' + pct(x.players, totP) + '%"></i><span>' + T("Игроки") + ": <b>" + x.players + "</b> · " + pct(x.players, totP) + "%</span></div></div>" +
         (!pl.anon && vs.length ? '<details class="poll-who"><summary>' + T("Кто голосовал") + " (" + vs.length + ")</summary>" +
@@ -99,13 +123,22 @@
       T("всего: лидеров ") + totL + T(", игроков ") + totP];
     var hint = over ? "" : !st.user ? '<a href="' + (EN ? "cabinet.en.html" : "cabinet.html") + '">' + T("Войдите или зарегистрируйтесь, чтобы голосовать") + "</a>" :
       (my != null ? T("Вы проголосовали. Можно переголосовать, пока голосование идёт.") : T("Нажмите на вариант, чтобы проголосовать."));
-    return '<div class="poll" data-poll="' + p.id + '"><div class="poll-q">' + esc(pl.q) + '</div><div class="poll-info">' + info.join(" · ") + "</div>" + rows +
+    return '<div class="poll" data-poll="' + p.id + '"><div class="poll-q">' + '<span data-tq>' + esc(pl.q) + '</span>' + '</div><div class="poll-info">' + info.join(" · ") + "</div>" + rows +
       '<div class="poll-hint">' + hint + '<span class="cab-msg"></span></div>' +
       (st.admin ? '<details class="poll-admin" data-adm="' + p.id + '"><summary>' + T("Все голоса (видно только админу)") + '</summary><div class="poll-adm-list">…</div></details>' : "") + "</div>";
   }
 
   /* ===== действия в ленте ===== */
   feed.addEventListener("click", async function (e) {
+    var ob = e.target.closest("[data-orig]");
+    if (ob) {
+      var pid = +ob.dataset.orig; showOrig[pid] = !showOrig[pid];
+      var pp = posts.filter(function (x) { return x.id === pid; })[0];
+      var art = document.getElementById("post-" + pid); art.outerHTML = postHtml(pp);
+      var b2 = document.querySelector('#post-' + pid + ' [data-orig]');
+      if (showOrig[pid]) { b2.hidden = false; b2.textContent = T("Показать перевод"); } else trPost(pp);
+      return;
+    }
     var v = e.target.closest("[data-vote]") || (!e.target.closest("details, button, a") && e.target.closest(".poll-opt") ? e.target.closest(".poll-opt").querySelector("[data-vote]") : null), ed = e.target.closest("[data-edit]"), del = e.target.closest("[data-del]"), rm = e.target.closest("[data-rmvote]"), im = e.target.closest(".news-imgs img");
     if (im) { var lb = document.querySelector(".lightbox"); if (lb) { lb.querySelector("img").src = im.src; lb.classList.add("on"); } return; }
     if (v) return vote(+v.dataset.vote, +v.dataset.opt, v);

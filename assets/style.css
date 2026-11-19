@@ -1216,3 +1216,4 @@ html.t-ap .sup-head{border-radius:999px}
 .ch-sheet-e{display:flex;justify-content:space-between;gap:2px;padding:6px 4px 8px;border-bottom:1px solid #eef0f4}
 .ch-sheet-e button{font-size:24px;line-height:1;width:40px;height:40px;border:0;border-radius:50%;background:none;cursor:pointer}
 .ch-sheet-e button:hover,.ch-sheet-e button.mine{background:#e3edff}
+.news-orig{margin-left:6px}.news-orig[hidden]{display:none}

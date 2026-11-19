@@ -163,14 +163,15 @@
         try {
           var t = await translate(txt, target);
           var box = app.querySelector('[data-pollid="' + id + '"]'); if (!box || t == null) return;
-          var el = i === 0 ? box.querySelector("[data-ptq]") : box.querySelector('[data-pto="' + (i - 1) + '"]');
-          if (el) el.textContent = t;
+          var el = i === 0 ? box.querySelector("[data-pq]") : box.querySelector('[data-po="' + (i - 1) + '"]');
+          if (el) { el.title = el.textContent; el.textContent = t; }  // перевод заменяет текст, оригинал — во всплывающей подсказке
         } catch (e) { delete polled[id + "|" + target]; console.warn("чат: перевод голосования", e); }
       });
     });
   }
   function retranslate() {
     polled = {};
+    drawPins();
     drawList(true);
     app.querySelectorAll(".cm-tr").forEach(function (el) { el.innerHTML = ""; delete el.dataset.done; });
     Object.keys(opened).forEach(function (id) { trMessage(+id, true); });
@@ -286,11 +287,11 @@
     var by = opts.map(function (_, i) { return res.filter(function (x) { return x.opt === i; })[0] || { leaders: 0, players: 0, voters: [] }; });
     var totL = by.reduce(function (s, x) { return s + x.leaders; }, 0), totP = by.reduce(function (s, x) { return s + x.players; }, 0);
     var pct = function (n, t) { return t ? Math.round(n * 100 / t) : 0; };
-    return '<div class="poll" data-pollid="' + m.id + '"><div class="poll-q">📊 ' + esc(pl.q) + '<div class="poll-tr" data-ptq></div></div><div class="poll-info">' +
+    return '<div class="poll" data-pollid="' + m.id + '"><div class="poll-q">📊 <span data-pq>' + esc(pl.q) + '</span></div><div class="poll-info">' +
       [pl.anon ? T("Анонимное голосование") : T("Открытое голосование: ники видны всем"), pl.ends ? (over ? T("закончилось ") : T("до ")) + when(pl.ends) : T("без срока"), T("всего: лидеров ") + totL + T(", игроков ") + totP].join(" · ") + "</div>" +
       opts.map(function (o, i) {
         var x = by[i], vs = x.voters || [];
-        return '<div class="poll-opt' + (my === i ? " mine" : "") + '"><button type="button" class="poll-vote" data-vote="' + m.id + '" data-opt="' + i + '"' + (over ? " disabled" : "") + "><span>" + esc(o) + '<i class="poll-otr" data-pto="' + i + '"></i></span></button>' +
+        return '<div class="poll-opt' + (my === i ? " mine" : "") + '"><button type="button" class="poll-vote" data-vote="' + m.id + '" data-opt="' + i + '"' + (over ? " disabled" : "") + '><span data-po="' + i + '">' + esc(o) + "</span></button>" +
           '<div class="poll-bars"><div class="poll-bar ld"><i style="width:' + pct(x.leaders, totL) + '%"></i><span>' + T("Лидеры") + ": <b>" + x.leaders + "</b> · " + pct(x.leaders, totL) + '%</span></div>' +
           '<div class="poll-bar pl"><i style="width:' + pct(x.players, totP) + '%"></i><span>' + T("Игроки") + ": <b>" + x.players + "</b> · " + pct(x.players, totP) + "%</span></div></div>" +
           (!pl.anon && vs.length ? '<details class="poll-who"><summary>' + T("Кто голосовал") + " (" + vs.length + ")</summary>" + vs.map(function (v) { return '<span class="' + (v.leader ? "ld" : "") + '">' + esc(v.nick || "?") + (v.leader ? " · " + T("лидер") : "") + "</span>"; }).join("") + "</details>" : "") + "</div>";
@@ -316,8 +317,20 @@
     b.hidden = !pins.length;
     b.innerHTML = pins.map(function (m) {
       var txt = m.body ? m.body.replace(/\s+/g, " ").slice(0, 140) : m.poll ? "📊 " + m.poll.q : "📷 " + T("фото");
-      return '<button type="button" class="ch-pin" data-goto="' + m.id + '"><span>📌</span><b>' + esc(m.nick || "") + ":</b> " + esc(txt) + "</button>";
+      return '<button type="button" class="ch-pin" data-goto="' + m.id + '"><span>📌</span><b>' + esc(m.nick || "") + ':</b> <i data-pint="' + m.id + '">' + esc(txt) + "</i></button>";
     }).join("");
+    // закреплённое — на выбранном языке (при автопереводе), как и сообщения
+    if (auto) pins.forEach(function (m) {
+      var src = m.body || (m.poll && m.poll.q) || "";
+      if (!src || langOf(src) === target) return;
+      slot(async function () {
+        try {
+          var t = await translate(src, target);
+          var el = b.querySelector('[data-pint="' + m.id + '"]');
+          if (el && t) el.textContent = (m.body ? "" : "📊 ") + t.replace(/\s+/g, " ").slice(0, 140);
+        } catch (e) { console.warn("чат: перевод закреплённого", e); }
+      });
+    });
   }
   async function loadPolls(ids) {
     ids = ids || msgs.filter(function (m) { return m.poll; }).map(function (m) { return m.id; });

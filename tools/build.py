@@ -121,6 +121,7 @@ TEMPLATE = """<!doctype html>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="assets/auth-config.js?v={ver}"></script>
 <script src="assets/auth.js?v={ver}"></script>
+<script src="assets/translate.js?v={ver}"></script>
 <script src="assets/notice.js?v={ver}"></script>
 <script src="assets/peek.js?v={ver}"></script>
 <script src="assets/pairgrid.js?v={ver}"></script>
@@ -177,7 +178,7 @@ def write_dict():
 def main():
     print("словарь подписей EN:", write_dict(), "строк")
     h = hashlib.sha1()
-    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js", "assets/auth.js", "assets/auth-config.js", "assets/cabinet.js", "assets/i18n.js", "assets/i18n-dict.js", "assets/news.js", "assets/notice.js", "assets/chat.js"):
+    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js", "assets/auth.js", "assets/auth-config.js", "assets/cabinet.js", "assets/i18n.js", "assets/i18n-dict.js", "assets/news.js", "assets/notice.js", "assets/chat.js", "assets/translate.js"):
         h.update((ROOT / f).read_bytes())
     ver = h.hexdigest()[:10]
     have_en = {slug for slug, *_ in PAGES if (SRC / "en" / f"{slug}.html").exists()}
