@@ -37,7 +37,7 @@ UI = {
            "switch": "EN", "switch_title": "English version",
            "credit": "Сайт сделала <b>[SLAV] DESTERSHA</b>",
            "sup_t": "Поддержать проект", "sup_d": "Сайт бесплатный и без рекламы. Если он вам помогает — можно поддержать автора добровольным пожертвованием, любой суммой.",
-           "sup_ru": "Из России", "sup_intl": "Из других стран", "sup_crypto": "Криптовалюта", "sup_copy": "нажмите, чтобы скопировать"},
+           "sup_ru": "Из России", "sup_intl": "Из других стран", "sup_crypto": "Криптовалюта", "sup_copy": "нажмите, чтобы скопировать", "sup_qr": "Наведите камеру телефона, чтобы открыть страницу поддержки"},
     "en": {"tagline": "alliance guide · kingdom 397", "nav": "Sections", "cab_title": "My page: saved sections, events, alliances and players", "cab": "My page",
            "clock_title": "Server time is 5 hours behind Moscow time.", "srv": "server", "msk": "Moscow", "top": "Back to top",
            "foot1": "<b>Kingdom 397 alliance guide</b> · updated 15.11.2026. A fan-made guide, not affiliated with the game developers. Icons and images come from the game itself and from the player community.",
@@ -45,12 +45,13 @@ UI = {
            "switch": "RU", "switch_title": "Русская версия",
            "credit": "Site made by <b>[SLAV] DESTERSHA</b>",
            "sup_t": "Support the project", "sup_d": "The site is free and has no ads. If it helps you, you can support the author with a voluntary donation of any amount.",
-           "sup_ru": "From Russia", "sup_intl": "From other countries", "sup_crypto": "Crypto", "sup_copy": "tap to copy"},
+           "sup_ru": "From Russia", "sup_intl": "From other countries", "sup_crypto": "Crypto", "sup_copy": "tap to copy", "sup_qr": "Point your phone camera here to open the support page"},
 }
 # «Поддержать проект» в подвале каждой страницы. Пока все поля пустые — блока на сайте нет.
 # ru — ссылка для оплаты из России (Boosty); intl — для иностранцев (включать только после пробного платежа из-за границы);
 # crypto — адреса кошельков {"USDT (TRC-20)": "адрес", "TON": "адрес"}.
-SUPPORT = {"ru": "https://boosty.to/destersha/donate", "intl": "", "crypto": {}}
+SUPPORT = {"ru": "https://boosty.to/destersha/donate", "intl": "", "crypto": {},
+           "qr": "assets/icons/boosty-qr.png"}  # QR-код страницы доната — выдал сам Boosty (прислала владелица 19.11)
 if os.environ.get("LA_SUPPORT_PREVIEW"):  # только для снимка-примера у себя: пустые ссылки-заглушки
     SUPPORT = {"ru": "#", "intl": "#", "crypto": {"USDT (TRC-20)": "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TON": "UQXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}}
 
@@ -71,7 +72,8 @@ def support_html(ui, lang):
         cr = (f'<details class="sup-crypto"><summary>{ui["sup_crypto"]}</summary>' +
               "".join(f'<div><span>{k}</span><code title="{ui["sup_copy"]}" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent);this.classList.add(\'ok\')">{v}</code></div>' for k, v in s["crypto"].items()) +
               "</details>")
-    return f'<div class="sup"><div class="sup-txt"><b>♥ {ui["sup_t"]}</b><span>{ui["sup_d"]}</span></div><div class="sup-btns">{btns}</div>{cr}</div>'
+    qr = f'<img class="sup-qr" src="{s["qr"]}" alt="QR" width="84" height="84" loading="lazy" title="{ui["sup_qr"]}">' if s.get("qr") and s["ru"] else ""
+    return f'<div class="sup"><div class="sup-txt"><b>♥ {ui["sup_t"]}</b><span>{ui["sup_d"]}</span></div><div class="sup-btns">{btns}</div>{qr}{cr}</div>'
 
 HIDDEN = {"cabinet"}  # страницы без пункта в меню (кабинет открывается из шапки)
 TEMPLATE = """<!doctype html>
