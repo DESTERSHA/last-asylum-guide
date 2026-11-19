@@ -66,8 +66,64 @@
     var mb = document.getElementById("newsMore");
     if (mb) mb.onclick = function () { shown += PAGE; draw(); };
     posts.slice(0, shown).forEach(function (p) { if (!showOrig[p.id]) trPost(p); });
+    loadComments(); subscribeComments();
   }
   var TARGET = EN ? "en" : "ru", showOrig = {}, trDone = {};
+
+  /* ===== комментарии к постам ===== */
+  var comments = {}, cOpen = {}, cChan = null;  // id поста → [комментарии]; открытые блоки
+  function canDelC(c) { return st.user && (c.user_id === st.user.id || (A.isModerator && A.isModerator())); }
+  function commentsHtml(p) {
+    var list = comments[p.id] || [], open = !!cOpen[p.id];
+    return '<div class="nc" data-cpost="' + p.id + '"><button type="button" class="linkbtn nc-toggle" data-ctoggle="' + p.id + '">💬 ' + T("Комментарии") + " (" + list.length + ")" + (open ? " ▴" : " ▾") + "</button>" +
+      (open ? '<div class="nc-list">' + (list.length ? list.map(function (c) {
+        return '<div class="nc-it" data-cid="' + c.id + '"><div class="nc-h"><b>' + esc(c.nick || "?") + "</b>" +
+          (c.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (c.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "") +
+          '<span class="nc-t">' + fmtWhen(c.created_at) + "</span>" + (canDelC(c) ? '<button type="button" class="linkbtn del" data-cdel="' + c.id + '" data-cp="' + p.id + '">' + T("Удалить") + "</button>" : "") + "</div>" +
+          '<div class="nc-b" data-ctext>' + bodyHtml(c.body) + "</div></div>";
+      }).join("") : '<div class="nc-empty">' + T("Комментариев пока нет.") + "</div>") + "</div>" +
+        (st.user ? '<form class="nc-form" data-cform="' + p.id + '"><textarea rows="1" maxlength="5000" placeholder="' + esc(T("Написать комментарий…")) + '"></textarea><button type="submit" class="btn pri">' + T("Отправить") + '</button><span class="cab-msg"></span></form>'
+          : '<div class="nc-empty"><a href="' + (EN ? "cabinet.en.html" : "cabinet.html") + '">' + T("Войдите, чтобы комментировать") + "</a></div>") : "") + "</div>";
+  }
+  function redrawComments(pid) {
+    var box = feed.querySelector('[data-cpost="' + pid + '"]'); if (!box) return;
+    var p = posts.filter(function (x) { return x.id === pid; })[0]; if (!p) return;
+    var typed = box.querySelector("textarea") ? box.querySelector("textarea").value : "";
+    box.outerHTML = commentsHtml(p);
+    var nb = feed.querySelector('[data-cpost="' + pid + '"]'), ta = nb && nb.querySelector("textarea");
+    if (ta && typed) ta.value = typed;
+    trComments(pid);
+  }
+  function trComments(pid) {  // комментарии — на языке сайта, как и пост
+    if (!window.LATr || !cOpen[pid]) return;
+    (comments[pid] || []).forEach(function (c) {
+      if (!LATr.needs(c.body, TARGET)) return;
+      LATr.translate(c.body, TARGET, "news").then(function (t) {
+        var el = feed.querySelector('[data-cid="' + c.id + '"] [data-ctext]');
+        if (el && t) { el.innerHTML = bodyHtml(t); el.title = c.body; }
+      }).catch(function (e) { console.warn("новости: перевод комментария", e); });
+    });
+  }
+  async function loadComments() {
+    var ids = posts.slice(0, shown).map(function (p) { return p.id; });
+    if (!ids.length) return;
+    var r = await sb.from("post_comments").select("*").in("post_id", ids).order("created_at", { ascending: true });
+    if (r.error) { console.warn("новости: комментарии", r.error.message); return; }
+    ids.forEach(function (id) { comments[id] = []; });
+    (r.data || []).forEach(function (c) { (comments[c.post_id] = comments[c.post_id] || []).push(c); });
+    ids.forEach(redrawComments);
+  }
+  function subscribeComments() {
+    if (cChan) return;
+    cChan = sb.channel("news-comments").on("postgres_changes", { event: "*", schema: "public", table: "post_comments" }, function (pl) {
+      var c = pl.eventType === "DELETE" ? pl.old : pl.new; if (!c || !c.post_id) return;
+      var list = comments[c.post_id] = comments[c.post_id] || [];
+      if (pl.eventType === "DELETE") comments[c.post_id] = list.filter(function (x) { return x.id !== c.id; });
+      else if (!list.some(function (x) { return x.id === c.id; })) list.push(c);
+      redrawComments(c.post_id);
+    }).subscribe();
+  }
+
   function trApply(p, tr) {
     var art = document.getElementById("post-" + p.id); if (!art || showOrig[p.id]) return;
     if (tr.title != null) art.querySelector("[data-tt]").textContent = tr.title;
@@ -101,7 +157,7 @@
       "</div><h3 data-tt>" + esc(p.title) + "</h3>" +
       (p.body ? '<div class="news-body" data-tb>' + bodyHtml(p.body) + "</div>" : "") +
       (imgs ? '<div class="news-imgs">' + imgs + "</div>" : "") +
-      (p.poll ? pollHtml(p) : "") + "</article>";
+      (p.poll ? pollHtml(p) : "") + commentsHtml(p) + "</article>";
   }
   function pollHtml(p) {
     var pl = p.poll, res = results[p.id] || [], my = mine[p.id], over = ended(p);
@@ -130,7 +186,36 @@
   }
 
   /* ===== действия в ленте ===== */
+  feed.addEventListener("submit", async function (e) {
+    var f = e.target.closest("[data-cform]"); if (!f) return;
+    e.preventDefault();
+    var pid = +f.dataset.cform, ta = f.querySelector("textarea"), msg = f.querySelector(".cab-msg"), body = ta.value.trim();
+    if (!body) return;
+    var btn = f.querySelector("button"); btn.disabled = true; msg.className = "cab-msg"; msg.textContent = "";
+    var r = await (A.call ? A.call(function () { return sb.from("post_comments").insert({ post_id: pid, body: body }).select().single(); }) : sb.from("post_comments").insert({ post_id: pid, body: body }).select().single());
+    btn.disabled = false;
+    if (r.error) { msg.className = "cab-msg err"; msg.textContent = r.error.message; return; }
+    ta.value = "";
+    var list = comments[pid] = comments[pid] || [];
+    if (!list.some(function (x) { return x.id === r.data.id; })) list.push(r.data);
+    redrawComments(pid);
+  });
+  feed.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey && e.target.closest && e.target.closest("[data-cform] textarea") && !window.matchMedia("(max-width:760px)").matches) {
+      e.preventDefault(); e.target.closest("form").requestSubmit();
+    }
+  });
   feed.addEventListener("click", async function (e) {
+    var ct = e.target.closest("[data-ctoggle]");
+    if (ct) { var cp = +ct.dataset.ctoggle; cOpen[cp] = !cOpen[cp]; redrawComments(cp); if (cOpen[cp]) { var ta0 = feed.querySelector('[data-cform="' + cp + '"] textarea'); if (ta0) ta0.focus(); } return; }
+    var cd = e.target.closest("[data-cdel]");
+    if (cd) {
+      if (!confirm(T("Удалить комментарий?"))) return;
+      var rd = await sb.from("post_comments").delete().eq("id", +cd.dataset.cdel);
+      if (rd.error) return alert(rd.error.message);
+      var cpid = +cd.dataset.cp; comments[cpid] = (comments[cpid] || []).filter(function (x) { return x.id !== +cd.dataset.cdel; }); redrawComments(cpid);
+      return;
+    }
     var ob = e.target.closest("[data-orig]");
     if (ob) {
       var pid = +ob.dataset.orig; showOrig[pid] = !showOrig[pid];

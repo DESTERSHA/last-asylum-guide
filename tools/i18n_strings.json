@@ -467,5 +467,10 @@
  "В чат": "To chat",
  "Важные новости": "Important News",
  "можно несколько": "you can pick several",
- "Готово": "Done"
+ "Готово": "Done",
+ "Комментарии": "Comments",
+ "Комментариев пока нет.": "No comments yet.",
+ "Написать комментарий…": "Write a comment…",
+ "Войдите, чтобы комментировать": "Sign in to comment",
+ "Удалить комментарий?": "Delete the comment?"
 }

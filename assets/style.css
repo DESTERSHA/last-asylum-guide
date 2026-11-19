@@ -1248,3 +1248,16 @@ html.t-ap .sup-head{border-radius:999px}
   .ch-set select{height:30px;font-size:13px}
   .ch-set-btn{display:none!important}
 }
+/* комментарии к постам */
+.nc{margin-top:14px;border-top:1px solid #eef0f4;padding-top:10px}
+.nc-toggle{font-weight:600;font-size:14px;padding:4px 0}
+.nc-list{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+.nc-it{background:var(--soft);border-radius:12px;padding:8px 12px}
+.nc-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px}
+.nc-h b{font-size:14px}.nc-t{color:var(--faint);font-size:12px}.nc-h .linkbtn{margin-left:auto;font-size:12.5px}
+.nc-b{font-size:14.5px;line-height:1.5;overflow-wrap:anywhere;margin-top:2px}
+.nc-empty{font-size:13.5px;color:var(--mut);padding:4px 0}
+.nc-form{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.nc-form textarea{flex:1;min-width:200px;font:inherit;font-size:15px;border-radius:12px;border:1px solid #d9dce3;padding:9px 12px;resize:vertical;min-height:42px}
+.nc-form .btn{cursor:pointer;height:42px}
+.nc-form .cab-msg{flex-basis:100%}.nc-form .cab-msg:empty{display:none}
