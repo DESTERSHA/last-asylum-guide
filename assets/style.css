@@ -1267,3 +1267,16 @@ html.t-ap .sup-head{border-radius:999px}
 .nh{display:flex;flex-direction:column;gap:1px;padding:8px 10px;border-radius:10px;background:var(--soft);font-size:13.5px}
 .nh span{color:var(--faint);font-size:12px}.nh em{font-style:normal;font-size:12px;color:var(--mut)}
 .nh-btn{font-size:12.5px}
+/* кабинет: мой профиль (ник и ранг) */
+.cab-prof{background:#fff;border:1px solid #e3e6ec;border-radius:18px;padding:16px 18px;margin:0 0 16px}
+.cab-prof h3{margin:0 0 12px}
+.cab-prof-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px;margin-bottom:12px}
+.cab-prof-row label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;color:var(--mut);flex:1 1 240px;max-width:380px}
+.cab-prof-row input{font:inherit;font-size:16px;height:44px;border-radius:12px;border:1px solid #d9dce3;padding:0 12px}
+.cab-prof-row .btn{cursor:pointer;height:44px}
+.cab-prof-row .cab-msg{flex-basis:100%;margin:0}.cab-prof-row .cab-msg:empty{display:none}
+.cab-prof-l{font-size:13px;font-weight:600;color:var(--mut);flex-basis:100%}
+.cab-ranks{display:flex;gap:6px;flex-wrap:wrap}
+.cab-ranks button{font:inherit;font-weight:700;font-size:15px;width:56px;height:44px;border-radius:12px;border:1px solid #d9dce3;background:#fff;cursor:pointer}
+.cab-ranks button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cm-tag.rk{background:#eef0f4;color:#3b4a5e;font-weight:700}

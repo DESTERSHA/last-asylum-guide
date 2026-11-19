@@ -48,8 +48,9 @@
     }
     var sub = A.hasSub(), pr = st.profile || {};
     var roles = [pr.editor ? T("редактор новостей") : "", pr.leader ? T("лидер альянса") : ""].filter(Boolean).join(" · ");
-    var nickLine = ("nick" in pr) ? '<span class="cab-nick">' + T("Игровой ник: ") + "<b>" + (pr.nick ? esc(pr.nick) : "—") + '</b> <button type="button" class="btn cab-nick-btn" id="nickBtn">✎ ' + T("Изменить ник") + '</button> <button type="button" class="linkbtn" id="myNickHist">' + T("история") + "</button>" + (roles ? " · " + roles : "") + "</span>" : "";
+    var nickLine = ("nick" in pr) ? '<span class="cab-nick">' + T("Игровой ник: ") + "<b>" + (pr.nick ? esc(pr.nick) : "—") + '</b>' + (pr.game_rank ? ' · ' + esc(pr.game_rank) : "") + (roles ? " · " + roles : "") + "</span>" : "";
     acc.innerHTML = '<div class="cab-me"><div><b>' + esc(st.user.email) + "</b>" + nickLine + "<span>" + (sub ? T('Подписка до <b>') + fdate(st.profile.sub_until) + "</b>" : T("Подписки нет")) + T('</span></div><button type="button" class="btn" id="outBtn">Выйти</button></div>') +
+      profileHtml(pr) +
       (sub ? "" : T('<div class="cab-note"><b>Подписка</b> открывает «Кто вступил, кто вышел и куда ушёл» с настоящими игроками. Чтобы оформить — напишите лидеру альянса свою почту <b>') + esc(st.user.email) + "</b>.</div>") +
       (st.admin ? adminHtml() : "");
     acc.querySelector("#outBtn").onclick = function () { A.signOut(); };
@@ -59,9 +60,43 @@
       if (v == null || !v.trim()) return;
       try { await A.setNick(v); } catch (err) { alert(T("Не получилось: ") + (err.message || err)); }
     };
+    bindProfile(pr);
     var mh = acc.querySelector("#myNickHist");
     if (mh) mh.onclick = function () { showNickHistory(st.user.id, pr.nick); };
     if (st.admin) bindAdmin();
+  }
+  /* ===== мой профиль: ник и ранг в игре ===== */
+  function profileHtml(pr) {
+    if (!("nick" in pr)) return "";
+    var hasRank = "game_rank" in pr;
+    return '<div class="cab-prof"><h3>' + T("Мой профиль") + "</h3>" +
+      '<form class="cab-prof-row" id="profNick"><label>' + T("Игровой ник") + '<input name="n" maxlength="40" value="' + esc(pr.nick || "") + '" placeholder="' + esc(T("как в игре")) + '"></label>' +
+      '<button type="submit" class="btn pri">' + T("Сохранить ник") + '</button><button type="button" class="linkbtn" id="profHist">' + T("история смен ника") + '</button><span class="cab-msg" id="profNickMsg"></span></form>' +
+      (hasRank ? '<div class="cab-prof-row"><span class="cab-prof-l">' + T("Ваш ранг в альянсе") + '</span><div class="cab-ranks" id="profRank">' +
+        ["R1", "R2", "R3", "R4", "R5"].map(function (r) { return '<button type="button" data-rank="' + r + '" class="' + (pr.game_rank === r ? "on" : "") + '">' + r + "</button>"; }).join("") +
+        '</div><span class="cab-msg" id="profRankMsg"></span></div>' : "") + "</div>";
+  }
+  function bindProfile(pr) {
+    var f = acc.querySelector("#profNick"); if (!f) return;
+    f.onsubmit = async function (e) {
+      e.preventDefault(); var m = acc.querySelector("#profNickMsg"); m.className = "cab-msg";
+      var v = f.n.value.trim(); if (!v) { m.className = "cab-msg err"; m.textContent = T("Ник не может быть пустым."); return; }
+      if (v === pr.nick) { m.textContent = T("Ник не изменился."); return; }
+      m.textContent = T("Секунду…");
+      try { await A.setNick(v); m.textContent = T("Сохранено."); } catch (err) { m.className = "cab-msg err"; m.textContent = T("Не получилось: ") + (err.message || err); }
+    };
+    acc.querySelector("#profHist").onclick = function () { showNickHistory(st.user.id, pr.nick); };
+    var rk = acc.querySelector("#profRank");
+    if (rk) rk.onclick = async function (e) {
+      var b = e.target.closest("[data-rank]"); if (!b) return;
+      var m = acc.querySelector("#profRankMsg"); m.className = "cab-msg"; m.textContent = T("Секунду…");
+      var v = b.classList.contains("on") ? null : b.dataset.rank;  // повторное нажатие — снять ранг
+      var r = await A.call(function () { return A.client.rpc("set_my_rank", { p_rank: v }); });
+      if (r.error) { m.className = "cab-msg err"; m.textContent = r.error.message; return; }
+      rk.querySelectorAll("button").forEach(function (x) { x.classList.toggle("on", x.dataset.rank === v); });
+      if (st.profile) st.profile.game_rank = v;
+      m.textContent = T("Сохранено.");
+    };
   }
   /* история смены ника (таблица nick_history: человек видит свою, админ — всех) */
   async function showNickHistory(uid, nick) {
@@ -103,7 +138,7 @@
         rows.map(function (u) {
           var on = u.sub_until && new Date(u.sub_until) > new Date();
           var dup = u.nick && cnt[u.nick.trim().toLowerCase()] > 1;
-          return "<tr>" + (full ? '<td class="nk"><b>' + (u.nick ? esc(u.nick) : "—") + "</b>" + (dup ? ' <em class="dup" title="' + esc(T("этот ник указан у нескольких аккаунтов")) + '">' + T("двойник") + "</em>" : "") +
+          return "<tr>" + (full ? '<td class="nk"><b>' + (u.nick ? esc(u.nick) : "—") + "</b>" + (u.game_rank ? ' <em class="cm-tag ld">' + esc(u.game_rank) + "</em>" : "") + (dup ? ' <em class="dup" title="' + esc(T("этот ник указан у нескольких аккаунтов")) + '">' + T("двойник") + "</em>" : "") +
             ' <button type="button" class="linkbtn" data-nick="' + esc(u.id) + '" data-cur="' + esc(u.nick || "") + '">✎</button>' +
             (hist[u.id] > 1 ? ' <button type="button" class="linkbtn nh-btn" data-hist="' + esc(u.id) + '" data-hn="' + esc(u.nick || "") + '">' + T("история") + " (" + (hist[u.id] - 1) + ")</button>" : "") + "</td>" : "") +
             "<td>" + esc(u.email) + '</td><td class="' + (on ? "on" : "") + '">' + (u.sub_until ? fdate(u.sub_until) : "—") + "</td><td>" + fdate(u.created_at) + "</td>" +
@@ -130,7 +165,8 @@
       list();
     });
     async function list() {
-      var r = await sb.rpc("list_users3");
+      var r = await sb.rpc("list_users4");
+      if (r.error) r = await sb.rpc("list_users3");  // база без ранга
       if (r.error) r = await sb.rpc("list_users2");  // база без полей чата
       if (r.error) r = await sb.rpc("list_users");  // база ещё без полей «Важных новостей»
       rowsAll = r.data || [];

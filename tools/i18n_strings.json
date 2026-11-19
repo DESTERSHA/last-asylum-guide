@@ -479,5 +479,13 @@
  "изменил админ": "changed by admin",
  "сам": "by themselves",
  "при регистрации: ": "at registration: ",
- "Смен ника пока не было.": "No nickname changes yet."
+ "Смен ника пока не было.": "No nickname changes yet.",
+ "Мой профиль": "My profile",
+ "Сохранить ник": "Save nickname",
+ "история смен ника": "nickname history",
+ "Ваш ранг в альянсе": "Your alliance rank",
+ "Ник не может быть пустым.": "The nickname can't be empty.",
+ "Ник не изменился.": "The nickname hasn't changed.",
+ "Сохранено.": "Saved.",
+ "как в игре": "as in the game"
 }

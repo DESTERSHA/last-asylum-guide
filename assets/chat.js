@@ -616,7 +616,8 @@
     }).subscribe(function (s) { if (s === "SUBSCRIBED") presence.track({ nick: pr.nick || "" }); });
   }
   async function loadMembers() {
-    var r = await sb.rpc("chat_members");
+    var r = await sb.rpc("chat_members2");
+    if (r.error) r = await sb.rpc("chat_members");  // база без ранга
     if (r.error) { members = []; return r.error.message; }
     members = r.data || [];
   }
@@ -635,7 +636,7 @@
       '<div class="chm-list">' + list.map(function (u) {
         var me = st.user && u.user_id === st.user.id;
         return '<div class="chm" data-n="' + esc((u.nick || "").toLowerCase()) + '"><i class="dot' + (online[u.user_id] ? " on" : "") + '"></i><b>' + esc(u.nick) + "</b>" +
-          (u.moderator ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (u.leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "") + muteLabel(u) +
+          (u.game_rank ? '<em class="cm-tag rk">' + esc(u.game_rank) + "</em>" : "") + (u.moderator ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (u.leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "") + muteLabel(u) +
           (canMod() && !me && !u.moderator ? '<button type="button" class="linkbtn del" data-mod="' + u.user_id + '" data-nick="' + esc(u.nick) + '">' + T("Мут / исключить") + "</button>" : "") + "</div>";
       }).join("") + "</div>";
     box.querySelector("#chMembersClose").onclick = toggleMembers;
