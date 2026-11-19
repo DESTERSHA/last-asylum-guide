@@ -169,16 +169,14 @@
   }
   function msgHtml(m, prev) {
     var me = st.user && m.user_id === st.user.id;
-    var sameRun = prev && prev.user_id === m.user_id && dayOf(prev.created_at) === dayOf(m.created_at) && new Date(m.created_at) - new Date(prev.created_at) < 5 * 60e3;
     var tags = (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
     var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
     var acts = msgActs(m);
-    var time = '<span class="cm-time" title="' + esc(when(m.created_at)) + '">' + (m.pinned ? "📌 " : "") + hm(m.created_at, "Europe/Moscow") + " " + T("мск") + " · " + hm(m.created_at, "Etc/GMT+2") + "</span>";
-    return '<div class="cm' + (me ? " me" : "") + (sameRun ? " run" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
-      (me || sameRun ? "" : '<div class="cm-h"><b style="color:' + nickColor(m.nick) + '">' + esc(m.nick || "?") + "</b>" + tags + "</div>") +
+    return '<div class="cm' + (me ? " me" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
+      '<div class="cm-h"><b>' + esc(m.nick || "?") + "</b>" + tags + '<span class="cm-t">' + when(m.created_at) + "</span>" + (m.pinned ? '<span class="cm-pin">📌</span>' : "") + "</div>" +
       (m.reply_to ? quoteHtml(m.reply_to) : "") +
       (m.body ? '<div class="cm-body">' + bodyHtml(m.body) + "</div>" : "") + '<div class="cm-tr"></div>' +
-      (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") + time +
+      (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") +
       '<div class="cm-a">' + acts + "</div></div>";
   }
   function snippet(m) { return m ? (m.body ? m.body.replace(/\s+/g, " ").slice(0, 120) : m.poll ? "📊 " + m.poll.q : (m.images || []).length ? "📷 " + T("фото") : "") : ""; }
@@ -238,10 +236,7 @@
     var l = app.querySelector("#chList"); if (!l) return;
     var stick = !keepPos || nearBottom(l), oldH = l.scrollHeight, oldTop = l.scrollTop;
     l.innerHTML = (msgs.length >= PAGE && !l.dataset.noMore ? '<button type="button" class="btn ch-older" id="chOlder">' + T("Показать раньше") + "</button>" : "") +
-      (msgs.length ? msgs.map(function (m, i) {
-        var prev = msgs[i - 1], d = dayOf(m.created_at);
-        return (!prev || dayOf(prev.created_at) !== d ? '<div class="ch-day"><span>' + d + "</span></div>" : "") + msgHtml(m, prev);
-      }).join("") : '<div class="cab-empty"><b>' + T("Сообщений пока нет.") + "</b><span>" + T("Напишите первым!") + "</span></div>");
+      (msgs.length ? msgs.map(function (m) { return msgHtml(m); }).join("") : '<div class="cab-empty"><b>' + T("Сообщений пока нет.") + "</b><span>" + T("Напишите первым!") + "</span></div>");
     if (keepPos === "top") l.scrollTop = l.scrollHeight - oldH + oldTop; else if (stick) l.scrollTop = l.scrollHeight;
     if (auto) msgs.slice(-AUTO_LAST).forEach(function (m) { if (m.body) trMessage(m.id); });
     Object.keys(opened).forEach(function (id) { if (byId[id]) trMessage(+id, true); });
