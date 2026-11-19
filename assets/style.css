@@ -1280,3 +1280,11 @@ html.t-ap .sup-head{border-radius:999px}
 .cab-ranks button{font:inherit;font-weight:700;font-size:15px;width:56px;height:44px;border-radius:12px;border:1px solid #d9dce3;background:#fff;cursor:pointer}
 .cab-ranks button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .cm-tag.rk{background:#eef0f4;color:#3b4a5e;font-weight:700}
+/* чат: сверху одно (последнее) закреплённое, все — в панели «Закреплённые» */
+.ch-pins{flex-direction:row;align-items:center;gap:10px;max-height:none;overflow:hidden}
+.ch-pins .ch-pin{flex:1;min-width:0}
+.ch-pin-all{flex:none;font-size:13px;white-space:nowrap}
+.chp-pin{display:block;width:100%;text-align:left;font:inherit;border:0;background:none;cursor:pointer;border-radius:8px}
+.chp-pin:hover{background:var(--soft)}
+#chPinsBtn[hidden]{display:none}
+@media(max-width:760px){.ch-pins{max-height:none;padding:6px 10px}.ch-pin-all{font-size:12px}}

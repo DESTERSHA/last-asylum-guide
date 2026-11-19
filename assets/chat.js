@@ -140,10 +140,11 @@
       '<div class="ch-set" id="chSet"><label>' + T("Переводить на") + ' <select id="chLang"><option value="ru">Русский</option><option value="en">English</option></select></label>' +
       '<label class="ch-auto"><input type="checkbox" id="chAuto"> ' + T("Автоперевод сообщений") + "</label></div>" +
       '<span class="ch-who" id="chWho"></span>' +
+      '<button type="button" class="btn ch-mem-btn" id="chPinsBtn" hidden aria-label="' + esc(T("Закреплённые")) + '">📌<span class="tx"> ' + T("Закреплённые") + '</span> <i id="chPinsN"></i></button>' +
       '<button type="button" class="btn ch-mem-btn" id="chSavedBtn" aria-label="' + esc(T("Избранное")) + '">⭐<span class="tx"> ' + T("Избранное") + '</span> <i id="chSavedN"></i></button>' +
       '<button type="button" class="btn ch-mem-btn" id="chMembersBtn" aria-label="' + esc(T("Участники")) + '">👥<span class="tx"> ' + T("Участники") + '</span> <i id="chOnline"></i></button>' +
       '<button type="button" class="btn ch-mem-btn ch-set-btn" id="chSetBtn" aria-label="' + esc(T("Перевод")) + '">⚙</button></div>' +
-      '<div class="ch-members" id="chPick" hidden></div><div class="ch-members" id="chMembers" hidden></div><div class="ch-members" id="chSaved" hidden></div>' +
+      '<div class="ch-members" id="chPinsPanel" hidden></div><div class="ch-members" id="chPick" hidden></div><div class="ch-members" id="chMembers" hidden></div><div class="ch-members" id="chSaved" hidden></div>' +
       '<div class="ch-pins" id="chPins" hidden></div>' +
       '<div class="ch-list" id="chList"><div class="cab-note">' + T("Загружаю чат…") + "</div></div>" +
       '<form class="ch-form" id="chForm"><div class="ch-reply" id="chReply" hidden></div><div class="ch-reply ch-att" id="chAtt" hidden></div><div class="ch-prev" id="chPrev"></div><div class="ch-poll" id="chPoll" hidden></div>' +
@@ -353,26 +354,46 @@
       });
     });
   }
+  function pinText(m) { return m.body ? (snippet(m) || m.body).replace(/\s+/g, " ").slice(0, 160) : m.poll ? "📊 " + m.poll.q : "📷 " + T("фото"); }
+  function trPinEls(scope) {  // закреплённое — на выбранном языке (при автопереводе)
+    if (!auto) return;
+    scope.querySelectorAll("[data-pint]").forEach(function (el) {
+      var m = pins.filter(function (x) { return x.id === +el.dataset.pint; })[0]; if (!m) return;
+      var src = splitAtt(m.body).text || (m.poll && m.poll.q) || "";
+      if (!src || !needTr(src)) return;
+      slot(async function () {
+        try { var t = await translate(src, target); if (el.isConnected && t) el.textContent = (m.body ? "" : "📊 ") + t.replace(/\s+/g, " ").slice(0, 160); }
+        catch (e) { console.warn("чат: перевод закреплённого", e); }
+      });
+    });
+  }
   function drawPins() {
     var b = app.querySelector("#chPins"); if (!b) return;
     pins.sort(function (a, c) { return new Date(c.pinned_at) - new Date(a.pinned_at); });
     b.hidden = !pins.length;
-    b.innerHTML = pins.map(function (m) {
-      var txt = m.body ? m.body.replace(/\s+/g, " ").slice(0, 140) : m.poll ? "📊 " + m.poll.q : "📷 " + T("фото");
-      return '<button type="button" class="ch-pin" data-goto="' + m.id + '"><span>📌</span><b>' + esc(m.nick || "") + ':</b> <i data-pint="' + m.id + '">' + esc(txt) + "</i></button>";
-    }).join("");
-    // закреплённое — на выбранном языке (при автопереводе), как и сообщения
-    if (auto) pins.forEach(function (m) {
-      var src = m.body || (m.poll && m.poll.q) || "";
-      if (!src || !needTr(src)) return;
-      slot(async function () {
-        try {
-          var t = await translate(src, target);
-          var el = b.querySelector('[data-pint="' + m.id + '"]');
-          if (el && t) el.textContent = (m.body ? "" : "📊 ") + t.replace(/\s+/g, " ").slice(0, 140);
-        } catch (e) { console.warn("чат: перевод закреплённого", e); }
-      });
-    });
+    var n = app.querySelector("#chPinsN"); if (n) n.textContent = pins.length || "";
+    var pb = app.querySelector("#chPinsBtn"); if (pb) pb.hidden = !pins.length;
+    if (!pins.length) { b.innerHTML = ""; return; }
+    var m = pins[0];
+    b.innerHTML = '<button type="button" class="ch-pin" data-goto="' + m.id + '"><span>📌</span><b>' + esc(m.nick || "") + ':</b> <i data-pint="' + m.id + '">' + esc(pinText(m)) + "</i></button>" +
+      (pins.length > 1 ? '<button type="button" class="linkbtn ch-pin-all" data-pins-open>' + T("все закреплённые") + " (" + pins.length + ")</button>" : "");
+    trPinEls(b);
+    var panel = app.querySelector("#chPinsPanel"); if (panel && !panel.hidden) drawPinsPanel();
+  }
+  function drawPinsPanel() {
+    var box = app.querySelector("#chPinsPanel"); if (!box) return;
+    box.innerHTML = '<div class="chm-h"><b>📌 ' + T("Закреплённые") + "</b> · " + pins.length + '<button type="button" class="linkbtn" data-pins-close>✕</button></div><div class="chm-list">' +
+      (pins.length ? pins.map(function (m) {
+        return '<button type="button" class="chs chp-pin" data-goto="' + m.id + '"><div class="chs-h"><b>' + esc(m.nick || "?") + '</b><span class="cm-t">' + when(m.created_at) + '</span></div><div class="chs-t" data-pint="' + m.id + '">' + esc(pinText(m)) + "</div></button>";
+      }).join("") : '<div class="cab-note">' + T("Закреплённых нет.") + "</div>") + "</div>";
+    trPinEls(box);
+  }
+  function togglePinsPanel(force) {
+    var box = app.querySelector("#chPinsPanel"); if (!box) return;
+    var open = force != null ? force : box.hidden;
+    ["#chMembers", "#chSaved", "#chPick"].forEach(function (q) { var x = app.querySelector(q); if (x && open) x.hidden = true; });
+    box.hidden = !open;
+    if (open) drawPinsPanel();
   }
   async function loadPolls(ids) {
     ids = ids || msgs.filter(function (m) { return m.poll; }).map(function (m) { return m.id; });
@@ -500,7 +521,7 @@
       return;
     }
     if ((b = t.closest("#chOlder"))) return older();
-    if ((b = t.closest("[data-goto]"))) return goTo(+b.dataset.goto);
+    if ((b = t.closest("[data-goto]"))) { if (b.closest("#chPinsPanel, #chSaved")) b.closest(".ch-members").hidden = true; return goTo(+b.dataset.goto); }
     if ((b = t.closest(".cm-imgs img"))) { var lb = document.querySelector(".lightbox"); if (lb) { lb.querySelector("img").src = b.src; lb.classList.add("on"); } return; }
     if ((b = t.closest("[data-tr]"))) {
       var tid = +b.dataset.tr, tel = app.querySelector('[data-msg="' + tid + '"] .cm-tr');
@@ -508,7 +529,9 @@
       b.textContent = T("Скрыть перевод"); return trMessage(tid, true);
     }
     if ((b = t.closest("#chMembersBtn"))) { var sp = app.querySelector("#chSaved"); if (sp) sp.hidden = true; return toggleMembers(); }
-    if ((b = t.closest("#chSavedBtn")) || (b = t.closest("[data-close-saved]"))) return toggleSavedPanel();
+    if ((b = t.closest("#chPinsBtn")) || (b = t.closest("[data-pins-open]"))) return togglePinsPanel();
+    if ((b = t.closest("[data-pins-close]"))) return togglePinsPanel(false);
+    if ((b = t.closest("#chSavedBtn")) || (b = t.closest("[data-close-saved]"))) { togglePinsPanel(false); return toggleSavedPanel(); }
     if ((b = t.closest("[data-reply-cancel]"))) { replyTo = null; drawReply(); return; }
     if ((b = t.closest("#chAttBtn")) || (b = t.closest("[data-pick-close]"))) return togglePick();
     if ((b = t.closest("[data-pick]"))) { addAtt({ url: b.dataset.pick, title: b.dataset.title }); b.classList.add("on"); return; var tx2 = app.querySelector("#chText"); if (tx2) tx2.focus(); return; }

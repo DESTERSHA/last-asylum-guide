@@ -487,5 +487,8 @@
  "Ник не может быть пустым.": "The nickname can't be empty.",
  "Ник не изменился.": "The nickname hasn't changed.",
  "Сохранено.": "Saved.",
- "как в игре": "as in the game"
+ "как в игре": "as in the game",
+ "Закреплённые": "Pinned",
+ "все закреплённые": "all pinned",
+ "Закреплённых нет.": "No pinned messages."
 }
