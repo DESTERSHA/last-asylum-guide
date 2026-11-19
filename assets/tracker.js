@@ -234,8 +234,8 @@
     $("view").innerHTML =
       '<div class="ap-wrap">' +
       T('<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>проверено ') + ago(S.checked || S.server.updated) + T(" · робот проверяет трекер каждые 10 минут") + T(" · топ игроков по мощи, убийствам и святилищу — по самым свежим цифрам каждого игрока") + (pulled ? T(" · рейтинги альянсов и мощь героев трекер даёт раз в сутки, последние — ") + atLabel(pulled) : "") + "</p></div></div>" +
-      '<div class="ap-cells c5">' + cell(T("Игроков"), full(s.players), (s.age_days || "—") + T(" дней серверу")) + cell(T("Альянсов"), full(s.alliances)) + cell(T("Общая мощь"), num(s.power)) +
-      cell(T("Король"), esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell(T("Альянсов с составом и рангами"), Object.keys(S.al).filter(function (k) { return S.al[k].roster !== "map" && S.al[k].members.length; }).length + T(" из 30"), T("у остальных — все игроки с тегом альянса, как у трекера, без рангов")) + "</div></div>" +
+      '<div class="ap-cells c4">' + cell(T("Игроков"), full(s.players), (s.age_days || "—") + T(" дней серверу")) + cell(T("Альянсов"), full(s.alliances)) + cell(T("Общая мощь"), num(s.power)) +
+      cell(T("Король"), esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + "</div></div>" +
       T('<div class="ap-card"><div class="ap-h"><div><h3>Поиск</h3><p>игроки альянсов топ-30 и альянсы топ-100</p></div>') + pills("skind", [["p", T("Игроки")], ["a", T("Альянсы")]], "p") + T('</div><input id="sq" class="ap-in" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off"><div id="sres"></div></div>') +
       T('<div class="ap-sec"><h3>Альянсы</h3>') + pills("atop", [["30", T("Топ-30")], ["100", T("Места 31–100")]], "30") + "</div>" +
       '<div class="ap-card flush"><div id="alist"></div></div>' +
