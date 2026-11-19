@@ -438,5 +438,17 @@
  "У вас мут до ": "You are muted until ",
  ". Читать можно.": ". You can still read.",
  "Вас исключили из чата.": "You have been removed from the chat.",
- "Если это ошибка — напишите администратору сайта.": "If this is a mistake, write to the site admin."
+ "Если это ошибка — напишите администратору сайта.": "If this is a mistake, write to the site admin.",
+ "Избранное": "Saved",
+ "Ответить": "Reply",
+ "В избранном": "Saved",
+ "В избранное": "Save",
+ "сообщение удалено или ещё не загружено": "message deleted or not loaded yet",
+ "Загружаю избранное…": "Loading saved messages…",
+ "Моё избранное": "My saved messages",
+ "Перейти": "Go to",
+ "Убрать": "Remove",
+ "Пока пусто. Нажмите «☆ В избранное» у любого сообщения.": "Empty for now. Tap «☆ Save» on any message.",
+ "Ответ": "Reply to",
+ "Сообщение удалено.": "The message has been deleted."
 }

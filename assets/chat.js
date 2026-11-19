@@ -12,6 +12,7 @@
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var LOC = EN ? "en-GB" : "ru-RU";
   var PAGE = 80, MAX_IMG = 10, AUTO_LAST = 30;
+  var saved = {}, refs = {}, replyTo = null;  // избранное (id → 1), сообщения, на которые отвечают (для цитат), ответ в поле ввода
   var msgs = [], byId = {}, pins = [], results = {}, mine = {}, st = { user: null, profile: null, admin: false }, chan = null, started = false;
   var store = { get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
                 set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { console.warn("чат: не сохранить настройку", e); } } };
@@ -124,11 +125,11 @@
     app.innerHTML =
       '<div class="ch-top"><label>' + T("Переводить на") + ' <select id="chLang"><option value="ru">Русский</option><option value="en">English</option></select></label>' +
       '<label class="ch-auto"><input type="checkbox" id="chAuto"> ' + T("Автоперевод сообщений") + "</label>" +
-      '<span class="ch-who" id="chWho"></span><button type="button" class="btn ch-mem-btn" id="chMembersBtn">👥 ' + T("Участники") + ' <i id="chOnline"></i></button></div>' +
-      '<div class="ch-members" id="chMembers" hidden></div>' +
+      '<span class="ch-who" id="chWho"></span><button type="button" class="btn ch-mem-btn" id="chSavedBtn">⭐ ' + T("Избранное") + ' <i id="chSavedN"></i></button><button type="button" class="btn ch-mem-btn" id="chMembersBtn">👥 ' + T("Участники") + ' <i id="chOnline"></i></button></div>' +
+      '<div class="ch-members" id="chMembers" hidden></div><div class="ch-members" id="chSaved" hidden></div>' +
       '<div class="ch-pins" id="chPins" hidden></div>' +
       '<div class="ch-list" id="chList"><div class="cab-note">' + T("Загружаю чат…") + "</div></div>" +
-      '<form class="ch-form" id="chForm"><div class="ch-prev" id="chPrev"></div><div class="ch-poll" id="chPoll" hidden></div>' +
+      '<form class="ch-form" id="chForm"><div class="ch-reply" id="chReply" hidden></div><div class="ch-prev" id="chPrev"></div><div class="ch-poll" id="chPoll" hidden></div>' +
       '<div class="ch-row"><label class="ch-btn" title="' + esc(T("Фото")) + '">📎<input type="file" id="chFiles" accept="image/*" multiple hidden></label>' +
       '<button type="button" class="ch-btn" id="chPollBtn" title="' + esc(T("Голосование")) + '" hidden>📊</button>' +
       '<textarea id="chText" rows="1" placeholder="' + esc(T("Сообщение… (Enter — отправить, Shift+Enter — новая строка)")) + '"></textarea>' +
@@ -152,15 +153,55 @@
     var me = st.user && m.user_id === st.user.id;
     var tags = (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
     var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
-    var acts = (m.body && !auto ? '<button type="button" class="linkbtn" data-tr="' + m.id + '">' + (opened[m.id] ? T("Скрыть перевод") : T("Перевести")) + "</button>" : "") +
+    var acts = '<button type="button" class="linkbtn" data-reply="' + m.id + '">' + T("Ответить") + "</button>" +
+      '<button type="button" class="linkbtn' + (saved[m.id] ? " on" : "") + '" data-save="' + m.id + '">' + (saved[m.id] ? "★ " + T("В избранном") : "☆ " + T("В избранное")) + "</button>" +
+      (m.body && !auto ? '<button type="button" class="linkbtn" data-tr="' + m.id + '">' + (opened[m.id] ? T("Скрыть перевод") : T("Перевести")) + "</button>" : "") +
       (canMod() ? '<button type="button" class="linkbtn" data-pin="' + m.id + '">' + (m.pinned ? T("Открепить") : T("Закрепить")) + "</button>" : "") +
       (me || canMod() ? '<button type="button" class="linkbtn del" data-del="' + m.id + '">' + T("Удалить") + "</button>" : "") +
       (canMod() && !me && m.user_id ? '<button type="button" class="linkbtn del" data-mod="' + m.user_id + '" data-nick="' + esc(m.nick || "") + '">' + T("Мут / исключить") + "</button>" : "");
     return '<div class="cm' + (me ? " me" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
       '<div class="cm-h"><b>' + esc(m.nick || "?") + "</b>" + tags + '<span class="cm-t">' + when(m.created_at) + "</span>" + (m.pinned ? '<span class="cm-pin">📌</span>' : "") + "</div>" +
+      (m.reply_to ? quoteHtml(m.reply_to) : "") +
       (m.body ? '<div class="cm-body">' + bodyHtml(m.body) + "</div>" : "") + '<div class="cm-tr"></div>' +
       (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") +
       '<div class="cm-a">' + acts + "</div></div>";
+  }
+  function snippet(m) { return m ? (m.body ? m.body.replace(/\s+/g, " ").slice(0, 120) : m.poll ? "📊 " + m.poll.q : (m.images || []).length ? "📷 " + T("фото") : "") : ""; }
+  function quoteHtml(rid) {
+    var r = byId[rid] || refs[rid];
+    return '<button type="button" class="cm-q" data-goto="' + rid + '"><b>' + esc(r ? r.nick || "?" : "…") + "</b><span>" + esc(r ? snippet(r) : T("сообщение удалено или ещё не загружено")) + "</span></button>";
+  }
+  async function loadRefs(list) {  // сообщения, на которые отвечают, но которых нет в ленте (старые)
+    var need = (list || msgs).map(function (m) { return m.reply_to; }).filter(function (id) { return id && !byId[id] && !refs[id]; });
+    if (!need.length) return;
+    var r = await sb.from("chat_messages").select("id,nick,body,images,poll,created_at").in("id", need);
+    (r.data || []).forEach(function (x) { refs[x.id] = x; });
+  }
+  async function loadSaved() {
+    var r = await sb.from("chat_saved").select("message_id");
+    if (r.error) { console.warn("чат: избранное", r.error.message); return; }
+    saved = {}; (r.data || []).forEach(function (x) { saved[x.message_id] = 1; });
+    var n = app.querySelector("#chSavedN"); if (n) n.textContent = Object.keys(saved).length || "";
+  }
+  async function toggleSavedPanel() {
+    var box = app.querySelector("#chSaved"); if (!box) return;
+    if (!box.hidden) { box.hidden = true; return; }
+    var mb = app.querySelector("#chMembers"); if (mb) mb.hidden = true;
+    box.hidden = false; box.innerHTML = '<div class="cab-note">' + T("Загружаю избранное…") + "</div>";
+    var ids = Object.keys(saved).map(Number);
+    var r = ids.length ? await sb.from("chat_messages").select("*").in("id", ids).order("created_at", { ascending: false }) : { data: [] };
+    var list = r.data || [];
+    box.innerHTML = '<div class="chm-h"><b>⭐ ' + T("Моё избранное") + "</b> · " + list.length + '<button type="button" class="linkbtn" data-close-saved>✕</button></div>' +
+      '<div class="chm-list">' + (list.length ? list.map(function (m) {
+        return '<div class="chs"><div class="chs-h"><b>' + esc(m.nick || "?") + '</b><span class="cm-t">' + when(m.created_at) + '</span></div><div class="chs-t">' + esc(snippet(m)) + "</div>" +
+          '<div class="cm-a"><button type="button" class="linkbtn" data-goto="' + m.id + '">' + T("Перейти") + '</button><button type="button" class="linkbtn del" data-save="' + m.id + '">' + T("Убрать") + "</button></div></div>";
+      }).join("") : '<div class="cab-note">' + T("Пока пусто. Нажмите «☆ В избранное» у любого сообщения.") + "</div>") + "</div>";
+  }
+  function drawReply() {
+    var b = app.querySelector("#chReply"); if (!b) return;
+    var m = replyTo && (byId[replyTo] || refs[replyTo]);
+    b.hidden = !m;
+    b.innerHTML = m ? "<span>↩ " + T("Ответ") + " <b>" + esc(m.nick || "?") + ":</b> " + esc(snippet(m)) + '</span><button type="button" class="linkbtn" data-reply-cancel>✕</button>' : "";
   }
   function pollHtml(m) {
     var pl = m.poll, res = results[m.id] || [], my = mine[m.id], over = ended(m), opts = pl.options || [];
@@ -215,7 +256,7 @@
     (r.data || []).reverse().forEach(put);
     var p = await sb.from("chat_messages").select("*").eq("pinned", true).order("pinned_at", { ascending: false }).limit(20);
     pins = p.data || [];
-    await loadPolls();
+    await Promise.all([loadPolls(), loadSaved(), loadRefs()]);
     drawPins(); drawList();
     var h = location.hash.match(/^#msg-(\d+)$/); if (h) goTo(+h[1]);
   }
@@ -226,13 +267,25 @@
     var got = (r.data || []).reverse();
     if (got.length < PAGE) app.querySelector("#chList").dataset.noMore = "1";
     msgs = got.concat(msgs); got.forEach(function (m) { byId[m.id] = m; });
-    await loadPolls(got.filter(function (m) { return m.poll; }).map(function (m) { return m.id; }));
+    await Promise.all([loadPolls(got.filter(function (m) { return m.poll; }).map(function (m) { return m.id; })), loadRefs(got)]);
     drawList("top");
   }
   function goTo(id) {
     var el = document.getElementById("msg-" + id);
     if (el) { el.scrollIntoView({ block: "center" }); el.classList.add("flash"); setTimeout(function () { el.classList.remove("flash"); }, 1600); }
-    else { var m = pins.filter(function (x) { return x.id === id; })[0]; if (m) alert((m.nick || "") + ": " + (m.body || (m.poll && m.poll.q) || "")); }
+    else jumpLoad(id);
+  }
+  async function jumpLoad(id) {  // сообщения нет в ленте (старое) — загрузить ленту начиная с него
+    var t = await sb.from("chat_messages").select("created_at").eq("id", id).maybeSingle();
+    if (!t.data) return alert(T("Сообщение удалено."));
+    var r = await sb.from("chat_messages").select("*").gte("created_at", t.data.created_at).order("created_at", { ascending: true }).limit(300);
+    if (r.error) return alert(r.error.message);
+    msgs = []; byId = {}; (r.data || []).forEach(put);
+    var l = app.querySelector("#chList"); if (l) delete l.dataset.noMore;
+    await Promise.all([loadPolls(), loadRefs()]);
+    drawList(true);
+    var el = document.getElementById("msg-" + id);
+    if (el) { el.scrollIntoView({ block: "center" }); el.classList.add("flash"); setTimeout(function () { el.classList.remove("flash"); }, 1600); }
   }
 
   /* ---------- новые сообщения сразу ---------- */
@@ -241,7 +294,7 @@
     chan = sb.channel("chat-room").on("postgres_changes", { event: "*", schema: "public", table: "chat_messages" }, async function (p) {
       if (p.eventType === "INSERT") {
         put(p.new);
-        if (p.new.poll) await loadPolls([p.new.id]);
+        await Promise.all([p.new.poll ? loadPolls([p.new.id]) : null, loadRefs([p.new])]);
         drawList(true);
       } else if (p.eventType === "UPDATE") {
         put(p.new);
@@ -269,7 +322,20 @@
       if (opened[tid]) { delete opened[tid]; tel.innerHTML = ""; delete tel.dataset.done; b.textContent = T("Перевести"); return; }
       b.textContent = T("Скрыть перевод"); return trMessage(tid, true);
     }
-    if ((b = t.closest("#chMembersBtn"))) return toggleMembers();
+    if ((b = t.closest("#chMembersBtn"))) { var sp = app.querySelector("#chSaved"); if (sp) sp.hidden = true; return toggleMembers(); }
+    if ((b = t.closest("#chSavedBtn")) || (b = t.closest("[data-close-saved]"))) return toggleSavedPanel();
+    if ((b = t.closest("[data-reply-cancel]"))) { replyTo = null; drawReply(); return; }
+    if ((b = t.closest("[data-reply]"))) { replyTo = +b.dataset.reply; drawReply(); var tx = app.querySelector("#chText"); if (tx) tx.focus(); return; }
+    if ((b = t.closest("[data-save]"))) {
+      var sid = +b.dataset.save, was = !!saved[sid];
+      var rs = was ? await sb.from("chat_saved").delete().eq("message_id", sid) : await sb.from("chat_saved").insert({ message_id: sid });
+      if (rs.error) return alert(rs.error.message);
+      if (was) delete saved[sid]; else saved[sid] = 1;
+      var sn = app.querySelector("#chSavedN"); if (sn) sn.textContent = Object.keys(saved).length || "";
+      drawList(true);
+      var spn = app.querySelector("#chSaved"); if (spn && !spn.hidden) { spn.hidden = true; toggleSavedPanel(); }
+      return;
+    }
     if ((b = t.closest("[data-mod]"))) return modDialog(b.dataset.mod, b.dataset.nick);
     if ((b = t.closest("[data-pin]"))) {
       var m = byId[+b.dataset.pin];
@@ -402,6 +468,7 @@
     f.onsubmit = async function (e) {
       e.preventDefault(); msg.className = "cab-msg"; msg.textContent = "";
       var row = { body: txt.value.trim(), images: [], poll: null };
+      if (replyTo) row.reply_to = replyTo;
       if (!pollBox.hidden) {
         var opts = [].map.call(pollBox.querySelectorAll(".nf-opt input"), function (i) { return i.value.trim(); }).filter(Boolean);
         var q = pollBox.querySelector("[name=q]").value.trim();
@@ -422,6 +489,7 @@
         var r = await sb.from("chat_messages").insert(row);
         if (r.error) throw r.error;
         txt.value = ""; grow(); fresh.forEach(function (x) { URL.revokeObjectURL(x.url); }); fresh = []; drawPrev();
+        replyTo = null; drawReply();
         pollBox.hidden = true; pollBox.innerHTML = ""; msg.textContent = "";
       } catch (err) {
         msg.className = "cab-msg err"; msg.textContent = T("Не отправилось: ") + (err.message || err);

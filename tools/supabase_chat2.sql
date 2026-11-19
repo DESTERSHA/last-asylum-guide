@@ -1,8 +1,9 @@
--- Чат, часть 2: временный мут, исключение из чата, список участников.
+-- Чат, часть 2: временный мут, исключение из чата, список участников, ответы на сообщения, избранное.
 -- Выполнить один раз после supabase_chat.sql: Supabase → SQL Editor → вставить всё → Run.
 
 alter table public.profiles add column if not exists chat_muted_until timestamptz;            -- мут до этого времени (не может писать)
 alter table public.profiles add column if not exists chat_kicked boolean not null default false; -- исключён: не видит чат и не пишет
+alter table public.chat_messages add column if not exists reply_to bigint references public.chat_messages(id) on delete set null; -- ответ на сообщение
 
 -- проверка при отправке: + исключён / мут
 create or replace function public.chat_guard() returns trigger
@@ -29,7 +30,7 @@ begin
   else
     if not public.is_moderator() then raise exception 'закреплять сообщения могут админ и модераторы'; end if;
     new.id := old.id; new.user_id := old.user_id; new.nick := old.nick; new.author_leader := old.author_leader; new.author_mod := old.author_mod;
-    new.body := old.body; new.images := old.images; new.poll := old.poll; new.created_at := old.created_at;
+    new.body := old.body; new.images := old.images; new.poll := old.poll; new.created_at := old.created_at; new.reply_to := old.reply_to;
     new.pinned_at := case when new.pinned and not old.pinned then now() when not new.pinned then null else old.pinned_at end;
   end if;
   return new;
@@ -73,3 +74,14 @@ begin
 end $$;
 
 grant execute on function public.chat_moderate(uuid, text, int), public.chat_members() to authenticated;
+
+-- избранное: у каждого своё (видит и меняет только сам)
+create table if not exists public.chat_saved (
+  user_id uuid not null default auth.uid() references auth.users(id) on delete cascade,
+  message_id bigint not null references public.chat_messages(id) on delete cascade,
+  created_at timestamptz not null default now(),
+  primary key (user_id, message_id)
+);
+alter table public.chat_saved enable row level security;
+drop policy if exists "own saved" on public.chat_saved;
+create policy "own saved" on public.chat_saved for all to authenticated using (user_id = auth.uid()) with check (user_id = auth.uid());
