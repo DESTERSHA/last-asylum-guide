@@ -14,6 +14,7 @@ SRC = ROOT / "src"
 PAGES = [
     ("server", "ev-throne", "Сервер 397", "Server 397"),
     ("news", "ev-royal", "Важные новости", "Important News"),
+    ("chat", "alliance", "Чат", "Chat"),
     ("index", "go-hq", "Главная", "Home"),
     ("kvk", "ev-kvk", "КвК", "Kingdom War"),
     ("duel", "ev-duel", "Дуэль", "Alliance Duel"),
@@ -165,7 +166,7 @@ def write_dict():
 def main():
     print("словарь подписей EN:", write_dict(), "строк")
     h = hashlib.sha1()
-    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js", "assets/auth.js", "assets/auth-config.js", "assets/cabinet.js", "assets/i18n.js", "assets/i18n-dict.js", "assets/news.js", "assets/notice.js"):
+    for f in ("assets/style.css", "assets/app.js", "assets/fav.js", "assets/theme.css", "assets/peek.js", "assets/pairgrid.js", "assets/mason.js", "assets/gearcalc.js", "assets/tracker.js", "assets/auth.js", "assets/auth-config.js", "assets/cabinet.js", "assets/i18n.js", "assets/i18n-dict.js", "assets/news.js", "assets/notice.js", "assets/chat.js"):
         h.update((ROOT / f).read_bytes())
     ver = h.hexdigest()[:10]
     have_en = {slug for slug, *_ in PAGES if (SRC / "en" / f"{slug}.html").exists()}

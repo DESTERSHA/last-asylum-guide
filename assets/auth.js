@@ -10,7 +10,10 @@
   function emit() { subs.forEach(function (f) { try { f(state); } catch (e) { console.warn(e); } }); }
   async function loadProfile() {
     if (!sb || !state.user) { state.profile = null; state.admin = false; return; }
-    var r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned").eq("id", state.user.id).maybeSingle();
+    var r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned,moderator,chat_banned").eq("id", state.user.id).maybeSingle();
+    if (r.error) {  // база ещё без полей чата (supabase_chat.sql не выполнен)
+      r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned").eq("id", state.user.id).maybeSingle();
+    }
     if (r.error) {  // база ещё без полей «Важных новостей» (SQL не выполнен) — читаем как раньше
       console.warn("Кабинет: профиль без полей новостей", r.error.message);
       r = await sb.from("profiles").select("email,sub_until,created_at").eq("id", state.user.id).maybeSingle();
@@ -56,6 +59,7 @@
   window.LAAuth = {
     ready: ready, state: state, hasSub: hasSub, client: sb,
     isEditor: function () { return !!(state.admin || (state.profile && state.profile.editor)); },  // админ публикует всегда (так же в базе: is_editor())
+    isModerator: function () { return !!(state.admin || (state.profile && state.profile.moderator)); },  // модератор чата (так же в базе: is_moderator())
     on: function (f) { subs.push(f); f(state); },
     signUp: async function (email, pass, nick) { var r = await sb.auth.signUp({ email: email, password: pass, options: { data: { nick: nick || "" } } }); if (r.error) throw r.error; return r; },
     setNick: async function (nick) {

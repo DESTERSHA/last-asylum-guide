@@ -66,29 +66,30 @@
     return T('<div class="cab-admin"><h3>Выдать подписку</h3><form id="grantForm"><input type="email" name="e" placeholder="почта пользователя" required>') +
       T('<select name="d"><option value="30">30 дней</option><option value="7">7 дней</option><option value="90">90 дней</option><option value="365">365 дней</option></select>') +
       T('<button type="submit" class="btn pri">Выдать</button><button type="button" class="btn" id="revBtn">Снять</button></form><p class="cab-msg" id="grantMsg"></p>') +
-      T('<h3 class="cab-h-users">Пользователи</h3><p class="cab-hint">Отметки ставите только вы. «Редактор» — может публиковать в «Важных новостях». «Лидер» — голос идёт в столбец «Лидеры». «Запрет голосовать» — его голоса не считаются. Голос в конкретном голосовании можно снять на странице новостей.</p>') +
+      T('<h3 class="cab-h-users">Пользователи</h3><p class="cab-hint">Отметки ставите только вы. «Редактор» — может публиковать в «Важных новостях». «Лидер» — голос идёт в столбец «Лидеры». «Запрет голосовать» — его голоса не считаются. «Модератор чата» — удаляет сообщения, закрепляет, запускает голосования в чате и запрещает писать. «Запрет в чате» — может читать, но не писать. Голос в конкретном голосовании можно снять на странице новостей.</p>') +
       '<p class="cab-hint" id="storeUsed"></p><div id="userList"></div></div>';
   }
   async function bindAdmin() {
     var f = acc.querySelector("#grantForm"), m = acc.querySelector("#grantMsg"), sb = A.client;
     var ul = acc.querySelector("#userList"), rowsAll = [], filt = "";
-    var FLAGS = [["verified", T("Проверен")], ["editor", T("Редактор")], ["leader", T("Лидер")], ["vote_banned", T("Запрет голосовать")]];
+    var FLAGS = [["verified", T("Проверен")], ["editor", T("Редактор")], ["leader", T("Лидер")], ["vote_banned", T("Запрет голосовать")], ["moderator", T("Модератор чата")], ["chat_banned", T("Запрет в чате")]];
     function drawUsers() {
       var cnt = {};
       rowsAll.forEach(function (u) { var k = (u.nick || "").trim().toLowerCase(); if (k) cnt[k] = (cnt[k] || 0) + 1; });
       var q = filt.trim().toLowerCase();
       var rows = rowsAll.filter(function (u) { return !q || (u.email || "").toLowerCase().indexOf(q) !== -1 || (u.nick || "").toLowerCase().indexOf(q) !== -1; });
       var full = rowsAll.length && ("nick" in rowsAll[0]);
+      var flags = FLAGS.filter(function (f) { return !rowsAll.length || (f[0] in rowsAll[0]); });  // база без полей чата — без этих столбцов
       ul.innerHTML = (full ? '<input type="search" id="userFilt" class="cab-filt" placeholder="' + esc(T("поиск по нику или почте")) + '" value="' + esc(filt) + '">' : "") +
         '<div class="cab-users-wrap"><table class="cab-users"><tr>' + (full ? "<th>" + T("Ник") + "</th>" : "") + T("<th>Почта</th><th>Подписка до</th><th>Зарегистрирован</th>") +
-        (full ? FLAGS.map(function (f) { return "<th>" + f[1] + "</th>"; }).join("") : "") + "</tr>" +
+        (full ? flags.map(function (f) { return "<th>" + f[1] + "</th>"; }).join("") : "") + "</tr>" +
         rows.map(function (u) {
           var on = u.sub_until && new Date(u.sub_until) > new Date();
           var dup = u.nick && cnt[u.nick.trim().toLowerCase()] > 1;
           return "<tr>" + (full ? '<td class="nk"><b>' + (u.nick ? esc(u.nick) : "—") + "</b>" + (dup ? ' <em class="dup" title="' + esc(T("этот ник указан у нескольких аккаунтов")) + '">' + T("двойник") + "</em>" : "") +
             ' <button type="button" class="linkbtn" data-nick="' + esc(u.id) + '" data-cur="' + esc(u.nick || "") + '">✎</button></td>' : "") +
             "<td>" + esc(u.email) + '</td><td class="' + (on ? "on" : "") + '">' + (u.sub_until ? fdate(u.sub_until) : "—") + "</td><td>" + fdate(u.created_at) + "</td>" +
-            (full ? FLAGS.map(function (f) { return '<td class="fl"><input type="checkbox" data-u="' + esc(u.id) + '" data-f="' + f[0] + '"' + (u[f[0]] ? " checked" : "") + "></td>"; }).join("") : "") + "</tr>";
+            (full ? flags.map(function (f) { return '<td class="fl"><input type="checkbox" data-u="' + esc(u.id) + '" data-f="' + f[0] + '"' + (u[f[0]] ? " checked" : "") + "></td>"; }).join("") : "") + "</tr>";
         }).join("") + "</table></div>";
       var fi = ul.querySelector("#userFilt");
       if (fi) fi.oninput = function () { filt = fi.value; var pos = fi.selectionStart; drawUsers(); var n = ul.querySelector("#userFilt"); n.focus(); n.setSelectionRange(pos, pos); };
@@ -110,7 +111,8 @@
       list();
     });
     async function list() {
-      var r = await sb.rpc("list_users2");
+      var r = await sb.rpc("list_users3");
+      if (r.error) r = await sb.rpc("list_users2");  // база без полей чата
       if (r.error) r = await sb.rpc("list_users");  // база ещё без полей «Важных новостей»
       rowsAll = r.data || [];
       drawUsers();

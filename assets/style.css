@@ -1066,3 +1066,46 @@ html.t-ap .lang-sw{border-radius:999px;border-color:transparent;background:#f6f6
 html.t-ap .sup-head{border-radius:999px}
 @media(max-width:760px){.sup-head{height:34px;padding:0 10px;font-size:13px}}
 @media(max-width:340px){.sup-head .tx{display:none}.sup-head{padding:0 11px}}
+/* ===== чат (assets/chat.js) ===== */
+.chat-app{max-width:980px;display:flex;flex-direction:column;background:#fff;border:1px solid #e3e6ec;border-radius:20px;overflow:hidden}
+.ch-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:10px 14px;border-bottom:1px solid #ececef;font-size:13.5px;color:var(--mut)}
+.ch-top select{font:inherit;font-size:13.5px;height:32px;border-radius:9px;border:1px solid #d9dce3;padding:0 8px;background:#fff}
+.ch-auto{display:flex;align-items:center;gap:6px;cursor:pointer}
+.ch-who{margin-left:auto}.ch-who b{color:var(--ink)}
+.ch-pins{display:flex;flex-direction:column;gap:4px;padding:8px 12px;background:var(--gold-bg);border-bottom:1px solid #f0dfb4;max-height:132px;overflow:auto}
+.ch-pin{display:block;text-align:left;font:inherit;font-size:13.5px;border:0;background:none;padding:2px 0;cursor:pointer;color:#5c4210;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-pin span{margin-right:6px}.ch-pin:hover{text-decoration:underline}
+.ch-list{height:min(62vh,640px);overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#f7f8fa}
+.ch-older{align-self:center;cursor:pointer;padding:6px 14px;font-size:13px}
+.cm{background:#fff;border:1px solid #e6e8ee;border-radius:14px;padding:8px 12px;max-width:88%;align-self:flex-start;scroll-margin:80px}
+.cm.me{align-self:flex-end;background:#eef4ff;border-color:#d6e3fb}
+.cm.pinned{box-shadow:inset 3px 0 0 #f0a531}
+.cm.flash{animation:newsFlash 1.6s ease-out}
+.cm-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;font-size:13px}
+.cm-h b{font-size:14px}.cm-t{color:var(--faint);font-size:12px}
+.cm-tag{font-style:normal;font-size:11px;padding:1px 7px;border-radius:999px}
+.cm-tag.mod{background:#e8f1ff;color:#2f5fb3}.cm-tag.ld{background:var(--gold-bg);color:#7a5410}
+.cm-body{font-size:15px;line-height:1.5;overflow-wrap:anywhere;white-space:normal;margin-top:2px}
+.cm-body.hid{display:none}
+.cm-tr{font-size:15px;line-height:1.5}.cm-tr:empty{display:none}
+.cm-trtxt{overflow-wrap:anywhere}
+.cm-imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px;margin-top:6px}
+.cm-imgs img{width:100%;height:170px;object-fit:cover;border-radius:10px;cursor:zoom-in;background:var(--soft)}
+.cm-a{display:flex;flex-wrap:wrap;gap:2px 8px;margin-top:4px;font-size:12.5px}
+.cm .poll{background:var(--soft)}
+.ch-form{border-top:1px solid #ececef;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.ch-row{display:flex;align-items:flex-end;gap:8px}
+.ch-row textarea{flex:1;font:inherit;font-size:15px;line-height:1.4;border-radius:12px;border:1px solid #d9dce3;padding:9px 12px;resize:none;min-height:42px;max-height:240px}
+.ch-row .btn{cursor:pointer;height:42px}
+.ch-btn{flex:none;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;border:1px solid #e3e6ec;background:#fff;cursor:pointer;font-size:18px}
+.ch-btn:hover{background:var(--soft)}
+.ch-prev{display:flex;flex-wrap:wrap;gap:6px}.ch-prev:empty{display:none}
+.ch-prev span{position:relative}.ch-prev img{width:72px;height:72px;object-fit:cover;border-radius:10px;display:block}
+.ch-prev button{position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;font-size:12px}
+.ch-poll{display:flex;flex-direction:column;gap:8px;background:var(--soft);border-radius:12px;padding:10px 12px}
+.ch-poll label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;color:var(--mut)}
+.ch-poll input:not([type=checkbox]){font:inherit;font-size:14px;border-radius:10px;border:1px solid #d9dce3;padding:7px 10px}
+.ch-poll .nf-chk{flex-direction:row;align-items:center;gap:8px;font-weight:400;color:var(--ink)}
+.ch-poll>.linkbtn{align-self:flex-start}
+.ch-form .cab-msg:empty{display:none}
+@media(max-width:640px){.cm{max-width:96%}.ch-list{height:60vh}.ch-who{margin-left:0;flex-basis:100%}.ch-row .btn{padding:0 12px}}
