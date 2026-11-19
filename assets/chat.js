@@ -218,7 +218,7 @@
     } else {
       (reacts[id] = reacts[id] || {})[st.user.id] = { emoji: emoji, nick: (st.profile || {}).nick };
       redrawReacts(id);
-      res = await sb.from("chat_reactions").upsert({ message_id: id, user_id: st.user.id, emoji: emoji }, { onConflict: "message_id,user_id" });
+      res = await A.call(function () { return sb.from("chat_reactions").upsert({ message_id: id, user_id: st.user.id, emoji: emoji }, { onConflict: "message_id,user_id" }); });
     }
     if (res.error) { alert(res.error.message); await loadReacts([{ id: id }]); redrawReacts(id); }
   }
@@ -474,7 +474,7 @@
     else b = t.closest("[data-vote]");
     if (b && !b.disabled) {
       b.disabled = true;
-      var rv = await sb.rpc("cast_chat_vote", { p_msg: +b.dataset.vote, p_opt: +b.dataset.opt });
+      var vb = b; var rv = await A.call(function () { return sb.rpc("cast_chat_vote", { p_msg: +vb.dataset.vote, p_opt: +vb.dataset.opt }); });
       b.disabled = false;
       if (rv.error) return alert(rv.error.message);
       await loadPolls([+b.dataset.vote]); drawList(true);
@@ -661,7 +661,7 @@
           if (u.error) throw u.error;
           row.images.push(path);
         }
-        var r = await sb.from("chat_messages").insert(row);
+        var r = await A.call(function () { return sb.from("chat_messages").insert(row); });
         if (r.error) throw r.error;
         if (txt.value === typed) txt.value = "";  // клавиатура телефона вернула текст — убрать ещё раз
         grow(); fresh.forEach(function (x) { URL.revokeObjectURL(x.url); }); fresh = []; drawPrev();

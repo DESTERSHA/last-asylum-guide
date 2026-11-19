@@ -140,7 +140,7 @@
       try { await A.setNick(n); } catch (err) { alert(err.message || err); return; }
     }
     btn.disabled = true;
-    var r = await sb.rpc("cast_vote", { p_post: id, p_opt: opt });
+    var r = await A.call(function () { return sb.rpc("cast_vote", { p_post: id, p_opt: opt }); });
     btn.disabled = false;
     if (r.error) { msg.className = "cab-msg err"; msg.textContent = " " + r.error.message; return; }
     await loadVotes(id); draw();

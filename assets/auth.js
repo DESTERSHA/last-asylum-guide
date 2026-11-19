@@ -59,6 +59,16 @@
   }
   window.LAAuth = {
     ready: ready, state: state, hasSub: hasSub, client: sb,
+    /* запрос к базе; если база ответила «нужно войти» (вход устарел, хотя человек в системе) — обновить вход и повторить один раз */
+    call: async function (fn) {
+      var r = await fn();
+      if (r && r.error && /нужно войти|JWT|jwt|not authenticated/i.test(r.error.message || "")) {
+        console.warn("вход устарел — обновляю:", r.error.message);
+        var ref = await sb.auth.refreshSession();
+        if (ref.error) console.warn("не удалось обновить вход:", ref.error.message); else r = await fn();
+      }
+      return r;
+    },
     isEditor: function () { return !!(state.admin || (state.profile && state.profile.editor)); },  // админ публикует всегда (так же в базе: is_editor())
     isModerator: function () { return !!(state.admin || (state.profile && state.profile.moderator)); },  // модератор чата (так же в базе: is_moderator())
     on: function (f) { subs.push(f); f(state); },
