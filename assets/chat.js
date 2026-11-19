@@ -158,6 +158,7 @@
     if (langOf(all.join(" ")) === target) return;
     polled[id + "|" + target] = 1;
     all.forEach(function (txt, i) {
+      if (!/[A-Za-zА-Яа-яЁё]/.test(txt)) return;  // «1», «3» — переводить нечего
       slot(async function () {
         try {
           var t = await translate(txt, target);
