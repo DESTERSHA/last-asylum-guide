@@ -10,7 +10,11 @@
   function emit() { subs.forEach(function (f) { try { f(state); } catch (e) { console.warn(e); } }); }
   async function loadProfile() {
     if (!sb || !state.user) { state.profile = null; state.admin = false; return; }
-    var r = await sb.from("profiles").select("email,sub_until,created_at").eq("id", state.user.id).maybeSingle();
+    var r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned").eq("id", state.user.id).maybeSingle();
+    if (r.error) {  // база ещё без полей «Важных новостей» (SQL не выполнен) — читаем как раньше
+      console.warn("Кабинет: профиль без полей новостей", r.error.message);
+      r = await sb.from("profiles").select("email,sub_until,created_at").eq("id", state.user.id).maybeSingle();
+    }
     state.profile = r.data || null;
     var a = await sb.rpc("is_admin"); state.admin = !!a.data;
   }
@@ -28,10 +32,36 @@
     window.LAFav._replace(all);
   }
   function hasSub() { return !!(state.profile && state.profile.sub_until && new Date(state.profile.sub_until) > new Date()); }
+  var T = function (s) { return window.T ? window.T(s) : s; };
+  var escA = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  /* у аккаунта нет игрового ника (зарегистрирован до появления поля) — окно «укажите игровой ник» на любой странице */
+  function nickGate() {
+    var p = state.profile, old = document.getElementById("nickGate");
+    var need = state.user && p && ("nick" in p) && !p.nick;
+    if (!need) { if (old) old.remove(); return; }
+    if (old) return;
+    var w = document.createElement("div");
+    w.id = "nickGate"; w.className = "nick-gate";
+    w.innerHTML = '<form class="nick-box"><h3>' + T("Укажите игровой ник") + "</h3><p>" + T("Ник из игры, как он написан в игре. Без ника нельзя голосовать в «Важных новостях». Ник проверяет администратор сайта.") + "</p>" +
+      '<input name="n" required maxlength="40" autocomplete="nickname" placeholder="' + escA(T("Игровой ник")) + '"><p class="cab-msg"></p>' +
+      '<div class="nick-btns"><button type="submit" class="btn pri">' + T("Сохранить") + '</button><button type="button" class="btn" data-later>' + T("Позже") + "</button></div></form>";
+    document.body.appendChild(w);
+    var f = w.querySelector("form"), m = w.querySelector(".cab-msg");
+    w.querySelector("[data-later]").onclick = function () { w.remove(); };
+    f.onsubmit = async function (e) {
+      e.preventDefault(); m.className = "cab-msg"; m.textContent = T("Секунду…");
+      try { await window.LAAuth.setNick(f.n.value); } catch (err) { m.className = "cab-msg err"; m.textContent = T("Не получилось: ") + (err.message || err); }
+    };
+  }
   window.LAAuth = {
     ready: ready, state: state, hasSub: hasSub, client: sb,
+    isEditor: function () { return !!(state.profile && state.profile.editor); },
     on: function (f) { subs.push(f); f(state); },
-    signUp: async function (email, pass) { var r = await sb.auth.signUp({ email: email, password: pass }); if (r.error) throw r.error; return r; },
+    signUp: async function (email, pass, nick) { var r = await sb.auth.signUp({ email: email, password: pass, options: { data: { nick: nick || "" } } }); if (r.error) throw r.error; return r; },
+    setNick: async function (nick) {
+      var r = await sb.rpc("set_my_nick", { p_nick: String(nick || "").trim() }); if (r.error) throw r.error;
+      await loadProfile(); emit(); nickGate();
+    },
     signIn: async function (email, pass) { var r = await sb.auth.signInWithPassword({ email: email, password: pass }); if (r.error) throw r.error; return r; },
     signOut: async function () { await sb.auth.signOut(); },
     reload: async function () { await loadProfile(); emit(); },
@@ -54,6 +84,7 @@
       } catch (e) { console.warn("Кабинет: не удалось загрузить аккаунт", e); }
       if (my !== seq) return;
       emit();
+      nickGate();
       document.querySelectorAll("[data-acc-name]").forEach(function (e) { e.textContent = (window.T || String)(state.user ? "Кабинет" : "Войти"); });
     }, 0);
   });

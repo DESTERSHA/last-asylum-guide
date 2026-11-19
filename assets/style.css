@@ -966,3 +966,73 @@ img.inl{display:inline-block;width:20px;height:20px;vertical-align:-4px;margin:0
 .lang-sw:hover{background:#f6f6f8}
 html.t-ap .lang-sw{border-radius:999px;border-color:transparent;background:#f6f6f8}
 @media(max-width:760px){.lang-sw{height:34px;min-width:38px;padding:0 8px;font-size:12px}}
+
+/* ===== «Важные новости» (assets/news.js), плашка «Срочно» (assets/notice.js), окно игрового ника (assets/auth.js) ===== */
+.linkbtn{font:inherit;font-size:inherit;background:none;border:0;padding:0 4px;color:var(--blue);cursor:pointer}
+.linkbtn:hover{text-decoration:underline}.linkbtn.del{color:var(--red)}
+.news-bar{margin:6px 0 14px}.news-bar .btn{cursor:pointer}
+.news-feed{display:flex;flex-direction:column;gap:14px;max-width:860px}
+.news-post{background:#fff;border:1px solid #e3e6ec;border-radius:20px;padding:18px 20px;scroll-margin-top:90px}
+.news-post.urgent{border-color:#f3c4bd;box-shadow:inset 4px 0 0 var(--red)}
+.news-post.flash{animation:newsFlash 1.6s ease-out}
+@keyframes newsFlash{0%{background:var(--gold-bg)}100%{background:#fff}}
+.news-post h3{margin:6px 0 8px;font-size:20px;line-height:1.3}
+.news-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;color:var(--faint)}
+.news-urgent{background:var(--red);color:#fff;font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+.news-act{margin-left:auto}
+.news-body{font-size:15px;line-height:1.6;overflow-wrap:anywhere}
+.news-imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:12px}
+.news-imgs img{width:100%;height:220px;object-fit:cover;border-radius:12px;background:var(--soft);cursor:zoom-in}
+.news-more{align-self:flex-start;cursor:pointer}
+.poll{margin-top:14px;background:var(--soft);border-radius:16px;padding:14px 16px}
+.poll-q{font-weight:700;font-size:16px}
+.poll-info{font-size:12.5px;color:var(--faint);margin:2px 0 10px}
+.poll-opt{background:#fff;border:1px solid #e3e6ec;border-radius:14px;padding:10px 12px;margin-bottom:8px}
+.poll-opt.mine{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.poll-vote{font:inherit;font-weight:700;font-size:15px;background:none;border:0;padding:0;margin:0 0 8px;cursor:pointer;color:var(--ink);text-align:left}
+.poll-vote:hover:not(:disabled){color:var(--blue)}.poll-vote:disabled{cursor:default}
+.poll-bars{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.poll-bar{position:relative;height:30px;border-radius:9px;background:#eef0f4;overflow:hidden}
+.poll-bar i{position:absolute;inset:0 auto 0 0;border-radius:9px}
+.poll-bar.ld i{background:#f7dda6}.poll-bar.pl i{background:#cfdcfa}
+.poll-bar span{position:relative;display:block;padding:5px 10px;font-size:13px;white-space:nowrap}
+.poll-who{margin-top:8px;font-size:13px}.poll-who summary{cursor:pointer;color:var(--mut)}
+.poll-who span{display:inline-block;margin:4px 6px 0 0;padding:2px 8px;border-radius:999px;background:var(--soft)}
+.poll-who span.ld{background:var(--gold-bg);color:#7a5410;font-weight:600}
+.poll-hint{font-size:13px;color:var(--mut);margin-top:4px}
+.poll-admin{margin-top:10px;font-size:13px}.poll-admin summary{cursor:pointer;color:var(--red)}
+.poll-adm-list{overflow-x:auto}
+@media(max-width:640px){.poll-bars{grid-template-columns:1fr}.news-post{padding:16px}.news-imgs img{height:160px}}
+.news-form-box{max-width:860px;margin-bottom:16px}
+.news-form{display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid #e3e6ec;border-radius:20px;padding:18px 20px}
+.news-form h3{margin:0}
+.news-form label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;color:var(--mut)}
+.news-form input:not([type=checkbox]),.news-form textarea{font:inherit;font-size:15px;border-radius:12px;border:1px solid #d9dce3;padding:9px 12px;background:#fff;color:var(--ink)}
+.news-form textarea{resize:vertical;min-height:140px}
+.news-form .nf-chk{flex-direction:row;align-items:flex-start;gap:8px;font-weight:400;color:var(--ink);font-size:14px}
+.news-form .nf-chk input{margin-top:4px}
+.nf-file{align-self:flex-start;flex-direction:row!important;cursor:pointer;color:var(--blue)!important;font-size:14px!important}
+.nf-imgs{display:flex;flex-wrap:wrap;gap:8px}
+.nf-imgs span{position:relative}.nf-imgs img{width:96px;height:96px;object-fit:cover;border-radius:10px;display:block}
+.nf-imgs button{position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;cursor:pointer}
+.nf-poll{display:flex;flex-direction:column;gap:10px;background:var(--soft);border-radius:14px;padding:12px 14px}
+.nf-opt{display:flex;gap:6px;align-items:center}.nf-opt input{flex:1}
+.nf-btns{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.nf-btns .btn{cursor:pointer}
+.news-notice{background:var(--red-bg);border-bottom:1px solid #f3c4bd}
+.nn-row{display:flex;align-items:center;gap:10px;max-width:1280px;margin:0 auto;padding:8px 16px;font-size:14px}
+.nn-tag{flex:none;background:var(--red);color:#fff;font-weight:700;font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+.nn-row a{flex:1;min-width:0;color:#7d1d14;font-weight:600;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nn-row a:hover{text-decoration:underline}
+.nn-row button{flex:none;border:0;background:none;color:#7d1d14;font-size:16px;cursor:pointer;padding:0 4px}
+.nick-gate{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.5);display:grid;place-items:center;padding:16px}
+.nick-box{background:#fff;border-radius:20px;padding:22px;max-width:420px;width:100%;display:flex;flex-direction:column;gap:10px}
+.nick-box h3{margin:0}.nick-box p{margin:0;font-size:14px;color:var(--mut)}
+.nick-box input{font:inherit;font-size:16px;height:44px;border-radius:12px;border:1px solid #d9dce3;padding:0 12px}
+.nick-btns{display:flex;gap:8px}.nick-btns .btn{cursor:pointer}
+.cab-nick{display:block;font-size:13.5px;color:var(--mut)}.cab-nick b{display:inline!important;font-size:13.5px!important;color:var(--ink)!important}
+#authForm .nick-row[hidden]{display:none}
+.cab-h-users{margin:18px 0 4px}
+.cab-filt{font:inherit;font-size:14px;height:38px;border-radius:10px;border:1px solid #d9dce3;padding:0 12px;width:100%;max-width:340px;margin-top:6px}
+.cab-users-wrap{overflow-x:auto}
+.cab-users td.nk{white-space:nowrap}.cab-users td.fl{text-align:center}
+.cab-users em.dup{font-style:normal;font-size:11px;background:var(--red-bg);color:var(--red);padding:1px 6px;border-radius:999px}
