@@ -15,7 +15,7 @@
   var msgs = [], byId = {}, pins = [], results = {}, mine = {}, st = { user: null, profile: null, admin: false }, chan = null, started = false;
   var store = { get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
                 set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { console.warn("чат: не сохранить настройку", e); } } };
-  var target = store.get("la_chat_lang", EN ? "en" : "ru"), auto = store.get("la_chat_auto", "0") === "1";
+  var target = store.get("la_chat_lang", EN ? "en" : "ru"), auto = store.get("la_chat_auto", "1") === "1";  // по умолчанию автоперевод включён (её требование)
 
   if (!sb) { app.innerHTML = '<div class="cab-note">' + T("Чат временно недоступен.") + "</div>"; return; }
 
@@ -45,13 +45,22 @@
     var cyr = (text.match(/[А-Яа-яЁё]/g) || []).length, lat = (text.match(/[A-Za-z]/g) || []).length;
     return cyr >= lat ? "ru" : "en";
   }
-  var chromeTr = {};
+  var chromeTr = {}, chromeLoading = {};
   async function viaChrome(text, src, dst) {
     if (!("Translator" in self)) return null;
     var key = src + ">" + dst;
     if (!chromeTr[key]) {
       var av = await self.Translator.availability({ sourceLanguage: src, targetLanguage: dst });
       if (av === "unavailable") return null;
+      if (av !== "available") {
+        // модель ещё не скачана: качаем в фоне (это может занять минуты), а сейчас переводим через MyMemory
+        if (!chromeLoading[key]) {
+          chromeLoading[key] = self.Translator.create({ sourceLanguage: src, targetLanguage: dst })
+            .then(function (t) { chromeTr[key] = t; })
+            .catch(function (e) { console.warn("чат: модель перевода Chrome не скачалась:", e && e.message); });
+        }
+        return null;
+      }
       chromeTr[key] = await self.Translator.create({ sourceLanguage: src, targetLanguage: dst });
     }
     return await chromeTr[key].translate(text);
@@ -79,31 +88,35 @@
     var key = dst + "|" + text;
     if (trCache[key]) return trCache[key];
     var res = null;
-    try { res = await viaChrome(text, src, dst); } catch (e) { console.warn("чат: переводчик Chrome не сработал, беру MyMemory:", e && e.message); }
+    try { res = await Promise.race([viaChrome(text, src, dst), new Promise(function (ok) { setTimeout(function () { ok(null); }, 3000); })]); } catch (e) { console.warn("чат: переводчик Chrome не сработал, беру MyMemory:", e && e.message); }  // не ждём Chrome дольше 3 с
     if (res == null) res = await viaMyMemory(text, src, dst);
     trCache[key] = res; saveCache();
     return res;
   }
-  var opened = {};  // переводы, открытые кнопкой: после перерисовки ленты показываем снова (из кэша)
-  var queue = Promise.resolve();
+  var opened = {};  // переводы, открытые кнопкой «Перевести» (когда автоперевод выключен)
+  var running = 0, waiting = [];
+  function slot(fn) {  // не больше 3 переводов одновременно — быстро, но без заваливания сервиса
+    return new Promise(function (done) {
+      var go = function () { running++; Promise.resolve().then(fn).catch(function (e) { console.warn("чат: перевод", e); }).then(function () { running--; done(); if (waiting.length) waiting.shift()(); }); };
+      if (running < 3) go(); else waiting.push(go);
+    });
+  }
   function trMessage(id, force) {
-    if (force) opened[id] = 1;  // по очереди, чтобы не заваливать сервис перевода
-    queue = queue.then(async function () {
+    if (force) opened[id] = 1;
+    return slot(async function () {
       var m = byId[id], el = app.querySelector('[data-msg="' + id + '"] .cm-tr');
-      if (!m || !el || !m.body) return;
-      if (!force && el.dataset.done) return;
+      if (!m || !el || !m.body || el.dataset.done) return;
+      el.dataset.done = "1";
+      if (langOf(m.body) === target) { if (force) el.innerHTML = '<span class="mut">' + T("Сообщение уже на этом языке.") + "</span>"; return; }
       el.innerHTML = '<span class="mut">' + T("Перевожу…") + "</span>";
       try {
         var t = await translate(m.body, target);
-        if (t == null) { el.innerHTML = force ? '<span class="mut">' + T("Сообщение уже на этом языке.") + "</span>" : ""; el.dataset.done = "1"; return; }
-        el.innerHTML = '<div class="cm-trtxt">' + bodyHtml(t) + '</div><button type="button" class="linkbtn" data-orig="' + id + '">' + T("Показать оригинал") + "</button>";
-        el.dataset.done = "1";
-        var b = app.querySelector('[data-msg="' + id + '"] .cm-body'); if (b) b.classList.add("hid");
+        el.innerHTML = t == null ? "" : '<div class="cm-trtxt">' + bodyHtml(t) + "</div>";
       } catch (e) {
+        delete el.dataset.done;
         el.innerHTML = '<span class="cab-msg err">' + T("Не удалось перевести: ") + esc(e.message || e) + "</span>";
       }
     });
-    return queue;
   }
 
   /* ---------- каркас ---------- */
@@ -111,7 +124,8 @@
     app.innerHTML =
       '<div class="ch-top"><label>' + T("Переводить на") + ' <select id="chLang"><option value="ru">Русский</option><option value="en">English</option></select></label>' +
       '<label class="ch-auto"><input type="checkbox" id="chAuto"> ' + T("Автоперевод сообщений") + "</label>" +
-      '<span class="ch-who" id="chWho"></span></div>' +
+      '<span class="ch-who" id="chWho"></span><button type="button" class="btn ch-mem-btn" id="chMembersBtn">👥 ' + T("Участники") + ' <i id="chOnline"></i></button></div>' +
+      '<div class="ch-members" id="chMembers" hidden></div>' +
       '<div class="ch-pins" id="chPins" hidden></div>' +
       '<div class="ch-list" id="chList"><div class="cab-note">' + T("Загружаю чат…") + "</div></div>" +
       '<form class="ch-form" id="chForm"><div class="ch-prev" id="chPrev"></div><div class="ch-poll" id="chPoll" hidden></div>' +
@@ -126,8 +140,8 @@
     bindForm();
   }
   function retranslate() {
+    drawList(true);
     app.querySelectorAll(".cm-tr").forEach(function (el) { el.innerHTML = ""; delete el.dataset.done; });
-    app.querySelectorAll(".cm-body.hid").forEach(function (b) { b.classList.remove("hid"); });
     Object.keys(opened).forEach(function (id) { trMessage(+id, true); });
     if (auto) msgs.slice(-AUTO_LAST).forEach(function (m) { if (m.body) trMessage(m.id); });
   }
@@ -138,10 +152,10 @@
     var me = st.user && m.user_id === st.user.id;
     var tags = (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
     var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
-    var acts = (m.body ? '<button type="button" class="linkbtn" data-tr="' + m.id + '">' + T("Перевести") + "</button>" : "") +
+    var acts = (m.body && !auto ? '<button type="button" class="linkbtn" data-tr="' + m.id + '">' + (opened[m.id] ? T("Скрыть перевод") : T("Перевести")) + "</button>" : "") +
       (canMod() ? '<button type="button" class="linkbtn" data-pin="' + m.id + '">' + (m.pinned ? T("Открепить") : T("Закрепить")) + "</button>" : "") +
       (me || canMod() ? '<button type="button" class="linkbtn del" data-del="' + m.id + '">' + T("Удалить") + "</button>" : "") +
-      (canMod() && !me && m.user_id ? '<button type="button" class="linkbtn del" data-ban="' + m.user_id + '" data-nick="' + esc(m.nick || "") + '">' + T("Запретить писать") + "</button>" : "");
+      (canMod() && !me && m.user_id ? '<button type="button" class="linkbtn del" data-mod="' + m.user_id + '" data-nick="' + esc(m.nick || "") + '">' + T("Мут / исключить") + "</button>" : "");
     return '<div class="cm' + (me ? " me" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
       '<div class="cm-h"><b>' + esc(m.nick || "?") + "</b>" + tags + '<span class="cm-t">' + when(m.created_at) + "</span>" + (m.pinned ? '<span class="cm-pin">📌</span>' : "") + "</div>" +
       (m.body ? '<div class="cm-body">' + bodyHtml(m.body) + "</div>" : "") + '<div class="cm-tr"></div>' +
@@ -250,12 +264,13 @@
     if ((b = t.closest("#chOlder"))) return older();
     if ((b = t.closest("[data-goto]"))) return goTo(+b.dataset.goto);
     if ((b = t.closest(".cm-imgs img"))) { var lb = document.querySelector(".lightbox"); if (lb) { lb.querySelector("img").src = b.src; lb.classList.add("on"); } return; }
-    if ((b = t.closest("[data-tr]"))) return trMessage(+b.dataset.tr, true);
-    if ((b = t.closest("[data-orig]"))) {
-      var box = app.querySelector('[data-msg="' + b.dataset.orig + '"]');
-      delete opened[b.dataset.orig];
-      box.querySelector(".cm-body").classList.remove("hid"); box.querySelector(".cm-tr").innerHTML = ""; delete box.querySelector(".cm-tr").dataset.done; return;
+    if ((b = t.closest("[data-tr]"))) {
+      var tid = +b.dataset.tr, tel = app.querySelector('[data-msg="' + tid + '"] .cm-tr');
+      if (opened[tid]) { delete opened[tid]; tel.innerHTML = ""; delete tel.dataset.done; b.textContent = T("Перевести"); return; }
+      b.textContent = T("Скрыть перевод"); return trMessage(tid, true);
     }
+    if ((b = t.closest("#chMembersBtn"))) return toggleMembers();
+    if ((b = t.closest("[data-mod]"))) return modDialog(b.dataset.mod, b.dataset.nick);
     if ((b = t.closest("[data-pin]"))) {
       var m = byId[+b.dataset.pin];
       var r = await sb.from("chat_messages").update({ pinned: !m.pinned }).eq("id", m.id);
@@ -270,12 +285,6 @@
       if (rd.error) alert(rd.error.message);
       return;
     }
-    if ((b = t.closest("[data-ban]"))) {
-      if (!confirm(T("Запретить «") + b.dataset.nick + T("» писать в чат? Снять запрет можно в кабинете."))) return;
-      var rb = await sb.rpc("chat_set_ban", { p_user: b.dataset.ban, p_on: true });
-      alert(rb.error ? rb.error.message : T("Готово: писать в чат больше не может."));
-      return;
-    }
     if ((b = t.closest("[data-vote]"))) {
       b.disabled = true;
       var rv = await sb.rpc("cast_chat_vote", { p_msg: +b.dataset.vote, p_opt: +b.dataset.opt });
@@ -284,6 +293,76 @@
       await loadPolls([+b.dataset.vote]); drawList(true);
     }
   });
+
+  /* ---------- участники: кто в сети (Realtime Presence), мут и исключение ---------- */
+  var online = {}, members = [], presence = null;
+  function joinPresence() {
+    if (presence) sb.removeChannel(presence);
+    var pr = st.profile || {};
+    presence = sb.channel("chat-online", { config: { presence: { key: st.user.id } } });
+    presence.on("presence", { event: "sync" }, function () {
+      var stt = presence.presenceState(); online = {};
+      Object.keys(stt).forEach(function (k) { online[k] = 1; });
+      var n = app.querySelector("#chOnline"); if (n) n.textContent = Object.keys(online).length + " " + T("в сети");
+      var box = app.querySelector("#chMembers"); if (box && !box.hidden) drawMembers();
+    }).subscribe(function (s) { if (s === "SUBSCRIBED") presence.track({ nick: pr.nick || "" }); });
+  }
+  async function loadMembers() {
+    var r = await sb.rpc("chat_members");
+    if (r.error) { members = []; return r.error.message; }
+    members = r.data || [];
+  }
+  function muteLabel(u) {
+    if (u.kicked) return '<em class="cm-tag bad">' + T("исключён") + "</em>";
+    if (u.banned) return '<em class="cm-tag bad">' + T("мут навсегда") + "</em>";
+    if (u.muted_until && new Date(u.muted_until) > new Date()) return '<em class="cm-tag bad">' + T("мут до ") + when(u.muted_until) + "</em>";
+    return "";
+  }
+  function drawMembers() {
+    var box = app.querySelector("#chMembers"); if (!box) return;
+    var list = members.slice().sort(function (a, c) { return (online[c.user_id] ? 1 : 0) - (online[a.user_id] ? 1 : 0) || (a.nick || "").localeCompare(c.nick || ""); });
+    var on = list.filter(function (u) { return online[u.user_id]; }).length;
+    box.innerHTML = '<div class="chm-h"><b>' + T("Участники чата") + "</b> · " + list.length + " · " + on + " " + T("в сети") + '<button type="button" class="linkbtn" id="chMembersClose">✕</button></div>' +
+      '<input type="search" class="cab-filt" id="chMemQ" placeholder="' + esc(T("поиск по нику")) + '">' +
+      '<div class="chm-list">' + list.map(function (u) {
+        var me = st.user && u.user_id === st.user.id;
+        return '<div class="chm" data-n="' + esc((u.nick || "").toLowerCase()) + '"><i class="dot' + (online[u.user_id] ? " on" : "") + '"></i><b>' + esc(u.nick) + "</b>" +
+          (u.moderator ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (u.leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "") + muteLabel(u) +
+          (canMod() && !me && !u.moderator ? '<button type="button" class="linkbtn del" data-mod="' + u.user_id + '" data-nick="' + esc(u.nick) + '">' + T("Мут / исключить") + "</button>" : "") + "</div>";
+      }).join("") + "</div>";
+    box.querySelector("#chMembersClose").onclick = toggleMembers;
+    box.querySelector("#chMemQ").oninput = function () { var q = this.value.trim().toLowerCase(); box.querySelectorAll(".chm").forEach(function (x) { x.hidden = q && x.dataset.n.indexOf(q) < 0; }); };
+  }
+  async function toggleMembers() {
+    var box = app.querySelector("#chMembers"); if (!box) return;
+    if (!box.hidden) { box.hidden = true; return; }
+    box.hidden = false; box.innerHTML = '<div class="cab-note">' + T("Загружаю участников…") + "</div>";
+    var err = await loadMembers();
+    if (err) { box.innerHTML = '<div class="cab-note">' + esc(err) + "</div>"; return; }
+    drawMembers();
+  }
+  function modDialog(uid, nick) {
+    var u = members.filter(function (x) { return x.user_id === uid; })[0] || {};
+    var w = document.createElement("div"); w.className = "nick-gate";
+    w.innerHTML = '<div class="nick-box"><h3>' + esc(nick) + "</h3><p>" + T("Мут — может читать, но не писать. Исключить — не видит чат и не пишет.") + "</p>" +
+      '<div class="chm-acts"><b>' + T("Мут на:") + "</b>" + [[10, T("10 мин")], [60, T("1 час")], [1440, T("24 часа")], [10080, T("7 дней")], [0, T("навсегда")]].map(function (x) { return '<button type="button" class="btn" data-mute="' + x[0] + '">' + x[1] + "</button>"; }).join("") + "</div>" +
+      '<div class="chm-acts"><button type="button" class="btn" data-act="unmute">' + T("Снять мут") + '</button><button type="button" class="btn" data-act="kick">' + T("Исключить из чата") + '</button><button type="button" class="btn" data-act="unkick">' + T("Вернуть в чат") + "</button></div>" +
+      '<p class="cab-msg"></p><div class="nick-btns"><button type="button" class="btn" data-close>' + T("Закрыть") + "</button></div></div>";
+    document.body.appendChild(w);
+    var msg = w.querySelector(".cab-msg");
+    w.addEventListener("click", async function (e) {
+      var b = e.target.closest("button"); if (!b) { if (e.target === w) w.remove(); return; }
+      if (b.hasAttribute("data-close")) return w.remove();
+      var act = b.dataset.act || "mute", mins = b.dataset.mute != null ? +b.dataset.mute : 0;
+      if (act === "kick" && !confirm(T("Исключить «") + nick + T("» из чата? Он перестанет видеть сообщения."))) return;
+      msg.className = "cab-msg"; msg.textContent = "…";
+      var r = await sb.rpc("chat_moderate", { p_user: uid, p_action: act, p_minutes: mins });
+      if (r.error) { msg.className = "cab-msg err"; msg.textContent = r.error.message; return; }
+      msg.textContent = T("Готово.");
+      await loadMembers(); var box = app.querySelector("#chMembers"); if (box && !box.hidden) drawMembers();
+      setTimeout(function () { w.remove(); }, 600);
+    });
+  }
 
   /* ---------- отправка ---------- */
   var fresh = [];
@@ -354,11 +433,13 @@
     var f = app.querySelector("#chForm"), pr = st.profile || {};
     if (!f) return;
     app.querySelector("#chPollBtn").hidden = !canMod();
-    var banned = pr.chat_banned, noNick = ("nick" in pr) && !pr.nick;
+    var muted = pr.chat_muted_until && new Date(pr.chat_muted_until) > new Date();
+    var banned = pr.chat_banned || muted, noNick = ("nick" in pr) && !pr.nick;
     f.querySelector("#chText").disabled = f.querySelector("#chSend").disabled = !!(banned || noNick);
     app.querySelector("#chWho").innerHTML = pr.nick ? T("Вы пишете как ") + "<b>" + esc(pr.nick) + "</b>" + (canMod() ? " · " + T("модератор") : "") : "";
     var m = f.querySelector("#chMsg");
-    if (banned) { m.className = "cab-msg err"; m.textContent = T("Вам запрещено писать в чат. Читать можно."); }
+    if (muted && !pr.chat_banned) { m.className = "cab-msg err"; m.textContent = T("У вас мут до ") + when(pr.chat_muted_until) + T(". Читать можно."); }
+    else if (banned) { m.className = "cab-msg err"; m.textContent = T("Вам запрещено писать в чат. Читать можно."); }
     else if (noNick) { m.className = "cab-msg err"; m.textContent = T("Чтобы писать, укажите игровой ник (окно сверху или кабинет)."); }
   }
 
@@ -366,17 +447,22 @@
   var seen = null;
   A.on(function (s) {
     st = s;
-    var key = (s.user ? s.user.id : "-") + "|" + (s.profile ? [s.profile.nick, s.profile.moderator, s.profile.chat_banned].join(",") : "") + "|" + s.admin;
+    var key = (s.user ? s.user.id : "-") + "|" + (s.profile ? [s.profile.nick, s.profile.moderator, s.profile.chat_banned, s.profile.chat_muted_until, s.profile.chat_kicked].join(",") : "") + "|" + s.admin;
     if (key === seen) return;
     var firstForUser = !seen || seen.split("|")[0] !== key.split("|")[0];
     seen = key;
     if (!s.user) {
-      started = false; if (chan) { sb.removeChannel(chan); chan = null; }
+      started = false; if (chan) { sb.removeChannel(chan); chan = null; } if (presence) { sb.removeChannel(presence); presence = null; }
       app.innerHTML = '<div class="cab-note"><b>' + T("Чат — только для зарегистрированных.") + "</b> " + T("Войдите или зарегистрируйтесь (нужен игровой ник), и сможете читать и писать.") +
         ' <a class="btn pri" href="' + (EN ? "cabinet.en.html" : "cabinet.html") + '">' + T("Войти") + "</a></div>";
       return;
     }
-    if (firstForUser || !started) { started = true; shell(); setComposer(); load(); subscribe(); }
+    if (s.profile && s.profile.chat_kicked) {
+      started = false; if (chan) { sb.removeChannel(chan); chan = null; }
+      app.innerHTML = '<div class="cab-note"><b>' + T("Вас исключили из чата.") + "</b> " + T("Если это ошибка — напишите администратору сайта.") + "</div>";
+      return;
+    }
+    if (firstForUser || !started) { started = true; shell(); setComposer(); load(); subscribe(); joinPresence(); }
     else { setComposer(); drawList(true); }
   });
 })();
