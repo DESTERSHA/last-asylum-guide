@@ -10,12 +10,15 @@
 <meta property="og:image" content="assets/art/hero-index.webp">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/game/ev-kvk.png">
+<meta name="la-en" content="cabinet,duel,events,gear,glossary,heroes,index,kvk,models,raven,rules,server,squads,tips">
+<link rel="alternate" hreflang="ru" href="heroes.html">
+<link rel="alternate" hreflang="en" href="heroes.en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&family=PT+Serif:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=18b5f963aa">
+<link rel="stylesheet" href="assets/style.css?v=9344a42b70">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
-<link rel="stylesheet" href="assets/theme.css?v=18b5f963aa">
+<link rel="stylesheet" href="assets/theme.css?v=9344a42b70">
 <script>(function(){try{var q=location.search.match(/[?&]design=(old|new)/);if(q)localStorage.setItem("la_design",q[1]);if(localStorage.getItem("la_design")!=="old")document.documentElement.classList.add("t-ap");if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add("embed")}catch(e){document.documentElement.classList.add("t-ap")}})()</script>
 </head>
 <body>
@@ -37,6 +40,7 @@
     <a href="tips.html"><img src="assets/game/diamond.png" alt="">Фишки</a>
   </nav>
   <a class="cab-link" href="cabinet.html" title="Кабинет: избранные разделы, события, альянсы и игроки"><span class="ic">★</span><span data-acc-name>Кабинет</span><i data-fav-count></i></a>
+  <a class="lang-sw" href="heroes.en.html" hreflang="en" lang="en" title="English version" data-lang-sw="en">EN</a>
   <div class="clock" title="Разница между временем сервера и московским — 5 часов. На сервере время меньше."><div><b data-clock="srv">--:--</b><span>в игре</span></div><div><b data-clock="msk">--:--</b><span>Москва</span></div></div>
 </div></header>
 <main>
@@ -66,7 +70,7 @@
 </section>
 <script>window.M3D_LISTS=window.M3D_LISTS||{};window.M3D_LISTS.heroes=[["assets/hero3d/arthur.glb","Артур","assets/game/hero/arthur.png"],["assets/hero3d/annie.glb","Анни","assets/game/hero/annie.png"],["assets/hero3d/bell.glb","Белл","assets/game/hero/bell.png"],["assets/hero3d/bella.glb","Белла","assets/game/hero/bella.png"],["assets/hero3d/bestar.glb","Бестар","assets/game/hero/bestar.png"],["assets/hero3d/billy.glb","Билли","assets/game/hero/billy.png"],["assets/hero3d/greenwald.glb","Гренвальд","assets/game/hero/greenwald.png"],["assets/hero3d/griffith.glb","Гриффит","assets/game/hero/griffith.png"],["assets/hero3d/daskal.glb","Даскал","assets/game/hero/daskal.png"],["assets/hero3d/jester.glb","Джокер","assets/game/hero/jester.png"],["assets/hero3d/durant.glb","Дюран","assets/game/hero/durant.png"],["assets/hero3d/zoya.glb","Зоя","assets/game/hero/zoya.png"],["assets/hero3d/kafa.glb","Кафа","assets/game/hero/kafa.png"],["assets/hero3d/kesso.glb","Кессо","assets/game/hero/kesso.png"],["assets/hero3d/claire.glb","Клэр","assets/game/hero/claire.png"],["assets/hero3d/red-lady.glb","Красная Леди","assets/game/hero/red-lady.png"],["assets/hero3d/louis.glb","Луи","assets/game/hero/louis.png"],["assets/hero3d/lucius.glb","Люциус","assets/game/hero/lucius.png"],["assets/hero3d/marlena.glb","Марлена","assets/game/hero/marlena.png"],["assets/hero3d/nicole.glb","Николь","assets/game/hero/nicole.png"],["assets/hero3d/robin.glb","Робин","assets/game/hero/robin.png"],["assets/hero3d/celia.glb","Селия","assets/game/hero/celia.png"],["assets/hero3d/cynthia.glb","Синтия","assets/game/hero/cynthia.png"],["assets/hero3d/sivir.glb","Сивир","assets/game/hero/sivir.png"],["assets/hero3d/stellar.glb","Стеллар","assets/game/hero/stellar.png"],["assets/hero3d/william.glb","Уильям","assets/game/hero/william.png"],["assets/hero3d/ulfrid.glb","Ульфрид","assets/game/hero/ulfrid.png"],["assets/hero3d/harper.glb","Харпер","assets/game/hero/harper.png"],["assets/hero3d/hastar.glb","Хастар","assets/game/hero/hastar.png"],["assets/hero3d/shadow.glb","Шэдоу","assets/game/hero/shadow.png"],["assets/hero3d/ash.glb","Эш","assets/game/hero/ash.png"]];</script>
 <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
-<script src="assets/viewer3d.js?v=4" defer></script>
+<script src="assets/viewer3d.js?v=111902" defer></script>
 
 <section class="band soft pad">
   <div class="eyebrow">С самого начала</div>
@@ -289,13 +293,14 @@
   <p>Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.</p>
 </footer>
 <button class="totop" id="toTop" aria-label="Наверх">↑</button>
-<script src="assets/app.js?v=18b5f963aa"></script>
-<script src="assets/fav.js?v=18b5f963aa"></script>
+<script src="assets/i18n.js?v=9344a42b70"></script>
+<script src="assets/app.js?v=9344a42b70"></script>
+<script src="assets/fav.js?v=9344a42b70"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script src="assets/auth-config.js?v=18b5f963aa"></script>
-<script src="assets/auth.js?v=18b5f963aa"></script>
-<script src="assets/peek.js?v=18b5f963aa"></script>
-<script src="assets/pairgrid.js?v=18b5f963aa"></script>
-<script src="assets/mason.js?v=18b5f963aa"></script>
+<script src="assets/auth-config.js?v=9344a42b70"></script>
+<script src="assets/auth.js?v=9344a42b70"></script>
+<script src="assets/peek.js?v=9344a42b70"></script>
+<script src="assets/pairgrid.js?v=9344a42b70"></script>
+<script src="assets/mason.js?v=9344a42b70"></script>
 </body>
 </html>

@@ -1,5 +1,8 @@
 """Английские экраны для английской версии сайта: результаты программ сборки (запуск с LA_LANG=en) -> assets/shots/en/<то же имя>.
-Кадры — те же, что у русских экранов. Запуск после пересборки: python -I tools/make_shots_en.py"""
+Кадры — те же, что у русских экранов. Запуск после пересборки: python -I tools/make_shots_en.py
+Настоящие снимки с телефона (energy, other-server, monster-info, kvk-group, covert-*, rally-*, royal-*, battle-1..3) этот скрипт
+не трогает: на них русский текст заменён английским шрифтом игры программой D:/la-game-files/tools/retext.py
+(правки для каждого снимка — D:/la-game-files/retext/<имя>.json; запуск: python -I retext.py ../retext/<имя>.json)."""
 from pathlib import Path
 from PIL import Image
 
