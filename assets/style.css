@@ -1017,6 +1017,7 @@ html.t-ap .lang-sw{border-radius:999px;border-color:transparent;background:#f6f6
 .nf-imgs button{position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;cursor:pointer}
 .nf-poll{display:flex;flex-direction:column;gap:10px;background:var(--soft);border-radius:14px;padding:12px 14px}
 .nf-opt{display:flex;gap:6px;align-items:center}.nf-opt input{flex:1}
+.nf-poll>.linkbtn{align-self:flex-start}
 .nf-btns{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.nf-btns .btn{cursor:pointer}
 .news-notice{background:var(--red-bg);border-bottom:1px solid #f3c4bd}
 .nn-row{display:flex;align-items:center;gap:10px;max-width:1280px;margin:0 auto;padding:8px 16px;font-size:14px}
@@ -1036,3 +1037,4 @@ html.t-ap .lang-sw{border-radius:999px;border-color:transparent;background:#f6f6
 .cab-users-wrap{overflow-x:auto}
 .cab-users td.nk{white-space:nowrap}.cab-users td.fl{text-align:center}
 .cab-users em.dup{font-style:normal;font-size:11px;background:var(--red-bg);color:var(--red);padding:1px 6px;border-radius:999px}
+.news-form input:disabled{background:var(--soft);color:var(--mut)}
