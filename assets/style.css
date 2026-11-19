@@ -1135,3 +1135,35 @@ html.t-ap .sup-head{border-radius:999px}
 .chs{padding:8px 4px;border-bottom:1px solid #f0f1f4}
 .chs-h{display:flex;gap:6px;align-items:baseline;font-size:13.5px}.chs-t{font-size:14px;margin:2px 0}
 @media(max-width:640px){.ch-mem-btn{padding:6px 9px}}
+/* чат: верхняя полоса (на компьютере — без «назад» и заголовка), телефон — как приложение */
+.ch-back,.ch-title,.ch-set-btn{display:none}
+.ch-set{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+@media(max-width:760px){
+  html.chat-page,html.chat-page body{overflow:hidden;height:100%}
+  html.chat-page .site-head,html.chat-page .foot,html.chat-page .totop,html.chat-page .news-notice{display:none!important}
+  .band.chat{padding:0}
+  .band.chat>.eyebrow,.band.chat>h2,.band.chat>.sub{display:none}
+  .chat-app{position:fixed;left:0;right:0;top:var(--app-top,0);height:var(--app-h,100dvh);z-index:60;max-width:none;border:0;border-radius:0}
+  .ch-top{flex-wrap:nowrap;gap:4px;padding:6px 8px;min-height:54px;background:#fff;position:relative}
+  .ch-back{display:grid;place-items:center;width:38px;height:40px;font-size:30px;line-height:1;color:var(--ink);text-decoration:none;flex:none}
+  .ch-title{display:flex;flex-direction:column;flex:1;min-width:0;line-height:1.15}
+  .ch-title b{font-size:17px}.ch-title span{font-size:12px;color:#1f9d55}
+  .ch-who,.ch-mem-btn .tx,#chOnline{display:none}
+  .ch-mem-btn{flex:none;width:40px;height:40px;padding:0;display:grid;place-items:center;font-size:18px;border-radius:12px;position:relative}
+  .ch-mem-btn i{position:absolute;top:2px;right:2px;font-size:10px;margin:0}
+  .ch-set-btn{display:grid}
+  .ch-set{display:none;position:absolute;left:0;right:0;top:100%;z-index:7;background:#fff;border-bottom:1px solid #e3e6ec;padding:10px 12px;box-shadow:0 8px 20px rgba(20,24,32,.08)}
+  .ch-set.open{display:flex}
+  .ch-pins{max-height:58px;padding:6px 10px}
+  .ch-list{flex:1;height:auto;min-height:0;padding:10px 8px}
+  .cm{max-width:86%;padding:7px 10px;border-radius:16px}
+  .cm-a{display:none}.cm.act .cm-a{display:flex;padding-top:4px;border-top:1px solid #eef0f4;margin-top:6px}
+  .cm-a .linkbtn{padding:4px 6px}
+  .cm-imgs img{height:150px}
+  .ch-form{padding:6px 8px calc(6px + env(safe-area-inset-bottom));gap:4px}
+  .ch-row{gap:6px}
+  .ch-row textarea{font-size:16px;min-height:40px;border-radius:20px;padding:9px 14px}
+  .ch-btn{width:40px;height:40px;border-radius:50%}
+  .ch-row .btn{height:40px;border-radius:20px;padding:0 14px}
+  .ch-members{position:absolute;inset:54px 0 0 0;width:auto;border-radius:0;border:0;box-shadow:none;z-index:8}
+}

@@ -123,16 +123,21 @@
   /* ---------- каркас ---------- */
   function shell() {
     app.innerHTML =
-      '<div class="ch-top"><label>' + T("Переводить на") + ' <select id="chLang"><option value="ru">Русский</option><option value="en">English</option></select></label>' +
-      '<label class="ch-auto"><input type="checkbox" id="chAuto"> ' + T("Автоперевод сообщений") + "</label>" +
-      '<span class="ch-who" id="chWho"></span><button type="button" class="btn ch-mem-btn" id="chSavedBtn">⭐ ' + T("Избранное") + ' <i id="chSavedN"></i></button><button type="button" class="btn ch-mem-btn" id="chMembersBtn">👥 ' + T("Участники") + ' <i id="chOnline"></i></button></div>' +
+      '<div class="ch-top"><a class="ch-back" href="' + (EN ? "index.en.html" : "index.html") + '" aria-label="' + esc(T("Назад")) + '">‹</a>' +
+      '<div class="ch-title"><b>' + T("Чат 397") + '</b><span id="chOnline2"></span></div>' +
+      '<div class="ch-set" id="chSet"><label>' + T("Переводить на") + ' <select id="chLang"><option value="ru">Русский</option><option value="en">English</option></select></label>' +
+      '<label class="ch-auto"><input type="checkbox" id="chAuto"> ' + T("Автоперевод сообщений") + "</label></div>" +
+      '<span class="ch-who" id="chWho"></span>' +
+      '<button type="button" class="btn ch-mem-btn" id="chSavedBtn" aria-label="' + esc(T("Избранное")) + '">⭐<span class="tx"> ' + T("Избранное") + '</span> <i id="chSavedN"></i></button>' +
+      '<button type="button" class="btn ch-mem-btn" id="chMembersBtn" aria-label="' + esc(T("Участники")) + '">👥<span class="tx"> ' + T("Участники") + '</span> <i id="chOnline"></i></button>' +
+      '<button type="button" class="btn ch-mem-btn ch-set-btn" id="chSetBtn" aria-label="' + esc(T("Перевод")) + '">⚙</button></div>' +
       '<div class="ch-members" id="chMembers" hidden></div><div class="ch-members" id="chSaved" hidden></div>' +
       '<div class="ch-pins" id="chPins" hidden></div>' +
       '<div class="ch-list" id="chList"><div class="cab-note">' + T("Загружаю чат…") + "</div></div>" +
       '<form class="ch-form" id="chForm"><div class="ch-reply" id="chReply" hidden></div><div class="ch-prev" id="chPrev"></div><div class="ch-poll" id="chPoll" hidden></div>' +
       '<div class="ch-row"><label class="ch-btn" title="' + esc(T("Фото")) + '">📎<input type="file" id="chFiles" accept="image/*" multiple hidden></label>' +
       '<button type="button" class="ch-btn" id="chPollBtn" title="' + esc(T("Голосование")) + '" hidden>📊</button>' +
-      '<textarea id="chText" rows="1" placeholder="' + esc(T("Сообщение… (Enter — отправить, Shift+Enter — новая строка)")) + '"></textarea>' +
+      '<textarea id="chText" rows="1" placeholder="' + esc(window.matchMedia("(max-width:760px)").matches ? T("Сообщение…") : T("Сообщение… (Enter — отправить, Shift+Enter — новая строка)")) + '"></textarea>' +
       '<button type="submit" class="btn pri" id="chSend">' + T("Отправить") + '</button></div><p class="cab-msg" id="chMsg"></p></form>';
     var sel = app.querySelector("#chLang"); sel.value = target;
     sel.onchange = function () { target = sel.value; store.set("la_chat_lang", target); retranslate(); };
@@ -314,6 +319,13 @@
   /* ---------- действия ---------- */
   app.addEventListener("click", async function (e) {
     var t = e.target, b;
+    if ((b = t.closest("#chSetBtn"))) { app.querySelector("#chSet").classList.toggle("open"); return; }
+    if (!t.closest("button, a, img, details, input, select, label, textarea") && (b = t.closest(".cm"))) {
+      var was = b.classList.contains("act");
+      app.querySelectorAll(".cm.act").forEach(function (x) { x.classList.remove("act"); });
+      if (!was) b.classList.add("act");
+      return;
+    }
     if ((b = t.closest("#chOlder"))) return older();
     if ((b = t.closest("[data-goto]"))) return goTo(+b.dataset.goto);
     if ((b = t.closest(".cm-imgs img"))) { var lb = document.querySelector(".lightbox"); if (lb) { lb.querySelector("img").src = b.src; lb.classList.add("on"); } return; }
@@ -370,6 +382,7 @@
       var stt = presence.presenceState(); online = {};
       Object.keys(stt).forEach(function (k) { online[k] = 1; });
       var n = app.querySelector("#chOnline"); if (n) n.textContent = Object.keys(online).length + " " + T("в сети");
+      var n2 = app.querySelector("#chOnline2"); if (n2) n2.textContent = Object.keys(online).length + " " + T("в сети");
       var box = app.querySelector("#chMembers"); if (box && !box.hidden) drawMembers();
     }).subscribe(function (s) { if (s === "SUBSCRIBED") presence.track({ nick: pr.nick || "" }); });
   }
@@ -453,7 +466,7 @@
     };
     var grow = function () { txt.style.height = "auto"; txt.style.height = Math.min(txt.scrollHeight, 240) + "px"; };
     txt.addEventListener("input", grow);
-    txt.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); f.requestSubmit(); } });
+    txt.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey && !e.isComposing && !window.matchMedia("(max-width:760px)").matches) { e.preventDefault(); f.requestSubmit(); } });
     f.querySelector("#chPollBtn").onclick = function () {
       if (!pollBox.hidden) { pollBox.hidden = true; pollBox.innerHTML = ""; return; }
       pollBox.hidden = false;
@@ -510,6 +523,17 @@
     else if (banned) { m.className = "cab-msg err"; m.textContent = T("Вам запрещено писать в чат. Читать можно."); }
     else if (noNick) { m.className = "cab-msg err"; m.textContent = T("Чтобы писать, укажите игровой ник (окно сверху или кабинет)."); }
   }
+
+  /* ---------- телефон: как приложение ---------- */
+  document.documentElement.classList.add("chat-page");
+  function fitViewport() {
+    var vv = window.visualViewport;
+    app.style.setProperty("--app-h", (vv ? vv.height : window.innerHeight) + "px");
+    app.style.setProperty("--app-top", (vv ? vv.offsetTop : 0) + "px");
+  }
+  fitViewport();
+  if (window.visualViewport) { visualViewport.addEventListener("resize", fitViewport); visualViewport.addEventListener("scroll", fitViewport); }
+  window.addEventListener("resize", fitViewport);
 
   /* ---------- старт ---------- */
   var seen = null;
