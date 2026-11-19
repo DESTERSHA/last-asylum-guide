@@ -163,15 +163,16 @@ def main():
         # состав по карте: игроки с тегом альянса, которых видели за последние 3 дня (ушедшие отсеиваются), не больше вместимости
         def seen_t(m):
             return m.get("map_updated_at") or m.get("last_seen_at") or 0
-        cap = a.get("capacity") or old.get("capacity") or 100
-        mapped = sorted([m for m in raw_members if not m.get("rank_label") and now - seen_t(m) <= 3 * 86400], key=lambda m: -seen_t(m))[:cap]
-        live_old = now - roster_t > 3 * 86400  # «живой» состав, но давно не обновлялся
+        # Как у трекера (её требование 19.11 «бери как у трекера, своё не выдумывай»): есть окно альянса — его состав;
+        # окна нет — ВЕСЬ список, который трекер показывает (у Greg трекер пишет «Участники 169» и перечисляет всех 169).
+        # До 19.11 здесь было своё правило: только замеченные за 3 дня и не больше вместимости, и переход на карту, если окну > 3 дней.
+        mapped = sorted([m for m in raw_members if not m.get("rank_label")], key=lambda m: -(m.get("power") or 0))
         kept = False  # True — трекер состав не прислал, показываем прошлый
-        if (stale or live_old) and len(mapped) >= 10:
-            ranks = {str(m["uid"]): m.get("rank") for m in (old.get("members") or []) if m.get("rank")}
+        if stale and mapped:
+            # рангов у трекера в таком списке нет (на его сайте «—») — и у нас не подставляем старые
             mem = [{"uid": m["uid"], "nick": m.get("nick_name") or m.get("nick", ""), "power": m.get("power", 0), "lv": m.get("lv") or m.get("level", 0), "kills": m.get("kills", 0),
-                    "rank": ranks.get(str(m["uid"]), ""), "x": m.get("x"), "y": m.get("y"), "vip": m.get("vip"), "seen": seen_t(m)} for m in mapped]
-            roster, roster_t = "map", max(seen_t(m) for m in mapped)
+                    "rank": "", "x": m.get("x"), "y": m.get("y"), "vip": m.get("vip"), "seen": seen_t(m)} for m in mapped]
+            roster, roster_t = "map", max(seen_t(m) for m in mapped) or now
             a["member_count"] = len(mem)
         elif stale and old.get("members"):  # карты нет — оставляем прошлый состав с его датой
             kept = True

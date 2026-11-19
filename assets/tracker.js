@@ -235,7 +235,7 @@
       '<div class="ap-wrap">' +
       T('<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>проверено ') + ago(S.checked || S.server.updated) + T(" · робот проверяет трекер каждые 10 минут") + T(" · топ игроков по мощи, убийствам и святилищу — по самым свежим цифрам каждого игрока") + (pulled ? T(" · рейтинги альянсов и мощь героев трекер даёт раз в сутки, последние — ") + atLabel(pulled) : "") + "</p></div></div>" +
       '<div class="ap-cells c5">' + cell(T("Игроков"), full(s.players), (s.age_days || "—") + T(" дней серверу")) + cell(T("Альянсов"), full(s.alliances)) + cell(T("Общая мощь"), num(s.power)) +
-      cell(T("Король"), esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell(T("Альянсов со свежим составом"), Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + T(" из 30"), T("у остальных — состав по карте за 3 дня, без рангов")) + "</div></div>" +
+      cell(T("Король"), esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell(T("Альянсов с составом и рангами"), Object.keys(S.al).filter(function (k) { return S.al[k].roster !== "map" && S.al[k].members.length; }).length + T(" из 30"), T("у остальных — все игроки с тегом альянса, как у трекера, без рангов")) + "</div></div>" +
       T('<div class="ap-card"><div class="ap-h"><div><h3>Поиск</h3><p>игроки альянсов топ-30 и альянсы топ-100</p></div>') + pills("skind", [["p", T("Игроки")], ["a", T("Альянсы")]], "p") + T('</div><input id="sq" class="ap-in" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off"><div id="sres"></div></div>') +
       T('<div class="ap-sec"><h3>Альянсы</h3>') + pills("atop", [["30", T("Топ-30")], ["100", T("Места 31–100")]], "30") + "</div>" +
       '<div class="ap-card flush"><div id="alist"></div></div>' +
@@ -357,7 +357,7 @@
         var by = {}; a.members.forEach(function (m) { var k = (m.rank || "").slice(0, 2); by[k] = (by[k] || 0) + 1; });
         var tot = a.members.reduce(function (s, m) { return s + (m.power || 0); }, 0);
         var hasRanks = a.members.some(function (m) { return m.rank; });
-        var rosterNote = a.roster === "map" ? T('<div class="ap-demo"><b>Состав по карте</b><span>Игроки с тегом альянса, которых видели на карте за последние 3 дня (последний раз — ') + ago(a.roster_t) + T('). Ушедшие сюда не попадают. Ранги в таких данных не видны.</span></div>')
+        var rosterNote = a.roster === "map" ? T('<div class="ap-demo"><b>Состав — как у трекера</b><span>Окна альянса у трекера нет, поэтому здесь все игроки, которых трекер видел с тегом альянса (последний раз — ') + ago(a.roster_t) + T('). Ранги в таких данных не видны.</span></div>')
           : ((a.fresh_t || a.roster_t) && Date.now() / 1000 - (a.fresh_t || a.roster_t) > 3 * 86400 ? T('<div class="ap-demo"><b>Состав от ') + ago(a.fresh_t || a.roster_t) + T('</b><span>Свежее данных по этому альянсу пока нет.</span></div>') : "");
         P.innerHTML = rosterNote + (hasRanks ? T('<div class="ap-card"><div class="ap-h"><div><h3>Ранги</h3><p>нажми ранг — в списке останутся только его участники</p></div></div><div class="ap-ranks">') +
           ["R5", "R4", "R3", "R2", "R1"].map(function (k) { return '<button type="button" class="ap-rt r' + k.slice(1) + '" data-r="' + k + '"><span class="l">' + k + "</span><b>" + (by[k] || 0) + '</b><span class="s">' + (k === "R5" ? T("лидер") : k === "R4" ? T("офицеры") : T("участники")) + "</span></button>"; }).join("") +

@@ -372,5 +372,9 @@
  " МБ из 1024 МБ": " MB of 1024 MB",
  " · робот проверяет трекер каждые 10 минут": " · the robot checks the tracker every 10 minutes",
  " · рейтинги альянсов и мощь героев трекер даёт раз в сутки, последние — ": " · the tracker gives alliance rankings and hero Might once a day, latest — ",
- " · топ игроков по мощи, убийствам и святилищу — по самым свежим цифрам каждого игрока": " · top players by Might, kills and Sanctuary — from each player's latest numbers"
+ " · топ игроков по мощи, убийствам и святилищу — по самым свежим цифрам каждого игрока": " · top players by Might, kills and Sanctuary — from each player's latest numbers",
+ "Альянсов с составом и рангами": "Alliances with roster and ranks",
+ "у остальных — все игроки с тегом альянса, как у трекера, без рангов": "the rest — all players with the alliance tag, as on the tracker, without ranks",
+ "<div class=\"ap-demo\"><b>Состав — как у трекера</b><span>Окна альянса у трекера нет, поэтому здесь все игроки, которых трекер видел с тегом альянса (последний раз — ": "<div class=\"ap-demo\"><b>Roster — as on the tracker</b><span>The tracker has no alliance window for it, so this lists every player the tracker has seen with the alliance tag (last time — ",
+ "). Ранги в таких данных не видны.</span></div>": "). Ranks are not visible in such data.</span></div>"
 }
