@@ -50,14 +50,16 @@ UI = {
 # «Поддержать проект» в подвале каждой страницы. Пока все поля пустые — блока на сайте нет.
 # ru — ссылка для оплаты из России (Boosty); intl — для иностранцев (включать только после пробного платежа из-за границы);
 # crypto — адреса кошельков {"USDT (TRC-20)": "адрес", "TON": "адрес"}.
-SUPPORT = {"ru": "", "intl": "", "crypto": {}}
+SUPPORT = {"ru": "https://boosty.to/destersha/donate", "intl": "", "crypto": {}}
 if os.environ.get("LA_SUPPORT_PREVIEW"):  # только для снимка-примера у себя: пустые ссылки-заглушки
     SUPPORT = {"ru": "#", "intl": "#", "crypto": {"USDT (TRC-20)": "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TON": "UQXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}}
 
 
-def support_html(ui):
+def support_html(ui, lang):
     s = SUPPORT
     if not (s["ru"] or s["intl"] or s["crypto"]):
+        return ""
+    if lang == "en" and not (s["intl"] or s["crypto"]):  # английскую версию читают иностранцы: пока для них нет проверенного способа — блока нет
         return ""
     btns = ""
     if s["ru"]:
@@ -191,7 +193,7 @@ def main():
             home = page_file("index", "en" if lang == "en" and "index" in have_en else "ru")
             cabhref = page_file("cabinet", "en" if lang == "en" and "cabinet" in have_en else "ru")
             fields = {k: v for k, v in ui.items() if k not in ("nav", "switch", "switch_title") and not k.startswith("sup_")}
-            fields["support"] = support_html(ui)
+            fields["support"] = support_html(ui, lang)
             html = TEMPLATE.format(title=meta["title"], desc=meta["desc"], ver=ver, nav=nav_html(slug, lang, have_en), content=content,
                                    lang=lang, alt=alt, home=home, dict=(f'<script src="assets/i18n-dict.js?v={ver}"></script>\n' if lang == "en" else ""), cabhref=cabhref, switch=sw, navl=ui["nav"], **fields)
             out = ROOT / page_file(slug, lang)
