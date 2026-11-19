@@ -1059,3 +1059,10 @@ html.t-ap .lang-sw{border-radius:999px;border-color:transparent;background:#f6f6
 .sup-qr{flex:none;width:84px;height:84px;border-radius:10px;background:#fff;padding:4px;image-rendering:pixelated}
 @media(max-width:760px){.sup-qr{display:none}}
 .sup-txt small{color:#8f897d;font-size:12.5px;margin-top:2px}
+/* кнопка «♥ Поддержать» в шапке */
+.sup-head{display:flex;align-items:center;gap:6px;flex:none;height:40px;padding:0 14px;border-radius:12px;background:#f0a531;color:#1c1a17;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
+.sup-head .ic{color:#c2412f;font-size:15px}
+.sup-head:hover{background:#e39516}
+html.t-ap .sup-head{border-radius:999px}
+@media(max-width:760px){.sup-head{height:34px;padding:0 10px;font-size:13px}}
+@media(max-width:340px){.sup-head .tx{display:none}.sup-head{padding:0 11px}}

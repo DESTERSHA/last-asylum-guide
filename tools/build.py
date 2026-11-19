@@ -37,7 +37,7 @@ UI = {
            "switch": "EN", "switch_title": "English version",
            "credit": "Сайт сделала <b>[SLAV] DESTERSHA</b>",
            "sup_t": "Поддержать проект", "sup_d": "Сайт бесплатный и без рекламы. Если он вам помогает — можно поддержать автора добровольным пожертвованием, любой суммой.",
-           "sup_btn": "Поддержать на Boosty", "sup_note": "Картой любой страны, сумма — в вашей валюте. Для доната нужен вход на Boosty.", "sup_crypto": "Криптовалюта", "sup_copy": "нажмите, чтобы скопировать", "sup_qr": "Наведите камеру телефона, чтобы открыть страницу поддержки"},
+           "sup_btn": "Поддержать на Boosty", "sup_head": "Поддержать", "sup_note": "Картой любой страны, сумма — в вашей валюте. Для доната нужен вход на Boosty.", "sup_crypto": "Криптовалюта", "sup_copy": "нажмите, чтобы скопировать", "sup_qr": "Наведите камеру телефона, чтобы открыть страницу поддержки"},
     "en": {"tagline": "alliance guide · kingdom 397", "nav": "Sections", "cab_title": "My page: saved sections, events, alliances and players", "cab": "My page",
            "clock_title": "Server time is 5 hours behind Moscow time.", "srv": "server", "msk": "Moscow", "top": "Back to top",
            "foot1": "<b>Kingdom 397 alliance guide</b> · updated 15.11.2026. A fan-made guide, not affiliated with the game developers. Icons and images come from the game itself and from the player community.",
@@ -45,13 +45,14 @@ UI = {
            "switch": "RU", "switch_title": "Русская версия",
            "credit": "Site made by <b>[SLAV] DESTERSHA</b>",
            "sup_t": "Support the project", "sup_d": "The site is free and has no ads. If it helps you, you can support the author with a voluntary donation of any amount.",
-           "sup_btn": "Support on Boosty", "sup_note": "Any country's card, the amount is shown in your currency. A Boosty account is needed to donate.", "sup_crypto": "Crypto", "sup_copy": "tap to copy", "sup_qr": "Point your phone camera here to open the support page"},
+           "sup_btn": "Support on Boosty", "sup_head": "Support", "sup_note": "Any country's card, the amount is shown in your currency. A Boosty account is needed to donate.", "sup_crypto": "Crypto", "sup_copy": "tap to copy", "sup_qr": "Point your phone camera here to open the support page"},
 }
 # «Поддержать проект» в подвале каждой страницы (русской и английской). Пока поля пустые — блока на сайте нет.
 # boosty — страница доната: одна ссылка для всех стран, Boosty сам показывает сумму в валюте посетителя
 # (проверила владелица 19.11: у иностранцев платёж сразу в их валюте, ей приходит с автоконвертацией);
 # qr — QR-код этой страницы (выдал сам Boosty); crypto — адреса кошельков {"USDT (TRC-20)": "адрес", "TON": "адрес"}.
 SUPPORT = {"boosty": "https://boosty.to/destersha/donate", "crypto": {}, "qr": "assets/icons/boosty-qr.png"}
+# показывается в двух местах (её решение 19.11 «оба оставь»): кнопка «♥ Поддержать» в шапке и блок с пояснением и QR-кодом в подвале
 if os.environ.get("LA_SUPPORT_PREVIEW"):  # только для снимка-примера у себя: заглушки
     SUPPORT = {"boosty": "#", "qr": "", "crypto": {"USDT (TRC-20)": "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TON": "UQXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}}
 
@@ -99,6 +100,7 @@ TEMPLATE = """<!doctype html>
 {nav}
   </nav>
   <a class="cab-link" href="{cabhref}" title="{cab_title}"><span class="ic">★</span><span data-acc-name>{cab}</span><i data-fav-count></i></a>
+  {supbtn}
   {switch}
   <div class="clock" title="{clock_title}"><div><b data-clock="srv">--:--</b><span>{srv}</span></div><div><b data-clock="msk">--:--</b><span>{msk}</span></div></div>
 </div></header>
@@ -191,6 +193,8 @@ def main():
             cabhref = page_file("cabinet", "en" if lang == "en" and "cabinet" in have_en else "ru")
             fields = {k: v for k, v in ui.items() if k not in ("nav", "switch", "switch_title") and not k.startswith("sup_")}
             fields["support"] = support_html(ui, lang)
+            fields["supbtn"] = (f'<a class="sup-head" href="{SUPPORT["boosty"]}" target="_blank" rel="noopener" title="{ui["sup_d"]} {ui["sup_note"]}">'
+                                f'<span class="ic">♥</span><span class="tx">{ui["sup_head"]}</span></a>') if SUPPORT["boosty"] else ""
             html = TEMPLATE.format(title=meta["title"], desc=meta["desc"], ver=ver, nav=nav_html(slug, lang, have_en), content=content,
                                    lang=lang, alt=alt, home=home, dict=(f'<script src="assets/i18n-dict.js?v={ver}"></script>\n' if lang == "en" else ""), cabhref=cabhref, switch=sw, navl=ui["nav"], **fields)
             out = ROOT / page_file(slug, lang)
