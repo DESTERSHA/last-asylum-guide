@@ -1197,3 +1197,13 @@ html.t-ap .sup-head{border-radius:999px}
 .cm-tline{display:flex;justify-content:flex-end}.cm-tline .cm-time{float:none;margin:4px 0 0}
 .ch-day{display:flex;justify-content:center;margin:10px 0 4px;position:sticky;top:4px;z-index:2}
 .ch-day span{background:#e7eaf0;color:#5d636f;font-size:12.5px;font-weight:600;padding:3px 12px;border-radius:999px}
+/* голосования (чат и новости): кружок выбора, весь вариант нажимается; перевод вопроса и вариантов */
+.poll-opt{cursor:pointer}
+.poll-vote{display:flex;align-items:flex-start;gap:10px;width:100%}
+.poll-vote::before{content:"";flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;border:2px solid #b7c0cd;background:#fff;box-sizing:border-box}
+.poll-opt.mine .poll-vote::before{border-color:var(--blue);background:radial-gradient(circle,var(--blue) 0 45%,#fff 50%)}
+.poll-vote:disabled::before{opacity:.5}
+.poll-tr{font-size:13.5px;font-weight:500;color:#3b4a5e;margin-top:2px}.poll-tr:empty{display:none}
+.poll-otr{display:block;font-style:normal;font-size:13px;font-weight:500;color:#3b4a5e}.poll-otr:empty{display:none}
+/* участники: в сети — зелёный, не в сети — красный */
+.chm .dot{background:#e5484d}.chm .dot.on{background:#1f9d55}

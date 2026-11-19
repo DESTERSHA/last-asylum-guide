@@ -108,9 +108,10 @@
   }
   function trMessage(id, force) {
     if (force) opened[id] = 1;
+    if (byId[id] && byId[id].poll && (force || auto)) trPoll(id);
     return slot(async function () {
       var m = byId[id], el = app.querySelector('[data-msg="' + id + '"] .cm-tr');
-      if (!m || !el || !m.body || el.dataset.done) return;
+      if (!m || !el || !m.body || el.dataset.done) return;  // у голосования без текста переводит trPoll
       el.dataset.done = "1";
       if (langOf(m.body) === target) { if (force) el.innerHTML = '<span class="mut">' + T("Сообщение уже на этом языке.") + "</span>"; return; }
       el.innerHTML = '<span class="mut">' + T("Перевожу…") + "</span>";
@@ -149,7 +150,26 @@
     au.onchange = function () { auto = au.checked; store.set("la_chat_auto", auto ? "1" : "0"); retranslate(); };
     bindForm();
   }
+  var polled = {};
+  function trPoll(id) {
+    var m = byId[id];
+    if (!m || !m.poll || polled[id + "|" + target]) return;
+    var all = [m.poll.q].concat(m.poll.options || []);
+    if (langOf(all.join(" ")) === target) return;
+    polled[id + "|" + target] = 1;
+    all.forEach(function (txt, i) {
+      slot(async function () {
+        try {
+          var t = await translate(txt, target);
+          var box = app.querySelector('[data-pollid="' + id + '"]'); if (!box || t == null) return;
+          var el = i === 0 ? box.querySelector("[data-ptq]") : box.querySelector('[data-pto="' + (i - 1) + '"]');
+          if (el) el.textContent = t;
+        } catch (e) { delete polled[id + "|" + target]; console.warn("чат: перевод голосования", e); }
+      });
+    });
+  }
   function retranslate() {
+    polled = {};
     drawList(true);
     app.querySelectorAll(".cm-tr").forEach(function (el) { el.innerHTML = ""; delete el.dataset.done; });
     Object.keys(opened).forEach(function (id) { trMessage(+id, true); });
@@ -162,7 +182,7 @@
     var me = st.user && m.user_id === st.user.id;
     return '<button type="button" class="linkbtn" data-reply="' + m.id + '">' + T("Ответить") + "</button>" +
       '<button type="button" class="linkbtn' + (saved[m.id] ? " on" : "") + '" data-save="' + m.id + '">' + (saved[m.id] ? "★ " + T("В избранном") : "☆ " + T("В избранное")) + "</button>" +
-      (m.body && !auto ? '<button type="button" class="linkbtn" data-tr="' + m.id + '">' + (opened[m.id] ? T("Скрыть перевод") : T("Перевести")) + "</button>" : "") +
+      ((m.body || m.poll) && !auto ? '<button type="button" class="linkbtn" data-tr="' + m.id + '">' + (opened[m.id] ? T("Скрыть перевод") : T("Перевести")) + "</button>" : "") +
       (canMod() ? '<button type="button" class="linkbtn" data-pin="' + m.id + '">' + (m.pinned ? T("Открепить") : T("Закрепить")) + "</button>" : "") +
       (me || canMod() ? '<button type="button" class="linkbtn del" data-del="' + m.id + '">' + T("Удалить") + "</button>" : "") +
       (canMod() && !me && m.user_id ? '<button type="button" class="linkbtn del" data-mod="' + m.user_id + '" data-nick="' + esc(m.nick || "") + '">' + T("Мут / исключить") + "</button>" : "");
@@ -222,11 +242,11 @@
     var by = opts.map(function (_, i) { return res.filter(function (x) { return x.opt === i; })[0] || { leaders: 0, players: 0, voters: [] }; });
     var totL = by.reduce(function (s, x) { return s + x.leaders; }, 0), totP = by.reduce(function (s, x) { return s + x.players; }, 0);
     var pct = function (n, t) { return t ? Math.round(n * 100 / t) : 0; };
-    return '<div class="poll"><div class="poll-q">📊 ' + esc(pl.q) + '</div><div class="poll-info">' +
+    return '<div class="poll" data-pollid="' + m.id + '"><div class="poll-q">📊 ' + esc(pl.q) + '<div class="poll-tr" data-ptq></div></div><div class="poll-info">' +
       [pl.anon ? T("Анонимное голосование") : T("Открытое голосование: ники видны всем"), pl.ends ? (over ? T("закончилось ") : T("до ")) + when(pl.ends) : T("без срока"), T("всего: лидеров ") + totL + T(", игроков ") + totP].join(" · ") + "</div>" +
       opts.map(function (o, i) {
         var x = by[i], vs = x.voters || [];
-        return '<div class="poll-opt' + (my === i ? " mine" : "") + '"><button type="button" class="poll-vote" data-vote="' + m.id + '" data-opt="' + i + '"' + (over ? " disabled" : "") + ">" + (my === i ? "✓ " : "") + esc(o) + "</button>" +
+        return '<div class="poll-opt' + (my === i ? " mine" : "") + '"><button type="button" class="poll-vote" data-vote="' + m.id + '" data-opt="' + i + '"' + (over ? " disabled" : "") + "><span>" + esc(o) + '<i class="poll-otr" data-pto="' + i + '"></i></span></button>' +
           '<div class="poll-bars"><div class="poll-bar ld"><i style="width:' + pct(x.leaders, totL) + '%"></i><span>' + T("Лидеры") + ": <b>" + x.leaders + "</b> · " + pct(x.leaders, totL) + '%</span></div>' +
           '<div class="poll-bar pl"><i style="width:' + pct(x.players, totP) + '%"></i><span>' + T("Игроки") + ": <b>" + x.players + "</b> · " + pct(x.players, totP) + "%</span></div></div>" +
           (!pl.anon && vs.length ? '<details class="poll-who"><summary>' + T("Кто голосовал") + " (" + vs.length + ")</summary>" + vs.map(function (v) { return '<span class="' + (v.leader ? "ld" : "") + '">' + esc(v.nick || "?") + (v.leader ? " · " + T("лидер") : "") + "</span>"; }).join("") + "</details>" : "") + "</div>";
@@ -243,6 +263,7 @@
       }).join("") : '<div class="cab-empty"><b>' + T("Сообщений пока нет.") + "</b><span>" + T("Напишите первым!") + "</span></div>");
     if (keepPos === "top") l.scrollTop = l.scrollHeight - oldH + oldTop; else if (stick) l.scrollTop = l.scrollHeight;
     if (auto) msgs.slice(-AUTO_LAST).forEach(function (m) { if (m.body) trMessage(m.id); });
+    msgs.forEach(function (m) { if (m.poll && (auto || opened[m.id])) { delete polled[m.id + "|" + target]; trPoll(m.id); } });
     Object.keys(opened).forEach(function (id) { if (byId[id]) trMessage(+id, true); });
   }
   function drawPins() {
@@ -325,6 +346,25 @@
       }
     }).subscribe(function (s) { if (s === "CHANNEL_ERROR" || s === "TIMED_OUT") console.warn("чат: связь для новых сообщений:", s); });
   }
+  async function catchUp() {
+    if (!started || document.hidden) return;
+    var last = msgs[msgs.length - 1];
+    var q = sb.from("chat_messages").select("*").order("created_at", { ascending: true }).limit(100);
+    if (last) q = q.gt("created_at", last.created_at);
+    var r = await q;
+    if (r.error || !(r.data || []).length) return;
+    r.data.forEach(put);
+    await Promise.all([loadPolls(r.data.filter(function (m) { return m.poll; }).map(function (m) { return m.id; })), loadRefs(r.data)]);
+    drawList(true);
+  }
+  setInterval(catchUp, 8000);  // запасной путь: раз в 8 с одним маленьким запросом
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden || !started) return;
+    catchUp();
+    if (chan && chan.state !== "joined") subscribe();  // связь уснула — переподключить
+    if (presence && presence.state !== "joined") joinPresence();
+  });
+  window.addEventListener("online", function () { if (started) { catchUp(); subscribe(); joinPresence(); } });
   // итоги голосований обновляются раз в 20 с, пока вкладка открыта
   setInterval(function () { if (started && !document.hidden && msgs.some(function (m) { return m.poll; })) loadPolls().then(function () { drawList(true); }); }, 20000);
 
@@ -379,7 +419,9 @@
       if (rd.error) alert(rd.error.message);
       return;
     }
-    if ((b = t.closest("[data-vote]"))) {
+    if (!t.closest("[data-vote], details, button, a") && t.closest(".poll-opt")) b = t.closest(".poll-opt").querySelector("[data-vote]");
+    else b = t.closest("[data-vote]");
+    if (b && !b.disabled) {
       b.disabled = true;
       var rv = await sb.rpc("cast_chat_vote", { p_msg: +b.dataset.vote, p_opt: +b.dataset.opt });
       b.disabled = false;

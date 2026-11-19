@@ -87,7 +87,7 @@
     var rows = opts.map(function (o, i) {
       var x = by[i], vs = x.voters || [];
       return '<div class="poll-opt' + (my === i ? " mine" : "") + '">' +
-        '<button type="button" class="poll-vote" data-vote="' + p.id + '" data-opt="' + i + '"' + (over ? " disabled" : "") + ">" + (my === i ? "✓ " : "") + esc(o) + "</button>" +
+        '<button type="button" class="poll-vote" data-vote="' + p.id + '" data-opt="' + i + '"' + (over ? " disabled" : "") + "><span>" + esc(o) + "</span></button>" +
         '<div class="poll-bars"><div class="poll-bar ld"><i style="width:' + pct(x.leaders, totL) + '%"></i><span>' + T("Лидеры") + ": <b>" + x.leaders + "</b> · " + pct(x.leaders, totL) + "%</span></div>" +
         '<div class="poll-bar pl"><i style="width:' + pct(x.players, totP) + '%"></i><span>' + T("Игроки") + ": <b>" + x.players + "</b> · " + pct(x.players, totP) + "%</span></div></div>" +
         (!pl.anon && vs.length ? '<details class="poll-who"><summary>' + T("Кто голосовал") + " (" + vs.length + ")</summary>" +
@@ -106,7 +106,7 @@
 
   /* ===== действия в ленте ===== */
   feed.addEventListener("click", async function (e) {
-    var v = e.target.closest("[data-vote]"), ed = e.target.closest("[data-edit]"), del = e.target.closest("[data-del]"), rm = e.target.closest("[data-rmvote]"), im = e.target.closest(".news-imgs img");
+    var v = e.target.closest("[data-vote]") || (!e.target.closest("details, button, a") && e.target.closest(".poll-opt") ? e.target.closest(".poll-opt").querySelector("[data-vote]") : null), ed = e.target.closest("[data-edit]"), del = e.target.closest("[data-del]"), rm = e.target.closest("[data-rmvote]"), im = e.target.closest(".news-imgs img");
     if (im) { var lb = document.querySelector(".lightbox"); if (lb) { lb.querySelector("img").src = im.src; lb.classList.add("on"); } return; }
     if (v) return vote(+v.dataset.vote, +v.dataset.opt, v);
     if (ed) return openForm(posts.filter(function (p) { return p.id === +ed.dataset.edit; })[0]);
