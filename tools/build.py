@@ -3,6 +3,7 @@
 """
 import hashlib
 import json
+import os
 import pathlib
 import re
 
@@ -33,13 +34,42 @@ UI = {
            "clock_title": "Разница между временем сервера и московским — 5 часов. На сервере время меньше.", "srv": "в игре", "msk": "Москва", "top": "Наверх",
            "foot1": "<b>Гайд альянса сервера 397</b> · обновлён 15.11.2026. Фанатский гайд, к разработчикам игры отношения не имеет. Значки и картинки — из самой игры и от сообщества игроков.",
            "foot2": "Разница между временем сервера и московским — 5 часов, на сервере время меньше: когда в Москве 17:00, на сервере 12:00. Новый игровой день начинается в 05:00 по Москве. Если что-то в игре поменялось — верь игре и напиши лидеру, поправим.",
-           "switch": "EN", "switch_title": "English version"},
+           "switch": "EN", "switch_title": "English version",
+           "credit": "Сайт сделала <b>[SLAV] DESTERSHA</b>",
+           "sup_t": "Поддержать проект", "sup_d": "Сайт бесплатный и без рекламы. Если он вам помогает — можно поддержать автора добровольным пожертвованием, любой суммой.",
+           "sup_ru": "Из России", "sup_intl": "Из других стран", "sup_crypto": "Криптовалюта", "sup_copy": "нажмите, чтобы скопировать"},
     "en": {"tagline": "alliance guide · kingdom 397", "nav": "Sections", "cab_title": "My page: saved sections, events, alliances and players", "cab": "My page",
            "clock_title": "Server time is 5 hours behind Moscow time.", "srv": "server", "msk": "Moscow", "top": "Back to top",
            "foot1": "<b>Kingdom 397 alliance guide</b> · updated 15.11.2026. A fan-made guide, not affiliated with the game developers. Icons and images come from the game itself and from the player community.",
            "foot2": "Server time is 5 hours behind Moscow time: when it is 17:00 in Moscow, it is 12:00 on the server. A new game day starts at 05:00 Moscow time. If something in the game has changed, trust the game and tell the alliance leader — we will fix it.",
-           "switch": "RU", "switch_title": "Русская версия"},
+           "switch": "RU", "switch_title": "Русская версия",
+           "credit": "Site made by <b>[SLAV] DESTERSHA</b>",
+           "sup_t": "Support the project", "sup_d": "The site is free and has no ads. If it helps you, you can support the author with a voluntary donation of any amount.",
+           "sup_ru": "From Russia", "sup_intl": "From other countries", "sup_crypto": "Crypto", "sup_copy": "tap to copy"},
 }
+# «Поддержать проект» в подвале каждой страницы. Пока все поля пустые — блока на сайте нет.
+# ru — ссылка для оплаты из России (Boosty); intl — для иностранцев (включать только после пробного платежа из-за границы);
+# crypto — адреса кошельков {"USDT (TRC-20)": "адрес", "TON": "адрес"}.
+SUPPORT = {"ru": "", "intl": "", "crypto": {}}
+if os.environ.get("LA_SUPPORT_PREVIEW"):  # только для снимка-примера у себя: пустые ссылки-заглушки
+    SUPPORT = {"ru": "#", "intl": "#", "crypto": {"USDT (TRC-20)": "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TON": "UQXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}}
+
+
+def support_html(ui):
+    s = SUPPORT
+    if not (s["ru"] or s["intl"] or s["crypto"]):
+        return ""
+    btns = ""
+    if s["ru"]:
+        btns += f'<a class="btn pri" href="{s["ru"]}" target="_blank" rel="noopener">{ui["sup_ru"]}</a>'
+    if s["intl"]:
+        btns += f'<a class="btn" href="{s["intl"]}" target="_blank" rel="noopener">{ui["sup_intl"]}</a>'
+    cr = ""
+    if s["crypto"]:
+        cr = (f'<details class="sup-crypto"><summary>{ui["sup_crypto"]}</summary>' +
+              "".join(f'<div><span>{k}</span><code title="{ui["sup_copy"]}" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent);this.classList.add(\'ok\')">{v}</code></div>' for k, v in s["crypto"].items()) +
+              "</details>")
+    return f'<div class="sup"><div class="sup-txt"><b>♥ {ui["sup_t"]}</b><span>{ui["sup_d"]}</span></div><div class="sup-btns">{btns}</div>{cr}</div>'
 
 HIDDEN = {"cabinet"}  # страницы без пункта в меню (кабинет открывается из шапки)
 TEMPLATE = """<!doctype html>
@@ -77,8 +107,10 @@ TEMPLATE = """<!doctype html>
 {content}
 </main>
 <footer class="foot">
+  {support}
   <p>{foot1}</p>
   <p>{foot2}</p>
+  <p class="foot-credit">{credit}</p>
 </footer>
 <button class="totop" id="toTop" aria-label="{top}">↑</button>
 {dict}<script src="assets/i18n.js?v={ver}"></script>
@@ -158,7 +190,8 @@ def main():
                 content = localize_en(content, have_en)
             home = page_file("index", "en" if lang == "en" and "index" in have_en else "ru")
             cabhref = page_file("cabinet", "en" if lang == "en" and "cabinet" in have_en else "ru")
-            fields = {k: v for k, v in ui.items() if k not in ("nav", "switch", "switch_title")}
+            fields = {k: v for k, v in ui.items() if k not in ("nav", "switch", "switch_title") and not k.startswith("sup_")}
+            fields["support"] = support_html(ui)
             html = TEMPLATE.format(title=meta["title"], desc=meta["desc"], ver=ver, nav=nav_html(slug, lang, have_en), content=content,
                                    lang=lang, alt=alt, home=home, dict=(f'<script src="assets/i18n-dict.js?v={ver}"></script>\n' if lang == "en" else ""), cabhref=cabhref, switch=sw, navl=ui["nav"], **fields)
             out = ROOT / page_file(slug, lang)

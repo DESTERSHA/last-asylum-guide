@@ -1038,3 +1038,21 @@ html.t-ap .lang-sw{border-radius:999px;border-color:transparent;background:#f6f6
 .cab-users td.nk{white-space:nowrap}.cab-users td.fl{text-align:center}
 .cab-users em.dup{font-style:normal;font-size:11px;background:var(--red-bg);color:var(--red);padding:1px 6px;border-radius:999px}
 .news-form input:disabled{background:var(--soft);color:var(--mut)}
+/* подвал: «Поддержать проект» и подпись автора сайта */
+.sup{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:14px 18px;margin:0 0 18px}
+.sup-txt{flex:1 1 320px;display:flex;flex-direction:column;gap:2px}
+.sup-txt b{color:#fff;font-size:15px}.sup-txt span{color:#bdb6a8;font-size:13.5px}
+.sup-btns{display:flex;flex-wrap:wrap;gap:8px}
+.sup-btns .btn{padding:9px 16px;font-size:14px}
+.sup-btns .btn.pri{background:#f0a531;border-color:#f0a531;color:#1c1a17}
+.sup-btns .btn:not(.pri){background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.sup-crypto{flex-basis:100%;font-size:13px}.sup-crypto summary{cursor:pointer;color:#d8d2c5}
+.sup-crypto div{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-top:6px}
+.sup-crypto span{color:#fff;font-weight:600;min-width:110px}
+.sup-crypto code{font-size:12.5px;background:rgba(255,255,255,.08);padding:3px 8px;border-radius:8px;color:#e9e4da;cursor:copy;overflow-wrap:anywhere}
+.sup-crypto code.ok{outline:1px solid #6fcf97}
+.foot-credit{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-size:13px}
+.foot .sup-crypto{background:transparent;border:0;border-radius:0;padding:0;margin:0}
+.foot .sup-crypto summary{padding:0;font-weight:600}
+.foot .sup-btns .btn.pri,html.t-ap .foot .sup-btns .btn.pri{background:#f0a531;border-color:#f0a531;color:#1c1a17}
+.foot .sup-btns .btn:not(.pri),html.t-ap .foot .sup-btns .btn:not(.pri){background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
