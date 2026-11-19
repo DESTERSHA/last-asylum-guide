@@ -42,13 +42,26 @@
     save(a.getAttribute("data-lang-sw"));
     location.href = a.getAttribute("href") + location.hash;
   });
-  /* первый визит: браузер не на русском (и не на близких языках) — сразу английская версия, если она есть; выбор потом запоминается */
-  try {
-    var saved = localStorage.getItem("la_lang");
-    var sw = document.querySelector("[data-lang-sw]");
-    if (!saved && lang === "ru" && sw && sw.getAttribute("data-lang-sw") === "en") {
-      var nl = (navigator.languages && navigator.languages[0]) || navigator.language || "ru";
-      if (!/^(ru|uk|be|kk)/i.test(nl)) { save("en"); location.replace(sw.getAttribute("href") + location.hash); }
-    }
-  } catch (e) { /* без хранилища — без автопереключения */ }
+  /* первый визит: спросить язык сайта (её решение 20.11 — не угадывать по браузеру). Выбор запоминается и задаёт язык перевода в чате */
+  var saved = null;
+  try { saved = localStorage.getItem("la_lang"); } catch (e) { saved = "skip"; }  // без хранилища — не спрашиваем каждый раз
+  var sw0 = document.querySelector("[data-lang-sw]");
+  if (!saved && sw0 && !/[?&]embed=1/.test(location.search)) {
+    var ask = function () {
+      var w = document.createElement("div");
+      w.className = "lang-ask";
+      w.innerHTML = '<div class="lang-ask-box"><b>Выберите язык · Choose language</b>' +
+        '<button type="button" data-pick-lang="ru">🇷🇺 Русский</button><button type="button" data-pick-lang="en">🇬🇧 English</button></div>';
+      document.body.appendChild(w);
+      w.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-pick-lang]"); if (!b) return;
+        var v = b.getAttribute("data-pick-lang");
+        save(v);
+        try { localStorage.setItem("la_chat_lang", v); localStorage.setItem("la_chat_auto2", "1"); } catch (err) { /* без хранилища */ }
+        if (v === lang) { w.remove(); return; }
+        location.href = sw0.getAttribute("href") + location.hash;
+      });
+    };
+    if (document.body) ask(); else document.addEventListener("DOMContentLoaded", ask);
+  }
 })();

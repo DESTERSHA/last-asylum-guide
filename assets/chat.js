@@ -16,7 +16,7 @@
   var msgs = [], byId = {}, pins = [], results = {}, mine = {}, st = { user: null, profile: null, admin: false }, chan = null, started = false;
   var store = { get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
                 set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { console.warn("чат: не сохранить настройку", e); } } };
-  var target = store.get("la_chat_lang", EN ? "en" : "ru"), auto = store.get("la_chat_auto", "1") === "1";  // по умолчанию автоперевод включён (её требование)
+  var target = store.get("la_chat_lang", EN ? "en" : "ru"), auto = store.get("la_chat_auto2", "1") === "1";  // по умолчанию автоперевод включён (её требование)
 
   if (!sb) { app.innerHTML = '<div class="cab-note">' + T("Чат временно недоступен.") + "</div>"; return; }
 
@@ -155,7 +155,7 @@
     var sel = app.querySelector("#chLang"); sel.value = target;
     sel.onchange = function () { target = sel.value; store.set("la_chat_lang", target); retranslate(); };
     var au = app.querySelector("#chAuto"); au.checked = auto;
-    au.onchange = function () { auto = au.checked; store.set("la_chat_auto", auto ? "1" : "0"); retranslate(); };
+    au.onchange = function () { auto = au.checked; store.set("la_chat_auto2", auto ? "1" : "0"); retranslate(); };
     bindForm();
   }
   var polled = {};
