@@ -244,7 +244,7 @@
   function msgHtml(m, prev) {
     var me = st.user && m.user_id === st.user.id;
     var rk = rankOf(m.user_id);
-    var tags = '<em class="cm-tag rk" data-rk="' + esc(m.user_id || "") + '"' + (rk ? "" : " hidden") + ">" + esc(rk) + "</em>" +
+    var tags = rankTag(rk, ' data-rk="' + esc(m.user_id || "") + '"') +
       (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
     var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
     var acts = msgActs(m), sa = splitAtt(m.body);
@@ -641,19 +641,26 @@
     }).subscribe(function (s) { if (s === "SUBSCRIBED") presence.track({ nick: pr.nick || "" }); });
   }
   async function loadMembers() {
-    var r = await sb.rpc("chat_members2");
+    var r = await sb.rpc("chat_members3");
+    if (r.error) r = await sb.rpc("chat_members2");  // база без supabase_alliance.sql
     if (r.error) r = await sb.rpc("chat_members");  // база без ранга
     if (r.error) { members = []; return r.error.message; }
     members = r.data || [];
     rankMap = {};
-    members.forEach(function (u) { if (u.game_rank) rankMap[u.user_id] = u.game_rank; });
+    // ранг подтверждён лидером альянса (al_ok) — обычный; нет — серый. База без подтверждений — все обычные.
+    members.forEach(function (u) { if (u.game_rank) rankMap[u.user_id] = { r: u.game_rank, ok: !("al_ok" in u) || !!u.al_ok }; });
     // ранг рядом с ником в уже нарисованных сообщениях — текущий ранг человека
     app.querySelectorAll("[data-rk]").forEach(function (el) {
-      var v = rankMap[el.dataset.rk] || ""; el.textContent = v; el.hidden = !v;
+      var v = rankMap[el.dataset.rk];
+      el.textContent = v ? v.r : ""; el.hidden = !v;
+      el.classList.toggle("un", !!(v && !v.ok)); el.title = v && !v.ok ? T("ранг не подтверждён лидером альянса") : "";
     });
   }
   var rankMap = {};
-  function rankOf(uid) { return (uid && rankMap[uid]) || ""; }
+  function rankOf(uid) { return (uid && rankMap[uid]) || null; }
+  function rankTag(v, attrs) {
+    return '<em class="cm-tag rk' + (v && !v.ok ? " un" : "") + '"' + (attrs || "") + (v && !v.ok ? ' title="' + esc(T("ранг не подтверждён лидером альянса")) + '"' : "") + (v ? "" : " hidden") + ">" + esc(v ? v.r : "") + "</em>";
+  }
   // ранги в сообщениях: при входе в чат и раз в 2 минуты (кто-то поменял ранг)
   setInterval(function () { if (started && !document.hidden) loadMembers().catch(function (e) { console.warn("чат: участники", e); }); }, 120000);
   function muteLabel(u) {
@@ -671,7 +678,7 @@
       '<div class="chm-list">' + list.map(function (u) {
         var me = st.user && u.user_id === st.user.id;
         return '<div class="chm" data-n="' + esc((u.nick || "").toLowerCase()) + '"><i class="dot' + (online[u.user_id] ? " on" : "") + '"></i><b>' + esc(u.nick) + "</b>" +
-          (u.game_rank ? '<em class="cm-tag rk">' + esc(u.game_rank) + "</em>" : "") + (u.moderator ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (u.leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "") + muteLabel(u) +
+          (u.game_rank ? rankTag(rankOf(u.user_id)) : "") + (u.moderator ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (u.leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "") + muteLabel(u) +
           (canMod() && !me && !u.moderator ? '<button type="button" class="linkbtn del" data-mod="' + u.user_id + '" data-nick="' + esc(u.nick) + '">' + T("Мут / исключить") + "</button>" : "") + "</div>";
       }).join("") + "</div>";
     box.querySelector("#chMembersClose").onclick = toggleMembers;
