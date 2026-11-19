@@ -41,6 +41,7 @@
   /* ---------- перевод ---------- */
   var trCache = {};
   try { trCache = JSON.parse(store.get("la_chat_tr", "{}")) || {}; } catch (e) { trCache = {}; }
+  Object.keys(trCache).forEach(function (k) { if (/MYMEMORY WARNING/i.test(trCache[k])) delete trCache[k]; });  // служебные ответы сервиса — не перевод
   function saveCache() {
     var keys = Object.keys(trCache);
     if (keys.length > 400) keys.slice(0, keys.length - 400).forEach(function (k) { delete trCache[k]; });
@@ -70,7 +71,9 @@
     }
     return await chromeTr[key].translate(text);
   }
+  var trDead = false;  // дневной лимит бесплатного переводчика исчерпан — до перезагрузки страницы не пробуем
   async function viaMyMemory(text, src, dst) {
+    if (trDead) throw new Error("лимит переводчика на сегодня исчерпан");
     // у сервиса предел ~500 символов на запрос — режем по предложениям
     var parts = [], cur = "";
     text.split(/(?<=[.!?\n])\s+/).forEach(function (s) {
@@ -82,7 +85,10 @@
     for (var i = 0; i < parts.length; i++) {
       var r = await fetch("https://api.mymemory.translated.net/get?q=" + encodeURIComponent(parts[i]) + "&langpair=" + src + "|" + dst);
       var j = await r.json();
-      if (+j.responseStatus !== 200) throw new Error(j.responseDetails || ("перевод не удался (" + j.responseStatus + ")"));
+      if (+j.responseStatus !== 200 || /MYMEMORY WARNING|USED ALL AVAILABLE/i.test(j.responseData && j.responseData.translatedText || "")) {
+        if (/USED ALL AVAILABLE|QUOTA/i.test((j.responseDetails || "") + (j.responseData && j.responseData.translatedText || ""))) trDead = true;
+        throw new Error(j.responseDetails || ("перевод не удался (" + j.responseStatus + ")"));
+      }
       out.push(j.responseData.translatedText);
     }
     return out.join(" ");
@@ -121,7 +127,8 @@
         el.innerHTML = t == null ? "" : '<div class="cm-trtxt">' + bodyHtml(t) + "</div>";
       } catch (e) {
         delete el.dataset.done;
-        el.innerHTML = '<span class="cab-msg err">' + T("Не удалось перевести: ") + esc(e.message || e) + "</span>";
+        el.innerHTML = "";  // переводчик недоступен — молча оставить оригинал (служебный текст сервиса людям не показываем)
+        console.warn("чат: перевод не удался:", e && e.message);
       }
     });
   }

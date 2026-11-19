@@ -5,6 +5,7 @@
   "use strict";
   var KEY = "la_tr_cache", cache = {};
   try { cache = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { cache = {}; }
+  Object.keys(cache).forEach(function (k) { if (/MYMEMORY WARNING/i.test(cache[k])) delete cache[k]; });
   var saveT = null;
   function save() {
     clearTimeout(saveT);
@@ -32,7 +33,9 @@
     }
     return await chromeTr[key].translate(text);
   }
+  var dead = false;  // дневной лимит исчерпан — не пробуем до перезагрузки
   async function viaMyMemory(text, src, dst) {
+    if (dead) throw new Error("лимит переводчика на сегодня исчерпан");
     var parts = [], cur = "";
     text.split(/(?<=[.!?])\s+/).forEach(function (s) {
       while (s.length > 450) { if (cur) { parts.push(cur); cur = ""; } parts.push(s.slice(0, 450)); s = s.slice(450); }
@@ -43,7 +46,8 @@
     for (var i = 0; i < parts.length; i++) {
       var r = await fetch("https://api.mymemory.translated.net/get?q=" + encodeURIComponent(parts[i]) + "&langpair=" + src + "|" + dst);
       var j = await r.json();
-      if (+j.responseStatus !== 200) throw new Error(j.responseDetails || ("перевод не удался (" + j.responseStatus + ")"));
+      var tt = j.responseData && j.responseData.translatedText || "";
+      if (+j.responseStatus !== 200 || /MYMEMORY WARNING|USED ALL AVAILABLE/i.test(tt)) { if (/USED ALL AVAILABLE|QUOTA/i.test((j.responseDetails || "") + tt)) dead = true; throw new Error(j.responseDetails || "перевод не удался"); }
       out.push(j.responseData.translatedText);
     }
     return out.join(" ");
