@@ -534,5 +534,9 @@
  "Альянс и ранг рядом с ником берутся из трекера по нику; ✓ — человека подтвердил лидер его альянса (серый — ещё нет). «Лидер» подтверждает людей своего альянса в разделе «Мой альянс»; его альянс подставляется сам по нику, поменять — в списке рядом с ником.": "Alliance and rank next to the nick come from the tracker by nick; ✓ means the leader of their alliance confirmed them (grey — not yet). A “Leader” confirms people of their alliance in “My alliance”; the leader’s alliance is filled in automatically by nick, change it in the list next to the nick.",
  "подтверждён лидером альянса": "confirmed by the alliance leader",
  "не подтверждён лидером альянса": "not confirmed by the alliance leader",
- "ранг не подтверждён лидером альянса": "rank not confirmed by the alliance leader"
+ "ранг не подтверждён лидером альянса": "rank not confirmed by the alliance leader",
+ "подтверждён отметкой «Лидер»": "confirmed by the “Leader” mark",
+ "похоже в игре: ": "looks like in game: ",
+ "поставить этот ник": "set this nick",
+ "Поставить этому пользователю игровой ник ": "Set this user’s in-game nick to "
 }

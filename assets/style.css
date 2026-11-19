@@ -1292,6 +1292,7 @@ html.t-ap .sup-head{border-radius:999px}
 .ally-t td{vertical-align:middle}.ally-t tr.off td{color:#9aa3ad}
 .ally-t select,.ld-al select,#allySel{padding:4px 6px;border-radius:8px;border:1px solid #d3d8df;background:#fff;font:inherit}
 .ld-al{font-size:12px;color:#7a5410;white-space:nowrap}
+.sugg{display:block;font-size:12px;color:#8a7a5c;margin-top:2px}
 /* чат: сверху одно (последнее) закреплённое, все — в панели «Закреплённые» */
 .ch-pins{flex-direction:row;align-items:center;gap:10px;max-height:none;overflow:hidden}
 .ch-pins .ch-pin{flex:1;min-width:0}

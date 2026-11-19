@@ -196,7 +196,7 @@
     var q = A.client.from("alliance_log").select("nick,al_abbr,action,rank,by_nick,at").order("at", { ascending: false }).range(0, 999);
     if (al) q = q.eq("al_id", al);
     var r = await q, rows = r.data || [];
-    var ACT = { confirm: T("подтвердил"), unconfirm: T("снял подтверждение"), auto_off: T("подтверждение снято само: сменил ник или ушёл из альянса") };
+    var ACT = { confirm: T("подтвердил"), unconfirm: T("снял подтверждение"), auto_off: T("подтверждение снято само: сменил ник или ушёл из альянса"), leader_ok: T("подтверждён отметкой «Лидер»") };
     var w = document.createElement("div"); w.className = "nick-gate";
     w.innerHTML = '<div class="nick-box"><h3>' + T("Журнал подтверждений") + "</h3>" +
       (r.error ? "<p>" + esc(r.error.message) + "</p>" : rows.length ? '<div class="nh-list">' + rows.map(function (h) {
@@ -280,6 +280,7 @@
             (u.leader && ("leader_al" in u) ? ' <span class="ld-al">' + T("лидер альянса") + ' <select data-lal="' + esc(u.id) + '"><option value="">—</option>' +
               allies.map(function (a) { return '<option value="' + a.al_id + '"' + (+u.leader_al === +a.al_id ? " selected" : "") + ">[" + esc(a.al_abbr) + "]</option>"; }).join("") + "</select></span>" : "") + (dup ? ' <em class="dup" title="' + esc(T("этот ник указан у нескольких аккаунтов")) + '">' + T("двойник") + "</em>" : "") +
             ' <button type="button" class="linkbtn" data-nick="' + esc(u.id) + '" data-cur="' + esc(u.nick || "") + '">✎</button>' +
+            suggHtml(u) +
             (hist[u.id] > 1 ? ' <button type="button" class="linkbtn nh-btn" data-hist="' + esc(u.id) + '" data-hn="' + esc(u.nick || "") + '">' + T("история") + " (" + (hist[u.id] - 1) + ")</button>" : "") + "</td>" : "") +
             "<td>" + esc(u.email) + '</td><td class="' + (on ? "on" : "") + '">' + (u.sub_until ? fdate(u.sub_until) : "—") + "</td><td>" + fdate(u.created_at) + "</td>" +
             (full ? flags.map(function (f) { return '<td class="fl"><input type="checkbox" data-u="' + esc(u.id) + '" data-f="' + f[0] + '"' + (u[f[0]] ? " checked" : "") + "></td>"; }).join("") : "") + "</tr>";
@@ -304,7 +305,49 @@
       rowsAll.forEach(function (u) { if (u.id === cb.dataset.u) u[cb.dataset.f] = cb.checked; });
       if (cb.dataset.f === "leader") list();  // альянс лидера подставился сам — показать
     });
+    /* ник не найден в трекере — подсказка «похоже в игре: …» (сокращённый ник, опечатка); ставит только админ, по кнопке */
+    var game = null;  // игроки альянсов из трекера: [{nick, abbr, rank, k}]
+    function nkey(s) {
+      s = String(s || "").replace(/[АВЕЁКМНОРСТУХаеёкорсухіІ]/g, function (c) { return "ABEEKMHOPCTYXaeekopcyxiI"["АВЕЁКМНОРСТУХаеёкорсухіІ".indexOf(c)]; });
+      var t = s.replace(/[\[\(\{][^\]\)\}]*[\]\)\}]/g, "").trim(); if (t) s = t;
+      return s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+    }
+    function lev(a, b) {
+      if (Math.abs(a.length - b.length) > 2) return 9;
+      var p = [], i, j; for (j = 0; j <= b.length; j++) p[j] = j;
+      for (i = 1; i <= a.length; i++) { var c = [i]; for (j = 1; j <= b.length; j++) c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); p = c; }
+      return p[b.length];
+    }
+    function suggest(nick) {
+      var k = nkey(nick); if (!game || k.length < 4) return null;
+      var best = null, bd = 9;
+      game.forEach(function (g) {
+        var d = g.k === k ? 0 : (g.k.length >= 4 && (g.k.indexOf(k) === 0 || k.indexOf(g.k) === 0)) ? 1 : k.length >= 6 ? lev(k, g.k) : 9;
+        if (d <= 2 && d < bd) { bd = d; best = g; }
+      });
+      return best;
+    }
+    function suggHtml(u) {
+      if (!("al_abbr" in u) || u.al_abbr || !u.nick) return "";
+      var g = suggest(u.nick); if (!g || g.nick === u.nick) return "";
+      return '<span class="sugg">' + T("похоже в игре: ") + "<b>" + esc(g.nick) + "</b> [" + esc(g.abbr) + "]" + (g.rank ? " " + esc(g.rank) : "") +
+        ' <button type="button" class="linkbtn" data-setnick="' + esc(u.id) + '" data-v="' + esc(g.nick) + '">' + T("поставить этот ник") + "</button></span>";
+    }
+    function loadGame() {
+      if (game) return Promise.resolve();
+      return fetch("data/tracker/players.json?v=" + Math.floor(Date.now() / 600000)).then(function (r) { return r.json(); }).then(function (d) {
+        game = Object.keys(d.players || {}).map(function (id) { var p = d.players[id]; return { nick: p.nick, abbr: p.abbr, rank: p.rank, k: nkey(p.nick) }; })
+          .filter(function (g) { return g.abbr && g.k; });
+      }).catch(function (e) { console.warn("кабинет: игроки трекера для подсказок", e); game = []; });
+    }
     ul.addEventListener("click", async function (e) {
+      var sn = e.target.closest("[data-setnick]");
+      if (sn) {
+        if (!confirm(T("Поставить этому пользователю игровой ник ") + sn.dataset.v + "?")) return;
+        var rs = await sb.rpc("admin_set_nick", { p_user: sn.dataset.setnick, p_nick: sn.dataset.v });
+        if (rs.error) { alert(rs.error.message); return; }
+        return list();
+      }
       var hb = e.target.closest("[data-hist]"); if (hb) return showNickHistory(hb.dataset.hist, hb.dataset.hn);
       var b = e.target.closest("[data-nick]"); if (!b) return;
       var v = prompt(T("Ник этого пользователя:"), b.dataset.cur);
@@ -323,6 +366,7 @@
       rowsAll = r.data || [];
       var hr = await sb.from("nick_history").select("user_id");
       hist = {}; (hr.data || []).forEach(function (h) { hist[h.user_id] = (hist[h.user_id] || 0) + 1; });
+      if (rowsAll.some(function (u) { return ("al_abbr" in u) && !u.al_abbr && u.nick; })) await loadGame();
       drawUsers();
       var s = await sb.rpc("news_storage_used");
       var se = acc.querySelector("#storeUsed");
