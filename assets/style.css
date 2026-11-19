@@ -1207,3 +1207,12 @@ html.t-ap .sup-head{border-radius:999px}
 .poll-otr{display:block;font-style:normal;font-size:13px;font-weight:500;color:#3b4a5e}.poll-otr:empty{display:none}
 /* участники: в сети — зелёный, не в сети — красный */
 .chm .dot{background:#e5484d}.chm .dot.on{background:#1f9d55}
+/* чат: реакции */
+.cm{touch-action:manipulation}
+.cm-r{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.cm-rc{font:inherit;font-size:13px;line-height:1;display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:999px;border:1px solid #dfe4ec;background:#f4f6f9;cursor:pointer}
+.cm-rc b{font-size:12px;font-weight:600;color:var(--mut)}
+.cm-rc.mine{background:#e3edff;border-color:#9db4dd}.cm-rc.mine b{color:var(--blue)}
+.ch-sheet-e{display:flex;justify-content:space-between;gap:2px;padding:6px 4px 8px;border-bottom:1px solid #eef0f4}
+.ch-sheet-e button{font-size:24px;line-height:1;width:40px;height:40px;border:0;border-radius:50%;background:none;cursor:pointer}
+.ch-sheet-e button:hover,.ch-sheet-e button.mine{background:#e3edff}

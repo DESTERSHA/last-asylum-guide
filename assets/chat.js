@@ -178,6 +178,46 @@
 
   /* ---------- сообщения ---------- */
   function canMod() { return A.isModerator(); }
+  /* ---------- реакции (как в Telegram: одна от человека, повторное нажатие снимает) ---------- */
+  var EMOJI = ["👍", "❤️", "🔥", "😂", "😮", "😢", "👎", "🎉"];
+  var reacts = {};  // id сообщения → { user_id: {emoji, nick} }
+  function reactHtml(id) {
+    var r = reacts[id]; if (!r) return "";
+    var by = {}, order = [];
+    Object.keys(r).forEach(function (u) { var e = r[u].emoji; if (!by[e]) { by[e] = []; order.push(e); } by[e].push(r[u].nick || "?"); });
+    if (!order.length) return "";
+    var my = st.user && r[st.user.id] && r[st.user.id].emoji;
+    return '<div class="cm-r">' + order.map(function (e) {
+      return '<button type="button" class="cm-rc' + (e === my ? " mine" : "") + '" data-react="' + id + '" data-emoji="' + esc(e) + '" title="' + esc(by[e].join(", ")) + '">' + e + " <b>" + by[e].length + "</b></button>";
+    }).join("") + "</div>";
+  }
+  async function loadReacts(list) {
+    var ids = (list || msgs).map(function (m) { return m.id; });
+    if (!ids.length) return;
+    var r = await sb.from("chat_reactions").select("message_id,user_id,emoji,nick").in("message_id", ids);
+    if (r.error) { console.warn("чат: реакции", r.error.message); return; }
+    ids.forEach(function (id) { delete reacts[id]; });
+    (r.data || []).forEach(function (x) { (reacts[x.message_id] = reacts[x.message_id] || {})[x.user_id] = { emoji: x.emoji, nick: x.nick }; });
+  }
+  function redrawReacts(id) {
+    var c = app.querySelector('[data-msg="' + id + '"]'); if (!c) return;
+    var old = c.querySelector(".cm-r"), html = reactHtml(id);
+    if (old) old.outerHTML = html || ""; else if (html) c.querySelector(".cm-a").insertAdjacentHTML("beforebegin", html);
+  }
+  async function react(id, emoji) {
+    if (!st.user) return;
+    var mineR = reacts[id] && reacts[id][st.user.id];
+    var res;
+    if (mineR && mineR.emoji === emoji) {
+      delete reacts[id][st.user.id]; redrawReacts(id);
+      res = await sb.from("chat_reactions").delete().eq("message_id", id).eq("user_id", st.user.id);
+    } else {
+      (reacts[id] = reacts[id] || {})[st.user.id] = { emoji: emoji, nick: (st.profile || {}).nick };
+      redrawReacts(id);
+      res = await sb.from("chat_reactions").upsert({ message_id: id, user_id: st.user.id, emoji: emoji }, { onConflict: "message_id,user_id" });
+    }
+    if (res.error) { alert(res.error.message); await loadReacts([{ id: id }]); redrawReacts(id); }
+  }
   function msgActs(m) {
     var me = st.user && m.user_id === st.user.id;
     return '<button type="button" class="linkbtn" data-reply="' + m.id + '">' + T("Ответить") + "</button>" +
@@ -198,7 +238,7 @@
       (m.reply_to ? quoteHtml(m.reply_to) : "") +
       (m.body ? '<div class="cm-body">' + bodyHtml(m.body) + time + "</div>" : "") + '<div class="cm-tr"></div>' +
       (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") + (m.body ? "" : '<div class="cm-tline">' + time + "</div>") +
-      '<div class="cm-a">' + acts + "</div></div>";
+      reactHtml(m.id) + '<div class="cm-a">' + acts + "</div></div>";
   }
   function snippet(m) { return m ? (m.body ? m.body.replace(/\s+/g, " ").slice(0, 120) : m.poll ? "📊 " + m.poll.q : (m.images || []).length ? "📷 " + T("фото") : "") : ""; }
   function quoteHtml(rid) {
@@ -294,7 +334,7 @@
     (r.data || []).reverse().forEach(put);
     var p = await sb.from("chat_messages").select("*").eq("pinned", true).order("pinned_at", { ascending: false }).limit(20);
     pins = p.data || [];
-    await Promise.all([loadPolls(), loadSaved(), loadRefs()]);
+    await Promise.all([loadPolls(), loadSaved(), loadRefs(), loadReacts()]);
     drawPins(); drawList();
     var h = location.hash.match(/^#msg-(\d+)$/); if (h) goTo(+h[1]);
   }
@@ -329,7 +369,12 @@
   /* ---------- новые сообщения сразу ---------- */
   function subscribe() {
     if (chan) sb.removeChannel(chan);
-    chan = sb.channel("chat-room").on("postgres_changes", { event: "*", schema: "public", table: "chat_messages" }, async function (p) {
+    chan = sb.channel("chat-room").on("postgres_changes", { event: "*", schema: "public", table: "chat_reactions" }, function (p) {
+      var x = p.eventType === "DELETE" ? p.old : p.new; if (!x || !x.message_id) return;
+      if (p.eventType === "DELETE") { if (reacts[x.message_id]) delete reacts[x.message_id][x.user_id]; }
+      else (reacts[x.message_id] = reacts[x.message_id] || {})[x.user_id] = { emoji: x.emoji, nick: x.nick };
+      redrawReacts(x.message_id);
+    }).on("postgres_changes", { event: "*", schema: "public", table: "chat_messages" }, async function (p) {
       if (p.eventType === "INSERT") {
         put(p.new);
         await Promise.all([p.new.poll ? loadPolls([p.new.id]) : null, loadRefs([p.new])]);
@@ -354,6 +399,7 @@
     var r = await q;
     if (r.error || !(r.data || []).length) return;
     r.data.forEach(put);
+    loadReacts(r.data).then(function () { r.data.forEach(function (m) { redrawReacts(m.id); }); });
     await Promise.all([loadPolls(r.data.filter(function (m) { return m.poll; }).map(function (m) { return m.id; })), loadRefs(r.data)]);
     drawList(true);
   }
@@ -371,6 +417,7 @@
   /* ---------- действия ---------- */
   app.addEventListener("click", async function (e) {
     var t = e.target, b;
+    if ((b = t.closest("[data-react]"))) { react(+b.dataset.react, b.dataset.emoji); if (b.closest("#chSheet")) closeSheet(); return; }
     if ((b = t.closest("#chSetBtn"))) { app.querySelector("#chSet").classList.toggle("open"); return; }
     var sheet = t.closest("#chSheet");
     if (sheet) {
@@ -436,7 +483,9 @@
     var m = byId[id]; if (!m) return;
     closeSheet();
     var w = document.createElement("div"); w.className = "ch-sheet"; w.id = "chSheet";
-    w.innerHTML = '<div class="ch-sheet-box"><div class="ch-sheet-q"><b>' + esc(m.nick || "?") + "</b> " + esc(snippet(m)) + "</div>" +
+    var myE = st.user && reacts[id] && reacts[id][st.user.id] && reacts[id][st.user.id].emoji;
+    w.innerHTML = '<div class="ch-sheet-box"><div class="ch-sheet-e">' + EMOJI.map(function (e) { return '<button type="button" class="' + (e === myE ? "mine" : "") + '" data-react="' + id + '" data-emoji="' + e + '">' + e + "</button>"; }).join("") + "</div>" +
+      '<div class="ch-sheet-q"><b>' + esc(m.nick || "?") + "</b> " + esc(snippet(m)) + "</div>" +
       (m.body ? '<button type="button" class="linkbtn" data-copy="' + id + '">' + T("Копировать") + "</button>" : "") +
       msgActs(m) + '<button type="button" class="linkbtn ch-sheet-x" data-sheet-close>' + T("Отмена") + "</button></div>";
     app.appendChild(w);
@@ -453,9 +502,25 @@
     var p0 = e.touches[0];
     if (Math.abs(p0.clientX - lp.x) > 10 || Math.abs(p0.clientY - lp.y) > 10) { clearTimeout(lp.timer); lp = null; }
   }, { passive: true });
+  var lastTap = { id: 0, t: 0 };
   app.addEventListener("touchend", function (e) {
+    var wasTap = !!lp && !lpFired;
     if (lp) { clearTimeout(lp.timer); lp = null; }
+    if (wasTap) {
+      var c = e.target.closest(".cm");
+      if (c && !e.target.closest("button, a, img, input, textarea, select, details")) {
+        var id = +c.dataset.msg, now = Date.now();
+        if (lastTap.id === id && now - lastTap.t < 320) { lastTap = { id: 0, t: 0 }; if (e.cancelable) e.preventDefault(); react(id, "❤️"); return; }
+        lastTap = { id: id, t: now };
+      }
+    }
     if (lpFired) { lpFired = false; if (e.cancelable) e.preventDefault(); }  // после удержания не считать это нажатием
+  });
+  app.addEventListener("dblclick", function (e) {
+    var c = e.target.closest(".cm");
+    if (!c || e.target.closest("button, a, img, input, textarea, select, details, #chSheet")) return;
+    var sel = window.getSelection && window.getSelection(); if (sel) sel.removeAllRanges();
+    react(+c.dataset.msg, "❤️");
   });
   app.addEventListener("contextmenu", function (e) {
     var c = e.target.closest(".cm");
