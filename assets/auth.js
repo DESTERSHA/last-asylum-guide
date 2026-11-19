@@ -55,7 +55,7 @@
   }
   window.LAAuth = {
     ready: ready, state: state, hasSub: hasSub, client: sb,
-    isEditor: function () { return !!(state.profile && state.profile.editor); },
+    isEditor: function () { return !!(state.admin || (state.profile && state.profile.editor)); },  // админ публикует всегда (так же в базе: is_editor())
     on: function (f) { subs.push(f); f(state); },
     signUp: async function (email, pass, nick) { var r = await sb.auth.signUp({ email: email, password: pass, options: { data: { nick: nick || "" } } }); if (r.error) throw r.error; return r; },
     setNick: async function (nick) {
