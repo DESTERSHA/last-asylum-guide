@@ -116,7 +116,8 @@
       if (langOf(m.body) === target) { if (force) el.innerHTML = '<span class="mut">' + T("Сообщение уже на этом языке.") + "</span>"; return; }
       el.innerHTML = '<span class="mut">' + T("Перевожу…") + "</span>";
       try {
-        var t = await translate(m.body, target);
+        var plain = splitAtt(m.body).text; if (!plain) { el.innerHTML = ""; return; }
+        var t = await translate(plain, target);
         el.innerHTML = t == null ? "" : '<div class="cm-trtxt">' + bodyHtml(t) + "</div>";
       } catch (e) {
         delete el.dataset.done;
@@ -136,11 +137,12 @@
       '<button type="button" class="btn ch-mem-btn" id="chSavedBtn" aria-label="' + esc(T("Избранное")) + '">⭐<span class="tx"> ' + T("Избранное") + '</span> <i id="chSavedN"></i></button>' +
       '<button type="button" class="btn ch-mem-btn" id="chMembersBtn" aria-label="' + esc(T("Участники")) + '">👥<span class="tx"> ' + T("Участники") + '</span> <i id="chOnline"></i></button>' +
       '<button type="button" class="btn ch-mem-btn ch-set-btn" id="chSetBtn" aria-label="' + esc(T("Перевод")) + '">⚙</button></div>' +
-      '<div class="ch-members" id="chMembers" hidden></div><div class="ch-members" id="chSaved" hidden></div>' +
+      '<div class="ch-members" id="chPick" hidden></div><div class="ch-members" id="chMembers" hidden></div><div class="ch-members" id="chSaved" hidden></div>' +
       '<div class="ch-pins" id="chPins" hidden></div>' +
       '<div class="ch-list" id="chList"><div class="cab-note">' + T("Загружаю чат…") + "</div></div>" +
-      '<form class="ch-form" id="chForm"><div class="ch-reply" id="chReply" hidden></div><div class="ch-prev" id="chPrev"></div><div class="ch-poll" id="chPoll" hidden></div>' +
+      '<form class="ch-form" id="chForm"><div class="ch-reply" id="chReply" hidden></div><div class="ch-reply ch-att" id="chAtt" hidden></div><div class="ch-prev" id="chPrev"></div><div class="ch-poll" id="chPoll" hidden></div>' +
       '<div class="ch-row"><label class="ch-btn" title="' + esc(T("Фото")) + '">📎<input type="file" id="chFiles" accept="image/*" multiple hidden></label>' +
+      '<button type="button" class="ch-btn" id="chAttBtn" title="' + esc(T("Прикрепить пост или избранное")) + '">🔗</button>' +
       '<button type="button" class="ch-btn" id="chPollBtn" title="' + esc(T("Голосование")) + '" hidden>📊</button>' +
       '<textarea id="chText" rows="1" placeholder="' + esc(window.matchMedia("(max-width:760px)").matches ? T("Сообщение…") : T("Сообщение… (Enter — отправить, Shift+Enter — новая строка)")) + '"></textarea>' +
       '<button type="submit" class="btn pri" id="chSend">' + T("Отправить") + '</button></div><p class="cab-msg" id="chMsg"></p></form>';
@@ -236,16 +238,38 @@
     var me = st.user && m.user_id === st.user.id;
     var tags = (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
     var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
-    var acts = msgActs(m);
+    var acts = msgActs(m), sa = splitAtt(m.body);
     var time = '<span class="cm-time" title="' + esc(when(m.created_at)) + '">' + hm(m.created_at, "Europe/Moscow") + " " + T("мск") + " · " + hm(m.created_at, "Etc/GMT+2") + "</span>";
     return '<div class="cm' + (me ? " me" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
       '<div class="cm-h"><b>' + esc(m.nick || "?") + "</b>" + tags + (m.pinned ? '<span class="cm-pin">📌</span>' : "") + "</div>" +
       (m.reply_to ? quoteHtml(m.reply_to) : "") +
-      (m.body ? '<div class="cm-body">' + bodyHtml(m.body) + time + "</div>" : "") + '<div class="cm-tr"></div>' +
-      (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") + (m.body ? "" : '<div class="cm-tline">' + time + "</div>") +
+      (sa.text ? '<div class="cm-body">' + bodyHtml(sa.text) + time + "</div>" : "") + '<div class="cm-tr"></div>' +
+      sa.att.map(attHtml).join("") +
+      (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") + (sa.text ? "" : '<div class="cm-tline">' + time + "</div>") +
       reactHtml(m.id) + '<div class="cm-a">' + acts + "</div></div>";
   }
-  function snippet(m) { return m ? (m.body ? m.body.replace(/\s+/g, " ").slice(0, 120) : m.poll ? "📊 " + m.poll.q : (m.images || []).length ? "📷 " + T("фото") : "") : ""; }
+  var ATT = /^🔗\[([^\]\s]+)\] ?(.*)$/;
+  function splitAtt(body) {  // текст без строк-прикреплений и сами прикрепления
+    var text = [], att = [];
+    String(body || "").split("\n").forEach(function (l) { var x = l.match(ATT); if (x) att.push({ url: x[1], title: x[2] }); else text.push(l); });
+    return { text: text.join("\n").trim(), att: att };
+  }
+  function attUrl(u) { return window.LAurl ? LAurl(u) : u; }
+  var postInfo = {};  // id поста → {title, body} — для карточки
+  function attHtml(a) {
+    var pm = a.url.match(/news(?:\.en)?\.html#post-(\d+)/), info = pm && postInfo[pm[1]];
+    var title = info ? info.title : a.title, sub = info ? info.body.replace(/\s+/g, " ").slice(0, 140) : (pm ? T("Важные новости") : "");
+    return '<a class="cm-att" href="' + esc(attUrl(a.url)) + '"' + (pm ? ' data-post="' + pm[1] + '"' : "") + "><i>" + (pm ? "📰" : "★") + "</i><span><b>" + esc(title) + "</b>" + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</span></a>";
+  }
+  async function loadPostInfo(list) {
+    var ids = [];
+    (list || msgs).forEach(function (m) { splitAtt(m.body).att.forEach(function (a) { var x = a.url.match(/#post-(\d+)/); if (x && !postInfo[x[1]]) ids.push(+x[1]); }); });
+    if (!ids.length) return;
+    var r = await sb.from("posts").select("id,title,body").in("id", ids);
+    (r.data || []).forEach(function (x) { postInfo[x.id] = { title: x.title, body: x.body || "" }; });
+  }
+  function snippet(m) {
+    if (m && m.body) { var sa = splitAtt(m.body); if (!sa.text && sa.att.length) return "🔗 " + sa.att[0].title; m = Object.assign({}, m, { body: sa.text || m.body }); } return m ? (m.body ? m.body.replace(/\s+/g, " ").slice(0, 120) : m.poll ? "📊 " + m.poll.q : (m.images || []).length ? "📷 " + T("фото") : "") : ""; }
   function quoteHtml(rid) {
     var r = byId[rid] || refs[rid];
     return '<button type="button" class="cm-q" data-goto="' + rid + '"><b>' + esc(r ? r.nick || "?" : "…") + "</b><span>" + esc(r ? snippet(r) : T("сообщение удалено или ещё не загружено")) + "</span></button>";
@@ -310,6 +334,14 @@
     if (auto) msgs.slice(-AUTO_LAST).forEach(function (m) { if (m.body) trMessage(m.id); });
     msgs.forEach(function (m) { if (m.poll && (auto || opened[m.id])) { delete polled[m.id + "|" + target]; trPoll(m.id); } });
     Object.keys(opened).forEach(function (id) { if (byId[id]) trMessage(+id, true); });
+    // карточки прикреплённых постов — на выбранном языке (как и закреплённое)
+    if (auto) app.querySelectorAll(".cm-att").forEach(function (c) {
+      [c.querySelector("b"), c.querySelector("small")].forEach(function (el) {
+        if (!el || !el.textContent || langOf(el.textContent) === target) return;
+        var src = el.textContent;
+        slot(async function () { try { var t = await translate(src, target); if (t && el.isConnected) el.textContent = t; } catch (e) { console.warn("чат: перевод карточки", e); } });
+      });
+    });
   }
   function drawPins() {
     var b = app.querySelector("#chPins"); if (!b) return;
@@ -351,7 +383,7 @@
     (r.data || []).reverse().forEach(put);
     var p = await sb.from("chat_messages").select("*").eq("pinned", true).order("pinned_at", { ascending: false }).limit(20);
     pins = p.data || [];
-    await Promise.all([loadPolls(), loadSaved(), loadRefs(), loadReacts()]);
+    await Promise.all([loadPolls(), loadSaved(), loadRefs(), loadReacts(), loadPostInfo()]);
     drawPins(); drawList();
     var h = location.hash.match(/^#msg-(\d+)$/); if (h) goTo(+h[1]);
   }
@@ -394,7 +426,7 @@
     }).on("postgres_changes", { event: "*", schema: "public", table: "chat_messages" }, async function (p) {
       if (p.eventType === "INSERT") {
         put(p.new);
-        await Promise.all([p.new.poll ? loadPolls([p.new.id]) : null, loadRefs([p.new])]);
+        await Promise.all([p.new.poll ? loadPolls([p.new.id]) : null, loadRefs([p.new]), loadPostInfo([p.new])]);
         drawList(true);
       } else if (p.eventType === "UPDATE") {
         put(p.new);
@@ -416,6 +448,7 @@
     var r = await q;
     if (r.error || !(r.data || []).length) return;
     r.data.forEach(put);
+    await loadPostInfo(r.data);
     loadReacts(r.data).then(function () { r.data.forEach(function (m) { redrawReacts(m.id); }); });
     await Promise.all([loadPolls(r.data.filter(function (m) { return m.poll; }).map(function (m) { return m.id; })), loadRefs(r.data)]);
     drawList(true);
@@ -457,6 +490,9 @@
     if ((b = t.closest("#chMembersBtn"))) { var sp = app.querySelector("#chSaved"); if (sp) sp.hidden = true; return toggleMembers(); }
     if ((b = t.closest("#chSavedBtn")) || (b = t.closest("[data-close-saved]"))) return toggleSavedPanel();
     if ((b = t.closest("[data-reply-cancel]"))) { replyTo = null; drawReply(); return; }
+    if ((b = t.closest("#chAttBtn")) || (b = t.closest("[data-pick-close]"))) return togglePick();
+    if ((b = t.closest("[data-pick]"))) { attach = { url: b.dataset.pick, title: b.dataset.title }; drawAtt(); app.querySelector("#chPick").hidden = true; var tx2 = app.querySelector("#chText"); if (tx2) tx2.focus(); return; }
+    if ((b = t.closest("[data-att-cancel]"))) { attach = null; drawAtt(); return; }
     if ((b = t.closest("[data-reply]"))) { replyTo = +b.dataset.reply; drawReply(); var tx = app.querySelector("#chText"); if (tx) tx.focus(); return; }
     if ((b = t.closest("[data-save]"))) {
       var sid = +b.dataset.save, was = !!saved[sid];
@@ -654,6 +690,7 @@
     f.onsubmit = async function (e) {
       e.preventDefault(); msg.className = "cab-msg"; msg.textContent = "";
       var row = { body: txt.value.trim(), images: [], poll: null };
+      if (attach) row.body = (row.body ? row.body + "\n" : "") + "🔗[" + attach.url + "] " + String(attach.title || "").replace(/\s+/g, " ").slice(0, 200);
       if (replyTo) row.reply_to = replyTo;
       if (!pollBox.hidden) {
         var opts = [].map.call(pollBox.querySelectorAll(".nf-opt input"), function (i) { return i.value.trim(); }).filter(Boolean);
@@ -678,7 +715,7 @@
         if (r.error) throw r.error;
         if (txt.value === typed) txt.value = "";  // клавиатура телефона вернула текст — убрать ещё раз
         grow(); fresh.forEach(function (x) { URL.revokeObjectURL(x.url); }); fresh = []; drawPrev();
-        replyTo = null; drawReply();
+        replyTo = null; drawReply(); attach = null; drawAtt();
         pollBox.hidden = true; pollBox.innerHTML = ""; msg.textContent = "";
       } catch (err) {
         if (!txt.value) { txt.value = typed; grow(); }
@@ -701,6 +738,34 @@
     if (muted && !pr.chat_banned) { m.className = "cab-msg err"; m.textContent = T("У вас мут до ") + when(pr.chat_muted_until) + T(". Читать можно."); }
     else if (banned) { m.className = "cab-msg err"; m.textContent = T("Вам запрещено писать в чат. Читать можно."); }
     else if (noNick) { m.className = "cab-msg err"; m.textContent = T("Чтобы писать, укажите игровой ник (окно сверху или кабинет)."); }
+  }
+
+  /* ---------- прикрепить пост из «Важных новостей» или из избранного ---------- */
+  var attach = null;
+  function drawAtt() {
+    var b = app.querySelector("#chAtt"); if (!b) return;
+    b.hidden = !attach;
+    b.innerHTML = attach ? "<span>🔗 " + esc(attach.title) + '</span><button type="button" class="linkbtn" data-att-cancel>✕</button>' : "";
+  }
+  async function togglePick() {
+    var box = app.querySelector("#chPick"); if (!box) return;
+    if (!box.hidden) { box.hidden = true; return; }
+    ["#chMembers", "#chSaved"].forEach(function (q) { var x = app.querySelector(q); if (x) x.hidden = true; });
+    box.hidden = false; box.innerHTML = '<div class="cab-note">' + T("Загружаю…") + "</div>";
+    var r = await sb.from("posts").select("id,title,created_at").order("created_at", { ascending: false }).limit(30);
+    var news = r.data || [], favs = window.LAFav ? LAFav.list() : [];
+    box.innerHTML = '<div class="chm-h"><b>🔗 ' + T("Прикрепить") + '</b><button type="button" class="linkbtn" data-pick-close>✕</button></div><div class="chm-list">' +
+      '<div class="chp-h">📰 ' + T("Важные новости") + "</div>" +
+      (news.length ? news.map(function (x) { return '<button type="button" class="chp" data-pick="news.html#post-' + x.id + '" data-title="' + esc(x.title) + '"><b>' + esc(x.title) + "</b><small>" + when(x.created_at) + "</small></button>"; }).join("") : '<div class="cab-note">' + T("Постов пока нет.") + "</div>") +
+      '<div class="chp-h">★ ' + T("Моё избранное на сайте") + "</div>" +
+      (favs.length ? favs.map(function (x) { return '<button type="button" class="chp" data-pick="' + esc(String(x.url).replace(/\.en\.html/, ".html")) + '" data-title="' + esc(x.title) + '"><b>' + esc(x.title) + "</b><small>" + esc(x.page || "") + "</small></button>"; }).join("") : '<div class="cab-note">' + T("Пусто. Нажимайте «☆ В избранное» у разделов, событий, альянсов и игроков.") + "</div>") +
+      "</div>";
+  }
+  async function shareFromUrl() {  // chat.html?share=post-12 — пришли из «Важных новостей» кнопкой «В чат»
+    var m = location.search.match(/[?&]share=post-(\d+)/); if (!m) return;
+    var r = await sb.from("posts").select("id,title").eq("id", +m[1]).maybeSingle();
+    if (r.data) { attach = { url: "news.html#post-" + r.data.id, title: r.data.title }; drawAtt(); var tx = app.querySelector("#chText"); if (tx) tx.focus(); }
+    try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) { console.warn("чат: адрес", e); }
   }
 
   /* ---------- телефон: как приложение ---------- */
@@ -736,7 +801,7 @@
       app.innerHTML = '<div class="cab-note"><b>' + T("Вас исключили из чата.") + "</b> " + T("Если это ошибка — напишите администратору сайта.") + "</div>";
       return;
     }
-    if (firstForUser || !started) { started = true; shell(); setComposer(); load(); subscribe(); joinPresence(); }
+    if (firstForUser || !started) { started = true; shell(); setComposer(); load(); subscribe(); joinPresence(); shareFromUrl(); }
     else { setComposer(); drawList(true); }
   });
 })();

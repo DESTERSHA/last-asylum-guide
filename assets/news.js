@@ -97,6 +97,7 @@
       (p.updated_at ? '<span class="news-ed">· ' + T("изменено") + "</span>" : "") +
       (canEdit(p) ? '<span class="news-act"><button type="button" class="linkbtn" data-edit="' + p.id + '">' + T("Изменить") + '</button><button type="button" class="linkbtn del" data-del="' + p.id + '">' + T("Удалить") + "</button></span>" : "") +
       '<button type="button" class="linkbtn news-orig" data-orig="' + p.id + '" hidden>' + T("Показать оригинал") + "</button>" +
+      '<a class="linkbtn news-share" href="' + (EN ? "chat.en.html" : "chat.html") + "?share=post-" + p.id + '">💬 ' + T("В чат") + "</a>" +
       "</div><h3 data-tt>" + esc(p.title) + "</h3>" +
       (p.body ? '<div class="news-body" data-tb>' + bodyHtml(p.body) + "</div>" : "") +
       (imgs ? '<div class="news-imgs">' + imgs + "</div>" : "") +
