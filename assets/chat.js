@@ -93,15 +93,14 @@
     }
     return out.join(" ");
   }
+  function needTr(x) { return window.LATr ? LATr.needs(x, target) : langOf(x) !== target; }  // нужен ли перевод на выбранный язык
+  // общий переводчик сайта (assets/translate.js): общие переводы в базе → Chrome → Google → MyMemory
   async function translate(text, dst) {
-    var src = langOf(text);
-    if (src === dst) return null;  // уже на нужном языке
     var key = dst + "|" + text;
     if (trCache[key]) return trCache[key];
-    var res = null;
-    try { res = await Promise.race([viaChrome(text, src, dst), new Promise(function (ok) { setTimeout(function () { ok(null); }, 3000); })]); } catch (e) { console.warn("чат: переводчик Chrome не сработал, беру MyMemory:", e && e.message); }  // не ждём Chrome дольше 3 с
-    if (res == null) res = await viaMyMemory(text, src, dst);
-    trCache[key] = res; saveCache();
+    if (!window.LATr) return null;
+    var res = await LATr.translate(text, dst, "chat");
+    if (res != null) { trCache[key] = res; saveCache(); }
     return res;
   }
   var opened = {};  // переводы, открытые кнопкой «Перевести» (когда автоперевод выключен)
@@ -119,7 +118,7 @@
       var m = byId[id], el = app.querySelector('[data-msg="' + id + '"] .cm-tr');
       if (!m || !el || !m.body || el.dataset.done) return;  // у голосования без текста переводит trPoll
       el.dataset.done = "1";
-      if (langOf(m.body) === target) { if (force) el.innerHTML = '<span class="mut">' + T("Сообщение уже на этом языке.") + "</span>"; return; }
+      if (!needTr(splitAtt(m.body).text)) { if (force) el.innerHTML = '<span class="mut">' + T("Сообщение уже на этом языке.") + "</span>"; return; }
       el.innerHTML = '<span class="mut">' + T("Перевожу…") + "</span>";
       try {
         var plain = splitAtt(m.body).text; if (!plain) { el.innerHTML = ""; return; }
@@ -164,7 +163,7 @@
     var m = byId[id];
     if (!m || !m.poll || polled[id + "|" + target]) return;
     var all = [m.poll.q].concat(m.poll.options || []);
-    if (langOf(all.join(" ")) === target) return;
+    if (!needTr(all.join(" "))) return;
     polled[id + "|" + target] = 1;
     all.forEach(function (txt, i) {
       if (!/[A-Za-zА-Яа-яЁё]/.test(txt)) return;  // «1», «3» — переводить нечего
@@ -276,7 +275,7 @@
     (r.data || []).forEach(function (x) { postInfo[x.id] = { title: x.title, body: x.body || "" }; });
   }
   function trReady(m, plain) {  // перевод уже есть в памяти — сразу в разметку
-    var t = plain && (auto || opened[m.id]) && langOf(plain) !== target && trCache[target + "|" + plain];
+    var t = plain && (auto || opened[m.id]) && needTr(plain) && trCache[target + "|" + plain];
     return t ? '<div class="cm-tr" data-done="1"><div class="cm-trtxt">' + bodyHtml(t) + "</div></div>" : '<div class="cm-tr"></div>';
   }
   function snippet(m) {
@@ -348,7 +347,7 @@
     // карточки прикреплённых постов — на выбранном языке (как и закреплённое)
     if (auto) app.querySelectorAll(".cm-att").forEach(function (c) {
       [c.querySelector("b"), c.querySelector("small")].forEach(function (el) {
-        if (!el || !el.textContent || langOf(el.textContent) === target) return;
+        if (!el || !el.textContent || !needTr(el.textContent)) return;
         var src = el.textContent;
         slot(async function () { try { var t = await translate(src, target); if (t && el.isConnected) el.textContent = t; } catch (e) { console.warn("чат: перевод карточки", e); } });
       });
@@ -365,7 +364,7 @@
     // закреплённое — на выбранном языке (при автопереводе), как и сообщения
     if (auto) pins.forEach(function (m) {
       var src = m.body || (m.poll && m.poll.q) || "";
-      if (!src || langOf(src) === target) return;
+      if (!src || !needTr(src)) return;
       slot(async function () {
         try {
           var t = await translate(src, target);

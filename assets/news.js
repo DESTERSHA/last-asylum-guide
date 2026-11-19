@@ -82,9 +82,9 @@
     if (!LATr.needs(all, TARGET)) return;
     if (trDone[p.id]) { trApply(p, trDone[p.id]); return; }
     try {
-      var r = await Promise.all([LATr.translate(p.title, TARGET), p.body ? LATr.translate(p.body, TARGET) : null,
-        p.poll ? LATr.translate(p.poll.q, TARGET) : null,
-        p.poll ? Promise.all((p.poll.options || []).map(function (o) { return LATr.translate(o, TARGET); })) : null]);
+      var r = await Promise.all([LATr.translate(p.title, TARGET, "news"), p.body ? LATr.translate(p.body, TARGET, "news") : null,
+        p.poll ? LATr.translate(p.poll.q, TARGET, "news") : null,
+        p.poll ? Promise.all((p.poll.options || []).map(function (o) { return LATr.translate(o, TARGET, "news"); })) : null]);
       trDone[p.id] = { title: r[0], body: r[1], q: r[2], opts: r[3] || [] };
       trApply(p, trDone[p.id]);
     } catch (e) { console.warn("новости: перевод поста", p.id, e); }
