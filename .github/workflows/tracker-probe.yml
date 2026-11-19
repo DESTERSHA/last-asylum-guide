@@ -1,0 +1,19 @@
+name: Проверка трекера (разовая)
+# Вручную: что трекер отдаёт прямо сейчас по альянсу SLAV и игроку (3 запроса). Печатает только время и цифры.
+on:
+  workflow_dispatch:
+jobs:
+  probe:
+    if: github.repository == 'ozzi3690-oss/last-asylum-guide'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Проверка
+        env:
+          TRACKER_KEY: ${{ secrets.TRACKER_KEY }}
+          TRACKER_API: ${{ secrets.TRACKER_API }}
+        run: python tools/tracker_probe.py
