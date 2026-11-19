@@ -29,6 +29,10 @@
     var srv = d.toLocaleTimeString(LOC, { hour: "2-digit", minute: "2-digit", timeZone: "Etc/GMT+2" });
     return (today ? "" : day + ", ") + msk + " " + T("МСК") + " · " + srv + " " + T("в игре");
   }
+  function hm(iso, tz) { return new Date(iso).toLocaleTimeString(LOC, { hour: "2-digit", minute: "2-digit", timeZone: tz }); }
+  function dayOf(iso) { return new Date(iso).toLocaleDateString(LOC, { day: "numeric", month: "long", timeZone: "Europe/Moscow" }); }
+  var NICK_COLORS = ["#d4532b", "#2f8f4e", "#2f6fd6", "#9b3fb5", "#c7781a", "#1a8c99", "#b8346c"];
+  function nickColor(n) { var h = 0; for (var i = 0; i < (n || "").length; i++) h = (h * 31 + n.charCodeAt(i)) >>> 0; return NICK_COLORS[h % NICK_COLORS.length]; }
   function mskInputToIso(v) { return v ? new Date(v + ":00+03:00").toISOString() : null; }
   function imgUrl(p) { return sb.storage.from("chat").getPublicUrl(p).data.publicUrl; }
   function bodyHtml(s) { return esc(s).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>').replace(/\n/g, "<br>"); }
@@ -123,7 +127,7 @@
   /* ---------- каркас ---------- */
   function shell() {
     app.innerHTML =
-      '<div class="ch-top"><a class="ch-back" href="' + (EN ? "index.en.html" : "index.html") + '" aria-label="' + esc(T("Назад")) + '">‹</a>' +
+      '<div class="ch-top"><a class="ch-back" href="' + (EN ? "index.en.html" : "index.html") + '" aria-label="' + esc(T("Выйти из чата")) + '">‹ <span>' + T("Выйти") + "</span></a>" +
       '<div class="ch-title"><b>' + T("Чат 397") + '</b><span id="chOnline2"></span></div>' +
       '<div class="ch-set" id="chSet"><label>' + T("Переводить на") + ' <select id="chLang"><option value="ru">Русский</option><option value="en">English</option></select></label>' +
       '<label class="ch-auto"><input type="checkbox" id="chAuto"> ' + T("Автоперевод сообщений") + "</label></div>" +
@@ -154,8 +158,9 @@
 
   /* ---------- сообщения ---------- */
   function canMod() { return A.isModerator(); }
-  function msgHtml(m) {
+  function msgHtml(m, prev) {
     var me = st.user && m.user_id === st.user.id;
+    var sameRun = prev && prev.user_id === m.user_id && dayOf(prev.created_at) === dayOf(m.created_at) && new Date(m.created_at) - new Date(prev.created_at) < 5 * 60e3;
     var tags = (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
     var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
     var acts = '<button type="button" class="linkbtn" data-reply="' + m.id + '">' + T("Ответить") + "</button>" +
@@ -164,11 +169,12 @@
       (canMod() ? '<button type="button" class="linkbtn" data-pin="' + m.id + '">' + (m.pinned ? T("Открепить") : T("Закрепить")) + "</button>" : "") +
       (me || canMod() ? '<button type="button" class="linkbtn del" data-del="' + m.id + '">' + T("Удалить") + "</button>" : "") +
       (canMod() && !me && m.user_id ? '<button type="button" class="linkbtn del" data-mod="' + m.user_id + '" data-nick="' + esc(m.nick || "") + '">' + T("Мут / исключить") + "</button>" : "");
-    return '<div class="cm' + (me ? " me" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
-      '<div class="cm-h"><b>' + esc(m.nick || "?") + "</b>" + tags + '<span class="cm-t">' + when(m.created_at) + "</span>" + (m.pinned ? '<span class="cm-pin">📌</span>' : "") + "</div>" +
+    var time = '<span class="cm-time" title="' + esc(when(m.created_at)) + '">' + (m.pinned ? "📌 " : "") + hm(m.created_at, "Europe/Moscow") + " " + T("мск") + " · " + hm(m.created_at, "Etc/GMT+2") + "</span>";
+    return '<div class="cm' + (me ? " me" : "") + (sameRun ? " run" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
+      (me || sameRun ? "" : '<div class="cm-h"><b style="color:' + nickColor(m.nick) + '">' + esc(m.nick || "?") + "</b>" + tags + "</div>") +
       (m.reply_to ? quoteHtml(m.reply_to) : "") +
       (m.body ? '<div class="cm-body">' + bodyHtml(m.body) + "</div>" : "") + '<div class="cm-tr"></div>' +
-      (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") +
+      (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") + time +
       '<div class="cm-a">' + acts + "</div></div>";
   }
   function snippet(m) { return m ? (m.body ? m.body.replace(/\s+/g, " ").slice(0, 120) : m.poll ? "📊 " + m.poll.q : (m.images || []).length ? "📷 " + T("фото") : "") : ""; }
@@ -228,7 +234,10 @@
     var l = app.querySelector("#chList"); if (!l) return;
     var stick = !keepPos || nearBottom(l), oldH = l.scrollHeight, oldTop = l.scrollTop;
     l.innerHTML = (msgs.length >= PAGE && !l.dataset.noMore ? '<button type="button" class="btn ch-older" id="chOlder">' + T("Показать раньше") + "</button>" : "") +
-      (msgs.length ? msgs.map(msgHtml).join("") : '<div class="cab-empty"><b>' + T("Сообщений пока нет.") + "</b><span>" + T("Напишите первым!") + "</span></div>");
+      (msgs.length ? msgs.map(function (m, i) {
+        var prev = msgs[i - 1], d = dayOf(m.created_at);
+        return (!prev || dayOf(prev.created_at) !== d ? '<div class="ch-day"><span>' + d + "</span></div>" : "") + msgHtml(m, prev);
+      }).join("") : '<div class="cab-empty"><b>' + T("Сообщений пока нет.") + "</b><span>" + T("Напишите первым!") + "</span></div>");
     if (keepPos === "top") l.scrollTop = l.scrollHeight - oldH + oldTop; else if (stick) l.scrollTop = l.scrollHeight;
     if (auto) msgs.slice(-AUTO_LAST).forEach(function (m) { if (m.body) trMessage(m.id); });
     Object.keys(opened).forEach(function (id) { if (byId[id]) trMessage(+id, true); });
