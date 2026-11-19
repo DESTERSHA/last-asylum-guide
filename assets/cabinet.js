@@ -48,7 +48,7 @@
     }
     var sub = A.hasSub(), pr = st.profile || {};
     var roles = [pr.editor ? T("редактор новостей") : "", pr.leader ? T("лидер альянса") : ""].filter(Boolean).join(" · ");
-    var nickLine = ("nick" in pr) ? '<span class="cab-nick">' + T("Игровой ник: ") + "<b>" + (pr.nick ? esc(pr.nick) : "—") + '</b> <button type="button" class="linkbtn" id="nickBtn">' + T("изменить") + "</button>" + (roles ? " · " + roles : "") + "</span>" : "";
+    var nickLine = ("nick" in pr) ? '<span class="cab-nick">' + T("Игровой ник: ") + "<b>" + (pr.nick ? esc(pr.nick) : "—") + '</b> <button type="button" class="btn cab-nick-btn" id="nickBtn">✎ ' + T("Изменить ник") + '</button> <button type="button" class="linkbtn" id="myNickHist">' + T("история") + "</button>" + (roles ? " · " + roles : "") + "</span>" : "";
     acc.innerHTML = '<div class="cab-me"><div><b>' + esc(st.user.email) + "</b>" + nickLine + "<span>" + (sub ? T('Подписка до <b>') + fdate(st.profile.sub_until) + "</b>" : T("Подписки нет")) + T('</span></div><button type="button" class="btn" id="outBtn">Выйти</button></div>') +
       (sub ? "" : T('<div class="cab-note"><b>Подписка</b> открывает «Кто вступил, кто вышел и куда ушёл» с настоящими игроками. Чтобы оформить — напишите лидеру альянса свою почту <b>') + esc(st.user.email) + "</b>.</div>") +
       (st.admin ? adminHtml() : "");
@@ -59,7 +59,24 @@
       if (v == null || !v.trim()) return;
       try { await A.setNick(v); } catch (err) { alert(T("Не получилось: ") + (err.message || err)); }
     };
+    var mh = acc.querySelector("#myNickHist");
+    if (mh) mh.onclick = function () { showNickHistory(st.user.id, pr.nick); };
     if (st.admin) bindAdmin();
+  }
+  /* история смены ника (таблица nick_history: человек видит свою, админ — всех) */
+  async function showNickHistory(uid, nick) {
+    var r = await A.client.from("nick_history").select("old_nick,new_nick,changed_by,changed_at").eq("user_id", uid).order("changed_at", { ascending: false });
+    var rows = r.data || [];
+    var w = document.createElement("div"); w.className = "nick-gate";
+    w.innerHTML = '<div class="nick-box"><h3>' + T("История ника") + (nick ? " · " + esc(nick) : "") + "</h3>" +
+      (r.error ? "<p>" + esc(r.error.message) + "</p>" : rows.length ? '<div class="nh-list">' + rows.map(function (h) {
+        var by = h.changed_by && h.changed_by !== uid ? T("изменил админ") : T("сам");
+        return '<div class="nh"><span>' + new Date(h.changed_at).toLocaleString(window.LA_LANG === "en" ? "en-GB" : "ru-RU", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Moscow" }) + " " + T("МСК") + "</span><b>" +
+          (h.old_nick ? esc(h.old_nick) + " → " : T("при регистрации: ")) + esc(h.new_nick || "—") + "</b><em>" + by + "</em></div>";
+      }).join("") + "</div>" : "<p>" + T("Смен ника пока не было.") + "</p>") +
+      '<div class="nick-btns"><button type="button" class="btn" data-close>' + T("Закрыть") + "</button></div></div>";
+    document.body.appendChild(w);
+    w.addEventListener("click", function (e) { if (e.target === w || e.target.closest("[data-close]")) w.remove(); });
   }
 
   function adminHtml() {
@@ -71,7 +88,7 @@
   }
   async function bindAdmin() {
     var f = acc.querySelector("#grantForm"), m = acc.querySelector("#grantMsg"), sb = A.client;
-    var ul = acc.querySelector("#userList"), rowsAll = [], filt = "";
+    var ul = acc.querySelector("#userList"), rowsAll = [], filt = "", hist = {};  // hist: id → сколько записей в истории ника
     var FLAGS = [["verified", T("Проверен")], ["editor", T("Редактор")], ["leader", T("Лидер")], ["vote_banned", T("Запрет голосовать")], ["moderator", T("Модератор чата")], ["chat_banned", T("Запрет в чате")]];
     function drawUsers() {
       var cnt = {};
@@ -87,7 +104,8 @@
           var on = u.sub_until && new Date(u.sub_until) > new Date();
           var dup = u.nick && cnt[u.nick.trim().toLowerCase()] > 1;
           return "<tr>" + (full ? '<td class="nk"><b>' + (u.nick ? esc(u.nick) : "—") + "</b>" + (dup ? ' <em class="dup" title="' + esc(T("этот ник указан у нескольких аккаунтов")) + '">' + T("двойник") + "</em>" : "") +
-            ' <button type="button" class="linkbtn" data-nick="' + esc(u.id) + '" data-cur="' + esc(u.nick || "") + '">✎</button></td>' : "") +
+            ' <button type="button" class="linkbtn" data-nick="' + esc(u.id) + '" data-cur="' + esc(u.nick || "") + '">✎</button>' +
+            (hist[u.id] > 1 ? ' <button type="button" class="linkbtn nh-btn" data-hist="' + esc(u.id) + '" data-hn="' + esc(u.nick || "") + '">' + T("история") + " (" + (hist[u.id] - 1) + ")</button>" : "") + "</td>" : "") +
             "<td>" + esc(u.email) + '</td><td class="' + (on ? "on" : "") + '">' + (u.sub_until ? fdate(u.sub_until) : "—") + "</td><td>" + fdate(u.created_at) + "</td>" +
             (full ? flags.map(function (f) { return '<td class="fl"><input type="checkbox" data-u="' + esc(u.id) + '" data-f="' + f[0] + '"' + (u[f[0]] ? " checked" : "") + "></td>"; }).join("") : "") + "</tr>";
         }).join("") + "</table></div>";
@@ -103,6 +121,7 @@
       rowsAll.forEach(function (u) { if (u.id === cb.dataset.u) u[cb.dataset.f] = cb.checked; });
     });
     ul.addEventListener("click", async function (e) {
+      var hb = e.target.closest("[data-hist]"); if (hb) return showNickHistory(hb.dataset.hist, hb.dataset.hn);
       var b = e.target.closest("[data-nick]"); if (!b) return;
       var v = prompt(T("Ник этого пользователя:"), b.dataset.cur);
       if (v == null) return;
@@ -115,6 +134,8 @@
       if (r.error) r = await sb.rpc("list_users2");  // база без полей чата
       if (r.error) r = await sb.rpc("list_users");  // база ещё без полей «Важных новостей»
       rowsAll = r.data || [];
+      var hr = await sb.from("nick_history").select("user_id");
+      hist = {}; (hr.data || []).forEach(function (h) { hist[h.user_id] = (hist[h.user_id] || 0) + 1; });
       drawUsers();
       var s = await sb.rpc("news_storage_used");
       var se = acc.querySelector("#storeUsed");

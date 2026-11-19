@@ -472,5 +472,12 @@
  "Комментариев пока нет.": "No comments yet.",
  "Написать комментарий…": "Write a comment…",
  "Войдите, чтобы комментировать": "Sign in to comment",
- "Удалить комментарий?": "Delete the comment?"
+ "Удалить комментарий?": "Delete the comment?",
+ "Изменить ник": "Change nickname",
+ "история": "history",
+ "История ника": "Nickname history",
+ "изменил админ": "changed by admin",
+ "сам": "by themselves",
+ "при регистрации: ": "at registration: ",
+ "Смен ника пока не было.": "No nickname changes yet."
 }
