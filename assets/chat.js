@@ -205,8 +205,11 @@
     var old = c.querySelector(".cm-r"), html = reactHtml(id);
     if (old) old.outerHTML = html || ""; else if (html) c.querySelector(".cm-a").insertAdjacentHTML("beforebegin", html);
   }
+  var lastReact = {};
   async function react(id, emoji) {
     if (!st.user) return;
+    // двойное касание на телефоне ловится дважды (наше касание + «двойное нажатие» браузера) — второе за 0,6 с не считаем
+    var now = Date.now(); if (now - (lastReact[id] || 0) < 600) return; lastReact[id] = now;
     var mineR = reacts[id] && reacts[id][st.user.id];
     var res;
     if (mineR && mineR.emoji === emoji) {
