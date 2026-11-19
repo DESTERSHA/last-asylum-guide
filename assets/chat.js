@@ -709,6 +709,9 @@
     if (key === seen) return;
     var firstForUser = !seen || seen.split("|")[0] !== key.split("|")[0];
     seen = key;
+    if (!s.user && !s.authReady) {  // вход ещё загружается — не пугать «войдите»
+      app.innerHTML = '<div class="cab-note">' + T("Загружаю чат…") + "</div>"; seen = null; return;
+    }
     if (!s.user) {
       started = false; if (chan) { sb.removeChannel(chan); chan = null; } if (presence) { sb.removeChannel(presence); presence = null; }
       app.innerHTML = '<div class="cab-note"><b>' + T("Чат — только для зарегистрированных.") + "</b> " + T("Войдите или зарегистрируйтесь (нужен игровой ник), и сможете читать и писать.") +

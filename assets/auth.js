@@ -88,9 +88,23 @@
   /* Внутри этого сигнала библиотека держит свой замок: запрос к базе прямо отсюда ждёт сам себя и виснет навсегда.
      Поэтому здесь только запоминаем пользователя, а запросы — следующим шагом (setTimeout). */
   var seq = 0;
+  /* запасной путь: если сигнал о входе задержался (бывает на телефоне), берём вход напрямую через 4 с */
+  setTimeout(async function () {
+    if (state.authReady) return;
+    try {
+      var g = await sb.auth.getSession();
+      if (state.authReady) return;
+      state.user = g.data && g.data.session ? g.data.session.user : null;
+      try { await loadProfile(); } catch (e) { console.warn("Кабинет: профиль (запасной путь)", e); }
+      state.authReady = true; emit(); nickGate();
+      document.querySelectorAll("[data-acc-name]").forEach(function (e) { e.textContent = (window.T || String)(state.user ? "Кабинет" : "Войти"); });
+    } catch (e) { console.warn("Кабинет: вход (запасной путь)", e); }
+  }, 4000);
   sb.auth.onAuthStateChange(function (ev, session) {
     state.user = session ? session.user : null;
+    state.authReady = true;
     var my = ++seq;
+    if (state.user) emit();  // сразу сообщить «вход есть» (профиль догрузится следом)
     setTimeout(async function () {
       try {
         await loadProfile();
