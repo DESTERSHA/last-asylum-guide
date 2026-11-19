@@ -1190,3 +1190,10 @@ html.t-ap .sup-head{border-radius:999px}
   .ch-sheet{align-items:flex-end}
   .ch-sheet-box{width:100%;border-radius:18px 18px 0 0;padding:6px 8px calc(8px + env(safe-area-inset-bottom));max-height:75%}
 }
+/* чат: время в правом нижнем углу пузыря (в строку с концом текста), дата — плашкой в ленте (её просьба 20.11, по Telegram) */
+.cm-body::after{content:"";display:block;clear:both}
+.cm-time{float:right;margin:6px 0 -3px 12px;font-size:11px;line-height:1.3;color:#8b93a1;white-space:nowrap}
+.cm.me .cm-time{color:#7d8fb3}
+.cm-tline{display:flex;justify-content:flex-end}.cm-tline .cm-time{float:none;margin:4px 0 0}
+.ch-day{display:flex;justify-content:center;margin:10px 0 4px;position:sticky;top:4px;z-index:2}
+.ch-day span{background:#e7eaf0;color:#5d636f;font-size:12.5px;font-weight:600;padding:3px 12px;border-radius:999px}
