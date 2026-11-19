@@ -158,17 +158,21 @@
 
   /* ---------- сообщения ---------- */
   function canMod() { return A.isModerator(); }
-  function msgHtml(m, prev) {
+  function msgActs(m) {
     var me = st.user && m.user_id === st.user.id;
-    var sameRun = prev && prev.user_id === m.user_id && dayOf(prev.created_at) === dayOf(m.created_at) && new Date(m.created_at) - new Date(prev.created_at) < 5 * 60e3;
-    var tags = (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
-    var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
-    var acts = '<button type="button" class="linkbtn" data-reply="' + m.id + '">' + T("Ответить") + "</button>" +
+    return '<button type="button" class="linkbtn" data-reply="' + m.id + '">' + T("Ответить") + "</button>" +
       '<button type="button" class="linkbtn' + (saved[m.id] ? " on" : "") + '" data-save="' + m.id + '">' + (saved[m.id] ? "★ " + T("В избранном") : "☆ " + T("В избранное")) + "</button>" +
       (m.body && !auto ? '<button type="button" class="linkbtn" data-tr="' + m.id + '">' + (opened[m.id] ? T("Скрыть перевод") : T("Перевести")) + "</button>" : "") +
       (canMod() ? '<button type="button" class="linkbtn" data-pin="' + m.id + '">' + (m.pinned ? T("Открепить") : T("Закрепить")) + "</button>" : "") +
       (me || canMod() ? '<button type="button" class="linkbtn del" data-del="' + m.id + '">' + T("Удалить") + "</button>" : "") +
       (canMod() && !me && m.user_id ? '<button type="button" class="linkbtn del" data-mod="' + m.user_id + '" data-nick="' + esc(m.nick || "") + '">' + T("Мут / исключить") + "</button>" : "");
+  }
+  function msgHtml(m, prev) {
+    var me = st.user && m.user_id === st.user.id;
+    var sameRun = prev && prev.user_id === m.user_id && dayOf(prev.created_at) === dayOf(m.created_at) && new Date(m.created_at) - new Date(prev.created_at) < 5 * 60e3;
+    var tags = (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
+    var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
+    var acts = msgActs(m);
     var time = '<span class="cm-time" title="' + esc(when(m.created_at)) + '">' + (m.pinned ? "📌 " : "") + hm(m.created_at, "Europe/Moscow") + " " + T("мск") + " · " + hm(m.created_at, "Etc/GMT+2") + "</span>";
     return '<div class="cm' + (me ? " me" : "") + (sameRun ? " run" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
       (me || sameRun ? "" : '<div class="cm-h"><b style="color:' + nickColor(m.nick) + '">' + esc(m.nick || "?") + "</b>" + tags + "</div>") +
@@ -329,10 +333,14 @@
   app.addEventListener("click", async function (e) {
     var t = e.target, b;
     if ((b = t.closest("#chSetBtn"))) { app.querySelector("#chSet").classList.toggle("open"); return; }
-    if (!t.closest("button, a, img, details, input, select, label, textarea") && (b = t.closest(".cm"))) {
-      var was = b.classList.contains("act");
-      app.querySelectorAll(".cm.act").forEach(function (x) { x.classList.remove("act"); });
-      if (!was) b.classList.add("act");
+    var sheet = t.closest("#chSheet");
+    if (sheet) {
+      if (t === sheet || t.closest("[data-sheet-close]")) { closeSheet(); return; }
+      if (t.closest("button")) setTimeout(closeSheet, 0);  // пункт выбран — меню закрыть (действие ниже уже взяло всё нужное)
+    }
+    if ((b = t.closest("[data-copy]"))) {
+      var cm = byId[+b.dataset.copy];
+      try { await navigator.clipboard.writeText(cm.body || ""); } catch (err) { console.warn("чат: не скопировать", err); }
       return;
     }
     if ((b = t.closest("#chOlder"))) return older();
@@ -379,6 +387,39 @@
       if (rv.error) return alert(rv.error.message);
       await loadPolls([+b.dataset.vote]); drawList(true);
     }
+  });
+
+  /* ---------- меню сообщения: удержание пальцем или правая кнопка мыши (как в Telegram) ---------- */
+  function closeSheet() { var x = app.querySelector("#chSheet"); if (x) x.remove(); }
+  function openSheet(id) {
+    var m = byId[id]; if (!m) return;
+    closeSheet();
+    var w = document.createElement("div"); w.className = "ch-sheet"; w.id = "chSheet";
+    w.innerHTML = '<div class="ch-sheet-box"><div class="ch-sheet-q"><b>' + esc(m.nick || "?") + "</b> " + esc(snippet(m)) + "</div>" +
+      (m.body ? '<button type="button" class="linkbtn" data-copy="' + id + '">' + T("Копировать") + "</button>" : "") +
+      msgActs(m) + '<button type="button" class="linkbtn ch-sheet-x" data-sheet-close>' + T("Отмена") + "</button></div>";
+    app.appendChild(w);
+  }
+  var lp = null, lpFired = false;
+  app.addEventListener("touchstart", function (e) {
+    var c = e.target.closest(".cm");
+    if (!c || e.target.closest("button, a, img, input, textarea, select, details, #chSheet")) return;
+    var p0 = e.touches[0], id = +c.dataset.msg;
+    lp = { x: p0.clientX, y: p0.clientY, timer: setTimeout(function () { lpFired = true; lp = null; if (navigator.vibrate) navigator.vibrate(12); openSheet(id); }, 450) };
+  }, { passive: true });
+  app.addEventListener("touchmove", function (e) {
+    if (!lp) return;
+    var p0 = e.touches[0];
+    if (Math.abs(p0.clientX - lp.x) > 10 || Math.abs(p0.clientY - lp.y) > 10) { clearTimeout(lp.timer); lp = null; }
+  }, { passive: true });
+  app.addEventListener("touchend", function (e) {
+    if (lp) { clearTimeout(lp.timer); lp = null; }
+    if (lpFired) { lpFired = false; if (e.cancelable) e.preventDefault(); }  // после удержания не считать это нажатием
+  });
+  app.addEventListener("contextmenu", function (e) {
+    var c = e.target.closest(".cm");
+    if (!c || e.target.closest("a, img, #chSheet")) return;
+    e.preventDefault(); openSheet(+c.dataset.msg);
   });
 
   /* ---------- участники: кто в сети (Realtime Presence), мут и исключение ---------- */
@@ -499,6 +540,8 @@
       }
       if (!row.body && !fresh.length && !row.poll) return;
       var send = f.querySelector("#chSend"); send.disabled = true;
+      // поле очищаем сразу (на iPhone подсказки клавиатуры иначе оставляют текст); не отправилось — вернём
+      var typed = txt.value; txt.value = ""; grow();
       try {
         for (var i = 0; i < fresh.length; i++) {
           msg.textContent = T("Сжимаю и загружаю фото ") + (i + 1) + " / " + fresh.length + "…";
@@ -510,14 +553,18 @@
         }
         var r = await sb.from("chat_messages").insert(row);
         if (r.error) throw r.error;
-        txt.value = ""; grow(); fresh.forEach(function (x) { URL.revokeObjectURL(x.url); }); fresh = []; drawPrev();
+        if (txt.value === typed) txt.value = "";  // клавиатура телефона вернула текст — убрать ещё раз
+        grow(); fresh.forEach(function (x) { URL.revokeObjectURL(x.url); }); fresh = []; drawPrev();
         replyTo = null; drawReply();
         pollBox.hidden = true; pollBox.innerHTML = ""; msg.textContent = "";
       } catch (err) {
+        if (!txt.value) { txt.value = typed; grow(); }
         msg.className = "cab-msg err"; msg.textContent = T("Не отправилось: ") + (err.message || err);
       }
       send.disabled = false; txt.focus();
     };
+    // кнопка «Отправить» не забирает фокус у поля — клавиатура телефона не прячется после отправки (как в мессенджерах)
+    f.querySelector("#chSend").addEventListener("pointerdown", function (e) { e.preventDefault(); });
   }
   function setComposer() {
     var f = app.querySelector("#chForm"), pr = st.profile || {};
