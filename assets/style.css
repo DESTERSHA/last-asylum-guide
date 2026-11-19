@@ -1058,3 +1058,4 @@ html.t-ap .lang-sw{border-radius:999px;border-color:transparent;background:#f6f6
 .foot .sup-btns .btn:not(.pri),html.t-ap .foot .sup-btns .btn:not(.pri){background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
 .sup-qr{flex:none;width:84px;height:84px;border-radius:10px;background:#fff;padding:4px;image-rendering:pixelated}
 @media(max-width:760px){.sup-qr{display:none}}
+.sup-txt small{color:#8f897d;font-size:12.5px;margin-top:2px}
