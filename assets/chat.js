@@ -243,7 +243,7 @@
     return '<div class="cm' + (me ? " me" : "") + (m.pinned ? " pinned" : "") + '" data-msg="' + m.id + '" id="msg-' + m.id + '">' +
       '<div class="cm-h"><b>' + esc(m.nick || "?") + "</b>" + tags + (m.pinned ? '<span class="cm-pin">📌</span>' : "") + "</div>" +
       (m.reply_to ? quoteHtml(m.reply_to) : "") +
-      (sa.text ? '<div class="cm-body">' + bodyHtml(sa.text) + time + "</div>" : "") + '<div class="cm-tr"></div>' +
+      (sa.text ? '<div class="cm-body">' + bodyHtml(sa.text) + time + "</div>" : "") + trReady(m, sa.text) +
       sa.att.map(attHtml).join("") +
       (imgs ? '<div class="cm-imgs">' + imgs + "</div>" : "") + (m.poll ? pollHtml(m) : "") + (sa.text ? "" : '<div class="cm-tline">' + time + "</div>") +
       reactHtml(m.id) + '<div class="cm-a">' + acts + "</div></div>";
@@ -267,6 +267,10 @@
     if (!ids.length) return;
     var r = await sb.from("posts").select("id,title,body").in("id", ids);
     (r.data || []).forEach(function (x) { postInfo[x.id] = { title: x.title, body: x.body || "" }; });
+  }
+  function trReady(m, plain) {  // перевод уже есть в памяти — сразу в разметку
+    var t = plain && (auto || opened[m.id]) && langOf(plain) !== target && trCache[target + "|" + plain];
+    return t ? '<div class="cm-tr" data-done="1"><div class="cm-trtxt">' + bodyHtml(t) + "</div></div>" : '<div class="cm-tr"></div>';
   }
   function snippet(m) {
     if (m && m.body) { var sa = splitAtt(m.body); if (!sa.text && sa.att.length) return "🔗 " + sa.att[0].title; m = Object.assign({}, m, { body: sa.text || m.body }); } return m ? (m.body ? m.body.replace(/\s+/g, " ").slice(0, 120) : m.poll ? "📊 " + m.poll.q : (m.images || []).length ? "📷 " + T("фото") : "") : ""; }
@@ -462,7 +466,17 @@
   });
   window.addEventListener("online", function () { if (started) { catchUp(); subscribe(); joinPresence(); } });
   // итоги голосований обновляются раз в 20 с, пока вкладка открыта
-  setInterval(function () { if (started && !document.hidden && msgs.some(function (m) { return m.poll; })) loadPolls().then(function () { drawList(true); }); }, 20000);
+  function redrawPolls() {
+    app.querySelectorAll("[data-pollid]").forEach(function (box) {
+      var m = byId[+box.dataset.pollid]; if (!m) return;
+      var open = [].map.call(box.querySelectorAll("details"), function (d) { return d.open; });
+      box.outerHTML = pollHtml(m);
+      var nb = app.querySelector('[data-pollid="' + m.id + '"]');
+      if (nb) nb.querySelectorAll("details").forEach(function (d, i) { d.open = !!open[i]; });
+      delete polled[m.id + "|" + target]; if (auto || opened[m.id]) trPoll(m.id);
+    });
+  }
+  setInterval(function () { if (started && !document.hidden && msgs.some(function (m) { return m.poll; })) loadPolls().then(redrawPolls); }, 20000);
 
   /* ---------- действия ---------- */
   app.addEventListener("click", async function (e) {
@@ -491,8 +505,8 @@
     if ((b = t.closest("#chSavedBtn")) || (b = t.closest("[data-close-saved]"))) return toggleSavedPanel();
     if ((b = t.closest("[data-reply-cancel]"))) { replyTo = null; drawReply(); return; }
     if ((b = t.closest("#chAttBtn")) || (b = t.closest("[data-pick-close]"))) return togglePick();
-    if ((b = t.closest("[data-pick]"))) { attach = { url: b.dataset.pick, title: b.dataset.title }; drawAtt(); app.querySelector("#chPick").hidden = true; var tx2 = app.querySelector("#chText"); if (tx2) tx2.focus(); return; }
-    if ((b = t.closest("[data-att-cancel]"))) { attach = null; drawAtt(); return; }
+    if ((b = t.closest("[data-pick]"))) { addAtt({ url: b.dataset.pick, title: b.dataset.title }); b.classList.add("on"); return; var tx2 = app.querySelector("#chText"); if (tx2) tx2.focus(); return; }
+    if ((b = t.closest("[data-att-cancel]"))) { attach.splice(+b.dataset.attCancel, 1); drawAtt(); return; }
     if ((b = t.closest("[data-reply]"))) { replyTo = +b.dataset.reply; drawReply(); var tx = app.querySelector("#chText"); if (tx) tx.focus(); return; }
     if ((b = t.closest("[data-save]"))) {
       var sid = +b.dataset.save, was = !!saved[sid];
@@ -690,7 +704,7 @@
     f.onsubmit = async function (e) {
       e.preventDefault(); msg.className = "cab-msg"; msg.textContent = "";
       var row = { body: txt.value.trim(), images: [], poll: null };
-      if (attach) row.body = (row.body ? row.body + "\n" : "") + "🔗[" + attach.url + "] " + String(attach.title || "").replace(/\s+/g, " ").slice(0, 200);
+      if (attach.length) row.body = [row.body].concat(attach.map(function (a) { return "🔗[" + a.url + "] " + String(a.title || "").replace(/\s+/g, " ").slice(0, 200); })).filter(Boolean).join("\n");
       if (replyTo) row.reply_to = replyTo;
       if (!pollBox.hidden) {
         var opts = [].map.call(pollBox.querySelectorAll(".nf-opt input"), function (i) { return i.value.trim(); }).filter(Boolean);
@@ -715,7 +729,7 @@
         if (r.error) throw r.error;
         if (txt.value === typed) txt.value = "";  // клавиатура телефона вернула текст — убрать ещё раз
         grow(); fresh.forEach(function (x) { URL.revokeObjectURL(x.url); }); fresh = []; drawPrev();
-        replyTo = null; drawReply(); attach = null; drawAtt();
+        replyTo = null; drawReply(); attach = []; drawAtt();
         pollBox.hidden = true; pollBox.innerHTML = ""; msg.textContent = "";
       } catch (err) {
         if (!txt.value) { txt.value = typed; grow(); }
@@ -741,12 +755,13 @@
   }
 
   /* ---------- прикрепить пост из «Важных новостей» или из избранного ---------- */
-  var attach = null;
+  var attach = [];  // можно прикрепить сразу несколько
   function drawAtt() {
     var b = app.querySelector("#chAtt"); if (!b) return;
-    b.hidden = !attach;
-    b.innerHTML = attach ? "<span>🔗 " + esc(attach.title) + '</span><button type="button" class="linkbtn" data-att-cancel>✕</button>' : "";
+    b.hidden = !attach.length;
+    b.innerHTML = attach.map(function (a, i) { return '<span class="ch-att-i">🔗 ' + esc(a.title) + '<button type="button" class="linkbtn" data-att-cancel="' + i + '">✕</button></span>'; }).join("");
   }
+  function addAtt(a) { if (!attach.some(function (x) { return x.url === a.url; })) attach.push(a); drawAtt(); }
   async function togglePick() {
     var box = app.querySelector("#chPick"); if (!box) return;
     if (!box.hidden) { box.hidden = true; return; }
@@ -754,7 +769,7 @@
     box.hidden = false; box.innerHTML = '<div class="cab-note">' + T("Загружаю…") + "</div>";
     var r = await sb.from("posts").select("id,title,created_at").order("created_at", { ascending: false }).limit(30);
     var news = r.data || [], favs = window.LAFav ? LAFav.list() : [];
-    box.innerHTML = '<div class="chm-h"><b>🔗 ' + T("Прикрепить") + '</b><button type="button" class="linkbtn" data-pick-close>✕</button></div><div class="chm-list">' +
+    box.innerHTML = '<div class="chm-h"><b>🔗 ' + T("Прикрепить") + "</b> · " + T("можно несколько") + '<button type="button" class="btn pri chp-done" data-pick-close>' + T("Готово") + '</button></div><div class="chm-list">' +
       '<div class="chp-h">📰 ' + T("Важные новости") + "</div>" +
       (news.length ? news.map(function (x) { return '<button type="button" class="chp" data-pick="news.html#post-' + x.id + '" data-title="' + esc(x.title) + '"><b>' + esc(x.title) + "</b><small>" + when(x.created_at) + "</small></button>"; }).join("") : '<div class="cab-note">' + T("Постов пока нет.") + "</div>") +
       '<div class="chp-h">★ ' + T("Моё избранное на сайте") + "</div>" +
@@ -764,7 +779,7 @@
   async function shareFromUrl() {  // chat.html?share=post-12 — пришли из «Важных новостей» кнопкой «В чат»
     var m = location.search.match(/[?&]share=post-(\d+)/); if (!m) return;
     var r = await sb.from("posts").select("id,title").eq("id", +m[1]).maybeSingle();
-    if (r.data) { attach = { url: "news.html#post-" + r.data.id, title: r.data.title }; drawAtt(); var tx = app.querySelector("#chText"); if (tx) tx.focus(); }
+    if (r.data) { addAtt({ url: "news.html#post-" + r.data.id, title: r.data.title }); var tx = app.querySelector("#chText"); if (tx) tx.focus(); }
     try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) { console.warn("чат: адрес", e); }
   }
 

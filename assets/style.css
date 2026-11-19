@@ -1229,3 +1229,9 @@ html.t-ap .sup-head{border-radius:999px}
 .chp:hover{background:var(--soft)}.chp b{font-size:14px}.chp small{font-size:12px;color:var(--faint)}
 .news-share{text-decoration:none;margin-left:6px}
 .news-feed,.news-form-box{max-width:none}
+.chm .dot{border:0;margin:0;display:inline-block}
+.ch-att{flex-wrap:wrap;gap:6px}
+.ch-att-i{display:inline-flex;align-items:center;gap:4px;background:#fff;border-radius:999px;padding:2px 4px 2px 10px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chp.on{background:var(--gold-bg)}.chp.on b::after{content:" ✓";color:#1f9d55}
+.chp-done{margin-left:auto;padding:5px 14px;font-size:13px;cursor:pointer}
+.chm-h .chp-done+.linkbtn{margin-left:6px}
