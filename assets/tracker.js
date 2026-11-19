@@ -214,7 +214,7 @@
     var pulled = Math.max.apply(null, (S.server.boards || []).map(function (b) { return b.pulled_at || 0; }).concat([0]));
     $("view").innerHTML =
       '<div class="ap-wrap">' +
-      T('<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>проверено ') + ago(S.checked || S.server.updated) + T(" · робот проверяет трекер каждые 10 минут") + (pulled ? T(" · рейтинги трекер обновляет раз в сутки, последние — ") + atLabel(pulled) : "") + "</p></div></div>" +
+      T('<div class="ap-card"><div class="ap-h"><div><h3>Сервер 397</h3><p>проверено ') + ago(S.checked || S.server.updated) + T(" · робот проверяет трекер каждые 10 минут") + T(" · топ игроков по мощи, убийствам и святилищу — по самым свежим цифрам каждого игрока") + (pulled ? T(" · рейтинги альянсов и мощь героев трекер даёт раз в сутки, последние — ") + atLabel(pulled) : "") + "</p></div></div>" +
       '<div class="ap-cells c5">' + cell(T("Игроков"), full(s.players), (s.age_days || "—") + T(" дней серверу")) + cell(T("Альянсов"), full(s.alliances)) + cell(T("Общая мощь"), num(s.power)) +
       cell(T("Король"), esc(s.king_name || "—"), s.union_abbr ? "[" + esc(s.union_abbr) + "] " + esc(s.union_name) : "", "gold") + cell(T("Альянсов со свежим составом"), Object.keys(S.al).filter(function (k) { return S.al[k].members.length; }).length + T(" из 30"), T("у остальных — состав по карте за 3 дня, без рангов")) + "</div></div>" +
       T('<div class="ap-card"><div class="ap-h"><div><h3>Поиск</h3><p>игроки альянсов топ-30 и альянсы топ-100</p></div>') + pills("skind", [["p", T("Игроки")], ["a", T("Альянсы")]], "p") + T('</div><input id="sq" class="ap-in" type="search" placeholder="Ник игрока или тег альянса…" autocomplete="off"><div id="sres"></div></div>') +
@@ -238,9 +238,26 @@
     alRows("30"); bindPills("atop", alRows);
 
     var NAMES = { power: T("Мощь"), kills: T("Убийства"), heroes: T("Мощь героев"), castle: T("Святилище") };
+    /* Список рейтингов трекер отдаёт раз в сутки (pulled_at), а цифры каждого игрока обновляются каждые 30 мин.
+       Мощь, убийства и святилище пересчитываем из свежих цифр игроков (у кого свежих нет — цифра из суточного списка);
+       мощь героев есть только в суточном списке. */
+    var FRESH = { power: "power", kills: "kills", castle: "lv" };
+    var topRows = function (slug) {
+      var b = S.server.boards.filter(function (x) { return x.slug === slug; })[0], f = FRESH[slug];
+      if (!f) return b.rows;
+      var by = {};
+      b.rows.forEach(function (r) { by[r.id] = { id: r.id, name: r.name, abbr: r.abbr, score: r.score }; });
+      Object.keys(S.players).forEach(function (id) {
+        var p = S.players[id], v = p[f];
+        if (v == null) return;
+        by[id] = { id: isNaN(+id) ? id : +id, name: p.nick || (by[id] && by[id].name) || "?", abbr: p.abbr != null ? p.abbr : (by[id] && by[id].abbr) || "", score: v };
+      });
+      var list = Object.keys(by).map(function (k) { return by[k]; }).sort(function (a, c) { return c.score - a.score; }).slice(0, 100);
+      list.forEach(function (r, i) { r.rank = i + 1; });
+      return list;
+    };
     var renderTop = function (slug) {
-      var b = S.server.boards.filter(function (x) { return x.slug === slug; })[0];
-      paged($("plist"), b.rows, 20, function (part) {
+      paged($("plist"), topRows(slug), 20, function (part) {
         return T('<table class="ap-t"><colgroup><col style="width:56px"><col><col style="width:150px"><col style="width:130px"></colgroup><thead><tr><th>#</th><th>Игрок</th><th>Альянс</th><th class="r">') + NAMES[slug] + "</th></tr></thead><tbody>" +
           part.map(function (r) {
             var known = S.players[r.id];
@@ -603,6 +620,15 @@
     S.server.boards.forEach(function (b) { if (b.alliance) return; var m = {}; b.rows.forEach(function (x) { m[x.id] = x.rank; }); S.board[b.slug] = m; });
     return Promise.all(S.rows.slice(0, 30).map(function (row) { return get("a/" + row.id + ".json").then(function (a) { S.al[row.id] = a; }).catch(function () {}); }));
   }).then(function () {
+    /* В составе альянса цифры из окна альянса (трекер обновляет его редко — у [SLAV] 19.11 окно было от 18.11),
+       а в players.json у каждого игрока самая свежая цифра (карточка игрока / карта). Берём её. */
+    Object.keys(S.al).forEach(function (aid) {
+      (S.al[aid].members || []).forEach(function (m) {
+        var p = S.players[m.uid];
+        if (!p) return;
+        ["power", "kills", "lv"].forEach(function (k) { if (p[k] != null) m[k] = p[k]; });
+      });
+    });
     route();
     window.addEventListener("hashchange", route);
     document.addEventListener("click", function (e) {

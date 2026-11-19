@@ -370,5 +370,7 @@
  "Ник этого пользователя:": "This user's nickname:",
  "Скрины новостей: занято ": "News screenshots: used ",
  " МБ из 1024 МБ": " MB of 1024 MB",
- " · робот проверяет трекер каждые 10 минут": " · the robot checks the tracker every 10 minutes"
+ " · робот проверяет трекер каждые 10 минут": " · the robot checks the tracker every 10 minutes",
+ " · рейтинги альянсов и мощь героев трекер даёт раз в сутки, последние — ": " · the tracker gives alliance rankings and hero Might once a day, latest — ",
+ " · топ игроков по мощи, убийствам и святилищу — по самым свежим цифрам каждого игрока": " · top players by Might, kills and Sanctuary — from each player's latest numbers"
 }
