@@ -60,7 +60,7 @@
       if (v == null || !v.trim()) return;
       try { await A.setNick(v); } catch (err) { alert(T("Не получилось: ") + (err.message || err)); }
     };
-    bindProfile(pr);
+    bindProfile(pr, st);
     var mh = acc.querySelector("#myNickHist");
     if (mh) mh.onclick = function () { showNickHistory(st.user.id, pr.nick); };
     if (st.admin) bindAdmin();
@@ -76,7 +76,7 @@
         ["R1", "R2", "R3", "R4", "R5"].map(function (r) { return '<button type="button" data-rank="' + r + '" class="' + (pr.game_rank === r ? "on" : "") + '">' + r + "</button>"; }).join("") +
         '</div><span class="cab-msg" id="profRankMsg"></span></div>' : "") + "</div>";
   }
-  function bindProfile(pr) {
+  function bindProfile(pr, st) {
     var f = acc.querySelector("#profNick"); if (!f) return;
     f.onsubmit = async function (e) {
       e.preventDefault(); var m = acc.querySelector("#profNickMsg"); m.className = "cab-msg";
@@ -91,11 +91,14 @@
       var b = e.target.closest("[data-rank]"); if (!b) return;
       var m = acc.querySelector("#profRankMsg"); m.className = "cab-msg"; m.textContent = T("Секунду…");
       var v = b.classList.contains("on") ? null : b.dataset.rank;  // повторное нажатие — снять ранг
-      var r = await A.call(function () { return A.client.rpc("set_my_rank", { p_rank: v }); });
-      if (r.error) { m.className = "cab-msg err"; m.textContent = r.error.message; return; }
-      rk.querySelectorAll("button").forEach(function (x) { x.classList.toggle("on", x.dataset.rank === v); });
-      if (st.profile) st.profile.game_rank = v;
-      m.textContent = T("Сохранено.");
+      try {
+        var r = await A.call(function () { return A.client.rpc("set_my_rank", { p_rank: v }); });
+        if (r.error) throw r.error;
+        rk.querySelectorAll("button").forEach(function (x) { x.classList.toggle("on", x.dataset.rank === v); });
+        if (st.profile) st.profile.game_rank = v;
+        pr.game_rank = v;
+        m.textContent = v ? T("Сохранено.") : T("Ранг снят.");
+      } catch (err) { m.className = "cab-msg err"; m.textContent = T("Не получилось: ") + (err.message || err); }
     };
   }
   /* история смены ника (таблица nick_history: человек видит свою, админ — всех) */

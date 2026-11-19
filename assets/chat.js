@@ -243,7 +243,9 @@
   }
   function msgHtml(m, prev) {
     var me = st.user && m.user_id === st.user.id;
-    var tags = (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
+    var rk = rankOf(m.user_id);
+    var tags = '<em class="cm-tag rk" data-rk="' + esc(m.user_id || "") + '"' + (rk ? "" : " hidden") + ">" + esc(rk) + "</em>" +
+      (m.author_mod ? '<em class="cm-tag mod">' + T("модератор") + "</em>" : "") + (m.author_leader ? '<em class="cm-tag ld">' + T("лидер") + "</em>" : "");
     var imgs = (m.images || []).map(function (p) { return '<img src="' + esc(imgUrl(p)) + '" alt="" loading="lazy">'; }).join("");
     var acts = msgActs(m), sa = splitAtt(m.body);
     var time = '<span class="cm-time" title="' + esc(when(m.created_at)) + '">' + hm(m.created_at, "Europe/Moscow") + " " + T("мск") + " · " + hm(m.created_at, "Etc/GMT+2") + "</span>";
@@ -643,7 +645,17 @@
     if (r.error) r = await sb.rpc("chat_members");  // база без ранга
     if (r.error) { members = []; return r.error.message; }
     members = r.data || [];
+    rankMap = {};
+    members.forEach(function (u) { if (u.game_rank) rankMap[u.user_id] = u.game_rank; });
+    // ранг рядом с ником в уже нарисованных сообщениях — текущий ранг человека
+    app.querySelectorAll("[data-rk]").forEach(function (el) {
+      var v = rankMap[el.dataset.rk] || ""; el.textContent = v; el.hidden = !v;
+    });
   }
+  var rankMap = {};
+  function rankOf(uid) { return (uid && rankMap[uid]) || ""; }
+  // ранги в сообщениях: при входе в чат и раз в 2 минуты (кто-то поменял ранг)
+  setInterval(function () { if (started && !document.hidden) loadMembers().catch(function (e) { console.warn("чат: участники", e); }); }, 120000);
   function muteLabel(u) {
     if (u.kicked) return '<em class="cm-tag bad">' + T("исключён") + "</em>";
     if (u.banned) return '<em class="cm-tag bad">' + T("мут навсегда") + "</em>";
@@ -846,7 +858,7 @@
       app.innerHTML = '<div class="cab-note"><b>' + T("Вас исключили из чата.") + "</b> " + T("Если это ошибка — напишите администратору сайта.") + "</div>";
       return;
     }
-    if (firstForUser || !started) { started = true; shell(); setComposer(); load(); subscribe(); joinPresence(); shareFromUrl(); }
+    if (firstForUser || !started) { started = true; shell(); setComposer(); load(); subscribe(); joinPresence(); shareFromUrl(); loadMembers().catch(function (e) { console.warn("чат: участники", e); }); }
     else { setComposer(); drawList(true); }
   });
 })();
