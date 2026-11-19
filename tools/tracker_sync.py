@@ -79,8 +79,73 @@ def save(p, obj):
     p.write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 
-# Обновить альянс/игрока «сейчас» трекер через API не даёт (ответ 403 «Refresh only from the site», проверено 19.11.2026) —
-# только кнопкой на его сайте. Поэтому робот берёт то, что трекер обновил сам, и забирает это не позже чем через 30 мин.
+# Обновить альянс «сейчас» трекер через API не даёт (ответ 403 «Refresh only from the site», проверено 19.11.2026).
+# Но его страница альянса при КАЖДОМ открытии сама шлёт «обнови» (POST /api/alliances/<id>/refresh) — трекер за секунды
+# забирает из игры окно альянса с рангами (проверено 20.11: FaZe до открытия 0 рангов, после — 93 из 93; CHA без открытия — 0).
+# Поэтому перед полным сбором робот открывает страницы альянсов настоящим браузером — как посетитель (refresh_on_site).
+
+
+def refresh_on_site(ids):
+    """Открыть страницы альянсов на сайте трекера (как посетитель): трекер сам обновит окно альянса с рангами.
+    Картинки, шрифты и аналитику не грузим — меньше нагрузка на трекер. Повторное обновление трекер сам не чаще раза в 10 мин."""
+    if not ids:
+        return
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        if not os.environ.get("GITHUB_ACTIONS"):
+            print("страницы трекера: нет playwright — пропускаю", file=sys.stderr)
+            return
+        import subprocess
+        try:
+            subprocess.run([sys.executable, "-m", "pip", "install", "-q", "playwright==1.49.1"], check=True)
+            subprocess.run([sys.executable, "-m", "playwright", "install", "--with-deps", "chromium"], check=True,
+                           stdout=subprocess.DEVNULL)
+            from playwright.sync_api import sync_playwright
+        except Exception as e:
+            print("страницы трекера: не удалось поставить браузер:", e, file=sys.stderr)
+            return
+    site = "https://lastasylumtracker.com"
+    got = []
+    try:
+        with sync_playwright() as p:
+            br = p.chromium.launch()
+            ctx = br.new_context(locale="ru-RU", viewport={"width": 1280, "height": 900})
+            ctx.route("**/*", lambda route: route.abort() if route.request.resource_type in ("image", "media", "font")
+                      or "google-analytics" in route.request.url or "googletagmanager" in route.request.url else route.continue_())
+            page = ctx.new_page()
+            for aid in ids:
+                st = {"ref": None, "ref_t": 0, "live": None, "live0": None}
+
+                def on_resp(r, aid=aid, st=st):
+                    u = r.url.split("?")[0]
+                    try:
+                        if u.endswith(f"/api/alliances/{aid}/refresh") and r.request.method == "POST":
+                            st["ref"] = r.status; st["ref_t"] = time.time()
+                        elif u.endswith(f"/api/alliances/{aid}") and r.request.method == "GET" and r.status == 200:
+                            st["live" if st["ref"] is not None else "live0"] = bool(r.json().get("live"))  # после «обнови» / до
+                    except Exception as e:  # ответ не JSON / страница ушла — не роняем обход
+                        print("страницы трекера: ответ", aid, e, file=sys.stderr)
+                page.on("response", on_resp)
+                try:
+                    page.goto(f"{site}/alliance/{aid}", wait_until="domcontentloaded", timeout=45000)
+                    t0 = time.time()
+                    # ждём свежие данные после «обнови»; если трекер не обновлял (обновлял <10 мин назад) — не дольше 20 с
+                    while time.time() - t0 < 45 and not st["live"] and not (st["ref"] is not None and time.time() - st["ref_t"] > 20):
+                        page.wait_for_timeout(1000)
+                    if st["live"] is None:
+                        st["live"] = st["live0"]
+                except Exception as e:
+                    print("страницы трекера: альянс", aid, "не открылся:", str(e).splitlines()[0], file=sys.stderr)
+                page.remove_listener("response", on_resp)
+                print(f"  страница альянса {aid}: обновление {st['ref']}, окно с рангами {'есть' if st['live'] else 'НЕТ'}")
+                if st["live"]:
+                    got.append(aid)
+                time.sleep(1)
+            br.close()
+    except Exception as e:
+        print("страницы трекера: браузер упал:", e, file=sys.stderr)
+    print(f"страницы трекера: открыто {len(ids)}, окно с рангами у {len(got)}")
 
 
 def probe_sig(a):
@@ -131,7 +196,8 @@ def main():
     save(OUT / "server.json", {"updated": now, "server": {k: cat.get(k) for k in ("sid", "age_days", "open_time_ms", "players", "alliances", "power", "king_name", "union_name", "union_abbr", "migration_open")}, "boards": boards})
 
     top = next((b for b in boards if b["slug"] == "alliance_power"), {"rows": []})["rows"][:TOP]
-    index = load(OUT / "alliances.json", {"alliances": {}})
+    refresh_on_site([r["id"] for r in top])  # как посетитель: трекер подтянет из игры окна альянсов с рангами
+    index =load(OUT / "alliances.json", {"alliances": {}})
     players = load(OUT / "players.json", {"players": {}})["players"]
     series = {}
     live_ids = []
