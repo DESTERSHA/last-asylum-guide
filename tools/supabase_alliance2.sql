@@ -10,7 +10,7 @@ create or replace function public.nick_key(n text) returns text
 language sql immutable as $$
   with a as (select translate(coalesce(n, ''), 'АВЕЁКМНОРСТУХаеёкорсухіІ', 'ABEEKMHOPCTYXaeekopcyxiI') as s),
        b as (select coalesce(nullif(btrim(regexp_replace(s, '[\[\(\{][^\]\)\}]*[\]\)\}]', '', 'g')), ''), s) as s from a)
-  select nullif(regexp_replace(translate(lower(s), 'авеёкмнорстухі', 'abeekmhopctyxi'), '[^0-9A-Za-zÀ-ɏͰ-ϿЀ-ӿ؀-ۿ฀-๿぀-ヿ一-鿿가-힯]', '', 'g'), '') from b
+  select nullif(regexp_replace(translate(lower(s), 'авеёкмнорстухі', 'abeekmhopctyxi'), '[^0-9A-Za-z\u00c0-\u024f\u0370-\u03ff\u0400-\u04ff\u0600-\u06ff\u0e00-\u0e7f\u3040-\u30ff\u4e00-\u9fff\uac00-\ud7af]', '', 'g'), '') from b
 $$;
 
 -- составы — по новому ключу
