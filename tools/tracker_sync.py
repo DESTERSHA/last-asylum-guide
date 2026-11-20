@@ -482,8 +482,18 @@ def roster_mark():
     return (PRIV or OUT.parent / "_local") / "roster_pushed.json"
 
 
+ROSTER_V = 2  # версия отправки: поменялась — составы переотправляются при ближайшей проверке (2: «R4 · Diplomat» → R4)
+
+
 def roster_pushed_ok():
-    return bool(load(roster_mark(), {}).get("ok"))
+    m = load(roster_mark(), {})
+    return bool(m.get("ok")) and m.get("v") == ROSTER_V
+
+
+def rank_code(s):
+    """«R4 · Diplomat» (у R4 трекер пишет должность) → «R4»; пусто/непонятно → ''."""
+    s = (s or "").strip()
+    return s[:2] if len(s) >= 2 and s[0] == "R" and s[1] in "12345" else ""
 
 
 def push_roster():
@@ -505,7 +515,7 @@ def push_roster():
         done.append(aid)
         known = a.get("roster") == "live"
         rows.extend({"al_id": aid, "al_abbr": a.get("abbr") or "", "uid": m["uid"], "nick": m.get("nick") or "",
-                     "rank": m.get("rank") or "", "ranks_known": known} for m in mem)
+                     "rank": rank_code(m.get("rank")), "ranks_known": known} for m in mem)
     if not top or not rows:
         print("составы: нечего отправлять", file=sys.stderr)
         return
@@ -522,7 +532,7 @@ def push_roster():
         print("составы: база отказала:", e.code, e.read().decode("utf-8", "replace")[:300], file=sys.stderr)
     except (urllib.error.URLError, TimeoutError) as e:
         print("составы: нет связи с базой:", e, file=sys.stderr)
-    save(roster_mark(), {"t": time.time(), "ok": ok})
+    save(roster_mark(), {"t": time.time(), "ok": ok, "v": ROSTER_V})
 
 
 if __name__ == "__main__":
