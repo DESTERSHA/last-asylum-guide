@@ -648,7 +648,8 @@
     members = r.data || [];
     rankMap = {};
     // ранг подтверждён лидером альянса (al_ok) — обычный; нет — серый. База без подтверждений — все обычные.
-    members.forEach(function (u) { if (u.game_rank) rankMap[u.user_id] = { r: u.game_rank, ok: !("al_ok" in u) || !!u.al_ok }; });
+    // ранг как у трекера: у R4 — с должностью («R4 · Diplomat»)
+    members.forEach(function (u) { if (u.game_rank) rankMap[u.user_id] = { r: u.rank_label || u.game_rank, ok: !("al_ok" in u) || !!u.al_ok }; });
     // ранг рядом с ником в уже нарисованных сообщениях — текущий ранг человека
     app.querySelectorAll("[data-rk]").forEach(function (el) {
       var v = rankMap[el.dataset.rk];

@@ -10,8 +10,9 @@
   function emit() { subs.forEach(function (f) { try { f(state); } catch (e) { console.warn(e); } }); }
   async function loadProfile() {
     if (!sb || !state.user) { state.profile = null; state.admin = false; return; }
-    var r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned,moderator,chat_banned,chat_muted_until,chat_kicked,game_rank,al_abbr,al_ok,rank_src,leader_al,leader_al_abbr").eq("id", state.user.id).maybeSingle();
-    if (r.error) r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned,moderator,chat_banned,chat_muted_until,chat_kicked,game_rank").eq("id", state.user.id).maybeSingle();  // без supabase_alliance.sql
+    var r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned,moderator,chat_banned,chat_muted_until,chat_kicked,game_rank,rank_label,al_abbr,al_ok,rank_src,leader_al,leader_al_abbr").eq("id", state.user.id).maybeSingle();
+    if (r.error) r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned,moderator,chat_banned,chat_muted_until,chat_kicked,game_rank,al_abbr,al_ok,rank_src,leader_al,leader_al_abbr").eq("id", state.user.id).maybeSingle();  // без supabase_alliance2.sql
+    if (r.error) r =await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned,moderator,chat_banned,chat_muted_until,chat_kicked,game_rank").eq("id", state.user.id).maybeSingle();  // без supabase_alliance.sql
     if (r.error) r =await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned,moderator,chat_banned,chat_muted_until,chat_kicked").eq("id", state.user.id).maybeSingle();  // без supabase_rank.sql
     if (r.error) r = await sb.from("profiles").select("email,sub_until,created_at,nick,verified,editor,leader,vote_banned,moderator,chat_banned").eq("id", state.user.id).maybeSingle();  // без supabase_chat2.sql
     if (r.error) {  // база ещё без полей чата (supabase_chat.sql не выполнен)

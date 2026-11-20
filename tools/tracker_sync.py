@@ -482,7 +482,8 @@ def roster_mark():
     return (PRIV or OUT.parent / "_local") / "roster_pushed.json"
 
 
-ROSTER_V = 2  # версия отправки: поменялась — составы переотправляются при ближайшей проверке (2: «R4 · Diplomat» → R4)
+ROSTER_V = 3  # версия отправки: поменялась — составы переотправляются при ближайшей проверке
+#  2: «R4 · Diplomat» → код R4; 3: ранг целиком как у трекера («R4 · Diplomat») — отдельным полем rank_label
 
 
 def roster_pushed_ok():
@@ -515,7 +516,8 @@ def push_roster():
         done.append(aid)
         known = a.get("roster") == "live"
         rows.extend({"al_id": aid, "al_abbr": a.get("abbr") or "", "uid": m["uid"], "nick": m.get("nick") or "",
-                     "rank": rank_code(m.get("rank")), "ranks_known": known} for m in mem)
+                     "rank": rank_code(m.get("rank")), "rank_label": (m.get("rank") or "").strip() if rank_code(m.get("rank")) else "",
+                     "ranks_known": known} for m in mem)
     if not top or not rows:
         print("составы: нечего отправлять", file=sys.stderr)
         return

@@ -51,7 +51,7 @@
     }
     var sub = A.hasSub(), pr = st.profile || {};
     var roles = [pr.editor ? T("редактор новостей") : "", pr.leader ? T("лидер альянса") : ""].filter(Boolean).join(" · ");
-    var nickLine = ("nick" in pr) ? '<span class="cab-nick">' + T("Игровой ник: ") + "<b>" + (pr.nick ? esc(pr.nick) : "—") + '</b>' + (pr.al_abbr ? " · [" + esc(pr.al_abbr) + "]" : "") + (pr.game_rank ? ' · ' + esc(pr.game_rank) : "") + (roles ? " · " + roles : "") + "</span>" : "";
+    var nickLine = ("nick" in pr) ? '<span class="cab-nick">' + T("Игровой ник: ") + "<b>" + (pr.nick ? esc(pr.nick) : "—") + '</b>' + (pr.al_abbr ? " · [" + esc(pr.al_abbr) + "]" : "") + (pr.game_rank ? ' · ' + esc(pr.rank_label || pr.game_rank) : "") + (roles ? " · " + roles : "") + "</span>" : "";
     acc.innerHTML = '<div class="cab-me"><div><b>' + esc(st.user.email) + "</b>" + nickLine + "<span>" + (sub ? T('Подписка до <b>') + fdate(st.profile.sub_until) + "</b>" : T("Подписки нет")) + T('</span></div><button type="button" class="btn" id="outBtn">Выйти</button></div>') +
       profileHtml(pr) + allyHtml(pr, st) +
       (sub ? "" : T('<div class="cab-note"><b>Подписка</b> открывает «Кто вступил, кто вышел и куда ушёл» с настоящими игроками. Чтобы оформить — напишите лидеру альянса свою почту <b>') + esc(st.user.email) + "</b>.</div>") +
@@ -85,7 +85,7 @@
   /* альянс и ранг — из трекера по нику; «обычный» ранг — после подтверждения лидером альянса */
   function allyStatusHtml(pr) {
     var body = pr.al_abbr
-      ? "<b>[" + esc(pr.al_abbr) + "]" + (pr.game_rank ? " · " + esc(pr.game_rank) : "") + "</b> " +
+      ? "<b>[" + esc(pr.al_abbr) + "]" + (pr.game_rank ? " · " + esc(pr.rank_label || pr.game_rank) : "") + "</b> " +
         (pr.al_ok ? '<em class="al-ok">✓ ' + T("подтверждено лидером альянса") + "</em>"
                   : '<em class="al-wait">' + T("ждёт подтверждения лидера альянса — до этого ранг в чате серый") + "</em>")
       : '<em class="al-wait">' + T("ник не найден в составах топ-30 альянсов трекера — проверьте, что он написан точно как в игре") + "</em>";
@@ -106,7 +106,7 @@
         var x = (r.data || [])[0];
         out.hidden = false; out.className = "cab-hint nick-found " + (x ? "ok" : "no");
         out.innerHTML = x
-          ? T("Найден в трекере: ") + "<b>[" + esc(x.al_abbr) + "]" + (x.rank ? " · " + esc(x.rank) : "") + "</b>" + (x.nick && x.nick !== v ? " (" + T("в игре: ") + esc(x.nick) + ")" : "") + ". " + T("Ранг станет обычным после подтверждения лидером альянса.")
+          ? T("Найден в трекере: ") + "<b>[" + esc(x.al_abbr) + "]" + (x.rank ? " · " + esc(x.rank_label || x.rank) : "") + "</b>" + (x.nick && x.nick !== v ? " (" + T("в игре: ") + esc(x.nick) + ")" : "") + ". " + T("Ранг станет обычным после подтверждения лидером альянса.")
           : T("В составах топ-30 альянсов трекера такой ник не найден. Проверьте, что ник написан точно как в игре.");
       }, 450);
     });
@@ -140,10 +140,10 @@
         '<p class="cab-hint">' + (a.ranks_known ? T("Ранги — из игры (трекер), их никто не меняет; вы подтверждаете только, что это ваш человек.") : T("Трекер рангов этого альянса не знает — ранг выбираете вы при подтверждении (R5 ставит только администратор).")) + "</p>" +
         (shown.length ? '<div class="cab-users-wrap"><table class="cab-users ally-t"><tr><th>' + T("Ник в игре") + "</th><th>" + T("Ранг") + "</th><th>" + T("На сайте") + "</th><th>" + T("Статус") + "</th><th></th></tr>" +
         shown.map(function (x) {
-          if (!x.user_id) return '<tr class="off"><td>' + esc(x.game_nick) + "</td><td>" + esc(x.tracker_rank || "—") + '</td><td colspan="3">' + T("нет на сайте") + "</td></tr>";
+          if (!x.user_id) return '<tr class="off"><td>' + esc(x.game_nick) + "</td><td>" + esc(x.tracker_label || x.tracker_rank || "—") + '</td><td colspan="3">' + T("нет на сайте") + "</td></tr>";
           var self = st.user && x.user_id === st.user.id && !st.admin;
           var dup = x.dup > 1 ? ' <em class="dup" title="' + esc(T("этот ник указан у нескольких аккаунтов — подтвердить может только администратор")) + '">' + T("двойник") + " ×" + x.dup + "</em>" : "";
-          var rk = x.tracker_rank ? esc(x.tracker_rank)
+          var rk = x.tracker_rank ? esc(x.tracker_label || x.tracker_rank)
             : self ? esc(x.game_rank || "—")
             : '<select data-rk="' + esc(x.user_id) + '"><option value="">—</option>' + RANKS.map(function (r) { return '<option' + (x.rank_src === "leader" && x.game_rank === r ? " selected" : "") + ">" + r + "</option>"; }).join("") +
               (!st.admin && x.game_rank === "R5" ? "<option selected>R5</option>" : "") + "</select>";
@@ -275,7 +275,7 @@
         rows.map(function (u) {
           var on = u.sub_until && new Date(u.sub_until) > new Date();
           var dup = u.nick && cnt[u.nick.trim().toLowerCase()] > 1;
-          return "<tr>" + (full ? '<td class="nk"><b>' + (u.nick ? esc(u.nick) : "—") + "</b>" + (u.al_abbr ? ' <em class="cm-tag rk' + (u.al_ok ? "" : " un") + '" title="' + esc(u.al_ok ? T("подтверждён лидером альянса") : T("не подтверждён лидером альянса")) + '">[' + esc(u.al_abbr) + "]" + (u.game_rank ? " " + esc(u.game_rank) : "") + (u.al_ok ? " ✓" : "") + "</em>"
+          return "<tr>" + (full ? '<td class="nk"><b>' + (u.nick ? esc(u.nick) : "—") + "</b>" + (u.al_abbr ? ' <em class="cm-tag rk' + (u.al_ok ? "" : " un") + '" title="' + esc(u.al_ok ? T("подтверждён лидером альянса") : T("не подтверждён лидером альянса")) + '">[' + esc(u.al_abbr) + "]" + (u.game_rank ? " " + esc(u.rank_label || u.game_rank) : "") + (u.al_ok ? " ✓" : "") + "</em>"
               : u.game_rank ? ' <em class="cm-tag ld">' + esc(u.game_rank) + "</em>" : "") +
             (u.leader && ("leader_al" in u) ? ' <span class="ld-al">' + T("лидер альянса") + ' <select data-lal="' + esc(u.id) + '"><option value="">—</option>' +
               allies.map(function (a) { return '<option value="' + a.al_id + '"' + (+u.leader_al === +a.al_id ? " selected" : "") + ">[" + esc(a.al_abbr) + "]</option>"; }).join("") + "</select></span>" : "") + (dup ? ' <em class="dup" title="' + esc(T("этот ник указан у нескольких аккаунтов")) + '">' + T("двойник") + "</em>" : "") +
@@ -310,7 +310,8 @@
     function nkey(s) {
       s = String(s || "").replace(/[АВЕЁКМНОРСТУХаеёкорсухіІ]/g, function (c) { return "ABEEKMHOPCTYXaeekopcyxiI"["АВЕЁКМНОРСТУХаеёкорсухіІ".indexOf(c)]; });
       var t = s.replace(/[\[\(\{][^\]\)\}]*[\]\)\}]/g, "").trim(); if (t) s = t;
-      return s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+      s = s.toLowerCase().replace(/[авеёкмнорстухі]/g, function (c) { return "abeekmhopctyxi"["авеёкмнорстухі".indexOf(c)]; });
+      return s.replace(/[^\p{L}\p{N}]/gu, "");
     }
     function lev(a, b) {
       if (Math.abs(a.length - b.length) > 2) return 9;
